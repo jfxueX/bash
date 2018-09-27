@@ -11,6 +11,9 @@
 - [shell-fu][10]: Shell-fu is a place for all those little command line goodies
 - [lintsh][11]: Describes unportable shell programming constructs, by Paul Jarc
 - [Portable Shell Programming][12]: [IEEE POSIX.1-2017](http://pubs.opengroup.org/onlinepubs/9699919799/)
+- [cus FAQ][13]
+- [comp.lang.awk FAQ][14]
+- [Unix shell programming notes][15]
 
 [1]:http://mywiki.wooledge.org/BashFAQ
 [2]:https://www.commandlinefu.com/commands/browse
@@ -24,3 +27,6 @@
 [10]:http://www.shell-fu.org/
 [11]:http://code.dogmap.org./lintsh/
 [12]:https://www.gnu.org/savannah-checkouts/gnu/autoconf/manual/autoconf-2.69/html_node/Portable-Shell.html
+[13]:http://cfajohnson.com/shell/cus-faq.html
+[14]:http://www.faqs.org/faqs/computer-lang/awk/faq/
+[15]:http://cfajohnson.com/shell/
