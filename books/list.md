@@ -12,8 +12,11 @@
 - [Unix Shell Patterns][12]
 - [UNIX SHELL Quote Tutorial][13]
 - [Sed][14]: An Introduction and Tutorial by Bruce Barnett
+- [Bourne Shell Programming][15]: by Robert P. Sayle
+- [Awk][16]:
+- [Shell Command Language][17]: The definition of the Shell Command Language
 
-- [Shell 教程][16]: 
+- [Shell 教程][26]: 
 
 
 
@@ -31,5 +34,8 @@
 [12]:http://wiki.c2.com/?UnixShellPatterns
 [13]:http://www.grymoire.com/Unix/Quote.html
 [14]:http://www.grymoire.com/Unix/sed.html
+[15]:http://sayle.net/book/
+[16]:http://www.grymoire.com/Unix/Awk.html
+[17]:http://pubs.opengroup.org/onlinepubs/009695399/utilities/xcu_chap02.html
 
-[16]:https://www.ctolib.com/docs-shell-tutorial-c-index.html
+[26]:https://www.ctolib.com/docs-shell-tutorial-c-index.html
