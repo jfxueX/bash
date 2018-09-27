@@ -6,8 +6,12 @@
 - [Bash Shell Scripting][6]: from WikiBooks, this book provides an introduction level knowledge of Bash
 - [Linux Shell Scripting Tutorial (LSST)][7]: v2.0, by Vivek Gite
 - [Shell Programming][8]: from WikiBooks
-
-
+- [GNU/Linux Command-Line Tools Summary][9]: Rev 1.2, by Gareth Anderson
+- [The Linux System Administrator's Guide][10]: Rev 0.9
+- [A Guide to Unix Shell Quoting][11]
+- [Unix Shell Patterns][12]
+- [UNIX SHELL Quote Tutorial][13]
+- [Sed][14]: An Introduction and Tutorial by Bruce Barnett
 
 - [Shell 教程][16]: 
 
@@ -21,6 +25,11 @@
 [6]:https://en.wikibooks.org/wiki/Bash_Shell_Scripting
 [7]:https://bash.cyberciti.biz/guide/Main_Page
 [8]:https://en.wikibooks.org/wiki/Shell_Programming
-
+[9]:https://linux.die.net/Linux-CLI/
+[10]:
+[11]:http://resources.mpi-inf.mpg.de/departments/rg1/teaching/unixffb-ss98/quoting-guide.html
+[12]:http://wiki.c2.com/?UnixShellPatterns
+[13]:http://www.grymoire.com/Unix/Quote.html
+[14]:http://www.grymoire.com/Unix/sed.html
 
 [16]:https://www.ctolib.com/docs-shell-tutorial-c-index.html
