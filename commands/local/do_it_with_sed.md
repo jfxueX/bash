@@ -1,3 +1,6 @@
+# Do it with Sed
+
+
 - [Introduction](#introduction)
 - [Regular expressions](#regular-expressions)
 - [Using sed](#using-sed)
@@ -249,23 +252,23 @@ Commands may be separated by semi-colons \`;', with some exceptions.
 
 Example: `sed '/^#/d;/^$/d;:b;/\\$/{;N;s/\n//;bb;}'`
 
-        this would
+   this would
 
-                /^#/d   delete all lines beginned with `#' (comments?)
-                /^$/d   delete all empty lines (/./!d could be used instead)
-                :b
-                /\\$/{
-                        N
-                        s/\\\n//
-                        bb
-                }
-                        would join all lines ended with `\', after deleting
-                        the `\' it self
+         /^#/d   delete all lines beginned with `#' (comments?)
+         /^$/d   delete all empty lines (/./!d could be used instead)
+         :b
+         /\\$/{
+                 N
+                 s/\\\n//
+                 bb
+         }
+                 would join all lines ended with `\', after deleting
+                 the `\' it self
 
-                the format of this explained script (except the
-                descriptions themselves) could be used in a file script,
-                but can also be given to sed on one line, without using
-                lots of '-e's
+         the format of this explained script (except the
+         descriptions themselves) could be used in a file script,
+         but can also be given to sed on one line, without using
+         lots of '-e's
 
 Though, there are exceptions to this \`;' ending rule: the direct text
 handling and read/write commands.
@@ -279,7 +282,7 @@ second line\
 ...\
 last line
 ```
-        no ending \ for the last line
+no ending \ for the last line
 
 example in a sed script file:
 ```sed
@@ -583,7 +586,8 @@ and mnemonic.
 
 ### Line-oriented commands
 
-_**(2)d -- d(elete), delete lines**_
+_**(2)d 
+-- d(elete), delete lines**_
 
         - delete (i.e. don't write) specified lines
         - execution re-starts at the beginning of the script
@@ -593,7 +597,8 @@ _**(2)d -- d(elete), delete lines**_
                 s/.*//
                 b
 
-_**(2)n -- n(ext), next line**_
+_**(2)n 
+-- n(ext), next line**_
 
         - jumps to next line. i.e. pattern space is replaced with the contents
           of the next line
@@ -601,8 +606,8 @@ _**(2)n -- n(ext), next line**_
 
 ### Text commands
 
-(1)a\
-<text> -- a(ppend), append lines
+_**(1)a\ 
+<text> -- a(ppend), append lines**_
 
         - add <text> after the specified line (if address isn't given, then
           <text> will be added after EACH line of input that executes
@@ -632,14 +637,14 @@ _**(2)n -- n(ext), next line**_
           mean that the line will be written. Usually this is what
           happens, but nothing imposes it.
 
-(1)i\
-<text> -- (i)nsert, insert lines
+_**(1)i\
+<text> -- (i)nsert, insert lines**_
 
         - works like the append command, but <text will be inserted
           before specified line
 
-(2)c\
-<text> -- (c)hange, change lines
+_**(2)c\
+<text> -- (c)hange, change lines**_
 
         - this will delete current pattern space, and replace it
           with 'text'
