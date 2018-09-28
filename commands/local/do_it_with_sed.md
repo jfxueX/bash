@@ -1,66 +1,35 @@
-[Introduction](#introduction)
-
-[Regular expressions](#regular-expressions)
-
-[Using sed](#using-sed)
-
-[Sed resume](#sed-resume)
-
-[Sed commands](#sed-commands)
-
-[Examples](#examples1)
-
-  [Squeezing blank lines (like cat -s)](#squeezing-blank-lines-like-cat--s)
-  
-  [Centering lines](#centering-lines)
-  
-  [Delete comments on C code](#delete-comments-from-c-code)
-  
-  [Increment a number](#increment-a-number)
-  
-  [Get make targets](#get-make-targets)
-  
-  [Rename to lower case](#rename-to-lower-case)
-  
-  [Print environ of bash](#print-environ-of-bash)
-  
-  [Reverse chars of lines](#reverse-chars-of-lines)
-  
-  [Reverse lines of files](#reverse-lines-of-files)
-  
-  [Transform text into a C "printf"able string](#transform-text-into-a-c-printfable-string)
-  
-  [Prefix non-blank lines with their numbers (cat -b)](#prefix-non-blank-lines-with-their-numbers-cat--b)
-  
-  [Prefix lines by their number (cat -n)](#prefix-lines-by-their-number-cat--n)
-  
-  [Count chars of input (wc -c)](#count-chars-of-input-wc--c)
-  
-  [Count lines of input (wc -l)](#count-lines-of-input-wc--l)
-  
-  [Count words of input (wc -w)](#count-words-of-input-wc--w)
-  
-  [Print the filename component of a path (basename)](#print-the-filename-component-of-a-path-basename)
-  
-  [Print directory component of a path (dirname)](#print-directory-component-of-a-path-dirname)
-  
-  [Print the first few (=10) lines of input](#print-the-first-few-10-lines-of-input)
-  
-  [Convert a sed script to a bash-command-line command](#convert-a-sed-script-to-a-bash-command-line-command)
-  
-  [Print last few (=10) lines of input](#print-last-few-10-lines-of-input)
-  
-  [The tee(1) command in sed](#the-tee1-command-in-sed)
-  
-  [Print uniq lines of input (uniq)](#print-uniq-lines-of-input-uniq)
-  
-  [Print duplicated lines of input (uniq -d)](#print-duplicated-lines-of-input-uniq--d)
-  
-  [Print only duplicated lines (uniq -u)](#print-only-and-only-duplicated-lines-uniq--u)
-  
-[Index of sed commands](#index-of-sed-commands)
-
-[Author and credits and date etc...](#author-and-credits-and-date-etc)
+- [Introduction](#introduction)
+- [Regular expressions](#regular-expressions)
+- [Using sed](#using-sed)
+- [Sed resume](#sed-resume)
+- [Sed commands](#sed-commands)
+- [Examples](#examples1)
+  - [Squeezing blank lines (like cat -s)](#squeezing-blank-lines-like-cat--s) 
+  - [Centering lines](#centering-lines)  
+  - [Delete comments on C code](#delete-comments-from-c-code) 
+  - [Increment a number](#increment-a-number)  
+  - [Get make targets](#get-make-targets)  
+  - [Rename to lower case](#rename-to-lower-case)  
+  - [Print environ of bash](#print-environ-of-bash)  
+  - [Reverse chars of lines](#reverse-chars-of-lines)  
+  - [Reverse lines of files](#reverse-lines-of-files)  
+  - [Transform text into a C "printf"able string](#transform-text-into-a-c-printfable-string)  
+  - [Prefix non-blank lines with their numbers (cat -b)](#prefix-non-blank-lines-with-their-numbers-cat--b)  
+  - [Prefix lines by their number (cat -n)](#prefix-lines-by-their-number-cat--n)  
+  - [Count chars of input (wc -c)](#count-chars-of-input-wc--c)  
+  - [Count lines of input (wc -l)](#count-lines-of-input-wc--l)  
+  - [Count words of input (wc -w)](#count-words-of-input-wc--w)  
+  - [Print the filename component of a path (basename)](#print-the-filename-component-of-a-path-basename)  
+  - [Print directory component of a path (dirname)](#print-directory-component-of-a-path-dirname)  
+  - [Print the first few (=10) lines of input](#print-the-first-few-10-lines-of-input)  
+  - [Convert a sed script to a bash-command-line command](#convert-a-sed-script-to-a-bash-command-line-command)  
+  - [Print last few (=10) lines of input](#print-last-few-10-lines-of-input)  
+  - [The tee(1) command in sed](#the-tee1-command-in-sed)  
+  - [Print uniq lines of input (uniq)](#print-uniq-lines-of-input-uniq)  
+  - [Print duplicated lines of input (uniq -d)](#print-duplicated-lines-of-input-uniq--d)  
+  - [Print only duplicated lines (uniq -u)](#print-only-and-only-duplicated-lines-uniq--u)  
+- [Index of sed commands](#index-of-sed-commands)
+- [Author and credits and date etc...](#author-and-credits-and-date-etc)
 
 
 
