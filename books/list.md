@@ -15,6 +15,7 @@
 - [Bourne Shell Programming][15]: by Robert P. Sayle
 - [Awk][16]:
 - [Shell Command Language][17]: The definition of the Shell Command Language
+- [Sh - the Bourne Shell][18]: by Bruce Barnett
 
 - [Shell 教程][26]: 
 
@@ -29,7 +30,7 @@
 [7]:https://bash.cyberciti.biz/guide/Main_Page
 [8]:https://en.wikibooks.org/wiki/Shell_Programming
 [9]:https://linux.die.net/Linux-CLI/
-[10]:
+[10]:https://www.tldp.org/LDP/sag/html/index.html
 [11]:http://resources.mpi-inf.mpg.de/departments/rg1/teaching/unixffb-ss98/quoting-guide.html
 [12]:http://wiki.c2.com/?UnixShellPatterns
 [13]:http://www.grymoire.com/Unix/Quote.html
@@ -37,5 +38,6 @@
 [15]:http://sayle.net/book/
 [16]:http://www.grymoire.com/Unix/Awk.html
 [17]:http://pubs.opengroup.org/onlinepubs/009695399/utilities/xcu_chap02.html
+[18]:http://www.grymoire.com/Unix/Sh.html
 
 [26]:https://www.ctolib.com/docs-shell-tutorial-c-index.html
