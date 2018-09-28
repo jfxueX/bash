@@ -998,8 +998,8 @@ Here are some (exotic) examples of sed use.
 
 ### Squeezing blank lines (like cat -s)
 
-        Leaves a blank line at the beginning and end, if there are there
-        some already.
+Leaves a blank line at the beginning and end, if there are there
+  some already.
 
 ```sed
 #!/usr/bin/sed -f
@@ -1016,7 +1016,7 @@ s/\n*/\
 /
 ```
 
-        leaves only at end
+leaves only at end
 
 ```sed
 #!/usr/bin/sed -f
