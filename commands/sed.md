@@ -1,6 +1,6 @@
 - [the sed $HOME][1]: [github project](https://github.com/aureliojargas/sed.sf.net)
 - [Sed][2]: An Introduction and Tutorial, by Bruce Barnett
-- [Do It with Sed][3]
+- [Do It with Sed][3]:  USEFUL ONE-LINE SCRIPTS FOR SED, by Eric Pement
 - [Sed 1 line][4]
 
 
