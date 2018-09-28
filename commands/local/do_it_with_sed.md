@@ -586,7 +586,7 @@ and mnemonic.
 
 ### Line-oriented commands
 
-_**(2)d 
+_**(2)d<br/>
 -- d(elete), delete lines**_
 
         - delete (i.e. don't write) specified lines
@@ -597,7 +597,7 @@ _**(2)d
                 s/.*//
                 b
 
-_**(2)n 
+_**(2)n<br/>
 -- n(ext), next line**_
 
         - jumps to next line. i.e. pattern space is replaced with the contents
@@ -606,7 +606,7 @@ _**(2)n
 
 ### Text commands
 
-_**(1)a\ 
+_**(1)a\\<br/>
 <text> -- a(ppend), append lines**_
 
         - add <text> after the specified line (if address isn't given, then
@@ -637,13 +637,13 @@ _**(1)a\
           mean that the line will be written. Usually this is what
           happens, but nothing imposes it.
 
-_**(1)i\
+_**(1)i\\<br/>
 <text> -- (i)nsert, insert lines**_
 
         - works like the append command, but <text will be inserted
           before specified line
 
-_**(2)c\
+_**(2)c\\<br/>
 <text> -- (c)hange, change lines**_
 
         - this will delete current pattern space, and replace it
@@ -673,7 +673,8 @@ _**(2)c\
 
 This command is so often used that it deserves a whole section!
 
-(2)s/RE/<replacement>/[flags] -- (s)ubstitute, substitute
+_**(2)s/RE/<replacement>/[flags]<br/>
+--(s)ubstitute, substitute**_
 
         - on specified lines, text matched by RE, if any, is replaced
           by <replacement>
@@ -737,11 +738,13 @@ This command is so often used that it deserves a whole section!
 
 ### Output and files
 
-(2)p -- (p)rint, print
+_**(2)p<br/>
+--(p)rint, print**_
 
         - write specified lines to output
 
-(2)l -- (l)ist, list
+_**(2)l<br/>
+--(l)ist, list**_
 
         - this works more or less like vi's :list, i.e. it prints
           specified lines, but shows some special characters in \c format
@@ -754,11 +757,13 @@ This command is so often used that it deserves a whole section!
               reading the GNU sed source) -- therefore it may be an
               extension to POSIX sed (?)
 
-(2)w <filename> -- w(rite), write to <filename>
+_**(2)w <filename><br/>
+--w(rite), write to <filename>**_
 
         - write specified lines to <filename>
 
-(1)r <filename> -- r(read), read the contents of <filename>
+_**(1)r <filename><br/>
+--r(read), read the contents of <filename>**_
 
         - insert contents of <filename> after specified line
 
@@ -771,12 +776,14 @@ This command is so often used that it deserves a whole section!
 
 ### Multiple lines
 
-(2)N -- (N)ext, (add) next line
+_**(2)N<br/>
+--(N)ext, (add) next line**_
 
         - next line of input is added to current pattern space, and
           a `\n' gets embedded in the pattern space
 
-(2)D -- (D)elete, delete first part of the pattern space
+_**(2)D<br/>
+--(D)elete, delete first part of the pattern space**_
 
         - delete everything up to (inclusive) the first newline
           and then jumps to beginning of script, with next line
@@ -784,7 +791,8 @@ This command is so often used that it deserves a whole section!
 
         - if just one line is being edited, then `D' is the same as `d'
 
-(2)P -- (P)rint, print first part of the pattern space
+_**(2)P<br/>
+-- (P)rint, print first part of the pattern space**_
 
         - writes everything up to (inclusive) the first newline
 
@@ -795,32 +803,38 @@ This command is so often used that it deserves a whole section!
 Sed contains one buffer, where it can keep temporary stuff to work on
 later.
 
-(2)h -- (h)old, hold pattern space
+_**(2)h<br/>
+--(h)old, hold pattern space**_
 
         - copy current pattern space to hold buffer, overwriting
           whatever was in it
 
-(2)H -- (H)old, hold pattern space -- append
+_**(2)H<br/>
+--(H)old, hold pattern space -- append**_
 
         - add current pattern space to the _end_ of hold buffer (if hold
           space is empty, then this is like `h')
 
-(2)g -- (g)et, get contents of hold area
+_**(2)g<br/>
+--(g)et, get contents of hold area**_
 
         - copy the contents of hold space to current pattern space
         - pattern space is overwritten
 
-(2)G -- (G)et, get contents of hold area -- append
+_**(2)G<br/>
+--(G)et, get contents of hold area -- append**_
 
         - adds contents of hold space to the _end_ of current pattern space
 
-(2)x -- e(x)change, exchange
+_**(2)x<br/>
+-- e(x)change, exchange**_
 
         - exchanges current pattern space with hold buffer
 
 ### Control flow
 
-(2)!<command> -- Don't
+_**(2)!<command><br/>
+--Don't**_
 
         - negate address specification of next command
         - note that if we omit the address, then we mean ALL lines,
@@ -843,7 +857,8 @@ later.
           easier to construct an RE that does not match what we want
           than the other way.
 
-(2){ -- {} as in C or sh(1), Grouping
+_**(2){<br/>
+--{} as in C or sh(1), Grouping**_
 
         - groups a set of commands that are executed on the specified lines
 
@@ -865,7 +880,8 @@ later.
                 ...
                 addr1,addr2 last_grouped_cmd
 
-(0):<label> -- `:' usual markers of labels (C, asm, ...), place a label
+_**(0):<label><br/>
+--\`:' usual markers of labels (C, asm, ...), place a label**_
 
         - mark a place with a label, to where `t' and `b' commands can
           jump to
@@ -880,7 +896,8 @@ later.
           The branch will fail because there isn't any label called
           "label_name" or "label_name  ".
 
-(2)b<label> -- (b)ranch, branch to label
+_**(2)b<label><br/>
+--(b)ranch, branch to label**_
 
         - do an unconditional branch to specified label
 
@@ -888,7 +905,8 @@ later.
           to jump to the end of the script. i.e. nothing more is done
           on this line.
 
-(2)t<label> -- (t)est, test substitutions
+_**(2)t<label><br/>
+-- (t)est, test substitutions**_
 
         - works like `b', but the jump is only done if a previous
           substitution has been successfully done (on current pattern
@@ -934,11 +952,13 @@ later.
 
 ### Miscellaneous
 
-(0)# -- comment
+_**(0)#<br/>
+--comment**_
 
         - comment. The whole line is ignored.
 
-(2)y/<list1>/<list2>/ -- (y)?, translates
+_**(2)y/<list1>/<list2>/<br/>
+--(y)?, translates**_
 
         - remaps all characters presents on <list1> by the character
           with the same index on <list2>
@@ -950,11 +970,13 @@ later.
         to remap uppercase to lower case do
 
                 y/ABCDEFGHIJKLMNOPQRSTUVWXYZ/abcdefghijklmnopqrstuvwxyz/
-(1)= -- `=' like vi/ed, equals
+_**(1)=<br/>
+--\`=' like vi/ed, equals**_
 
         - writes current line to output
 
-(1)q -- (q)uit, quit
+_**(1)q<br/>
+--(q)uit, quit**_
 
         - ends sed program. i.e. no further lines will be read, and
           current line ends command execution here.
