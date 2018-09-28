@@ -2087,25 +2087,27 @@ Index of sed commands
 Author and credits and date etc...
 ----------------------------------
 
-Author:
-        the "I"s on this text, means I: Carlos Duarte <cgd@teleweb.pt>
+**Author:**
+  the "I"s on this text, means I: Carlos Duarte <[cgd@teleweb.pt][1]>
 
-Credits:
-        - The regular expressions were learned by reading re_format(7)
-          by Henry Spencer, version "@(#)re_format.7 8.2 (Berkeley) 3/16/94"
+**Credits:**
+ - The regular expressions were learned by reading re_format(7)
+   by Henry Spencer, version "@(#)re_format.7 8.2 (Berkeley) 3/16/94"
 
-        - The sed resume was adapted from the usd-doc paper on sed,
-          by Lee E. McMahon, version "@(#)sed 6.1 (Berkeley) 5/22/86",
-          originally at "August 15, 1978"
+ - The sed resume was adapted from the usd-doc paper on sed,
+   by Lee E. McMahon, version "@(#)sed 6.1 (Berkeley) 5/22/86",
+   originally at "August 15, 1978"
 
-        - The algorithm to increment a number was taken
-          from GNU source code of gettext library, and is
-          from: Bruno Haible <Haible@ma2s2.mathematik.uni-karlsruhe.de>
+ - The algorithm to increment a number was taken
+   from GNU source code of gettext library, and is
+   from: Bruno Haible <Haible@ma2s2.mathematik.uni-karlsruhe.de>
 
-        - The rest of stuff is mine
+ - The rest of stuff is mine
 
-        - Some minor language corrections by Casper Boden-Cummins
-          <bodec@sherwood.co.uk>
+ - Some minor language corrections by Casper Boden-Cummins
+   <bodec@sherwood.co.uk>
 
-Date:
-        this was started on 7-Sep-96
+**Date:**
+  this was started on 7-Sep-96
+
+[1]:cgd@teleweb.pt
