@@ -122,12 +122,12 @@ RE1\|RE2
 
 Notes:
 ------
-        - some implementations of sed, may not have all REs mentioned,
-          notably `\+', `\?' and `\|'
+- some implementations of sed, may not have all REs mentioned,
+  notably \`\+', \`\?' and \`\|'
 
-        - the RE is greedy, i.e. if two or more matches are detected, it
-          selects the longest, if there are two or more selected with
-          the same size, it selects the first in text
+- the RE is greedy, i.e. if two or more matches are detected, it
+  selects the longest, if there are two or more selected with
+  the same size, it selects the first in text
 
 Examples:
 ---------
@@ -211,8 +211,8 @@ files...
     script itself can change this behavior).
 - The results are always written to stdout, although same commands
     can send stuff to specific files
-- Input files are seen as one to sed, i.e. `sed -n $= *' gives the
-    number of lines of ALL *, something like `cat * | wc -l'
+- Input files are seen as one to sed, i.e. \`sed -n $= *' gives the
+    number of lines of ALL *, something like \`cat * | wc -l'
 
 I usually use (sorry the pleonasm!) sed in the following ways:
 
@@ -244,7 +244,7 @@ or
 For the command line, there are two things to know, there is no
 need on using one -e for each command, although that can be done.
 
-Commands may be separated by semi-colons `;', with some exceptions.
+Commands may be separated by semi-colons \`;', with some exceptions.
 
 Example: sed '/^#/d;/^$/d;:b;/\\$/{;N;s/\n//;bb;}'
 
@@ -291,7 +291,7 @@ example in a sed script file:
         #endif
 }
 ```
-        that would search for lines `#include <termios.h>' and then
+        that would search for lines \`#include <termios.h>' and then
         would write
 
 #ifdef SYSV
