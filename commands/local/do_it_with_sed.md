@@ -128,8 +128,7 @@ RE1\|RE2
         back reference, and usually it is (very) slow
 ```
 
-## Notes:
-------
+#### Notes:
 
 - some implementations of sed, may not have all REs mentioned,
   notably \`\+', \`\?' and \`\|'
@@ -138,8 +137,7 @@ RE1\|RE2
   selects the longest, if there are two or more selected with
   the same size, it selects the first in text
 
-## Examples:
----------
+#### Examples:
 
 ```
         `abcdef'        matches "abcdef"
@@ -386,8 +384,7 @@ more can happen (but before can).
 Sed resume
 ----------
 
-## Input
------
+#### Input
 
 Sed input are files (stdin by default), and are seen as a whole.
 
@@ -413,8 +410,7 @@ or yet
 i.e. lines from files are read, but no kind of information exists
 to keep track of where they come from.
 
-## Description
------------
+#### Description
 
 Sed read lines from its input, and applies some actions (or commands,
 or functions-- a matter of choice) to them.
@@ -471,8 +467,7 @@ arguments
         must end with `\' (more about these on i(nsert), a(append),
         c(hange) and s(ubstitute) commands)
 
-## Applying commands
------------------
+#### Applying commands
 
 The commands are gathered into a big command buffer.
 
@@ -497,8 +492,7 @@ command is executed.
 Sequence can be changed with some commands (more on this
 below-- b(ranch) and t(est)).
 
-## Pattern space
--------------
+#### Pattern space
 
 Well, I have been referring to the input of each sed command
 as a "line".
@@ -511,8 +505,7 @@ The input of each sed command, is called "pattern space".
 Usually the pattern space is the current line, but this behavior
 can be changed with sed commands (N,n,x,g and G).
 
-## Addresses
----------
+#### Addresses
 
 There are two kinds of addresses: line addresses and context
 addresses.
@@ -561,8 +554,7 @@ The context addresses can be mixed up with line addresses, so:
         1,/^$/d         delete leading blank lines, i.e. the
                         first output line will be non empty
 
-## Resume:
--------
+#### Resume:
 
 - commands may take 0, 1 or 2 addresses
 - if no address is given, a command is applied to all pattern spaces
@@ -596,8 +588,7 @@ At the end of the file (after examples) is an index of all
 commands, sorted by name (i.e. letter) with the short description
 and mnemonic.
 
-## Line-oriented commands
-----------------------
+#### Line-oriented commands
 
 _**(2)d -- d(elete), delete lines**_
 
@@ -615,8 +606,7 @@ _**(2)n -- n(ext), next line**_
           of the next line
         - execution is prosecuted in the command following the `n' command
 
-## Text commands
--------------
+#### Text commands
 
 (1)a\
 <text> -- a(ppend), append lines
@@ -681,8 +671,7 @@ _**(2)n -- n(ext), next line**_
         note2: <text> in not processed by the sed program, i.e.
                we insert/change/append raw text directly to output
 
-## Substitution
-------------
+#### Substitution
 
 This command is so often used that it deserves a whole section!
 
@@ -748,8 +737,7 @@ This command is so often used that it deserves a whole section!
                 d       where `d' is a digit, replace the d-th occurrence,
                         if any, of RE by <replacement>
 
-## Output and files
-----------------
+#### Output and files
 
 (2)p -- (p)rint, print
 
@@ -783,8 +771,7 @@ This command is so often used that it deserves a whole section!
         - if file cannot be opened, sed continues as though the
           command doesn't exist. i.e. it silently fails
 
-## Multiple lines
---------------
+#### Multiple lines
 
 (2)N -- (N)ext, (add) next line
 
@@ -805,8 +792,7 @@ This command is so often used that it deserves a whole section!
 
         - if pattern space is a single line, then `P' is the same as `p'
 
-## Hold buffer
------------
+#### Hold buffer
 
 Sed contains one buffer, where it can keep temporary stuff to work on
 later.
@@ -834,8 +820,7 @@ later.
 
         - exchanges current pattern space with hold buffer
 
-## Control flow
-------------
+#### Control flow
 
 (2)!<command> -- Don't
 
@@ -949,8 +934,7 @@ later.
                 To correct the situation, a fake `ta' is inserted after the
                 label.
 
-## Miscellaneous
--------------
+#### Miscellaneous
 
 (0)# -- comment
 
@@ -984,8 +968,7 @@ Examples
 
 Here are some (exotic) examples of sed use.
 
-## Squeezing blank lines (like cat -s)
------------------------------------
+#### Squeezing blank lines (like cat -s)
 
         Leaves a blank line at the beginning and end, if there are there
         some already.
@@ -1057,8 +1040,7 @@ i\
 bx
 ```
 
-## Centering lines
----------------
+#### Centering lines
 
 ```sed
 #!/usr/bin/sed -f
@@ -1085,8 +1067,8 @@ s/\( *\)\1$/#\1%\1/
 s/^\(.*\)#\(.*\)%\(.*\)$/\2\1\3/
 ```
 
-## Delete comments from C code
----------------------------
+#### Delete comments from C code
+
 ```sed
 #!/usr/bin/sed -f
 
@@ -1105,8 +1087,8 @@ bx
 s/\/\*.*\*\///
 ```
 
-## Increment a number
-------------------
+#### Increment a number
+
 ```sed
 #!/usr/bin/sed -f
 
@@ -1157,8 +1139,8 @@ s/0\(_*\)$/1\1/
 s/_/0/g
 ```
 
-## Get make targets
-----------------
+#### Get make targets
+
 ```sed
 #!/usr/bin/sed -nf
 
@@ -1235,8 +1217,7 @@ d
 /\.[och]$/!p
 ```
 
-## Rename to lower case
---------------------
+#### Rename to lower case
 
         This is a very abusive use of sed.  We transform text, and
         transform it to be shell commands, then just feed them to shell.
@@ -1349,8 +1330,8 @@ s/^\(.*\/\)\(.*\)\n\(.*\)$/mv \1\2 \1\3/p
 ' | $apply_cmd
 ```
 
-## Print environ of bash
----------------------
+#### Print environ of bash
+
 ```bash
 #!/bin/sh
 
@@ -1396,8 +1377,8 @@ p
 '
 ```
 
-## Reverse chars of lines
-----------------------
+#### Reverse chars of lines
+
 ```sed
 #!/usr/bin/sed -f
 
@@ -1424,8 +1405,8 @@ s/-!-//g
 s/!!/!/g
 ```
 
-## Reverse lines of files
-----------------------
+#### Reverse lines of files
+
 ```sed
 #!/usr/bin/sed -nf
 
@@ -1445,8 +1426,8 @@ G;h
 ${g;p;}
 ```
 
-## Transform text into a C "printf"able string
--------------------------------------------
+#### Transform text into a C "printf"able string
+
 ```sed
 #!/usr/bin/sed -f
 
@@ -1474,8 +1455,8 @@ $!s/$/\\/
 $s/$/"/
 ```
 
-## Prefix non blank lines with their numbers (cat -b)
---------------------------------------------------
+#### Prefix non blank lines with their numbers (cat -b)
+
 ```sed
 #!/usr/bin/sed -nf
 
@@ -1522,8 +1503,8 @@ s/  .*//
 h
 ```
 
-## Prefix lines by their number (cat -n)
--------------------------------------
+#### Prefix lines by their number (cat -n)
+
 ```sed
 #!/usr/bin/sed -nf
 
@@ -1570,8 +1551,8 @@ s/  .*//
 h
 ```
 
-## Count chars of input (wc -c)
-----------------------------
+#### Count chars of input (wc -c)
+
 ```sed
 #!/usr/bin/sed -nf
 
@@ -1619,8 +1600,8 @@ ${p;q;}
 h
 ```
 
-## Count lines of input (wc -l)
-----------------------------
+#### Count lines of input (wc -l)
+
 ```sed
 #!/usr/bin/sed -nf
 
@@ -1629,8 +1610,8 @@ h
 $=
 ```
 
-## Count words of input (wc -w)
-----------------------------
+#### Count words of input (wc -w)
+
 ```sed
 #!/usr/bin/sed -nf
 
@@ -1697,8 +1678,8 @@ h
 $p
 ```
 
-## Print the filename component of a path (basename)
--------------------------------------------------
+#### Print the filename component of a path (basename)
+
 ```sed
 #!/usr/bin/sed -f
 
@@ -1748,8 +1729,8 @@ P
 d
 ```
 
-## Print directory component of a path (dirname)
----------------------------------------------
+#### Print directory component of a path (dirname)
+
 ```sed
 #!/usr/bin/sed -f
 
@@ -1778,8 +1759,8 @@ s/[^/]*$//
 s/\/$//
 ```
 
-## Print the first few (=10) lines of input
-----------------------------------------
+#### Print the first few (=10) lines of input
+
 ```sed
 #!/usr/bin/sed -f
 
@@ -1791,8 +1772,8 @@ s/\/$//
 10q
 ```
 
-## Convert a sed script to a bash-command-line command
----------------------------------------------------
+#### Convert a sed script to a bash-command-line command
+
 ```sed
 #!/usr/bin/sed -nf
 
@@ -1951,8 +1932,8 @@ ${
 }
 ```
 
-## Print last few (=10) lines of input
------------------------------------
+#### Print last few (=10) lines of input
+
 ```sed
 #!/usr/bin/sed -f
 
@@ -1982,8 +1963,8 @@ $b;N
 $!D
 ```
 
-## The tee(1) command in sed
--------------------------
+#### The tee(1) command in sed
+
 ```sed
 #!/bin/sh -
 
@@ -1998,8 +1979,8 @@ done
 eval sed $cmd
 ```
 
-## Print uniq lines of input (uniq)
---------------------------------
+#### Print uniq lines of input (uniq)
+
 ```sed
 #!/usr/bin/sed -f
 
@@ -2021,8 +2002,8 @@ P
 D
 ```
 
-## Print duplicated lines of input (uniq -d)
------------------------------------------
+#### Print duplicated lines of input (uniq -d)
+
 ```sed
 #!/usr/bin/sed -nf
 
@@ -2048,8 +2029,8 @@ $b
 D
 ```
 
-## Print only and only duplicated lines (uniq -u)
-----------------------------------------------
+#### Print only and only duplicated lines (uniq -u)
+
 ```sed
 #!/usr/bin/sed -f
 
