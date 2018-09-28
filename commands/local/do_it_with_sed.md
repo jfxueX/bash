@@ -1,11 +1,17 @@
 [Introduction](#introduction)
 
-Regular expressions
-Using sed
-Sed resume
-Sed commands
-Examples
-  Squeezing blank lines (like cat -s)
+[Regular expressions](#regular-expressions)
+
+[Using sed](#using-sed)
+
+[Sed resume](#sed-resume)
+
+[Sed commands](#sed-commands)
+
+[Examples](#examples)
+
+  [Squeezing blank lines (like cat -s)](#squeezing-blank-lines-like-cat--s)
+  
   Centering lines
   Delete comments on C code
   Increment a number
