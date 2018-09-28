@@ -1,4 +1,5 @@
-Introduction
+[Introduction](#introduction)
+
 Regular expressions
 Using sed
 Sed resume
@@ -36,6 +37,7 @@ Author and credits and date etc...
 ------------
 Introduction
 ------------
+
 
 This is a little document to help people using sed, not very fancy
 but better than nothing :-)
