@@ -1958,7 +1958,7 @@ $!D
 
 ### The tee(1) command in sed
 
-```sed
+```bash
 #!/bin/sh -
 
 # emulation of tee using sed, and a sh(1) for cycle
