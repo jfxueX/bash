@@ -48,7 +48,6 @@ faster and better.  They are intended to show real examples
 of sed, and to show also the power of sed, as well its
 weaknesses.
 
-
 -------------------
 Regular expressions
 -------------------
@@ -57,6 +56,7 @@ To know how to use sed, people should understand regular expressions (RE for
 short).
 
 This is a brief resume of regular expressions used in SED.
+
 ```
 c       a single char, if not special, is matched against text.
 
@@ -122,6 +122,7 @@ RE1\|RE2
 
 Notes:
 ------
+
 - some implementations of sed, may not have all REs mentioned,
   notably \`\+', \`\?' and \`\|'
 
@@ -131,6 +132,7 @@ Notes:
 
 Examples:
 ---------
+
 ```
         `abcdef'        matches "abcdef"
         `a*b'           matches zero or more "a"s followed by a single "b",
@@ -180,6 +182,7 @@ Using sed
 ---------
 
 The usual format of sed is:
+
 ```
     sed [-e script] [-f script-file] [-n] [files...]
         
@@ -290,8 +293,9 @@ example in a sed script file:
         #endif
 }
 ```
-        that would search for lines \`#include <termios.h>' and then
-        would write
+
+that would search for lines \`#include <termios.h>' and then
+would write
 
 ```c
 #ifdef SYSV
@@ -352,7 +356,7 @@ Generally speaking, we can put the above in the following manner:
  4. if it is a multi-line, then it must contain all of its line
    (except the first) by themselves
 
-...and...
+ ...and...
 
  5. on command line, what follows a \`-e' is like a whole line in
    a sed script
@@ -569,7 +573,6 @@ Resume:
 
             /foo/,/foo/<cmd>
 
-========================================================================
 
 ------------
 Sed commands
@@ -966,7 +969,6 @@ Miscellaneous
         - ends sed program. i.e. no further lines will be read, and
           current line ends command execution here.
 
-========================================================================
 
 --------
 Examples
@@ -981,6 +983,7 @@ Here are some (exotic) examples of sed use.
         Leaves a blank line at the beginning and end, if there are there
         some already.
 
+```sed
 #!/usr/bin/sed -f
 
 # on empty lines, join with next
@@ -993,9 +996,11 @@ bx
 # now, squeeze all '\n', this can be also done by: s/^\(\n\)*/\1/
 s/\n*/\
 /
+```
 
         leaves only at end
 
+```sed
 #!/usr/bin/sed -f
 
 #delete all leading empty lines
@@ -1010,10 +1015,12 @@ N
 s/^\n$//
 tx
 }
+```
 
         Squeeze all, and remove all leading and trailing blank lines.
         This is also the fastest.
 
+```sed
 #!/usr/bin/sed -nf
 
 # delete all blanks
@@ -1041,11 +1048,13 @@ n
 i\
 
 bx
+```
 
 ------------------------------------------------------------------------
                             Centering lines
 ------------------------------------------------------------------------
 
+```sed
 #!/usr/bin/sed -f
 # center all lines of a file, on a 80 columns width
 #
@@ -1068,11 +1077,12 @@ s/^\(.\{80\}\).*$/\1/
 # split trailing spaces, into two halves, 1st for beg, 2nd to end of line
 s/\( *\)\1$/#\1%\1/
 s/^\(.*\)#\(.*\)%\(.*\)$/\2\1\3/
+```
 
 ------------------------------------------------------------------------
                        Delete comments from C code
 ------------------------------------------------------------------------
-
+```sed
 #!/usr/bin/sed -f
 
 # if no /* get next
@@ -1088,11 +1098,12 @@ bx
 
 # delete /*...*/
 s/\/\*.*\*\///
+```
 
 ------------------------------------------------------------------------
                            Increment a number
 ------------------------------------------------------------------------
-
+```sed
 #!/usr/bin/sed -f
 
 # algorithm by :
@@ -1140,11 +1151,12 @@ s/0\(_*\)$/1\1/
 # replace all _ to 0s
 #
 s/_/0/g
+```
 
 ------------------------------------------------------------------------
                             Get make targets
 ------------------------------------------------------------------------
-
+```sed
 #!/usr/bin/sed -nf
 
 # make-targets
@@ -1218,6 +1230,7 @@ d
 # don't print *.[hco] targets cause in most cases that makes very long output
 :x
 /\.[och]$/!p
+```
 
 ------------------------------------------------------------------------
                           Rename to lower case
@@ -1230,6 +1243,7 @@ d
         from lower to upper (or vice-versa) and even check out
         if name remaped name is the same as the original name
 
+```bash
 #!/bin/sh -
 # rename files to lower/upper case...
 #
@@ -1331,11 +1345,12 @@ G
 s/^\(.*\/\)\(.*\)\n\(.*\)$/mv \1\2 \1\3/p
 
 ' | $apply_cmd
+```
 
 ------------------------------------------------------------------------
                          Print environ of bash
 ------------------------------------------------------------------------
-
+```bash
 #!/bin/sh
 
 # penv -- print environ vars of bash
@@ -1378,11 +1393,12 @@ n
 p
 
 '
+```
 
 ------------------------------------------------------------------------
                          Reverse chars of lines
 ------------------------------------------------------------------------
-
+```sed
 #!/usr/bin/sed -f
 
 # reverse all chars of each line, keep line ordering
@@ -1406,11 +1422,12 @@ ta
 # delete markers, and then unescape the !s
 s/-!-//g
 s/!!/!/g
+```
 
 ------------------------------------------------------------------------
                          Reverse lines of files
 ------------------------------------------------------------------------
-
+```sed
 #!/usr/bin/sed -nf
 
 # reverse all lines of input, i.e. first line became last, ...
@@ -1427,11 +1444,12 @@ G;h
 # the last line (after have done the above job) get the contents
 # of buffer, and print it
 ${g;p;}
+```
 
 ------------------------------------------------------------------------
               Transform text into a C "printf"able string
 ------------------------------------------------------------------------
-
+```sed
 #!/usr/bin/sed -f
 
 # The purpose of this script is to construct C programs like this
@@ -1456,11 +1474,12 @@ s/["\\]/\\&/g
 s/$/\\n/
 $!s/$/\\/
 $s/$/"/
+```
 
 ------------------------------------------------------------------------
            Prefix non blank lines with their numbers (cat -b)
 ------------------------------------------------------------------------
-
+```sed
 #!/usr/bin/sed -nf
 
 # copy all lines of input, prefixing only non blank lines by its number,
@@ -1504,11 +1523,12 @@ s/\n/  /p
 s/^ *//
 s/  .*//
 h
+```
 
 ------------------------------------------------------------------------
                  Prefix lines by their number (cat -n)
 ------------------------------------------------------------------------
-
+```sed
 #!/usr/bin/sed -nf
 
 # copy all lines of input, prefixed by its number, kind
@@ -1552,11 +1572,12 @@ s/\n/  /p
 s/^ *//
 s/  .*//
 h
+```
 
 ------------------------------------------------------------------------
                       Count chars of input (wc -c)
 ------------------------------------------------------------------------
-
+```sed
 #!/usr/bin/sed -nf
 
 # count all chars of input, kind of `wc -c'
@@ -1601,21 +1622,23 @@ ${p;q;}
 
 # put current line (which has been swapped with the count) to the buffer
 h
+```
 
 ------------------------------------------------------------------------
                       Count lines of input (wc -l)
 ------------------------------------------------------------------------
-
+```sed
 #!/usr/bin/sed -nf
 
 # count lines of input, kind of `wc -l'
 
 $=
+```
 
 ------------------------------------------------------------------------
                       Count words of input (wc -w)
 ------------------------------------------------------------------------
-
+```sed
 #!/usr/bin/sed -nf
 
 # count all words on input
@@ -1679,11 +1702,12 @@ h
 
 # on last line, all is done, so print the count
 $p
+```
 
 ------------------------------------------------------------------------
            Print the filename component of a path (basename)
 ------------------------------------------------------------------------
-
+```sed
 #!/usr/bin/sed -f
 
 # usage: fbasename file
@@ -1730,11 +1754,12 @@ t
 
 P
 d
+```
 
 ------------------------------------------------------------------------
              Print directory component of a path (dirname)
 ------------------------------------------------------------------------
-
+```sed
 #!/usr/bin/sed -f
 
 # usage: find path -print | fdirname
@@ -1760,11 +1785,12 @@ s/[^/]*$//
 # delete the trailing `/'
 # ("/usr/bin/ls" --> "/usr/bin/", this makes "/usr/bin")
 s/\/$//
+```
 
 ------------------------------------------------------------------------
                 Print the first few (=10) lines of input
 ------------------------------------------------------------------------
-
+```sed
 #!/usr/bin/sed -f
 
 # display first 10 lines of input
@@ -1773,11 +1799,12 @@ s/\/$//
 # before the `q' command to `n' where `n' is the number of lines wanted
 
 10q
+```
 
 ------------------------------------------------------------------------
           Convert a sed script to a bash-command-line command
 ------------------------------------------------------------------------
-
+```sed
 #!/usr/bin/sed -nf
 
 # converts a sed script (like this) to a (one-line) command line
@@ -1933,11 +1960,12 @@ ${
         s/\([^\\]'\) -e ''/\1 /g
         p
 }
+```
 
 ------------------------------------------------------------------------
                   Print last few (=10) lines of input
 ------------------------------------------------------------------------
-
+```sed
 #!/usr/bin/sed -f
 
 # this is a tail command, it displays last 10 lines of input
@@ -1964,11 +1992,12 @@ ${
 $b;N
 
 $!D
+```
 
 ------------------------------------------------------------------------
                        The tee(1) command in sed
 ------------------------------------------------------------------------
-
+```sed
 #!/bin/sh -
 
 # emulation of tee using sed, and a sh(1) for cycle
@@ -1980,11 +2009,12 @@ do
 done
 
 eval sed $cmd
+```
 
 ------------------------------------------------------------------------
                     Print uniq lines of input (uniq)
 ------------------------------------------------------------------------
-
+```sed
 #!/usr/bin/sed -f
 
 # print all uniq lines on a sorted input-- only one copy of a duplicated
@@ -2003,11 +2033,12 @@ $b
 
 P
 D
+```
 
 ------------------------------------------------------------------------
                Print duplicated lines of input (uniq -d)
 ------------------------------------------------------------------------
-
+```sed
 #!/usr/bin/sed -nf
 
 # print all duplicated uniq lines on a sorted input
@@ -2030,11 +2061,12 @@ N
 $b
 
 D
+```
 
 ------------------------------------------------------------------------
              Print only and only duplicated lines (uniq -u)
 ------------------------------------------------------------------------
-
+```sed
 #!/usr/bin/sed -f
 
 # print all uniq lines on a sorted input-- no copies of duplicated
@@ -2056,13 +2088,13 @@ N
         bc
 }
 D
+```
 
-========================================================================
 
 ---------------------
 Index of sed commands
 ---------------------
-
+```
 (2)!<cmd>       -- Don't apply to specified addresses
 (0)#            -- comment
 (0):<label>     -- place a label
@@ -2090,8 +2122,8 @@ Index of sed commands
 (2){            -- group commands
 (2)s/RE/<replacement>/[flags]   -- substitute
 (2)y/<list1>/<list2>/           -- translates <list1> into <list2>
+```
 
-========================================================================
 
 ----------------------------------
 Author and credits and date etc...
