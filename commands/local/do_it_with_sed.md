@@ -6,14 +6,14 @@
 - [Using sed](#using-sed)
 - [Sed resume](#sed-resume)
 - [Sed commands](#sed-commands)
-  -[Line-oriented commands](#line-oriented-commands)
-  -[Text commands](#text-commands)
-  -[Substitution](#substitution)
-  -[Output and files](#output-and-files)
-  -[Multiple lines](#multiple-lines)
-  -[Hold buffer](#hold-buffer)
-  -[Control flow](#control-flow)
-  -[Miscellaneous](#miscellaneous)
+  - [Line-oriented commands](#line-oriented-commands)
+  - [Text commands](#text-commands)
+  - [Substitution](#substitution)
+  - [Output and files](#output-and-files)
+  - [Multiple lines](#multiple-lines)
+  - [Hold buffer](#hold-buffer)
+  - [Control flow](#control-flow)
+  - [Miscellaneous](#miscellaneous)
 - [Examples](#examples1)
   - [Squeezing blank lines (like cat -s)](#squeezing-blank-lines-like-cat--s) 
   - [Centering lines](#centering-lines)  
@@ -2123,7 +2123,7 @@ Author and credits and date etc...
 ----------------------------------
 
 #### Author:
-  the "I"s on this text, means I: Carlos Duarte <cgd@teleweb.pt>
+&nbsp;&nbsp;&nbsp;&nbsp;the "I"s on this text, means I: Carlos Duarte <cgd@teleweb.pt>
 
 #### Credits:
  - The regular expressions were learned by reading re_format(7)
@@ -2143,5 +2143,5 @@ Author and credits and date etc...
    <bodec@sherwood.co.uk>
 
 #### Date:
-  this was started on 7-Sep-96
+&nbsp;&nbsp;&nbsp;&nbsp;this was started on 7-Sep-96
 
