@@ -180,10 +180,9 @@ Using sed
 ---------
 
 The usual format of sed is:
-
-        sed [-e script] [-f script-file] [-n] [files...]
-        
 ```
+    sed [-e script] [-f script-file] [-n] [files...]
+        
 files...
         are the files to read, if a "-" appears, read from stdin,
         if no files are given, read also from stdin
@@ -246,7 +245,7 @@ need on using one -e for each command, although that can be done.
 
 Commands may be separated by semi-colons \`;', with some exceptions.
 
-Example: sed '/^#/d;/^$/d;:b;/\\$/{;N;s/\n//;bb;}'
+Example: `sed '/^#/d;/^$/d;:b;/\\$/{;N;s/\n//;bb;}'`
 
         this would
 
@@ -266,7 +265,7 @@ Example: sed '/^#/d;/^$/d;:b;/\\$/{;N;s/\n//;bb;}'
                 but can also be given to sed on one line, without using
                 lots of '-e's
 
-Though, there are exceptions to this `;' ending rule: the direct text
+Though, there are exceptions to this \`;' ending rule: the direct text
 handling and read/write commands.
 
 There are functions, that handle user text directly (insert, append, change).
@@ -294,16 +293,19 @@ example in a sed script file:
         that would search for lines \`#include <termios.h>' and then
         would write
 
+```c
 #ifdef SYSV
 #include <termios.h>
 #else
 #include <sgtty.h>
 #endif
+```
 
 Now, for writing the same script on one line, the -e mechanism
 is needed... what follows each -e can be considered as an input
 line from a sed script file, so nothing kept us from doing
 
+```bash
 sed -e '/#include <termios\.h>/{' \
     -e 'i\' \
     -e '#ifdef SYSV' \
@@ -312,17 +314,20 @@ sed -e '/#include <termios\.h>/{' \
     -e '#include <sgtty.h>\' \
     -e '#endif' \
     -e '}'
+```
 
-on the command line, of course the trailing `\'s could be omitted if
+on the command line, of course the trailing \`\'s could be omitted if
 we wrote all of this on one line and thus, getting a fast edit-and-test
 working
 
 and of course, lines that don't need to be alone can be joined with
-the `;' mechanism... rewriting the above, we could get something
+the \`;' mechanism... rewriting the above, we could get something
 like:
 
+```
 sed -e '/#include <termios\.h>/{;i\' -e '#ifdef SYSV' -e 'a\' -e '#else\' \
     -e '#include <sgtty.h>\' -e '#endif' -e '}'
+```
 
 NOTE that this fancy work out on the shell command line can be a real
 pain due to quoting mechanism of shell's.  For [ba]sh the above should
@@ -333,23 +338,23 @@ and mess everything up.
 
 Generally speaking, we can put the above in the following manner:
 
-1. sed commands are usually on one line
+ 1. sed commands are usually on one line
 
-2. if we want more (multi-line commands), then we must end the
-   first line with an `\' -- this is not the same as the classic
-   trailing `\' in C or make, etc... this one says: "Ei sed! This
+ 2. if we want more (multi-line commands), then we must end the
+   first line with an \`\' -- this is not the same as the classic
+   trailing \`\' in C or make, etc... this one says: "Ei sed! This
    command has more than one line.", whereas C, make, etc, say: "Ei
    make, (g)cc, etc... this line is so huge that I wrote its
    continuation on the next line!"
 
-3. if a command is one line only, it can be separated by a `;'
+ 3. if a command is one line only, it can be separated by a \`;'
 
-4. if it is a multi-line, then it must contain all of its line
+ 4. if it is a multi-line, then it must contain all of its line
    (except the first) by themselves
 
 ...and...
 
-5. on command line, what follows a `-e' is like a whole line in
+ 5. on command line, what follows a \`-e' is like a whole line in
    a sed script
 
 --
@@ -360,11 +365,10 @@ command, and other for text (which can be empty), but any other
 command may be a potential multi-liner
 
 The read/write commands are exceptions: they need a whole (last)
-line for themselves. i.e. after the `r' or `w' the rest of
+line for themselves. i.e. after the \`r' or \`w' the rest of
 the line is treated like a filename. So, after this one, nothing
 more can happen (but before can).
 
-========================================================================
 
 ----------
 Sed resume
