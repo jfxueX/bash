@@ -2088,6 +2088,7 @@ Author and credits and date etc...
 ----------------------------------
 
 **Author:**
+
   the "I"s on this text, means I: Carlos Duarte <[cgd@teleweb.pt][1]>
 
 **Credits:**
@@ -2108,6 +2109,7 @@ Author and credits and date etc...
    <bodec@sherwood.co.uk>
 
 **Date:**
+
   this was started on 7-Sep-96
 
-[1]:cgd@teleweb.pt
+[1]:mail://cgd@teleweb.pt
