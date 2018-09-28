@@ -2087,11 +2087,10 @@ Index of sed commands
 Author and credits and date etc...
 ----------------------------------
 
-**Author:**
+#### Author:
+  the "I"s on this text, means I: Carlos Duarte <cgd@teleweb.pt>
 
-  the "I"s on this text, means I: Carlos Duarte <[cgd@teleweb.pt][1]>
-
-**Credits:**
+#### Credits:
  - The regular expressions were learned by reading re_format(7)
    by Henry Spencer, version "@(#)re_format.7 8.2 (Berkeley) 3/16/94"
 
@@ -2108,8 +2107,6 @@ Author and credits and date etc...
  - Some minor language corrections by Casper Boden-Cummins
    <bodec@sherwood.co.uk>
 
-**Date:**
-
+#### Date:
   this was started on 7-Sep-96
 
-[1]:mail://cgd@teleweb.pt
