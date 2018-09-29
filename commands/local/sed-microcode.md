@@ -8,7 +8,7 @@ Al, this is a little doc, with some pseudo code, of a sed implementation.
 
 The idea, is when people (that knows sed), has a question or need some fine tunning, to quickly answered themselves.
 
-One particulary example, are the strange behaviors of D, and a\ (well, sort of). 
+One particulary example, are the strange behaviors of `D`, and `a\` (well, sort of). 
 
 As a last note remark, I am revieing my scripts packages, and also some documentation on sed (do-it-with-sed, advanced-sed, hints-sed? or sed-fine-tunning). This should be ok on august. 
 
