@@ -8,7 +8,7 @@ Last modified: Thu Apr 23 16:37:48 EDT 2015
 
 | 1 | 2 | 3
 | - | - | -
-| [: label](#flow-control) | [# comment](Sed.html#uh-21) | [{....} Block](#grouping-with--and-) 
+| [: label](#flow-control) | [# comment](#comments) | [{....} Block](#grouping-with--and-) 
 | [=](#print-line-number-with-), print line number | [a\\](#append-a-line-with-a), Append | [b label](#flow-control), Branch
 | [c\ change](#change-a-line-with-c) | [d](#delete-with-d) and [D](#working-with-multiple-lines), Delete | [g](#get-with-g-or-g) and [G](#get-with-g-or-g), Get
 | [h](#hold-with-h-or-h) and [H](#hold-with-h-or-h), Hold | [i\\](#insert-a-line-with-i), Insert | [l](#debugging-with-l), Look
@@ -45,9 +45,9 @@ Last modified: Thu Apr 23 16:37:48 EDT 2015
 | [  (--follow-symlinks)](#the---follow-symlinks-argument) | GNU sed
 | [  (--posix)](#the--posix-argument) | GNU sed
 | [ -i SUFFIX](#the--i-in-place-argument) | Mac OS X, FreeBSD
-| [ -a](Sed.html#uh-62f1) | Mac OS X, FreeBSD
+| [ -a](#the--a-or-delayed-open-argument) | Mac OS X, FreeBSD
 | [ -l](#the--u-unbuffered-argument) | Max OS X, FreeBSD
-| [ -E](Sed.html#uh-62f3) | Mac OS X, FreeBSD
+| [ -E](#-e-or-extended-regular-expressions) | Mac OS X, FreeBSD
 | [ -r](Sed.html#uh-62f3) | FreeBSD
 | [ -I SUFFIX](Sed.html#uh-62f2) | FreeBSD
 
@@ -64,35 +64,35 @@ Then click on the section header of any section to jump back to the table of con
 * [Extended Regular Expressions](#extended-regular-expressions)
 * [Using \1 to keep part of the pattern](#using-1-to-keep-part-of-the-pattern)
 * [Sed Pattern Flags](#sed-pattern-flags)
-* [/g - Global replacement](#g---global-replacement)
-* [Is sed recursive?](#is-sed-recursive)
-* [/1, /2, etc. Specifying which occurrence](#1-2-etc-specifying-which-occurrence)
-* [/p - print](#p---print)
-* [Write to a file with /w filename](#write-to-a-file-with-w-filename)
-* [/I - Ignore Case](#i---ignore-case)
-* [Combining substitution flags](#combining-substitution-flags)
+   * [/g - Global replacement](#g---global-replacement)
+   * [Is sed recursive?](#is-sed-recursive)
+   * [/1, /2, etc. Specifying which occurrence](#1-2-etc-specifying-which-occurrence)
+   * [/p - print](#p---print)
+   * [Write to a file with /w filename](#write-to-a-file-with-w-filename)
+   * [/I - Ignore Case](#i---ignore-case)
+   * [Combining substitution flags](#combining-substitution-flags)
 * [Arguments and invocation of sed](#arguments-and-invocation-of-sed)
-* [Multiple commands with  -e command](#multiple-commands-with---e-command)
-* [Filenames on the command line](#filenames-on-the-command-line)
-* [sed -n: no printing](#sed--n-no-printing)
-* [Using 'sed /pattern/'](#using-sed-pattern)
-* [Using 'sed -n /pattern/p' to duplicate the function of grep](#using-sed--n-patternp-to-duplicate-the-function-of-grep)
-* [sed -f scriptname](#sed--f-scriptname)
-* [sed in shell scripts](#sed-in-shell-scripts)
-* [Quoting multiple sed lines in the C shell](#quoting-multiple-sed-lines-in-the-c-shell)
-* [Quoting multiple sed lines in the Bourne shell](#quoting-multiple-sed-lines-in-the-bourne-shell)
-* [sed -V](#sed--v)
-* [sed -h](#sed--h)
-* [A sed interpreter script](#a-sed-interpreter-script)
-* [Comments](#comments)
-* [Passing arguments into a sed script](#passing-arguments-into-a-sed-script)
-* [Using sed in a shell here-is document](#using-sed-in-a-shell-here-is-document)
-* [Multiple commands and order of execution](#multiple-commands-and-order-of-execution)
+   * [Multiple commands with  -e command](#multiple-commands-with---e-command)
+   * [Filenames on the command line](#filenames-on-the-command-line)
+   * [sed -n: no printing](#sed--n-no-printing)
+   * [Using 'sed /pattern/'](#using-sed-pattern)
+      * [Using 'sed -n /pattern/p' to duplicate the function of grep](#using-sed--n-patternp-to-duplicate-the-function-of-grep)
+   * [sed -f scriptname](#sed--f-scriptname)
+   * [sed in shell scripts](#sed-in-shell-scripts)
+      * [Quoting multiple sed lines in the C shell](#quoting-multiple-sed-lines-in-the-c-shell)
+      * [Quoting multiple sed lines in the Bourne shell](#quoting-multiple-sed-lines-in-the-bourne-shell)
+   * [sed -V](#sed--v)
+   * [sed -h](#sed--h)
+   * [A sed interpreter script](#a-sed-interpreter-script)
+   * [Comments](#comments)
+   * [Passing arguments into a sed script](#passing-arguments-into-a-sed-script)
+   * [Using sed in a shell here-is document](#using-sed-in-a-shell-here-is-document)
+   * [Multiple commands and order of execution](#multiple-commands-and-order-of-execution)
 * [Addresses and Ranges of Text](#addresses-and-ranges-of-text)
-* [Restricting to a line number](#restricting-to-a-line-number)
-* [Patterns](#patterns)
-* [Ranges by line number](#ranges-by-line-number)
-* [Ranges by patterns](#ranges-by-patterns)
+   * [Restricting to a line number](#restricting-to-a-line-number)
+   * [Patterns](#patterns)
+   * [Ranges by line number](#ranges-by-line-number)
+   * [Ranges by patterns](#ranges-by-patterns)
 * [Delete with d](#delete-with-d)
 * [Printing with p](#printing-with-p)
 * [Reversing the restriction with !](#reversing-the-restriction-with-)
@@ -104,27 +104,27 @@ Then click on the section header of any section to jump back to the table of con
 * [Reading in a file with the 'r' command](#reading-in-a-file-with-the-r-command)
 * [SunOS and the # Comment Command](#sunos-and-the--comment-command)
 * [Adding, Changing, Inserting new lines](#adding-changing-inserting-new-lines)
-* [Append a line with 'a'](#append-a-line-with-a)
-* [Insert a line with 'i'](#insert-a-line-with-i)
-* [Change a line with 'c'](#change-a-line-with-c)
-* [Leading tabs and spaces in a sed script](#leading-tabs-and-spaces-in-a-sed-script)
-* [Adding more than one line](#adding-more-than-one-line)
-* [Adding lines and the pattern space](#adding-lines-and-the-pattern-space)
-* [Address ranges and the above commands](#address-ranges-and-the-above-commands)
+   * [Append a line with 'a'](#append-a-line-with-a)
+   * [Insert a line with 'i'](#insert-a-line-with-i)
+   * [Change a line with 'c'](#change-a-line-with-c)
+   * [Leading tabs and spaces in a sed script](#leading-tabs-and-spaces-in-a-sed-script)
+   * [Adding more than one line](#adding-more-than-one-line)
+   * [Adding lines and the pattern space](#adding-lines-and-the-pattern-space)
+   * [Address ranges and the above commands](#address-ranges-and-the-above-commands)
 * [Multi-Line Patterns](#multi-line-patterns)
 * [Print line number with =](#print-line-number-with-)
 * [Transform with y](#transform-with-y)
 * [Displaying control characters with a l](#displaying-control-characters-with-a-l)
 * [Working with Multiple Lines](#working-with-multiple-lines)
-* [Matching three lines with sed](#matching-three-lines-with-sed)
-* [Matching patterns that span multiple lines](#matching-patterns-that-span-multiple-lines)
-* [Using newlines in sed scripts](#using-newlines-in-sed-scripts)
-* [The Hold Buffer](#the-hold-buffer)
-* [Exchange with x](#exchange-with-x)
-* [Example of Context Grep](#example-of-context-grep)
-* [Hold with h or H](#hold-with-h-or-h)
-* [Keeping more than one line in the hold buffer](#keeping-more-than-one-line-in-the-hold-buffer)
-* [Get with g or G](#get-with-g-or-g)
+   * [Matching three lines with sed](#matching-three-lines-with-sed)
+   * [Matching patterns that span multiple lines](#matching-patterns-that-span-multiple-lines)
+   * [Using newlines in sed scripts](#using-newlines-in-sed-scripts)
+   * [The Hold Buffer](#the-hold-buffer)
+   * [Exchange with x](#exchange-with-x)
+   * [Example of Context Grep](#example-of-context-grep)
+   * [Hold with h or H](#hold-with-h-or-h)
+   * [Keeping more than one line in the hold buffer](#keeping-more-than-one-line-in-the-hold-buffer)
+   * [Get with g or G](#get-with-g-or-g)
 * [Flow Control](#flow-control)
 * [Testing with t](#testing-with-t)
 * [Debugging with l](#debugging-with-l)
@@ -133,27 +133,26 @@ Then click on the section header of any section to jump back to the table of con
 * [Passing regular expressions as arguments](#passing-regular-expressions-as-arguments)
 * [Inserting binary characters](#inserting-binary-characters)
 * [GNU sed Command Line arguments](#gnu-sed-command-line-arguments)
-* [The -posix argument](#the--posix-argument)
-* [The --version argument](#the---version-argument)
-* [The -h Help argument](#the--h-help-argument)
-* [The -l Line Length Argument](#the--l-line-length-argument)
-* [The -s Separate argument](#the--s-separate-argument)
-* [The -i in-place argument](#the--i-in-place-argument)
-* [The --follow-symlinks argument](#the---follow-symlinks-argument)
-* [The -b Binary argument](#the--b-binary-argument)
-* [The -r Extended Regular Expression argument](#the--r-extended-regular-expression-argument)
-* [The -u Unbuffered argument](#the--u-unbuffered-argument)
-* [The -z Null Data argument](#the--z-null-data-argument)
+   * [The -posix argument](#the--posix-argument)
+   * [The --version argument](#the---version-argument)
+   * [The -h Help argument](#the--h-help-argument)
+   * [The -l Line Length Argument](#the--l-line-length-argument)
+   * [The -s Separate argument](#the--s-separate-argument)
+   * [The -i in-place argument](#the--i-in-place-argument)
+   * [The --follow-symlinks argument](#the---follow-symlinks-argument)
+   * [The -b Binary argument](#the--b-binary-argument)
+   * [The -r Extended Regular Expression argument](#the--r-extended-regular-expression-argument)
+   * [The -u Unbuffered argument](#the--u-unbuffered-argument)
+   * [The -z Null Data argument](#the--z-null-data-argument)
 * [FreeBSD Extensions](#freebsd-extensions)
-* [The -a or delayed open Argument](#the--a-or-delayed-open-argument)
-* [The -I in-place argument](#the--i-in-place-argument-1)
-* [-E or Extended Regular Expressions](#-e-or-extended-regular-expressions)
+   * [The -a or delayed open Argument](#the--a-or-delayed-open-argument)
+   * [The -I in-place argument](#the--i-in-place-argument-1)
+   * [-E or Extended Regular Expressions](#-e-or-extended-regular-expressions)
 * [Using word boundries](#using-word-boundries)
 * [Command Summary](#command-summary)
 * [In Conclusion](#in-conclusion)
 * [More References](#more-references)
     * [Thanks for the feedback, gang](#thanks-for-the-feedback-gang)
-        * [Grymoire](#grymoire)
 
 
 Copyright 1994, 1995 Bruce Barnett and General Electric Company
@@ -414,9 +413,9 @@ So the above could also be written using
     123 123 abc
     
 
-Mac OS X and FreeBSD uses [-E](Sed.html#uh-62h2) instead of [-r](Sed.html#uh-62k).
+Mac OS X and FreeBSD uses [-E](#-e-or-extended-regular-expressions) instead of [-r](#extended-regular-expressions).
 
-For more information on extended regular expressions, see [Regular Expressions](../Unix/Regular.html) and the [description of the -r command line argument](Sed.html#uh-62k)
+For more information on extended regular expressions, see [Regular Expressions](../Unix/Regular.html) and the [description of the -r command line argument](#extended-regular-expressions)
 
 ## Using \1 to keep part of the pattern
 
@@ -679,7 +678,7 @@ sed:
     sed -n 's/pattern/&/p' <file
     
 
-But a simpler version is described [later](Sed.html#uh-15b)
+But a simpler version is described [later](#using-sed--n-patternp-to-duplicate-the-function-of-grep)
 
 ## Write to a file with /w filename
 
@@ -771,7 +770,7 @@ The long argument version is
     sed --expression='s/a/A/' --expression='s/b/B/' <old >new
     
 
-Also see [Quoting multiple sed lines in the Bourne shell](Sed.html#uh-19)
+Also see [Quoting multiple sed lines in the Bourne shell](#quoting-multiple-sed-lines-in-the-bourne-shell)
 
 ## Filenames on the command line
 
@@ -843,7 +842,7 @@ or
 ## Using 'sed /pattern/'
 
 Sed has the ability to specify which lines are to be examined and/or modified, by specifying 
-[addresses](http:Sed.html#uh-15b) before the command.
+[addresses](#using-sed--n-patternp-to-duplicate-the-function-of-grep) before the command.
 I will just describe the simplest version for now - the /PATTERN/ address. When used, only lines that match the pattern are given the command after the address. Briefly, when used with the /p flag, matching lines are printed twice:
 
     
@@ -910,7 +909,7 @@ The long argument version is
     sed --file=sedscript <old >new
     
 
-Also see [here on writing a script that executes sed directly](Sed.html#uh-20)
+Also see [here on writing a script that executes sed directly](#a-sed-interpreter-script)
 
 ## sed in shell scripts
 
@@ -933,12 +932,14 @@ continued across several lines.
 This is done by placing a backslash at the end of each line:
 
     
+```bash    
     #!/bin/csh -f
     sed 's/a/A/g  \
     s/e/E/g \
     s/i/I/g \
     s/o/O/g \
     s/u/U/g'  <old >new
+```    
     
 
 ## Quoting multiple sed lines in the Bourne shell
@@ -946,6 +947,7 @@ This is done by placing a backslash at the end of each line:
 The Bourne shell makes this easier as a quote can cover several lines:
 
     
+```bash    
     #!/bin/sh
     sed '
     s/a/A/g 
@@ -953,6 +955,7 @@ The Bourne shell makes this easier as a quote can cover several lines:
     s/i/I/g 
     s/o/O/g 
     s/u/U/g'  <old >new
+```    
     
 
 ## sed -V
@@ -991,7 +994,7 @@ s/o/O/g
 s/u/U/g
 ```
 
-Click here to get file: [CapVowel.sed](Scripts/CapVowel.sed)
+Click here to get file: [CapVowel.sed](http://www.grymoire.com/Unix/Scripts/CapVowel.sed)
 
 If this script was stored in a file with the name
 "CapVowel" and was executable, you could use it with the simple command:
@@ -1048,11 +1051,13 @@ If you have a space as an argument, the script would cause a syntax error
 A better version would protect from this happening:
 
     
+```bash    
     #!/bin/sh
     sed -n 's/'"$1"'/&/p'
+```    
     
 
-Click here to get file: [sedgrep.sed](Scripts/sedgrep.sed)
+Click here to get file: [sedgrep.sed](http://www.grymoire.com/Unix/Scripts/sedgrep.sed)
 
 If this was stored in a file called
 sedgrep, you could type
@@ -1073,12 +1078,14 @@ sed to change those dummy values. A simpler way is to use the
 "here is" document, which uses part of the shell script as if it were standard input:
 
     
+```bash    
     #!/bin/sh
     echo -n 'what is the value? '
     read value
     sed  's/XYZ/'$value'/' <<EOF
     The value is XYZ
     EOF
+```    
     
 
 When executed, the script says:
@@ -1099,12 +1106,14 @@ I admit this is a contrived example.
 example does the same thing:
 
     
+```bash    
     #!/bin/sh
     echo -n 'what is the value? '
     read value
     cat <<EOF
     The value is $value
     EOF
+```    
     
 
 However, combining 
@@ -1119,17 +1128,19 @@ will give a syntax error if the user types an answer that contains a space, like
 Better form would be to put double quotes around the evaluation of the value:
 
     
+```bash    
     #!/bin/sh
     echo -n 'what is the value? '
     read value
     sed  's/XYZ/'"$value"'/' <<EOF
     The value is XYZ
     EOF
+```    
     
 
 I covered this in my [tutorial on quotation marks](http://www.grymoire.com/unix/Quote.html).
 
-Click here to get file: [sed_hereis.sed](Scripts/sed_hereis.sed)
+Click here to get file: [sed_hereis.sed](http://www.grymoire.com/Unix/Scripts/sed_hereis.sed)
 
 ## Multiple commands and order of execution
 
@@ -1364,7 +1375,7 @@ The last example has a range that overlaps the
 "/start/,/stop/" range, as both ranges operate on the lines that contain the keywords.
 I will show you later how to restrict a command up to, 
 but not including the line containing the specified pattern.
-It is in [Operating in a pattern range except for the patterns](Sed.html#uh-35a)
+It is in [Operating in a pattern range except for the patterns](#operating-in-a-pattern-range-except-for-the-patterns)
 But I have to cover some more basic principles.
 
 Before I start discussing the various commands, I should explain that
@@ -1415,7 +1426,7 @@ start=`expr $lines - 10`
 sed "1,$start d" $1
 ```
 
-Click here to get file: [sed_tail.sh](Scripts/sed_tail.sh)
+Click here to get file: [sed_tail.sh](http://www.grymoire.com/Unix/Scripts/sed_tail.sh)
 
 The range for deletions can be regular expressions pairs to mark the
 begin and end of the operation.
@@ -1628,6 +1639,7 @@ Previously, I showed you how to remove comments starting with a
 "begin" and
 "end" key words, you could use:
 
+```bash    
     #!/bin/sh
     # This is a Bourne shell script that removes #-type comments
     # between 'begin' and 'end' words.
@@ -1639,14 +1651,16 @@ Previously, I showed you how to remove comments starting with a
     	     p
     	}
     '
+```    
     
 
-Click here to get file: [sed_begin_end.sh](Scripts/sed_begin_end.sh)
+Click here to get file: [sed_begin_end.sh](http://www.grymoire.com/Unix/Scripts/sed_begin_end.sh)
 
 These braces can be nested, which allow you to combine address ranges.
 You could perform the same action as before, but limit the change to
 the first 100 lines:
 
+```bash    
     #!/bin/sh
     # This is a Bourne shell script that removes #-type comments
     # between 'begin' and 'end' words.
@@ -1660,9 +1674,10 @@ the first 100 lines:
     		}
     	}
     '
+```    
     
 
-Click here to get file: [sed_begin_end1.sh](Scripts/sed_begin_end1.sh)
+Click here to get file: [sed_begin_end1.sh](http://www.grymoire.com/Unix/Scripts/sed_begin_end1.sh)
 
 You can place a
 "!" before a set of curly braces.
@@ -1670,6 +1685,7 @@ This inverts the address, which removes comments from
 all lines 
 except those between the two reserved words:
 
+```bash    
     #!/bin/sh
     sed '
     	/begin/,/end/ !{
@@ -1679,34 +1695,40 @@ except those between the two reserved words:
     	     p
     	}
     '
+```    
     
 
-Click here to get file: [sed_begin_end2.sh](Scripts/sed_begin_end2.sh)
+Click here to get file: [sed_begin_end2.sh](http://www.grymoire.com/Unix/Scripts/sed_begin_end2.sh)
 
 ## Operating in a pattern range except for the patterns
 
 You may remember that I mentioned you can do a substitute on a pattern range, like changing "old" to "new" between a begin/end pattern:
 
+```bash    
     #!/bin/sh
     sed '
     	/begin/,/end/ s/old/new/
     '
+```    
     
 
 Another way to write this is to use the curly braces for grouping:
 
+```bash    
     #!/bin/sh
     sed '
     	/begin/,/end/ {
     	    s/old/new/
     	}
     '
+```    
     
 
 I think this makes the code clearer to understand, and easier to modify, as you will see below.
 
 If you did not want to make any changes where the word "begin" occurred, you could simple add a new condition to skip over that line:
 
+```bash    
     #!/bin/sh
     sed '
     	/begin/,/end/ {
@@ -1714,10 +1736,12 @@ If you did not want to make any changes where the word "begin" occurred, you cou
     	    s/old/new/
     	}
     '
+```    
     
 
 However, skipping over the line that has "end" is trickier. If you use the same method you used for "begin" then the sed engine will not see the "end" to stop the range - it skips over that as well. The solution is to do a substitute on all lines that don't have the "end" by using
 
+```bash    
     #!/bin/sh
     sed '
         /begin/,/end/ {
@@ -1727,6 +1751,7 @@ However, skipping over the line that has "end" is trickier. If you use the same 
           }  
         }
     '
+```    
     
 
 ## Writing a file with the 'w' command
@@ -1775,14 +1800,16 @@ will append the file
 You can use the curly braces to delete the line having the
 "INCLUDE" command on it:
 
+```bash    
     #!/bin/sh
     sed '/INCLUDE/ {
     	r file
     	d
     }'
+```    
     
 
-Click here to get file: [sed_include.sh](Scripts/sed_include.sh)
+Click here to get file: [sed_include.sh](http://www.grymoire.com/Unix/Scripts/sed_include.sh)
 
 The order of the delete command
 "d" and the read file command
@@ -1801,15 +1828,17 @@ action will be attempted. Therefore a
 "d" command executed in a curly brace also aborts all further actions.
 As an example, the substitute command below is never executed:
 
+```bash    
     #!/bin/sh
     # this example is WRONG
     sed -e '1 {
     	d
     	s/.*//
     }'
+```    
     
 
-Click here to get file: [sed_bad_example.sh](Scripts/sed_bad_example.sh)
+Click here to get file: [sed_bad_example.sh](http://www.grymoire.com/Unix/Scripts/sed_bad_example.sh)
 
 The earlier example is a crude version of the C preprocessor program.
 The file that is included has a predetermined name. It would be nice if
@@ -1831,6 +1860,7 @@ An example of this script is:
 
 A shell script to do this would be:
 
+```bash    
     #!/bin/sh
     # watch out for a '/' in the parameter
     # use alternate search delimiter
@@ -1838,6 +1868,7 @@ A shell script to do this would be:
     	r '"$1"'
     	d
     }'
+```    
     
 
 Let me elaborate. If you had a file that contains
@@ -1857,7 +1888,7 @@ you could use the command
 
 to include the specified files.
 
-Click here to get file: [sed_include1.sh](Scripts/sed_include1.sh)
+Click here to get file: [sed_include1.sh](http://www.grymoire.com/Unix/Scripts/sed_include1.sh)
 
 ## SunOS and the # Comment Command
 
@@ -1869,6 +1900,7 @@ SunOS (and GNU's sed) allows more than one comment, and these comments don't hav
 be first. 
 The last example could be:
 
+```bash
     #!/bin/sh
     # watch out for a '/' in the parameter
     # use alternate search delimiter
@@ -1881,9 +1913,9 @@ The last example could be:
     	# and read the next line in
     	d
     }'
-    
+```
 
-Click here to get file: [sed_include2.sh](Scripts/sed_include2.sh)
+Click here to get file: [sed_include2.sh](http://www.grymoire.com/Unix/Scripts/sed_include2.sh)
 
 ## Adding, Changing, Inserting new lines
 
@@ -1906,23 +1938,25 @@ The
 This example will add a line after every line with
 "WORD:" 
 
+```bash
     #!/bin/sh
     sed '
     /WORD/ a\
     Add this line after every line with WORD
     '
-    
+```    
 
-Click here to get file: [sed_add_line_after_word.sh](Scripts/sed_add_line_after_word.sh)
+Click here to get file: [sed_add_line_after_word.sh](http://www.grymoire.com/Unix/Scripts/sed_add_line_after_word.sh)
 
 You could eliminate two lines in the shell script if you wish:
 
+```bash
     #!/bin/sh
     sed '/WORD/ a\
     Add this line after every line with WORD'
-    
+```    
 
-Click here to get file: [sed_add_line_after_word1.sh](Scripts/sed_add_line_after_word1.sh)
+Click here to get file: [sed_add_line_after_word1.sh](http://www.grymoire.com/Unix/Scripts/sed_add_line_after_word1.sh)
 
 I prefer the first form because it's easier to add a new command
 by adding a new line
@@ -1935,27 +1969,29 @@ There must not be a space after the
 You can insert a new line before the pattern with the
 "i" command:
 
+```bash
     #!/bin/sh
     sed '
     /WORD/ i\
     Add this line before every line with WORD
     '
-    
+```    
 
-Click here to get file: [sed_add_line_before_word.sh](Scripts/sed_add_line_before_word.sh)
+Click here to get file: [sed_add_line_before_word.sh](http://www.grymoire.com/Unix/Scripts/sed_add_line_before_word.sh)
 
 ## Change a line with 'c'
 
 You can change the current line with a new line.
 
+```bash
     #!/bin/sh
     sed '
     /WORD/ c\
     Replace the current line with the line
     '
-    
+```    
 
-Click here to get file: [sed_change_line.sh](Scripts/sed_change_line.sh)
+Click here to get file: [sed_change_line.sh](http://www.grymoire.com/Unix/Scripts/sed_change_line.sh)
 
 A 
 "d" command followed by a
@@ -1964,6 +2000,7 @@ The
 "d" command would terminate the current actions.
 You can combine all three actions using curly braces:
 
+```bash
     #!/bin/sh
     sed '
     /WORD/ {
@@ -1974,9 +2011,9 @@ You can combine all three actions using curly braces:
     c\
     Change the line to this one
     }'
-    
+```    
 
-Click here to get file: [sed_insert_append_change.sh](Scripts/sed_insert_append_change.sh)
+Click here to get file: [sed_insert_append_change.sh](http://www.grymoire.com/Unix/Scripts/sed_insert_append_change.sh)
 
 ## Leading tabs and spaces in a sed script
 
@@ -1998,13 +2035,13 @@ of
 sed you are using, put a
 "\" as the first character of the line:
 
-    
+```bash    
     #!/bin/sh
     sed '
     	a\
     \	This line starts with a tab
     '
-    
+```   
 
 ## Adding more than one line
 
@@ -2012,7 +2049,7 @@ All three commands will allow you to add more than one line.
 Just end each line with a
 "\:" 
 
-    
+```bash    
     #!/bin/sh
     sed '
     /WORD/ a\
@@ -2020,7 +2057,7 @@ Just end each line with a
     This line\
     And this line
     '
-    
+```    
 
 ## Adding lines and the pattern space
 
@@ -2046,26 +2083,26 @@ The
 "c" or change command allows this, and it will let you change several
 lines into one:
 
-    
+```bash    
     #!/bin/sh
     sed '
     /begin/,/end/ c\
     ***DELETED***
     '
-    
+```    
     
 
 If you need to do this, you can use the curly braces, as that will let
 you perform the operation on every line:
 
-    
+```bash    
     #!/bin/sh
     # add a blank line after every line
     sed '1,$ {
     	a\
     
     }'
-    
+```    
 
 ## Multi-Line Patterns
 
@@ -2206,32 +2243,32 @@ sed solution is:
 
 Earlier I used the following to find the number of lines in a file
 
-    
+```bash    
     #!/bin/sh
     lines=`wc -l file | awk '{print $1}' `
-    
+```    
 
 Using the
 "=" command can simplify this:
 
-    
+```bash    
     #!/bin/sh
     lines=`sed -n '$=' file `
-    
+```    
 
 The
 "=" command only accepts one address, so if you want to print the number
 for
 a range of lines, you must use the curly braces:
 
-    
+```bash    
     #!/bin/sh
     # Just print the line numbers 
     sed -n '/begin/,/end/ {
     =
     d
     }' file
-    
+```    
     
 
 Since the 
@@ -2356,7 +2393,7 @@ the pattern space.
 If you wanted to search for a line that ended with the character
 "#," and append the next line to it, you could use
 
-    
+```bash    
     #!/bin/sh
     sed '
     # look for a "#" at the end of the line
@@ -2366,12 +2403,13 @@ If you wanted to search for a line that ended with the character
     # delete the "#" and the new line character, 
     	s/#\n//
     }' file
-    
+```    
 
 You could search for two lines containing 
 "ONE" and
 "TWO" and only print out the two consecutive lines:
 
+```bash    
     #!/bin/sh
     sed -n '
     /ONE/ {
@@ -2381,6 +2419,7 @@ You could search for two lines containing
     # and print if there.
     	/\n.*TWO/ p
     }' file
+```    
     
 
 The next example would delete everything between
@@ -2388,6 +2427,7 @@ The next example would delete everything between
 "TWO:" 
 
     
+```bash    
     #!/bin/sh
     sed '
     /ONE/ {
@@ -2399,6 +2439,7 @@ The next example would delete everything between
     		s/ONE.*\n.*TWO/ONE TWO/
     	}
     }' file
+```    
     
 
 ## Matching three lines with sed
@@ -2409,12 +2450,14 @@ Here is a way to look for the string "skip3", and if found, delete
 that line and the next two lines.
 
     
+```bash    
     #!/bin/sh
     sed '/skip3/ {
                N
                N
                s/skip3\n.*\n.*/# 3 lines deleted/
     }'  
+```    
     
 
 Note that it doesn't matter what the next two lines are.
@@ -2425,6 +2468,7 @@ This script looks for three lines, where the first line contains
 if found, replace them with the string "1+2+3":
 
     
+```bash    
     #!/bin/sh
     sed '
     /one/ {
@@ -2438,6 +2482,7 @@ if found, replace them with the string "1+2+3":
     			}
     	  }
     '
+```    
     
 
 ## Matching patterns that span multiple lines
@@ -2472,6 +2517,7 @@ Let's use the
 
 "ONE," then delete the first line:
 
+```bash    
     #!/bin/sh
     sed '
     /ONE/ {
@@ -2480,9 +2526,10 @@ Let's use the
     # if TWO found, delete the first line
     	/\n.*TWO/ D
     }' file
+```    
     
 
-Click here to get file: [sed_delete_line_after_word.sh](Scripts/sed_delete_line_after_word.sh)
+Click here to get file: [sed_delete_line_after_word.sh](http://www.grymoire.com/Unix/Scripts/sed_delete_line_after_word.sh)
 
 If we wanted to print the first line instead of deleting it,
 and not print every other line, change the 
@@ -2491,6 +2538,7 @@ and not print every other line, change the
 "-n" as an argument to 
 sed: 
 
+```bash    
     #!/bin/sh
     sed -n '
     # by default - do not print anything
@@ -2500,9 +2548,10 @@ sed:
     # if TWO found, print the first line
     	/\n.*TWO/ P
     }' file
+```    
     
 
-Click here to get file: [sed_print_line_after_word.sh](Scripts/sed_print_line_after_word.sh)
+Click here to get file: [sed_print_line_after_word.sh](http://www.grymoire.com/Unix/Scripts/sed_print_line_after_word.sh)
 
 It is very common to combine all three multi-line
 commands. 
@@ -2513,6 +2562,7 @@ The typical order is
 "ONE" and
 "TWO" if they are on one or two consecutive lines:
 
+```bash    
     #!/bin/sh
     sed '
     /ONE/ {
@@ -2528,9 +2578,10 @@ The typical order is
     		D
     	}
     }' file
+```    
     
 
-Click here to get file: [sed_delete_between_two_words.sh](Scripts/sed_delete_between_two_words.sh)
+Click here to get file: [sed_delete_between_two_words.sh](http://www.grymoire.com/Unix/Scripts/sed_delete_between_two_words.sh)
 
 Earlier I talked about the
 "=" command, and using it to add line numbers to a file.
@@ -2543,15 +2594,17 @@ on the next line.
 The second invocation of
 sed will merge the two lines together:
 
+```bash    
     #!/bin/sh
     sed '=' file | \
     sed '{
     	N
     	s/\n/ /
     }'
+```    
     
 
-Click here to get file: [sed_merge_two_lines.sh](Scripts/sed_merge_two_lines.sh)
+Click here to get file: [sed_merge_two_lines.sh](http://www.grymoire.com/Unix/Scripts/sed_merge_two_lines.sh)
 
 If you find it necessary, you can break one line into 
 two lines, edit them, and merge them together again.
@@ -2584,6 +2637,7 @@ tr to convert the space into a new line, and then use sed to do the rest. The co
 and sed_split would be:
 
     
+```bash    
     #!/bin/sh
     tr ' ' '\012' | 
     sed ' {
@@ -2591,9 +2645,10 @@ and sed_split would be:
     	N
     	s/\n/ /
     }'
+```    
     
 
-Click here to get file: [sed_split.sh](Scripts/sed_split.sh)
+Click here to get file: [sed_split.sh](http://www.grymoire.com/Unix/Scripts/sed_split.sh)
 
 It isn't obvious, but 
 sed could be used instead of 
@@ -2604,6 +2659,7 @@ It is unfortunate that you must use
 in the right hand side. Heavy sigh.
 Here is the example:
 
+```bash    
     #!/bin/sh
     sed '
     s/ /\
@@ -2613,9 +2669,10 @@ Here is the example:
     	N
     	s/\n/ /
     }'
+```    
     
 
-Click here to get file: [sed_split_merge.sh](Scripts/sed_split_merge.sh)
+Click here to get file: [sed_split_merge.sh](http://www.grymoire.com/Unix/Scripts/sed_split_merge.sh)
 
 Sometimes I add a special character as a marker, and look for that
 character
@@ -2628,16 +2685,19 @@ The
 sed script to change a blank into a
 "\" following by a new line would be:
 
+```bash    
 #!/bin/sh
 
 sed 's/ /\\\
 
 /' file
+```    
 
-Click here to get file: [sed_addslash_before_blank.sh](Scripts/sed_addslash_before_blank.sh)
+Click here to get file: [sed_addslash_before_blank.sh](http://www.grymoire.com/Unix/Scripts/sed_addslash_before_blank.sh)
 
 Yeah. That's the ticket. Or use the C shell and really confuse him!
 
+```bash    
 #!/bin/csh -f
 
 sed '\
@@ -2645,8 +2705,9 @@ sed '\
 s/ /\\\\
 
 /' file
+```    
 
-Click here to get file: [sed_addslash_before_blank.csh](Scripts/sed_addslash_before_blank.csh)
+Click here to get file: [sed_addslash_before_blank.csh](http://www.grymoire.com/Unix/Scripts/sed_addslash_before_blank.csh)
 
 A few more examples of that, and he'll never ask you a question again!
 I think I'm getting carried away. I'll summarize 
@@ -2757,6 +2818,7 @@ sed script is done by turning off the single quote mechanism, inserting
 the
 "$1" into the script, and starting up the single quote again:
 
+```bash    
     #!/bin/sh
     # grep3 - prints out three lines around pattern
     # if there is only one argument, exit
@@ -2797,9 +2859,10 @@ the
     	# now put this line into the hold buffer
     	x
     }'
+```    
     
 
-Click here to get file: [grep3.sh](Scripts/grep3.sh)
+Click here to get file: [grep3.sh](http://www.grymoire.com/Unix/Scripts/grep3.sh)
 
 You could use this to show the three lines around a keyword, i.e.:
 
@@ -2816,6 +2879,7 @@ changed. The
 The pattern buffer is unchanged. 
 An identical script to the above uses the hold commands:
 
+```bash    
     #!/bin/sh
     # grep3 version b - another version using the hold commands
     # if there is only one argument, exit
@@ -2851,9 +2915,10 @@ An identical script to the above uses the hold commands:
     	a\
     ---
     }'
+```    
     
 
-Click here to get file: [grep3a.sh](Scripts/grep3a.sh)
+Click here to get file: [grep3a.sh](http://www.grymoire.com/Unix/Scripts/grep3a.sh)
 
 ## Keeping more than one line in the hold buffer
 
@@ -2875,6 +2940,7 @@ If you wanted to print the entry before a word, you could use this
 script. I use a
 "^I" to indicate an actual tab character:
 
+```bash    
     #!/bin/sh 
     # print previous entry
     sed -n '
@@ -2901,9 +2967,10 @@ script. I use a
     	# append it to the hold buffer
     	H
     }'
+```    
     
 
-Click here to get file: [grep_previous.sh](Scripts/grep_previous.sh)
+Click here to get file: [grep_previous.sh](http://www.grymoire.com/Unix/Scripts/grep_previous.sh)
 
 You can also use 
 the 
@@ -2916,6 +2983,7 @@ The method to limit this to two lines is to use the
 I call it
 grep4: 
 
+```bash    
     #!/bin/sh
     
     # grep4: prints out 4 lines around pattern
@@ -2958,9 +3026,10 @@ grep4:
     	a\
     ---
     }'
+```    
     
 
-Click here to get file: [grep4.sh](Scripts/grep4.sh)
+Click here to get file: [grep4.sh](http://www.grymoire.com/Unix/Scripts/grep4.sh)
 
 You can modify this to print any number of lines around a pattern.
 As you can see, you must remember what is in the hold space, and what
@@ -2983,6 +3052,7 @@ differently. This illustrates that
 sed has more than one way to solve many problems.
 What is important is you understand your problem, and document your solution:
 
+```bash    
     #!/bin/sh
     # grep3 version c: use 'G'  instead of H
     
@@ -3019,10 +3089,11 @@ What is important is you understand your problem, and document your solution:
     	# and place in the hold buffer for next time
     	h
     }'
+```    
     
     
 
-Click here to get file: [grep3c.sh](Scripts/grep3c.sh)
+Click here to get file: [grep3c.sh](http://www.grymoire.com/Unix/Scripts/grep3c.sh)
 
 The
 "G" command makes it easy to have two copies of a line.
@@ -3030,6 +3101,7 @@ Suppose you wanted to the convert the first hexadecimal number to
 uppercase, and don't
 want to use the script I described in an earlier column
 
+```bash    
     #!/bin/sh
     # change the first hex number to upper case format
     # uses sed twice
@@ -3043,13 +3115,15 @@ want to use the script I described in an earlier column
     	N
     	s/\n/ /
     }'
+```    
     
 
-Click here to get file: [convert2uc.sh](Scripts/convert2uc.sh)
+Click here to get file: [convert2uc.sh](http://www.grymoire.com/Unix/Scripts/convert2uc.sh)
 
 Here is a solution that does not require two invocations of
 sed:
 
+```bash    
     #!/bin/sh
     # convert2uc version b
     # change the first hex number to upper case format
@@ -3069,13 +3143,15 @@ sed:
     	# with one humongous regular expression
     	s/^\([^ ]*\) .*\n[^ ]* \(.*\)/\1 \2/
     }'
+```    
     
 
-Click here to get file: [convert2uc1.sh](Scripts/convert2uc1.sh)
+Click here to get file: [convert2uc1.sh](http://www.grymoire.com/Unix/Scripts/convert2uc1.sh)
 
 Carl Henrik Lunde suggested a way to make this simpler. 
 I was working too hard.
 
+```bash    
     #!/bin/sh
     # convert2uc version b
     # change the first hex number to upper case format
@@ -3095,9 +3171,10 @@ I was working too hard.
     	# with one humongous regular expression
     	s/ .* / / # delete all but the first and last word
     }'
+```    
     
 
-Click here to get file: [convert2uc2.sh](Scripts/convert2uc2.sh)
+Click here to get file: [convert2uc2.sh](http://www.grymoire.com/Unix/Scripts/convert2uc2.sh)
 
 This example only converts the letters 
 "a" through
@@ -3129,6 +3206,7 @@ This example remembers paragraphs, and if it contains the
 pattern (specified by an argument), 
 the script prints out the entire paragraph.
 
+```bash    
     #!/bin/sh
     sed -n '
     # if an empty line, check the paragraph
@@ -3147,9 +3225,10 @@ the script prints out the entire paragraph.
     # look for the pattern, if there - print
     /'$1'/ p
     '
+```    
     
 
-Click here to get file: [grep_paragraph.sh](Scripts/grep_paragraph.sh)
+Click here to get file: [grep_paragraph.sh](http://www.grymoire.com/Unix/Scripts/grep_paragraph.sh)
 
 ## Testing with t
 
@@ -3184,17 +3263,19 @@ The
 "t" command would solve this:
 
     
+```bash    
     #!/bin/sh
     sed '
     :again
     	s/([ ^I]*)//
     	t again
     '
+```    
     
 
 An earlier version had a 'g' after the 's' expression. This is not needed.
 
-Click here to get file: [delete_nested_parens.sh](Scripts/delete_nested_parens.sh)
+Click here to get file: [delete_nested_parens.sh](http://www.grymoire.com/Unix/Scripts/delete_nested_parens.sh)
 
 ## Debugging with l
 
@@ -3209,6 +3290,7 @@ sed script if you don't have a version that supports it.
 Use the
 "a" command with the line number of zero:
 
+```bash    
     #!/bin/sh
     sed '
     /begin/ {
@@ -3217,9 +3299,10 @@ Use the
     	It can cover several lines\
     	It will work with any version of sed
     }'
+```    
     
 
-Click here to get file: [sed_add_comments.sh](Scripts/sed_add_comments.sh)
+Click here to get file: [sed_add_comments.sh](http://www.grymoire.com/Unix/Scripts/sed_add_comments.sh)
 
 ## The poorly documented ;
 
@@ -3246,7 +3329,7 @@ sed -n '
 }'
 ```
 
-Click here to get file: [grep4a.sh](Scripts/grep4a.sh)
+Click here to get file: [grep4a.sh](http://www.grymoire.com/Unix/Scripts/grep4a.sh)
 
 Yessireebob! Definitely character building.
 I think I have made my point.
@@ -3273,8 +3356,10 @@ had a slash in it. In fact, regular expression might cause
 you problems. A script like the following is asking to be broken some
 day:
 
+```bash    
     #!/bin/sh
     sed 's/'"$1"'//g'
+```    
     
 
 If the argument contains any of these characters in it, you may get
@@ -3287,12 +3372,14 @@ However, the user has to know which characters are special.
 Another solution is to add a backslash before each of those characters in the script
 
     
+```bash    
     #!/bin/sh
     arg=`echo "$1" | sed 's:[]\[\^\$\.\*\/]:\\\\&:g'`
     sed 's/'"$arg"'//g'
+```    
     
 
-Click here to get file: [sed_with_regular_expressions1.sh](Scripts/sed_with_regular_expressions1.sh)
+Click here to get file: [sed_with_regular_expressions1.sh](http://www.grymoire.com/Unix/Scripts/sed_with_regular_expressions1.sh)
 
 If you were searching for the pattern
 "^../," the script would convert this into
@@ -3312,9 +3399,11 @@ and it can be output into a variable which can be used.
 Here's a script that will replace the string "ding" with the ASCII bell character:
 
     
+```bash    
     #!/bin/sh
     BELL=`echo x | tr 'x' '\007'`
     sed "s/ding/$BELL/"
+```    
     
 
  Please note that I used double quotes. Since special characters are interpreted, you have to be careful when you use this mechanism.
@@ -3483,16 +3572,19 @@ Here's another example: If you wanted to print the number of lines of each file,
 Here is a simple shell script that does something similar, just using sed:
 
     
+```bash    
     #!/bin/sh
     FILES=$*
     sed -s -n '$=' $FILES # print the number of lines for each file
     sed -n '$=' $FILES # print the total number of lines.
+```    
     
 
 The 'wc -l' command does print out the filenames, unlike the above script.
 A better emulation of the 'wc -l' command would execute the command in a loop, and print the filenames. Here is a more advanced script that does this, but it doesn't use the '-s' command:
 
     
+```bash    
     #!/bin/sh
     for F in "$@"
     do
@@ -3500,6 +3592,7 @@ A better emulation of the 'wc -l' command would execute the command in a loop, a
     done
     TOTAL=`sed -n '$=' "$@"`
     printf "  %d total\n" $TOTAL
+```    
     
 
 ## The -i in-place argument
@@ -3584,7 +3677,7 @@ When I mention patterns, such as "s/pattern/", the pattern is a regular expressi
 There are two common classes of regular expressions, the original "basic" expressions, and the "extended" regular expressions.  For more on the differences see [My tutorial on regular expressions](../Unix/Regular.html) and the [the section on extended regular expressions](../Unix/Regular.html#uh-12).
 
 Because the meaning of certain characters are different between the regular and extended expressions, you need a command line argument to enable sed to use the extension.
-To enable this extension, use the "-r" command, as mentioned in [the example on finding duplicated words on a line](Sed.html#uh-4)
+To enable this extension, use the "-r" command, as mentioned in [the example on finding duplicated words on a line](#using-1-to-keep-part-of-the-pattern)
     
     sed -r -n '/\([a-z]+\) \1/p'
     
@@ -3595,7 +3688,7 @@ To enable this extension, use the "-r" command, as mentioned in [the example on 
     sed --regular-extended -quiet '/\([a-z]+\) \1/p'
     
 
-I already mentioned that Mac OS X and FreeBSD uses [-E](Sed.html#uh-62h2) instead of [-r](Sed.html#uh-62k).
+I already mentioned that Mac OS X and FreeBSD uses [-E](#-e-or-extended-regular-expressions) instead of [-r](#extended-regular-expressions).
 
 ## The -u Unbuffered argument
 
@@ -3618,12 +3711,14 @@ Since the output is the terminal, as soon as a match is found, it is printed. Ho
 Let me make up a simple example. It's contrived, but it does explain how this works. Here's a program called SlowText that prints numbers from 1 to 60, once a second:
 
     
+```bash    
     #!/bin/sh
     for i in `seq 1 60`
     do
       echo $i
       sleep 1
     done
+```    
     
 
 Let's use sed to search for lines that have the character '1', and have it send results to awk, which will calculate the square of that number. This would be the admittedly contrived script:
@@ -3646,7 +3741,7 @@ GNU Sed 4.2.2 and later will also be unbuffered while reading files, not just wr
 
 ## The -z Null Data argument
 
-Normally, sed reads a line by reading a string of characters up to the end-of-line character (new line or carriage return). See [the -b Binary command line argument](Sed.html#uh-62j)
+Normally, sed reads a line by reading a string of characters up to the end-of-line character (new line or carriage return). See [the -b Binary command line argument](#the--b-binary-argument)
 The GNU version of sed added a feature in version 4.2.2 to use the "NULL" character instead.
 This can be useful if you have files that use the NULL as a record separator.
 Some GNU utilities can genertae output that uses a NULL instead a new line,
@@ -3676,11 +3771,11 @@ Apple uses the FreeBSD version of sed for Mac OS X instead of the GNU sed. Howev
 
 ## The -a or delayed open Argument 
 
-Normally, as soon as sed starts up, it opens all files that are refered to by the ["w"](Sed.html#uh-36) command. The FreeBSD version of sed has an option to delay this action until the "w" command is executed.
+Normally, as soon as sed starts up, it opens all files that are refered to by the ["w"](#writing-a-file-with-the-w-command) command. The FreeBSD version of sed has an option to delay this action until the "w" command is executed.
 
 ## The -I in-place argument
 
-FreeBSD added a "-I" option that is similar to the [-i](Sed.html#uh-62h) option.
+FreeBSD added a "-I" option that is similar to the [-i](#the--i-in-place-argument) option.
 The "-i" option treats the editing each file as a separate instance of
 sed. If the "-I" option is used, then line numbers do not get
 reset at the beginning of each line, and ranges of addresses continue
@@ -3689,12 +3784,12 @@ from one file to the next. That is, if you used the range
 in the first file, and "END" in the second file, and the commands
 executed within the range would span both files. If you used "-i", then the commands would not.
 
-And like the [-i](Sed.html#uh-62h) option, the extension used to store the backup file must be specified.
+And like the [-i](#the--i-in-place-argument) option, the extension used to store the backup file must be specified.
 
 ## -E or Extended Regular Expressions
 
-I mentioned extended regular expressions [earlier](Sed.html#uh-4a).
-FreeBSD (and Mac OS X) uses "-E" to enable this. However, FreeBSD later added the [-r](Sed.html#uh-62k) command to be compatible with GNU sed.
+I mentioned extended regular expressions [earlier](#extended-regular-expressions).
+FreeBSD (and Mac OS X) uses "-E" to enable this. However, FreeBSD later added the [-r](#extended-regular-expressions) command to be compatible with GNU sed.
 
 ## Using word boundries
 
@@ -3729,6 +3824,7 @@ However, this won't work if '/usr/local' is at the beginning, or at the end of t
 To handle these edge cases, you can simply describe all of these conditions as separate cases:
 
     
+```bash    
     #!/bin/sh
     sed '
     s@ /usr/local @ @g
@@ -3736,6 +3832,7 @@ To handle these edge cases, you can simply describe all of these conditions as s
     s@ /usr/local$@@
     s@^/usr/local$@@
     '
+```    
     
 
 This works fine if the string you are searching for is surrounded by a space.
@@ -3747,6 +3844,7 @@ And unlike the space before, if you are going to use character classes, you may 
 So we can replace the space with '&#91;&#94;&#91;:alnum:&#93;/&#93;' and then change the command to be
 
     
+```bash    
     #!/bin/sh
     sed '
     s@\([^[:alnum:]/]\)/usr/local\([^[:alnum:]/]\)@\1\2@g
@@ -3754,6 +3852,7 @@ So we can replace the space with '&#91;&#94;&#91;:alnum:&#93;/&#93;' and then ch
     s@\([^[:alnum:]/]\)/usr/local$@\1@
     s@^/usr/local$@@
     '
+```    
     
 
 The first version would replace ' /usr/local ' with a single space. This method would replace ':/usr/local:' with '::' - because the redundant deliniators are not deleted. Be sure to fix this if you need to.
@@ -3871,89 +3970,31 @@ A big thanks for Fazl Rahman for spotting dozens of errors.
  Thanks for input from
 
     
-    	Marten Jan
-    	Gordon Wilson
-    	Tom Konantz
-    	Peter Bratton
-    	Grant Root
-    	Keith Briggs
-    	Zoltan Miklos
-    	Peggy Russell
-    	Lorens Kockkum.net
-    	John Poulin
-    	Rihards
-    	Corey Richardson
-    	Eric Mathison
-    	Ildar Mulyukov 
-    	Tom Zhu
-    	Abhijeet Rastogi [@shadyabhi](https://twitter.com/shadyabhi)
-    	Steve LeBlanc   [@sleveo](https://twitter.com/sleveo)
-    	dontforget yourtowel [@whatissixbynine](https://twitter.com/whatissixbynine)
-    	Yiming
-    	Fei Wang
-    	Kenneth R. Beesley
-    	Duncan Sung W. Kim [@DuncanSungWKim](https://twitter.com/DuncanSungWKim)
-    	Juan Eugenio Abadie
-    	Zander Hill [@_ZPH](https://twitter.com/_ZPH)[Rob Smith](https://plus.google.com/u/0/109762614990506375066/posts)[Peter Moore](https://plus.google.com/u/0/109762614990506375066/posts)
+   Marten Jan
+   Gordon Wilson
+   Tom Konantz
+   Peter Bratton
+   Grant Root
+   Keith Briggs
+   Zoltan Miklos
+   Peggy Russell
+   Lorens Kockkum.net
+   John Poulin
+   Rihards
+   Corey Richardson
+   Eric Mathison
+   Ildar Mulyukov 
+   Tom Zhu
+   Abhijeet Rastogi [@shadyabhi](https://twitter.com/shadyabhi)
+   Steve LeBlanc   [@sleveo](https://twitter.com/sleveo)
+   dontforget yourtowel [@whatissixbynine](https://twitter.com/whatissixbynine)
+   Yiming
+   Fei Wang
+   Kenneth R. Beesley
+   Duncan Sung W. Kim [@DuncanSungWKim](https://twitter.com/DuncanSungWKim)
+   Juan Eugenio Abadie
+   Zander Hill [@_ZPH](https://twitter.com/_ZPH)[Rob Smith](https://plus.google.com/u/0/109762614990506375066/posts)[Peter Moore](https://plus.google.com/u/0/109762614990506375066/posts)
 
 This document was translated by troff2html v0.21 on September 22, 2001 and then manually edited to make it compliant with:[![Valid HTML 4.01!](http://www.w3.org/Icons/valid-html401)](http://validator.w3.org/check?uri=referer)
 
 ![grymoire](grymoire.jpg)
-#### Grymoire
- Navigation
-
-- [Unix/Linux](../Unix/index.html)
-- [Quotes](../Unix/Quote.html)
-- [Bourne Shell](../Unix/Sh.html)
-- [C Shell](../Unix/Csh.html)
-- [File Permissions](../Unix/Permissions.html)
-- [Regular Expressions](../Unix/Regular.html)
-- [grep](../Unix/Grep.html)
-- [awk ](../Unix/Awk.html)![UPDATED](../../images/updated.gif)
-- [sed ](../Unix/sed.html)![UPDATED](../../images/updated.gif)
-- [find](../Unix/Find.html)
-- [tar](../Unix/Tar.html)
-- [inodes](../Unix/Inodes.html)
-
-- [Security](../Security/index.html)
-- [IPv6 ](../Security/IPv6.html)
-- [Wireless](../Security/Wireless.html)
-- [Hardware](../Security/Hardware.html)
-
-- [spam](../Spam/index.html)
-
-- [Deception](../Deception/index.html)
-- [PostScript](../Postscript/index.html)
-- [Halftones](../Postscript/Halftones.html)
-
-- [Privacy](../Privacy/index.html)
-- [Bill of Rights](../Privacy/BillOfRights.html)
-
-- [References](../References.html)
-- [Top 10 reasons to avoid CSH](../Unix/CshTop10.txt)
-- [sed Chart ](../Unix/SedChart.pdf) PDF
-<!-- vim-markdown-toc GFM -->
-
-<!-- vim-markdown-toc -->
-- [awk Reference ](../Unix/AwkRef.html) HTML
-
-- [Magic                    ](../magic.html)
-- [Search](../Search.html)
-- [About](../About.html)
-- [Donate ](../Unix/donate.html)![NEW](../../images/new.gif)
-
-Google+: [Bruce Barnett](https://plus.google.com/u/1/+BruceBarnett?rel=author)
-
-Twitter: [@grymoire](https://twitter.com/#!/grymoire)
-
-Blog: [Wordpress Blog](http://grymoire.wordpress.com/)
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-  ga('create', 'UA-56335000-1', 'auto');
-  ga('require', 'linkid', 'linkid.js');
-  ga('send', 'pageview');
-
-(adsbygoogle = window.adsbygoogle || []).push({});
