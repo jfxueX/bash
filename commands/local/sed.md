@@ -1,59 +1,172 @@
 	Sed - An Introduction and Tutorial
+<!-- vim-markdown-toc GFM -->
+
+* [Sed - An Introduction and Tutorial by Bruce Barnett](#sed---an-introduction-and-tutorial-by-bruce-barnett)
+    * [Quick Links](#quick-links)
+        * [Table of Contents](#table-of-contents)
+    * [Introduction to Sed](#introduction-to-sed)
+    * [The Awful Truth about sed](#the-awful-truth-about-sed)
+    * [The essential command: s for substitution](#the-essential-command-s-for-substitution)
+    * [The slash as a delimiter](#the-slash-as-a-delimiter)
+    * [Using & as the matched string](#using--as-the-matched-string)
+    * [Extended Regular Expressions](#extended-regular-expressions)
+    * [Using \1 to keep part of the pattern](#using-1-to-keep-part-of-the-pattern)
+    * [Sed Pattern Flags](#sed-pattern-flags)
+    * [/g - Global replacement](#g---global-replacement)
+    * [Is sed recursive?](#is-sed-recursive)
+    * [/1, /2, etc. Specifying which occurrence](#1-2-etc-specifying-which-occurrence)
+    * [/p - print](#p---print)
+    * [Write to a file with /w filename](#write-to-a-file-with-w-filename)
+    * [/I - Ignore Case](#i---ignore-case)
+    * [Combining substitution flags](#combining-substitution-flags)
+    * [Arguments and invocation of sed](#arguments-and-invocation-of-sed)
+    * [Multiple commands with  -e command](#multiple-commands-with---e-command)
+    * [Filenames on the command line](#filenames-on-the-command-line)
+    * [sed -n: no printing](#sed--n-no-printing)
+    * [Using 'sed /pattern/'](#using-sed-pattern)
+    * [Using 'sed -n /pattern/p' to duplicate the function of grep](#using-sed--n-patternp-to-duplicate-the-function-of-grep)
+    * [sed -f scriptname](#sed--f-scriptname)
+    * [sed in shell scripts](#sed-in-shell-scripts)
+    * [Quoting multiple sed lines in the C shell](#quoting-multiple-sed-lines-in-the-c-shell)
+    * [Quoting multiple sed lines in the Bourne shell](#quoting-multiple-sed-lines-in-the-bourne-shell)
+    * [sed -V](#sed--v)
+    * [sed -h](#sed--h)
+    * [A sed interpreter script](#a-sed-interpreter-script)
+* [!/bin/sed -f](#binsed--f)
+    * [Comments](#comments)
+    * [Passing arguments into a sed script](#passing-arguments-into-a-sed-script)
+* [!/bin/sh](#binsh)
+    * [Using sed in a shell here-is document](#using-sed-in-a-shell-here-is-document)
+    * [Multiple commands and order of execution](#multiple-commands-and-order-of-execution)
+    * [Addresses and Ranges of Text](#addresses-and-ranges-of-text)
+    * [Restricting to a line number](#restricting-to-a-line-number)
+    * [Patterns](#patterns)
+    * [Ranges by line number](#ranges-by-line-number)
+    * [Ranges by patterns](#ranges-by-patterns)
+    * [Delete with d](#delete-with-d)
+* [!/bin/sh](#binsh-1)
+* [print last 10 lines of file](#print-last-10-lines-of-file)
+* [First argument is the filename](#first-argument-is-the-filename)
+    * [Printing with p](#printing-with-p)
+    * [Reversing the restriction with !](#reversing-the-restriction-with-)
+    * [Relationships between d, p, and !](#relationships-between-d-p-and-)
+    * [The q or quit command](#the-q-or-quit-command)
+    * [Grouping with { and }](#grouping-with--and-)
+    * [Operating in a pattern range except for the patterns](#operating-in-a-pattern-range-except-for-the-patterns)
+    * [Writing a file with the 'w' command](#writing-a-file-with-the-w-command)
+    * [Reading in a file with the 'r' command](#reading-in-a-file-with-the-r-command)
+    * [SunOS and the # Comment Command](#sunos-and-the--comment-command)
+    * [Adding, Changing, Inserting new lines](#adding-changing-inserting-new-lines)
+    * [Append a line with 'a'](#append-a-line-with-a)
+    * [Insert a line with 'i'](#insert-a-line-with-i)
+    * [Change a line with 'c'](#change-a-line-with-c)
+    * [Leading tabs and spaces in a sed script](#leading-tabs-and-spaces-in-a-sed-script)
+    * [Adding more than one line](#adding-more-than-one-line)
+    * [Adding lines and the pattern space](#adding-lines-and-the-pattern-space)
+    * [Address ranges and the above commands](#address-ranges-and-the-above-commands)
+    * [Multi-Line Patterns](#multi-line-patterns)
+    * [Print line number with =](#print-line-number-with-)
+    * [Transform with y](#transform-with-y)
+    * [Displaying control characters with a l](#displaying-control-characters-with-a-l)
+    * [Working with Multiple Lines](#working-with-multiple-lines)
+    * [Matching three lines with sed](#matching-three-lines-with-sed)
+    * [Matching patterns that span multiple lines](#matching-patterns-that-span-multiple-lines)
+* [!/bin/sh](#binsh-2)
+* [!/bin/csh -f](#bincsh--f)
+    * [Using newlines in sed scripts](#using-newlines-in-sed-scripts)
+    * [The Hold Buffer](#the-hold-buffer)
+    * [Exchange with x](#exchange-with-x)
+    * [Example of Context Grep](#example-of-context-grep)
+    * [Hold with h or H](#hold-with-h-or-h)
+    * [Keeping more than one line in the hold buffer](#keeping-more-than-one-line-in-the-hold-buffer)
+    * [Get with g or G](#get-with-g-or-g)
+    * [Flow Control](#flow-control)
+    * [Testing with t](#testing-with-t)
+    * [Debugging with l](#debugging-with-l)
+    * [An alternate way of adding comments](#an-alternate-way-of-adding-comments)
+    * [The poorly documented ;](#the-poorly-documented-)
+* [!/bin/sh](#binsh-3)
+    * [Passing regular expressions as arguments](#passing-regular-expressions-as-arguments)
+    * [Inserting binary characters](#inserting-binary-characters)
+    * [GNU sed Command Line arguments](#gnu-sed-command-line-arguments)
+    * [The -posix argument](#the--posix-argument)
+    * [The --version argument](#the---version-argument)
+    * [The -h Help argument](#the--h-help-argument)
+    * [The -l Line Length Argument](#the--l-line-length-argument)
+    * [The -s Separate argument](#the--s-separate-argument)
+    * [The -i in-place argument](#the--i-in-place-argument)
+    * [The --follow-symlinks argument](#the---follow-symlinks-argument)
+    * [The -b Binary argument](#the--b-binary-argument)
+    * [The -r Extended Regular Expression argument](#the--r-extended-regular-expression-argument)
+    * [The -u Unbuffered argument](#the--u-unbuffered-argument)
+    * [The -z Null Data argument](#the--z-null-data-argument)
+    * [FreeBSD Extensions](#freebsd-extensions)
+    * [The -a or delayed open Argument](#the--a-or-delayed-open-argument)
+    * [The -I in-place argument](#the--i-in-place-argument-1)
+    * [-E or Extended Regular Expressions](#-e-or-extended-regular-expressions)
+    * [Using word boundries](#using-word-boundries)
+    * [Command Summary](#command-summary)
+    * [In Conclusion](#in-conclusion)
+    * [More References](#more-references)
+        * [Thanks for the feedback, gang](#thanks-for-the-feedback-gang)
+            * [Grymoire](#grymoire)
+
+<!-- vim-markdown-toc -->
 
 # [Sed - An Introduction and Tutorial by Bruce Barnett](http://www.grymoire.com/Unix/Sed.html)
 
 Last modified: Thu Apr 23 16:37:48 EDT 2015 
 
-## [Quick Links](Sed.html#TOC)
+## Quick Links
 
 **Sed Commands**
 
 | 1 | 2 | 3
 | - | - | -
-| [: label ](Sed.html#uh-58) | [# comment ](Sed.html#uh-21) | [{....} Block ](Sed.html#uh-35) 
-| [=](Sed.html#uh-48), print line number | [a\\](Sed.html#uh-40), Append | [b label ](Sed.html#uh-58) - Branch
-| [c\ - change](Sed.html#uh-42) | [d ](Sed.html#uh-30) and [D ](Sed.html#uh-51) - Delete | [g ](Sed.html#uh-57) and [G ](Sed.html#uh-57) - Get
-| [h ](Sed.html#uh-55) and [H ](Sed.html#uh-55) - Hold | [i\ ](Sed.html#uh-41)- Insert | [l ](Sed.html#uh-59a)- Look
-| [n ](Sed.html#uh-51) and [N ](Sed.html#uh-51)- Next | [p ](Sed.html#uh-31) and [P ](Sed.html#uh-31)- Print | [q ](Sed.html#uh-34)- Quit
-| [r filename ](Sed.html#uh-37)- Read File | [s/..../..../ ](Sed.html#uh-1)- Substitute | [t label ](Sed.html#uh-59)- Test
-| [w filename ](Sed.html#uh-36)- Write Filename | [x ](Sed.html#uh-53)- eXchange | [y/..../..../ ](Sed.html#uh-49)- Transform
+| [: label ](#flow-control) | [# comment ](Sed.html#uh-21) | [{....} Block ](#grouping-with--and-) 
+| [=](#print-line-number-with-), print line number | [a\\](#append-a-line-with-a), Append | [b label ](#flow-control) - Branch
+| [c\ - change](#change-a-line-with-c) | [d ](#delete-with-d) and [D ](#working-with-multiple-lines) - Delete | [g ](#get-with-g-or-g) and [G ](#get-with-g-or-g) - Get
+| [h ](#hold-with-h-or-h) and [H ](#hold-with-h-or-h) - Hold | [i\ ](#insert-a-line-with-i)- Insert | [l ](#debugging-with-l)- Look
+| [n ](#working-with-multiple-lines) and [N ](#working-with-multiple-lines)- Next | [p ](#printing-with-p) and [P ](#printing-with-p)- Print | [q ](#the-q-or-quit-command)- Quit
+| [r filename ](#reading-in-a-file-with-the-r-command)- Read File | [s/..../..../ ](#the-essential-command-s-for-substitution)- Substitute | [t label ](#testing-with-t)- Test
+| [w filename ](#writing-a-file-with-the-w-command)- Write Filename | [x ](#exchange-with-x)- eXchange | [y/..../..../ ](#transform-with-y)- Transform
 
 | Sed Pattern Flags |
 | -
-| [/g ](Sed.html#uh-6)- Global
-| [/I ](Sed.html#uh-10a)- Ignore Case
-| [/p ](Sed.html#uh-9)- Print
-| [/w filename ](Sed.html#uh-10)- Write Filename
+| [/g ](#g---global-replacement)- Global
+| [/I ](#i---ignore-case)- Ignore Case
+| [/p ](#p---print)- Print
+| [/w filename ](#write-to-a-file-with-w-filename)- Write Filename
 
 
 **Sed Command Line options**
 | Short Option (Long option) | Sed version
 | - | -
-| [ -n ](Sed.html#uh-15) | Classic
-| [ -e script](Sed.html#uh-13) | Classic
-[ -f scriptfile ](Sed.html#uh-16) | Classic
-| [ -e script (--expression=script) ](Sed.html#uh-13) | GNU sed
-| [ -f scriptfile (--file=scriptfile) ](Sed.html#uh-16) | GNU sed
-| [ -h (--help) ](Sed.html#uh-19b) | GNU sed
-| [ -n  (--quiet  --silent) ](Sed.html#uh-15) | GNU sed
-| [ -V (--version) ](Sed.html#uh-19a) | GNU sed
-| [ -r (--regexp-extended)](Sed.html#uh-4a) | GNU sed 
-| [ -i[SUFFIX] (--in-place[=SUFFIX])](Sed.html#uh-62h) | GNU sed
-| [ -l N (--line-length=N)](Sed.html#uh-62f) | GNU sed
-| [ -b (--binary)](Sed.html#uh-62j) | GNU sed
-| [ -s (--separate)](Sed.html#uh-62g) | GNU sed
-| [ -z (--null-data)](Sed.html#uh-62m) | GNU sed
-| [ -u (--unbuffered)](Sed.html#uh-62l) | GNU sed
-| [  (--follow-symlinks)](Sed.html#uh-62i) | GNU sed
-| [  (--posix)](Sed.html#uh-62c) | GNU sed
-| [ -i SUFFIX](Sed.html#uh-62h) | Mac OS X, FreeBSD
+| [ -n ](#sed--n-no-printing) | Classic
+| [ -e script](#multiple-commands-with---e-command) | Classic
+| [ -f scriptfile ](#sed--f-scriptname) | Classic
+| [ -e script (--expression=script) ](#multiple-commands-with---e-command) | GNU sed
+| [ -f scriptfile (--file=scriptfile) ](#sed--f-scriptname) | GNU sed
+| [ -h (--help) ](#sed--h) | GNU sed
+| [ -n  (--quiet  --silent) ](#sed--n-no-printing) | GNU sed
+| [ -V (--version) ](#sed--v) | GNU sed
+| [ -r (--regexp-extended)](#extended-regular-expressions) | GNU sed 
+| [ -i[SUFFIX] (--in-place[=SUFFIX])](#the--i-in-place-argument) | GNU sed
+| [ -l N (--line-length=N)](#the--l-line-length-argument) | GNU sed
+| [ -b (--binary)](#the--b-binary-argument) | GNU sed
+| [ -s (--separate)](#the--s-separate-argument) | GNU sed
+| [ -z (--null-data)](#the--z-null-data-argument) | GNU sed
+| [ -u (--unbuffered)](#the--u-unbuffered-argument) | GNU sed
+| [  (--follow-symlinks)](#the---follow-symlinks-argument) | GNU sed
+| [  (--posix)](#the--posix-argument) | GNU sed
+| [ -i SUFFIX](#the--i-in-place-argument) | Mac OS X, FreeBSD
 | [ -a](Sed.html#uh-62f1) | Mac OS X, FreeBSD
-| [ -l](Sed.html#uh-62l) | Max OS X, FreeBSD
+| [ -l](#the--u-unbuffered-argument) | Max OS X, FreeBSD
 | [ -E](Sed.html#uh-62f3) | Mac OS X, FreeBSD
 | [ -r](Sed.html#uh-62f3) | FreeBSD
 | [ -I SUFFIX](Sed.html#uh-62f2) | FreeBSD
 
-### [Table of Contents](Sed.html#TOC)
+### Table of Contents
 
 Note - You can click on the table of contents sections to jump to that section. 
 
@@ -175,7 +288,7 @@ copies, or redistribute this tutorial in any form without permission.
 
  Original version written in 1994 and published in the Sun Observer
 
-## [Introduction to Sed](Sed.html#TOC)
+## Introduction to Sed
 
 How to use sed, a special editor for modifying files automatically.
 If you want to write a program to make changes in a file, sed is the
@@ -196,7 +309,7 @@ Newer versions of sed may support comments at the end of the line as well.
 
 One way to think of this is that the old, "classic" version was the basis of GNU, FreeBSD and Solaris verisons of sed. And to help you understand what I had to work with, here is the [sed(1) manual page from Sun/Oracle](http://docs.oracle.com/cd/E26502_01/html/E29030/sed-1b.html#scrolltoc).
 
-## [The Awful Truth about sed](sed.md#uh-0)
+## The Awful Truth about sed
 
 Sed is the ultimate stream editor. 
 If that sounds strange, picture a stream flowing through a pipe.
@@ -221,7 +334,7 @@ sed completely.
 But I will describe the features in the order that I learned them.
 I didn't learn everything at once. You don't need to either.
 
-## [The essential command: s for substitution](Sed.html#toc-uh-1)
+## The essential command: s for substitution
 
 Sed has several commands, but most people only learn the substitute command:
 s. The substitute command changes all occurrences of the regular
@@ -314,7 +427,7 @@ frequent uses of sed. There are a ... few fine points that any future sed expert
 (You just finished section 1. There are only 63 more sections to cover. :-)
 Oh. And you may want to bookmark this page, .... just in case you don't finish.
 
-## [The slash as a delimiter](Sed.html#toc-uh-2)
+## The slash as a delimiter
 
 The character after the 
 s is the delimiter. It is conventionally  a slash, because 
@@ -351,7 +464,7 @@ Others use the "|" character.
 
 Pick one you like. As long as it's not in the string you are looking for, anything goes. And remember that you need three delimiters. If you get a "Unterminated `s' command" it's because you are missing one of them.
 
-## [Using & as the matched string](Sed.html#toc-uh-3)
+## Using & as the matched string
 
 Sometimes you want to search for a pattern and add some characters,
 like parenthesis,
@@ -404,7 +517,7 @@ you must expand the regular expression to match the rest of the line
 and explicitly exclude part of the expression using "(", ")" and "\1",
 which is the next topic.
 
-## [Extended Regular Expressions](Sed.html#toc-uh-4a)
+## Extended Regular Expressions
 
 Let me add a quick comment here because there is another way to write the above script.
 "[0-9]*" matches zero or more numbers.
@@ -425,7 +538,7 @@ Mac OS X and FreeBSD uses [-E](Sed.html#uh-62h2) instead of [-r](Sed.html#uh-62k
 
 For more information on extended regular expressions, see [Regular Expressions](../Unix/Regular.html) and the [description of the -r command line argument](Sed.html#uh-62k)
 
-## [Using \1 to keep part of the pattern](Sed.html#toc-uh-4)
+## Using \1 to keep part of the pattern
 
 I have already described the use of
 "(" 
@@ -517,14 +630,14 @@ If you wanted to reverse the first three characters on a line, you can use
     sed 's/^\(.\)\(.\)\(.\)/\3\2\1/'
     
 
-## [Sed Pattern Flags](Sed.html#toc-uh-5)
+## Sed Pattern Flags
 
 You can add additional flags after the last delimiter.
 You might have noticed I used a 'p' at the end of the previous substitute command. I also added the '-n' option. Let me first cover the 'p' and other pattern flags.
 These flags can specify what happens when a match is found.
 Let me describe them.
 
-## [/g - Global replacement](Sed.html#toc-uh-6)
+## /g - Global replacement
 
 Most UNIX utilities work on files, reading a line at a time.
 Sed, by default, is the same way.
@@ -562,7 +675,7 @@ If you want it to make changes for every word, add a
     sed 's/[^ ][^ ]*/(&)/g' <old >new
     
 
-## [Is sed recursive?](Sed.html#toc-uh-7)
+## Is sed recursive?
 
 Sed only operates on patterns found in the in-coming data.
 That is, the input line is read, and when a pattern is matched, the
@@ -581,7 +694,7 @@ If a second
 "s" command is executed, it could modify the results of a previous
 command. I will show you how to execute multiple commands later.
 
-## [/1, /2, etc. Specifying which occurrence](Sed.html#toc-uh-8)
+## /1, /2, etc. Specifying which occurrence
 
 With no flags, the first matched substitution is changed.
 With the
@@ -666,7 +779,7 @@ You can also do it the hard way by using 80 dots:
     sed 's/^................................................................................/&:/' <file >new
     
 
-## [/p - print](Sed.html#toc-uh-9)
+## /p - print
 
 By default, 
 sed prints every line.
@@ -688,7 +801,7 @@ sed:
 
 But a simpler version is described [later](Sed.html#uh-15b)
 
-## [Write to a file with /w filename](Sed.html#toc-uh-10)
+## Write to a file with /w filename
 
 There is one more flag that can follow the third delimiter.
 With it, you can specify a file that will receive the modified data.
@@ -712,7 +825,7 @@ ten pieces depending on the last digit of the first number.
 You could also use this method to log error or debugging information
 to a special file.
 
-## [/I - Ignore Case](Sed.html#toc-uh-10a)
+## /I - Ignore Case
 
 GNU has added another pattern flags - /I
 
@@ -724,7 +837,7 @@ GNU has added another pattern flags - /I
 
 Note that a space after the '/I' and the  'p' (print) command emphasizes that the 'p' is not a modifier of the pattern matching process, , but a command to execute after the pattern matching.
 
-## [Combining substitution flags](Sed.html#toc-uh-11)
+## Combining substitution flags
 
 You can combine flags when it makes sense. 
 Please note that the 
@@ -740,7 +853,7 @@ sed, and different ways to
 invoke
 sed. 
 
-## [Arguments and invocation of sed](Sed.html#toc-uh-12)
+## Arguments and invocation of sed
 
 previously, I have only used one substitute command.
 If you need to make two changes, and you didn't want to read the
@@ -756,7 +869,7 @@ This used two processes instead of one. A
 sed guru 
 never uses two processes when one can do.
 
-## [Multiple commands with  -e command](Sed.html#toc-uh-13)
+## Multiple commands with  -e command
 
 One method of combining multiple commands is to use a
 -e before each command:
@@ -780,7 +893,7 @@ The long argument version is
 
 Also see [Quoting multiple sed lines in the Bourne shell](Sed.html#uh-19)
 
-## [Filenames on the command line](Sed.html#toc-uh-14)
+## Filenames on the command line
 
 You can specify files on the command line if you wish.
 If there is more than one argument to
@@ -811,7 +924,7 @@ Of course you could write the last example using the
 There are two other options to 
 sed.
 
-## [sed -n: no printing](Sed.html#toc-uh-15)
+## sed -n: no printing
 
 The
 "-n" option will not print anything unless an explicit request to print 
@@ -847,7 +960,7 @@ or
     sed --silent 's/PATTERN/&/p' file
     
 
-## [Using 'sed /pattern/'](Sed.html#toc-uh-15a)
+## Using 'sed /pattern/'
 
 Sed has the ability to specify which lines are to be examined and/or modified, by specifying 
 [addresses](http:Sed.html#uh-15b) before the command.
@@ -878,7 +991,7 @@ Also, you don't need to, but I recommend that you place a space after the patter
     sed '/PATTERN/ p' file
     
 
-## [Using 'sed -n /pattern/p' to duplicate the function of grep](Sed.html#toc-uh-15b)
+## Using 'sed -n /pattern/p' to duplicate the function of grep
 
 If you want to duplicate the functionality of grep, combine the -n (noprint) option with the /p print flag:
 
@@ -886,7 +999,7 @@ If you want to duplicate the functionality of grep, combine the -n (noprint) opt
     sed -n '/PATTERN/p' file
     
 
-## [sed -f scriptname](Sed.html#toc-uh-16)
+## sed -f scriptname
 
 If you have a large number of 
 sed commands, you can put them into a file and use
@@ -919,7 +1032,7 @@ The long argument version is
 
 Also see [here on writing a script that executes sed directly](Sed.html#uh-20)
 
-## [sed in shell scripts](Sed.html#toc-uh-17)
+## sed in shell scripts
 
 If you have many commands and they won't fit neatly on one line, you
 can break up the line using a backslash:
@@ -932,7 +1045,7 @@ can break up the line using a backslash:
         -e 's/u/U/g'  <old >new
     
 
-## [Quoting multiple sed lines in the C shell](Sed.html#toc-uh-18)
+## Quoting multiple sed lines in the C shell
 
 You can have a large, multi-line 
 sed script in the C shell, but you must tell the C shell that the quote is
@@ -948,7 +1061,7 @@ This is done by placing a backslash at the end of each line:
     s/u/U/g'  <old >new
     
 
-## [Quoting multiple sed lines in the Bourne shell](Sed.html#toc-uh-19)
+## Quoting multiple sed lines in the Bourne shell
 
 The Bourne shell makes this easier as a quote can cover several lines:
 
@@ -962,7 +1075,7 @@ The Bourne shell makes this easier as a quote can cover several lines:
     s/u/U/g'  <old >new
     
 
-## [sed -V](Sed.html#toc-uh-19a)
+## sed -V
 
 The -V option will print the version of sed you are using. The long argument of the command is
 
@@ -970,7 +1083,7 @@ The -V option will print the version of sed you are using. The long argument of 
     sed --version
     
 
-## [sed -h](Sed.html#toc-uh-19b)
+## sed -h
 
 The -h option will print a summary of the sed commands. The long argument of the command is
 
@@ -978,7 +1091,7 @@ The -h option will print a summary of the sed commands. The long argument of the
     sed --help
     
 
-## [A sed interpreter script](Sed.html#toc-uh-20)
+## A sed interpreter script
 
 Another way of executing 
 sed is to use an interpreter script.
@@ -1005,7 +1118,7 @@ If this script was stored in a file with the name
     CapVowel <old >new
     
 
-## [Comments](Sed.html#toc-uh-21)
+## Comments
 
 Sed comments are lines where the first non-white character is a
 "#." On many systems, 
@@ -1034,7 +1147,7 @@ However,
 
 does work.
 
-## [Passing arguments into a sed script](Sed.html#toc-uh-22)
+## Passing arguments into a sed script
 
 Passing a word into a shell script that calls 
 sed is easy if you remembered [my tutorial on the UNIX quoting mechanism.](http://www.grymoire.com/Unix/Quote.html)
@@ -1066,7 +1179,7 @@ sedgrep, you could type
 
 This would allow sed to act as the grep command.
 
-## [Using sed in a shell here-is document](Sed.html#toc-uh-23)
+## Using sed in a shell here-is document
 
 You can use 
 sed to prompt the user for some parameters and then create a file with
@@ -1134,7 +1247,7 @@ I covered this in my [tutorial on quotation marks](http://www.grymoire.com/unix/
 
 Click here to get file: [sed_hereis.sed](Scripts/sed_hereis.sed)
 
-## [Multiple commands and order of execution](Sed.html#toc-uh-24)
+## Multiple commands and order of execution
 
 As we explore more of the commands of
 sed, the commands will become complex, and the actual sequence can be
@@ -1150,7 +1263,7 @@ is to create a small example. If a complex command doesn't work, make
 it simpler. If you are having problems getting a complex script
 working, break it up into two smaller scripts and pipe the two scripts together.
 
-## [Addresses and Ranges of Text](Sed.html#toc-uh-25)
+## Addresses and Ranges of Text
 
 You have only learned one command, and you can see how
 powerful
@@ -1181,7 +1294,7 @@ like the above examples. The restriction or address immediately
 precedes the command:
 restrictioncommand
 
-## [Restricting to a line number](Sed.html#toc-uh-26)
+## Restricting to a line number
 
 The simplest restriction is a line number. If you wanted to delete the
 first number on line 3, just add a
@@ -1191,7 +1304,7 @@ first number on line 3, just add a
     sed '3 s/[0-9][0-9]*//' <file >new
     
 
-## [Patterns](Sed.html#toc-uh-27)
+## Patterns
 
 Many UNIX utilities like
 vi and
@@ -1266,7 +1379,7 @@ Comments are a Good Thing.
 You may have understood the script perfectly when you wrote it. 
 But six months from now it could look like modem noise. And if you don't understand that reference, imagine an 8-month-old child typing on a computer.
 
-## [Ranges by line number](Sed.html#toc-uh-28)
+## Ranges by line number
 
 You can specify a range on line numbers by inserting a comma between
 the numbers. To restrict a substitution to the first 100 lines, you
@@ -1311,7 +1424,7 @@ is the same as
     cat f1 f2 f3 | sed '200,300 s/A/a/' >new
     
 
-## [Ranges by patterns](Sed.html#toc-uh-29)
+## Ranges by patterns
 
 You can specify two regular expressions as the range.
 Assuming a
@@ -1375,7 +1488,7 @@ some commands cannot operate on a range of lines. I will let you know
 when I mention the commands. In this next section I will describe three commands, one 
 of which cannot operate on a range.
 
-## [Delete with d](Sed.html#toc-uh-30)
+## Delete with d
 
 Using ranges can be confusing, so you should expect to do some
 experimentation
@@ -1478,7 +1591,7 @@ operating on the pattern space.
 
 and read in the next line from the input file.
 
-## [Printing with p](Sed.html#toc-uh-31)
+## Printing with p
 
 Another useful command is the print command: 
 "p." If
@@ -1521,7 +1634,7 @@ which is the same as:
     grep match
     
 
-## [Reversing the restriction with !](Sed.html#toc-uh-32)
+## Reversing the restriction with !
 
 Sometimes you need to perform an action on every line except 
 those that match a regular expression, or those outside of a range of
@@ -1544,7 +1657,7 @@ Sed can do this with
     sed -n '/match/ !p' </tmp/b
     
 
-## [Relationships between d, p, and !](Sed.html#toc-uh-33)
+## Relationships between d, p, and !
 
 As you may have noticed, there are often several ways to 
 solve the same problem with 
@@ -1574,7 +1687,7 @@ This table shows that the following commands are identical:
 It also shows that the
 "!" command "inverts" the address range, operating on the other lines.
 
-## [The q or quit command](Sed.html#toc-uh-34)
+## The q or quit command
 
 There is one more simple command that can restrict the changes to a
 set of lines. It is the
@@ -1611,7 +1724,7 @@ or
 
 is correct.
 
-## [Grouping with { and }](Sed.html#toc-uh-35)
+## Grouping with { and }
 
 The curly braces, 
 "{" and
@@ -1684,7 +1797,7 @@ except those between the two reserved words:
 
 Click here to get file: [sed_begin_end2.sh](Scripts/sed_begin_end2.sh)
 
-## [Operating in a pattern range except for the patterns](Sed.html#toc-uh-35a)
+## Operating in a pattern range except for the patterns
 
 You may remember that I mentioned you can do a substitute on a pattern range, like changing "old" to "new" between a begin/end pattern:
 
@@ -1730,7 +1843,7 @@ However, skipping over the line that has "end" is trickier. If you use the same 
     '
     
 
-## [Writing a file with the 'w' command](Sed.html#toc-uh-36)
+## Writing a file with the 'w' command
 
 You may remember that the substitute command can write to a file. Here again is the example that will only write lines that start with an even number (and followed by a space):
 
@@ -1755,7 +1868,7 @@ The
 "w" flag: only 10 files can be opened in 
 sed. 
 
-## [Reading in a file with the 'r' command](Sed.html#toc-uh-37)
+## Reading in a file with the 'r' command
 
 There is also a command for reading files.
 The command
@@ -1860,7 +1973,7 @@ to include the specified files.
 
 Click here to get file: [sed_include1.sh](Scripts/sed_include1.sh)
 
-## [SunOS and the # Comment Command](Sed.html#toc-uh-38)
+## SunOS and the # Comment Command
 
 As we dig deeper into
 sed, comments will make the commands easier to follow.
@@ -1886,7 +1999,7 @@ The last example could be:
 
 Click here to get file: [sed_include2.sh](Scripts/sed_include2.sh)
 
-## [Adding, Changing, Inserting new lines](Sed.html#toc-uh-39)
+## Adding, Changing, Inserting new lines
 
 Sed has three commands used to add new lines to the output stream.
 Because an entire line is added, the new line
@@ -1900,7 +2013,7 @@ previous line with a
 "r" and
 "w" commands. 
 
-## [Append a line with 'a'](Sed.html#toc-uh-40)
+## Append a line with 'a'
 
 The
 "a" command appends a line after the range or pattern.
@@ -1931,7 +2044,7 @@ and because the intent is clearer.
 There must not be a space after the
 "\". 
 
-## [Insert a line with 'i'](Sed.html#toc-uh-41)
+## Insert a line with 'i'
 
 You can insert a new line before the pattern with the
 "i" command:
@@ -1945,7 +2058,7 @@ You can insert a new line before the pattern with the
 
 Click here to get file: [sed_add_line_before_word.sh](Scripts/sed_add_line_before_word.sh)
 
-## [Change a line with 'c'](Sed.html#toc-uh-42)
+## Change a line with 'c'
 
 You can change the current line with a new line.
 
@@ -1979,7 +2092,7 @@ You can combine all three actions using curly braces:
 
 Click here to get file: [sed_insert_append_change.sh](Scripts/sed_insert_append_change.sh)
 
-## [Leading tabs and spaces in a sed script](Sed.html#toc-uh-43)
+## Leading tabs and spaces in a sed script
 
 Sed ignores leading tabs and spaces in all commands.
 However these white space characters may or may not be ignored 
@@ -2007,7 +2120,7 @@ sed you are using, put a
     '
     
 
-## [Adding more than one line](Sed.html#toc-uh-44)
+## Adding more than one line
 
 All three commands will allow you to add more than one line.
 Just end each line with a
@@ -2023,7 +2136,7 @@ Just end each line with a
     '
     
 
-## [Adding lines and the pattern space](Sed.html#toc-uh-45)
+## Adding lines and the pattern space
 
 I have mentioned the pattern space before. 
 Most commands operate on the pattern space, and subsequent commands
@@ -2031,7 +2144,7 @@ may act on the results of the last modification.
 The three previous commands, like the read file command,
 add the new lines to the output stream, bypassing the pattern space.
 
-## [Address ranges and the above commands](Sed.html#toc-uh-46)
+## Address ranges and the above commands
 
 You may remember that earlier I warned you that some 
 commands can take a range of lines, and others cannot.
@@ -2068,7 +2181,7 @@ you perform the operation on every line:
     }'
     
 
-## [Multi-Line Patterns](Sed.html#toc-uh-47)
+## Multi-Line Patterns
 
 Most UNIX utilities are line oriented. Regular expressions are line
 oriented.
@@ -2185,7 +2298,7 @@ the
 That review is a little easier to follow, isn't it?
 Before I jump into multi-line patterns, I wanted to cover three more commands:
 
-## [Print line number with =](Sed.html#toc-uh-48)
+## Print line number with =
 
 The
 "=" command prints the current line number to standard output.
@@ -2240,7 +2353,7 @@ Since the
 number on the same line as the pattern. You need to edit multi-line
 patterns to do this.
 
-## [Transform with y](Sed.html#toc-uh-49)
+## Transform with y
 
 If you wanted to change a word from lower case to upper case, you
 could write 26 character substitutions, converting
@@ -2279,7 +2392,7 @@ are out of luck - unless you use multi-line editing.
 
 However, GNU sed has a uppercase and lowercase extension.
 
-## [Displaying control characters with a l](Sed.html#toc-uh-50)
+## Displaying control characters with a l
 
 The
 "l" command prints the current pattern space.
@@ -2291,7 +2404,7 @@ I found it useful to print out the current pattern space, while
 probing the subtleties of
 sed. 
 
-## [Working with Multiple Lines](Sed.html#toc-uh-51)
+## Working with Multiple Lines
 
 There are three new commands used in multiple-line patterns:
 "N," 
@@ -2402,7 +2515,7 @@ The next example would delete everything between
     }' file
     
 
-## [Matching three lines with sed](Sed.html#toc-uh-51a)
+## Matching three lines with sed
 
 You can match multiple lines in searches.
 
@@ -2441,7 +2554,7 @@ if found, replace them with the string "1+2+3":
     '
     
 
-## [Matching patterns that span multiple lines](Sed.html#toc-uh-51b)
+## Matching patterns that span multiple lines
 
 You can either search for a particular pattern on two consecutive
 lines,
@@ -2654,7 +2767,7 @@ I think I'm getting carried away. I'll summarize
 with a chart that covers the features we've talked about:
 Pattern SpaceNext InputCommandOutputNew Pattern SpaceNew Text InputABCDn<default>CDEFABCDN-AB\nCDEFABCDd--EFABCDD--EFABCDpABABCDABCDPABABCDAB\nCDEFn<default>EFGHAB\nCDEFN-AB\nCD\nEFGHAB\nCDEFd-EFGHAB\nCDEFD-CDEFAB\nCDEFpAB\nCDAB\nCDEFAB\nCDEFPABAB\nCDEF
 
-## [Using newlines in sed scripts](Sed.html#toc-uh-nl)
+## Using newlines in sed scripts
 
 Occasionally one wishes to use a new line character in a sed script.
 Well, this has some subtle issues here.
@@ -2692,7 +2805,7 @@ generates
     y
     
 
-## [The Hold Buffer](Sed.html#toc-uh-52)
+## The Hold Buffer
 
 So far we have talked about three concepts of 
 sed: (1) The input stream or data before it is modified,
@@ -2708,7 +2821,7 @@ hold space. Think of it as a spare pattern buffer. It can be used to
 "remember" the data in the pattern space for later.
 There are five commands that use the hold buffer.
 
-## [Exchange with x](Sed.html#toc-uh-53)
+## Exchange with x
 
 The 
 "x" command eXchanges the pattern space with the hold buffer.
@@ -2738,7 +2851,7 @@ terminates, and never gets printed.
 This illustrates that care must be taken when storing data in the hold
 buffer, because it won't be output unless you explicitly request it. 
 
-## [Example of Context Grep](Sed.html#toc-uh-54)
+## Example of Context Grep
 
 One use of the hold buffer is to remember previous lines.
 An example of this is a utility that acts like 
@@ -2808,7 +2921,7 @@ You could use this to show the three lines around a keyword, i.e.:
     grep3 vt100 </etc/termcap
     
 
-## [Hold with h or H](Sed.html#toc-uh-55)
+## Hold with h or H
 
 The
 "x" command exchanges the hold buffer and the pattern buffer. Both are
@@ -2856,7 +2969,7 @@ An identical script to the above uses the hold commands:
 
 Click here to get file: [grep3a.sh](Scripts/grep3a.sh)
 
-## [Keeping more than one line in the hold buffer](Sed.html#toc-uh-56)
+## Keeping more than one line in the hold buffer
 
 The
 "H" command allows you to combine several lines in the hold buffer.
@@ -2968,7 +3081,7 @@ As you can see, you must remember what is in the hold space, and what
 is in the pattern space. There are other ways to write the same
 routine.
 
-## [Get with g or G](Sed.html#toc-uh-57)
+## Get with g or G
 
 Instead of exchanging the hold space with the pattern space, you can
 copy the hold space to the pattern space with the
@@ -3107,7 +3220,7 @@ print in these narrow columns. You can easily modify
 the script to convert all letters to uppercase, or to
 change the first letter, second word, etc.
 
-## [Flow Control](Sed.html#toc-uh-58)
+## Flow Control
 
 As you learn about 
 sed you realize that it has its own programming language.
@@ -3152,7 +3265,7 @@ the script prints out the entire paragraph.
 
 Click here to get file: [grep_paragraph.sh](Scripts/grep_paragraph.sh)
 
-## [Testing with t](Sed.html#toc-uh-59)
+## Testing with t
 
 You can execute a branch if a pattern is found.
 You may want to execute a branch only if a substitution is made.
@@ -3197,13 +3310,13 @@ An earlier version had a 'g' after the 's' expression. This is not needed.
 
 Click here to get file: [delete_nested_parens.sh](Scripts/delete_nested_parens.sh)
 
-## [Debugging with l](Sed.html#toc-uh-59a)
+## Debugging with l
 
  The 'l' command will print the pattern space in an unambiguous form. Non-printing characters are printed in a C-style escaped format. 
 
 This can be useful when debugging a complex multi-line sed script.
 
-## [An alternate way of adding comments](Sed.html#toc-uh-60)
+## An alternate way of adding comments
 
 There is one way to add comments in a 
 sed script if you don't have a version that supports it.
@@ -3222,7 +3335,7 @@ Use the
 
 Click here to get file: [sed_add_comments.sh](Scripts/sed_add_comments.sh)
 
-## [The poorly documented ;](Sed.html#toc-uh-61)
+## The poorly documented ;
 
 There is one more 
 sed command that 
@@ -3264,7 +3377,7 @@ strip out comments. That would be insulting your intelligence.
 Also - some operating systems do NOT let you use semicolons.
 So if you see a script with semicolons, and it does not work on a non-Linux system, replace the semicolon with a new line character. (As long as you are not using csh/tcsh, but that's another topic.
 
-## [Passing regular expressions as arguments](Sed.html#toc-uh-62)
+## Passing regular expressions as arguments
 
 In the earlier scripts, I mentioned that 
 you would have problems if you passed an argument to the script that
@@ -3298,7 +3411,7 @@ If you were searching for the pattern
 "\^\.\.\/" before passing it to 
 sed. 
 
-## [Inserting binary characters](Sed.html#toc-uh-62a)
+## Inserting binary characters
 
 Dealing with binary characters can be trick, expecially when writing scripts for people to read.
 I can insert a binary character using an editor like EMACS but if I show the binary character, the terminal 
@@ -3318,7 +3431,7 @@ Here's a script that will replace the string "ding" with the ASCII bell characte
 
  Please note that I used double quotes. Since special characters are interpreted, you have to be careful when you use this mechanism.
 
-## [GNU sed Command Line arguments](Sed.html#toc-uh-62b)
+## GNU sed Command Line arguments
 
  One of the conventions
 UNIX systems have is to use single letters are command line
@@ -3400,7 +3513,7 @@ Long Form
 
 Let's define each of these.
 
-## [The -posix argument](Sed.html#toc-uh-62c)
+## The -posix argument
 
 The GNU version of sed has many features that are not available in other versions. When portability is important, test your script with the -posix option. If you had an example that used a feature of GNU sed, such as the 'v' command to test the version number, such as
 
@@ -3423,7 +3536,7 @@ then the GNU version of sed program would give you a warning that your sed scrip
     sed: -e expression #1, char 2: unknown command: `v'
     
 
-## [The --version argument](Sed.html#toc-uh-62d)
+## The --version argument
 
 You can determine which version of sed you are using with the GNU  sed --version command. This is what it outputs on my computer
 
@@ -3441,7 +3554,7 @@ You can determine which version of sed you are using with the GNU  sed --version
     Be sure to include the word ``sed'' somewhere in the ``Subject:'' field.
     
 
-## [The -h Help argument](Sed.html#toc-uh-62e)
+## The -h Help argument
 
 The -h option will print a summary of the sed commands. The long argument of the command is 
 
@@ -3451,7 +3564,7 @@ The -h option will print a summary of the sed commands. The long argument of the
 
 It provides a nice summary of the command line arguments.
 
-## [The -l Line Length Argument](Sed.html#toc-uh-62f)
+## The -l Line Length Argument
 
 I've already described the 'l' command. 
 
@@ -3467,7 +3580,7 @@ The long form version of the command line is
      sed -n --line-length=80 'l' <file
     
 
-## [The -s Separate argument](Sed.html#toc-uh-62g)
+## The -s Separate argument
 
 Normally, when you specify several files on the command line, sed concatenates the files into one stream, and then operates on that single stream. If you had three files, each with 100 lines, then the command
 
@@ -3501,7 +3614,7 @@ A better emulation of the 'wc -l' command would execute the command in a loop, a
     printf "  %d total\n" $TOTAL
     
 
-## [The -i in-place argument](Sed.html#toc-uh-62h)
+## The -i in-place argument
 
 I've already described in Editing multiple files the way I like to do
 this. For those who want a simpler method, GNU Sed allows you to do
@@ -3548,7 +3661,7 @@ If you want to do in-place editing without creating a backup, you can use
     sed -i ''  's/^/\t/'  *.txt
     
 
-## [The --follow-symlinks argument](Sed.html#toc-uh-62i)
+## The --follow-symlinks argument
 
 The in-place editing feature is handy to have. But what happens if the file you are editing is a symbolic link to another file?
 Let's assume you have a file named "b" in a directory called "tmp", with a symbolic link to this file:
@@ -3569,7 +3682,7 @@ place, use the "--follow-symlinks" command line option:
 
 This follows the symlink to the original location, and modifies the file in the "tmp" directory, If you specify an extension, the original file will be found with that extension in the same directory ar the real source. Without the --follow-symlinks command line option, the "backup" file "b.tmp" will be in the same directory that held the symbolic link, and will still be a symbolic link - just renamed to give it a new extension.
 
-## [The -b Binary argument](Sed.html#toc-uh-62j)
+## The -b Binary argument
 
 Unix and Linux systems consider the new line character "\n" to be the end of the line. However, MS-DOS, Windows, and Cygwin systems end each line with "\r\n" - Carriage return and line-feed. 
 
@@ -3577,7 +3690,7 @@ If you are using any of these operating systems, the "-b" or --binary" command l
 Otherwise  the carriage return is treated as an unprintable character immediately before the end-of-line.
 I think. (Note to self - verify this).
 
-## [The -r Extended Regular Expression argument](Sed.html#toc-uh-62k)
+## The -r Extended Regular Expression argument
 
 When I mention patterns, such as "s/pattern/", the pattern is a regular expression.
 There are two common classes of regular expressions, the original "basic" expressions, and the "extended" regular expressions.  For more on the differences see [My tutorial on regular expressions](../Unix/Regular.html) and the [the section on extended regular expressions](../Unix/Regular.html#uh-12).
@@ -3596,7 +3709,7 @@ To enable this extension, use the "-r" command, as mentioned in [the example on 
 
 I already mentioned that Mac OS X and FreeBSD uses [-E](Sed.html#uh-62h2) instead of [-r](Sed.html#uh-62k).
 
-## [The -u Unbuffered argument](Sed.html#toc-uh-62l)
+## The -u Unbuffered argument
 
 Normally - Unix and Linux systems apply some intelligence to handling
 standard output. It's assumed that if you are sending results to a
@@ -3643,7 +3756,7 @@ Mac OS X and FreeBSD use the argument "-l".
 
 GNU Sed 4.2.2 and later will also be unbuffered while reading files, not just writing them.
 
-## [The -z Null Data argument](Sed.html#toc-uh-62m)
+## The -z Null Data argument
 
 Normally, sed reads a line by reading a string of characters up to the end-of-line character (new line or carriage return). See [the -b Binary command line argument](Sed.html#uh-62j)
 The GNU version of sed added a feature in version 4.2.2 to use the "NULL" character instead.
@@ -3669,15 +3782,15 @@ GNU grep also has a -Z option to search for strings in files, placing a "NULL" a
 
 This feature is very useful when users have the ability to create their own filenames.
 
-## [FreeBSD Extensions](Sed.html#toc-uh-62n)
+## FreeBSD Extensions
 
 Apple uses the FreeBSD version of sed for Mac OS X instead of the GNU sed. However, the FreeBSD version has a couple of additions.
 
-## [The -a or delayed open Argument ](Sed.html#toc-uh-62n1)
+## The -a or delayed open Argument 
 
 Normally, as soon as sed starts up, it opens all files that are refered to by the ["w"](Sed.html#uh-36) command. The FreeBSD version of sed has an option to delay this action until the "w" command is executed.
 
-## [The -I in-place argument](Sed.html#toc-uh-62n2)
+## The -I in-place argument
 
 FreeBSD added a "-I" option that is similar to the [-i](Sed.html#uh-62h) option.
 The "-i" option treats the editing each file as a separate instance of
@@ -3690,12 +3803,12 @@ executed within the range would span both files. If you used "-i", then the comm
 
 And like the [-i](Sed.html#uh-62h) option, the extension used to store the backup file must be specified.
 
-## [-E or Extended Regular Expressions](Sed.html#toc-uh-62n3)
+## -E or Extended Regular Expressions
 
 I mentioned extended regular expressions [earlier](Sed.html#uh-4a).
 FreeBSD (and Mac OS X) uses "-E" to enable this. However, FreeBSD later added the [-r](Sed.html#uh-62k) command to be compatible with GNU sed.
 
-## [Using word boundries](Sed.html#toc-uh-62o)
+## Using word boundries
 
 Someone once asked me to help them solve a tricky sed problem involving word boundaries.
 Let's suppose you have the following input
@@ -3782,7 +3895,7 @@ However, the GNU version of sed says the usage of these special characters are u
 
 When in doubt, experiment. 
 
-## [Command Summary](Sed.html#toc-uh-63)
+## Command Summary
 
 As I promised earlier, here is a table that summarizes the different
 commands.
@@ -3807,7 +3920,7 @@ The
 
 Check out my new [Sed Reference Chart](SedChart.pdf)
 
-## [In Conclusion](Sed.html#toc-uh-64)
+## In Conclusion
 
 This concludes my tutorial on
 sed. It is possible to find shorter forms of some of my scripts.
@@ -3817,7 +3930,7 @@ I hope you enjoyed it.
 
 (adsbygoogle = window.adsbygoogle || []).push({});
 
-## [More References](Sed.html#toc-uh-65)
+## More References
 
 This concludes my tutorial on sed.
 Other of my UNIX shell tutorials can be found 
@@ -3843,7 +3956,7 @@ This document was originally converted from NROFF to TEXT to HTML.
 
  If you are confused, grab the actual script if possible. No translations occurred in the scripts.
 
-### [Thanks for the feedback, gang](Thanks for the feedback, gang)
+### Thanks for the feedback, gang
 
 Thanks to Keelan Evans, Fredrik Nilsson, and Kurt McKee for spotting some typos.
 
@@ -3931,6 +4044,9 @@ This document was translated by troff2html v0.21 on September 22, 2001 and then 
 - [References](../References.html)
 - [Top 10 reasons to avoid CSH](../Unix/CshTop10.txt)
 - [sed Chart ](../Unix/SedChart.pdf) PDF
+<!-- vim-markdown-toc GFM -->
+
+<!-- vim-markdown-toc -->
 - [awk Reference ](../Unix/AwkRef.html) HTML
 
 - [Magic                    ](../magic.html)
