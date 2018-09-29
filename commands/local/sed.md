@@ -413,7 +413,7 @@ So the above could also be written using
     123 123 abc
     
 
-Mac OS X and FreeBSD uses [-E] (#-e-or-extended-regular-expressions) instead of [-r](#extended-regular-expressions).
+Mac OS X and FreeBSD uses [-E](#-e-or-extended-regular-expressions) instead of [-r](#extended-regular-expressions).
 
 For more information on extended regular expressions, see [Regular Expressions](../Unix/Regular.html) and the [description of the -r command line argument](#extended-regular-expressions)
 
@@ -471,10 +471,10 @@ You may want to insist that words have at least one letter by using
 
 or by using extended regular expressions (note that `(` and `)` no longer need to have a backslash):
 
-    
+```bash    
     sed -r 's/([a-z]+) ([a-z]+)/\2 \1/' # Using GNU sed
     sed -E 's/([a-z]+) ([a-z]+)/\2 \1/' # Using Apple Mac OS X
-    
+```    
 
 The
 `\1` doesn't have to be in the replacement string (in the right hand side). It can be in the pattern
@@ -493,10 +493,10 @@ If you want to detect duplicated words, you can use
 
 or with extended regular expressions
 
-    
+```bash    
     sed -rn '/([a-z]+) \1/p' # GNU sed
     sed -En '/([a-z]+) \1/p' # Mac OS X
-    
+```    
 
 This, when used as a filter, will print lines with duplicated words.
 
@@ -516,7 +516,7 @@ You might have noticed I used a 'p' at the end of the previous substitute comman
 These flags can specify what happens when a match is found.
 Let me describe them.
 
-## /g - Global replacement
+## `/g` - Global replacement
 
 Most UNIX utilities work on files, reading a line at a time.
 Sed, by default, is the same way.
@@ -526,11 +526,11 @@ You may want to make the change on every word on the line instead of
 the first. For an example, let's place parentheses around words on a
 line.
 Instead of using a pattern like
-"[A-Za-z]*" which won't match words like
+`[A-Za-z]*` which won't match words like
 "won't," we will use a pattern,
-"[^ ]*," that matches everything except a space.
+`[^ ]*,` that matches everything except a space.
 Well, this will also match anything because 
-"*" means 
+`*` means 
 zero or more. The current version of Solaris's 
 sed (as I wrote this) can get unhappy with patterns like this, and generate errors
 like
@@ -539,9 +539,9 @@ or even run forever.
 I consider this a bug, and have reported this to Sun.
 As a work-around, you must avoid matching the null string
 when using the
-"g" flag to 
+`g` flag to 
 sed. A work-around example is:
-"[^ ][^ ]*." The following will put parenthesis around the first word:
+`[^ ][^ ]*.` The following will put parenthesis around the first word:
 
     
     sed 's/[^ ]*/(&)/' <old >new
