@@ -1,3 +1,7 @@
+# Pattern space and hold space
+
+by [January](https://stackoverflow.com/users/1686814/january)
+
 When sed reads a file line by line, the line that has been currently read is inserted into the **pattern buffer** (**pattern space**). *Pattern buffer* is like the temporary buffer, the scratchpad where the current information is stored. 
 
 When you tell sed to print, it prints the pattern buffer.
@@ -25,4 +29,6 @@ There are three commands here: `1!G`, `h` and `$p`. `1!G` has an address, `1` (f
 Finally, after the last line has been read and the *hold space* (containing all the previous lines in a reverse order) have been appended to the *pattern space*, *pattern space* is printed with `p`. As you have guessed, the above does exactly what the `tac` command does -- prints the file in reverse.
 
 ---
-Reference: [The Concept of 'Hold space' and 'Pattern space' in sed](https://stackoverflow.com/questions/12833714/the-concept-of-hold-space-and-pattern-space-in-sed)
+### *Reference: *
+
+[The Concept of 'Hold space' and 'Pattern space' in sed](https://stackoverflow.com/questions/12833714/the-concept-of-hold-space-and-pattern-space-in-sed)
