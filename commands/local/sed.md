@@ -5,6 +5,7 @@ Last modified: Thu Apr 23 16:37:48 EDT 2015
 ## Quick Links
 
 **Sed Commands**
+
 | 1 | 2 | 3
 | - | - | -
 | [: label ](#flow-control) | [# comment ](Sed.html#uh-21) | [{....} Block ](#grouping-with--and-) 
@@ -23,6 +24,7 @@ Last modified: Thu Apr 23 16:37:48 EDT 2015
 | [/w filename ](#write-to-a-file-with-w-filename)- Write Filename
 
 **Sed Command Line options**
+
 | Short Option (Long option) | Sed version
 | - | -
 | [ -n ](#sed--n-no-printing) | Classic
