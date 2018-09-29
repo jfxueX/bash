@@ -341,7 +341,7 @@ Others use the "|" character.
     sed 's|/usr/local/bin|/common/bin|' <old >new
     
 
-Pick one you like. As long as it's not in the string you are looking for, anything goes. And remember that you need three delimiters. If you get a "Unterminated `s' command" it's because you are missing one of them.
+Pick one you like. As long as it's not in the string you are looking for, anything goes. And remember that you need three delimiters. If you get a "Unterminated `s` command" it's because you are missing one of them.
 
 ## Using & as the matched string
 
@@ -360,14 +360,14 @@ How can you put the string you found in the replacement string
 if you don't know what it is?
 
 The solution requires the special character
-"&." It corresponds to the pattern found.
+`&`. It corresponds to the pattern found.
 
     
     sed 's/[a-z]*/(&)/' <old >new
     
 
 You can have any number of
-"&" in the replacement string.
+`&` in the replacement string.
 You could also double a pattern, e.g.  the first number of a line:
 
     
@@ -380,7 +380,7 @@ and make it as greedy as possible.
 I'll cover that later.
 If you don't want it to be so greedy (i.e. limit the matching), you need to put restrictions on the match. 
 
-The first match for '[0-9]*' is
+The first match for `[0-9]*` is
 the first character on the line, as this matches zero or more
 numbers. So if the input was "abc 123" the output would be unchanged (well, except for a space before the letters).
 A better way to duplicate the number is to make sure it matches a number:
@@ -393,17 +393,17 @@ A better way to duplicate the number is to make sure it matches a number:
  The string "abc" is unchanged, because it was not matched by the
 regular expression. If you wanted to eliminate "abc" from the output,
 you must expand the regular expression to match the rest of the line
-and explicitly exclude part of the expression using "(", ")" and "\1",
+and explicitly exclude part of the expression using `(`, `)` and `\1`,
 which is the next topic.
 
 ## Extended Regular Expressions
 
 Let me add a quick comment here because there is another way to write the above script.
-"[0-9]*" matches zero or more numbers.
-"[0-9][0-9]*" matches one or more numbers.
-Another way to do this is to use the "+" meta-character and use the pattern "[0-9]+" as the "+"
+`[0-9]*` matches zero or more numbers.
+`[0-9][0-9]*` matches one or more numbers.
+Another way to do this is to use the `+` meta-character and use the pattern `[0-9]+` as the `+`
 is a special character when using "extended regular expressions."
-Extended regular expressions have more power, but sed scripts that treated "+" as a normal character would break. Therefore you must explicitly enable this extension with a command line option.
+Extended regular expressions have more power, but sed scripts that treated `+` as a normal character would break. Therefore you must explicitly enable this extension with a command line option.
 
 GNU sed turns this feature on if you use the "-r" command line option.
 So the above could also be written using
@@ -413,22 +413,22 @@ So the above could also be written using
     123 123 abc
     
 
-Mac OS X and FreeBSD uses [-E](#-e-or-extended-regular-expressions) instead of [-r](#extended-regular-expressions).
+Mac OS X and FreeBSD uses [-E] (#-e-or-extended-regular-expressions) instead of [-r](#extended-regular-expressions).
 
 For more information on extended regular expressions, see [Regular Expressions](../Unix/Regular.html) and the [description of the -r command line argument](#extended-regular-expressions)
 
-## Using \1 to keep part of the pattern
+## Using `\1` to keep part of the pattern
 
 I have already described the use of
-"(" 
-")" and
-"1" in my tutorial on [
+`(` 
+`)` and
+`1` in my tutorial on [
 regular expressions.](http://www.grymoire.com/Unix/Regular.html)
 To review, the escaped
 parentheses (that is, parentheses  with backslashes before them) remember a substring of the characters matched by the regular expression. You can use this to exclude part of the characters matched by the regular expression.
 The
-"\1" is the first remembered pattern, and the
-"\2" is the second remembered pattern.
+`\1` is the first remembered pattern, and the
+`\2` is the second remembered pattern.
 Sed has up to nine remembered patterns.
 
 If you wanted to keep the first word of a line, and delete the rest
@@ -440,8 +440,8 @@ mark the important part with the parenthesis:
     
 
 I should elaborate on this. Regular expressions are greedy, and try
-to match as much as possible. "[a-z]*" matches zero or more lower case
-letters, and tries to match as many characters as possible. The ".*" matches zero or
+to match as much as possible. `[a-z]*` matches zero or more lower case
+letters, and tries to match as many characters as possible. The `.*` matches zero or
 more characters after the first match. Since the first one grabs all
 of the contiguous lower case letters, the second matches anything else. Therefore
 if you type
@@ -469,7 +469,7 @@ You may want to insist that words have at least one letter by using
     sed 's/\([a-z][a-z]*\) \([a-z][a-z]*\)/\2 \1/'
     
 
-or by using extended regular expressions (note that '(' and ')' no longer need to have a backslash):
+or by using extended regular expressions (note that `(` and `)` no longer need to have a backslash):
 
     
     sed -r 's/([a-z]+) ([a-z]+)/\2 \1/' # Using GNU sed
@@ -477,7 +477,7 @@ or by using extended regular expressions (note that '(' and ')' no longer need t
     
 
 The
-"\1" doesn't have to be in the replacement string (in the right hand side). It can be in the pattern
+`\1` doesn't have to be in the replacement string (in the right hand side). It can be in the pattern
 you are searching for (in the left hand side).
 If you want to eliminate duplicated words, you can try:
 
@@ -501,8 +501,8 @@ or with extended regular expressions
 This, when used as a filter, will print lines with duplicated words.
 
 The numeric value can have up to nine values:
-"\1" thru
-"\9." 
+`\1` thru
+`\9`. 
 If you wanted to reverse the first three characters on a line, you can use
 
     
