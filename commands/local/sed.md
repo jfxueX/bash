@@ -1,118 +1,3 @@
-	Sed - An Introduction and Tutorial
-<!-- vim-markdown-toc GFM -->
-
-* [Sed - An Introduction and Tutorial by Bruce Barnett](#sed---an-introduction-and-tutorial-by-bruce-barnett)
-    * [Quick Links](#quick-links)
-        * [Table of Contents](#table-of-contents)
-    * [Introduction to Sed](#introduction-to-sed)
-    * [The Awful Truth about sed](#the-awful-truth-about-sed)
-    * [The essential command: s for substitution](#the-essential-command-s-for-substitution)
-    * [The slash as a delimiter](#the-slash-as-a-delimiter)
-    * [Using & as the matched string](#using--as-the-matched-string)
-    * [Extended Regular Expressions](#extended-regular-expressions)
-    * [Using \1 to keep part of the pattern](#using-1-to-keep-part-of-the-pattern)
-    * [Sed Pattern Flags](#sed-pattern-flags)
-    * [/g - Global replacement](#g---global-replacement)
-    * [Is sed recursive?](#is-sed-recursive)
-    * [/1, /2, etc. Specifying which occurrence](#1-2-etc-specifying-which-occurrence)
-    * [/p - print](#p---print)
-    * [Write to a file with /w filename](#write-to-a-file-with-w-filename)
-    * [/I - Ignore Case](#i---ignore-case)
-    * [Combining substitution flags](#combining-substitution-flags)
-    * [Arguments and invocation of sed](#arguments-and-invocation-of-sed)
-    * [Multiple commands with  -e command](#multiple-commands-with---e-command)
-    * [Filenames on the command line](#filenames-on-the-command-line)
-    * [sed -n: no printing](#sed--n-no-printing)
-    * [Using 'sed /pattern/'](#using-sed-pattern)
-    * [Using 'sed -n /pattern/p' to duplicate the function of grep](#using-sed--n-patternp-to-duplicate-the-function-of-grep)
-    * [sed -f scriptname](#sed--f-scriptname)
-    * [sed in shell scripts](#sed-in-shell-scripts)
-    * [Quoting multiple sed lines in the C shell](#quoting-multiple-sed-lines-in-the-c-shell)
-    * [Quoting multiple sed lines in the Bourne shell](#quoting-multiple-sed-lines-in-the-bourne-shell)
-    * [sed -V](#sed--v)
-    * [sed -h](#sed--h)
-    * [A sed interpreter script](#a-sed-interpreter-script)
-* [!/bin/sed -f](#binsed--f)
-    * [Comments](#comments)
-    * [Passing arguments into a sed script](#passing-arguments-into-a-sed-script)
-* [!/bin/sh](#binsh)
-    * [Using sed in a shell here-is document](#using-sed-in-a-shell-here-is-document)
-    * [Multiple commands and order of execution](#multiple-commands-and-order-of-execution)
-    * [Addresses and Ranges of Text](#addresses-and-ranges-of-text)
-    * [Restricting to a line number](#restricting-to-a-line-number)
-    * [Patterns](#patterns)
-    * [Ranges by line number](#ranges-by-line-number)
-    * [Ranges by patterns](#ranges-by-patterns)
-    * [Delete with d](#delete-with-d)
-* [!/bin/sh](#binsh-1)
-* [print last 10 lines of file](#print-last-10-lines-of-file)
-* [First argument is the filename](#first-argument-is-the-filename)
-    * [Printing with p](#printing-with-p)
-    * [Reversing the restriction with !](#reversing-the-restriction-with-)
-    * [Relationships between d, p, and !](#relationships-between-d-p-and-)
-    * [The q or quit command](#the-q-or-quit-command)
-    * [Grouping with { and }](#grouping-with--and-)
-    * [Operating in a pattern range except for the patterns](#operating-in-a-pattern-range-except-for-the-patterns)
-    * [Writing a file with the 'w' command](#writing-a-file-with-the-w-command)
-    * [Reading in a file with the 'r' command](#reading-in-a-file-with-the-r-command)
-    * [SunOS and the # Comment Command](#sunos-and-the--comment-command)
-    * [Adding, Changing, Inserting new lines](#adding-changing-inserting-new-lines)
-    * [Append a line with 'a'](#append-a-line-with-a)
-    * [Insert a line with 'i'](#insert-a-line-with-i)
-    * [Change a line with 'c'](#change-a-line-with-c)
-    * [Leading tabs and spaces in a sed script](#leading-tabs-and-spaces-in-a-sed-script)
-    * [Adding more than one line](#adding-more-than-one-line)
-    * [Adding lines and the pattern space](#adding-lines-and-the-pattern-space)
-    * [Address ranges and the above commands](#address-ranges-and-the-above-commands)
-    * [Multi-Line Patterns](#multi-line-patterns)
-    * [Print line number with =](#print-line-number-with-)
-    * [Transform with y](#transform-with-y)
-    * [Displaying control characters with a l](#displaying-control-characters-with-a-l)
-    * [Working with Multiple Lines](#working-with-multiple-lines)
-    * [Matching three lines with sed](#matching-three-lines-with-sed)
-    * [Matching patterns that span multiple lines](#matching-patterns-that-span-multiple-lines)
-* [!/bin/sh](#binsh-2)
-* [!/bin/csh -f](#bincsh--f)
-    * [Using newlines in sed scripts](#using-newlines-in-sed-scripts)
-    * [The Hold Buffer](#the-hold-buffer)
-    * [Exchange with x](#exchange-with-x)
-    * [Example of Context Grep](#example-of-context-grep)
-    * [Hold with h or H](#hold-with-h-or-h)
-    * [Keeping more than one line in the hold buffer](#keeping-more-than-one-line-in-the-hold-buffer)
-    * [Get with g or G](#get-with-g-or-g)
-    * [Flow Control](#flow-control)
-    * [Testing with t](#testing-with-t)
-    * [Debugging with l](#debugging-with-l)
-    * [An alternate way of adding comments](#an-alternate-way-of-adding-comments)
-    * [The poorly documented ;](#the-poorly-documented-)
-* [!/bin/sh](#binsh-3)
-    * [Passing regular expressions as arguments](#passing-regular-expressions-as-arguments)
-    * [Inserting binary characters](#inserting-binary-characters)
-    * [GNU sed Command Line arguments](#gnu-sed-command-line-arguments)
-    * [The -posix argument](#the--posix-argument)
-    * [The --version argument](#the---version-argument)
-    * [The -h Help argument](#the--h-help-argument)
-    * [The -l Line Length Argument](#the--l-line-length-argument)
-    * [The -s Separate argument](#the--s-separate-argument)
-    * [The -i in-place argument](#the--i-in-place-argument)
-    * [The --follow-symlinks argument](#the---follow-symlinks-argument)
-    * [The -b Binary argument](#the--b-binary-argument)
-    * [The -r Extended Regular Expression argument](#the--r-extended-regular-expression-argument)
-    * [The -u Unbuffered argument](#the--u-unbuffered-argument)
-    * [The -z Null Data argument](#the--z-null-data-argument)
-    * [FreeBSD Extensions](#freebsd-extensions)
-    * [The -a or delayed open Argument](#the--a-or-delayed-open-argument)
-    * [The -I in-place argument](#the--i-in-place-argument-1)
-    * [-E or Extended Regular Expressions](#-e-or-extended-regular-expressions)
-    * [Using word boundries](#using-word-boundries)
-    * [Command Summary](#command-summary)
-    * [In Conclusion](#in-conclusion)
-    * [More References](#more-references)
-        * [Thanks for the feedback, gang](#thanks-for-the-feedback-gang)
-            * [Grymoire](#grymoire)
-
-<!-- vim-markdown-toc -->
-
 # [Sed - An Introduction and Tutorial by Bruce Barnett](http://www.grymoire.com/Unix/Sed.html)
 
 Last modified: Thu Apr 23 16:37:48 EDT 2015 
@@ -120,7 +5,6 @@ Last modified: Thu Apr 23 16:37:48 EDT 2015
 ## Quick Links
 
 **Sed Commands**
-
 | 1 | 2 | 3
 | - | - | -
 | [: label ](#flow-control) | [# comment ](Sed.html#uh-21) | [{....} Block ](#grouping-with--and-) 
@@ -137,7 +21,6 @@ Last modified: Thu Apr 23 16:37:48 EDT 2015
 | [/I ](#i---ignore-case)- Ignore Case
 | [/p ](#p---print)- Print
 | [/w filename ](#write-to-a-file-with-w-filename)- Write Filename
-
 
 **Sed Command Line options**
 | Short Option (Long option) | Sed version
@@ -171,110 +54,105 @@ Last modified: Thu Apr 23 16:37:48 EDT 2015
 Note - You can click on the table of contents sections to jump to that section. 
 
 Then click on the section header of any section to jump back to the table of contents. 
-- [The Awful Truth about sed](sed.md#uh-0)
-- [The essential command: s for substitution](Sed.html#uh-1)
-- [The slash as a delimiter](Sed.html#uh-2)
-- [Using & as the matched string](Sed.html#uh-3)
-- [Using \1 to keep part of the pattern](Sed.html#uh-4)
-- [Extended Regular Expressions](Sed.html#uh-4a)
-- [Sed Pattern Flags](Sed.html#uh-5)
-- [/g - Global replacement](Sed.html#uh-6)
-- [Is sed recursive?](Sed.html#uh-7)
-- [/1, /2, etc. Specifying which occurrence](Sed.html#uh-8)
-- [/p - print](Sed.html#uh-9)
-- [Write to a file with /w filename](Sed.html#uh-10)
-- [/I - Ignore Case](Sed.html#uh-10a)
-- [Combining substitution flags](Sed.html#uh-11)
 
-- [Arguments and invocation of sed](Sed.html#uh-12)
-- [Multiple commands with  -e command](Sed.html#uh-13)
-- [Filenames on the command line](Sed.html#uh-14)
-- [sed -n: no printing](Sed.html#uh-15)
-- [Using 'sed /pattern/'](Sed.html#uh-15a)
-- [Using 'sed -n /pattern/p' to duplicate the function of grep](Sed.html#uh-15b)
+* [The Awful Truth about sed](#the-awful-truth-about-sed)
+* [The essential command: s for substitution](#the-essential-command-s-for-substitution)
+* [The slash as a delimiter](#the-slash-as-a-delimiter)
+* [Using & as the matched string](#using--as-the-matched-string)
+* [Extended Regular Expressions](#extended-regular-expressions)
+* [Using \1 to keep part of the pattern](#using-1-to-keep-part-of-the-pattern)
+* [Sed Pattern Flags](#sed-pattern-flags)
+* [/g - Global replacement](#g---global-replacement)
+* [Is sed recursive?](#is-sed-recursive)
+* [/1, /2, etc. Specifying which occurrence](#1-2-etc-specifying-which-occurrence)
+* [/p - print](#p---print)
+* [Write to a file with /w filename](#write-to-a-file-with-w-filename)
+* [/I - Ignore Case](#i---ignore-case)
+* [Combining substitution flags](#combining-substitution-flags)
+* [Arguments and invocation of sed](#arguments-and-invocation-of-sed)
+* [Multiple commands with  -e command](#multiple-commands-with---e-command)
+* [Filenames on the command line](#filenames-on-the-command-line)
+* [sed -n: no printing](#sed--n-no-printing)
+* [Using 'sed /pattern/'](#using-sed-pattern)
+* [Using 'sed -n /pattern/p' to duplicate the function of grep](#using-sed--n-patternp-to-duplicate-the-function-of-grep)
+* [sed -f scriptname](#sed--f-scriptname)
+* [sed in shell scripts](#sed-in-shell-scripts)
+* [Quoting multiple sed lines in the C shell](#quoting-multiple-sed-lines-in-the-c-shell)
+* [Quoting multiple sed lines in the Bourne shell](#quoting-multiple-sed-lines-in-the-bourne-shell)
+* [sed -V](#sed--v)
+* [sed -h](#sed--h)
+* [A sed interpreter script](#a-sed-interpreter-script)
+* [Comments](#comments)
+* [Passing arguments into a sed script](#passing-arguments-into-a-sed-script)
+* [Using sed in a shell here-is document](#using-sed-in-a-shell-here-is-document)
+* [Multiple commands and order of execution](#multiple-commands-and-order-of-execution)
+* [Addresses and Ranges of Text](#addresses-and-ranges-of-text)
+* [Restricting to a line number](#restricting-to-a-line-number)
+* [Patterns](#patterns)
+* [Ranges by line number](#ranges-by-line-number)
+* [Ranges by patterns](#ranges-by-patterns)
+* [Delete with d](#delete-with-d)
+* [Printing with p](#printing-with-p)
+* [Reversing the restriction with !](#reversing-the-restriction-with-)
+* [Relationships between d, p, and !](#relationships-between-d-p-and-)
+* [The q or quit command](#the-q-or-quit-command)
+* [Grouping with { and }](#grouping-with--and-)
+* [Operating in a pattern range except for the patterns](#operating-in-a-pattern-range-except-for-the-patterns)
+* [Writing a file with the 'w' command](#writing-a-file-with-the-w-command)
+* [Reading in a file with the 'r' command](#reading-in-a-file-with-the-r-command)
+* [SunOS and the # Comment Command](#sunos-and-the--comment-command)
+* [Adding, Changing, Inserting new lines](#adding-changing-inserting-new-lines)
+* [Append a line with 'a'](#append-a-line-with-a)
+* [Insert a line with 'i'](#insert-a-line-with-i)
+* [Change a line with 'c'](#change-a-line-with-c)
+* [Leading tabs and spaces in a sed script](#leading-tabs-and-spaces-in-a-sed-script)
+* [Adding more than one line](#adding-more-than-one-line)
+* [Adding lines and the pattern space](#adding-lines-and-the-pattern-space)
+* [Address ranges and the above commands](#address-ranges-and-the-above-commands)
+* [Multi-Line Patterns](#multi-line-patterns)
+* [Print line number with =](#print-line-number-with-)
+* [Transform with y](#transform-with-y)
+* [Displaying control characters with a l](#displaying-control-characters-with-a-l)
+* [Working with Multiple Lines](#working-with-multiple-lines)
+* [Matching three lines with sed](#matching-three-lines-with-sed)
+* [Matching patterns that span multiple lines](#matching-patterns-that-span-multiple-lines)
+* [Using newlines in sed scripts](#using-newlines-in-sed-scripts)
+* [The Hold Buffer](#the-hold-buffer)
+* [Exchange with x](#exchange-with-x)
+* [Example of Context Grep](#example-of-context-grep)
+* [Hold with h or H](#hold-with-h-or-h)
+* [Keeping more than one line in the hold buffer](#keeping-more-than-one-line-in-the-hold-buffer)
+* [Get with g or G](#get-with-g-or-g)
+* [Flow Control](#flow-control)
+* [Testing with t](#testing-with-t)
+* [Debugging with l](#debugging-with-l)
+* [An alternate way of adding comments](#an-alternate-way-of-adding-comments)
+* [The poorly documented ;](#the-poorly-documented-)
+* [Passing regular expressions as arguments](#passing-regular-expressions-as-arguments)
+* [Inserting binary characters](#inserting-binary-characters)
+* [GNU sed Command Line arguments](#gnu-sed-command-line-arguments)
+* [The -posix argument](#the--posix-argument)
+* [The --version argument](#the---version-argument)
+* [The -h Help argument](#the--h-help-argument)
+* [The -l Line Length Argument](#the--l-line-length-argument)
+* [The -s Separate argument](#the--s-separate-argument)
+* [The -i in-place argument](#the--i-in-place-argument)
+* [The --follow-symlinks argument](#the---follow-symlinks-argument)
+* [The -b Binary argument](#the--b-binary-argument)
+* [The -r Extended Regular Expression argument](#the--r-extended-regular-expression-argument)
+* [The -u Unbuffered argument](#the--u-unbuffered-argument)
+* [The -z Null Data argument](#the--z-null-data-argument)
+* [FreeBSD Extensions](#freebsd-extensions)
+* [The -a or delayed open Argument](#the--a-or-delayed-open-argument)
+* [The -I in-place argument](#the--i-in-place-argument-1)
+* [-E or Extended Regular Expressions](#-e-or-extended-regular-expressions)
+* [Using word boundries](#using-word-boundries)
+* [Command Summary](#command-summary)
+* [In Conclusion](#in-conclusion)
+* [More References](#more-references)
+    * [Thanks for the feedback, gang](#thanks-for-the-feedback-gang)
+        * [Grymoire](#grymoire)
 
-- [sed -f scriptname](Sed.html#uh-16)
-- [sed in shell scripts](Sed.html#uh-17)
-- [Quoting multiple sed lines in the C shell](Sed.html#uh-18)
-- [Quoting multiple sed lines in the Bourne shell](Sed.html#uh-19)
-
-- [sed -V](Sed.html#uh-19a)
-- [sed -h](Sed.html#uh-19b)
-- [A sed interpreter script](Sed.html#uh-20)
-- [Sed Comments](Sed.html#uh-21)
-- [Passing arguments into a sed script](Sed.html#uh-22)
-- [Using sed in a shell here-is document](Sed.html#uh-23)
-- [Multiple commands and order of execution](Sed.html#uh-24)
-
-- [Addresses and Ranges of Text](Sed.html#uh-25)
-- [Restricting to a line number](Sed.html#uh-26)
-- [Patterns](Sed.html#uh-27)
-- [Ranges by line number](Sed.html#uh-28)
-- [Ranges by patterns](Sed.html#uh-29)
-
-- [Delete with d](Sed.html#uh-30)
-- [Printing with p](Sed.html#uh-31)
-- [Reversing the restriction with !](Sed.html#uh-32)
-- [Relationships between d, p, and !](Sed.html#uh-33)
-- [The q or quit command](Sed.html#uh-34)
-- [Grouping with { and }](Sed.html#uh-35)
-- [Operating in a pattern range except for the patterns](Sed.html#uh-35a)
-- [Writing a file with the 'w' command](Sed.html#uh-36)
-- [Reading in a file with the 'r' command](Sed.html#uh-37)
-- [SunOS and the # Comment Command](Sed.html#uh-38)
-- [Adding, Changing, Inserting new lines](Sed.html#uh-39)
-- [Append a line with 'a'](Sed.html#uh-40)
-- [Insert a line with 'i'](Sed.html#uh-41)
-- [Change a line with 'c'](Sed.html#uh-42)
-- [Leading tabs and spaces in a sed script](Sed.html#uh-43)
-- [Adding more than one line](Sed.html#uh-44)
-- [Adding lines and the pattern space](Sed.html#uh-45)
-- [Address ranges and the above commands](Sed.html#uh-46)
-
-- [Multi-Line Patterns](Sed.html#uh-47)
-- [Print line number with =](Sed.html#uh-48)
-- [Transform with y](Sed.html#uh-49)
-- [Displaying control characters with a l](Sed.html#uh-50)
-- [Working with Multiple Lines](Sed.html#uh-51)
-- [Matching three lines with sed](Sed.html#uh-51a)
-- [Matching patterns that span multiple lines](Sed.html#uh-51b)
-- [Using newlines in sed scripts](Sed.html#uh-nl)
-- [The Hold Buffer](Sed.html#uh-52)
-- [Exchange with x](Sed.html#uh-53)
-- [Example of Context Grep](Sed.html#uh-54)
-- [Hold with h or H](Sed.html#uh-55)
-- [Keeping more than one line in the hold buffer](Sed.html#uh-56)
-- [Get with g or G](Sed.html#uh-57)
-
-- [Flow Control](Sed.html#uh-58)
-- [Testing with t](Sed.html#uh-59)
-- [Debugging with l](Sed.html#uh-59a)
-- [An alternate way of adding comments](Sed.html#uh-60)
-- [The poorly documented ;](Sed.html#uh-61)
-- [Passing regular expressions as arguments](Sed.html#uh-62)
-- [Inserting binary characters](Sed.html#uh-62a)
-- [GNU sed Command Line arguments](Sed.html#uh-62b)
-- [The -posix argument](Sed.html#uh-62c)
-- [The --version argument](Sed.html#uh-62d)
-- [The -h Help argument](Sed.html#uh-62e)
-- [The -l Line Length Argument](Sed.html#uh-62f)
-- [The -s Separate argument](Sed.html#uh-62g)
-- [The -i in-place argument](Sed.html#uh-62h)
-- [The --follow-symlinks argument](Sed.html#uh-62i)
-- [The -b Binary argument](Sed.html#uh-62j)
-- [The -r Extended Regular Expression argument](Sed.html#uh-62k)
-- [The -u Unbuffered argument](Sed.html#uh-62l)
-- [The -z Null Data argument](Sed.html#uh-62m)
-
-- [FreeBSD Extensions](Sed.html#uh-62n)
-- [-a or delayed open](Sed.html#uh-62n1)
-- [The -I in-place argument](Sed.html#uh-62n2)
-- [-E or Extended Regular Expressions](Sed.html#uh-62n3)
-
-- [Using word boundries](Sed.html#uh-62o)
-- [Command Summary](Sed.html#uh-63)
-- [In Conclusion](Sed.html#uh-64)
-- [More References](Sed.html#uh-65)
 
 Copyright 1994, 1995 Bruce Barnett and General Electric Company
 
@@ -1097,6 +975,7 @@ Another way of executing
 sed is to use an interpreter script.
 Create a file that contains:
 
+```sed
 #!/bin/sed -f
 
 s/a/A/g
@@ -1108,6 +987,7 @@ s/i/I/g
 s/o/O/g
 
 s/u/U/g
+```
 
 Click here to get file: [CapVowel.sed](Scripts/CapVowel.sed)
 
@@ -1155,9 +1035,11 @@ To review, you use the single quotes to turn quoting on and off.
 A simple shell script that uses
 sed to emulate grep is:
 
+```bash
 #!/bin/sh
 
 sed -n 's/'$1'/&/p'
+```
 
 However - there is a problem with this script.
 If you have a space as an argument, the script would cause a syntax error
@@ -1517,6 +1399,7 @@ expr can subtract 10 from the number of lines.
 A Bourne shell script to look at the last 10 lines of a file 
 might look like this:
 
+```bash
 #!/bin/sh
 
 #print last 10 lines of file
@@ -1528,6 +1411,7 @@ lines=`wc -l $1 | awk '{print $1}' `
 start=`expr $lines - 10`
 
 sed "1,$start d" $1
+```
 
 Click here to get file: [sed_tail.sh](Scripts/sed_tail.sh)
 
@@ -2564,7 +2448,7 @@ The next example will look for two words which are either
 on the same line or one is on the end of a line and the second is on
 the beginning of the next line. If found, the first word is deleted:
 
-    
+```bash    
     #!/bin/sh
     sed '
     /ONE/ {
@@ -2576,7 +2460,7 @@ the beginning of the next line. If found, the first word is deleted:
     # TWO" on two consecutive lines
     	s/ONE\nTWO/TWO/
     }' file
-    
+```    
 
 Let's use the
 
@@ -3346,6 +3230,7 @@ Here is the
 grep4 script I described earlier, but without the
 comments or error checking and with semicolons between commands:
 
+```bash
 #!/bin/sh
 
 sed -n '
@@ -3357,6 +3242,7 @@ sed -n '
 ---
 
 }'
+```
 
 Click here to get file: [grep4a.sh](Scripts/grep4a.sh)
 
