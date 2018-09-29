@@ -1,6 +1,6 @@
 # sed in (pseudo) microcode
 
-by Carlos J. Duarte.
+*by Carlos J. Duarte.*
 
 [ This article was posted to the seders mailing list ]
 
@@ -38,6 +38,7 @@ y/a/b/                  executes on all ps
                         up to, including, ps that matches /foo/
 /foo/,5 y/a/b/          as above, but from /foo/ up to 5
 ```
+*ps* - [Pattern Space](pattern-space-and-hold-space.md)
 
 ## COMMANDS MICROCODE
 
