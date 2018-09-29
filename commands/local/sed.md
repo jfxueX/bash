@@ -528,7 +528,7 @@ line.
 Instead of using a pattern like
 `[A-Za-z]*` which won't match words like
 "won't," we will use a pattern,
-`[^ ]*,` that matches everything except a space.
+`[^ ]*`, that matches everything except a space.
 Well, this will also match anything because 
 `*` means 
 zero or more. The current version of Solaris's 
@@ -541,7 +541,7 @@ As a work-around, you must avoid matching the null string
 when using the
 `g` flag to 
 sed. A work-around example is:
-`[^ ][^ ]*.` The following will put parenthesis around the first word:
+`[^ ][^ ]*`. The following will put parenthesis around the first word:
 
     
     sed 's/[^ ]*/(&)/' <old >new
@@ -573,16 +573,16 @@ If a second
 "s" command is executed, it could modify the results of a previous
 command. I will show you how to execute multiple commands later.
 
-## /1, /2, etc. Specifying which occurrence
+## `/1`, `/2`, etc. Specifying which occurrence
 
 With no flags, the first matched substitution is changed.
 With the
-"g" option, all matches are changed.
+`g` option, all matches are changed.
 If you want to modify a particular pattern that is not the first one on
 the line, you could use 
-"\(" and
-"\)" to mark each pattern, and use
-"\1" to put the first pattern back unchanged. This next example
+`\(` and
+`\)` to mark each pattern, and use
+`\1` to put the first pattern back unchanged. This next example
 keeps the first word on the line but deletes the second:
 
     
@@ -597,7 +597,7 @@ pattern. Example:
     sed 's/[a-zA-Z]* //2' <old >new
     
 
-You can combine a number with the g (global) flag. For instance, if you want to leave the first word alone, but change the second, third, etc. to be DELETED instead, use /2g:
+You can combine a number with the g (global) flag. For instance, if you want to leave the first word alone, but change the second, third, etc. to be DELETED instead, use `/2g`:
 
     
     sed 's/[a-zA-Z]* /DELETED /2g' <old >new
@@ -605,14 +605,14 @@ You can combine a number with the g (global) flag. For instance, if you want to 
 
 I've heard that combining the number with the g command does not work on The MacOS, and perhaps the FreeSBD version of sed as well.
 
- Don't get /2 and \2 confused. The /2 is used at the end. \2 is used in inside the replacement field.
+ Don't get `/2` and `\2` confused. The `/2` is used at the end. `\2` is used in inside the replacement field.
 
 Note the space after the
-"*" character. Without the space, 
+`*` character. Without the space, 
 sed will run a long, long time.
 (Note: this bug is probably fixed by now.)
 This is because the number flag and the
-"g" flag have the same bug.
+`g` flag have the same bug.
 You should also be able to use the pattern
 
     
@@ -628,7 +628,7 @@ remove the encrypted password from the password file:
     
 
 But this didn't work for me the time I wrote this. Using
-"[^:][^:]*" as a work-around doesn't help because it won't match
+`[^:][^:]*` as a work-around doesn't help because it won't match
 an non-existent password, and instead delete the third field, which is
 the user ID!
 Instead you have to use the ugly parenthesis:
