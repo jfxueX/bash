@@ -24,11 +24,11 @@ So, there goes the text.
 
 (2) a single address, a double address, or none is permitted
 
-any address, if specified, may be a number -- specifies the input line number, or a regular expression -- specifies all pattern spaces, that matches it.
+any address, if specified, may be a number -- specifies the input line number, or a regular expression -- specifies all *pattern spaces*, that matches it.
 
 one address, appears per se, before the command two addresses, appears separated per a comma `,`
 
-if an address is omitted, the command will be apllied on all pattern spaces that passes through it
+if an address is omitted, the command will be apllied on all *pattern spaces* that passes through it
 
 ```
 y/a/b/                  executes on all ps
@@ -47,7 +47,7 @@ y/a/b/                  executes on all ps
   all variables have been zeroed/offed/emptyed
 
 - all commands, have a `pop ps` and a `push ps`, to enforce that
-  they really operate on patern space
+  they really operate on *pattern space*
 
 - the `print ps to stdout` `microcode` below, prints an extra newline
   after the print the `ps` itself
