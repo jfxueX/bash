@@ -1,10 +1,10 @@
-When sed reads a file line by line, the line that has been currently read is inserted into the **pattern buffer** (**pattern space**). **Pattern buffer** is like the temporary buffer, the scratchpad where the current information is stored. 
+When sed reads a file line by line, the line that has been currently read is inserted into the **pattern buffer** (**pattern space**). *Pattern buffer* is like the temporary buffer, the scratchpad where the current information is stored. 
 
 When you tell sed to print, it prints the pattern buffer.
 
 **Hold buffer** (**hold space**) is like a long-term storage, such that you can catch something, store it and reuse it later when sed is processing another line. 
 
-You do not directly process the hold space, instead, you need to copy it or append to the pattern space if you want to do something with it. For example, the print command `p` prints the pattern space only. Likewise, `s` operates on the pattern space.
+You do not directly process the *hold space*, instead, you need to copy it or append to the pattern space if you want to do something with it. For example, the print command `p` prints the pattern space only. Likewise, `s` operates on the *pattern space*.
 
 Here is an example:
 ```
