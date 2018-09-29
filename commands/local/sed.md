@@ -196,7 +196,7 @@ Newer versions of sed may support comments at the end of the line as well.
 
 One way to think of this is that the old, "classic" version was the basis of GNU, FreeBSD and Solaris verisons of sed. And to help you understand what I had to work with, here is the [sed(1) manual page from Sun/Oracle](http://docs.oracle.com/cd/E26502_01/html/E29030/sed-1b.html#scrolltoc).
 
-## [The Awful Truth about sed](sed.md#toc-uh-0)
+## [The Awful Truth about sed](sed.md#uh-0)
 
 Sed is the ultimate stream editor. 
 If that sounds strange, picture a stream flowing through a pipe.
