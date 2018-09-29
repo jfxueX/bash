@@ -8,20 +8,20 @@ Last modified: Thu Apr 23 16:37:48 EDT 2015
 
 | 1 | 2 | 3
 | - | - | -
-| [: label ](#flow-control) | [# comment ](Sed.html#uh-21) | [{....} Block ](#grouping-with--and-) 
-| [=](#print-line-number-with-), print line number | [a\\](#append-a-line-with-a), Append | [b label ](#flow-control) - Branch
-| [c\ - change](#change-a-line-with-c) | [d ](#delete-with-d) and [D ](#working-with-multiple-lines) - Delete | [g ](#get-with-g-or-g) and [G ](#get-with-g-or-g) - Get
-| [h ](#hold-with-h-or-h) and [H ](#hold-with-h-or-h) - Hold | [i\ ](#insert-a-line-with-i)- Insert | [l ](#debugging-with-l)- Look
-| [n ](#working-with-multiple-lines) and [N ](#working-with-multiple-lines)- Next | [p ](#printing-with-p) and [P ](#printing-with-p)- Print | [q ](#the-q-or-quit-command)- Quit
-| [r filename ](#reading-in-a-file-with-the-r-command)- Read File | [s/..../..../ ](#the-essential-command-s-for-substitution)- Substitute | [t label ](#testing-with-t)- Test
-| [w filename ](#writing-a-file-with-the-w-command)- Write Filename | [x ](#exchange-with-x)- eXchange | [y/..../..../ ](#transform-with-y)- Transform
+| [: label](#flow-control) | [# comment](Sed.html#uh-21) | [{....} Block](#grouping-with--and-) 
+| [=](#print-line-number-with-), print line number | [a\\](#append-a-line-with-a), Append | [b label](#flow-control), Branch
+| [c\ change](#change-a-line-with-c) | [d](#delete-with-d) and [D](#working-with-multiple-lines), Delete | [g](#get-with-g-or-g) and [G](#get-with-g-or-g), Get
+| [h](#hold-with-h-or-h) and [H](#hold-with-h-or-h), Hold | [i\\](#insert-a-line-with-i), Insert | [l](#debugging-with-l), Look
+| [n](#working-with-multiple-lines) and [N](#working-with-multiple-lines), Next | [p](#printing-with-p) and [P](#printing-with-p), Print | [q ](#the-q-or-quit-command), Quit
+| [r filename](#reading-in-a-file-with-the-r-command), Read File | [s/..../..../](#the-essential-command-s-for-substitution), Substitute | [t label](#testing-with-t), Test
+| [w filename](#writing-a-file-with-the-w-command), Write Filename | [x](#exchange-with-x), eXchange | [y/..../..../](#transform-with-y), Transform
 
 | Sed Pattern Flags |
 | -
-| [/g ](#g---global-replacement)- Global
-| [/I ](#i---ignore-case)- Ignore Case
-| [/p ](#p---print)- Print
-| [/w filename ](#write-to-a-file-with-w-filename)- Write Filename
+| [/g](#g---global-replacement), Global
+| [/I](#i---ignore-case), Ignore Case
+| [/p](#p---print), Print
+| [/w filename](#write-to-a-file-with-w-filename), Write Filename
 
 **Sed Command Line options**
 
