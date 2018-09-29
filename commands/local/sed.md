@@ -658,14 +658,14 @@ You can also do it the hard way by using 80 dots:
     sed 's/^................................................................................/&:/' <file >new
     
 
-## /p - print
+## `/p` - print
 
 By default, 
 sed prints every line.
 If it makes a substitution, the new text is printed instead of the
 old one.
 If you use an optional argument to sed, 
-"sed -n," it will not, by default, print any new lines.
+"sed -n" it will not, by default, print any new lines.
 I'll cover this and other options later.
 When the
 "-n" option is used, the
@@ -680,7 +680,7 @@ sed:
 
 But a simpler version is described [later](#using-sed--n-patternp-to-duplicate-the-function-of-grep)
 
-## Write to a file with /w filename
+## Write to a file with `/w` filename
 
 There is one more flag that can follow the third delimiter.
 With it, you can specify a file that will receive the modified data.
@@ -704,9 +704,9 @@ ten pieces depending on the last digit of the first number.
 You could also use this method to log error or debugging information
 to a special file.
 
-## /I - Ignore Case
+## `/I` - Ignore Case
 
-GNU has added another pattern flags - /I
+GNU has added another pattern flags - `/I`
 
  This flag makes the pattern match case insensitive. This will match abc, aBc, ABC, AbC, etc.:
 
@@ -714,13 +714,13 @@ GNU has added another pattern flags - /I
     sed -n '/abc/I p' <old >new
     
 
-Note that a space after the '/I' and the  'p' (print) command emphasizes that the 'p' is not a modifier of the pattern matching process, , but a command to execute after the pattern matching.
+Note that a space after the `/I` and the `p` (print) command emphasizes that the `p` is not a modifier of the pattern matching process, , but a command to execute after the pattern matching.
 
 ## Combining substitution flags
 
 You can combine flags when it makes sense. 
 Please note that the 
-"w" has to be the last flag.
+`w` has to be the last flag.
 For example the following command works:
 
     
@@ -748,7 +748,7 @@ This used two processes instead of one. A
 sed guru 
 never uses two processes when one can do.
 
-## Multiple commands with  -e command
+## Multiple commands with `-e` command
 
 One method of combining multiple commands is to use a
 -e before each command:
@@ -758,7 +758,7 @@ One method of combining multiple commands is to use a
     
 
 A
-"-e" isn't needed in the earlier examples because
+`-e` isn't needed in the earlier examples because
 sed knows that there must always be one command.
 If you give
 sed one argument, it must be a command, and
@@ -779,7 +779,7 @@ If there is more than one argument to
 sed that does not start with an option, it must be a filename.
 This next example will count the number of lines in three files
 that don't begin with a
-"#:" 
+`#:`
 
     
     sed 's/^#.*//'  f1 f2 f3 | grep -v '^$' | wc -l
@@ -794,7 +794,7 @@ Sed has more commands that make
 grep unnecessary. And grep -c can replace wc -l. I'll discuss how you can duplicate some of grep's functionality later. 
 
 Of course you could write the last example using the
-"-e" option:
+`-e` option:
 
     
     sed -e 's/^#.*//'  f1 f2 f3 | grep -v '^$' | wc -l
@@ -803,12 +803,12 @@ Of course you could write the last example using the
 There are two other options to 
 sed.
 
-## sed -n: no printing
+## sed `-n`: no printing
 
 The
-"-n" option will not print anything unless an explicit request to print 
+`-n` option will not print anything unless an explicit request to print 
 is found. I mentioned the
-"/p" flag to the substitute command as one way to turn printing back on.
+`/p` flag to the substitute command as one way to turn printing back on.
 Let me clarify this. The command
 
     
@@ -819,7 +819,7 @@ acts like the
 cat program if PATTERN is not in the file: e.g. nothing is changed.
 If PATTERN is in the file, then each line that has this is printed twice.
 Add the
-"-n" option and the example acts like grep:
+`-n` option and the example acts like grep:
 
     
     sed -n 's/PATTERN/&/p' file
@@ -839,11 +839,11 @@ or
     sed --silent 's/PATTERN/&/p' file
     
 
-## Using 'sed /pattern/'
+## Using `sed /pattern/`
 
 Sed has the ability to specify which lines are to be examined and/or modified, by specifying 
 [addresses](#using-sed--n-patternp-to-duplicate-the-function-of-grep) before the command.
-I will just describe the simplest version for now - the /PATTERN/ address. When used, only lines that match the pattern are given the command after the address. Briefly, when used with the /p flag, matching lines are printed twice:
+I will just describe the simplest version for now - the `/PATTERN/` address. When used, only lines that match the pattern are given the command after the address. Briefly, when used with the `/p` flag, matching lines are printed twice:
 
     
     sed '/PATTERN/p' file
@@ -851,7 +851,7 @@ I will just describe the simplest version for now - the /PATTERN/ address. When 
 
  And of course PATTERN is any regular expression.
 
-Please note that if you do not include a command, such as the "p" for print, you will get an error. 
+Please note that if you do not include a command, such as the `p` for print, you will get an error. 
 When I type
 
     
@@ -864,7 +864,7 @@ When I type
     sed: -e expression #1, char 3: missing command
     
 
-Also, you don't need to, but I recommend that you place a space after the pattern and the command. This will help you distinquish between flags that modify the pattern matching, and commands to execute after the pattern is matched. Therefore I recommend this style:
+Also, you don't need to, but <font color=#1589f0>I recommend that you place a space after the pattern and the command</font>. This will help you distinquish between flags that modify the pattern matching, and commands to execute after the pattern is matched. Therefore I recommend this style:
 
     
     sed '/PATTERN/ p' file
