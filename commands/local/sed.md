@@ -319,7 +319,7 @@ If you want to change a pathname that contains a slash -  say /usr/local/bin to 
 use the backslash to quote the slash:
 
     
-    sed 's/&#92;/usr&#92;/local&#92;/bin/&#92;/common&#92;/bin/' <old >new
+    sed 's/\/usr\/local\/bin/\/common\/bin/' <old >new
     
 
 Gulp. Some call this a 'Picket Fence' and it's ugly. It is easier to read if you use an underline instead of a slash
