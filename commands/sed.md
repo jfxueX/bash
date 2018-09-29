@@ -1,8 +1,8 @@
 - [the sed $HOME][1]: [github project](https://github.com/aureliojargas/sed.sf.net)
 - [Sed - An Introduction and Tutorial][2]: by Bruce Barnett
-- [Sed - A Stream Editor]: GNU sed's document
-- [Do It with Sed][3]:  
-- [Sed 1 line][4]: Useful one-line scripts for sed, by Eric Pement
+- [Sed - A Stream Editor][3]: GNU sed's document
+- [Do It with Sed][4]:  
+- [Sed 1 line][5]: Useful one-line scripts for sed, by Eric Pement
 
 
 
