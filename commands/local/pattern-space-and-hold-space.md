@@ -1,6 +1,6 @@
 # Pattern space and hold space
 
-by [January](https://stackoverflow.com/users/1686814/january)
+*by [January](https://stackoverflow.com/users/1686814/january)*
 
 When sed reads a file line by line, the line that has been currently read is inserted into the **pattern buffer** (**pattern space**). *Pattern buffer* is like the temporary buffer, the scratchpad where the current information is stored. 
 
