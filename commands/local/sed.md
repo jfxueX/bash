@@ -864,7 +864,7 @@ When I type
     sed: -e expression #1, char 3: missing command
     
 
-Also, you don't need to, but <font color=#1589f0>I recommend that you place a space after the pattern and the command</font>. This will help you distinquish between flags that modify the pattern matching, and commands to execute after the pattern is matched. Therefore I recommend this style:
+Also, you don't need to, but <span style="color: #f03c15;">I recommend that you place a space after the pattern and the command</span>. This will help you distinquish between flags that modify the pattern matching, and commands to execute after the pattern is matched. Therefore I recommend this style:
 
     
     sed '/PATTERN/ p' file
