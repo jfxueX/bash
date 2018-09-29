@@ -10,7 +10,7 @@ Here is an example:
 ```
 sed -n '1!G;h;$p'
 ```
-(the -n option suppresses automatic printing of lines)
+(the `-n` option suppresses automatic printing of lines)
 
 
 There are three commands here: `1!G`, `h` and `$p`. `1!G` has an address, `1` (first line), but the `!` means that the command will be executed everywhere but on the first line. `$p` on the other hand will only be executed on the last line. So what happens is this:
