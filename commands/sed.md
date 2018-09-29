@@ -1,7 +1,7 @@
 - [the sed $HOME][1]: [github project](https://github.com/aureliojargas/sed.sf.net)
 - [Sed - An Introduction and Tutorial][2]: by Bruce Barnett
-- [Do It with Sed][3]:  USEFUL ONE-LINE SCRIPTS FOR SED, by Eric Pement
-- [Sed 1 line][4]
+- [Do It with Sed][3]:  
+- [Sed 1 line][4]: Useful one-line scripts for sed, by Eric Pement
 
 
 
