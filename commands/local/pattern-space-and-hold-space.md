@@ -17,8 +17,8 @@ There are three commands here: `1!G`, `h` and `$p`. `1!G` has an address, `1` (f
 
 1. first line is read and inserted automatically into the *pattern space*
 2. on the first line, first command is not executed; `h` copies the first line into the *hold space*.
-3. now the second line replaces whatever was in the pattern space
-4. on the second line, first we execute `G`, appending the contents of the hold buffer to the pattern buffer, separating it by a newline. The *pattern space* now contains the second line, a newline, and the first line.
+3. now the second line replaces whatever was in the *pattern space*
+4. on the second line, first we execute `G`, appending the contents of the *hold buffer* to the *pattern buffer*, separating it by a newline. The *pattern space* now contains the second line, a newline, and the first line.
 5. Then, `h` command inserts the concatenated contents of the *pattern buffer* into the *hold space*, which now holds the reversed lines two and one.
 6. We proceed to line number three -- go to the point (3) above.
 
