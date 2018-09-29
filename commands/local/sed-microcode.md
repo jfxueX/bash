@@ -49,7 +49,7 @@ y/a/b/                  executes on all ps
 - all commands, have a `pop ps` and a `push ps`, to enforce that
   they really operate on *pattern space*
 
-- the `print ps to stdout` `microcode` below, prints an extra newline
+- the `print ps to stdout` microcode below, prints an extra newline
   after the print the `ps` itself
 
         [end]
