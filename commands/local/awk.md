@@ -386,6 +386,7 @@ Click here to get file: [awk_example2.sh](http://www.grymoire.com/Unix/Scripts/a
 
 while the C shell would be
 
+```bash
 #!/bin/csh -f
 
 awk '
@@ -394,6 +395,7 @@ BEGIN	{ print "File\tOwner" }\
 		$3}\
 END	{ print "done"}\
 '
+```
 
 Click here to get file: [awk_example2.csh](http://www.grymoire.com/Unix/Scripts/awk_example2.csh)
 
@@ -495,7 +497,7 @@ The Bourne shell has a mechanism to provide a value for a variable
 if the value isn't set, or is set and the value is an empty string.
 This is done by using the format:
 
-<pre>  <i>${variable:-defaultvalue}</i>
+<pre>  <i>${variable:-defaultvalue}</i></pre>
 
 This is shown below, where the default column will be one:
 
