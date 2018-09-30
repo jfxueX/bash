@@ -102,11 +102,12 @@ grep and
 sed. This section discusses AWK, another cornerstone
 of UNIX shell programming.
 There are three variations of AWK:
+
+```
 AWK - the (very old) original from AT&T
-
 NAWK - A newer, improved version from AT&T
-
 GAWK - The Free Software foundation's version
+```
 
 Originally, I didn't plan to discuss NAWK, but several UNIX vendors
 have replaced AWK with NAWK, and there are several incompatibilities
@@ -157,7 +158,8 @@ B. W. Kernighan and P. Weinberger.
 ## Basic Structure
 
 The essential organization of an AWK program follows the form:
-pattern { action }
+
+<pre> <i>pattern</i> { action }</pre>
 
 The pattern specifies when the action is performed.
 Like most UNIX utilities, AWK is line oriented. That is,
