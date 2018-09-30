@@ -3915,7 +3915,7 @@ The
 `-n` option. The 
 `r` command can only have one address, despite the documentation.
 
-Check out my new [Sed Reference Chart](SedChart.pdf)
+Check out my new [Sed Reference Chart](http://www.grymoire.com/Unix/SedChart.pdf)
 
 ## In Conclusion
 
@@ -3944,7 +3944,7 @@ Other shell tutorials and references can be found at
 - [Chris F. A. Johnson's UNIX Shell Page](http://cfajohnson.com/shell/)
 - [The Wikipedia Entry on SED](http://en.wikipedia.org/wiki/Sed)
 - [SED one-liners](http://sed.sourceforge.net/sed1line.txt)
-- 
+ 
 And don't forget [The SED FAQ](http://sed.sourceforge.net/sedfaq.html)
 
 This document was originally converted from NROFF to TEXT to HTML.
