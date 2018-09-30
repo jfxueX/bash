@@ -870,7 +870,7 @@ Also, you don't need to, but <span style="color: #f03c15;">I recommend that you 
     sed '/PATTERN/ p' file
     
 
-## Using 'sed -n /pattern/p' to duplicate the function of grep
+## Using `sed -n /pattern/p` to duplicate the function of grep
 
 If you want to duplicate the functionality of grep, combine the -n (noprint) option with the /p print flag:
 
@@ -1095,7 +1095,7 @@ When executed, the script says:
     
 
 If you type in
-"123," the next line will be:
+"123", the next line will be:
 
     
     The value is 123
@@ -1193,7 +1193,7 @@ restrictioncommand
 
 The simplest restriction is a line number. If you wanted to delete the
 first number on line 3, just add a
-"3" before the command:
+`3` before the command:
 
     
     sed '3 s/[0-9][0-9]*//' <file >new
@@ -1208,14 +1208,14 @@ Sed uses the same convention, provided you terminate the expression with a
 slash.
 To delete the first number on all lines that
 start with a
-"#," use:
+`#`, use:
 
     
     sed '/^#/ s/[0-9][0-9]*//'
     
 
 I placed a space after the 
-"/expression/" so it is easier to read. It isn't necessary, but
+`/expression/` so it is easier to read. It isn't necessary, but
 without it the command is harder to fathom.
 Sed does provide a few extra options when specifying regular expressions.
 But I'll discuss those later. 
@@ -1228,8 +1228,8 @@ delimiter. To use a comma instead of a slash, use:
 
 The main advantage of this feature is searching for slashes.
 Suppose you wanted to search for the string 
-"/usr/local/bin" and you wanted to change it for
-"/common/all/bin." You could use the backslash to escape the slash:
+`/usr/local/bin` and you wanted to change it for
+`/common/all/bin`. You could use the backslash to escape the slash:
 
     
     sed '/\/usr\/local\/bin/ s/\/usr\/local/\/common\/all/'
@@ -1248,9 +1248,9 @@ This illustrates why
 sed scripts get the reputation for obscurity.
 I could be perverse and show you the example that will search for all
 lines that start with a
-"g," and change each
-"g" on that line to an
-"s:" 
+`g`, and change each
+`g` on that line to an
+`s:` 
 
     
     sed '/^g/s/g/s/g'
@@ -1294,15 +1294,15 @@ wc to find out there are 532 lines in the file:
     
 
 An easier way is to use the special character
-"$," which means the last line in the file.
+`$`, which means the last line in the file.
 
     
     sed '101,$ s/A/a/'
     
 
 The
-"$" is one of those conventions that mean
-"last" in utilities like
+`$` is one of those conventions that mean
+`last` in utilities like
 cat -e, 
 vi, and
 ed. 
@@ -1323,11 +1323,11 @@ is the same as
 
 You can specify two regular expressions as the range.
 Assuming a
-"#" starts a comment, you can search for a keyword,
+`#` starts a comment, you can search for a keyword,
 remove all comments until you see the second keyword.
 In this case the two keywords are
-"start" and
-"stop:" 
+`start` and
+`stop`: 
 
     
     sed '/start/,/stop/ s/#.*//'
@@ -1337,28 +1337,28 @@ The first pattern turns on a flag that tells
 sed to perform the substitute command on every line.
 The second pattern turns off the flag.
 If the 
-"start" and
-"stop" pattern occurs twice, the substitution is done both times.
+`start` and
+`stop` pattern occurs twice, the substitution is done both times.
 If the
-"stop" pattern is missing, the flag is never turned off, and the
+`stop` pattern is missing, the flag is never turned off, and the
 substitution
 will be performed on every line until the end of the file.
 
 You should know that if the 
-"start"
+`start`
 pattern is found, the substitution occurs on the same line that contains 
-"start."
+`start`.
 This turns on a switch, which is line oriented. That is,
 the next line is read and the substitute command is checked.
 If it contains
-"stop"
+`stop`
 the switch is turned off. 
 Switches are line oriented, and not word oriented.
 
 You can combine line numbers and regular expressions.
 This example will remove comments from the beginning of the file until
 it finds the keyword
-"start:" 
+`start`:
 
     
     sed -e '1,/start/ s/#.*//'
@@ -1372,7 +1372,7 @@ between the two keywords:
     
 
 The last example has a range that overlaps the
-"/start/,/stop/" range, as both ranges operate on the lines that contain the keywords.
+`/start/,/stop/` range, as both ranges operate on the lines that contain the keywords.
 I will show you later how to restrict a command up to, 
 but not including the line containing the specified pattern.
 It is in [Operating in a pattern range except for the patterns](#operating-in-a-pattern-range-except-for-the-patterns)
@@ -1383,14 +1383,14 @@ some commands cannot operate on a range of lines. I will let you know
 when I mention the commands. In this next section I will describe three commands, one 
 of which cannot operate on a range.
 
-## Delete with d
+## Delete with `d`
 
 Using ranges can be confusing, so you should expect to do some
 experimentation
 when you are trying out a new script. 
 A useful command deletes 
 every line that matches the restriction: 
-"d." If you want to look at the first 10 lines of a file, you can use:
+`d`. If you want to look at the first 10 lines of a file, you can use:
 
     
     sed '11,$ d' <file 
@@ -1432,7 +1432,7 @@ The range for deletions can be regular expressions pairs to mark the
 begin and end of the operation.
 Or it can be a single regular expression.
 Deleting all lines that start with a
-"#" is easy:
+`#` is easy:
 
     
     sed '/^#/ d'
@@ -1440,7 +1440,7 @@ Deleting all lines that start with a
 
 Removing comments and blank lines takes two commands.
 The first removes every character from the
-"#" to the end of the line, and the second deletes all blank lines:
+`#` to the end of the line, and the second deletes all blank lines:
 
     
     sed -e 's/#.*//' -e '/^$/ d'
@@ -1454,7 +1454,7 @@ immediately before the end of line:
     
 
 The character
-"^I" is a 
+`^I` is a 
 CTRL-I or tab character.
 You would have to explicitly type in the tab.
 Note the order of operations above, which is in that order for a very
@@ -1477,24 +1477,21 @@ sed uses is:
 
 - Copy the input line into the pattern space.
 
-- Apply the first 
-sed command on the pattern space, if the address restriction is true.
+- Apply the first sed command on the pattern space, if the address restriction is true.
 
-- Repeat with the next sed expression, again
-
-operating on the pattern space.
+- Repeat with the next sed expression, again operating on the pattern space.
 
 - When the last operation is performed, write out the pattern space
 
-and read in the next line from the input file.
+- and read in the next line from the input file.
 
-## Printing with p
+## Printing with `p`
 
 Another useful command is the print command: 
-"p." If
+`p`. If
 sed wasn't started with an
-"-n" option, the
-"p" command will duplicate the input. The command
+`-n` option, the
+`p` command will duplicate the input. The command
 
     
     sed 'p'
@@ -1508,7 +1505,7 @@ use:
     
 
 Adding the 
-"-n" option turns off printing unless you request it.
+`-n` option turns off printing unless you request it.
 Another way of duplicating
 head's functionality is to print only the lines you want.
 This example prints the first 10 lines:
@@ -1531,12 +1528,12 @@ which is the same as:
     grep match
     
 
-## Reversing the restriction with !
+## Reversing the restriction with `!`
 
 Sometimes you need to perform an action on every line except 
 those that match a regular expression, or those outside of a range of
 addresses. The
-"!" character, which often means
+`!` character, which often means
 not in UNIX utilities, inverts the address restriction.
 You remember that
 
@@ -1546,7 +1543,7 @@ You remember that
 
 acts like the 
 grep command. The
-"-v" option to
+`-v` option to
 grep prints all lines that don't contain the pattern.
 Sed can do this with
 
@@ -1554,7 +1551,7 @@ Sed can do this with
     sed -n '/match/ !p' </tmp/b
     
 
-## Relationships between d, p, and !
+## Relationships between `d`, `p`, and `!`
 
 As you may have noticed, there are often several ways to 
 solve the same problem with 
@@ -1562,15 +1559,34 @@ sed. This is because
 print and
 delete are opposite functions, and
 it appears that
-"!p" is similar to
-"d," while
-"!d" is similar to 
-"p." I wanted to test this, so I created a 20 line file, and tried every
+`!p` is similar to
+`d`, while
+`!d` is similar to 
+`p`. I wanted to test this, so I created a 20 line file, and tried every
 different combination.
 The following table, which shows the results, 
 demonstrates the difference:
 
-Relations between d, p, and !SedRangeCommandResultssed -n1,10pPrint first 10 linessed -n11,$!pPrint first 10 lines  sed1,10!dPrint first 10 linessed11,$dPrint first 10 linessed -n1,10!pPrint last 10 linessed -n11,$pPrint last 10 linessed1,10dPrint last 10 linessed11,$!dPrint last 10 linessed -n1,10dNothing printedsed -n1,10!dNothing printedsed -n11,$dNothing printedsed -n11,$!dNothing printedsed1,10pPrint first 10 lines twice, then next 10 lines oncesed11,$!pPrint first 10 lines twice, then last 10 lines oncesed1,10!pPrint first 10 lines once, then last 10 lines twicesed11,$pPrint first 10 lines once, then last 10 lines twice
+**Relations between d, p, and !**
+
+| Sed | Range | Command | Results
+| - | - | - | -
+| sed -n | 1,10 | p  | Print first 10 lines
+| sed -n | 11,$ | !p | Print first 10 lines  
+| sed    | 1,10 | !d | Print first 10 lines
+| sed    | 11,$ | d  | Print first 10 lines
+| sed -n | 1,10 | !p | Print last 10 lines
+| sed -n | 11,$ | p  | Print last 10 lines
+| sed    | 1,10 | d  | Print last 10 lines
+| sed    | 11,$ | !d | Print last 10 lines
+| sed -n | 1,10 | d  | Nothing printed
+| sed -n | 1,10 | !d | Nothing printed
+| sed -n | 11,$ | d  | Nothing printed
+| sed -n | 11,$ | !d | Nothing printed
+| sed    | 1,10 | p  | Print first 10 lines twice, then next 10 lines once
+| sed    | 11,$ | !p | Print first 10 lines twice, then last 10 lines once
+| sed    | 1,10 | !p | Print first 10 lines once, then last 10 lines twice
+| sed    | 11,$ | p  | Print first 10 lines once, then last 10 lines twice
 
 This table shows that the following commands are identical:
 
@@ -1582,7 +1598,7 @@ This table shows that the following commands are identical:
     
 
 It also shows that the
-"!" command "inverts" the address range, operating on the other lines.
+`!` command "inverts" the address range, operating on the other lines.
 
 ## The q or quit command
 
