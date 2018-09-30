@@ -2232,8 +2232,8 @@ The next line is
 
 | Pattern Space | Next Input | Command | Output | New Pattern Space | New Text Input 
 | - | - | - | - | - | -
-| AB | CD | n | <default> | CD | EF
-| AB | CD | d | -  | CD | EF | 
+| AB | CD | n | \<default\> | CD | EF
+| AB | CD | d | -  | CD | EF 
 | AB | CD | p | AB | CD | EF
 
 The
@@ -2244,18 +2244,18 @@ the
 That review is a little easier to follow, isn't it?
 Before I jump into multi-line patterns, I wanted to cover three more commands:
 
-## Print line number with =
+## Print line number with `=`
 
 The
-"=" command prints the current line number to standard output.
+`=` command prints the current line number to standard output.
 One way to find out the line numbers that contain a pattern is to use:
 
-    
+```bash    
     # add line numbers first,
     # then use grep, 
     # then just print the number
     cat -n file | grep 'PATTERN' | awk '{print $1}'
-    
+```    
 
 The
 sed solution is:
@@ -2272,7 +2272,7 @@ Earlier I used the following to find the number of lines in a file
 ```    
 
 Using the
-"=" command can simplify this:
+`=` command can simplify this:
 
 ```bash    
     #!/bin/sh
@@ -2280,7 +2280,7 @@ Using the
 ```    
 
 The
-"=" command only accepts one address, so if you want to print the number
+`=` command only accepts one address, so if you want to print the number
 for
 a range of lines, you must use the curly braces:
 
@@ -2295,23 +2295,23 @@ a range of lines, you must use the curly braces:
     
 
 Since the 
-"=" command only prints to standard output, you cannot print the line
+`=` command only prints to standard output, you cannot print the line
 number on the same line as the pattern. You need to edit multi-line
 patterns to do this.
 
-## Transform with y
+## Transform with `y`
 
 If you wanted to change a word from lower case to upper case, you
 could write 26 character substitutions, converting
-"a" to
-"A," etc.
+`a` to
+`A`, etc.
 Sed has a command that operates like the
 tr program. 
 It is called the
-"y" command.
+`y` command.
 For instance, to change the letters 
-"a" through
-"f" into their upper case form, use:
+`a` through
+`f` into their upper case form, use:
 
     
     sed 'y/abcdef/ABCDEF/' file
@@ -2338,14 +2338,14 @@ are out of luck - unless you use multi-line editing.
 
 However, GNU sed has a uppercase and lowercase extension.
 
-## Displaying control characters with a l
+## Displaying control characters with a `l`
 
 The
-"l" command prints the current pattern space.
+`l` command prints the current pattern space.
 It is therefore useful in debugging
 sed scripts. It also converts unprintable characters into
 printing characters by outputting the value in octal preceded by a
-"\" character.
+`\` character.
 I found it useful to print out the current pattern space, while
 probing the subtleties of
 sed. 
@@ -2353,55 +2353,55 @@ sed.
 ## Working with Multiple Lines
 
 There are three new commands used in multiple-line patterns:
-"N," 
-"D," and
-"P." I will explain their relation to the matching 
-"n," 
-"d," and
-"p" single-line commands.
+`N`, 
+`D`, and
+`P`. I will explain their relation to the matching 
+`n`, 
+`d`, and
+`p` single-line commands.
 
 The
-"n" command will print out the current pattern space (unless the
-"-n" flag is used), empty the current pattern space, 
+`n` command will print out the current pattern space (unless the
+`-n` flag is used), empty the current pattern space, 
 and read in the next line of input.
 The
-"N" command does
+`N` command does
 not print out the current pattern space and does
 not empty the pattern space. It reads in the next line, but appends a new
 line character along with the input line itself to
 the pattern space. 
 
 The
-"d" command deletes the current pattern space, reads in the next line,
+`d` command deletes the current pattern space, reads in the next line,
 puts the new line into the pattern space, and aborts the
 current 
 command, and starts execution at the first 
 sed command.
 This is called 
 starting a new 
-"cycle." The
-"D" command deletes the first portion of the pattern space, up to the new
+"cycle" The
+`D` command deletes the first portion of the pattern space, up to the new
 line character, leaving the rest of the pattern alone. Like
-"d," it stops the current command and starts the command cycle over again.
+`d`, it stops the current command and starts the command cycle over again.
 However, it will not print the current pattern space. You must print
 it yourself, a step earlier.
 If the
-"D" command is executed with a group of other commands in a curly brace,
+`D` command is executed with a group of other commands in a curly brace,
 commands after the 
-"D" command are ignored.
+`D` command are ignored.
 The next group of 
 sed commands is executed, unless the pattern space is emptied.
 If this happens, the cycle is started from the top and a new line is
 read.
 
 The
-"p" command prints the entire pattern space.
+`p` command prints the entire pattern space.
 The
-"P" command only prints the first part of the pattern space, up to the
+`P` command only prints the first part of the pattern space, up to the
 NEWLINE character. Neither the "p" nor the "P" command changes the patterns space.
 
 Some examples might demonstrate 
-"N" by itself isn't very useful. the filter
+`N` by itself isn't very useful. the filter
 
     
     sed -e 'N'
@@ -2411,10 +2411,10 @@ doesn't modify the input stream. Instead, it combines the first and
 second line, then prints them, combines the third and fourth line, and
 prints them, etc. It does allow you to use a new
 "anchor" character:
-"\n." This matches the new line character that separates multiple lines in
+`\n`. This matches the new line character that separates multiple lines in
 the pattern space.
 If you wanted to search for a line that ended with the character
-"#," and append the next line to it, you could use
+`#`, and append the next line to it, you could use
 
 ```bash    
     #!/bin/sh
@@ -2791,10 +2791,10 @@ hold space. Think of it as a spare pattern buffer. It can be used to
 "remember" the data in the pattern space for later.
 There are five commands that use the hold buffer.
 
-## Exchange with x
+## Exchange with `x`
 
 The 
-"x" command eXchanges the pattern space with the hold buffer.
+`x` command eXchanges the pattern space with the hold buffer.
 By itself, the command isn't useful. Executing the 
 sed command
 
@@ -2808,11 +2808,11 @@ sed command is modifying every line.
 
 The hold buffer starts out containing a blank line.
 When the
-"x" command
+`x` command
 modifies the first line, line 1 is saved in the hold buffer, and
 the blank line takes the place of the first line.
 The second 
-"x" command exchanges the second line with the hold buffer, which contains
+`x` command exchanges the second line with the hold buffer, which contains
 the first line.  Each subsequent line is exchanged with the preceding
 line.
 The last line is placed in the hold buffer, and is not exchanged a
@@ -2893,12 +2893,12 @@ You could use this to show the three lines around a keyword, i.e.:
     grep3 vt100 </etc/termcap
     
 
-## Hold with h or H
+## Hold with `h` or `H`
 
 The
-"x" command exchanges the hold buffer and the pattern buffer. Both are
+`x` command exchanges the hold buffer and the pattern buffer. Both are
 changed. The
-"h" command copies the pattern buffer into the hold buffer.
+`h` command copies the pattern buffer into the hold buffer.
 The pattern buffer is unchanged. 
 An identical script to the above uses the hold commands:
 
@@ -2946,10 +2946,10 @@ Click here to get file: [grep3a.sh](http://www.grymoire.com/Unix/Scripts/grep3a.
 ## Keeping more than one line in the hold buffer
 
 The
-"H" command allows you to combine several lines in the hold buffer.
+`H` command allows you to combine several lines in the hold buffer.
 It acts like the
-"N" command as lines are appended to the buffer, with a
-"\n" between the lines.
+`N` command as lines are appended to the buffer, with a
+`\n` between the lines.
 You can save several lines in the hold buffer, and print them only if
 a particular pattern is found later.
 
@@ -3059,14 +3059,14 @@ As you can see, you must remember what is in the hold space, and what
 is in the pattern space. There are other ways to write the same
 routine.
 
-## Get with g or G
+## Get with `g` or `G`
 
 Instead of exchanging the hold space with the pattern space, you can
 copy the hold space to the pattern space with the
-"g" command.
+`g` command.
 This deletes the pattern space. If you want to append
 to the pattern space, use the
-"G" command. This adds a new line to the pattern space, and copies the
+`G` command. This adds a new line to the pattern space, and copies the
 hold space after the new line.
 
 Here is another version of the 
@@ -3119,7 +3119,7 @@ What is important is you understand your problem, and document your solution:
 Click here to get file: [grep3c.sh](http://www.grymoire.com/Unix/Scripts/grep3c.sh)
 
 The
-"G" command makes it easy to have two copies of a line.
+`G` command makes it easy to have two copies of a line.
 Suppose you wanted to the convert the first hexadecimal number to
 uppercase, and don't
 want to use the script I described in an earlier column
@@ -3200,8 +3200,8 @@ I was working too hard.
 Click here to get file: [convert2uc2.sh](http://www.grymoire.com/Unix/Scripts/convert2uc2.sh)
 
 This example only converts the letters 
-"a" through
-"f" to upper case. This was chosen to make the script easier to
+`a` through
+`f` to upper case. This was chosen to make the script easier to
 print in these narrow columns. You can easily modify
 the script to convert all letters to uppercase, or to
 change the first letter, second word, etc.
@@ -3217,13 +3217,13 @@ There are three commands
 sed uses for this.
 You can specify a label with an text string preceded by a colon.
 The 
-"b" command branches to the label.
+`b` command branches to the label.
 The label follows the command. If no label is there,
 branch to the end of the script.
 The 
-"t" command is used to test conditions. Before I discuss the
-"t" command, I will show you an example using the
-"b" command.
+`t` command is used to test conditions. Before I discuss the
+`t` command, I will show you an example using the
+`b` command.
 
 This example remembers paragraphs, and if it contains the
 pattern (specified by an argument), 
@@ -3283,7 +3283,7 @@ You could use the regular expression
 
 but that would delete non-matching sets of parenthesis.
 The
-"t" command would solve this:
+`t` command would solve this:
 
     
 ```bash    
@@ -3300,9 +3300,9 @@ An earlier version had a 'g' after the 's' expression. This is not needed.
 
 Click here to get file: [delete_nested_parens.sh](http://www.grymoire.com/Unix/Scripts/delete_nested_parens.sh)
 
-## Debugging with l
+## Debugging with `l`
 
- The 'l' command will print the pattern space in an unambiguous form. Non-printing characters are printed in a C-style escaped format. 
+ The `l` command will print the pattern space in an unambiguous form. Non-printing characters are printed in a C-style escaped format. 
 
 This can be useful when debugging a complex multi-line sed script.
 
@@ -3327,12 +3327,12 @@ Use the
 
 Click here to get file: [sed_add_comments.sh](http://www.grymoire.com/Unix/Scripts/sed_add_comments.sh)
 
-## The poorly documented ;
+## The poorly documented `;`
 
 There is one more 
 sed command that 
 isn't well documented. It is the
-";" command. This can be used to combined several 
+`;` command. This can be used to combined several 
 sed commands on one line. 
 Here is the
 grep4 script I described earlier, but without the
@@ -3387,8 +3387,8 @@ day:
 
 If the argument contains any of these characters in it, you may get
 a broken script:
-"/\.*[]^$" 
-For instance, if someone types a "/" then the substitute command will see four delimiters instead of three. You will also get syntax errors if you provide a "]" without a "]". 
+`/\.*[]^$` 
+For instance, if someone types a `/` then the substitute command will see four delimiters instead of three. You will also get syntax errors if you provide a `]` without a `]`. 
 One solution is to have the user put a backslash before any of these characters when they pass it as an argument.
 However, the user has to know which characters are special.
 
@@ -3405,8 +3405,8 @@ Another solution is to add a backslash before each of those characters in the sc
 Click here to get file: [sed_with_regular_expressions1.sh](http://www.grymoire.com/Unix/Scripts/sed_with_regular_expressions1.sh)
 
 If you were searching for the pattern
-"^../," the script would convert this into
-"\^\.\.\/" before passing it to 
+`^../`, the script would convert this into
+`\^\.\.\/` before passing it to 
 sed. 
 
 ## Inserting binary characters
@@ -3459,61 +3459,27 @@ Or
 The long form of sed's command line arguments always have 2 hyphens before their names.
 GNU sed has the following long-form command line arguments:
 
-GNU Command Line Arguments
+**GNU Command Line Arguments**
 
-Short Form
-
-Long Form
-
--n
-
---quiet
-
---silent
-
--e script
-
---expression=SCRIPT
-
--f SCRIPTFILE
-
---file=SCRIPTFILE
-
--i[SUFFIX]
-
---in-place[=SUFFIX]
-
--l N
-
---line-length=N
-
---posix
-
--b
-
---binary
-
---follow-symlinks
-
--r
-
---regular-extended
-
--s
-
---separate
-
--u
-
---unbuffered
-
---help
-
---version
+| Short Form | Long Form
+| - | -
+| -n | --quiet, --silent
+| -e script | --expression=SCRIPT
+| -f SCRIPTFILE | --file=SCRIPTFILE
+| -i[SUFFIX] | --in-place[=SUFFIX]
+| -l N | --line-length=N
+| | --posix
+| -b | --binary
+| | --follow-symlinks
+| -r | --regular-extended
+| -s | --separate
+| -u | --unbuffered
+| | --help
+| | --version
 
 Let's define each of these.
 
-## The -posix argument
+## The `-posix` argument
 
 The GNU version of sed has many features that are not available in other versions. When portability is important, test your script with the -posix option. If you had an example that used a feature of GNU sed, such as the 'v' command to test the version number, such as
 
@@ -3536,7 +3502,7 @@ then the GNU version of sed program would give you a warning that your sed scrip
     sed: -e expression #1, char 2: unknown command: `v'
     
 
-## The --version argument
+## The `--version` argument
 
 You can determine which version of sed you are using with the GNU  sed --version command. This is what it outputs on my computer
 
@@ -3554,7 +3520,7 @@ You can determine which version of sed you are using with the GNU  sed --version
     Be sure to include the word ``sed'' somewhere in the ``Subject:'' field.
     
 
-## The -h Help argument
+## The `-h` Help argument
 
 The -h option will print a summary of the sed commands. The long argument of the command is 
 
@@ -3564,7 +3530,7 @@ The -h option will print a summary of the sed commands. The long argument of the
 
 It provides a nice summary of the command line arguments.
 
-## The -l Line Length Argument
+## The `-l` Line Length Argument
 
 I've already described the 'l' command. 
 
@@ -3580,7 +3546,7 @@ The long form version of the command line is
      sed -n --line-length=80 'l' <file
     
 
-## The -s Separate argument
+## The `-s` Separate argument
 
 Normally, when you specify several files on the command line, sed concatenates the files into one stream, and then operates on that single stream. If you had three files, each with 100 lines, then the command
 
@@ -3618,7 +3584,7 @@ A better emulation of the 'wc -l' command would execute the command in a loop, a
 ```    
     
 
-## The -i in-place argument
+## The `-i` in-place argument
 
 I've already described in Editing multiple files the way I like to do
 this. For those who want a simpler method, GNU Sed allows you to do
@@ -3665,7 +3631,7 @@ If you want to do in-place editing without creating a backup, you can use
     sed -i ''  's/^/\t/'  *.txt
     
 
-## The --follow-symlinks argument
+## The `--follow-symlinks` argument
 
 The in-place editing feature is handy to have. But what happens if the file you are editing is a symbolic link to another file?
 Let's assume you have a file named "b" in a directory called "tmp", with a symbolic link to this file:
@@ -3686,7 +3652,7 @@ place, use the "--follow-symlinks" command line option:
 
 This follows the symlink to the original location, and modifies the file in the "tmp" directory, If you specify an extension, the original file will be found with that extension in the same directory ar the real source. Without the --follow-symlinks command line option, the "backup" file "b.tmp" will be in the same directory that held the symbolic link, and will still be a symbolic link - just renamed to give it a new extension.
 
-## The -b Binary argument
+## The `-b` Binary argument
 
 Unix and Linux systems consider the new line character "\n" to be the end of the line. However, MS-DOS, Windows, and Cygwin systems end each line with "\r\n" - Carriage return and line-feed. 
 
@@ -3694,7 +3660,7 @@ If you are using any of these operating systems, the "-b" or --binary" command l
 Otherwise  the carriage return is treated as an unprintable character immediately before the end-of-line.
 I think. (Note to self - verify this).
 
-## The -r Extended Regular Expression argument
+## The `-r` Extended Regular Expression argument
 
 When I mention patterns, such as "s/pattern/", the pattern is a regular expression.
 There are two common classes of regular expressions, the original "basic" expressions, and the "extended" regular expressions.  For more on the differences see [My tutorial on regular expressions](../Unix/Regular.html) and the [the section on extended regular expressions](../Unix/Regular.html#uh-12).
@@ -3713,7 +3679,7 @@ To enable this extension, use the "-r" command, as mentioned in [the example on 
 
 I already mentioned that Mac OS X and FreeBSD uses [-E](#-e-or-extended-regular-expressions) instead of [-r](#extended-regular-expressions).
 
-## The -u Unbuffered argument
+## The `-u` Unbuffered argument
 
 Normally - Unix and Linux systems apply some intelligence to handling
 standard output. It's assumed that if you are sending results to a
@@ -3762,7 +3728,7 @@ Mac OS X and FreeBSD use the argument "-l".
 
 GNU Sed 4.2.2 and later will also be unbuffered while reading files, not just writing them.
 
-## The -z Null Data argument
+## The `-z` Null Data argument
 
 Normally, sed reads a line by reading a string of characters up to the end-of-line character (new line or carriage return). See [the -b Binary command line argument](#the--b-binary-argument)
 The GNU version of sed added a feature in version 4.2.2 to use the "NULL" character instead.
@@ -3792,11 +3758,11 @@ This feature is very useful when users have the ability to create their own file
 
 Apple uses the FreeBSD version of sed for Mac OS X instead of the GNU sed. However, the FreeBSD version has a couple of additions.
 
-## The -a or delayed open Argument 
+## The `-a` or delayed open Argument 
 
 Normally, as soon as sed starts up, it opens all files that are refered to by the ["w"](#writing-a-file-with-the-w-command) command. The FreeBSD version of sed has an option to delay this action until the "w" command is executed.
 
-## The -I in-place argument
+## The `-I` in-place argument
 
 FreeBSD added a "-I" option that is similar to the [-i](#the--i-in-place-argument) option.
 The "-i" option treats the editing each file as a separate instance of
@@ -3809,7 +3775,7 @@ executed within the range would span both files. If you used "-i", then the comm
 
 And like the [-i](#the--i-in-place-argument) option, the extension used to store the backup file must be specified.
 
-## -E or Extended Regular Expressions
+## `-E` or Extended Regular Expressions
 
 I mentioned extended regular expressions [earlier](#extended-regular-expressions).
 FreeBSD (and Mac OS X) uses "-E" to enable this. However, FreeBSD later added the [-r](#extended-regular-expressions) command to be compatible with GNU sed.
@@ -3917,11 +3883,14 @@ stream, others only affect the hold buffer.
 If you remember that the pattern space is output (unless a 
 "-n" was given to
 sed), this table should help you keep track of the various commands.
-CommandAddress or RangeModification to
-Input StreamModification to
-Output StreamModification to
-Pattern SpaceModification to
-Hold Buffer=--Y--aAddress-Y--bRange----cRange-Y--dRangeY-Y-DRangeY-Y-gRange--Y-GRange--Y-hRange---YHRange---YiAddress-Y--lAddress-Y--nRangeY*--NRangeY-Y-pRange-Y--PRange-Y--qAddress----rAddress-Y--sRange--Y-tRange----wRange-Y--xRange--YYyRange--Y-
+
+| Command | Address or Range | Modification to Input Stream | Modification to Output Stream | Modification to Pattern Space | Modification to Hold Buffer
+| - | - | - | - | - | -
+| = | - | - | Y | - | - 
+| a | Address | - | Y | - | - 
+| b | Range | - | - | - | - |
+| c | Range | - | Y | - | - |
+dRangeY-Y-DRangeY-Y-gRange--Y-GRange--Y-hRange---YHRange---YiAddress-Y--lAddress-Y--nRangeY*--NRangeY-Y-pRange-Y--PRange-Y--qAddress----rAddress-Y--sRange--Y-tRange----wRange-Y--xRange--YYyRange--Y-
 
 The
 "n" command may or may not generate output, depending on the
