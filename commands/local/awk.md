@@ -179,15 +179,13 @@ The AWK program below:
     END   { print "STOP"  }
     
     
-
 adds one line before and one line after the input file.
 This isn't very useful, but with a simple change, we can make
 this into a typical AWK program:
-BEGIN 	{ print "File\tOwner"}
 
-		{ print $8, "\t", $3}
-
-END   	{ print " - DONE -" }
+    BEGIN 	{ print "File\tOwner"}
+        	{ print $8, "\t", $3}
+    END   	{ print " - DONE -" }
 
 I'll improve the script in the next sections, but we'll call it "FileOwner".
 But let's not put it into a script or file yet. I will cover that part in a bit. Hang on and follow with me so you get the flavor of AWK.
@@ -207,6 +205,7 @@ follow the
 "\" character like "t". The Bourne and C UNIX shells do not.
 Also, unlike the shell (and PERL) AWK does not evaluate variables within 
 strings. To explain, the second line could not be written like this:
+
 	{print "$8\t$3" }
 
 That example would print
@@ -232,8 +231,8 @@ column in the current line. When switching between Perl and AWK you must remener
 So the following piece of code prints two "fields" to standard out. The first field
 printed is the number "5", the second is the fifth field (or column) on the input
 line.
-BEGIN 	{ x=5 }
 
+    BEGIN 	{ x=5 }
 		{ print x, $x}
 
 ## Executing an AWK script
@@ -243,17 +242,17 @@ There are a couple of ways to do this.
 
 Assuming the first script is called 
 "FileOwner", the invocation would be
-ls -l | FileOwner
+
+    ls -l | FileOwner
 
 This might generate the following if there were only
 two files in the current directory:
-File	Owner
 
-a.file	barnett
-
-another.file 	 barnett
-
- - DONE -
+    File	Owner
+    
+    a.file	barnett
+    another.file 	 barnett
+    - DONE -
 
 There are two problems with this script.
 Both problems are easy to fix, but I'll hold
@@ -292,42 +291,31 @@ to span several lines:
 
 ```bash    
 #!/bin/sh
-
 # Linux users have to change $8 to $9 
 
 awk '
-
 BEGIN 	{ print "File\tOwner" } 
-
-		{ print $8, "\t", $3}	
-
+	{ print $8, "\t", $3}	
 END   	{ print " - DONE -" } 
-
 '
 ```    
 
 And again, once it is created, it has to be made executable:
-
     
     chmod +x awk_example1.sh
     
-
 Click here to get file: [awk_example1.sh](http://www.grymoire.com/Unix/Scripts/awk_example1.sh)
 
 By the way, I give example scripts in the tutorial, and use an extension on the filename to indicate the type of script.
 You can, of course,  "install" the script in your home "bin" directory by typing
-
     
     cp awk_example1.sh $HOME/bin/awk_example1
     chmod +x $HOME/bin/awk_example1
     
-
 A third type of AWK script is a "native' AWK script, where you don't use the shell. You can write the commands in a file, and execute
-
     
     awk -f filename
     
-
 Since AWK is also an interpretor, like the shell, you can save yourself a step and make the file executable
 by add one line in the beginning of the file:
 
@@ -335,9 +323,7 @@ by add one line in the beginning of the file:
 #!/bin/awk -f
 
 BEGIN 	{ print "File\tOwner" }
-
-		{ print $8, "\t", $3}
-
+	{ print $8, "\t", $3}
 END   	{ print " - DONE -" }
 ```        
 
@@ -376,11 +362,8 @@ you had to use a backslash:
 #!/bin/awk -f
 
 BEGIN 	{ print "File\tOwner" }
-
-		{ print $8, "\t", \ 
-
+	{ print $8, "\t", \ 
 		$3} 
-
 END   	{ print " - DONE -" }
 ```        
 
@@ -392,15 +375,10 @@ The Bourne shell version would be
 #!/bin/sh
 
 awk '
-
 BEGIN	{ print "File\tOwner" }
-
-		{ print $8, "\t", \
-
+	{ print $8, "\t", \
 		$3}
-
-END		{ print "done"} 
-
+END	{ print "done"} 
 '
 ```    
 
@@ -411,15 +389,10 @@ while the C shell would be
 #!/bin/csh -f
 
 awk '
-
 BEGIN	{ print "File\tOwner" }\
-
-		{ print $8, "\t", \\
-
+	{ print $8, "\t", \\
 		$3}\
-
-END		{ print "done"}\
-
+END	{ print "done"}\
 '
 
 Click here to get file: [awk_example2.csh](http://www.grymoire.com/Unix/Scripts/awk_example2.csh)
@@ -442,7 +415,7 @@ of the next section.
 
 Since you can make a script an AWK executable
 by mentioning
-"#!/bin/awk -f" on the first line, including an AWK script inside a shell script
+`#!/bin/awk -f` on the first line, including an AWK script inside a shell script
 isn't needed unless you want to either eliminate the need for an extra file, 
 or if you want to pass a variable to the insides of an AWK script.
 Since this is a common problem, now is as good a time to explain the
@@ -457,23 +430,23 @@ The first version of the program, which we will call
 #!/bin/sh
 
 #NOTE - this script does not work!
-
 column=$1
-
 awk '{print $column}'
 ```
 
 Click here to get file (but be aware that it doesn't work): [Column1.sh](http://www.grymoire.com/Unix/Scripts/Column1.sh)
 
 A suggested use is:
-ls -l | Column 3
+
+    ls -l | Column 3
 
 This would print the third column from the
 ls command, which would be the owner of the file.
 
 You can change this into a utility that 
 counts how many files are owned by each user by adding
-ls -l | Column 3 | uniq -c | sort -nr
+
+    ls -l | Column 3 | uniq -c | sort -nr
 
 Only one problem: the script doesn't work.
 The value of the
@@ -487,7 +460,6 @@ ending the quoting, and restarting it after the variable:
 #!/bin/sh
 
 column=$1
-
 awk '{print $'$column'}'
 ```    
 
@@ -516,13 +488,14 @@ evaluates the variable, and replaces
 If you don't understand, either change
 "awk" to
 "echo", or change the first line to read
-"#!/bin/sh -x". 
+`#!/bin/sh -x`. 
 
 Some improvements are needed, however.
 The Bourne shell has a mechanism to provide a value for a variable
 if the value isn't set, or is set and the value is an empty string.
 This is done by using the format:
-${variable:-defaultvalue}
+
+<pre>  <i>${variable:-defaultvalue}</i>
 
 This is shown below, where the default column will be one:
 
@@ -530,7 +503,6 @@ This is shown below, where the default column will be one:
 #!/bin/sh
 
 column=${1:-1}
-
 awk '{print $'$column'}'
 ```    
 
@@ -549,7 +521,8 @@ Click here to get file: [Column4.sh](http://www.grymoire.com/Unix/Scripts/Column
 It is hard to read, but it is compact.
 There is one other method that can be used.
 If you execute an AWK command and include on the command line
-variable=value
+
+  *variable=value*
 
 this variable will be set when the AWK script starts.
 An example of this use would be:
@@ -579,14 +552,29 @@ discuss the various grammatical elements of AWK.
 There are several arithmetic operators, similar to C. These are the binary 
 operators, 
 which operate on two variables:
-AWK Table 1
-Binary OperatorsOperatorTypeMeaning+ArithmeticAddition-ArithmeticSubtraction*ArithmeticMultiplication/ArithmeticDivision%ArithmeticModulo<space>StringConcatenation
+AWK Table 1: **Binary Operators**
+
+| Operator | Type | Meaning 
+| - | - | -
+| + | Arithmetic | Addition
+| - | Arithmetic | Subtraction
+| * | Arithmetic | Multiplication
+| / | Arithmetic | Division
+| % | Arithmetic | Modulo
+| <space> | String | Concatenation
 
 Using variables with the value of 
 "7" and
 "3", AWK returns the following results for each operator
 when using the print command:
-ExpressionResult7+3107-347*3217/32.333337%317 373
+| Expression | Result
+| - | -
+| 7+3 | 10
+| 7-3 | 4
+| 7\*3 | 21
+| 7/3 | 2.33333
+| 7 % 3 | 1
+| 7 3 | 73
 
 There are a few points to make.
 The modulus operator finds the remainder after an integer divide. 
@@ -613,7 +601,8 @@ The
 "+" and
 "-" operators can be used before variables and numbers.
 If X equals 4, then the statement:
-print -x;
+
+    print -x;
 
 will print 
 "-4". 
@@ -621,36 +610,40 @@ will print
 ## The Autoincrement and Autodecrement Operators
 
 AWK also supports the
-"++" and
-"--" operators of C. Both increment or decrement the variables by one.  The
+`++` and
+`--` operators of C. Both increment or decrement the variables by one.  The
 operator can only be used with a single variable, and can be before or
 after the variable.  The prefix form modifies the value, and then uses
 the result, while the postfix form gets the results of the variable,
 and afterwards modifies the variable.  As an example, if X has the
 value of 3, then the AWK statement
-print x++, " ", ++x;
+
+    print x++, " ", ++x;
 
 would print the numbers 3 and 5.  These operators are also assignment
 operators, and can be used by themselves on a line:
-x++;
 
---y;
+    x++;
+    --y;
 
 ## Assignment Operators
 
 Variables can be assigned new values with the assignment operators.
 You know about
-"++" and
-"--". The other assignment statement is simply:
-variable = arithmetic_expression
+`++` and
+`--`. The other assignment statement is simply:
+
+  *variable = arithmetic_expression*
 
 Certain operators have precedence over others;
 parenthesis can be used to control grouping.
 The statement
-x=1+2*3 4;
+
+    x=1+2*3 4;
 
 is the same as
-x = (1 + (2 * 3))  "4";
+
+    x = (1 + (2 * 3))  "4";
 
 Both print out 
 "74".
@@ -658,14 +651,23 @@ Both print out
 Notice spaces can be added for readability.
 AWK, like C, has special assignment operators, which combine
 a calculation with an assignment. Instead of saying
-x=x+2;
+
+    x=x+2;
 
 you can more concisely say:
-x+=2;
+
+    x+=2;
 
 The complete list follows:
-AWK Table 2
-Assignment OperatorsOperatorMeaning+=Add result to variable-=Subtract result from variable*=Multiply variable by result/=Divide variable by result%=Apply modulo to variable
+AWK Table 2 **Assignment Operators**
+
+| Operator | Meaning
+| - | -
+| += | Add result to variable
+| -= | Subtract result from variable
+| *= | Multiply variable by result
+| /= | Divide variable by result
+| %= | Apply modulo to variable
 
 ## Conditional expressions
 
