@@ -3479,7 +3479,7 @@ GNU sed has the following long-form command line arguments:
 
 Let's define each of these.
 
-## The `-posix` argument
+### The `-posix` argument
 
 The GNU version of sed has many features that are not available in other versions. When portability is important, test your script with the -posix option. If you had an example that used a feature of GNU sed, such as the 'v' command to test the version number, such as
 
@@ -3502,7 +3502,7 @@ then the GNU version of sed program would give you a warning that your sed scrip
     sed: -e expression #1, char 2: unknown command: `v'
     
 
-## The `--version` argument
+### The `--version` argument
 
 You can determine which version of sed you are using with the GNU  sed --version command. This is what it outputs on my computer
 
@@ -3520,7 +3520,7 @@ You can determine which version of sed you are using with the GNU  sed --version
     Be sure to include the word ``sed'' somewhere in the ``Subject:'' field.
     
 
-## The `-h` Help argument
+### The `-h` Help argument
 
 The -h option will print a summary of the sed commands. The long argument of the command is 
 
@@ -3530,7 +3530,7 @@ The -h option will print a summary of the sed commands. The long argument of the
 
 It provides a nice summary of the command line arguments.
 
-## The `-l` Line Length Argument
+### The `-l` Line Length Argument
 
 I've already described the 'l' command. 
 
@@ -3546,7 +3546,7 @@ The long form version of the command line is
      sed -n --line-length=80 'l' <file
     
 
-## The `-s` Separate argument
+### The `-s` Separate argument
 
 Normally, when you specify several files on the command line, sed concatenates the files into one stream, and then operates on that single stream. If you had three files, each with 100 lines, then the command
 
@@ -3584,7 +3584,7 @@ A better emulation of the 'wc -l' command would execute the command in a loop, a
 ```    
     
 
-## The `-i` in-place argument
+### The `-i` in-place argument
 
 I've already described in Editing multiple files the way I like to do
 this. For those who want a simpler method, GNU Sed allows you to do
@@ -3631,7 +3631,7 @@ If you want to do in-place editing without creating a backup, you can use
     sed -i ''  's/^/\t/'  *.txt
     
 
-## The `--follow-symlinks` argument
+### The `--follow-symlinks` argument
 
 The in-place editing feature is handy to have. But what happens if the file you are editing is a symbolic link to another file?
 Let's assume you have a file named "b" in a directory called "tmp", with a symbolic link to this file:
@@ -3652,7 +3652,7 @@ place, use the "--follow-symlinks" command line option:
 
 This follows the symlink to the original location, and modifies the file in the "tmp" directory, If you specify an extension, the original file will be found with that extension in the same directory ar the real source. Without the --follow-symlinks command line option, the "backup" file "b.tmp" will be in the same directory that held the symbolic link, and will still be a symbolic link - just renamed to give it a new extension.
 
-## The `-b` Binary argument
+### The `-b` Binary argument
 
 Unix and Linux systems consider the new line character "\n" to be the end of the line. However, MS-DOS, Windows, and Cygwin systems end each line with "\r\n" - Carriage return and line-feed. 
 
@@ -3660,7 +3660,7 @@ If you are using any of these operating systems, the "-b" or --binary" command l
 Otherwise  the carriage return is treated as an unprintable character immediately before the end-of-line.
 I think. (Note to self - verify this).
 
-## The `-r` Extended Regular Expression argument
+### The `-r` Extended Regular Expression argument
 
 When I mention patterns, such as "s/pattern/", the pattern is a regular expression.
 There are two common classes of regular expressions, the original "basic" expressions, and the "extended" regular expressions.  For more on the differences see [My tutorial on regular expressions](../Unix/Regular.html) and the [the section on extended regular expressions](../Unix/Regular.html#uh-12).
@@ -3679,7 +3679,7 @@ To enable this extension, use the "-r" command, as mentioned in [the example on 
 
 I already mentioned that Mac OS X and FreeBSD uses [-E](#-e-or-extended-regular-expressions) instead of [-r](#extended-regular-expressions).
 
-## The `-u` Unbuffered argument
+### The `-u` Unbuffered argument
 
 Normally - Unix and Linux systems apply some intelligence to handling
 standard output. It's assumed that if you are sending results to a
@@ -3728,7 +3728,7 @@ Mac OS X and FreeBSD use the argument "-l".
 
 GNU Sed 4.2.2 and later will also be unbuffered while reading files, not just writing them.
 
-## The `-z` Null Data argument
+### The `-z` Null Data argument
 
 Normally, sed reads a line by reading a string of characters up to the end-of-line character (new line or carriage return). See [the -b Binary command line argument](#the--b-binary-argument)
 The GNU version of sed added a feature in version 4.2.2 to use the "NULL" character instead.
@@ -3758,11 +3758,11 @@ This feature is very useful when users have the ability to create their own file
 
 Apple uses the FreeBSD version of sed for Mac OS X instead of the GNU sed. However, the FreeBSD version has a couple of additions.
 
-## The `-a` or delayed open Argument 
+### The `-a` or delayed open Argument 
 
 Normally, as soon as sed starts up, it opens all files that are refered to by the ["w"](#writing-a-file-with-the-w-command) command. The FreeBSD version of sed has an option to delay this action until the "w" command is executed.
 
-## The `-I` in-place argument
+### The `-I` in-place argument
 
 FreeBSD added a "-I" option that is similar to the [-i](#the--i-in-place-argument) option.
 The "-i" option treats the editing each file as a separate instance of
@@ -3775,7 +3775,7 @@ executed within the range would span both files. If you used "-i", then the comm
 
 And like the [-i](#the--i-in-place-argument) option, the extension used to store the backup file must be specified.
 
-## `-E` or Extended Regular Expressions
+### `-E` or Extended Regular Expressions
 
 I mentioned extended regular expressions [earlier](#extended-regular-expressions).
 FreeBSD (and Mac OS X) uses "-E" to enable this. However, FreeBSD later added the [-r](#extended-regular-expressions) command to be compatible with GNU sed.
@@ -4006,5 +4006,3 @@ A big thanks for Fazl Rahman for spotting dozens of errors.
    Zander Hill [@_ZPH](https://twitter.com/_ZPH)[Rob Smith](https://plus.google.com/u/0/109762614990506375066/posts)[Peter Moore](https://plus.google.com/u/0/109762614990506375066/posts)
 
 This document was translated by troff2html v0.21 on September 22, 2001 and then manually edited to make it compliant with:[![Valid HTML 4.01!](http://www.w3.org/Icons/valid-html401)](http://validator.w3.org/check?uri=referer)
-
-![grymoire](grymoire.jpg)
