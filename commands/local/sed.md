@@ -1599,12 +1599,13 @@ This table shows that the following commands are identical:
 
 It also shows that the
 `!` command "inverts" the address range, operating on the other lines.
+(注：倒不如理解为 p 是打印这些地址的行, !p 是打印非这些地址的行)
 
-## The q or quit command
+## The `q` or `quit` command
 
 There is one more simple command that can restrict the changes to a
 set of lines. It is the
-"q" command: quit.
+`q` command: quit.
 the third way to duplicate the head command is:
 
     
@@ -1616,7 +1617,7 @@ This command is most useful when you wish to abort
 the editing after some condition is reached.
 
 The
-"q" command is the one command that does not take a range of addresses.
+`q` command is the one command that does not take a range of addresses.
 Obviously the command
 
     
@@ -1637,11 +1638,11 @@ or
 
 is correct.
 
-## Grouping with { and }
+## Grouping with `{ and }`
 
 The curly braces, 
-"{" and
-"}," are used to group the
+`{` and
+`}`, are used to group the
 commands.
 
 Hardly worth the buildup. All that prose and the solution is just
@@ -1651,7 +1652,7 @@ sed command must start on its own line, the curly braces and the nested
 sed commands must be on separate lines.
 
 Previously, I showed you how to remove comments starting with a 
-"#." If you wanted to restrict the removal to lines between special
+`#`. If you wanted to restrict the removal to lines between special
 "begin" and
 "end" key words, you could use:
 
@@ -1696,7 +1697,7 @@ the first 100 lines:
 Click here to get file: [sed_begin_end1.sh](http://www.grymoire.com/Unix/Scripts/sed_begin_end1.sh)
 
 You can place a
-"!" before a set of curly braces.
+`!` before a set of curly braces.
 This inverts the address, which removes comments from 
 all lines 
 except those between the two reserved words:
@@ -1718,7 +1719,8 @@ Click here to get file: [sed_begin_end2.sh](http://www.grymoire.com/Unix/Scripts
 
 ## Operating in a pattern range except for the patterns
 
-You may remember that I mentioned you can do a substitute on a pattern range, like changing "old" to "new" between a begin/end pattern:
+You may remember that I mentioned you can do a substitute on a pattern range, 
+like changing "old" to "new" between a begin/end pattern:
 
 ```bash    
     #!/bin/sh
@@ -1755,7 +1757,7 @@ If you did not want to make any changes where the word "begin" occurred, you cou
 ```    
     
 
-However, skipping over the line that has "end" is trickier. If you use the same method you used for "begin" then the sed engine will not see the "end" to stop the range - it skips over that as well. The solution is to do a substitute on all lines that don't have the "end" by using
+However, skipping over the line that has `end` is trickier. If you use the same method you used for `begin` then the sed engine will not see the `end` to stop the range - it skips over that as well. The solution is to do a substitute on all lines that don't have the `end` by using
 
 ```bash    
     #!/bin/sh
@@ -1770,7 +1772,7 @@ However, skipping over the line that has "end" is trickier. If you use the same 
 ```    
     
 
-## Writing a file with the 'w' command
+## Writing a file with the `w` command
 
 You may remember that the substitute command can write to a file. Here again is the example that will only write lines that start with an even number (and followed by a space):
 
@@ -1779,23 +1781,23 @@ You may remember that the substitute command can write to a file. Here again is 
     
 
 I used the 
-"&" in the replacement part of the substitution command so that the line
+`&` in the replacement part of the substitution command so that the line
 would not be changed. A simpler example is to use the
-"w" command, which has the same syntax as the 
-"w" flag in the substitute command:
+`w` command, which has the same syntax as the 
+`w` flag in the substitute command:
 
     
     sed -n '/^[0-9]*[02468]/ w even' <file
     
 
-Remember - only one space must follow the command.
+**Remember:** only one space must follow the command.
 Anything else will be considered part of the file name.
 The
-"w" command also has the same limitation as the 
-"w" flag: only 10 files can be opened in 
+`w` command also has the same limitation as the 
+`w` flag: only 10 files can be opened in 
 sed. 
 
-## Reading in a file with the 'r' command
+## Reading in a file with the `r` command
 
 There is also a command for reading files.
 The command
@@ -1805,16 +1807,16 @@ The command
     
 
 will append the file
-"end" at the end of the file (address
-"$)." The following will insert a file after the line with the word
-"INCLUDE:" 
+`end` at the end of the file (address
+`$`). The following will insert a file after the line with the word
+`INCLUDE`: 
 
     
     sed '/INCLUDE/ r file' <in >out
     
 
 You can use the curly braces to delete the line having the
-"INCLUDE" command on it:
+`INCLUDE` command on it:
 
 ```bash    
     #!/bin/sh
@@ -1828,20 +1830,20 @@ You can use the curly braces to delete the line having the
 Click here to get file: [sed_include.sh](http://www.grymoire.com/Unix/Scripts/sed_include.sh)
 
 The order of the delete command
-"d" and the read file command
-"r" is important. Change the order and it will not work.  
+`d` and the read file command
+`r` is important. Change the order and it will not work.  
 There are two subtle actions that prevent this from working.
 The first is the
-"r" command writes the file to the output stream. The file
+`r` command writes the file to the output stream. The file
 is not inserted into the pattern space, and therefore cannot be
 modified by any command. Therefore the delete command does not affect
 the data read from the file.
 
 The other subtlety is the
-"d" command deletes the current data in the pattern space.
+`d` command deletes the current data in the pattern space.
 Once all of the data is deleted, it does make sense that no other
 action will be attempted. Therefore a
-"d" command executed in a curly brace also aborts all further actions.
+`d` command executed in a curly brace also aborts all further actions.
 As an example, the substitute command below is never executed:
 
 ```bash    
@@ -1859,7 +1861,7 @@ Click here to get file: [sed_bad_example.sh](http://www.grymoire.com/Unix/Script
 The earlier example is a crude version of the C preprocessor program.
 The file that is included has a predetermined name. It would be nice if
 sed allowed a variable (e.g 
-"\1" ) instead of a fixed file name.
+`\1` ) instead of a fixed file name.
 Alas, 
 sed doesn't have this ability.
 You could work around this limitation by creating
@@ -1906,7 +1908,7 @@ to include the specified files.
 
 Click here to get file: [sed_include1.sh](http://www.grymoire.com/Unix/Scripts/sed_include1.sh)
 
-## SunOS and the # Comment Command
+## SunOS and the `#` Comment Command
 
 As we dig deeper into
 sed, comments will make the commands easier to follow.
@@ -1943,16 +1945,16 @@ line.
 If you are familiar with many UNIX utilities, you would expect 
 sed to use a similar convention: lines are continued by ending the
 previous line with a 
-"\". The syntax to these commands is finicky, like the
-"r" and
-"w" commands. 
+`\`. The syntax to these commands is finicky, like the
+`r` and
+`w` commands. 
 
-## Append a line with 'a'
+### Append a line with `a`
 
 The
-"a" command appends a line after the range or pattern.
+`a` command appends a line after the range or pattern.
 This example will add a line after every line with
-"WORD:" 
+`WORD`: 
 
 ```bash
     #!/bin/sh
@@ -1978,12 +1980,12 @@ I prefer the first form because it's easier to add a new command
 by adding a new line
 and because the intent is clearer.
 There must not be a space after the
-"\". 
+`\`. 
 
-## Insert a line with 'i'
+### Insert a line with `i`
 
 You can insert a new line before the pattern with the
-"i" command:
+`i` command:
 
 ```bash
     #!/bin/sh
@@ -1995,7 +1997,7 @@ You can insert a new line before the pattern with the
 
 Click here to get file: [sed_add_line_before_word.sh](http://www.grymoire.com/Unix/Scripts/sed_add_line_before_word.sh)
 
-## Change a line with 'c'
+### Change a line with `c`
 
 You can change the current line with a new line.
 
@@ -2010,10 +2012,10 @@ You can change the current line with a new line.
 Click here to get file: [sed_change_line.sh](http://www.grymoire.com/Unix/Scripts/sed_change_line.sh)
 
 A 
-"d" command followed by a
-"a" command won't work, as I discussed earlier.
+`d` command followed by a
+`a` command won't work, as I discussed earlier.
 The
-"d" command would terminate the current actions.
+`d` command would terminate the current actions.
 You can combine all three actions using curly braces:
 
 ```bash
@@ -2031,14 +2033,14 @@ You can combine all three actions using curly braces:
 
 Click here to get file: [sed_insert_append_change.sh](http://www.grymoire.com/Unix/Scripts/sed_insert_append_change.sh)
 
-## Leading tabs and spaces in a sed script
+### Leading tabs and spaces in a sed script
 
 Sed ignores leading tabs and spaces in all commands.
 However these white space characters may or may not be ignored 
 if they start the text following a
-"a," 
-"c" or
-"i" command. 
+`a`, 
+`c` or
+`i` command. 
 In SunOS, both 
 "features" are available. The Berkeley (and Linux) style sed is in
 /usr/bin, and the AT&T version (System V) is in /usr/5bin/.
@@ -2049,7 +2051,7 @@ To elaborate, the
 If you want to keep leading spaces, and not care about which version
 of
 sed you are using, put a
-"\" as the first character of the line:
+`\` as the first character of the line:
 
 ```bash    
     #!/bin/sh
@@ -2059,11 +2061,11 @@ sed you are using, put a
     '
 ```   
 
-## Adding more than one line
+### Adding more than one line
 
 All three commands will allow you to add more than one line.
 Just end each line with a
-"\:" 
+`\`:
 
 ```bash    
     #!/bin/sh
@@ -2075,7 +2077,7 @@ Just end each line with a
     '
 ```    
 
-## Adding lines and the pattern space
+### Adding lines and the pattern space
 
 I have mentioned the pattern space before. 
 Most commands operate on the pattern space, and subsequent commands
@@ -2083,20 +2085,20 @@ may act on the results of the last modification.
 The three previous commands, like the read file command,
 add the new lines to the output stream, bypassing the pattern space.
 
-## Address ranges and the above commands
+### Address ranges and the above commands
 
 You may remember that earlier I warned you that some 
 commands can take a range of lines, and others cannot.
 To be precise, the commands 
-"a," 
-"i," 
-"r," and
-"q" will not take a range like
-"1,100" or
-"/begin/,/end/." The documentation states that the read command can take a range, but I
+`a`, 
+`i`, 
+`r`, and
+`q` will not take a range like
+`1,100` or
+`/begin/,/end/`. The documentation states that the read command can take a range, but I
 got an error when I tried this. 
 The
-"c" or change command allows this, and it will let you change several
+`c` or change command allows this, and it will let you change several
 lines into one:
 
 ```bash    
@@ -2138,25 +2140,25 @@ space. If the end of file is found, and if there are additional files
 to read, the current file is closed, the next file is opened, and the
 first line of the new file is placed into the pattern space.
 
-2. The line count is incremented by one. Opening a new file does not
-reset this number.
+2. The line count is incremented by one. *Opening a new file does not
+reset this number*.
 
 3. Each 
 sed command is examined. If there is a restriction placed on the command,
 and the current line in the pattern space meets that restriction, the
 command is executed. Some commands, like
-"n" or
-"d" cause 
+`n` or
+`d` cause 
 sed to go to the top of the loop. 
 The 
-"q" command causes
+`q` command causes
 sed to stop.
 Otherwise the next command is examined.
 
 4. After all of the commands are examined, the pattern space is output
 unless 
 sed has the optional
-"-n" argument.
+`-n` argument.
 
 The restriction before the command determines if the command is
 executed.
@@ -2176,12 +2178,12 @@ first number and less than or equal to the last number:
     10,20 d
     
 
-If the restriction is a pair of patterns, there is a variable that is
+If the restriction is a pair of patterns, there is a *variable* that is
 kept for each of these pairs.
-If the variable is false and the first pattern is found, the variable
+If the *variable* is false and the first pattern is found, the *variable*
 is made true. If the variable is true, the command is executed.
-If the variable is true, and the last pattern is on the line, after
-the command is executed the variable is turned off:
+If the *variable* is true, and the last pattern is on the line, after
+the command is executed the *variable* is turned off:
 
     
     /begin/,/end/ d
@@ -2193,20 +2195,20 @@ You may want to refer back, because I covered several
 subtle points. My choice of words was deliberate. It covers some
 unusual cases, like:
 
-    
+```bash    
     # what happens if the second number
     # is less than the first number?
     sed -n '20,1 p' file
-    
+```    
 
 and
 
-    
+```bash    
     # generate a 10 line file with line numbers
     # and see what happens when two patterns overlap
     yes | head -10 | cat -n | \
     sed -n -e '/1/,/7/ p' -e '/5/,/9/ p'
-    
+```    
 
 Enough mental punishment. Here is another review, this time in a table
 format.
@@ -2223,16 +2225,21 @@ Assume the input file contains the following lines:
 When
 sed starts up, the first line is placed in the pattern space.
 The next line is 
-"CD." The operations of the
-"n," 
-"d," and
-"p" commands can be summarized as:
-Pattern SpaceNext InputCommandOutputNew Pattern SpaceNew Text InputABCDn<default>CDEFABCDd-CDEFABCDpABCDEF
+`CD`. The operations of the
+`n`, 
+`d`, and
+`p` commands can be summarized as:
+
+| Pattern Space | Next Input | Command | Output | New Pattern Space | New Text Input 
+| - | - | - | - | - | -
+| AB | CD | n | <default> | CD | EF
+| AB | CD | d | -  | CD | EF | 
+| AB | CD | p | AB | CD | EF
 
 The
-"n" command may or may not generate output depending upon the existence of
+`n` command may or may not generate output depending upon the existence of
 the
-"-n" flag.
+`-n` flag.
 
 That review is a little easier to follow, isn't it?
 Before I jump into multi-line patterns, I wanted to cover three more commands:
