@@ -3888,14 +3888,32 @@ sed), this table should help you keep track of the various commands.
 | - | - | - | - | - | -
 | = | - | - | Y | - | - 
 | a | Address | - | Y | - | - 
-| b | Range | - | - | - | - |
-| c | Range | - | Y | - | - |
-dRangeY-Y-DRangeY-Y-gRange--Y-GRange--Y-hRange---YHRange---YiAddress-Y--lAddress-Y--nRangeY*--NRangeY-Y-pRange-Y--PRange-Y--qAddress----rAddress-Y--sRange--Y-tRange----wRange-Y--xRange--YYyRange--Y-
+| b | Range | - | - | - | - 
+| c | Range | - | Y | - | - 
+| d | Range | Y | - | Y | -
+| D | Range | Y | - | Y | -
+| g | Range | - | - | Y | -
+| G | Range | - | - | Y | -
+| h | Range | - | - | - | Y
+| H | Range | - | - | - | Y
+| i | Address | - | Y | - | -
+| l | Address | - | Y | - | -
+| n | Range | Y | * | - | -
+| N | Range | Y | - | Y | -
+| p | Range | - | Y | - | -
+| P | Range | - | Y | - | -
+| q | Address | - | - | - | -
+| r | Address | - | Y | - | -
+| s | Range | - | - | Y | -
+| t | Range | - | - | - | -
+| w | Range | - | Y | - | -
+| x | Range | - | - | Y | Y
+| y | Range | - | - | Y | -
 
 The
-"n" command may or may not generate output, depending on the
-"-n" option. The 
-"r" command can only have one address, despite the documentation.
+`n` command may or may not generate output, depending on the
+`-n` option. The 
+`r` command can only have one address, despite the documentation.
 
 Check out my new [Sed Reference Chart](SedChart.pdf)
 
