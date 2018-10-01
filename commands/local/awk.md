@@ -3717,8 +3717,8 @@ have the following formats:
 
 **AWK Table 13: Optional GAWK strftime formats**
 
-| * | *
-| - | *
+| format specification | result
+| - | -
 | %D | Equivalent to specifying %m/%d/%y
 | %e | The day of the month, padded with a blank if it is only one digit
 | %h | Equivalent to %b, above
@@ -4316,7 +4316,7 @@ and
 
  I'd like to thank the following for feedback:
 
-    
+<pre>    
     Ranjit Singh 
     Richard Janis Beckert
     Christian Haarmann
@@ -4332,7 +4332,7 @@ and
     Pete Mattson
     Stan Searing
     Brian Clawson
-    
+</pre>    
 
 This document was translated by troff2html v0.21 on September 22, 2001 and then manually edited to make it compliant with:[![Valid HTML 4.01!](http://www.w3.org/Icons/valid-html401)](http://validator.w3.org/check?uri=referer)
     
