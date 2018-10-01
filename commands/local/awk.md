@@ -329,7 +329,7 @@ BEGIN 	{ print "File\tOwner" }
 END   	{ print " - DONE -" }
 ```        
 
-Then execute "chmod +x" and ise this file as a new UNIX command.
+Then execute `chmod +x` and ise this file as a new UNIX command.
 
 Click here to get file: [awk_example1.awk](http://www.grymoire.com/Unix/Scripts/awk_example1.awk)
 
@@ -425,10 +425,10 @@ or if you want to pass a variable to the insides of an AWK script.
 Since this is a common problem, now is as good a time to explain the
 technique.
 I'll do this by showing a simple AWK program
-that will only print one column. NOTE: there will be a bug in the first version.
+that will only print one column. **NOTE: there will be a bug in the first version.**
 The number of the column will be specified by the first argument.
 The first version of the program, which we will call
-"Column", looks like this:
+`Column`, looks like this:
 
 ```bash
 #!/bin/sh
@@ -526,7 +526,7 @@ It is hard to read, but it is compact.
 There is one other method that can be used.
 If you execute an AWK command and include on the command line
 
-  *variable=value*
+<pre>   <i>variable=value</i></pre>
 
 this variable will be set when the AWK script starts.
 An example of this use would be:
@@ -556,7 +556,8 @@ discuss the various grammatical elements of AWK.
 There are several arithmetic operators, similar to C. These are the binary 
 operators, 
 which operate on two variables:
-AWK Table 1: **Binary Operators**
+
+**AWK Table 1: Binary Operators**
 
 | Operator | Type | Meaning 
 | - | - | -
@@ -565,12 +566,13 @@ AWK Table 1: **Binary Operators**
 | * | Arithmetic | Multiplication
 | / | Arithmetic | Division
 | % | Arithmetic | Modulo
-| <space> | String | Concatenation
+| \<space\> | String | Concatenation
 
 Using variables with the value of 
 "7" and
 "3", AWK returns the following results for each operator
 when using the print command:
+
 | Expression | Result
 | - | -
 | 7+3 | 10
@@ -602,8 +604,8 @@ beginning of the string).
 ## Unary arithmetic operators
 
 The
-"+" and
-"-" operators can be used before variables and numbers.
+`+` and
+`-` operators can be used before variables and numbers.
 If X equals 4, then the statement:
 
     print -x;
@@ -637,7 +639,7 @@ You know about
 `++` and
 `--`. The other assignment statement is simply:
 
-  *variable = arithmetic_expression*
+<pre>   <i>variable = arithmetic_expression</i></pre>
 
 Certain operators have precedence over others;
 parenthesis can be used to control grouping.
@@ -663,7 +665,8 @@ you can more concisely say:
     x+=2;
 
 The complete list follows:
-AWK Table 2 **Assignment Operators**
+
+**AWK Table 2: Assignment Operators**
 
 | Operator | Meaning
 | - | -
@@ -677,8 +680,7 @@ AWK Table 2 **Assignment Operators**
 
 The second type of expression in AWK is the conditional expression.
 This is used for certain tests, like the 
-if or
-while. Boolean conditions evaluate to true or false.  In AWK, there is a
+*if or while*. Boolean conditions evaluate to true or false.  In AWK, there is a
 definite difference between a boolean condition, and an arithmetic
 expression.  You cannot convert a boolean condition to an integer or
 string.  You can, however, use an arithmetic expression as a
@@ -688,8 +690,17 @@ Unlike AWK, NAWK lets you use booleans as integers.
 
 Arithmetic values can also be converted into boolean conditions by
 using relational operators:
-AWK Table 3
-Relational OperatorsOperatorMeaning==Is equal!=Is not equal to>Is greater than>=Is greater than or equal to<Is less than<=Is less than or equal to
+
+**AWK Table 3: Relational Operators**
+
+| Operator | Meaning
+| - | -
+| == | Is equal
+| != | Is not equal to
+| >  | Is greater than
+| >= | Is greater than or equal to
+| <  | Is less than
+| <= | Is less than or equal to
 
 These operators are the same as the C operators.
 They can be used to compare numbers or strings.
@@ -699,16 +710,21 @@ case letters.
 ## Regular Expressions
 
 Two operators are used to compare strings to regular expressions:
-AWK Table 4
-Regular Expression OperatorsOperatorMeaning~Matches!~Doesn't match
+
+**AWK Table 4: Regular Expression Operators**
+
+| Operator | Meaning
+| - | -
+| ~  | Matches
+| !~ | Doesn't match
 
 The order in this case is particular. The regular expression must be
 enclosed by slashes, and comes after the operator. 
 AWK supports extended regular expressions, so the following are
 examples of valid tests:
-word !~ /START/
 
-lawrence_welk ~ /(one|two|three)/
+    word !~ /START/
+    lawrence_welk ~ /(one|two|three)/
 
 ## And/Or/Not
 
@@ -725,11 +741,9 @@ That is, you can combine two conditional expressions with the
 There are only a few commands in AWK.
 The list and syntax follows:
 
-```
-if ( conditional ) statement [ else statement ]
-
-while ( conditional ) statement
-
+<pre>
+if ( <i>conditional</i> ) <i>statement</i> [ else <i>statement</i> ]
+while ( <i>conditional</i> ) <i>statement</i>
 for ( expression ; conditional ; expression ) statement
 
 for ( variable in array ) statement
@@ -748,7 +762,7 @@ printf format [ , expression-list ] [ > expression ]
 next 
 
 exit
-```
+</pre>
 
 At this point, you can use AWK as a language for simple calculations;
 If you wanted to calculate something, and not read any lines for
