@@ -645,11 +645,15 @@ Certain operators have precedence over others;
 parenthesis can be used to control grouping.
 The statement
 
-    x=1+2*3 4;
+```awk
+    x = 1 + 2*3 4;
+```
 
 is the same as
 
+```awk
     x = (1 + (2 * 3))  "4";
+```
 
 Both print out 
 "74".
@@ -658,11 +662,11 @@ Notice spaces can be added for readability.
 AWK, like C, has special assignment operators, which combine
 a calculation with an assignment. Instead of saying
 
-    x=x+2;
+    x = x+2;
 
 you can more concisely say:
 
-    x+=2;
+    x += 2;
 
 The complete list follows:
 
@@ -959,7 +963,7 @@ using the
 `-F` command line option. 
 The following command will print out accounts that don't have passwords:
 
-```
+```bash
 awk -F: '{if ($2 == "") print $1 ": no password!"}' </etc/passwd
 ```
 
@@ -1240,9 +1244,8 @@ Don't forget the variable can be prepended with a
 
 
 ```awk
-#!/bin/awk -f
-
-{ print $NF; }
+    #!/bin/awk -f
+    { print $NF; }
 ```        
 
 Click here to get file: [print_last_field.awk](http://www.grymoire.com/Unix/Scripts/print_last_field.awk)
@@ -1442,8 +1445,9 @@ You really want someone to blame; it's hard to tell who owns what file.
 A filter that processes the output of 
 ls would work:
 
+```bash
     ls -l | filter
-
+```
 
 But this doesn't tell you how much space each user is using.
 It also doesn't work for a large directory tree.
@@ -1451,8 +1455,9 @@ This requires
 *find* and
 *xargs*: 
 
+```bash
     find . -type f -print | xargs ls -l | filter
-
+```
 
 The third column of
 `ls` is the username. The filter has to count
@@ -1545,8 +1550,9 @@ In this case, the index into the array is the third field of the
 which is the username. If the user is 
 `bin`, the main loop increments the count per user by effectively executing
 
+```awk
     username["bin"]++;
-
+```
 
 UNIX guru's may gleefully report that the 8 line AWK script can be
 replaced by:
@@ -1637,12 +1643,15 @@ once you understand, you won't be able to live without it.
 All you have to do is to create an index that combines two
 other indices. Suppose you wanted to effectively execute
 
-	a[1,2] = y;
+```awk
+    a[1,2] = y;
+```
 
 This is invalid in AWK. However, the following is perfectly fine:
 
-	a[1 "," 2] = y;
-
+```awk
+    a[1 "," 2] = y;
+```
 
 Remember: the AWK string concatenation operator is the space.
 It combines the three strings into the single string
@@ -1676,11 +1685,12 @@ First, initialize all arrays used in a
 for loop. 
 There will be four arrays for this purpose. Initialization is easy:
 
+```awk
     u_count[""] = 0;
     g_count[""] = 0;
     ug_count[""] = 0;
     all_count[""] = 0;
-
+```
 
 The second tip is to pick a convention for arrays.
 Selecting the names of the arrays, and the indices for each array
@@ -1713,10 +1723,11 @@ The third suggestion is to make sure your input is in the correct form.
 It's generally a  good idea to be pessimistic, but I will
 add a simple but sufficient test in this example.
 
-    
+```awk    
     if (NF != 10) {
-    #	ignore
+        # ignore
     } else {
+```    
     
 etc.
 
@@ -1736,10 +1747,11 @@ Disk blocks can be found by using
 `ls -s`. This adds a column, so the username becomes the fourth column, etc.
 Therefore the script will contain:
 
+```awk
     size = $1;
     user = $4;
     group = $5; 
-
+```
 
 This will allow us to easily adapt to changes in input. We could
 use
@@ -1816,6 +1828,7 @@ daemon would be
 of each file, putting the information into the right category.
 I will use 8 arrays; 4 for file sizes, and 4 for counts:
 
+```awk
     u_count[user " *"]++;
     g_count["* " group]++;
     ug_count[user " " group]++;
@@ -1825,7 +1838,7 @@ I will use 8 arrays; 4 for file sizes, and 4 for counts:
     g_size["* " group] += size;
     ug_size[user " " group] += size;
     all_size["* *"] += size;
-
+```
 
 This particular universal index will make sorting easier, as you will see.
 Also important is to sort the information in an order that is useful.
@@ -1858,14 +1871,14 @@ individual user/group combination.
 
 The arrays will be printed using the following format:
 
-    
+```awk    
     for (i in u_count) {
     	if (i != "") {
             print u_size[i], u_count[i], i;
     	}
     }
     O
-
+```
 
 I only showed you one array, but all four are printed the same way.
 That's the essence of the script.
@@ -2216,17 +2229,18 @@ to demonstrate the differences.
 With NAWK, you can print three tab characters using these three different
 representations:
 
+```awk
     printf("\t\11\x9\n");
-
+```
 
 A tab character is decimal 9, octal 11, or hexadecimal 09. See
 the man page ascii(7) for more information.
 Similarly, you can print three double-quote characters 
 (decimal 34, hexadecimal 22, or octal 42 ) using
 
-    
+```awk    
     printf("\"\x22\42\n");
-    
+```    
 
 You should notice a difference between the 
 *printf* function
@@ -2305,9 +2319,9 @@ This demonstrates Octal, Decimal and Hexadecimal conversion.
 As you can see, it isn't symmetrical.
 Decimal conversions are done differently.
 
-    
+```awk    
     printf("%s%s%s%c\n", "\"", "\x22", "\42", 34);
-    
+```    
 
 Between the 
 `%` and the format character can be four optional pieces of information.
@@ -2334,15 +2348,17 @@ Spaces are added to the left.
 This format allows you to line up columns perfectly.
 Consider the following format:
 
+```awk
     printf("%st%d\n", s, d);
-
+```
 
 If the string 
 `s` is longer than 8 characters, the columns won't line up.
 Instead, use
 
+```awk
     printf("%20s%d\n", s, d);
-
+```
 
 As long as the string is less than 20 characters, the number will
 start on the 21st column.
@@ -2427,8 +2443,9 @@ minimum field width is met. What do you do if you want the spaces on
 the right?
 Add a negative sign before the width:
 
+```awk
     printf("%-10s %-6d\n", $1, $2);
-
+```
 
 This will move the printing characters to the left, with spaces added
 to the right. 
@@ -2518,14 +2535,16 @@ There is one more topic needed to complete this lesson on
 Instead of sending output to standard output, you can send output to a
 named file. The format is
 
+```awk
     printf("string\n") > "/tmp/file";
-
+```
 
 You can append to an existing file, by using
 `>>:` 
 
+```awk
     printf("string\n") >> "/tmp/file";
-
+```
 
 Like the shell, the double angle brackets
 indicates output is 
@@ -2584,9 +2603,10 @@ Unlike the shell, AWK copies all of standard input to file
 
 Instead of a string, some versions of AWK allow you to specify an expression:
 
+```awk
     # [note to self] check this one - it might not work
     printf("string\n") > FILENAME ".out";
-
+```
 
 The following uses a string concatenation expression to illustrate this:
 
@@ -2939,8 +2959,9 @@ All version of AWK contain the
 *int* function. This truncates a number, making it an integer.
 It can be used to round numbers by adding 0.5:
 
+```awk
     printf("rounding %8.4f gives %8dn", x, int(x+0.5));
-
+```
 
 ### Random Numbers
 
@@ -3100,10 +3121,11 @@ If you wanted to ignore empty lines, check the length of the each line
 before
 processing it with 
 
+```awk
     if (length($0) > 1) {
      . . .
     }
-
+```
 
 You can easily use it to print all lines longer than a certain length, etc.
 The following command centers all lines shorter than 80 characters:
@@ -3133,12 +3155,13 @@ index() function will search for specific characters inside a string.
 To find a comma, the code might
 look like this:
 
+```awk
     sentence = "This is a short, meaningless sentence.";
     
     if (index(sentence, ",") > 0) {
         printf("Found a comma in position \%d\n", index(sentence,","));
     }
-
+```
 
 The function returns a positive value when the substring is found.
 The number specified the location of the substring.
@@ -3314,8 +3337,9 @@ a primitive SED-like functionality:
 `old` with
 `new` in a string, use
 
+```awk
     sub(/old/, "new", string)
-
+```
 
 If the third argument is missing,
 `$0` is assumed to be string searched.
@@ -3424,9 +3448,10 @@ NAWK has a function
 *system*() that can execute any program. It returns the exit status of the
 program.
 
+```awk
     if (system("/bin/rm junk") != 0)
         print "command didn't work";
-
+```
 
 The command can be a string, so you can dynamically create commands
 based on input. Note that the output isn't sent to the NAWK program.
@@ -3489,21 +3514,20 @@ and substitutes that line for the contents of the file:
 
 
 ```awk
-	#!/usr/bin/nawk -f
-	{
-	    # a primitive include preprocessor
-	    if ( ($1 == "#include") && (NF == 2) ) {
-	        # found the name of the file
-	        filename = $2;
-	        while (i = getline < filename ) {
-	            print;
-	        }
-	    } else {
+    #!/usr/bin/nawk -f
+    {
+	# a primitive include preprocessor
+	if ( ($1 == "#include") && (NF == 2) ) {
+	    # found the name of the file
+	    filename = $2;
+	    while (i = getline < filename ) {
 	        print;
 	    }
+	} else {
+	    print;
 	}
+    }
 ```
-
 
 Click here to get file: [include.nawk](http://www.grymoire.com/Unix/Scripts/include.nawk)
 
@@ -3512,24 +3536,28 @@ NAWK's getline can also read from a pipe.
 If you have a program that generates  single line,
 you can use
 
+```awk
     "command" | getline;
     print $0;
+```
 
 or
+
+```awk
     "command" | getline abc;
     print abc;
-
+```
 
 If you have more than one line, you can loop through the results:
 
-    
+```awk    
     while ("command" | getline) {
         cmd[i++] = $0;
     }
     for (i in cmd) {
         printf("%s=%s\n", i, cmd[i]);
     }
-    
+```    
 
 Only one pipe can be open at a time. If you want to
 open another pipe, you must execute
@@ -3796,32 +3824,38 @@ All relational tests can be used as a pattern.
 The
 `head -10` command, which prints the first 10 lines and stops, can be duplicated with
 
+```awk
     {if (NR <= 10 ) {print}}
-
+```
 
 Changing the
 *if* statement
 to a condition shortens the code:
 
+```awk
     NR <= 10 {print}
-
+```
 
 Besides relational tests, you can also use containment tests, i. e. 
 do strings contain regular expressions?
 Printing all lines that contain the word
 "special" can be written as
 
+```awk
     {if ($0 ~ /special/) {print}}
-
+```
 
 or more briefly
 
+```awk
     $0 ~ /special/ {print}
+```
 
 This type of test is so common, the authors of AWK allow a third, shorter format:
 
+```awk
     /special/ {print}
-
+```
 
 These tests can be combined with the AND (&&) and
 OR (||) commands, as well as the NOT (!)
@@ -3834,44 +3868,51 @@ The following condition prints the line if it contains the word
 `part1` and 
 `part2` respectively.
 
+```awk
     ($0 ~ /whole/) || (($1 ~ /part1/) && ($2 ~ /part2/)) {print}
-
+```
 
 This can be shortened to
 
+```awk
     /whole/ || $1 ~ /part1/ && $2 ~ /part2/ {print}
-
+```
 
 There is one case where adding parenthesis hurts.
 The condition
 
+```awk
     /whole/ {print}
-
+```
 
 works, but
 
+```awk
     (/whole/) {print}
-
+```
 
 does not.
 If parenthesis are used, it is necessary to explicitly specify the test:
 
+```awk
     ($0 ~ /whole) {print}
-
+```
 
 A murky situation arises when a simple variable is used
 as a condition. Since the variable
 NF specifies the number of fields on a line, one might think the statement
 
+```awk
     NF {print}
-
+```
 
 would print all lines with one of more fields.
 This is an illegal command for AWK, because AWK does not accept
 variables as conditions. To prevent a syntax error, I had to change it to
 
+```awk
     NF != 0 {print}
-
+```
 
 I expected NAWK to work, but on some SunOS systems it refused to print
 any lines at all. On newer Solaris systems it did behave properly.
@@ -3882,8 +3923,9 @@ Clearly this is unexplored territory.
 I could write a script that prints the first 20 lines, except if there 
 were exactly three fields, unless it was line 10, by using
 
+```awk
     NF == 3 ? NR == 10 : NR < 20 { print }
-
+```
 
 But I won't. Obscurity, like puns, is often unappreciated.
 
@@ -3892,8 +3934,9 @@ There is one more common and useful pattern I have not yet described.
 It is the comma separated pattern.
 A common example has the form:
 
+```awk
     /start/,/stop/ {print}
-
+```
 
 This form defines, in one line, the condition to turn
 the action on, and the condition to turn the action off.
@@ -3926,26 +3969,29 @@ The conditions do not have to be regular expressions.
 Relational tests can also be used.
 The following prints all lines between 20 and 40:
 
+```awk
     (NR==20),(NR==40) {print}
-
+```
 
 You can mix relational and containment tests.
 The following prints every line until a
 "stop" is seen:
 
+```awk
     (NR==1),/stop/ {print}
-
+```
 
 There is one more area of confusion about patterns:
 each one is independent of the others.
 You can have several patterns in a script; none influence the other patterns.
 If the following script is executed:
 
+```awk
     NR == 10 {print}
     (NR == 5),(NR == 15) {print}
     /xxx/ {print}
     (NR == 1),/NeVerMatchThiS/ {print}
-
+```
 
 and the input file's line 10 contains
 "xxx", it would be printed 4 times, as each condition is true. 
@@ -3965,14 +4011,16 @@ See [Flow Control with next and exit](#flow-control-with-next-and-exit) for a sp
 Many readers have questions my style of AWK programming.
 In particular, they ask me why I include code like this:
 
+```awk
     # Print column 3
     print $3;
-
+```
 
 when I could use
 
+```awk
     print $3 # print column 3
-
+```
 
 After all, they reason, the semicolon is unnecessary, 
 and comments do not have to start on the first column.
@@ -4067,8 +4115,9 @@ The
 **ARGV** array, and therefore
 **ARGV[ARGIND]** is always the current filename. Therefore
 
+```awk
     FILENAME == ARGV[ARGIND] 
-
+```
 
 is always true.
 It can be modified, allowing you to skip over files, etc.
@@ -4154,9 +4203,10 @@ ignore case.
 Therefore the following is equivalent to 
 `grep -i match:` 
 
+```awk
     BEGIN {IGNORECASE = 1;}
     /match/ {print}
-
+```
 
 ### CONVFMT - conversion format (GAWK only)
 
@@ -4168,11 +4218,12 @@ The default value is
 and convert the string to an integer - modifying the actions with
 **CONVFMT**: 
 
+```awk
     a = 12;
     b = a "";
     CONVFMT = "%2.2f";
     c = a "";
-
+```
 
 Variables
 **b** and
@@ -4199,9 +4250,10 @@ is 5 characters wide, the second 4, and the third 7, you could use
 substr to split the line apart. The technique, using 
 **FIELDWIDTHS**, would be:
 
+```awk
     BEGIN {FIELDWIDTHS="5 4 7";}
     { printf("The three fields are %s %s %s\n", $1, $2, $3);}
-
+```
 
 ## AWK, NAWK, GAWK, or PERL
 
@@ -4237,21 +4289,21 @@ and
  I'd like to thank the following for feedback:
 
     
-    	Ranjit Singh 
-    	Richard Janis Beckert
-    	Christian Haarmann
-    	Kuang He
-    	Guenter Knauf
-    	Chay Wesley
-    	Todd Andrews
-    	Lynn Young
-    	Chris Hall [@_cjh](https://twitter.com/_cjh)
-    	Erik Streb del Toro
-    	Edouard Lopez [@edouard_lopez](https://twitter.com/_edouard_lopez) 
-        Donald Lively
-        Pete Mattson
-        Stan Searing
-        Brian Clawson
+    Ranjit Singh 
+    Richard Janis Beckert
+    Christian Haarmann
+    Kuang He
+    Guenter Knauf
+    Chay Wesley
+    Todd Andrews
+    Lynn Young
+    Chris Hall [@_cjh](https://twitter.com/_cjh)
+    Erik Streb del Toro
+    Edouard Lopez [@edouard_lopez](https://twitter.com/_edouard_lopez) 
+    Donald Lively
+    Pete Mattson
+    Stan Searing
+    Brian Clawson
     
 
 This document was translated by troff2html v0.21 on September 22, 2001 and then manually edited to make it compliant with:[![Valid HTML 4.01!](http://www.w3.org/Icons/valid-html401)](http://validator.w3.org/check?uri=referer)
