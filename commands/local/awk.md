@@ -86,13 +86,13 @@ You are allowed to print copies of this tutorial for your personal
 use, and link to this page, but you are not allowed to make electronic
 copies, or redistribute this tutorial in any form without permission.
 
- Original version written in 1994 and published in the Sun Observer
+Original version written in 1994 and published in the Sun Observer
 
 Awk is an extremely versatile programming language for working on
 files. We'll teach you just enough to understand the examples in this
 page, plus a smidgen.
 
- The examples given below have the extensions of the executing script as part of the filename. Once you download it, and make it executable, you can rename it anything you want.
+The examples given below have the extensions of the executing script as part of the filename. Once you download it, and make it executable, you can rename it anything you want.
 
 ## Why learn AWK?
 
@@ -208,7 +208,9 @@ follow the
 Also, unlike the shell (and PERL) AWK does not evaluate variables within 
 strings. To explain, the second line could not be written like this:
 
-	{print "$8\t$3" }
+```awk
+    {print "$8\t$3" }
+```
 
 That example would print
 "$8 $3". Inside the quotes, the dollar sign is not a special character.
@@ -438,7 +440,7 @@ The first version of the program, which we will call
 #!/bin/sh
 
 #NOTE - this script does not work!
-column = $1
+column=$1
 awk '{print $column}'
 ```
 
@@ -510,7 +512,7 @@ This is shown below, where the default column will be one:
 ```awk    
 #!/bin/sh
 
-column = ${1:-1}
+column=${1:-1}
 awk '{print $'$column'}'
 ```    
 
@@ -670,11 +672,15 @@ Notice spaces can be added for readability.
 AWK, like C, has special assignment operators, which combine
 a calculation with an assignment. Instead of saying
 
-    x = x+2;
+```awk
+    x = x + 2;
+```
 
 you can more concisely say:
 
+```awk
     x += 2;
+```
 
 The complete list follows:
 
@@ -1328,7 +1334,6 @@ and prints out the second and third line:
     }
 ```        
 
-
 Click here to get file: [awk_example6.awk](http://www.grymoire.com/Unix/Scripts/awk_example6.awk)
 
 
@@ -1581,8 +1586,9 @@ which is the username. If the user is
 UNIX guru's may gleefully report that the 8 line AWK script can be
 replaced by:
 
+```awk
     awk '{print $3}' | sort | uniq -c | sort -nr
-
+```
 
 True, However, this can't count the total disk space for each user.
 We need to add some more intelligence to the AWK
@@ -2479,16 +2485,16 @@ to the right.
 
 The precision field, which is the number between the decimal and the
 format character, is more complex. Most people use it with the floating
-point format (%f), but surprisingly, it can be used with any format character.
+point format (`%f`), but surprisingly, it can be used with any format character.
 With the octal, decimal or hexadecimal format, it specifies the
 minimum number of characters. Zeros are added to met this requirement.
-With the %e and %f formats, it specifies
-the number of digits after the decimal point.  The %e 
+With the `%e` and `%f` formats, it specifies
+the number of digits after the decimal point.  The `%e` 
 `e+00` is not included in the precision.
-The %g format combines the characteristics of the %d and %f formats.
+The `%g` format combines the characteristics of the `%d` and `%f` formats.
 The precision specifies the number of digits displayed, before and
 after the decimal point.
-The precision field has no effect on the %c field. The %s format has
+The precision field has no effect on the `%c` field. The %s format has
 an unusual, but useful effect: it specifies the maximum number of significant
 characters to print.
 
@@ -2590,7 +2596,6 @@ Consider the shell program:
     done
 ```    
 
-
 This will read standard input, and copy the standard input to
 files
 `/tmp/a` and 
@@ -2691,7 +2696,6 @@ Some sample code could be
 
 There is a special case if you use a newer version of awk that can have multiple END commands.
 If one of the END commands executes the `exit` command, the other END command does not execute.
-
 
     
 ```awk
@@ -3586,8 +3590,9 @@ If you have more than one line, you can loop through the results:
 Only one pipe can be open at a time. If you want to
 open another pipe, you must execute
 
+```awk
     close("command");
-
+```
 
 This is necessary even if the end of file is reached.
 
@@ -3682,7 +3687,7 @@ In addition, the
 
 **AWK Table 12: GAWK's strftime formats**
 
-| * | *
+| format specification | result
 | - | -
 | %a | The locale's abbreviated weekday name
 | %A | The locale's full weekday name
@@ -3800,7 +3805,6 @@ including the filename and line number, if appropriate:
 
 ```awk
     #!/usr/bin/nawk -f
-
     {
         if (NF != 4) {
             error("Expected 4 fields");
