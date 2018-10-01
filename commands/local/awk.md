@@ -1,4 +1,4 @@
-# Awk - A Tutorial and Introduction - by Bruce Barnett
+# [Awk - A Tutorial and Introduction - by Bruce Barnett](http://www.grymoire.com/Unix/Awk.html)
 Last modified: Thu Apr 23 16:37:47 EDT 2015 
 
 Part of the [Unix tutorials](http://www.grymoire.com/Unix) And then there's [My blog](http://grymoire.wordpress.com/)
@@ -601,7 +601,7 @@ AWK will do so. The string
 and converts the string into integer 123, which is found in the
 beginning of the string).
 
-## Unary arithmetic operators
+### Unary arithmetic operators
 
 The
 `+` and
@@ -613,7 +613,7 @@ If X equals 4, then the statement:
 will print 
 "-4". 
 
-## The Autoincrement and Autodecrement Operators
+### The Autoincrement and Autodecrement Operators
 
 AWK also supports the
 `++` and
@@ -632,7 +632,7 @@ operators, and can be used by themselves on a line:
     x++;
     --y;
 
-## Assignment Operators
+### Assignment Operators
 
 Variables can be assigned new values with the assignment operators.
 You know about
@@ -676,7 +676,7 @@ The complete list follows:
 | /= | Divide variable by result
 | %= | Apply modulo to variable
 
-## Conditional expressions
+### Conditional expressions
 
 The second type of expression in AWK is the conditional expression.
 This is used for certain tests, like the 
@@ -707,7 +707,7 @@ They can be used to compare numbers or strings.
 With respect to strings, lower case letters are greater than upper
 case letters.
 
-## Regular Expressions
+### Regular Expressions
 
 Two operators are used to compare strings to regular expressions:
 
@@ -726,7 +726,7 @@ examples of valid tests:
     word !~ /START/
     lawrence_welk ~ /(one|two|three)/
 
-## And/Or/Not
+### And/Or/Not
 
 There are two boolean operators that can be used with conditional expressions.
 That is, you can combine two conditional expressions with the
@@ -744,23 +744,15 @@ The list and syntax follows:
 <pre>
 if ( <i>conditional</i> ) <i>statement</i> [ else <i>statement</i> ]
 while ( <i>conditional</i> ) <i>statement</i>
-for ( expression ; conditional ; expression ) statement
-
-for ( variable in array ) statement
-
+for ( <i>expression</i> ; <i>conditional</i> ; <i>expression</i> ) <i>statement</i>
+for ( <i>variable</i> in <i>array</i> ) <i>statement</i>
 break
-
 continue
-
-{ [ statement ] ...}
-variable=expression
-
-print [ expression-list ] [ > expression ]
-
-printf format [ , expression-list ] [ > expression ]
-
+{ [ <i>statement</i> ] ...}
+<i>variable</i>=<i>expression</i>
+print [ <i>expression-list</i> ] [ > <i>expression</i> ]
+printf <i>format</i> [ , <i>expression-list</i> ] [ > <i>expression</i> ]
 next 
-
 exit
 </pre>
 
@@ -768,17 +760,29 @@ At this point, you can use AWK as a language for simple calculations;
 If you wanted to calculate something, and not read any lines for
 input,
 you could use the 
-BEGIN keyword discussed earlier, combined with a
+`BEGIN` keyword discussed earlier, combined with a
 exit command:
 
 ```awk    
 #!/bin/awk -f
+
 BEGIN {
 
-# Print the squares from 1 to 10 the first way
-
+    # Print the squares from 1 to 10 the first way
 	i=1;
-	while (i 
+	while (i <= 10) {
+		printf "The square of ", i, " is ", i*i;
+		i = i+1;
+	}
+
+    # do it again, using more concise code
+	for (i=1; i <= 10; i++) {
+		printf "The square of ", i, " is ", i*i;
+	}
+
+    # now end
+    exit;
+}
 ```        
 
 Click here to get file: [awk_print_squares.awk](http://www.grymoire.com/Unix/Scripts/awk_print_squares.awk)
@@ -790,10 +794,12 @@ The following asks for a number, and then squares it:
     BEGIN {
         print "type a number";
     }
+
     {
         print "The square of ", $1, " is ", $1*$1;
         print "type another number";
     }
+
     END {
         print "Done"
     }
@@ -810,31 +816,34 @@ a lot of meaningless prompts.
 Here is a filter that you should find useful. It counts lines, totals
 up the numbers in the first column, and calculates the average.
 Pipe
-"wc -c *" into it, and it will count files, and tell you the average number of
+`wc -c *` into it, and it will count files, and tell you the average number of
 words per file, as well as the total words and the number of files.
     
 ```awk        
 #!/bin/awk -f
+
 BEGIN {
-# How many lines
+    # How many lines
     lines=0;
     total=0;
 }
+
 {
-# this code is executed once for each line
-# increase the number of files
+    # this code is executed once for each line
+    # increase the number of files
     lines++;
-# increase the total size, which is field #1
+    # increase the total size, which is field #1
     total+=$1;
 }
+
 END {
-# end, now output the total
+    # end, now output the total
     print lines " lines read";
     print "total is ", total;
     if (lines > 0 ) {
-	print "average is ", total/lines;
+	    print "average is ", total/lines;
     } else {
-	print "average is 0";
+	    print "average is 0";
     }
 }
 ```
@@ -843,17 +852,18 @@ Click here to get file: [average.awk](http://www.grymoire.com/Unix/Scripts/avera
 
 
 You can pipe the output of 
-"ls -s" into this filter to count the number of files, the total size, and the
+`ls -s` into this filter to count the number of files, the total size, and the
 average size. There is a slight problem with this script, as it
 includes the output of 
-"ls" that reports the total. 
+`ls` that reports the total. 
 This causes the number of files to be off by one.
 Changing
-lines++;
 
+    lines++;
 
 to
-if ($1 != "total" ) lines++;
+
+    if ($1 != "total" ) lines++;
 
 
 will fix this problem.
@@ -870,24 +880,24 @@ two kinds of variables: positional and user defined.
 A user defined variable is one you create. A positional variable is
 not a special variable, but a function triggered by the dollar sign.
 Therefore
+
 	print $1;
 
-
 and
-	X=1;
 
+	X = 1;
 	print $X;
-
 
 do the same thing: print the first field on the line.
 There are two more points about positional variables that are very useful.
 The variable
-"$0" refers to the entire line that AWK reads in.
+`$0` refers to the entire line that AWK reads in.
 That is, if you had eight fields in a line,
+
 	print $0;
 
-
 is similar to 
+
 	print $1, $2, $3, $4, $5, $6, $7, $8
 
 
@@ -895,8 +905,8 @@ This will change the spacing between the fields; otherwise, they
 behave the same.
 You can modify positional variables.
 The following commands
-	$2="";
 
+	$2 = "";
 	print;
 
 
@@ -906,9 +916,10 @@ field, there are two ways. This is the first:
 
 ```awk
     #!/bin/awk -f
+    
     {
-    	$1="";
-    	$3="";
+    	$1 = "";
+    	$3 = "";
     	print;
     }
 ```        
@@ -918,11 +929,11 @@ and the second
     
 ```awk
     #!/bin/awk -f
+
     {
     	print $2, $4;
     }
 ```        
-    
 
 These perform similarly, but not identically.
 The number of spaces between the values vary.
@@ -940,29 +951,32 @@ could be modified to be made more visible.
 Well, it can. AWK provides special variables for just that purpose.
 
 
-## FS - The Input Field Separator Variable
+### FS - The Input Field Separator Variable
 
 AWK can be used to parse many system administration files.
 However, many of these files do not have whitespace as a separator.
 as an example, the password file uses colons.
 You can easily change the field separator character to be a colon
 using the 
-"-F" command line option. 
+`-F` command line option. 
 The following command will print out accounts that don't have passwords:
 
-`awk -F: '{if ($2 == "") print $1 ": no password!"}' </etc/passwd`
+```
+awk -F: '{if ($2 == "") print $1 ": no password!"}' </etc/passwd
+```
 
 
 There is a way to do this without the command line option.
 The variable
-"FS" can be set like any variable, and has the same function
+`FS` can be set like any variable, and has the same function
 as the
-"-F" command line option. The following is a
+`-F` command line option. The following is a
 script that has the same function as the one above.
 
     
 ```awk
     #!/bin/awk -f
+
     BEGIN {
     	FS=":";
     }
@@ -979,19 +993,21 @@ Click here to get file: [awk_nopasswd.awk](http://www.grymoire.com/Unix/Scripts/
 
 The second form can be used to create a UNIX utility, which I will name
 "chkpasswd", and executed like this:
-chkpasswd </etc/passwd
+
+     chkpasswd </etc/passwd
 
 
 The command
-"chkpasswd -F:" cannot be used, because AWK
+`chkpasswd -F:` cannot be used, because AWK
 will never see this argument. All interpreter scripts
 accept one and only one argument, which is immediately after
 the 
-"#!/bin/awk" string. In this case, the single argument is
-"-f". Another difference between the command line option and the internal variable
+`#!/bin/awk` string. In this case, the single argument is
+`-f`. Another difference between the command line option and the internal variable
 is the ability to set the input field separator to be more than one character.
 If you specify
-FS=":  ";
+
+    FS=": ";
 
 
 then AWK
@@ -1010,37 +1026,30 @@ Suppose you had the following file
 which contains the numbers 1 through 7 in three
 different formats. Lines 4 through 6 
 have colon separated fields, while the others separated by spaces.
-ONE 1 I
 
-TWO 2 II
-
-#START
-
-THREE:3:III
-
-FOUR:4:IV
-
-FIVE:5:V
-
-#STOP
-
-SIX 6 VI
-
-SEVEN 7 VII
-
+    ONE 1 I
+    TWO 2 II
+    #START
+    THREE:3:III
+    FOUR:4:IV
+    FIVE:5:V
+    #STOP
+    SIX 6 VI
+    SEVEN 7 VII
 
 The AWK program can easily switch between these formats:
 
     
 ```awk
     #!/bin/awk -f
+
     {
     	if ($1 == "#START") {
     		FS=":";
     	} else if ($1 == "#STOP") {
     		FS=" ";
     	} else {
-    		#print the Roman number in column 3
+    		# print the Roman number in column 3
     		print $3
     	}
     }
@@ -1055,14 +1064,15 @@ You don't have to reset it for each line.
 Sounds simple, right? However, I have a trick question for you.
 What happens if you change the field separator while reading a line?
 That is, suppose you had the following line
-One Two:Three:4 Five
 
+    One Two:Three:4 Five
 
 and you executed the following script:
 
     
 ```awk
     #!/bin/awk -f
+
     {
     	print $2
     	FS=":"
@@ -1071,11 +1081,11 @@ and you executed the following script:
 ```        
 
 What would be printed? 
-"Three" or 
-"Two:Three:4?" Well, the script would print out
-"Two:Three:4" twice. However, if you deleted the first print statement,
+`Three` or 
+`Two:Three:4?` Well, the script would print out
+`Two:Three:4` twice. However, if you deleted the first print statement,
 it would print out
-"Three" once!
+`Three` once!
 I thought this was very strange at first, but after pulling out some
 hair, kicking the deck, and yelling at muself and everyone who had
 anything to do with the development of UNIX, it is intuitively obvious. 
@@ -1086,11 +1096,11 @@ causing yourself physical harm.
 
 
 If you change the field separator 
-before you read the line, the change 
-affects what you read.
+**before** you read the line, the change 
+**affects** what you read.
 If you change it 
-after you read the line, it will 
-not redefine the variables.
+**after** you read the line, it will 
+**not*** redefine the variables.
 You wouldn't want a variable to change on you 
 as a side-effect of another action. A programming language
 with hidden side effects is broken, and should not be trusted.
@@ -1104,20 +1114,21 @@ Bravo!
 To illustrate this further, here is another version of the 
 previous code that changes the field separator dynamically. 
 In this case, AWK does it by examining field 
-"$0", which is the entire line.
+`$0`, which is the entire line.
 When the line contains a colon, the field separator is a colon,
 otherwise, it is a space. Here is a version that worked with older versions of awk:
 
     
 ```awk
     #!/bin/awk -f
+
     {
     	if ( $0 ~ /:/ ) {
     		FS=":";
     	} else {
     		FS=" ";
     	}
-    	#print the third field, whatever format
+    	# print the third field, whatever format
     	print $3
     }
 ```        
@@ -1131,15 +1142,17 @@ What happens is that once the FS variable is changed, you have to re-evaluate th
     
 ```awk
     #!/bin/awk -f
+
     {
-    	if ( $0 ~ /:/ ) {
-    		FS=":";
-    		$0=$0
+    	if ($0 ~ /:/) {
+    		FS = ":";
+    		$0 = $0
     	} else {
-    		FS=" ";
-    		$0=$0
+    		FS = " ";
+    		$0 = $0
     	}
-    	#print the third field, whatever format
+
+    	# print the third field, whatever format
     	print $3
     }
 ```        
@@ -1148,18 +1161,19 @@ Click here to get file: [awk_example4a.awk](http://www.grymoire.com/Unix/Scripts
 
 
 This example eliminates the need to have the special 
-"#START" and
-"#STOP" lines in the input.
+'#START` and
+`#STOP` lines in the input.
 
 
-## OFS - The Output Field Separator Variable
+### OFS - The Output Field Separator Variable
 
 There is an important difference between
-print $2 $3
 
+    print $2 $3
 
 and
-print $2, $3
+
+    print $2, $3
 
 
 The first example prints out one field, and the second prints out two fields.
@@ -1168,22 +1182,23 @@ and output without a space. In the second case, AWK prints two fields, and
 places the output field separator between them. 
 Normally this is a space, but you can change this
 by modifying the variable
-"OFS". 
+`OFS`. 
 
 
 If you wanted to copy the password file, but delete the
 encrypted password, you could use AWK:
 
 
-
 ```awk
     #!/bin/awk -f
+
     BEGIN {
-    	FS=":";
-    	OFS=":";
+    	FS = ":";
+    	OFS = ":";
     }
+
     {
-    	$2="";
+    	$2 = "";
     	print
     }
 ```        
@@ -1197,21 +1212,22 @@ You can make the output field separator any number of characters.
 You are not limited to a single character.
 
 
-## NF - The Number of Fields Variable
+### NF - The Number of Fields Variable
 
 It is useful to know how many fields
 are on a line. You may want to have your script
 change its operation based on the number of fields.
 As an example, the command 
-"ls -l" may generate eight or nine fields, depending on which version you are
+`ls -l` may generate eight or nine fields, depending on which version you are
 executing. The System V version,
-"/usr/bin/ls -l" generates nine fields, which is equivalent to the Berkeley
-"/usr/ucb/ls -lg" command. If you wanted to print the owner and filename
+`/usr/bin/ls -l` generates nine fields, which is equivalent to the Berkeley
+`/usr/ucb/ls -lg` command. If you wanted to print the owner and filename
 then the following AWK script would work with either version of 
-"ls:" 
+`ls:` 
 
 ```awk
     #!/bin/awk -f
+
     # parse the output of "ls -l"
     # print owner and filename
     # remember - Berkeley ls -l has 8 fields, System V has 9
@@ -1228,7 +1244,7 @@ Click here to get file: [owner_group.awk](http://www.grymoire.com/Unix/Scripts/o
 
 
 Don't forget the variable can be prepended with a 
-"$". This allows you to print the last field of any column
+`$`. This allows you to print the last field of any column
 
 
 ```awk
@@ -1244,10 +1260,10 @@ One warning about AWK. There is a limit of 99 fields in a single line.
 PERL does not have any such limitations.
 
 
-## NR - The Number of Records Variable
+### NR - The Number of Records Variable
 
 Another useful variable is 
-"NR". This tells you the number of records, or the line number.
+`NR`. This tells you the number of records, or the line number.
 You can use AWK to only examine certain lines.
 This example prints lines after the first 100 lines, and puts a line
 number before each line after 100:
@@ -1255,36 +1271,40 @@ number before each line after 100:
 
 ```awk
     #!/bin/awk -f
-    { if (NR > 100) {
-    	print NR, $0;
+    { 
+        if (NR > 100) {
+    	    print NR, $0;
+        }
     }
 ```        
 
 Click here to get file: [awk_example5.awk](http://www.grymoire.com/Unix/Scripts/awk_example5.awk)
 
 
-## RS - The Record Separator Variable
+### RS - The Record Separator Variable
 
 Normally, AWK reads one line at a time, and breaks up the line into
 fields. You can set the 
-"RS" variable to change AWK's definition of a 
-"line". If you set it to an empty string, then AWK
+`RS` variable to change AWK's definition of a 
+`line`. If you set it to an empty string, then AWK
 will read the entire file into memory.
 You can combine this with changing the 
-"FS" variable. This example treats each line as a field,
+`FS` variable. This example treats each line as a field,
 and prints out the second and third line:
 
     
 ```awk
     #!/bin/awk -f
+
     BEGIN {
-    # change the record separator from newline to nothing	
-    	RS=""
-    # change the field separator from whitespace to newline
-    	FS="\n"
+        # change the record separator from newline to nothing	
+    	RS = ""
+        # change the field separator from whitespace to newline
+    	FS = "\n"
     }
+
     {
-    # print the second and third line of the file
+        # print the second and third line of the file
     	print $2, $3;
     }
 ```        
@@ -1301,8 +1321,9 @@ break words up, one word per line, using this:
     
 ```awk
     #!/bin/awk -f
+
     BEGIN {
-    	RS=" ";
+    	RS = " ";
     }
     {
     	print ;
@@ -1317,7 +1338,7 @@ If there is a tab or punctuation inside, it would not.
 
 
 
-## ORS - The Output Record Separator Variable
+### ORS - The Output Record Separator Variable
 
 The default output record separator is a newline, like the input.
 This can be set to be a newline and carriage return, if you need
@@ -1326,55 +1347,62 @@ to generate a text file for a non-UNIX system.
     
 ```awk
     #!/bin/awk -f
+
     # this filter adds a carriage return to all lines
     # before the newline character
     BEGIN {	
-    	ORS="\r\n"
+    	ORS = "\r\n"
     }
+
     { print }
 ```        
     
 Click here to get file: [add_cr.awk](http://www.grymoire.com/Unix/Scripts/add_cr.awk)
 
 
-## FILENAME - The Current Filename Variable
+### FILENAME - The Current Filename Variable
 
 The last variable known to regular AWK is
-"FILENAME", which tells you the name of the file being read.
+`FILENAME`, which tells you the name of the file being read.
 
     
 ```awk
     #!/bin/awk -f
+
     # reports which file is being read
     BEGIN {
-    	f="";
+    	f = "";
     }
+
     {	if (f != FILENAME) {
     		print "reading", FILENAME;
-    		f=FILENAME;
+    		f = FILENAME;
     	}
     	print;
     }
 ```        
-    Click here to get file: [awk_example6a.awk](http://www.grymoire.com/Unix/Scripts/awk_example6a.awk)
+
+Click here to get file: [awk_example6a.awk](http://www.grymoire.com/Unix/Scripts/awk_example6a.awk)
 
 
 This can be used if several files need to be parsed by AWK.
 Normally you use standard input to provide AWK with information.
 You can also specify the filenames on the command line.
 If the above script was called 
-"testfilter", and if you executed it with
-testfilter file1 file2 file3
+`testfilter`, and if you executed it with
+
+    testfilter file1 file2 file3
 
 
 It would print out the filename before 
 each change.
 An alternate way to specify this on the command line is
-testfilter file1 - file3 <file2
+
+    testfilter file1 - file3 <file2
 
 
 In this case, the second file will be called
-"-", which is the conventional name for standard input.
+`-`, which is the conventional name for standard input.
 I have used this when I want to put some information
 before and after a filter operation. The prefix and postfix files
 special data before and after the real data.
@@ -1385,6 +1413,7 @@ in particular files:
     
 ```awk
     #!/bin/awk -f
+
     { 
         if (NF == 6) {
             # do the right thing
@@ -1400,7 +1429,7 @@ in particular files:
     }
 ```        
     
-    Click here to get file: [awk_example7.awk](http://www.grymoire.com/Unix/Scripts/awk_example7.awk)
+Click here to get file: [awk_example7.awk](http://www.grymoire.com/Unix/Scripts/awk_example7.awk)
 
 
 ## Associative Arrays
@@ -1422,19 +1451,21 @@ how much disk space each user owns.
 You really want someone to blame; it's hard to tell who owns what file.
 A filter that processes the output of 
 ls would work:
-ls -l | filter
+
+    ls -l | filter
 
 
 But this doesn't tell you how much space each user is using.
 It also doesn't work for a large directory tree.
 This requires
-find and
-xargs: 
-find . -type f -print | xargs ls -l | filter
+*find* and
+*xargs*: 
+
+    find . -type f -print | xargs ls -l | filter
 
 
 The third column of
-"ls" is the username. The filter has to count
+`ls` is the username. The filter has to count
 how many times it sees each user.
 The typical program would have an array of usernames
 and another array that counts how many times each
@@ -1444,18 +1475,43 @@ to keep track of the count.
 I'll show you one way to do it in AWK--the wrong way:
     
 ```awk        
-#!/bin/awk -f
-# bad example of AWK programming
-# this counts how many files each user owns.
-BEGIN {
-	number_of_users=0;
-}
-{
-# must make sure you only examine lines with 8 or more fields
-	if (NF>7) {
-		user=0;
-# look for the user in our list of users
-		for (i=1; i
+    #!/bin/awk -f
+
+    # bad example of AWK programming
+    # this counts how many files each user owns.
+    BEGIN {
+    	number_of_users = 0;
+    }
+
+    {
+        # must make sure you only examine lines with 8 or more fields
+        if (NF > 7) {
+    		user = 0;
+
+            # look for the user in our list of users
+            for (i = 1; i <= number_of_users; i++) {
+                # is the user known?
+    			if (username[i] == $3) {
+                    # found it - remember where the user is
+    				user = i;
+    			}
+    		}
+
+    		if (user == 0) {
+                # found a new user
+    			username[++number_of_users] = $3;
+    			user = number_of_users;
+    		}
+
+            # increase number of counts
+    		count[user]++;
+    	}
+    }
+    END {
+    	for (i = 1; i <= number_of_users; i++) {
+    		print count[i], username[i]
+    	}
+    } 
 ```
 
 Click here to get file: [awk_example8.awk](http://www.grymoire.com/Unix/Scripts/awk_example8.awk)
@@ -1472,9 +1528,9 @@ size
 between these two versions:
 
 
-
 ```awk
     #!/bin/awk -f
+
     {
     	username[$3]++;
     }
@@ -1484,7 +1540,8 @@ between these two versions:
     	}
     }
     
-```        Click here to get file: [count_users0.awk](http://www.grymoire.com/Unix/Scripts/count_users0.awk)
+``` 
+Click here to get file: [count_users0.awk](http://www.grymoire.com/Unix/Scripts/count_users0.awk)
 
 
 This is shorter, simpler, and 
@@ -1495,15 +1552,17 @@ an array, use
 anything you want. An associative array in an array whose index is a string.
 All arrays in AWK are associative.
 In this case, the index into the array is the third field of the
-"ls" command,
+`ls` command,
 which is the username. If the user is 
-"bin", the main loop increments the count per user by effectively executing
+`bin`, the main loop increments the count per user by effectively executing
+
 	username["bin"]++;
 
 
 UNIX guru's may gleefully report that the 8 line AWK script can be
 replaced by:
-awk '{print $3}' | sort | uniq -c | sort -nr
+
+    awk '{print $3}' | sort | uniq -c | sort -nr
 
 
 True, However, this can't count the total disk space for each user.
@@ -1516,11 +1575,12 @@ If you wanted to make it more robust, you have
 to handle unusual conditions.
 If you gave this program an empty file for input,
 you would get the error:
-awk: username is not an array
+
+    awk: username is not an array
 
 
 Also, if you piped the output of
-"ls -l" to it, the line that specified the total
+`ls -l` to it, the line that specified the total
 would increment a non-existing user.
 There are two techniques used to eliminate this error.
 The first one only counts valid input:
@@ -1528,8 +1588,9 @@ The first one only counts valid input:
     
 ```awk
     #!/bin/awk -f
+
     {
-    	if (NF>7) {
+    	if (NF > 7) {
     		username[$3]++;
     	}
     }
@@ -1538,9 +1599,9 @@ The first one only counts valid input:
     		print username[i], i;
     	}
     }
-    
 ```        
-    Click here to get file: [count_users1.awk](http://www.grymoire.com/Unix/Scripts/count_users1.awk)
+
+Click here to get file: [count_users1.awk](http://www.grymoire.com/Unix/Scripts/count_users1.awk)
 
 This fixes the problem of counting the line with the total.
 However, it still generates an error when an empty file is read
@@ -1552,8 +1613,9 @@ Then when reporting the results, ignore the invalid entry.
     
 ```awk
     #!/bin/awk -f
+
     BEGIN {
-    	username[""]=0;
+    	username[""] = 0;
     }
     {
     	username[$3]++;
@@ -1567,7 +1629,7 @@ Then when reporting the results, ignore the invalid entry.
     }
 ```        
     
-    Click here to get file: [count_users2.awk](http://www.grymoire.com/Unix/Scripts/count_users2.awk)
+Click here to get file: [count_users2.awk](http://www.grymoire.com/Unix/Scripts/count_users2.awk)
 
 
 This happens to fix the other problem.
@@ -1575,7 +1637,7 @@ Apply this technique and you will make your AWK
 programs more robust and easier for others to use.
 
 
-## Multi-dimensional Arrays
+### Multi-dimensional Arrays
 
 Some people ask if AWK can handle multi-dimensional arrays.
 It can. However, you don't use conventional two-dimensional arrays.
@@ -1587,16 +1649,17 @@ It requires a different way to think about problems, but
 once you understand, you won't be able to live without it.
 All you have to do is to create an index that combines two
 other indices. Suppose you wanted to effectively execute
+
 	a[1,2] = y;
 
-
 This is invalid in AWK. However, the following is perfectly fine:
+
 	a[1 "," 2] = y;
 
 
 Remember: the AWK string concatenation operator is the space.
 It combines the three strings into the single string
-"1,2". Then it uses it as an index into the array.
+`1,2`. Then it uses it as an index into the array.
 That's all there is to it.
 There is one minor problem with associative arrays, especially
 if you use the
@@ -1609,7 +1672,7 @@ more programmers separate the information processing
 from the sorting. I'll show you what I mean.
 
 
-## Example of using AWK's Associative Arrays
+### Example of using AWK's Associative Arrays
 
 I often find myself using certain techniques repeatedly in AWK.
 This example will demonstrate these techniques, and illustrate the power and
@@ -1625,13 +1688,11 @@ I will also discuss several tips you will find useful in large AWK programs.
 First, initialize all arrays used in a 
 for loop. 
 There will be four arrays for this purpose. Initialization is easy:
-u_count[""]=0;
 
-g_count[""]=0;
-
-ug_count[""]=0;
-
-all_count[""]=0;
+    u_count[""] = 0;
+    g_count[""] = 0;
+    ug_count[""] = 0;
+    all_count[""] = 0;
 
 
 The second tip is to pick a convention for arrays.
@@ -1640,18 +1701,19 @@ is very important. In a complex program,
 it can become confusing to remember which array contains what.
 I suggest you clearly identify the indices and contents of each array.
 To demonstrate, I will use a
-"_count" to indicate the number of files, and
-"_sum" to indicate the sum of the file sizes.
+`_count` to indicate the number of files, and
+`_sum` to indicate the sum of the file sizes.
 In addition, the part before the 
-"_" specifies the index used for the array, which will be
+`_` specifies the index used for the array, which will be
 either
-"u" for user,
-"g" for group,
-"ug" for the user and group combination,
+`u` for user,
+`g` for group,
+`ug` for the user and group combination,
 and
-"all" for the total for all files.
+`all` for the total for all files.
 In other programs, I have used names like
-username_to_directory[username]=directory;
+
+    username_to_directory[username]=directory;
 
 
 Follow a convention like this, and it will be hard for you to forget
@@ -1669,7 +1731,6 @@ add a simple but sufficient test in this example.
     #	ignore
     } else {
     
-
 etc.
 
 I placed the test and error clause up front, so the rest
@@ -1685,28 +1746,27 @@ In this case, we want the user, group and size in disk blocks.
 We could use the file size in bytes, but the block size corresponds to
 the blocks on the disk, a more accurate measurement of space.
 Disk blocks can be found by using
-"ls -s". This adds a column, so the username becomes the fourth column, etc.
+`ls -s`. This adds a column, so the username becomes the fourth column, etc.
 Therefore the script will contain:
-size=$1;
 
-user=$4;
-
-group=$5; 
+    size = $1;
+    user = $4;
+    group = $5; 
 
 
 This will allow us to easily adapt to changes in input. We could
 use
-"$1" throughout the script, but if we changed the number of fields,
+`$1` throughout the script, but if we changed the number of fields,
 which the
-"-s" option does, we'd have to change each field reference.
+`-s` option does, we'd have to change each field reference.
 You don't want to go through an AWK script, and change all the
-"$1" to 
-"$2", and also change the 
-"$2" to
-"$3" because those are really the
-"$1" that you just changed to
-"$2". Of 
-course this is confusing. That's why it's a good idea to
+`$1` to 
+`$2`, and also change the 
+`$2` to
+`$3` because those are really the
+`$1` that you just changed to
+`$2`. Of 
+**course** this is confusing. That's why it's a good idea to
 assign names to the fields.
 I've been there too.
 
@@ -1732,13 +1792,11 @@ It's also inefficient to require two scripts when one can do everything.
 The proper way to solve this problem is to extract as much information
 as possible in one pass through the files.
 Therefore this script will find the number and size for each category:
-Each user
 
-Each group
-
-Each user/group combination
-
-All users and groups
+    Each user
+    Each group
+    Each user/group combination
+    All users and groups
 
 
 This is why I have 4 arrays to count up the number of files.
@@ -1754,7 +1812,8 @@ from several arrays.
 I realize this makes no sense right now, but hang in there.
 All will become clear soon.
 I will do this by constructing a universal index of the form
-<user> <group>
+
+    <user> <group>
 
 
 This index will be used for all arrays.
@@ -1762,37 +1821,29 @@ There is a space between the two values.
 This covers the total for the user/group combination.
 What about the other three arrays?
 I will use a
-"*" to indicate the total for all users or groups.
+`*` to indicate the total for all users or groups.
 Therefore the index for all files would be
-"* *" while the index for all of the file owned by user
+`* *` while the index for all of the file owned by user
 daemon would be
-"daemon *". The heart of the script totals up the number and size
+`daemon *`. The heart of the script totals up the number and size
 of each file, putting the information into the right category.
 I will use 8 arrays; 4 for file sizes, and 4 for counts:
-u_count[user " *"]++;
 
-g_count["* " group]++;
-
-ug_count[user " " group]++;
-
-all_count["* *"]++;
-
-
-
-u_size[user " *"]+=size;
-
-g_size["* " group]+=size;
-
-ug_size[user " " group]+=size;
-
-all_size["* *"]+=size;
-
+    u_count[user " *"]++;
+    g_count["* " group]++;
+    ug_count[user " " group]++;
+    all_count["* *"]++;
+    
+    u_size[user " *"] += size;
+    g_size["* " group] += size;
+    ug_size[user " " group] += size;
+    all_size["* *"] += size;
 
 
 This particular universal index will make sorting easier, as you will see.
 Also important is to sort the information in an order that is useful.
 You can 
-try to force a particular output order in AWK,
+**try** to force a particular output order in AWK,
 but why work at this, when it's a one line command for 
 sort? The difficult part is finding the right way to sort the information.
 This script will sort information using the size of the category as
@@ -1814,9 +1865,8 @@ The sort of the third and fourth fields will be dictionary order, and
 not numeric, 
 unlike the first two fields.
 The 
-"*" was used so these sub-total fields will be listed before the
+`*` was used so these sub-total fields will be listed before the
 individual user/group combination.
-
 
 
 The arrays will be printed using the following format:
@@ -1824,11 +1874,10 @@ The arrays will be printed using the following format:
     
     for (i in u_count) {
     	if (i != "") {
-           	        print u_size[i], u_count[i], i;
+            print u_size[i], u_count[i], i;
     	}
     }
     O
-
 
 
 I only showed you one array, but all four are printed the same way.
@@ -1837,10 +1886,10 @@ The results is sorted, and I converted the space
 into a tab for cosmetic reasons.
 
 
-## Output of the script
+#### Output of the script
 
 I changed my directory to 
-/usr/ucb, used the script in that
+*/usr/ucb*, used the script in that
 directory. The following is the output:
 
     
@@ -1857,7 +1906,6 @@ directory. The following is the output:
     48     1       root   tty
 
 
-
 This says there are 81 files in this directory,
 which takes up 3173 disk blocks. All of the files are owned by root.
 2973 disk blocks belong to group staff.
@@ -1867,38 +1915,38 @@ There are 3 files with group daemon, which takes up 88 disk blocks.
 As you can see, the first line of information is the total for all
 users and groups.
 The second line is the sub-total for the user
-"root". The third line is the sub-total for the group
-"staff". Therefore the order of the sort is useful, with the sub-totals before
+`root`. The third line is the sub-total for the group
+`staff`. Therefore the order of the sort is useful, with the sub-totals before
 the individual entries.
 You could write a simple AWK or grep script to obtain information from
 just one user or one group, and the information will be easy to sort.
 
 
 There is only one problem. The
-/usr/ucb directory on my system only uses 1849 blocks; at least that's what
-du reports. 
+*/usr/ucb* directory on my system only uses 1849 blocks; at least that's what
+`du` reports. 
 Where's the discrepancy?
 The script does 
-not understand hard links.
+**not** understand hard links.
 This may not be a problem on most disks, because many users
 do not use hard links. Still, it does generate
 inaccurate results.
 In this case,
 the program
-vi is also
-e, 
-ex, 
-edit, 
-view, and 2 other names. The program only exists once, but has 7 names.
+*vi* is also
+*e*, 
+*ex*, 
+*edit*, 
+*view*, and 2 other names. The program only exists once, but has 7 names.
 You can tell because the link count (field 2) reports 7.
 This causes the file to be counted 7 times, which causes an inaccurate total.
 The fix is to only count multiple links once. Examining the link count
 will determine if
 a file has multiple links. However, how can you prevent counting a link twice?
 There is an easy solution: all of these files have the same 
-inode number. You can find this number with the
--i option to
-ls. To save memory, we only have to remember the inodes of files
+*inode* number. You can find this number with the
+*-i* option to
+`ls`. To save memory, we only have to remember the inodes of files
 that have multiple links.
 This means we have to add another column to the input, and have to
 renumber all of the field references.
@@ -1915,13 +1963,13 @@ But you have to use AWK the right way.
 
 
 Note - this version was written for a Solaris box. You have to verify if 
-ls
+`ls`
 is generating the right number of arguments.
 The 
--g
+*-g*
 argument may need to be deleted, and the check for the number of files
 may have to be modified.
-UpdatedI added a Linux version below - to be downloaded.
+**Updated** I added a Linux version below - to be downloaded.
 
 
 This is a fully working version of the program, that accurately counts
@@ -1929,96 +1977,96 @@ disk space, appears below:
 
 ```bash    
     #!/bin/sh
+    
     find . -type f -print | xargs /usr/bin/ls -islg | 
     awk '
     BEGIN {
-    # initialize all arrays used in for loop
-    	u_count[""]=0;
-    	g_count[""]=0;
-    	ug_count[""]=0;
-    	all_count[""]=0;
+        # initialize all arrays used in for loop
+    	u_count[""] = 0;
+    	g_count[""] = 0;
+    	ug_count[""] = 0;
+    	all_count[""] = 0;
     }
     {
-    # validate your input
-            if (NF != 11) {
-    #	ignore
+        # validate your input
+        if (NF ! =  11) {
+            # ignore
     	} else {
-    # assign field names
-    		inode=$1;
-    		size=$2;
-    		linkcount=$4;
-    		user=$5;
-    		group=$6; 
+            # assign field names
+    		inode = $1;
+    		size = $2;
+    		linkcount = $4;
+    		user = $5;
+    		group = $6; 
     
-    # should I count this file?
-    
-    		doit=0;
+            # should I count this file?
+    		doit = 0;
     		if (linkcount == 1) {
-    # only one copy - count it
+                # only one copy - count it
     			doit++;
     		} else {
-    # a hard link - only count first one
+                # a hard link - only count first one
     			seen[inode]++;
     			if (seen[inode] == 1) {
     				doit++;
     			}
     		}
-    # if doit is true, then count the file
+            # if doit is true, then count the file
     		if (doit ) {
-    
-    # total up counts in one pass
-    # use description array names
-    # use array index that unifies the arrays
-    
-    # first the counts for the number of files
+                # total up counts in one pass
+                # use description array names
+                # use array index that unifies the arrays
+                
+                # first the counts for the number of files
     
     			u_count[user " *"]++;
     			g_count["* " group]++;
     			ug_count[user " " group]++;
     			all_count["* *"]++;
     
-    # then the total disk space used
+                # then the total disk space used
     
-    			u_size[user " *"]+=size;
-    			g_size["* " group]+=size;
-    			ug_size[user " " group]+=size;
-    			all_size["* *"]+=size;
+    			u_size[user " *"] += size;
+    			g_size["* " group] += size;
+    			ug_size[user " " group] += size;
+    			all_size["* *"] += size;
     		}
-            }
+        }
     }
+
     END {
-    # output in a form that can be sorted
-            for (i in u_count) {
-    				if (i != "") {
-            	        print u_size[i], u_count[i], i;
-    				}
-            }
-            for (i in g_count) {
-    				if (i != "") {
-            	        print g_size[i], g_count[i], i;
-    				}
-            }
-            for (i in ug_count) {
-    				if (i != "") {
-            	        print ug_size[i], ug_count[i], i;
-    				}
-            }
-            for (i in all_count) {
-    				if (i != "") {
-            	        print all_size[i], all_count[i], i;
-    				}
-            }
+        # output in a form that can be sorted
+        for (i in u_count) {
+    	    if (i != "") {
+        	    print u_size[i], u_count[i], i;
+    		}
+        }
+        for (i in g_count) {
+    		if (i != "") {
+        	        print g_size[i], g_count[i], i;
+    		}
+        }
+        for (i in ug_count) {
+    		if (i != "") {
+                print ug_size[i], ug_count[i], i;
+    		}
+        }
+        for (i in all_count) {
+    		if (i != "") {
+                print all_size[i], all_count[i], i;
+    		}
+        }
     } ' | 
-    # numeric sort - biggest numbers first
-    # sort fields 0 and 1 first (sort starts with 0)
-    # followed by dictionary sort on fields 2 + 3
-    sort +0nr -2 +2d | 
-    # add header
-    (echo "size count user group";cat -) |
-    # convert space to tab - makes it nice output
-    # the second set of quotes contains a single tab character
-    tr ' ' '	' 
-    # done - I hope you like it
+        # numeric sort - biggest numbers first
+        # sort fields 0 and 1 first (sort starts with 0)
+        # followed by dictionary sort on fields 2 + 3
+        sort +0nr -2 +2d | 
+            # add header
+            (echo "size count user group";cat -) |
+                # convert space to tab - makes it nice output
+                # the second set of quotes contains a single tab character
+                tr ' ' '	' 
+                # done - I hope you like it
 ```    
 
 Remember when I said I didn't need to use 4 different arrays?
@@ -2027,78 +2075,79 @@ I can use just one. This is more confusing, but more concise
     
 ```bash    
     #!/bin/sh
+
     find . -type f -print | xargs /usr/bin/ls -islg | 
     awk '
     BEGIN {
-    # initialize all arrays used in for loop
-    	count[""]=0;
+        # initialize all arrays used in for loop
+    	count[""] = 0;
     }
+
     {
-    # validate your input
-            if (NF != 11) {
-    #	ignore
+        # validate your input
+        if (NF !=  11) {
+            # ignore
     	} else {
-    # assign field names
-    		inode=$1;
-    		size=$2;
-    		linkcount=$4;
-    		user=$5;
-    		group=$6; 
+            # assign field names
+    		inode = $1;
+    		size = $2;
+    		linkcount = $4;
+    		user = $5;
+    		group = $6; 
             
             # should I count this file?
-            
-            		doit=0;
-            		if (linkcount == 1) {
-            # only one copy - count it
-            			doit++;
-            		} else {
-            # a hard link - only count first one
-            			seen[inode]++;
-            			if (seen[inode] == 1) {
-            				doit++;
-            			}
-            		}
+           	doit = 0;
+           	if (linkcount == 1) {
+                # only one copy - count it
+            	doit++;
+           	} else {
+                # a hard link - only count first one
+            	seen[inode]++;
+            	if (seen[inode] == 1) {
+            		doit++;
+            	}
+           	}
+
             # if doit is true, then count the file
-            		if (doit ) {
+           	if (doit) {
             
-            # total up counts in one pass
-            # use description array names
-            # use array index that unifies the arrays
+                # total up counts in one pass
+                # use description array names
+                # use array index that unifies the arrays
+                
+                # first the counts for the number of files
+                count[user " *"]++;
+                count["* " group]++;
+                count[user " " group]++;
+                count["* *"]++;
             
-            # first the counts for the number of files
-            
-            			count[user " *"]++;
-            			count["* " group]++;
-            			count[user " " group]++;
-            			count["* *"]++;
-            
-            # then the total disk space used
-            
-            			size[user " *"]+=size;
-            			size["* " group]+=size;
-            			size[user " " group]+=size;
-            			size["* *"]+=size;
-            		}
-                    }
+                # then the total disk space used
+            	size[user " *"] += size;
+            	size["* " group] += size;
+            	size[user " " group] += size;
+            	size["* *"] += size;
+           	}
+        }
+    }
+
+    END {
+        # output in a form that can be sorted
+        for (i in count) {
+    		if (i != "") {
+                print size[i], count[i], i;
             }
-            END {
-            # output in a form that can be sorted
-                    for (i in count) {
-            		if (i != "") {
-                    	        print size[i], count[i], i;
-            		}
-                    }
-            } ' | 
-            # numeric sort - biggest numbers first
-            # sort fields 0 and 1 first (sort starts with 0)
-            # followed by dictionary sort on fields 2 + 3
-            sort +0nr -2 +2d | 
+        }
+    } ' | 
+        # numeric sort - biggest numbers first
+        # sort fields 0 and 1 first (sort starts with 0)
+        # followed by dictionary sort on fields 2 + 3
+        sort +0nr -2 +2d | 
             # add header
             (echo "size count user group";cat -) |
-            # convert space to tab - makes it nice output
-            # the second set of quotes contains a single tab character
-            tr ' ' '	' 
-            # done - I hope you like it
+                # convert space to tab - makes it nice output
+                # the second set of quotes contains a single tab character
+                tr ' ' '	' 
+                # done - I hope you like it
 ```    
             
 Click here to get file: [count_users.awk](http://www.grymoire.com/Unix/Scripts/count_users.awk)
@@ -2117,49 +2166,59 @@ master the
 printf function.
 
 
-## PRINTF - formatting output
+### PRINTF - formatting output
 
 The
-printf is very similar to the C
+*printf* is very similar to the C
 function with the same name. C programmers should have no problem
 using
-printf function. 
+*printf* function. 
 
+*Printf* has one of these syntactical forms:
 
-Printf has one of these syntactical forms:
-printf ( format);
-
-printf ( format, arguments...);
-
-printf ( format) >expression;
-
-printf ( format, arguments...) > expression;
+    printf ( format);
+    printf ( format, arguments...);
+    printf ( format) >expression;
+    printf ( format, arguments...) > expression;
 
 
 The parenthesis and semicolon are optional.
 I only use the first format to be consistent with other
 nearby 
-printf statements. A
-print statement would do the same thing.
-Printf reveals it's real power when
+*printf* statements. A
+*print* statement would do the same thing.
+*Printf* reveals it's real power when
 formatting commands are used.
 
 
 The first argument to the 
-printf function is the format. 
+*printf* function is the format. 
 This is a string, or variable whose value is a string.
 This string, like all strings, can contain special 
 escape sequences to print control characters.
 
 
-## Escape Sequences
+### Escape Sequences
 
 The character
-"\" is used to 
+`\` is used to 
 "escape" or mark special characters.
 The list of these characters is in table  below:
-AWK Table 5
-Escape SequencesSequenceDescription\aASCII bell (NAWK/GAWK only)\bBackspace\fFormfeed\nNewline\rCarriage Return\tHorizontal tab\vVertical tab (NAWK only)\dddCharacter (1 to 3 octal digits) (NAWK only)\xddCharacter (hexadecimal) (NAWK only)\<Any other character>That character
+
+**AWK Table 5: Escape Sequences**
+
+| Sequence | Description
+| - | -
+| \a | ASCII bell (NAWK/GAWK only)
+| \b | Backspace
+| \f | Formfeed
+| \n | Newline
+| \r | Carriage Return
+| \t | Horizontal tab
+| \v | Vertical tab (NAWK only)
+| \ddd | Character (1 to 3 octal digits) (NAWK only)
+| \xdd | Character (hexadecimal) (NAWK only)
+| \<Any other character\> | That character
 
 
 It's difficult to explain the differences without being wordy.
@@ -2169,7 +2228,8 @@ to demonstrate the differences.
 
 With NAWK, you can print three tab characters using these three different
 representations:
-printf("\t\11\x9\n");
+
+    printf("\t\11\x9\n");
 
 
 A tab character is decimal 9, octal 11, or hexadecimal 09. See
@@ -2181,43 +2241,65 @@ Similarly, you can print three double-quote characters
     printf("\"\x22\42\n");
     
 
-
-
 You should notice a difference between the 
-printf function
+*printf* function
 and the
-print function.
-Print terminates the line with the
-ORS character, and divides each field with the
-OFS separator.
-Printf does nothing unless you specify the action.
+*print* function.
+*Print* terminates the line with the
+**ORS** character, and divides each field with the
+**OFS** separator.
+*Printf* does nothing unless you specify the action.
 Therefore you will frequently end each line with the
 newline
 character
-"\n", and you must specify the separating characters explicitly.
+`\n`, and you must specify the separating characters explicitly.
 
 
-## Format Specifiers
+### Format Specifiers
 
 The power of the
 printf statement lies in the format specifiers, which always start with the
 character 
-"%". The format specifiers are described in table 6:
- AWK Table 6
-Format SpecifiersSpecifierMeaning%cASCII Character%dDecimal integer%eFloating Point number
-(engineering format)%fFloating Point number
-(fixed point format)%gThe shorter of e or f,
-with trailing zeros removed%oOctal%sString%xHexadecimal%%Literal %
+`%`. The format specifiers are described in table 6:
+
+**AWK Table 6: Format Specifiers**
+ 
+| Specifier | Meaning
+| - | -
+| %c | ASCII Character
+| %d | Decimal integer
+| %e | Floating Point number (engineering format)
+| %f | Floating Point number (fixed point format)
+| %g | The shorter of e or f, with trailing zeros removed
+| %o | Octal
+| %s | String
+| %x | Hexadecimal
+| %% | Literal %
 
 Again, I'll cover the differences quickly.
 Table 3 illustrates the differences.
 The first line states
-"printf(%c\n",100.0)"" prints a
+`printf("%c\n", 100.0)` prints a
 "d". 
 
 
- AWK Table 7
-Example of format conversionsFormatValueResults%c100.0d%c"100.0"1 (NAWK?)%c42"%d100.0100%e100.01.000000e+02%f100.0100.000000%g100.0100%o100.0144%s100.0100.0%s"13f"13f%d"13f"0 (AWK)%d"13f"13 (NAWK)%x100.064
+**AWK Table 7: Example of format conversions**
+
+| Format | Value | Results
+| - | - | -
+| %c | 100.0 | d
+| %c | "100.0" | 1 (NAWK?)
+| %c | 42 | "
+| %d | 100.0 | 100
+| %e | 100.0 | 1.000000e+02
+| %f | 100.0 | 100.000000
+| %g | 100.0 | 100
+| %o | 100.0 | 144
+| %s | 100.0 | 100.0
+| %s | "13f" | 13f 
+| %d | "13f" | 0 (AWK)
+| %d | "13f" | 13 (NAWK)
+| %x | 100.0 | 64
 
 This table reveals some differences between 
 AWK and NAWK. When a string with numbers and letters are coverted into
@@ -2225,7 +2307,7 @@ an integer, AWK will return a zero, while NAWK will convert as much
 as possible.
 The second example, marked with 
 "NAWK?" will return
-"d" on some earlier versions of NAWK,
+`d` on some earlier versions of NAWK,
 while later versions will return
 "1". 
 
@@ -2240,21 +2322,20 @@ Decimal conversions are done differently.
     printf("%s%s%s%c\n", "\"", "\x22", "\42", 34);
     
 
-
-
 Between the 
-"%" and the format character can be four optional pieces of information.
+`%` and the format character can be four optional pieces of information.
 It helps to visualize these fields as:
-%<sign><zero><width>.<precision>format
+
+    %<sign><zero><width>.<precision>format
 
 
 I'll discuss each one separately.
 
 
-## Width - specifying minimum field size
+### Width - specifying minimum field size
 
 If there is a number after the
-"%", this specifies the minimum number of characters to print.
+`%`, this specifies the minimum number of characters to print.
 This is the 
 width field.
 Spaces are added so the number of printed characters equal this number. 
@@ -2265,13 +2346,15 @@ Spaces are added to the left.
 
 This format allows you to line up columns perfectly.
 Consider the following format:
-printf("%st%d\n", s, d);
+
+    printf("%st%d\n", s, d);
 
 
 If the string 
-"s" is longer than 8 characters, the columns won't line up.
+`s` is longer than 8 characters, the columns won't line up.
 Instead, use
-printf("%20s%d\n", s, d);
+
+    printf("%20s%d\n", s, d);
 
 
 As long as the string is less than 20 characters, the number will
@@ -2291,6 +2374,7 @@ script:
 
 ```awk
     #!/usr/bin/awk -f
+
     BEGIN {
     	printf("String     Number\n");
     }
@@ -2298,19 +2382,20 @@ script:
     	printf("%10s %6d\n", $1, $2);
     }
 ```    
-    Click here to get file: [awk_example9.awk](http://www.grymoire.com/Unix/Scripts/awk_example9.awk)
+
+Click here to get file: [awk_example9.awk](http://www.grymoire.com/Unix/Scripts/awk_example9.awk)
 
 It would be awkward (forgive the choice of words) to add a new column and retain the same
 alignment.
 More complicated formats would require a lot of trial and error.
 You have to adjust the first 
-printf to agree with the second 
-printf statement. I suggest
-
+*printf* to agree with the second 
+*printf* statement. I suggest
 
 
 ```awk
     #!/usr/bin/awk -f
+
     BEGIN {
     	printf("%10s %6sn", "String", "Number");
     }
@@ -2319,16 +2404,15 @@ printf statement. I suggest
     }
 ```    
     
-    
-    Click here to get file: [awk_example10.awk](http://www.grymoire.com/Unix/Scripts/awk_example10.awk)
+Click here to get file: [awk_example10.awk](http://www.grymoire.com/Unix/Scripts/awk_example10.awk)
 
 
 or even better
 
 
-
 ```awk
     #!/usr/bin/awk -f
+
     BEGIN {
     	format1 ="%10s %6sn";
     	format2 ="%10s %6dn";
@@ -2338,7 +2422,8 @@ or even better
     	printf(format2, $1, $2);
     }
 ```    
-    Click here to get file: [awk_example11.awk](http://www.grymoire.com/Unix/Scripts/awk_example11.awk)
+
+Click here to get file: [awk_example11.awk](http://www.grymoire.com/Unix/Scripts/awk_example11.awk)
 
 
 The last example, by using string variables for formatting, allows you
@@ -2348,13 +2433,13 @@ multiple formats and multiple columns, it's very useful to have a set of templat
 CHainging the first columne from 10 characters to 11 is easy.
 
 
-
-## Left Justification
+### Left Justification
 
 The last example places spaces before each field to make sure the
 minimum field width is met. What do you do if you want the spaces on
 the right?
 Add a negative sign before the width:
+
 	printf("%-10s %-6d\n", $1, $2);
 
 
@@ -2362,7 +2447,7 @@ This will move the printing characters to the left, with spaces added
 to the right. 
 
 
-## The Field Precision Value
+### The Field Precision Value
 
 The precision field, which is the number between the decimal and the
 format character, is more complex. Most people use it with the floating
@@ -2371,7 +2456,7 @@ With the octal, decimal or hexadecimal format, it specifies the
 minimum number of characters. Zeros are added to met this requirement.
 With the %e and %f formats, it specifies
 the number of digits after the decimal point.  The %e 
-"e+00" is not included in the precision.
+`e+00` is not included in the precision.
 The %g format combines the characteristics of the %d and %f formats.
 The precision specifies the number of digits displayed, before and
 after the decimal point.
@@ -2381,69 +2466,111 @@ characters to print.
 
 
 If the first number after the 
-"%", or after the
-"%-", is a zero, then the system adds zeros when padding.
+`%`, or after the
+`%-`, is a zero, then the system adds zeros when padding.
 This includes all format types, including strings and the %c character
 format. This means 
-"%010d" and 
-"%.10d" both adds leading zeros, giving a minimum of 10 digits.
+`%010d` and 
+`%.10d` both adds leading zeros, giving a minimum of 10 digits.
 The format
-"%10.10d" is therefore redundant.
+`%10.10d` is therefore redundant.
 Table 8 gives some examples:
 
 
- AWK Table 8
-Examples of complex formattingFormatVariableResults%c100"d"%10c100"	     d"%010c100"000000000d"![](transparent.gif)%d10"10"%10d10"	    10"%10.4d10.123456789"	  0010"%10.8d10.123456789"  00000010"%.8d10.123456789"00000010"%010d10.123456789"0000000010"![](transparent.gif)%e987.1234567890"9.871235e+02"%10.4e987.1234567890"9.8712e+02"%10.8e987.1234567890"9.87123457e+02"![](transparent.gif)%f987.1234567890"987.123457"%10.4f987.1234567890"  987.1235"%010.4f987.1234567890"00987.1235"%10.8f987.1234567890"987.12345679"![](transparent.gif)%g987.1234567890"987.123"%10g987.1234567890"   987.123"%10.4g987.1234567890"	 987.1"%010.4g987.1234567890"00000987.1"%.8g987.1234567890"987.12346"![](transparent.gif)%o987.1234567890"1733"%10o987.1234567890"	  1733"%010o987.1234567890"0000001733"%.8o987.1234567890"00001733"![](transparent.gif)%s987.123"987.123"%10s987.123"   987.123"%10.4s987.123"	  987."%010.8s987.123"000987.123"![](transparent.gif)%x987.1234567890"3db"%10x987.1234567890"	   3db"%010x987.1234567890"00000003db"%.8x987.1234567890"000003db"
+**AWK Table 8: Examples of complex formatting**
+
+| Format | Variable | Results
+| - | - | -
+| %c | 100 | "d"
+| %10c | 100 | "	     d"
+| %010c | 100 | "000000000d"
+| | |
+| %d | 10 | "10"
+| %10d | 10 | "	    10"
+| %10.4d | 10.123456789 | "	  0010"
+| %10.8d | 10.123456789 | "  00000010"
+| %.8d | 10.123456789 | "00000010"
+| %010d | 10.123456789 | "0000000010"
+| | |
+| %e | 987.1234567890 | "9.871235e+02"
+| %10.4e | 987.1234567890 | "9.8712e+02"
+| %10.8e | 987.1234567890 | "9.87123457e+02"
+| | |
+| %f | 987.1234567890 | "987.123457"
+| %10.4f | 987.1234567890 | "  987.1235"
+| %010.4f | 987.1234567890 | "00987.1235"
+| %10.8f | 987.1234567890 | "987.12345679"
+| | |
+| %g | 987.1234567890 | "987.123"
+| %10g | 987.1234567890 | "   987.123"
+| %10.4g | 987.1234567890 | "	 987.1"
+| %010.4g | 987.1234567890 | "00000987.1"
+| %.8g | 987.1234567890 | "987.12346"
+| | |
+| %o | 987.1234567890 | "1733"
+| %10o | 987.1234567890 | "	  1733"
+| %010o | 987.1234567890 | "0000001733"
+| %.8o | 987.1234567890 | "00001733"
+| | |
+| %s | 987.123 | "987.123"
+| %10s | 987.123 | "   987.123"
+| %10.4s | 987.123 | "	  987."
+| %010.8s | 987.123 | "000987.123"
+| | |
+| %x | 987.1234567890 | "3db"
+| %10x | 987.1234567890 | "	   3db"
+| %010x | 987.1234567890 | "00000003db"
+| %.8x | 987.1234567890 | "000003db"
 
 There is one more topic needed to complete this lesson on
-printf. 
+*printf*. 
 
 
-## Explicit File output
+### Explicit File output
 
 Instead of sending output to standard output, you can send output to a
 named file. The format is
-printf("string\n") > "/tmp/file";
+
+    printf("string\n") > "/tmp/file";
 
 
 You can append to an existing file, by using
-">>:" 
-printf("string\n") >> "/tmp/file";
+`>>:` 
+
+    printf("string\n") >> "/tmp/file";
 
 
 Like the shell, the double angle brackets
 indicates output is 
-appended to the file, instead of 
-written to an empty file.
+**appended** to the file, instead of 
+**written** to an empty file.
 Appending to the file does not delete the old contents.
 However, there is a subtle difference between AWK
 and the shell.
-
 
 Consider the shell program:
 
 ```bash    
     #!/bin/sh
-    while x=`line`
+
+    while x = `line`
     do
     	echo got $x >>/tmp/a
     	echo got $x >/tmp/b
     done
 ```    
-    
-
 
 
 This will read standard input, and copy the standard input to
 files
-"/tmp/a" and 
-"/tmp/b". File 
-"/tmp/a" will grow larger, as information is always appended to the file.
+`/tmp/a` and 
+`/tmp/b`. File 
+`/tmp/a` will grow larger, as information is always appended to the file.
 File 
-"/tmp/b", however, will only contain one line.
+`/tmp/b`, however, will only contain one line.
 This happens because each time the shell see the
-">" or
-">>" characters, it opens the file for writing, choosing
+`>` or
+`>>` characters, it opens the file for writing, choosing
 the truncate/create or appending option at that time.
 
 
@@ -2451,44 +2578,44 @@ Now consider the equivalent AWK program:
 
 ```awk
     #!/usr/bin/awk -f
+
     {
         print $0 >>"/tmp/a"
         print $0 >"/tmp/b"
     }
 ```    
-    
-
 
 
 This behaves differently. AWK
 chooses the create/append option the first time a file is opened for
 writing.
 Afterwards, the use of 
-">" or
-">>" is ignored.
+`>` or
+`>>` is ignored.
 Unlike the shell, AWK copies all of standard input to file
-"/tmp/b". 
+`/tmp/b`. 
 
 
 Instead of a string, some versions of AWK allow you to specify an expression:
-# [note to self] check this one - it might not work
 
-printf("string\n") > FILENAME ".out";
+    # [note to self] check this one - it might not work
+    printf("string\n") > FILENAME ".out";
 
 
 The following uses a string concatenation expression to illustrate this:
 
 
-
 ```awk
     #!/usr/bin/awk -f
+
     END {
-        for (i=0;i "/tmp/a" i;
+        for (i = 0; i < 30; i++)
+            printf("i=%d\n", i) > "/tmp/a" i; 
         }
     }
 ```    
     
-    Click here to get file: [awk_example12.awk](http://www.grymoire.com/Unix/Scripts/awk_example12.awk)
+Click here to get file: [awk_example12.awk](http://www.grymoire.com/Unix/Scripts/awk_example12.awk)
 
 This script never finishes, because 
 AWK can have 10 additional files open, and NAWK can have 20.
@@ -2506,6 +2633,7 @@ You can exit from an awk script using the exit command.
     
 ```awk
     #!/usr/bin/awk -f
+
     {
         # lots of code here, where you may find an error
         if ( numberOfErrors > 0 ) {
@@ -2515,8 +2643,6 @@ You can exit from an awk script using the exit command.
 ```    
     
 
-
-
  If you want to exit with an error condition, so you can use the shell to distinquish between normal and error exits, you can include an option integer value.
 Let's say to expect all lines of a file to be 60 characters, and you want to use an awk program as a filter to exit if the number of characters is not 60.
 Some sample code could be
@@ -2524,33 +2650,38 @@ Some sample code could be
     
 ```awk
     #!/usr/bin/awk -f
+
     {
         if ( length($0) > 60) {
             exit 1
-        } else if ( length($0) < 60) {
+        } else if (length($0) < 60) {
             exit 2
         }
         print
     }
 ```    
-    There is a special case if you use a newer version of awk that can have multiple END commands.
-If one of the END commands executes the "exit" command, the other END command does not execute.
+
+There is a special case if you use a newer version of awk that can have multiple END commands.
+If one of the END commands executes the `exit` command, the other END command does not execute.
 
 
     
 ```awk
     #!/usr/bin/awk -f
+
     {
         # .... some code here
     }
-    END { print "EXIT1";exit}
+
+    END { print "EXIT1"; exit}
     END { print "EXIT2"}
+
 ```    
-    Because of the "exit" command, only the first END command will execute. 
+
+Because of the `exit` command, only the first END command will execute. 
 
 
-
-The "next" command will also change the flow of the program.
+The `next` command will also change the flow of the program.
 It causes the current processing of the pattern space to stop. The program reads in the next line, and starts executing the commands again with the new line.
 
 
@@ -2563,10 +2694,22 @@ When you add a few functions, AWK becomes even more, mmm, functional.
 
 There are three types of functions: numeric, string and whatever's left.
 Table9 lists all of the numeric functions:
- AWK Table 9
-Numeric FunctionsNameFunctionVariantcoscosineGAWK,AWK,NAWKexpExponentGAWK,AWK,NAWKintIntegerGAWK,AWK,NAWKlogLogarithmGAWK,AWK,NAWKsinSineGAWK,AWK,NAWKsqrtSquare RootGAWK,AWK,NAWKatan2ArctangentGAWK,NAWKrandRandomGAWK,NAWKsrandSeed RandomGAWK,NAWK
 
-## Trigonometric Functions
+**AWK Table 9: Numeric Functions**
+
+| Name | Function | Variant
+| - | - | -
+| cos | cosine | GAWK,AWK,NAWK
+| exp | Exponent | GAWK,AWK,NAWK
+| int | Integer | GAWK,AWK,NAWK
+| log | Logarithm | GAWK,AWK,NAWK
+| sin | Sine | GAWK,AWK,NAWK 
+| sqrt | Square Root | GAWK,AWK,NAWK
+| atan2 | Arctangent | GAWK,NAWK
+| rand | Random | GAWK,NAWK
+| srand | Seed Random | GAWK,NAWK
+
+### Trigonometric Functions
 
 Oh joy. I bet millions, if not dozens, of my readers have been waiting
 for me to discuss trigonometry.
@@ -2578,7 +2721,7 @@ to puns. I'll write a note to myself, and after I sine the note, I'll have
 my boss cosine it.
 
 
-Now stop that! I hate arguing with myself. I always lose.
+**Now stop that!** I hate arguing with myself. I always lose.
 Thinking about math I learned in the year 2 B.C. (Before Computers)
 seems to cause flashbacks of high school, pimples, and (shudder)
 times best left forgotten. The stress of remembering those days must
@@ -2672,23 +2815,62 @@ Oh, in case you are wondering, I wrote this in the month of December.
 
 #
 BEGIN {
-# assign a value for pi.
-	PI=3.14159;
-# select an "Ed Sullivan" number - really really big
-	BIG=999999;	
-# pick two formats
-# Keep them close together, so when one column is made larger
-# the other column can be adjusted to be the same width
-	fmt1="%7s %8s %8s %8s %10s %10s %10s %10sn";
-# print out the title of each column
-	fmt2="%7d %8.2f %8.2f %8.2f %10.2f %10.2f %10.2f %10.2fn";
-# old AWK wants a backslash at the end of the next line
-# to continue the print statement
-# new AWK allows you to break the line into two, after a comma
+    # assign a value for pi.
+	PI = 3.14159;
+
+    # select an "Ed Sullivan" number - really really big
+	BIG = 999999;	
+
+    # pick two formats
+    # Keep them close together, so when one column is made larger
+    # the other column can be adjusted to be the same width
+	fmt1 = "%7s %8s %8s %8s %10s %10s %10s %10sn";
+
+    # print out the title of each column
+	fmt2 = "%7d %8.2f %8.2f %8.2f %10.2f %10.2f %10.2f %10.2fn";
+
+    # old AWK wants a backslash at the end of the next line
+    # to continue the print statement
+    # new AWK allows you to break the line into two, after a comma
 	printf(fmt1, "Degrees", "Radians", "Cosine", "Sine", 
 		"Tangent", "Cotangent", "Secant", "Cosecant");
 
-	for (i=0;i
+	for (i = 0; i <= 360; i++) {
+        # convert degrees to radians
+		r = i * (PI / 180 );
+
+        # in new AWK, the backslashes are optional
+        # in OLD AWK, they are required
+		printf(fmt2, i, r, 
+            # cosine of r
+		    cos(r), 
+            # sine of r
+		    sin(r), 
+            #
+            # I ran into a problem when dividing by zero.
+            # So I had to test for this case.
+            #
+            # old AWK finds the next line too complicated
+            # I don't mind adding a backslash, but rewriting the
+            # next three lines seems pointless for a simple lesson.
+            # This script will only work with new AWK, now - sigh...
+            # On the plus side, 
+            #   I don't need to add those back slashes anymore
+            #
+            # tangent of r
+            (cos(r) == 0) ? BIG : sin(r)/cos(r), 
+            # cotangent of r
+            (sin(r) == 0) ? BIG : cos(r)/sin(r), 
+            # secant of r
+            (cos(r) == 0) ? BIG : 1/cos(r), 
+            # cosecant of r
+            (sin(r) == 0) ? BIG : 1/sin(r)
+        );
+	}
+
+    # put an exit here, so that standard input isn't needed.
+	exit;
+}
 ```        
 
 Click here to get file: [trigonometry.awk](http://www.grymoire.com/Unix/Scripts/trigonometry.awk)
@@ -2696,22 +2878,23 @@ Click here to get file: [trigonometry.awk](http://www.grymoire.com/Unix/Scripts/
 
 NAWK also has the arctangent function.
 This is useful for some graphics work, as
-arc tangent(a/b) = angle (in radians)
+
+    arc tangent(a/b) = angle (in radians)
 
 
 Therefore if you have the X and Y locations, the arctangent
 of the ratio will tell you the angle. The 
-atan2() function returns a value from negative 
-pi to positive 
-pi. 
+*atan2()* function returns a value from negative 
+*pi* to positive 
+*pi*. 
 
 
-## Exponents, logs and square roots
+### Exponents, logs and square roots
 
 The following script uses three other arithmetic functions: 
-log, 
-exp, and
-sqrt. I wanted to show how these can be used together, so I divided the log of
+*log*, 
+*exp*, and
+*sqrt*. I wanted to show how these can be used together, so I divided the log of
 a number by two, which is another way to find a square root.
 I then compared the value of the exponent of that new log to the
 built-in square root function. I then calculated the difference between the
@@ -2720,15 +2903,36 @@ two, and converted the difference into a positive number.
     
 ```awk
     #!/bin/awk -f
+
     # demonstrate use of exp(), log() and sqrt in AWK
     # e.g. what is the difference between using logarithms and regular arithmetic
     # note - exp and log are natural log functions - not base 10
     #
     BEGIN {
-    # what is the about of error that will be reported?
-    	ERROR=0.000000000001;
-    # loop a long while
-    	for (i=1;i ERROR) {
+        # what is the about of error that will be reported?
+    	ERROR = 0.000000000001;
+
+        # loop a long while
+    	for (i = 1; i <= 2147483647; i++) {
+            # find log of i
+    		logi = log(i);
+
+            # what is square root of i? 
+            # divide the log by 2
+    		logsquareroot = logi / 2;
+
+            # convert log of i back
+    		squareroot = exp(logsquareroot);
+
+            # find the difference between the logarithmic calculation
+            # and the built in calculation
+    		diff = sqrt(i) - squareroot;
+
+            # make difference positive 
+    		if (diff < 0) {
+    			diff *= -1;
+    		}
+    		if (diff > ERROR) {
     			printf("%10d, squareroot: %16.8f, error: %16.14f\n", 
     				i, squareroot, diff);
     		}
@@ -2745,32 +2949,42 @@ errors.
 I'll give you a more exciting sample soon.
 
 
-## Truncating Integers
+### Truncating Integers
 
 All version of AWK contain the
-int function. This truncates a number, making it an integer.
+*int* function. This truncates a number, making it an integer.
 It can be used to round numbers by adding 0.5:
-printf("rounding %8.4f gives %8dn", x, int(x+0.5));
+
+    printf("rounding %8.4f gives %8dn", x, int(x+0.5));
 
 
-## Random Numbers
+### Random Numbers
 
 NAWK has functions that can generate random numbers.
 The function
-rand returns a random number between 0 and 1.
+*rand* returns a random number between 0 and 1.
 Here is an example that calculates a million random numbers
 between 0 and 100, and counts how often each number was used:
             
                 
 ```awk                
-#!/usr/bin/nawk -f
-# old AWK doesn't have rand() and srand()
-# only new AWK has them
-# how random is the random function?
-BEGIN {
-#	srand();
-	i=0;
-	while (i++
+    #!/usr/bin/nawk -f
+
+    # old AWK doesn't have rand() and srand()
+    # only new AWK has them
+    # how random is the random function?
+    BEGIN {
+        # srand();
+    	i = 0;
+    	while (i++ < 1000000) {
+    		x = int(rand()*100 + 0.5);
+    		y[x]++;
+    	}
+    	for (i = 0;i <= 100; i++) {
+    		printf("%dt%d\n",y[i],i);
+    	}
+    	exit;
+    }
 ```
 
 Click here to get file: [random.awk](http://www.grymoire.com/Unix/Scripts/random.awk)
@@ -2791,7 +3005,7 @@ srand function may be given an argument. If not, it uses the current time and da
 to generate a seed for the random number generator.
 
 
-## The Lotto script
+### The Lotto script
 
 I promised a more useful script. This may be what you are waiting for.
 It reads two numbers, and generates a list of random numbers.
@@ -2799,34 +3013,49 @@ I call the script
 "lotto.awk". 
                 
 ```awk                  
-#!/usr/bin/nawk -f
-BEGIN {
-# Assume we want 6 random numbers between 1 and 36
-# We could get this information by reading standard input,
-# but this example will use a fixed set of parameters.
-#
-# First, initialize the seed
-    srand();
-# How many numbers are needed?
-    NUM=6;
-# what is the minimum number
-    MIN=1;
-# and the maximum?
-    MAX=36;
-# How many numbers will we find? start with 0
-    Number=0;
-    while (Number < NUM) {
-	r=int(((rand() *(1+MAX-MIN))+MIN));
-# have I seen this number before?
-	if (array[r] == 0) {
-# no, I have not
-	    Number++;
-	    array[r]++;
-	}
-    }
+    #!/usr/bin/nawk -f
 
-# now output all numbers, in order
-    for (i=MIN;i
+    BEGIN {
+        # Assume we want 6 random numbers between 1 and 36
+        # We could get this information by reading standard input,
+        # but this example will use a fixed set of parameters.
+        #
+        # First, initialize the seed
+        srand();
+
+        # How many numbers are needed?
+        NUM = 6;
+
+        # what is the minimum number
+        MIN = 1;
+
+        # and the maximum?
+        MAX = 36;
+
+        # How many numbers will we find? start with 0
+        Number = 0;
+        while (Number < NUM) {
+    	    r = int(( (rand() * (1+MAX-MIN)) + MIN ));
+
+            # have I seen this number before?
+    	    if (array[r] == 0) {
+                # no, I have not
+    	        Number++;
+    	        array[r]++;
+    	    }
+        }
+    
+        # now output all numbers, in order
+        for (i = MIN; i <= MAX; i++) {
+            # is it marked in the array?
+    	    if (array[i]) {
+                # yes
+    	        printf("%d ",i);
+    	    }
+        }
+        printf("\n");
+        exit;
+    }
 ```
 
 Click here to get file: [lotto.awk](http://www.grymoire.com/Unix/Scripts/lotto.awk)
@@ -2839,8 +3068,27 @@ If you do win a lottery, send me a postcard.
 Besides numeric functions, there are two other types of function:
 strings and the whatchamacallits.
 First, a list of the string functions:
- AWK Table 10
-String FunctionsNameVariantindex(string,search)AWK, NAWK, GAWKlength(string)AWK, NAWK, GAWKsplit(string,array,separator)AWK, NAWK, GAWKsubstr(string,position)AWK, NAWK, GAWKsubstr(string,position,max)AWK, NAWK, GAWKsub(regex,replacement)NAWK, GAWKsub(regex,replacement,string)NAWK, GAWKgsub(regex,replacement)NAWK, GAWKgsub(regex,replacement,string)NAWK, GAWKmatch(string,regex)NAWK, GAWKtolower(string)GAWKtoupper(string)GAWKasort(string,[d])GAWKasorti(string,[d])GAWKgensub(r,s,h [,t])GAWKstrtonum(string)GAWK
+
+**AWK Table 10: String Functions**
+
+| Name | Variant
+| - | -
+| index(string,search) | AWK, NAWK, GAWK
+| length(string) | AWK, NAWK, GAWK
+| split(string,array,separator) | AWK, NAWK, GAWK
+| substr(string,position) | AWK, NAWK, GAWK
+| substr(string,position,max) | AWK, NAWK, GAWK
+| sub(regex,replacement) | NAWK, GAWK
+| sub(regex,replacement,string) | NAWK, GAWK
+| gsub(regex,replacement) | NAWK, GAWK
+| gsub(regex,replacement,string) | NAWK, GAWK
+| match(string,regex) | NAWK, GAWK
+| tolower(string) | GAWK
+| toupper(string) | GAWK
+| asort(string,[d]) | GAWK
+| asorti(string,[d]) | GAWK
+| gensub(r,s,h [,t]) | GAWK
+| strtonum(string) | GAWK
 
 Most people first use AWK to perform simple calculations.
 Associative arrays and trigonometric functions are somewhat esoteric features,
@@ -2853,54 +3101,59 @@ I hope this column gives you enough information to inspire your next effort.
 
 
 There are four string functions in the original AWK:
-index(), 
-length(), 
-split(), and
-substr(). These functions are quite versatile.
+*index()*, 
+*length()*, 
+*split()*, and
+*substr()*. These functions are quite versatile.
 
 
-## The Length function
+### The Length function
 
 What can I say? The 
-length() function calculates the length of a string.
+*length()* function calculates the length of a string.
 I often use it to make sure my input is correct.
 If you wanted to ignore empty lines, check the length of the each line
 before
 processing it with 
-if (length($0) > 1) {
 
- . . .
-
-}
+    if (length($0) > 1) {
+     . . .
+    }
 
 
 You can easily use it to print all lines longer than a certain length, etc.
 The following command centers all lines shorter than 80 characters:
                     
 ```awk
-#!/bin/awk -f
-{
-    if (length($0) < 80) {
-        prefix = "";
-        for (i = 1;i
+    #!/bin/awk -f
+    
+    {
+        if (length($0) < 80) {
+            prefix = "";
+            for (i = 1; i < (80-length($0))/2; i++)
+                prefix = prefix " ";
+            print prefix $0;
+        } else {
+            print;
+        }
+    }
 ```        
 
 Click here to get file: [center.awk](http://www.grymoire.com/Unix/Scripts/center.awk)
 
 
-## The Index Function
+### The Index Function
 
 If you want to search for a special character, the
 index() function will search for specific characters inside a string.
 To find a comma, the code might
 look like this:
-sentence="This is a short, meaningless sentence.";
 
-if (index(sentence, ",") > 0) {
-
-    printf("Found a comma in position \%d\n", index(sentence,","));
-
-}
+    sentence = "This is a short, meaningless sentence.";
+    
+    if (index(sentence, ",") > 0) {
+        printf("Found a comma in position \%d\n", index(sentence,","));
+    }
 
 
 The function returns a positive value when the substring is found.
@@ -2910,37 +3163,35 @@ The number specified the location of the substring.
 If the substring consists of 2 or more characters, all of these
 characters must be found, in the same order, for a non-zero return value.
 Like the 
-length() function, this is useful for checking for proper input conditions.
+*length*() function, this is useful for checking for proper input conditions.
 
 
-## The Substr function
+### The Substr function
 
 The 
-substr() function can extract a portion of a string.
+*substr*() function can extract a portion of a string.
 
 
- There are two ways to use it:
+There are two ways to use it:
 
 
-substr(string,position)
+    substr(*string*, *position*)
+
+    substr(*string*, *position*, *length*)
 
 
-substr(string,position,length)
-
-
- where string is the string to search, position is the number of characters to start looking, and length is the number of characters to extract (default is 1).
-
+where *string* is the string to search, *position* is the number of characters to start looking, 
+and *length* is the number of characters to extract (default is 1).
 
 
 A simple example is to use it to search or extract a specific string at a fixed location.
-
 
 
 If you wanted to print columns 40 through 50, use
 
 ```awk
     #!/bin/awk -f
-    {print substr($0,40,10)}
+    { print substr($0,40,10) }
 ```        
     If you wanted to search for the string "HELLO" at position 20. This can easily be done using
 
@@ -2948,7 +3199,8 @@ If you wanted to print columns 40 through 50, use
     #!/bin/awk -f
     substr($0,20,5) == "HELLO" {print}
 ```        
-    One common use is to split a string into two parts based on a special
+
+One common use is to split a string into two parts based on a special
 character.
 If you wanted to process some mail addresses, where you search for a "@" character, and split the text into username and hostname, the following code
 fragment might do the job:
@@ -2956,21 +3208,24 @@ fragment might do the job:
 
 ```awk
     #!/bin/awk -f
+
     {
-    # field 1 is the e-mail address - perhaps
-        if ((x=index($1,"@")) > 0) {
-            username = substr($1,1,x-1);
-            hostname = substr($1,x+1,length($1));
-    # the above is the same as
-    #        hostname = substr($1,x+1);
+        # field 1 is the e-mail address - perhaps
+        if ( (x = index($1,"@")) > 0 ) {
+            username = substr($1, 1, x-1);
+            hostname = substr($1, x+1, length($1));
+
+            # the above is the same as
+            # hostname = substr($1, x+1);
             printf("username = %s, hostname = %s\n", username, hostname);
         }
     }
 ```        
-    Click here to get file: [email.awk](http://www.grymoire.com/Unix/Scripts/email.awk)
+
+Click here to get file: [email.awk](http://www.grymoire.com/Unix/Scripts/email.awk)
 
 The
-substr() function takes two or three arguments.
+*substr*() function takes two or three arguments.
 The first is the string, the second is the position.
 The optional third argument is the length of the string to extract.
 If the third argument is missing, the rest of the string is used.
@@ -2982,17 +3237,26 @@ As an example, it can be used to convert upper case letters to lower case.
     
 ```awk
     #!/usr/bin/awk -f
+
     # convert upper case letters to lower case
     BEGIN {
-        LC="abcdefghijklmnopqrstuvwxyz";
-        UC="ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        LC = "abcdefghijklmnopqrstuvwxyz";
+        UC = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     }
+
     {
-        out="";
-    # look at each character
-        for(i=1;i 0 ) {
-    # found it
-                    out = out substr(LC,j,1);
+        out = "";
+
+        # look at each character
+        for (i = 1; i <= length($0); i++) {
+            # get the character to be checked
+            char = substr($0, i, 1);
+
+            # is it an upper case letter?
+            j = index(UC, char);
+                if (j > 0 ) {
+                    # found it
+                    out = out substr(LC, j, 1);
                 } else {
                     out = out char;
                 }
@@ -3001,28 +3265,32 @@ As an example, it can be used to convert upper case letters to lower case.
     }    
 ```    
     
-    Click here to get file: [upper_to_lower.awk](http://www.grymoire.com/Unix/Scripts/upper_to_lower.awk)
+Click here to get file: [upper_to_lower.awk](http://www.grymoire.com/Unix/Scripts/upper_to_lower.awk)
 
 
-## The Split function
+### The Split function
 
 Another way to split up a string is to use the
-split() function.
+*split*() function.
 It takes three arguments: the string, an array, and the separator.
 The function returns the number of pieces found. Here is an example:
-                        
-                        
-                        
-                            
+
+
 ```awk
-#!/usr/bin/awk -f
-BEGIN {
-# this script breaks up the sentence into words, using 
-# a space as the character separating the words
-    string="This is a string, is it not?";
-    search=" ";
-    n=split(string,array,search);
-    for (i=1;i
+    #!/usr/bin/awk -f
+
+    BEGIN {
+        # this script breaks up the sentence into words, using 
+        # a space as the character separating the words
+        string = "This is a string, is it not?";
+        search = " ";
+        n = split(string, array, search);
+        for (i = 1; i <= n; i++) {
+            printf("Word[%d]=%s\n", i, array[i]);
+        }
+        exit;
+    }
+```
 
 Click here to get file: [awk_example14.sh](http://www.grymoire.com/Unix/Scripts/awk_example14.sh)
 
@@ -3031,11 +3299,11 @@ The third argument is typically a single character.
 If a longer string is used, only the first letter is used as a separator.
 
 
-## GAWK's Tolower and Toupper function
+### GAWK's Tolower and Toupper function
 
 GAWK has the
-toupper() and
-tolower() functions, for convenient conversions of case.
+*toupper*() and
+*tolower*() functions, for convenient conversions of case.
 These functions take strings, so you
 can reduce the above script to a single line:
 
@@ -3045,97 +3313,102 @@ can reduce the above script to a single line:
         print tolower($0);
     }
 ```    
-    Click here to get file: [upper_to_lower.gawk](http://www.grymoire.com/Unix/Scripts/upper_to_lower.gawk)
+
+Click here to get file: [upper_to_lower.gawk](http://www.grymoire.com/Unix/Scripts/upper_to_lower.gawk)
 
 
-## NAWK's string functions
+### NAWK's string functions
 
 NAWK (and GAWK) have additional string functions, which add 
 a primitive SED-like functionality:
-sub(), 
-match(), and
-gsub(). 
+*sub*(), 
+*match*(), and
+*gsub*(). 
 
 
-Sub() performs a string substitution, like 
-sed. To replace
-"old" with
-"new" in a string, use
-sub(/old/, "new", string)
+*Sub*() performs a string substitution, like 
+*sed*. To replace
+`old` with
+`new` in a string, use
+
+    sub(/old/, "new", string)
 
 
 If the third argument is missing,
-$0 is assumed to be string searched.
+`$0` is assumed to be string searched.
 The function returns 1 if a substitution occurs, and 0 if not.
 If no slashes are given in the first argument, the
 first argument is assumed to be a variable containing a regular expression.
 The
-sub() only changes the first occurrence.
+*sub*() only changes the first occurrence.
 The
-gsub() function is similar to the 
-g option in 
-sed: all occurrence are converted, and not just the first.
+*gsub*() function is similar to the 
+**g** option in 
+*sed*: all occurrence are converted, and not just the first.
 That is, if the patter occurs more than once per line (or string), the
 substitution
 will be performed once for each found pattern.
 The following script:
 
-
-
-    
+```awk    
     #!/usr/bin/nawk -f
+
     BEGIN {
         string = "Another sample of an example sentence";
-        pattern="[Aa]n";
-        if (gsub(pattern,"AN",string)) {
+        pattern = "[Aa]n";
+        if (gsub(pattern, "AN", string)) {
             printf("Substitution occurred: %s\n", string);
         }
     
         exit;
     }
-    Click here to get file: [awk_example15.awk](http://www.grymoire.com/Unix/Scripts/awk_example15.awk)
+```
+
+Click here to get file: [awk_example15.awk](http://www.grymoire.com/Unix/Scripts/awk_example15.awk)
 
 
 print the following when executed:
-Substitution occurred: ANother sample of AN example sentence
+
+    Substitution occurred: ANother sample of AN example sentence
 
 
 As you can see, the pattern can be a regular expression.
 
 
-## The Match function
+#### The Match function
 
 As the above demonstrates, the
-sub() and 
-gsub() returns a positive value if a match is found.
+*sub*() and 
+*gsub*() returns a positive value if a match is found.
 However, it has a side-effect of changing the string tested.
 If you don't wish this, you can copy the string to another variable,
 and test the spare variable.
 NAWK also provides the 
-match() function.
+*match*() function.
 If 
-match() finds the regular expression, it sets two special variables
+*match*() finds the regular expression, it sets two special variables
 that indicate where the regular expression begins and ends.
 Here is an example that does this:
 
-    
+```awk
     #!/usr/bin/nawk -f
     # demonstrate the match function
     
     BEGIN {
-        regex="[a-zA-Z0-9]+";
+        regex = "[a-zA-Z0-9]+";
     }
+
     {
-        if (match($0,regex)) {
-    #           RSTART is where the pattern starts
-    #           RLENGTH is the length of the pattern
-                before = substr($0,1,RSTART-1);
-                pattern = substr($0,RSTART,RLENGTH);
-                after = substr($0,RSTART+RLENGTH);
+        if (match($0, regex)) {
+            # RSTART is where the pattern starts
+            # RLENGTH is the length of the pattern
+                before = substr($0, 1, RSTART-1);
+                pattern = substr($0, RSTART, RLENGTH);
+                after = substr($0, RSTART+RLENGTH);
                 printf("%s<%s>%s\n", before, pattern, after);
         }
     }
-    
+```
 
 
 Click here to get file: [awk_example16.awk](http://www.grymoire.com/Unix/Scripts/awk_example16.awk)
@@ -3145,17 +3418,31 @@ Lastly, there are the whatchamacallit functions.
 I could use the word
 "miscellaneous", but it's too hard to spell.
 Darn it, I had to look it up anyway. 
- AWK Table 11
-Miscellaneous FunctionsNameVariantgetlineAWK, NAWK, GAWKgetline <fileNAWK, GAWKgetline variableNAWK, GAWKgetline variable <fileNAWK, GAWK"command" | getlineNAWK, GAWK"command" | getline variableNAWK, GAWKsystem(command)NAWK, GAWKclose(command)NAWK, GAWKsystime()GAWKstrftime(string)GAWKstrftime(string, timestamp)GAWK
 
-## The System function
+**AWK Table 11: Miscellaneous Functions**
+
+| Name | Variant
+| - | -
+| getline | AWK, NAWK, GAWK
+| getline &lt;file | NAWK, GAWK
+| getline variable | NAWK, GAWK
+| getline variable &lt;file | NAWK, GAWK
+| "command" \| getline | NAWK, GAWK
+| "command" \| getline variable | NAWK, GAWK
+| system(command) | NAWK, GAWK
+| close(command) | NAWK, GAWK
+| systime() | GAWK
+| strftime(string) | GAWK
+| strftime(string, timestamp) | GAWK
+
+#### The System function
 
 NAWK has a function 
-system() that can execute any program. It returns the exit status of the
+*system*() that can execute any program. It returns the exit status of the
 program.
-if (system("/bin/rm junk") != 0)
 
-    print "command didn't work";
+    if (system("/bin/rm junk") != 0)
+        print "command didn't work";
 
 
 The command can be a string, so you can dynamically create commands
@@ -3164,7 +3451,7 @@ You could send it to a file, and open that file for reading.
 There is another solution, however.
 
 
-## The Getline function
+#### The Getline function
 
 AWK has a command that allows you to force a new line.
 It doesn't take any arguments.
@@ -3176,23 +3463,24 @@ at the end of the line, it reads the next line in, eliminating the backslash
 as well as the need for it.
 
 ```awk
-#!/usr/bin/awk -f
-# look for a  as the last character.
-# if found, read the next line and append
-{
-    line = $0;
-    while (substr(line,length(line),1) == "\\") {
-# chop off the last character
-        line = substr(line,1,length(line)-1);
-        i=getline;
-        if (i > 0) {
-            line = line $0;
-        } else {
-            printf("missing continuation on line %d\n", NR);
+    #!/usr/bin/awk -f
+
+    # look for a  as the last character.
+    # if found, read the next line and append
+    {
+        line = $0;
+        while (substr(line, length(line), 1) == "\\") {
+            # chop off the last character
+            line = substr(line, 1, length(line)-1);
+            i = getline;
+            if (i > 0) {
+                line = line $0;
+            } else {
+                printf("missing continuation on line %d\n", NR);
+            }
         }
+        print line;
     }
-    print line;
-}
 ```    
 
 Click here to get file: [awk_example17.awk](http://www.grymoire.com/Unix/Scripts/awk_example17.awk)
@@ -3200,51 +3488,54 @@ Click here to get file: [awk_example17.awk](http://www.grymoire.com/Unix/Scripts
 
 Instead of reading into the standard variables, you can specify
 the variable to set:
-getline a_line
 
-print a_line;
+    getline a_line
+    print a_line;
 
 
 NAWK  and GAWK
 allow the
-getline function to be given an optional filename or string containing
+*getline* function to be given an optional filename or string containing
 a filename. An example of a primitive file preprocessor, that
 looks for lines of the format
-#include filename
+
+    #include filename
 
 
 and substitutes that line for the contents of the file:
 
 
+```awk
+	#!/usr/bin/nawk -f
 
-    #!/usr/bin/nawk -f
-    {
-    # a primitive include preprocessor
-        if (($1 == "#include") && (NF == 2)) {
-    # found the name of the file
-            filename = $2;
-            while (i = getline < filename ) {
-                print;
-            }
-        } else {
-            print;
-        }
-    }
-    Click here to get file: [include.nawk](http://www.grymoire.com/Unix/Scripts/include.nawk)
+	{
+	    # a primitive include preprocessor
+	    if ( ($1 == "#include") && (NF == 2) ) {
+	        # found the name of the file
+	        filename = $2;
+	        while (i = getline < filename ) {
+	            print;
+	        }
+	    } else {
+	        print;
+	    }
+	}
+```
+
+
+Click here to get file: [include.nawk](http://www.grymoire.com/Unix/Scripts/include.nawk)
 
 
 NAWK's getline can also read from a pipe.
 If you have a program that generates  single line,
 you can use
-"command" | getline;
 
-print $0;
-
+    "command" | getline;
+    print $0;
 
 or
-"command" | getline abc;
-
-print abc;
+    "command" | getline abc;
+    print abc;
 
 
 If you have more than one line, you can loop through the results:
@@ -3258,66 +3549,84 @@ If you have more than one line, you can loop through the results:
     }
     
 
-
-
 Only one pipe can be open at a time. If you want to
 open another pipe, you must execute
-close("command");
+
+    close("command");
 
 
 This is necessary even if the end of file is reached.
 
 
-## The systime function
+#### The systime function
 
 The
-systime() function returns the current time of day as the number of seconds
+*systime*() function returns the current time of day as the number of seconds
 since Midnight, January 1, 1970.
 It is useful for measuring how long portions of your GAWK code
 takes to execute.
-                            
-                            
-```awk                            
-#!/usr/local/bin/gawk -f
-# how long does it take to do a few loops?
-BEGIN {
-    LOOPS=100;
-# do the test twice
-    start=systime();
-    for (i=0;i<LOOPS;i++) {
-    }
-    end = systime();
-# calculate how long it takes to do a dummy test
-    do_nothing = end-start;
-# now do the test again with the *IMPORTANT* code inside
-    start=systime();
-    for (i=0;i<LOOPS;i++) {
-# How long does this take?
-        while ("date" | getline) {
-            date = $0;
-        }
-        close("date");
-    }
-    end = systime();
-    newtime = (end - start) - do_nothing;
 
-    if (newtime 
+
+```awk                            
+    #!/usr/local/bin/gawk -f
+
+    # how long does it take to do a few loops?
+    BEGIN {
+        LOOPS = 100;
+
+        # do the test twice
+        start = systime();
+        for (i = 0; i < LOOPS; i++) {
+        }
+        end = systime();
+
+        # calculate how long it takes to do a dummy test
+        do_nothing = end-start;
+
+        # now do the test again with the *IMPORTANT* code inside
+        start = systime();
+        for (i = 0; i < LOOPS; i++) {
+            # How long does this take?
+            while ("date" | getline) {
+                date = $0;
+            }
+            close("date");
+        }
+        end = systime();
+        newtime = (end - start) - do_nothing;
+    
+        if (newtime <= 0) {
+            printf("%d loops were not enough to test, increase it\n", 
+                LOOPS);
+            exit;
+        } else {
+            printf("%d loops took %6.4f seconds to execute\n", 
+                LOOPS, newtime);
+            printf("That's %10.8f seconds per loop\n", 
+                (newtime)/LOOPS);
+
+            # since the clock has an accuracy of +/- one second, what is the error
+            printf("accuracy of this measurement = %6.2f%%\n",
+                (1/(newtime))*100);
+        }
+        exit;
+    }
 ```    
 
 Click here to get file: [awk_example17.gawk](http://www.grymoire.com/Unix/Scripts/awk_example17.gawk)
 
 
-## The Strftime function
+#### The Strftime function
 
 GAWK has a special function for creating strings
 based on the current time. It's based on the
-strftime(3c) function.
+*strftime*(3c) function.
 If you are familiar with the 
 "+" formats of the 
-date(1) command, you have a good head-start on understanding what the
-strftime command is used for.
+*date*(1) command, you have a good head-start on understanding what the
+*strftime* command is used for.
 The
-systime() function returns the current date in seconds.
+*systime*() function returns the current date in seconds.
 Not very useful if you want to create a string based on the time.
 While you could convert the seconds into days, months, years, etc.,
 it would be easier to execute
@@ -3334,32 +3643,74 @@ Special characters start with a backslash or the percent character.
 The backslash characters with the backslash prefix are the same I
 covered earlier.
 In addition, the
-strftime() function defines dozens of combinations, all of which start with
+*strftime*() function defines dozens of combinations, all of which start with
 "%". The following table lists these special sequences:
- AWK Table 12
-GAWK's strftime formats%aThe locale's abbreviated weekday name%AThe locale's full weekday name%bThe locale's abbreviated month name%BThe locale's full month name%cThe locale's "appropriate" date and time representation%dThe day of the month as a decimal number (01--31)%HThe hour (24-hour clock) as a decimal number (00--23)%IThe hour (12-hour clock) as a decimal number (01--12)%jThe day of the year as a decimal number (001--366)%mThe month as a decimal number (01--12)%MThe minute as a decimal number (00--59)%pThe locale's equivalent of the AM/PM%SThe second as a decimal number (00--61).%UThe week number of the year (Sunday is first day of week)%wThe weekday as a decimal number (0--6).  Sunday is day 0%WThe week number of the year (Monday is first day of week)%xThe locale's "appropriate" date representation%XThe locale's "appropriate" time representation%yThe year without century as a decimal number (00--99)%YThe year with century as a decimal number%ZThe time zone name or abbreviation%%A literal %.
+
+**AWK Table 12: GAWK's strftime formats**
+
+| * | *
+| - | -
+| %a | The locale's abbreviated weekday name
+| %A | The locale's full weekday name
+| %b | The locale's abbreviated month name
+| %B | The locale's full month name
+| %c | The locale's "appropriate" date and time representation
+| %d | The day of the month as a decimal number (01--31) 
+| %H | The hour (24-hour clock) as a decimal number (00--23)
+| %I | The hour (12-hour clock) as a decimal number (01--12)
+| %j | The day of the year as a decimal number (001--366)
+| %m | The month as a decimal number (01--12)
+| %M | The minute as a decimal number (00--59)
+| %p | The locale's equivalent of the AM/PM
+| %S | The second as a decimal number (00--61).
+| %U | The week number of the year (Sunday is first day of week)
+| %w | The weekday as a decimal number (0--6).  Sunday is day 0
+| %W | The week number of the year (Monday is first day of week)
+| %x | The locale's "appropriate" date representation
+| %X | The locale's "appropriate" time representation
+| %y | The year without century as a decimal number (00--99)
+| %Y | The year with century as a decimal number 
+| %Z | The time zone name or abbreviation
+| %% | A literal %.
 
 Depending on your operating system, and installation, you may also
 have the following formats:
- AWK Table 13
-Optional GAWK strftime formats%DEquivalent to specifying %m/%d/%y%eThe day of the month, padded with a blank if it is only one digit%hEquivalent to %b, above%nA newline character (ASCII LF)%rEquivalent to specifying %I:%M:%S %p%REquivalent to specifying %H:%M%TEquivalent to specifying %H:%M:%S%tA TAB character%kThe hour as a decimal number (0-23)%lThe hour (12-hour clock) as a decimal number (1-12)%CThe century, as a number between 00 and 99%uis replaced by the weekday as a decimal number [Monday == 1]%Vis replaced by the week number of the year (using ISO 8601)%vThe date in VMS format (e.g. 20-JUN-1991)
+
+**AWK Table 13: Optional GAWK strftime formats**
+
+| * | *
+| - | *
+| %D | Equivalent to specifying %m/%d/%y
+| %e | The day of the month, padded with a blank if it is only one digit
+| %h | Equivalent to %b, above
+| %n | A newline character (ASCII LF)
+| %r | Equivalent to specifying %I:%M:%S %p
+| %R | Equivalent to specifying %H:%M
+| %T | Equivalent to specifying %H:%M:%S
+| %t | A TAB character
+| %k | The hour as a decimal number (0-23)
+| %l | The hour (12-hour clock) as a decimal number (1-12)
+| %C | The century, as a number between 00 and 99
+| %u | is replaced by the weekday as a decimal number [Monday == 1]
+| %V | is replaced by the week number of the year (using ISO 8601)
+| %v | The date in VMS format (e.g. 20-JUN-1991)
 
 One useful format is
-strftime("%y_%m_%d_%H_%M_%S")
+
+    strftime("%y_%m_%d_%H_%M_%S")
 
 
 This constructs a string that contains the year, month, day, hour,
 minute and second in a format that allows convenient sorting.
 If you ran this at noon on Christmas, 1994, it would generate the
 string
-94_12_25_12_00_00
+
+    94_12_25_12_00_00
 
 
 Here is the GAWK equivalent of the date command:
 
-
-
-    
+```awk
     #! /usr/local/bin/gawk -f
     #
     
@@ -3367,7 +3718,10 @@ Here is the GAWK equivalent of the date command:
         format = "%a %b %e %H:%M:%S %Z %Y";
         print strftime(format);
     }
-    Click here to get file: [date.gawk](http://www.grymoire.com/Unix/Scripts/date.gawk)
+```
+    
+
+Click here to get file: [date.gawk](http://www.grymoire.com/Unix/Scripts/date.gawk)
 
 
 You will note that there is no exit command in the begin statement.
@@ -3379,25 +3733,26 @@ NAWK and GAWK do not need an exit statement.
 
 
 If you provide a second argument to the 
-strftime() function, it uses that argument as the timestamp, instead of the
+*strftime*() function, it uses that argument as the timestamp, instead of the
 current system's time.
 This is useful for calculating future times.
 The following script calculates the time
 one week after the current time:
 
 
-
 ```awk                            
     #!/usr/local/bin/gawk -f
+
     BEGIN {
-    #  get current time	
-       ts = systime();
-    # the time is in seconds, so
-       one_day = 24 * 60 * 60;
-       next_week = ts + (7 * one_day);
-       format = "%a %b %e %H:%M:%S %Z %Y";
-       print strftime(format, next_week);
-       exit;
+        # get current time	
+        ts = systime();
+
+        # the time is in seconds, so
+        one_day = 24 * 60 * 60;
+        next_week = ts + (7 * one_day);
+        format = "%a %b %e %H:%M:%S %Z %Y";
+        print strftime(format, next_week);
+        exit;
     }
 ```    
 
@@ -3412,20 +3767,21 @@ including the filename and line number, if appropriate:
 
 
 ```awk
-#!/usr/bin/nawk -f
-{
-    if (NF != 4) {
-        error("Expected 4 fields");
-    } else {
-        print;
+    #!/usr/bin/nawk -f
+
+    {
+        if (NF != 4) {
+            error("Expected 4 fields");
+        } else {
+            print;
+        }
     }
-}
-function error ( message ) {
-    if (FILENAME != "-") {
-        printf("%s: ", FILENAME) > "/dev/tty";
+    function error ( message ) {
+        if (FILENAME != "-") {
+            printf("%s: ", FILENAME) > "/dev/tty";
+        }
+        printf("line # %d, %s, line: %s\n", NR, message, $0) >> "/dev/tty";
     }
-    printf("line # %d, %s, line: %s\n", NR, message, $0) >> "/dev/tty";
-}
 ``` 
 
 Click here to get file: [awk_example18.nawk](http://www.grymoire.com/Unix/Scripts/awk_example18.nawk)
@@ -3435,16 +3791,17 @@ Click here to get file: [awk_example18.nawk](http://www.grymoire.com/Unix/Script
 
 In my first tutorial on AWK, I described the AWK statement as
 having the form
-pattern {commands}
+
+    pattern {commands}
 
 
 I have only used two patterns so far: the special words
-BEGIN and
-END. Other patterns are possible, yet I haven't used any.
+*BEGIN* and
+*END*. Other patterns are possible, yet I haven't used any.
 There are several reasons for this.
 The first is that these patterns aren't necessary.
 You can duplicate them using an
-if statement.
+*if* statement.
 Therefore this is an 
 "advanced feature". Patterns, or perhaps the better word is conditions, tend to make an AWK
 program obscure to a beginner.
@@ -3457,29 +3814,33 @@ A pattern or condition is simply an abbreviated test.
 If the condition is true, the action is performed.
 All relational tests can be used as a pattern.
 The
-"head -10" command, which prints the first 10 lines and stops, can be duplicated with
-{if (NR <= 10 ) {print}}
+`head -10` command, which prints the first 10 lines and stops, can be duplicated with
+
+    {if (NR <= 10 ) {print}}
 
 
 Changing the
-if statement
+*if* statement
 to a condition shortens the code:
-NR <= 10 {print}
+
+    NR <= 10 {print}
 
 
 Besides relational tests, you can also use containment tests, i. e. 
 do strings contain regular expressions?
 Printing all lines that contain the word
 "special" can be written as
-{if ($0 ~ /special/) {print}}
+
+    {if ($0 ~ /special/) {print}}
 
 
 or more briefly
-$0 ~ /special/ {print}
 
+    $0 ~ /special/ {print}
 
 This type of test is so common, the authors of AWK allow a third, shorter format:
-/special/ {print}
+
+    /special/ {print}
 
 
 These tests can be combined with the AND (&&) and
@@ -3489,40 +3850,47 @@ to make your intention clear.
 
 
 The following condition prints the line if it contains the word
-"whole" or columns 1 and 2 contain
-"part1" and 
-"part2" respectively.
-($0 ~ /whole/) || (($1 ~ /part1/) && ($2 ~ /part2/)) {print}
+`whole` or columns 1 and 2 contain
+`part1` and 
+`part2` respectively.
+
+    ($0 ~ /whole/) || (($1 ~ /part1/) && ($2 ~ /part2/)) {print}
 
 
 This can be shortened to
-/whole/ || $1 ~ /part1/ && $2 ~ /part2/ {print}
+
+    /whole/ || $1 ~ /part1/ && $2 ~ /part2/ {print}
 
 
 There is one case where adding parenthesis hurts.
 The condition
-/whole/ {print}
+
+    /whole/ {print}
 
 
 works, but
-(/whole/) {print}
+
+    (/whole/) {print}
 
 
 does not.
 If parenthesis are used, it is necessary to explicitly specify the test:
-($0 ~ /whole) {print}
+
+    ($0 ~ /whole) {print}
 
 
 A murky situation arises when a simple variable is used
 as a condition. Since the variable
 NF specifies the number of fields on a line, one might think the statement
-NF {print}
+
+    NF {print}
 
 
 would print all lines with one of more fields.
 This is an illegal command for AWK, because AWK does not accept
 variables as conditions. To prevent a syntax error, I had to change it to
-NF != 0 {print}
+
+    NF != 0 {print}
 
 
 I expected NAWK to work, but on some SunOS systems it refused to print
@@ -3533,7 +3901,8 @@ After this experience, I decided to leave other, exotic variations alone.
 Clearly this is unexplored territory. 
 I could write a script that prints the first 20 lines, except if there 
 were exactly three fields, unless it was line 10, by using
-NF == 3 ? NR == 10 : NR < 20 { print }
+
+    NF == 3 ? NR == 10 : NR < 20 { print }
 
 
 But I won't. Obscurity, like puns, is often unappreciated.
@@ -3542,88 +3911,87 @@ But I won't. Obscurity, like puns, is often unappreciated.
 There is one more common and useful pattern I have not yet described.
 It is the comma separated pattern.
 A common example has the form:
-/start/,/stop/ {print}
+
+    /start/,/stop/ {print}
 
 
 This form defines, in one line, the condition to turn
 the action on, and the condition to turn the action off.
 That is, when a line containing
-"start" is seen, it is printed.
+`start` is seen, it is printed.
 Every line afterwards is also printed, until
 a line containing
-"stop" is seen. This one is also printed, but the line after, and all
+`stop` is seen. This one is also printed, but the line after, and all
 following lines, are not printed.
 This triggering on and off can be repeated many times.
 The equivalent code, using the
-if command, is:
+*if* command, is:
 
-    
+```awk    
     {
-      if ($0 ~ /start/) {
-        triggered=1;
-      }
-      if (triggered) {
-         print;
-         if ($0 ~ /stop/) {
-    	triggered=0;
-         }
-      }
+        if ($0 ~ /start/) {
+            triggered = 1;
+        }
+        if (triggered) {
+            print;
+            if ($0 ~ /stop/) {
+                triggered = 0;
+            }
+        }
     }
-    
-
+```
 
 
 The conditions do not have to be regular expressions.
 Relational tests can also be used.
 The following prints all lines between 20 and 40:
-(NR==20),(NR==40) {print}
+
+    (NR==20),(NR==40) {print}
 
 
 You can mix relational and containment tests.
 The following prints every line until a
 "stop" is seen:
-(NR==1),/stop/ {print}
+
+    (NR==1),/stop/ {print}
 
 
 There is one more area of confusion about patterns:
 each one is independent of the others.
 You can have several patterns in a script; none influence the other patterns.
 If the following script is executed:
-NR==10 {print}
 
-(NR==5),(NR==15) {print}
-
-/xxx/ {print}
-
-(NR==1),/NeVerMatchThiS/ {print}
+    NR == 10 {print}
+    (NR == 5),(NR == 15) {print}
+    /xxx/ {print}
+    (NR == 1),/NeVerMatchThiS/ {print}
 
 
 and the input file's line 10 contains
 "xxx", it would be printed 4 times, as each condition is true. 
 You can think of each condition as cumulative.
 The exception is the special
-BEGIN and 
-END conditions. In the original AWK,
+**BEGIN** and 
+**END** conditions. In the original AWK,
 you can only have one of each.
 In NAWK and GAWK, you can have several BEGIN or END actions.
 
 
-
 See [Flow Control with next and exit](#flow-control-with-next-and-exit) for a special condition with the "exit" command and multiple END statements.
-
 
 
 ## Formatting AWK programs
 
 Many readers have questions my style of AWK programming.
 In particular, they ask me why I include code like this:
-# Print column 3
 
-print $3;
+    # Print column 3
+    print $3;
 
 
 when I could use
-print $3 # print column 3
+
+    print $3 # print column 3
 
 
 After all, they reason, the semicolon is unnecessary, 
@@ -3632,13 +4000,13 @@ This is true. Still I avoid this.
 Years ago, when I started writing AWK programs,
 I would find myself confused when the nesting of conditions
 were too deep. If I moved a complex 
-if statement inside another 
-if statement, my alignment of braces became incorrect.
+*if* statement inside another 
+*if* statement, my alignment of braces became incorrect.
 It can be very difficult to repair this condition, especially with large 
 scripts. Nowadays I use
-emacs or eclipse to do the formatting for me, but in the 1980's, I didn't have this option.
+*emacs* or *eclipse* to do the formatting for me, but in the 1980's, I didn't have this option.
 My solution at the time was to use the program
-cb, which is a 
+*cb*, which is a 
 "C beautifier". By including optional semicolons, and starting comments on the first column of the line, I could send my AWK script through this filter, and 
 properly align all of the code.
 
@@ -3648,8 +4016,8 @@ properly align all of the code.
 I've described the 7 special  variables in AWK,
 and briefly mentioned some others NAWK and GAWK.
 The complete list follows:
- AWK Table 14
-**Special Variables**
+
+**AWK Table 14: Special Variables**
 
 | Variable | Purpose | AWK | NAWK | GAWK
 | - | - | - | - | -
@@ -3673,106 +4041,111 @@ The complete list follows:
 | [CONVFMT](#convfmt---conversion-format-gawk-only) | conversion format (default: "%.6g") | | | Yes
 | [ERRNO](#errno---system-errors-gawk-only) | Current error after getline failure | | | Yes
 | [FIELDWIDTHS](#fieldwidths---fixed-width-fields-gawk-only) | list of field widths (instead of using FS) | | | Yes
-| BINMODEBinary Mode (Windows) | | | Yes
-| LINTTurns --lint mode on/off | | | Yes
-| PROCINFOArray of informaiton about current AWK program | | | Yes
-| RTRecord terminator | | | Yes
-| TEXTDOMAINText domain (i.e. localization) of current AWK program | | | Yes
+| BINMODE | Binary Mode (Windows) | | | Yes
+| LINT | Turns --lint mode on/off | | | Yes
+| PROCINFO | Array of informaiton about current AWK program | | | Yes
+| RT | Record terminator | | | Yes
+| TEXTDOMAIN | Text domain (i.e. localization) of current AWK program | | | Yes
 
 Since I've already discussed many of these, I'll only cover those
 that I missed earlier.
 
 
-## ARGC - Number or arguments (NAWK/GAWK)
+### ARGC - Number or arguments (NAWK/GAWK)
 
 The variable
-ARGC specifies the number of arguments on the command line.
+**ARGC** specifies the number of arguments on the command line.
 It always has the value of one or more, as it counts its own program name as the first argument. If you specify an AWK filename using the
 "-f" option, it is not counted as an argument.
 If you include a variable on the command line using the form below, 
 NAWK does not count as an argument.
-nawk -f file.awk x=17
+
+    nawk -f file.awk x=17
 
 
 GAWK does, but that is because GAWK requires the 
 "-v" option before each assignment:
-gawk -f file.awk -v x=17
+
+    gawk -f file.awk -v x=17
 
 
 GAWK variables initialized this way do not affect the
-ARGC variable.
+**ARGC** variable.
 
 
-## ARGV - Array of arguments (NAWK/GAWK)
+### ARGV - Array of arguments (NAWK/GAWK)
 
 The 
-ARGV array is the list of arguments (or files)
+**ARGV** array is the list of arguments (or files)
 passed as command line arguments.
 
 
-## ARGIND - Argument Index (GAWK only)
+### ARGIND - Argument Index (GAWK only)
 
 The
-ARGIND specifies the current index into the 
-ARGV array, and therefore
-ARGV[ARGIND] is always the current filename. Therefore
-FILENAME == ARGV[ARGIND] 
+**ARGIND** specifies the current index into the 
+**ARGV** array, and therefore
+**ARGV[ARGIND]** is always the current filename. Therefore
+
+    FILENAME == ARGV[ARGIND] 
 
 
 is always true.
 It can be modified, allowing you to skip over files, etc.
 
 
-## FNR (NAWK/GAWK)
+### FNR (NAWK/GAWK)
 
 The
-FNR variable
+**FNR** variable
 contains the number of lines read, but is reset
 for each file read. The 
-NR variable accumulates for all files read.
+**NR** variable accumulates for all files read.
 Therefore if you execute an awk script with two
 files as arguments, with each containing 10 lines:
-nawk '{print NR}' file file2
 
-nawk '{print FNR}' file file2
+    nawk '{print NR}' file file2
+    nawk '{print FNR}' file file2
 
 
 the first program would print the numbers 1 through 20, while the second
 would print the numbers 1 through 10 twice, once for each file.
 
 
-## OFMT (NAWK/GAWK)
+### OFMT (NAWK/GAWK)
 
 The
-OFMT variable
+**OFMT** variable
 Specifies the default format for numbers.
 The default value is
 "%.6g". 
 
 
-## RSTART, RLENGTH and match (NAWK/GAWK)
+### RSTART, RLENGTH and match (NAWK/GAWK)
 
 I've already mentioned the 
-RSTART and
-RLENGTH variables. After the
+**RSTART** and
+**RLENGTH** variables. After the
 match() function is called, these variables contain the location in the string 
 of the search pattern.
-RLENGTH contains the length of this match.
+**RLENGTH** contains the length of this match.
 
 
-## SUBSEP - Multi-dimensional array separator (NAWK/GAWK)
+### SUBSEP - Multi-dimensional array separator (NAWK/GAWK)
 
 Earlier I described how you can construct multi-dimensional
 arrays in AWK. These are constructed by concatenating
 two indexes together with a special character between them.
 If I use an ampersand as the special character, I can access the
 value at location X, Y by the reference
-array[ X "&" Y ]
+
+    array[ X "&" Y ]
 
 
 NAWK (and GAWK) has this feature built in. That is, you can specify the
 array element
-array[X,Y]
+
+    array[X,Y]
 
 
 It automatically constructs the string, placing a
@@ -3782,73 +4155,72 @@ character
 strings do not contain the same character.
 
 
-## ENVIRON - environment variables (GAWK only)
+### ENVIRON - environment variables (GAWK only)
 
 The
-ENVIRON array contains the environment variables the current process.
+**ENVIRON** array contains the environment variables the current process.
 You can print your current search path using
-print ENVIRON["PATH"]
+
+    print ENVIRON["PATH"]
 
 
-## IGNORECASE (GAWK only)
+### IGNORECASE (GAWK only)
 
 The
-IGNORECASE variable
+**IGNORECASE** variable
 is normally zero.
 If you set it to non-zero, then all pattern matches
 ignore case.
 Therefore the following is equivalent to 
-"grep -i match:" 
-BEGIN {IGNORECASE=1;}
+`grep -i match:` 
 
-/match/ {print}
+    BEGIN {IGNORECASE = 1;}
+    /match/ {print}
 
 
-## CONVFMT - conversion format (GAWK only)
+### CONVFMT - conversion format (GAWK only)
 
 The
-CONVFMT variable
+**CONVFMT** variable
 is used to specify the format when converting a number to a string.
 The default value is
 "%.6g". One way to truncate integers is to convert an integer to a string,
 and convert the string to an integer - modifying the actions with
-CONVFMT: 
-a = 12;
+**CONVFMT**: 
 
-b = a "";
-
-CONVFMT = "%2.2f";
-
-c = a "";
+    a = 12;
+    b = a "";
+    CONVFMT = "%2.2f";
+    c = a "";
 
 
 Variables
-b and
-c are both strings, but the first one will have the value
+**b** and
+**c** are both strings, but the first one will have the value
 "12.00" while the second will have the value
 "12". 
 
 
-## ERRNO - system errors (GAWK only)
+### ERRNO - system errors (GAWK only)
 
 The
-ERRNO variable
+**ERRNO** variable
 describes the error, as a string, after a call to the
 getline command fails. 
 
 
-## FIELDWIDTHS - fixed width fields (GAWK only)
+### FIELDWIDTHS - fixed width fields (GAWK only)
 
 The
-FIELDWIDTHS variable
+**FIELDWIDTHS** variable
 is used when processing fixed width input.
 If you wanted to read a file that had 3 columns of data; the first one 
 is 5 characters wide, the second 4, and the third 7, you could use
 substr to split the line apart. The technique, using 
-FIELDWIDTHS, would be:
-BEGIN {FIELDWIDTHS="5 4 7";}
+**FIELDWIDTHS**, would be:
 
-{ printf("The three fields are %s %s %s\n", $1, $2, $3);}
+    BEGIN {FIELDWIDTHS="5 4 7";}
+    { printf("The three fields are %s %s %s\n", $1, $2, $3);}
 
 
 ## AWK, NAWK, GAWK, or PERL
@@ -3879,13 +4251,13 @@ Other shell tutorials can be found at
 and 
 [Chris F. A. Johnson's Unix Shell Page](http://cfajohnson.com/shell/)
 
-### [ And now for an ad.... ]( And now for an ad.... )
+## [ And now for an ad.... ]( And now for an ad.... )
 
 
 (adsbygoogle = window.adsbygoogle || []).push({});
 
 
-### [Thanks!](Thanks!)
+## [Thanks!](Thanks!)
 
  I'd like to thank the following for feedback:
 
