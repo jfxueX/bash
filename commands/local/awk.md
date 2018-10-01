@@ -168,8 +168,8 @@ as input. If the condition is true, then the action is taken.
 The default pattern is something that matches every line.
 This is the blank or null pattern. Two other important patterns
 are specified by the keywords
-"BEGIN" and
-"END". As you might expect, these two words specify actions to be taken
+`BEGIN` and
+`END`. As you might expect, these two words specify actions to be taken
 before any lines are read, and after the last line is read.
 The AWK program below:
 
@@ -769,16 +769,16 @@ exit command:
 BEGIN {
 
     # Print the squares from 1 to 10 the first way
-	i=1;
-	while (i <= 10) {
-		printf "The square of ", i, " is ", i*i;
-		i = i+1;
-	}
+    i = 1;
+    while (i <= 10) {
+	printf "The square of ", i, " is ", i*i;
+	i = i+1;
+    }
 
     # do it again, using more concise code
-	for (i=1; i <= 10; i++) {
-		printf "The square of ", i, " is ", i*i;
-	}
+    for (i=1; i <= 10; i++) {
+	printf "The square of ", i, " is ", i*i;
+    }
 
     # now end
     exit;
@@ -841,9 +841,9 @@ END {
     print lines " lines read";
     print "total is ", total;
     if (lines > 0 ) {
-	    print "average is ", total/lines;
+	print "average is ", total/lines;
     } else {
-	    print "average is 0";
+	print "average is 0";
     }
 }
 ```
@@ -881,12 +881,12 @@ A user defined variable is one you create. A positional variable is
 not a special variable, but a function triggered by the dollar sign.
 Therefore
 
-	print $1;
+    print $1;
 
 and
 
-	X = 1;
-	print $X;
+    X = 1;
+    print $X;
 
 do the same thing: print the first field on the line.
 There are two more points about positional variables that are very useful.
@@ -894,11 +894,11 @@ The variable
 `$0` refers to the entire line that AWK reads in.
 That is, if you had eight fields in a line,
 
-	print $0;
+    print $0;
 
 is similar to 
 
-	print $1, $2, $3, $4, $5, $6, $7, $8
+    print $1, $2, $3, $4, $5, $6, $7, $8
 
 
 This will change the spacing between the fields; otherwise, they
@@ -906,8 +906,8 @@ behave the same.
 You can modify positional variables.
 The following commands
 
-	$2 = "";
-	print;
+    $2 = "";
+    print;
 
 
 deletes the second field.
@@ -915,8 +915,7 @@ If you had four fields, and wanted to print out the second and fourth
 field, there are two ways. This is the first:
 
 ```awk
-    #!/bin/awk -f
-    
+    #!/bin/awk -f 
     {
     	$1 = "";
     	$3 = "";
@@ -929,7 +928,6 @@ and the second
     
 ```awk
     #!/bin/awk -f
-
     {
     	print $2, $4;
     }
@@ -1042,15 +1040,14 @@ The AWK program can easily switch between these formats:
     
 ```awk
     #!/bin/awk -f
-
     {
     	if ($1 == "#START") {
-    		FS=":";
+    	    FS = ":";
     	} else if ($1 == "#STOP") {
-    		FS=" ";
+    	    FS = " ";
     	} else {
-    		# print the Roman number in column 3
-    		print $3
+    	    # print the Roman number in column 3
+    	    print $3
     	}
     }
 ```        
@@ -1072,10 +1069,9 @@ and you executed the following script:
     
 ```awk
     #!/bin/awk -f
-
     {
     	print $2
-    	FS=":"
+    	FS = ":"
     	print $2
     }
 ```        
@@ -1121,12 +1117,11 @@ otherwise, it is a space. Here is a version that worked with older versions of a
     
 ```awk
     #!/bin/awk -f
-
     {
     	if ( $0 ~ /:/ ) {
-    		FS=":";
+    	    FS = ":";
     	} else {
-    		FS=" ";
+    	    FS = " ";
     	}
     	# print the third field, whatever format
     	print $3
@@ -1142,14 +1137,13 @@ What happens is that once the FS variable is changed, you have to re-evaluate th
     
 ```awk
     #!/bin/awk -f
-
     {
     	if ($0 ~ /:/) {
-    		FS = ":";
-    		$0 = $0
+    	   FS = ":";
+    	    $0 = $0
     	} else {
-    		FS = " ";
-    		$0 = $0
+    	    FS = " ";
+    	    $0 = $0
     	}
 
     	# print the third field, whatever format
@@ -1191,7 +1185,6 @@ encrypted password, you could use AWK:
 
 ```awk
     #!/bin/awk -f
-
     BEGIN {
     	FS = ":";
     	OFS = ":";
@@ -1227,15 +1220,14 @@ then the following AWK script would work with either version of
 
 ```awk
     #!/bin/awk -f
-
     # parse the output of "ls -l"
     # print owner and filename
     # remember - Berkeley ls -l has 8 fields, System V has 9
     {
     	if (NF == 8) {
-    		print $3, $8;
+    	    print $3, $8;
     	} else if (NF == 9) {
-    		print $3, $9;
+    	    print $3, $9;
     	} 
     }
 ```        
@@ -1321,7 +1313,6 @@ break words up, one word per line, using this:
     
 ```awk
     #!/bin/awk -f
-
     BEGIN {
     	RS = " ";
     }
@@ -1335,7 +1326,6 @@ Click here to get file: [oneword_per_line.awk](http://www.grymoire.com/Unix/Scri
 
 but this only works if all of the words are separated by a space.
 If there is a tab or punctuation inside, it would not.
-
 
 
 ### ORS - The Output Record Separator Variable
@@ -1374,9 +1364,10 @@ The last variable known to regular AWK is
     	f = "";
     }
 
-    {	if (f != FILENAME) {
-    		print "reading", FILENAME;
-    		f = FILENAME;
+    {	
+        if (f != FILENAME) {
+    	    print "reading", FILENAME;
+    	    f = FILENAME;
     	}
     	print;
     }
@@ -1413,7 +1404,6 @@ in particular files:
     
 ```awk
     #!/bin/awk -f
-
     { 
         if (NF == 6) {
             # do the right thing
@@ -1486,30 +1476,30 @@ I'll show you one way to do it in AWK--the wrong way:
     {
         # must make sure you only examine lines with 8 or more fields
         if (NF > 7) {
-    		user = 0;
+    	    user = 0;
 
             # look for the user in our list of users
             for (i = 1; i <= number_of_users; i++) {
                 # is the user known?
-    			if (username[i] == $3) {
+    		if (username[i] == $3) {
                     # found it - remember where the user is
-    				user = i;
-    			}
+    	            user = i;
     		}
+    	    }
 
-    		if (user == 0) {
+    	    if (user == 0) {
                 # found a new user
-    			username[++number_of_users] = $3;
-    			user = number_of_users;
-    		}
+    	        username[++number_of_users] = $3;
+    		user = number_of_users;
+    	    }
 
             # increase number of counts
-    		count[user]++;
+    	    count[user]++;
     	}
     }
     END {
     	for (i = 1; i <= number_of_users; i++) {
-    		print count[i], username[i]
+    	    print count[i], username[i]
     	}
     } 
 ```
@@ -1530,13 +1520,12 @@ between these two versions:
 
 ```awk
     #!/bin/awk -f
-
     {
     	username[$3]++;
     }
     END {
     	for (i in username) {
-    		print username[i], i;
+    	    print username[i], i;
     	}
     }
     
@@ -1556,7 +1545,7 @@ In this case, the index into the array is the third field of the
 which is the username. If the user is 
 `bin`, the main loop increments the count per user by effectively executing
 
-	username["bin"]++;
+    username["bin"]++;
 
 
 UNIX guru's may gleefully report that the 8 line AWK script can be
@@ -1588,15 +1577,14 @@ The first one only counts valid input:
     
 ```awk
     #!/bin/awk -f
-
     {
     	if (NF > 7) {
-    		username[$3]++;
+    	    username[$3]++;
     	}
     }
     END {
     	for (i in username) {
-    		print username[i], i;
+    	    print username[i], i;
     	}
     }
 ```        
@@ -1613,7 +1601,6 @@ Then when reporting the results, ignore the invalid entry.
     
 ```awk
     #!/bin/awk -f
-
     BEGIN {
     	username[""] = 0;
     }
@@ -1622,9 +1609,9 @@ Then when reporting the results, ignore the invalid entry.
     }
     END {
     	for (i in username) {
-    		if (i != "") {
-    			print username[i], i;
-    		}
+    	    if (i != "") {
+    		print username[i], i;
+    	    }
     	}
     }
 ```        
@@ -1993,44 +1980,44 @@ disk space, appears below:
             # ignore
     	} else {
             # assign field names
-    		inode = $1;
-    		size = $2;
-    		linkcount = $4;
-    		user = $5;
-    		group = $6; 
+    	    inode = $1;
+    	    size = $2;
+    	    linkcount = $4;
+    	    user = $5;
+    	    group = $6; 
     
             # should I count this file?
-    		doit = 0;
-    		if (linkcount == 1) {
+    	    doit = 0;
+    	    if (linkcount == 1) {
                 # only one copy - count it
-    			doit++;
-    		} else {
+    		doit++;
+    	    } else {
                 # a hard link - only count first one
-    			seen[inode]++;
-    			if (seen[inode] == 1) {
-    				doit++;
-    			}
+    		seen[inode]++;
+    		if (seen[inode] == 1) {
+    		    doit++;
     		}
+    	    }
             # if doit is true, then count the file
-    		if (doit ) {
+    	    if (doit ) {
                 # total up counts in one pass
                 # use description array names
                 # use array index that unifies the arrays
                 
                 # first the counts for the number of files
     
-    			u_count[user " *"]++;
-    			g_count["* " group]++;
-    			ug_count[user " " group]++;
-    			all_count["* *"]++;
+    		u_count[user " *"]++;
+    		g_count["* " group]++;
+    		ug_count[user " " group]++;
+    		all_count["* *"]++;
     
                 # then the total disk space used
     
-    			u_size[user " *"] += size;
-    			g_size["* " group] += size;
-    			ug_size[user " " group] += size;
-    			all_size["* *"] += size;
-    		}
+    		u_size[user " *"] += size;
+    		g_size["* " group] += size;
+    		ug_size[user " " group] += size;
+    		all_size["* *"] += size;
+    	    }
         }
     }
 
@@ -2038,23 +2025,23 @@ disk space, appears below:
         # output in a form that can be sorted
         for (i in u_count) {
     	    if (i != "") {
-        	    print u_size[i], u_count[i], i;
-    		}
+        	print u_size[i], u_count[i], i;
+    	    }
         }
         for (i in g_count) {
-    		if (i != "") {
-        	        print g_size[i], g_count[i], i;
-    		}
+    	    if (i != "") {
+                print g_size[i], g_count[i], i;
+    	    }
         }
         for (i in ug_count) {
-    		if (i != "") {
+    	    if (i != "") {
                 print ug_size[i], ug_count[i], i;
-    		}
+    	    }
         }
         for (i in all_count) {
-    		if (i != "") {
+    	    if (i != "") {
                 print all_size[i], all_count[i], i;
-    		}
+    	    }
         }
     } ' | 
         # numeric sort - biggest numbers first
@@ -2089,27 +2076,27 @@ I can use just one. This is more confusing, but more concise
             # ignore
     	} else {
             # assign field names
-    		inode = $1;
-    		size = $2;
-    		linkcount = $4;
-    		user = $5;
-    		group = $6; 
+    	    inode = $1;
+    	    size = $2;
+    	    linkcount = $4;
+    	    user = $5;
+    	    group = $6; 
             
             # should I count this file?
-           	doit = 0;
-           	if (linkcount == 1) {
+            doit = 0;
+            if (linkcount == 1) {
                 # only one copy - count it
             	doit++;
-           	} else {
+            } else {
                 # a hard link - only count first one
             	seen[inode]++;
             	if (seen[inode] == 1) {
-            		doit++;
-            	}
-           	}
+                    doit++;
+                }
+            }
 
             # if doit is true, then count the file
-           	if (doit) {
+            if (doit) {
             
                 # total up counts in one pass
                 # use description array names
@@ -2126,14 +2113,14 @@ I can use just one. This is more confusing, but more concise
             	size["* " group] += size;
             	size[user " " group] += size;
             	size["* *"] += size;
-           	}
+            }
         }
     }
 
     END {
         # output in a form that can be sorted
         for (i in count) {
-    		if (i != "") {
+    	    if (i != "") {
                 print size[i], count[i], i;
             }
         }
@@ -2440,7 +2427,7 @@ minimum field width is met. What do you do if you want the spaces on
 the right?
 Add a negative sign before the width:
 
-	printf("%-10s %-6d\n", $1, $2);
+    printf("%-10s %-6d\n", $1, $2);
 
 
 This will move the printing characters to the left, with spaces added
@@ -2578,7 +2565,6 @@ Now consider the equivalent AWK program:
 
 ```awk
     #!/usr/bin/awk -f
-
     {
         print $0 >>"/tmp/a"
         print $0 >"/tmp/b"
@@ -2633,7 +2619,6 @@ You can exit from an awk script using the exit command.
     
 ```awk
     #!/usr/bin/awk -f
-
     {
         # lots of code here, where you may find an error
         if ( numberOfErrors > 0 ) {
@@ -2650,7 +2635,6 @@ Some sample code could be
     
 ```awk
     #!/usr/bin/awk -f
-
     {
         if ( length($0) > 60) {
             exit 1
@@ -2816,36 +2800,36 @@ Oh, in case you are wondering, I wrote this in the month of December.
 #
 BEGIN {
     # assign a value for pi.
-	PI = 3.14159;
+    PI = 3.14159;
 
     # select an "Ed Sullivan" number - really really big
-	BIG = 999999;	
+    BIG = 999999;	
 
     # pick two formats
     # Keep them close together, so when one column is made larger
     # the other column can be adjusted to be the same width
-	fmt1 = "%7s %8s %8s %8s %10s %10s %10s %10sn";
+    fmt1 = "%7s %8s %8s %8s %10s %10s %10s %10sn";
 
     # print out the title of each column
-	fmt2 = "%7d %8.2f %8.2f %8.2f %10.2f %10.2f %10.2f %10.2fn";
+    fmt2 = "%7d %8.2f %8.2f %8.2f %10.2f %10.2f %10.2f %10.2fn";
 
     # old AWK wants a backslash at the end of the next line
     # to continue the print statement
     # new AWK allows you to break the line into two, after a comma
-	printf(fmt1, "Degrees", "Radians", "Cosine", "Sine", 
-		"Tangent", "Cotangent", "Secant", "Cosecant");
+    printf(fmt1, "Degrees", "Radians", "Cosine", "Sine", 
+	"Tangent", "Cotangent", "Secant", "Cosecant");
 
-	for (i = 0; i <= 360; i++) {
+    for (i = 0; i <= 360; i++) {
         # convert degrees to radians
-		r = i * (PI / 180 );
+	r = i * (PI / 180 );
 
         # in new AWK, the backslashes are optional
         # in OLD AWK, they are required
-		printf(fmt2, i, r, 
+	printf(fmt2, i, r, 
             # cosine of r
-		    cos(r), 
+	    cos(r), 
             # sine of r
-		    sin(r), 
+	    sin(r), 
             #
             # I ran into a problem when dividing by zero.
             # So I had to test for this case.
@@ -2866,10 +2850,10 @@ BEGIN {
             # cosecant of r
             (sin(r) == 0) ? BIG : 1/sin(r)
         );
-	}
+    }
 
     # put an exit here, so that standard input isn't needed.
-	exit;
+    exit;
 }
 ```        
 
@@ -2915,27 +2899,27 @@ two, and converted the difference into a positive number.
         # loop a long while
     	for (i = 1; i <= 2147483647; i++) {
             # find log of i
-    		logi = log(i);
+            logi = log(i);
 
             # what is square root of i? 
             # divide the log by 2
-    		logsquareroot = logi / 2;
+    	    logsquareroot = logi / 2;
 
             # convert log of i back
-    		squareroot = exp(logsquareroot);
+    	    squareroot = exp(logsquareroot);
 
             # find the difference between the logarithmic calculation
             # and the built in calculation
-    		diff = sqrt(i) - squareroot;
+    	    diff = sqrt(i) - squareroot;
 
             # make difference positive 
-    		if (diff < 0) {
-    			diff *= -1;
-    		}
-    		if (diff > ERROR) {
-    			printf("%10d, squareroot: %16.8f, error: %16.14f\n", 
-    				i, squareroot, diff);
-    		}
+    	    if (diff < 0) {
+    		diff *= -1;
+    	    }
+    	    if (diff > ERROR) {
+    		printf("%10d, squareroot: %16.8f, error: %16.14f\n", 
+    			i, squareroot, diff);
+    	    }
     	}
     	exit;
     }
@@ -2977,11 +2961,11 @@ between 0 and 100, and counts how often each number was used:
         # srand();
     	i = 0;
     	while (i++ < 1000000) {
-    		x = int(rand()*100 + 0.5);
-    		y[x]++;
+    	    x = int(rand()*100 + 0.5);
+    	    y[x]++;
     	}
     	for (i = 0;i <= 100; i++) {
-    		printf("%dt%d\n",y[i],i);
+    	    printf("%dt%d\n",y[i],i);
     	}
     	exit;
     }
@@ -3208,7 +3192,6 @@ fragment might do the job:
 
 ```awk
     #!/bin/awk -f
-
     {
         # field 1 is the e-mail address - perhaps
         if ( (x = index($1,"@")) > 0 ) {
@@ -3254,12 +3237,12 @@ As an example, it can be used to convert upper case letters to lower case.
 
             # is it an upper case letter?
             j = index(UC, char);
-                if (j > 0 ) {
-                    # found it
-                    out = out substr(LC, j, 1);
-                } else {
-                    out = out char;
-                }
+            if (j > 0 ) {
+                # found it
+                out = out substr(LC, j, 1);
+            } else {
+                out = out char;
+            }
         }
         printf("%s\n", out);
     }    
@@ -3402,10 +3385,10 @@ Here is an example that does this:
         if (match($0, regex)) {
             # RSTART is where the pattern starts
             # RLENGTH is the length of the pattern
-                before = substr($0, 1, RSTART-1);
-                pattern = substr($0, RSTART, RLENGTH);
-                after = substr($0, RSTART+RLENGTH);
-                printf("%s<%s>%s\n", before, pattern, after);
+            before = substr($0, 1, RSTART-1);
+            pattern = substr($0, RSTART, RLENGTH);
+            after = substr($0, RSTART+RLENGTH);
+            printf("%s<%s>%s\n", before, pattern, after);
         }
     }
 ```
@@ -3507,7 +3490,6 @@ and substitutes that line for the contents of the file:
 
 ```awk
 	#!/usr/bin/nawk -f
-
 	{
 	    # a primitive include preprocessor
 	    if ( ($1 == "#include") && (NF == 2) ) {
@@ -3713,7 +3695,6 @@ Here is the GAWK equivalent of the date command:
 ```awk
     #! /usr/local/bin/gawk -f
     #
-    
     BEGIN {
         format = "%a %b %e %H:%M:%S %Z %Y";
         print strftime(format);
@@ -3742,7 +3723,6 @@ one week after the current time:
 
 ```awk                            
     #!/usr/local/bin/gawk -f
-
     BEGIN {
         # get current time	
         ts = systime();
@@ -4242,7 +4222,6 @@ how something works, experiment and see what you can discover.
 Good luck, and happy AWKing...
 
 
-
 Other of my Unix shell tutorials can be found 
 [on my list of Unix tutorials.](http://www.grymoire.com/Unix)
 Other shell tutorials can be found at
@@ -4251,13 +4230,9 @@ Other shell tutorials can be found at
 and 
 [Chris F. A. Johnson's Unix Shell Page](http://cfajohnson.com/shell/)
 
-## [ And now for an ad.... ]( And now for an ad.... )
+## And now for an ad....
 
-
-(adsbygoogle = window.adsbygoogle || []).push({});
-
-
-## [Thanks!](Thanks!)
+## Thanks!
 
  I'd like to thank the following for feedback:
 
