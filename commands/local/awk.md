@@ -4315,9 +4315,8 @@ and
 ## Thanks!
 
  I'd like to thank the following for feedback:
-
-<pre>    
-    Ranjit Singh 
+    
+<pre>    Ranjit Singh 
     Richard Janis Beckert
     Christian Haarmann
     Kuang He
@@ -4325,9 +4324,9 @@ and
     Chay Wesley
     Todd Andrews
     Lynn Young
-    Chris Hall [@_cjh](https://twitter.com/_cjh)
+    Chris Hall <a href="https://twitter.com/_cjh">@_cjh</a>
     Erik Streb del Toro
-    Edouard Lopez [@edouard_lopez](https://twitter.com/_edouard_lopez) 
+    Edouard Lopez <a href="https://twitter.com/_edouard_lopez">@edouard_lopez</a> 
     Donald Lively
     Pete Mattson
     Stan Searing
