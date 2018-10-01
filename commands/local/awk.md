@@ -191,10 +191,10 @@ I'll improve the script in the next sections, but we'll call it "FileOwner".
 But let's not put it into a script or file yet. I will cover that part in a bit. Hang on and follow with me so you get the flavor of AWK.
 
 The characters
-"\t" Indicates a tab character so the output lines up on even boundries.
+`\t` Indicates a tab character so the output lines up on even boundries.
 The
-"$8" and
-"$3" have a meaning similar to a shell script. Instead of the eighth and third
+`$8` and
+`$3` have a meaning similar to a shell script. Instead of the eighth and third
 argument, they mean the eighth and third field of the input line.
 You can think of a field as a column, and the action you specify
 operates on each line or row read in.
@@ -202,7 +202,7 @@ operates on each line or row read in.
 There are two differences between AWK and a shell processing the
 characters within double quotes. AWK understands special characters
 follow the
-"\" character like "t". The Bourne and C UNIX shells do not.
+`\` character like `t`. The Bourne and C UNIX shells do not.
 Also, unlike the shell (and PERL) AWK does not evaluate variables within 
 strings. To explain, the second line could not be written like this:
 
@@ -213,12 +213,12 @@ That example would print
 Outside, it corresponds to a field.
 What do I mean by the third and eight field?
 Consider the Solaris
-"/usr/bin/ls -l" command, which  has eight columns of information.
+`/usr/bin/ls -l` command, which  has eight columns of information.
 The System V version (Similar to the Linux version), 
-"/usr/5bin/ls -l" has 9 columns.
+`/usr/5bin/ls -l` has 9 columns.
 The third column is the owner, and the eighth (or nineth) column in the name of the file.
 This AWK program can be used to process the output of the
-"ls -l" command, printing out the filename, then the owner, for each file.
+`ls -l` command, printing out the filename, then the owner, for each file.
 I'll show you how.
 
 Update: On a linux system, change "$8" to "$9".
@@ -227,9 +227,9 @@ One more point about the use of a dollar sign.
 In scripting languages like Perl and the various shells, a dollar sign
 means the word following is the name of the variable.  Awk is
 different. The dollar sign means that we are refering to a field or
-column in the current line. When switching between Perl and AWK you must remener that "$" has a different meaning.
+column in the current line. When switching between Perl and AWK you must remener that `$` has a different meaning.
 So the following piece of code prints two "fields" to standard out. The first field
-printed is the number "5", the second is the fifth field (or column) on the input
+printed is the number `5`, the second is the fifth field (or column) on the input
 line.
 
     BEGIN 	{ x=5 }
@@ -332,14 +332,14 @@ Then execute "chmod +x" and ise this file as a new UNIX command.
 Click here to get file: [awk_example1.awk](http://www.grymoire.com/Unix/Scripts/awk_example1.awk)
 
 Notice the 
-"-f" option following '#!/bin/awk "
-above, which is also used in the third format where you use AWK to execute the file directly, i.e. "awk -f filename".
-The "-f" option specifies the AWK file containing the instructions.
+`-f` option following `#!/bin/awk `
+above, which is also used in the third format where you use AWK to execute the file directly, i.e. `awk -f filename`.
+The `-f` option specifies the AWK file containing the instructions.
 As you can see, AWK considers lines that start with a
-"#" to be a comment, just like the shell. To be precise, anything from the
-"#" to the end of the line is a comment (unless its inside an AWK string.
+`#` to be a comment, just like the shell. To be precise, anything from the
+`#` to the end of the line is a comment (unless its inside an AWK string.
 However, I always comment my AWK scripts with the
-"#" at the start of the line, for reasons I'll discuss later.
+`#` at the start of the line, for reasons I'll discuss later.
 
 Which format should you use? I prefer the last format when possible.
 It's shorter and simpler. It's also easier to debug problems.
@@ -453,8 +453,8 @@ counts how many files are owned by each user by adding
 Only one problem: the script doesn't work.
 The value of the
 "column" variable is not seen by AWK. Change
-"awk" to
-"echo" to check. You need to turn off the quoting
+`awk` to
+`echo` to check. You need to turn off the quoting
 when the variable is seen. This can be done by 
 ending the quoting, and restarting it after the variable:
 
