@@ -309,8 +309,10 @@ Click here to get file: [awk_example1.sh](http://www.grymoire.com/Unix/Scripts/a
 By the way, I give example scripts in the tutorial, and use an extension on the filename to indicate the type of script.
 You can, of course,  "install" the script in your home "bin" directory by typing
     
+```bash
     cp awk_example1.sh $HOME/bin/awk_example1
     chmod +x $HOME/bin/awk_example1
+```
     
 A third type of AWK script is a "native' AWK script, where you don't use the shell. You can write the commands in a file, and execute
     
