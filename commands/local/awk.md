@@ -173,19 +173,21 @@ are specified by the keywords
 before any lines are read, and after the last line is read.
 The AWK program below:
 
-    
+```awk    
     BEGIN { print "START" }
           { print         }
     END   { print "STOP"  }
-    
+ ```   
     
 adds one line before and one line after the input file.
 This isn't very useful, but with a simple change, we can make
 this into a typical AWK program:
 
+```awk
     BEGIN 	{ print "File\tOwner"}
         	{ print $8, "\t", $3}
     END   	{ print " - DONE -" }
+```
 
 I'll improve the script in the next sections, but we'll call it "FileOwner".
 But let's not put it into a script or file yet. I will cover that part in a bit. Hang on and follow with me so you get the flavor of AWK.
@@ -232,8 +234,10 @@ So the following piece of code prints two "fields" to standard out. The first fi
 printed is the number `5`, the second is the fifth field (or column) on the input
 line.
 
+```awk
     BEGIN 	{ x=5 }
 		{ print x, $x}
+```
 
 ## Executing an AWK script
 
@@ -262,7 +266,7 @@ The script itself can be written in many ways.
 I've show both the C shell (csh/tcsh), and Bourne/Bash/POSIX shell script.
 The C shell version would look like this:
 
-```bash    
+```awk   
     #!/bin/csh -f
     # Linux users have to change $8 to $9
     awk '\
@@ -289,7 +293,7 @@ I have a long list of complaints about using the C shell. See
 The Bourne shell (as does most shells) allows quoted strings
 to span several lines:
 
-```bash    
+```awk   
 #!/bin/sh
 # Linux users have to change $8 to $9 
 
@@ -373,7 +377,7 @@ Click here to get file: [awk_example2.awk](http://www.grymoire.com/Unix/Scripts/
 
 The Bourne shell version would be
 
-```bash    
+```awk   
 #!/bin/sh
 
 awk '
@@ -388,7 +392,7 @@ Click here to get file: [awk_example2.sh](http://www.grymoire.com/Unix/Scripts/a
 
 while the C shell would be
 
-```bash
+```awk
 #!/bin/csh -f
 
 awk '
@@ -430,11 +434,11 @@ The number of the column will be specified by the first argument.
 The first version of the program, which we will call
 `Column`, looks like this:
 
-```bash
+```awk
 #!/bin/sh
 
 #NOTE - this script does not work!
-column=$1
+column = $1
 awk '{print $column}'
 ```
 
@@ -460,7 +464,7 @@ The value of the
 when the variable is seen. This can be done by 
 ending the quoting, and restarting it after the variable:
 
-```bash    
+```awk  
 #!/bin/sh
 
 column=$1
@@ -503,10 +507,10 @@ This is done by using the format:
 
 This is shown below, where the default column will be one:
 
-```bash    
+```awk    
 #!/bin/sh
 
-column=${1:-1}
+column = ${1:-1}
 awk '{print $'$column'}'
 ```    
 
@@ -514,7 +518,7 @@ Click here to get file: [Column3.sh](http://www.grymoire.com/Unix/Scripts/Column
 
 We can save a line by combining these two steps:
 
-```bash    
+```awk    
 #!/bin/sh
 
 awk '{print $'${1:-1}'}'
@@ -531,7 +535,7 @@ If you execute an AWK command and include on the command line
 this variable will be set when the AWK script starts.
 An example of this use would be:
 
-```bash    
+```awk    
 #!/bin/sh
 
 awk '{print $c}' c=${1:-1}
@@ -624,13 +628,17 @@ the result, while the postfix form gets the results of the variable,
 and afterwards modifies the variable.  As an example, if X has the
 value of 3, then the AWK statement
 
+```awk
     print x++, " ", ++x;
+```
 
 would print the numbers 3 and 5.  These operators are also assignment
 operators, and can be used by themselves on a line:
 
+```awk
     x++;
     --y;
+```
 
 ### Assignment Operators
 
@@ -727,8 +735,10 @@ enclosed by slashes, and comes after the operator.
 AWK supports extended regular expressions, so the following are
 examples of valid tests:
 
+```awk
     word !~ /START/
     lawrence_welk ~ /(one|two|three)/
+```
 
 ### And/Or/Not
 
@@ -863,12 +873,15 @@ includes the output of
 This causes the number of files to be off by one.
 Changing
 
+```awk
     lines++;
+```
 
 to
 
+```awk
     if ($1 != "total" ) lines++;
-
+```
 
 will fix this problem.
 Note the code which prevents a divide by zero.
@@ -885,12 +898,16 @@ A user defined variable is one you create. A positional variable is
 not a special variable, but a function triggered by the dollar sign.
 Therefore
 
+```awk
     print $1;
+```
 
 and
 
+```awk
     X = 1;
     print $X;
+```
 
 do the same thing: print the first field on the line.
 There are two more points about positional variables that are very useful.
@@ -898,21 +915,25 @@ The variable
 `$0` refers to the entire line that AWK reads in.
 That is, if you had eight fields in a line,
 
+```awk
     print $0;
+```
 
 is similar to 
 
+```awk
     print $1, $2, $3, $4, $5, $6, $7, $8
-
+```
 
 This will change the spacing between the fields; otherwise, they
 behave the same.
 You can modify positional variables.
 The following commands
 
+```awk
     $2 = "";
     print;
-
+```
 
 deletes the second field.
 If you had four fields, and wanted to print out the second and fourth
@@ -963,7 +984,7 @@ using the
 `-F` command line option. 
 The following command will print out accounts that don't have passwords:
 
-```bash
+```awk
 awk -F: '{if ($2 == "") print $1 ": no password!"}' </etc/passwd
 ```
 
@@ -989,7 +1010,6 @@ script that has the same function as the one above.
     }
 ```        
     
-
 Click here to get file: [awk_nopasswd.awk](http://www.grymoire.com/Unix/Scripts/awk_nopasswd.awk)
 
 
@@ -1009,8 +1029,9 @@ the
 is the ability to set the input field separator to be more than one character.
 If you specify
 
-    FS=": ";
-
+```awk
+    FS = ": ";
+```
 
 then AWK
 will split a line into fields wherever it sees those two characters, 
@@ -1167,12 +1188,15 @@ This example eliminates the need to have the special
 
 There is an important difference between
 
+```awk
     print $2 $3
+```
 
 and
 
+```awk
     print $2, $3
-
+```
 
 The first example prints out one field, and the second prints out two fields.
 In the first case, the two positional parameters are concatenated together
@@ -1975,7 +1999,7 @@ may have to be modified.
 This is a fully working version of the program, that accurately counts
 disk space, appears below: 
 
-```bash    
+```awk    
     #!/bin/sh
     
     find . -type f -print | xargs /usr/bin/ls -islg | 
