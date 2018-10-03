@@ -53,1196 +53,725 @@ A copy of the license is included in the section entitled
 1.  The FSF&rsquo;s Back-Cover Text is: &ldquo;You have the freedom to
 copy and modify this GNU manual.&rdquo;
 
-&bull; [Foreword3](#Foreword3):  Some nice words about this
-                                   Web page.
-&bull; [Foreword4](#Foreword4):  More nice words.
-&bull; [Preface](#Preface):  What this Web page is about; brief
-                                   history and acknowledgments.
-&bull; [Getting Started](#Getting-Started):  A basic introduction to using
-                                   `awk`. How to run an `awk`
-                                   program. Command-line syntax.
-&bull; [Invoking Gawk](#Invoking-Gawk):  How to run `gawk`.
-&bull; [Regexp](#Regexp):  All about matching things using regular
-                                   expressions.
-&bull; [Reading Files](#Reading-Files):  How to read files and manipulate fields.
-&bull; [Printing](#Printing):  How to print using `awk`. Describes
-                                   the `print` and `printf`
-                                   statements. Also describes redirection of
-                                   output.
-&bull; [Expressions](#Expressions):  Expressions are the basic building blocks
-                                   of statements.
-&bull; [Patterns and Actions](#Patterns-and-Actions):  Overviews of patterns and actions.
-&bull; [Arrays](#Arrays):  The description and use of arrays. Also
-                                   includes array-oriented control statements.
-&bull; [Functions](#Functions):  Built-in and user-defined functions.
-&bull; [Library Functions](#Library-Functions):  A Library of `awk` Functions.
-&bull; [Sample Programs](#Sample-Programs):  Many `awk` programs with complete
-                                   explanations.
-&bull; [Advanced Features](#Advanced-Features):  Stuff for advanced users, specific to
-                                   `gawk`.
-&bull; [Internationalization](#Internationalization):  Getting `gawk` to speak your
-                                   language.
-&bull; [Debugger](#Debugger):  The `gawk` debugger.
-&bull; [Arbitrary Precision Arithmetic](#Arbitrary-Precision-Arithmetic):  Arbitrary precision arithmetic with
-                                   `gawk`.
-&bull; [Dynamic Extensions](#Dynamic-Extensions):  Adding new built-in functions to
-                                   `gawk`.
-&bull; [Language History](#Language-History):  The evolution of the `awk`
-                                   language.
-&bull; [Installation](#Installation):  Installing `gawk` under various
-                                   operating systems.
-&bull; [Notes](#Notes):  Notes about adding things to `gawk`
-                                   and possible future work.
-&bull; [Basic Concepts](#Basic-Concepts):  A very quick introduction to programming
-                                   concepts.
-&bull; [Glossary](#Glossary):  An explanation of some unfamiliar terms.
-&bull; [Copying](#Copying):  Your right to copy and distribute
-                                   `gawk`.
-&bull; [GNU Free Documentation License](#GNU-Free-Documentation-License):  The license for this Web page.
-&bull; [Index](#Index):  Concept and Variable Index.
-&bull; [History](#History):  The history of `gawk` and
-                                        `awk`.
-&bull; [Names](#Names):  What name to use to find
-                                        `awk`.
-&bull; [This Manual](#This-Manual):  Using this Web page. Includes
-                                        sample input files that you can use.
-&bull; [Conventions](#Conventions):  Typographical Conventions.
-&bull; [Manual History](#Manual-History):  Brief history of the GNU project and
-                                        this Web page.
-&bull; [How To Contribute](#How-To-Contribute):  Helping to save the world.
-&bull; [Acknowledgments](#Acknowledgments):  Acknowledgments.
-&bull; [Running gawk](#Running-gawk):  How to run `gawk` programs;
-                                        includes command-line syntax.
-&bull; [One-shot](#One_002dshot):  Running a short throwaway
-                                        `awk` program.
-&bull; [Read Terminal](#Read-Terminal):  Using no input files (input from the
-                                        keyboard instead).
-&bull; [Long](#Long):  Putting permanent `awk`
-                                        programs in files.
-&bull; [Executable Scripts](#Executable-Scripts):  Making self-contained `awk`
-                                        programs.
-&bull; [Comments](#Comments):  Adding documentation to `gawk`
-                                        programs.
-&bull; [Quoting](#Quoting):  More discussion of shell quoting
-                                        issues.
-&bull; [DOS Quoting](#DOS-Quoting):  Quoting in Windows Batch Files.
-&bull; [Sample Data Files](#Sample-Data-Files):  Sample data files for use in the
-                                        `awk` programs illustrated in
-                                        this Web page.
-&bull; [Very Simple](#Very-Simple):  A very simple example.
-&bull; [Two Rules](#Two-Rules):  A less simple one-line example using
-                                        two rules.
-&bull; [More Complex](#More-Complex):  A more complex example.
-&bull; [Statements/Lines](#Statements_002fLines):  Subdividing or combining statements
-                                        into lines.
-&bull; [Other Features](#Other-Features):  Other Features of `awk`.
-&bull; [When](#When):  When to use `gawk` and when to
-                                        use other things.
-&bull; [Intro Summary](#Intro-Summary):  Summary of the introduction.
-&bull; [Command Line](#Command-Line):  How to run `awk`.
-&bull; [Options](#Options):  Command-line options and their
-                                        meanings.
-&bull; [Other Arguments](#Other-Arguments):  Input file names and variable
-                                        assignments.
-&bull; [Naming Standard Input](#Naming-Standard-Input):  How to specify standard input with
-                                        other files.
-&bull; [Environment Variables](#Environment-Variables):  The environment variables
-                                        `gawk` uses.
-&bull; [AWKPATH Variable](#AWKPATH-Variable):  Searching directories for
-                                        `awk` programs.
-&bull; [AWKLIBPATH Variable](#AWKLIBPATH-Variable):  Searching directories for
-                                        `awk` shared libraries.
-&bull; [Other Environment Variables](#Other-Environment-Variables):  The environment variables.
-&bull; [Exit Status](#Exit-Status):  `gawk`&rsquo;s exit status.
-&bull; [Include Files](#Include-Files):  Including other files into your
-                                        program.
-&bull; [Loading Shared Libraries](#Loading-Shared-Libraries):  Loading shared libraries into your
-                                        program.
-&bull; [Obsolete](#Obsolete):  Obsolete Options and/or features.
-&bull; [Undocumented](#Undocumented):  Undocumented Options and Features.
-&bull; [Invoking Summary](#Invoking-Summary):  Invocation summary.
-&bull; [Regexp Usage](#Regexp-Usage):  How to Use Regular Expressions.
-&bull; [Escape Sequences](#Escape-Sequences):  How to write nonprinting characters.
-&bull; [Regexp Operators](#Regexp-Operators):  Regular Expression Operators.
-&bull; [Bracket Expressions](#Bracket-Expressions):  What can go between &lsquo;[...]&rsquo;.
-&bull; [Leftmost Longest](#Leftmost-Longest):  How much text matches.
-&bull; [Computed Regexps](#Computed-Regexps):  Using Dynamic Regexps.
-&bull; [GNU Regexp Operators](#GNU-Regexp-Operators):  Operators specific to GNU software.
-&bull; [Case-sensitivity](#Case_002dsensitivity):  How to do case-insensitive matching.
-&bull; [Regexp Summary](#Regexp-Summary):  Regular expressions summary.
-&bull; [Records](#Records):  Controlling how data is split into
-                                        records.
-&bull; [awk split records](#awk-split-records):  How standard `awk` splits
-                                        records.
-&bull; [gawk split records](#gawk-split-records):  How `gawk` splits records.
-&bull; [Fields](#Fields):  An introduction to fields.
-&bull; [Nonconstant Fields](#Nonconstant-Fields):  Nonconstant Field Numbers.
-&bull; [Changing Fields](#Changing-Fields):  Changing the Contents of a Field.
-&bull; [Field Separators](#Field-Separators):  The field separator and how to change
-                                        it.
-&bull; [Default Field Splitting](#Default-Field-Splitting):  How fields are normally separated.
-&bull; [Regexp Field Splitting](#Regexp-Field-Splitting):  Using regexps as the field separator.
-&bull; [Single Character Fields](#Single-Character-Fields):  Making each character a separate
-                                        field.
-&bull; [Command Line Field Separator](#Command-Line-Field-Separator):  Setting `FS` from the command
-                                        line.
-&bull; [Full Line Fields](#Full-Line-Fields):  Making the full line be a single
-                                        field.
-&bull; [Field Splitting Summary](#Field-Splitting-Summary):  Some final points and a summary table.
-&bull; [Constant Size](#Constant-Size):  Reading constant width data.
-&bull; [Fixed width data](#Fixed-width-data):  Processing fixed-width data.
-&bull; [Skipping intervening](#Skipping-intervening):  Skipping intervening fields.
-&bull; [Allowing trailing data](#Allowing-trailing-data):  Capturing optional trailing data.
-&bull; [Fields with fixed data](#Fields-with-fixed-data):  Field values with fixed-width data.
-&bull; [Splitting By Content](#Splitting-By-Content):  Defining Fields By Content
-&bull; [Testing field creation](#Testing-field-creation):  Checking how `gawk` is
-                                        splitting records.
-&bull; [Multiple Line](#Multiple-Line):  Reading multiline records.
-&bull; [Getline](#Getline):  Reading files under explicit program
-                                        control using the `getline`
-                                        function.
-&bull; [Plain Getline](#Plain-Getline):  Using `getline` with no
-                                        arguments.
-&bull; [Getline/Variable](#Getline_002fVariable):  Using `getline` into a variable.
-&bull; [Getline/File](#Getline_002fFile):  Using `getline` from a file.
-&bull; [Getline/Variable/File](#Getline_002fVariable_002fFile):  Using `getline` into a variable
-                                        from a file.
-&bull; [Getline/Pipe](#Getline_002fPipe):  Using `getline` from a pipe.
-&bull; [Getline/Variable/Pipe](#Getline_002fVariable_002fPipe):  Using `getline` into a variable
-                                        from a pipe.
-&bull; [Getline/Coprocess](#Getline_002fCoprocess):  Using `getline` from a coprocess.
-&bull; [Getline/Variable/Coprocess](#Getline_002fVariable_002fCoprocess):  Using `getline` into a variable
-                                        from a coprocess.
-&bull; [Getline Notes](#Getline-Notes):  Important things to know about
-                                        `getline`.
-&bull; [Getline Summary](#Getline-Summary):  Summary of `getline` Variants.
-&bull; [Read Timeout](#Read-Timeout):  Reading input with a timeout.
-&bull; [Retrying Input](#Retrying-Input):  Retrying input after certain errors.
-&bull; [Command-line directories](#Command_002dline-directories):  What happens if you put a directory on
-                                        the command line.
-&bull; [Input Summary](#Input-Summary):  Input summary.
-&bull; [Input Exercises](#Input-Exercises):  Exercises.
-&bull; [Print](#Print):  The `print` statement.
-&bull; [Print Examples](#Print-Examples):  Simple examples of `print`
-                                        statements.
-&bull; [Output Separators](#Output-Separators):  The output separators and how to
-                                        change them.
-&bull; [OFMT](#OFMT):  Controlling Numeric Output With
-                                        `print`.
-&bull; [Printf](#Printf):  The `printf` statement.
-&bull; [Basic Printf](#Basic-Printf):  Syntax of the `printf` statement.
-&bull; [Control Letters](#Control-Letters):  Format-control letters.
-&bull; [Format Modifiers](#Format-Modifiers):  Format-specification modifiers.
-&bull; [Printf Examples](#Printf-Examples):  Several examples.
-&bull; [Redirection](#Redirection):  How to redirect output to multiple
-                                        files and pipes.
-&bull; [Special FD](#Special-FD):  Special files for I/O.
-&bull; [Special Files](#Special-Files):  File name interpretation in
-                                        `gawk`. `gawk` allows
-                                        access to inherited file descriptors.
-&bull; [Other Inherited Files](#Other-Inherited-Files):  Accessing other open files with
-                                        `gawk`.
-&bull; [Special Network](#Special-Network):  Special files for network
-                                        communications.
-&bull; [Special Caveats](#Special-Caveats):  Things to watch out for.
-&bull; [Close Files And Pipes](#Close-Files-And-Pipes):  Closing Input and Output Files and
-                                        Pipes.
-&bull; [Nonfatal](#Nonfatal):  Enabling Nonfatal Output.
-&bull; [Output Summary](#Output-Summary):  Output summary.
-&bull; [Output Exercises](#Output-Exercises):  Exercises.
-&bull; [Values](#Values):  Constants, Variables, and Regular
-                                        Expressions.
-&bull; [Constants](#Constants):  String, numeric and regexp constants.
-&bull; [Scalar Constants](#Scalar-Constants):  Numeric and string constants.
-&bull; [Nondecimal-numbers](#Nondecimal_002dnumbers):  What are octal and hex numbers.
-&bull; [Regexp Constants](#Regexp-Constants):  Regular Expression constants.
-&bull; [Using Constant Regexps](#Using-Constant-Regexps):  When and how to use a regexp constant.
-&bull; [Standard Regexp Constants](#Standard-Regexp-Constants):  Regexp constants in standard
-                                        `awk`.
-&bull; [Strong Regexp Constants](#Strong-Regexp-Constants):  Strongly typed regexp constants.
-&bull; [Variables](#Variables):  Variables give names to values for
-                                        later use.
-&bull; [Using Variables](#Using-Variables):  Using variables in your programs.
-&bull; [Assignment Options](#Assignment-Options):  Setting variables on the command line
-                                        and a summary of command-line syntax.
-                                        This is an advanced method of input.
-&bull; [Conversion](#Conversion):  The conversion of strings to numbers
-                                        and vice versa.
-&bull; [Strings And Numbers](#Strings-And-Numbers):  How `awk` Converts Between
-                                        Strings And Numbers.
-&bull; [Locale influences conversions](#Locale-influences-conversions):  How the locale may affect conversions.
-&bull; [All Operators](#All-Operators):  `gawk`&rsquo;s operators.
-&bull; [Arithmetic Ops](#Arithmetic-Ops):  Arithmetic operations (&lsquo;+&rsquo;,
-                                        &lsquo;-&rsquo;, etc.)
-&bull; [Concatenation](#Concatenation):  Concatenating strings.
-&bull; [Assignment Ops](#Assignment-Ops):  Changing the value of a variable or a
-                                        field.
-&bull; [Increment Ops](#Increment-Ops):  Incrementing the numeric value of a
-                                        variable.
-&bull; [Truth Values and Conditions](#Truth-Values-and-Conditions):  Testing for true and false.
-&bull; [Truth Values](#Truth-Values):  What is &ldquo;true&rdquo; and what is
-                                        &ldquo;false&rdquo;.
-&bull; [Typing and Comparison](#Typing-and-Comparison):  How variables acquire types and how
-                                        this affects comparison of numbers and
-                                        strings with &lsquo;<&rsquo;, etc.
-&bull; [Variable Typing](#Variable-Typing):  String type versus numeric type.
-&bull; [Comparison Operators](#Comparison-Operators):  The comparison operators.
-&bull; [POSIX String Comparison](#POSIX-String-Comparison):  String comparison with POSIX rules.
-&bull; [Boolean Ops](#Boolean-Ops):  Combining comparison expressions using
-                                        boolean operators &lsquo;||&rsquo; (&ldquo;or&rdquo;),
-                                        &lsquo;&&&rsquo; (&ldquo;and&rdquo;) and &lsquo;!&rsquo;
-                                        (&ldquo;not&rdquo;).
-&bull; [Conditional Exp](#Conditional-Exp):  Conditional expressions select between
-                                        two subexpressions under control of a
-                                        third subexpression.
-&bull; [Function Calls](#Function-Calls):  A function call is an expression.
-&bull; [Precedence](#Precedence):  How various operators nest.
-&bull; [Locales](#Locales):  How the locale affects things.
-&bull; [Expressions Summary](#Expressions-Summary):  Expressions summary.
-&bull; [Pattern Overview](#Pattern-Overview):  What goes into a pattern.
-&bull; [Regexp Patterns](#Regexp-Patterns):  Using regexps as patterns.
-&bull; [Expression Patterns](#Expression-Patterns):  Any expression can be used as a
-                                        pattern.
-&bull; [Ranges](#Ranges):  Pairs of patterns specify record
-                                        ranges.
-&bull; [BEGIN/END](#BEGIN_002fEND):  Specifying initialization and cleanup
-                                        rules.
-&bull; [Using BEGIN/END](#Using-BEGIN_002fEND):  How and why to use BEGIN/END rules.
-&bull; [I/O And BEGIN/END](#I_002fO-And-BEGIN_002fEND):  I/O issues in BEGIN/END rules.
-&bull; [BEGINFILE/ENDFILE](#BEGINFILE_002fENDFILE):  Two special patterns for advanced
-                                        control.
-&bull; [Empty](#Empty):  The empty pattern, which matches every
-                                        record.
-&bull; [Using Shell Variables](#Using-Shell-Variables):  How to use shell variables with
-                                        `awk`.
-&bull; [Action Overview](#Action-Overview):  What goes into an action.
-&bull; [Statements](#Statements):  Describes the various control
-                                        statements in detail.
-&bull; [If Statement](#If-Statement):  Conditionally execute some
-                                        `awk` statements.
-&bull; [While Statement](#While-Statement):  Loop until some condition is
-                                        satisfied.
-&bull; [Do Statement](#Do-Statement):  Do specified action while looping
-                                        until some condition is satisfied.
-&bull; [For Statement](#For-Statement):  Another looping statement, that
-                                        provides initialization and increment
-                                        clauses.
-&bull; [Switch Statement](#Switch-Statement):  Switch/case evaluation for conditional
-                                        execution of statements based on a
-                                        value.
-&bull; [Break Statement](#Break-Statement):  Immediately exit the innermost
-                                        enclosing loop.
-&bull; [Continue Statement](#Continue-Statement):  Skip to the end of the innermost
-                                        enclosing loop.
-&bull; [Next Statement](#Next-Statement):  Stop processing the current input
-                                        record.
-&bull; [Nextfile Statement](#Nextfile-Statement):  Stop processing the current file.
-&bull; [Exit Statement](#Exit-Statement):  Stop execution of `awk`.
-&bull; [Built-in Variables](#Built_002din-Variables):  Summarizes the predefined variables.
-&bull; [User-modified](#User_002dmodified):  Built-in variables that you change to
-                                        control `awk`.
-&bull; [Auto-set](#Auto_002dset):  Built-in variables where `awk`
-                                        gives you information.
-&bull; [ARGC and ARGV](#ARGC-and-ARGV):  Ways to use `ARGC` and
-                                        `ARGV`.
-&bull; [Pattern Action Summary](#Pattern-Action-Summary):  Patterns and Actions summary.
-&bull; [Array Basics](#Array-Basics):  The basics of arrays.
-&bull; [Array Intro](#Array-Intro):  Introduction to Arrays
-&bull; [Reference to Elements](#Reference-to-Elements):  How to examine one element of an
-                                        array.
-&bull; [Assigning Elements](#Assigning-Elements):  How to change an element of an array.
-&bull; [Array Example](#Array-Example):  Basic Example of an Array
-&bull; [Scanning an Array](#Scanning-an-Array):  A variation of the `for`
-                                        statement. It loops through the
-                                        indices of an array&rsquo;s existing
-                                        elements.
-&bull; [Controlling Scanning](#Controlling-Scanning):  Controlling the order in which arrays
-                                        are scanned.
-&bull; [Numeric Array Subscripts](#Numeric-Array-Subscripts):  How to use numbers as subscripts in
-                                        `awk`.
-&bull; [Uninitialized Subscripts](#Uninitialized-Subscripts):  Using Uninitialized variables as
-                                        subscripts.
-&bull; [Delete](#Delete):  The `delete` statement removes an
-                                        element from an array.
-&bull; [Multidimensional](#Multidimensional):  Emulating multidimensional arrays in
-                                        `awk`.
-&bull; [Multiscanning](#Multiscanning):  Scanning multidimensional arrays.
-&bull; [Arrays of Arrays](#Arrays-of-Arrays):  True multidimensional arrays.
-&bull; [Arrays Summary](#Arrays-Summary):  Summary of arrays.
-&bull; [Built-in](#Built_002din):  Summarizes the built-in functions.
-&bull; [Calling Built-in](#Calling-Built_002din):  How to call built-in functions.
-&bull; [Numeric Functions](#Numeric-Functions):  Functions that work with numbers,
-                                        including `int()`, `sin()`
-                                        and `rand()`.
-&bull; [String Functions](#String-Functions):  Functions for string manipulation,
-                                        such as `split()`, `match()`
-                                        and `sprintf()`.
-&bull; [Gory Details](#Gory-Details):  More than you want to know about
-                                        &lsquo;\&rsquo; and &lsquo;&&rsquo; with
-                                        `sub()`, `gsub()`, and
-                                        `gensub()`.
-&bull; [I/O Functions](#I_002fO-Functions):  Functions for files and shell
-                                        commands.
-&bull; [Time Functions](#Time-Functions):  Functions for dealing with timestamps.
-&bull; [Bitwise Functions](#Bitwise-Functions):  Functions for bitwise operations.
-&bull; [Type Functions](#Type-Functions):  Functions for type information.
-&bull; [I18N Functions](#I18N-Functions):  Functions for string translation.
-&bull; [User-defined](#User_002ddefined):  Describes User-defined functions in
-                                        detail.
-&bull; [Definition Syntax](#Definition-Syntax):  How to write definitions and what they
-                                        mean.
-&bull; [Function Example](#Function-Example):  An example function definition and
-                                        what it does.
-&bull; [Function Caveats](#Function-Caveats):  Things to watch out for.
-&bull; [Calling A Function](#Calling-A-Function):  Don&rsquo;t use spaces.
-&bull; [Variable Scope](#Variable-Scope):  Controlling variable scope.
-&bull; [Pass By Value/Reference](#Pass-By-Value_002fReference):  Passing parameters.
-&bull; [Return Statement](#Return-Statement):  Specifying the value a function
-                                        returns.
-&bull; [Dynamic Typing](#Dynamic-Typing):  How variable types can change at
-                                        runtime.
-&bull; [Indirect Calls](#Indirect-Calls):  Choosing the function to call at
-                                        runtime.
-&bull; [Functions Summary](#Functions-Summary):  Summary of functions.
-&bull; [Library Names](#Library-Names):  How to best name private global
-                                        variables in library functions.
-&bull; [General Functions](#General-Functions):  Functions that are of general use.
-&bull; [Strtonum Function](#Strtonum-Function):  A replacement for the built-in
-                                        `strtonum()` function.
-&bull; [Assert Function](#Assert-Function):  A function for assertions in
-                                        `awk` programs.
-&bull; [Round Function](#Round-Function):  A function for rounding if
-                                        `sprintf()` does not do it
-                                        correctly.
-&bull; [Cliff Random Function](#Cliff-Random-Function):  The Cliff Random Number Generator.
-&bull; [Ordinal Functions](#Ordinal-Functions):  Functions for using characters as
-                                        numbers and vice versa.
-&bull; [Join Function](#Join-Function):  A function to join an array into a
-                                        string.
-&bull; [Getlocaltime Function](#Getlocaltime-Function):  A function to get formatted times.
-&bull; [Readfile Function](#Readfile-Function):  A function to read an entire file at
-                                        once.
-&bull; [Shell Quoting](#Shell-Quoting):  A function to quote strings for the
-                                        shell.
-&bull; [Data File Management](#Data-File-Management):  Functions for managing command-line
-                                        data files.
-&bull; [Filetrans Function](#Filetrans-Function):  A function for handling data file
-                                        transitions.
-&bull; [Rewind Function](#Rewind-Function):  A function for rereading the current
-                                        file.
-&bull; [File Checking](#File-Checking):  Checking that data files are readable.
-&bull; [Empty Files](#Empty-Files):  Checking for zero-length files.
-&bull; [Ignoring Assigns](#Ignoring-Assigns):  Treating assignments as file names.
-&bull; [Getopt Function](#Getopt-Function):  A function for processing command-line
-                                        arguments.
-&bull; [Passwd Functions](#Passwd-Functions):  Functions for getting user
-                                        information.
-&bull; [Group Functions](#Group-Functions):  Functions for getting group
-                                        information.
-&bull; [Walking Arrays](#Walking-Arrays):  A function to walk arrays of arrays.
-&bull; [Library Functions Summary](#Library-Functions-Summary):  Summary of library functions.
-&bull; [Library Exercises](#Library-Exercises):  Exercises.
-&bull; [Running Examples](#Running-Examples):  How to run these examples.
-&bull; [Clones](#Clones):  Clones of common utilities.
-&bull; [Cut Program](#Cut-Program):  The `cut` utility.
-&bull; [Egrep Program](#Egrep-Program):  The `egrep` utility.
-&bull; [Id Program](#Id-Program):  The `id` utility.
-&bull; [Split Program](#Split-Program):  The `split` utility.
-&bull; [Tee Program](#Tee-Program):  The `tee` utility.
-&bull; [Uniq Program](#Uniq-Program):  The `uniq` utility.
-&bull; [Wc Program](#Wc-Program):  The `wc` utility.
-&bull; [Miscellaneous Programs](#Miscellaneous-Programs):  Some interesting `awk`
-                                        programs.
-&bull; [Dupword Program](#Dupword-Program):  Finding duplicated words in a
-                                        document.
-&bull; [Alarm Program](#Alarm-Program):  An alarm clock.
-&bull; [Translate Program](#Translate-Program):  A program similar to the `tr`
-                                        utility.
-&bull; [Labels Program](#Labels-Program):  Printing mailing labels.
-&bull; [Word Sorting](#Word-Sorting):  A program to produce a word usage
-                                        count.
-&bull; [History Sorting](#History-Sorting):  Eliminating duplicate entries from a
-                                        history file.
-&bull; [Extract Program](#Extract-Program):  Pulling out programs from Texinfo
-                                        source files.
-&bull; [Simple Sed](#Simple-Sed):  A Simple Stream Editor.
-&bull; [Igawk Program](#Igawk-Program):  A wrapper for `awk` that
-                                        includes files.
-&bull; [Anagram Program](#Anagram-Program):  Finding anagrams from a dictionary.
-&bull; [Signature Program](#Signature-Program):  People do amazing things with too much
-                                        time on their hands.
-&bull; [Programs Summary](#Programs-Summary):  Summary of programs.
-&bull; [Programs Exercises](#Programs-Exercises):  Exercises.
-&bull; [Nondecimal Data](#Nondecimal-Data):  Allowing nondecimal input data.
-&bull; [Array Sorting](#Array-Sorting):  Facilities for controlling array
-                                        traversal and sorting arrays.
-&bull; [Controlling Array Traversal](#Controlling-Array-Traversal):  How to use PROCINFO["sorted_in"].
-&bull; [Array Sorting Functions](#Array-Sorting-Functions):  How to use `asort()` and
-                                        `asorti()`.
-&bull; [Two-way I/O](#Two_002dway-I_002fO):  Two-way communications with another
-                                        process.
-&bull; [TCP/IP Networking](#TCP_002fIP-Networking):  Using `gawk` for network
-                                        programming.
-&bull; [Profiling](#Profiling):  Profiling your `awk` programs.
-&bull; [Advanced Features Summary](#Advanced-Features-Summary):  Summary of advanced features.
-&bull; [I18N and L10N](#I18N-and-L10N):  Internationalization and Localization.
-&bull; [Explaining gettext](#Explaining-gettext):  How GNU `gettext` works.
-&bull; [Programmer i18n](#Programmer-i18n):  Features for the programmer.
-&bull; [Translator i18n](#Translator-i18n):  Features for the translator.
-&bull; [String Extraction](#String-Extraction):  Extracting marked strings.
-&bull; [Printf Ordering](#Printf-Ordering):  Rearranging `printf` arguments.
-&bull; [I18N Portability](#I18N-Portability):  `awk`-level portability
-                                        issues.
-&bull; [I18N Example](#I18N-Example):  A simple i18n example.
-&bull; [Gawk I18N](#Gawk-I18N):  `gawk` is also
-                                        internationalized.
-&bull; [I18N Summary](#I18N-Summary):  Summary of I18N stuff.
-&bull; [Debugging](#Debugging):  Introduction to `gawk`
-                                        debugger.
-&bull; [Debugging Concepts](#Debugging-Concepts):  Debugging in General.
-&bull; [Debugging Terms](#Debugging-Terms):  Additional Debugging Concepts.
-&bull; [Awk Debugging](#Awk-Debugging):  Awk Debugging.
-&bull; [Sample Debugging Session](#Sample-Debugging-Session):  Sample debugging session.
-&bull; [Debugger Invocation](#Debugger-Invocation):  How to Start the Debugger.
-&bull; [Finding The Bug](#Finding-The-Bug):  Finding the Bug.
-&bull; [List of Debugger Commands](#List-of-Debugger-Commands):  Main debugger commands.
-&bull; [Breakpoint Control](#Breakpoint-Control):  Control of Breakpoints.
-&bull; [Debugger Execution Control](#Debugger-Execution-Control):  Control of Execution.
-&bull; [Viewing And Changing Data](#Viewing-And-Changing-Data):  Viewing and Changing Data.
-&bull; [Execution Stack](#Execution-Stack):  Dealing with the Stack.
-&bull; [Debugger Info](#Debugger-Info):  Obtaining Information about the
-                                        Program and the Debugger State.
-&bull; [Miscellaneous Debugger Commands](#Miscellaneous-Debugger-Commands):  Miscellaneous Commands.
-&bull; [Readline Support](#Readline-Support):  Readline support.
-&bull; [Limitations](#Limitations):  Limitations and future plans.
-&bull; [Debugging Summary](#Debugging-Summary):  Debugging summary.
-&bull; [Computer Arithmetic](#Computer-Arithmetic):  A quick intro to computer math.
-&bull; [Math Definitions](#Math-Definitions):  Defining terms used.
-&bull; [MPFR features](#MPFR-features):  The MPFR features in `gawk`.
-&bull; [FP Math Caution](#FP-Math-Caution):  Things to know.
-&bull; [Inexactness of computations](#Inexactness-of-computations):  Floating point math is not exact.
-&bull; [Inexact representation](#Inexact-representation):  Numbers are not exactly represented.
-&bull; [Comparing FP Values](#Comparing-FP-Values):  How to compare floating point values.
-&bull; [Errors accumulate](#Errors-accumulate):  Errors get bigger as they go.
-&bull; [Getting Accuracy](#Getting-Accuracy):  Getting more accuracy takes some work.
-&bull; [Try To Round](#Try-To-Round):  Add digits and round.
-&bull; [Setting precision](#Setting-precision):  How to set the precision.
-&bull; [Setting the rounding mode](#Setting-the-rounding-mode):  How to set the rounding mode.
-&bull; [Arbitrary Precision Integers](#Arbitrary-Precision-Integers):  Arbitrary Precision Integer Arithmetic
-                                        with `gawk`.
-&bull; [Checking for MPFR](#Checking-for-MPFR):  How to check if MPFR is available.
-&bull; [POSIX Floating Point Problems](#POSIX-Floating-Point-Problems):  Standards Versus Existing Practice.
-&bull; [Floating point summary](#Floating-point-summary):  Summary of floating point discussion.
-&bull; [Extension Intro](#Extension-Intro):  What is an extension.
-&bull; [Plugin License](#Plugin-License):  A note about licensing.
-&bull; [Extension Mechanism Outline](#Extension-Mechanism-Outline):  An outline of how it works.
-&bull; [Extension API Description](#Extension-API-Description):  A full description of the API.
-&bull; [Extension API Functions Introduction](#Extension-API-Functions-Introduction):  Introduction to the API functions.
-&bull; [General Data Types](#General-Data-Types):  The data types.
-&bull; [Memory Allocation Functions](#Memory-Allocation-Functions):  Functions for allocating memory.
-&bull; [Constructor Functions](#Constructor-Functions):  Functions for creating values.
-&bull; [Registration Functions](#Registration-Functions):  Functions to register things with
-                                        `gawk`.
-&bull; [Extension Functions](#Extension-Functions):  Registering extension functions.
-&bull; [Exit Callback Functions](#Exit-Callback-Functions):  Registering an exit callback.
-&bull; [Extension Version String](#Extension-Version-String):  Registering a version string.
-&bull; [Input Parsers](#Input-Parsers):  Registering an input parser.
-&bull; [Output Wrappers](#Output-Wrappers):  Registering an output wrapper.
-&bull; [Two-way processors](#Two_002dway-processors):  Registering a two-way processor.
-&bull; [Printing Messages](#Printing-Messages):  Functions for printing messages.
-&bull; [Updating `ERRNO`](#Updating-ERRNO):  Functions for updating `ERRNO`.
-&bull; [Requesting Values](#Requesting-Values):  How to get a value.
-&bull; [Accessing Parameters](#Accessing-Parameters):  Functions for accessing parameters.
-&bull; [Symbol Table Access](#Symbol-Table-Access):  Functions for accessing global
-                                        variables.
-&bull; [Symbol table by name](#Symbol-table-by-name):  Accessing variables by name.
-&bull; [Symbol table by cookie](#Symbol-table-by-cookie):  Accessing variables by &ldquo;cookie&rdquo;.
-&bull; [Cached values](#Cached-values):  Creating and using cached values.
-&bull; [Array Manipulation](#Array-Manipulation):  Functions for working with arrays.
-&bull; [Array Data Types](#Array-Data-Types):  Data types for working with arrays.
-&bull; [Array Functions](#Array-Functions):  Functions for working with arrays.
-&bull; [Flattening Arrays](#Flattening-Arrays):  How to flatten arrays.
-&bull; [Creating Arrays](#Creating-Arrays):  How to create and populate arrays.
-&bull; [Redirection API](#Redirection-API):  How to access and manipulate
-                                        redirections.
-&bull; [Extension API Variables](#Extension-API-Variables):  Variables provided by the API.
-&bull; [Extension Versioning](#Extension-Versioning):  API Version information.
-&bull; [Extension GMP/MPFR Versioning](#Extension-GMP_002fMPFR-Versioning):  Version information about GMP and
-                                        MPFR.
-&bull; [Extension API Informational Variables](#Extension-API-Informational-Variables):  Variables providing information about
-                                        `gawk`&rsquo;s invocation.
-&bull; [Extension API Boilerplate](#Extension-API-Boilerplate):  Boilerplate code for using the API.
-&bull; [Changes from API V1](#Changes-from-API-V1):  Changes from V1 of the API.
-&bull; [Finding Extensions](#Finding-Extensions):  How `gawk` finds compiled
-                                        extensions.
-&bull; [Extension Example](#Extension-Example):  Example C code for an extension.
-&bull; [Internal File Description](#Internal-File-Description):  What the new functions will do.
-&bull; [Internal File Ops](#Internal-File-Ops):  The code for internal file operations.
-&bull; [Using Internal File Ops](#Using-Internal-File-Ops):  How to use an external extension.
-&bull; [Extension Samples](#Extension-Samples):  The sample extensions that ship with
-                                        `gawk`.
-&bull; [Extension Sample File Functions](#Extension-Sample-File-Functions):  The file functions sample.
-&bull; [Extension Sample Fnmatch](#Extension-Sample-Fnmatch):  An interface to `fnmatch()`.
-&bull; [Extension Sample Fork](#Extension-Sample-Fork):  An interface to `fork()` and
-                                        other process functions.
-&bull; [Extension Sample Inplace](#Extension-Sample-Inplace):  Enabling in-place file editing.
-&bull; [Extension Sample Ord](#Extension-Sample-Ord):  Character to value to character
-                                        conversions.
-&bull; [Extension Sample Readdir](#Extension-Sample-Readdir):  An interface to `readdir()`.
-&bull; [Extension Sample Revout](#Extension-Sample-Revout):  Reversing output sample output
-                                        wrapper.
-&bull; [Extension Sample Rev2way](#Extension-Sample-Rev2way):  Reversing data sample two-way
-                                        processor.
-&bull; [Extension Sample Read write array](#Extension-Sample-Read-write-array):  Serializing an array to a file.
-&bull; [Extension Sample Readfile](#Extension-Sample-Readfile):  Reading an entire file into a string.
-&bull; [Extension Sample Time](#Extension-Sample-Time):  An interface to `gettimeofday()`
-                                        and `sleep()`.
-&bull; [Extension Sample API Tests](#Extension-Sample-API-Tests):  Tests for the API.
-&bull; [gawkextlib](#gawkextlib):  The `gawkextlib` project.
-&bull; [Extension summary](#Extension-summary):  Extension summary.
-&bull; [Extension Exercises](#Extension-Exercises):  Exercises.
-&bull; [V7/SVR3.1](#V7_002fSVR3_002e1):  The major changes between V7 and
-                                        System V Release 3.1.
-&bull; [SVR4](#SVR4):  Minor changes between System V
-                                        Releases 3.1 and 4.
-&bull; [POSIX](#POSIX):  New features from the POSIX standard.
-&bull; [BTL](#BTL):  New features from Brian Kernighan&rsquo;s
-                                        version of `awk`.
-&bull; [POSIX/GNU](#POSIX_002fGNU):  The extensions in `gawk` not
-                                        in POSIX `awk`.
-&bull; [Feature History](#Feature-History):  The history of the features in
-                                        `gawk`.
-&bull; [Common Extensions](#Common-Extensions):  Common Extensions Summary.
-&bull; [Ranges and Locales](#Ranges-and-Locales):  How locales used to affect regexp
-                                        ranges.
-&bull; [Contributors](#Contributors):  The major contributors to
-                                        `gawk`.
-&bull; [History summary](#History-summary):  History summary.
-&bull; [Gawk Distribution](#Gawk-Distribution):  What is in the `gawk`
-                                        distribution.
-&bull; [Getting](#Getting):  How to get the distribution.
-&bull; [Extracting](#Extracting):  How to extract the distribution.
-&bull; [Distribution contents](#Distribution-contents):  What is in the distribution.
-&bull; [Unix Installation](#Unix-Installation):  Installing `gawk` under
-                                        various versions of Unix.
-&bull; [Quick Installation](#Quick-Installation):  Compiling `gawk` under Unix.
-&bull; [Shell Startup Files](#Shell-Startup-Files):  Shell convenience functions.
-&bull; [Additional Configuration Options](#Additional-Configuration-Options):  Other compile-time options.
-&bull; [Configuration Philosophy](#Configuration-Philosophy):  How it&rsquo;s all supposed to work.
-&bull; [Non-Unix Installation](#Non_002dUnix-Installation):  Installation on Other Operating
-                                        Systems.
-&bull; [PC Installation](#PC-Installation):  Installing and Compiling
-                                        `gawk` on Microsoft Windows.
-&bull; [PC Binary Installation](#PC-Binary-Installation):  Installing a prepared distribution.
-&bull; [PC Compiling](#PC-Compiling):  Compiling `gawk` for
-                                        Windows32.
-&bull; [PC Using](#PC-Using):  Running `gawk` on Windows32.
-&bull; [Cygwin](#Cygwin):  Building and running `gawk`
-                                        for Cygwin.
-&bull; [MSYS](#MSYS):  Using `gawk` In The MSYS
-                                        Environment.
-&bull; [VMS Installation](#VMS-Installation):  Installing `gawk` on VMS.
-&bull; [VMS Compilation](#VMS-Compilation):  How to compile `gawk` under
-                                        VMS.
-&bull; [VMS Dynamic Extensions](#VMS-Dynamic-Extensions):  Compiling `gawk` dynamic
-                                        extensions on VMS.
-&bull; [VMS Installation Details](#VMS-Installation-Details):  How to install `gawk` under
-                                        VMS.
-&bull; [VMS Running](#VMS-Running):  How to run `gawk` under VMS.
-&bull; [VMS GNV](#VMS-GNV):  The VMS GNV Project.
-&bull; [VMS Old Gawk](#VMS-Old-Gawk):  An old version comes with some VMS
-                                        systems.
-&bull; [Bugs](#Bugs):  Reporting Problems and Bugs.
-&bull; [Bug address](#Bug-address):  Where to send reports to.
-&bull; [Usenet](#Usenet):  Where not to send reports to.
-&bull; [Maintainers](#Maintainers):  Maintainers of non-*nix ports.
-&bull; [Other Versions](#Other-Versions):  Other freely available `awk`
-                                        implementations.
-&bull; [Installation summary](#Installation-summary):  Summary of installation.
-&bull; [Compatibility Mode](#Compatibility-Mode):  How to disable certain `gawk`
-                                        extensions.
-&bull; [Additions](#Additions):  Making Additions To `gawk`.
-&bull; [Accessing The Source](#Accessing-The-Source):  Accessing the Git repository.
-&bull; [Adding Code](#Adding-Code):  Adding code to the main body of
-                                        `gawk`.
-&bull; [New Ports](#New-Ports):  Porting `gawk` to a new
-                                        operating system.
-&bull; [Derived Files](#Derived-Files):  Why derived files are kept in the Git
-                                        repository.
-&bull; [Future Extensions](#Future-Extensions):  New features that may be implemented
-                                        one day.
-&bull; [Implementation Limitations](#Implementation-Limitations):  Some limitations of the
-                                        implementation.
-&bull; [Extension Design](#Extension-Design):  Design notes about the extension API.
-&bull; [Old Extension Problems](#Old-Extension-Problems):  Problems with the old mechanism.
-&bull; [Extension New Mechanism Goals](#Extension-New-Mechanism-Goals):  Goals for the new mechanism.
-&bull; [Extension Other Design Decisions](#Extension-Other-Design-Decisions):  Some other design decisions.
-&bull; [Extension Future Growth](#Extension-Future-Growth):  Some room for future growth.
-&bull; [Old Extension Mechanism](#Old-Extension-Mechanism):  Some compatibility for old extensions.
-&bull; [Notes summary](#Notes-summary):  Summary of implementation notes.
-&bull; [Basic High Level](#Basic-High-Level):  The high level view.
-&bull; [Basic Data Typing](#Basic-Data-Typing):  A very quick intro to data types.
+| []() |
+| --- | ---
+| &bull; [Foreword3](#Foreword3) | Some nice words about this Web page.
+| &bull; [Foreword4](#Foreword4) | More nice words.
+| &bull; [Preface](#Preface) | What this Web page is about; brief history and acknowledgments.
+| &bull; [Getting Started](#Getting-Started) | A basic introduction to using `awk`. How to run an `awk` program. Command-line syntax.
+| &bull; [Invoking Gawk](#Invoking-Gawk) | How to run `gawk`.
+| &bull; [Regexp](#Regexp) | All about matching things using regular expressions.
+| &bull; [Reading Files](#Reading-Files) | How to read files and manipulate fields.
+| &bull; [Printing](#Printing) | How to print using `awk`. Describes the `print` and `printf` statements. Also describes redirection of output.
+| &bull; [Expressions](#Expressions) | Expressions are the basic building blocks of statements.
+| &bull; [Patterns and Actions](#Patterns-and-Actions) | Overviews of patterns and actions.
+| &bull; [Arrays](#Arrays) | The description and use of arrays. Also includes array-oriented control statements.
+| &bull; [Functions](#Functions) | Built-in and user-defined functions.
+| &bull; [Library Functions](#Library-Functions) | A Library of `awk` Functions.
+| &bull; [Sample Programs](#Sample-Programs) | Many `awk` programs with complete explanations.
+| &bull; [Advanced Features](#Advanced-Features) | Stuff for advanced users, specific to `gawk`.
+| &bull; [Internationalization](#Internationalization) | Getting `gawk` to speak your language.
+| &bull; [Debugger](#Debugger) | The `gawk` debugger.
+| &bull; [Arbitrary Precision Arithmetic](#Arbitrary-Precision-Arithmetic) | Arbitrary precision arithmetic with `gawk`.
+| &bull; [Dynamic Extensions](#Dynamic-Extensions) | Adding new built-in functions to `gawk`.
+| &bull; [Language History](#Language-History) | The evolution of the `awk` language.
+| &bull; [Installation](#Installation) | Installing `gawk` under various operating systems.
+| &bull; [Notes](#Notes) | Notes about adding things to `gawk` and possible future work.
+| &bull; [Basic Concepts](#Basic-Concepts) | A very quick introduction to programming concepts.
+| &bull; [Glossary](#Glossary) | An explanation of some unfamiliar terms.
+| &bull; [Copying](#Copying) | Your right to copy and distribute `gawk`.
+| &bull; [GNU Free Documentation License](#GNU-Free-Documentation-License) | The license for this Web page.
+| &bull; [Index](#Index) | Concept and Variable Index.
+| &bull; [History](#History) | The history of `gawk` and `awk`.
+| &bull; [Names](#Names) | What name to use to find `awk`.
+| &bull; [This Manual](#This-Manual) | Using this Web page. Includes sample input files that you can use.
+| &bull; [Conventions](#Conventions) | Typographical Conventions.
+| &bull; [Manual History](#Manual-History) | Brief history of the GNU project and this Web page.
+| &bull; [How To Contribute](#How-To-Contribute) | Helping to save the world.
+| &bull; [Acknowledgments](#Acknowledgments) | Acknowledgments.
+| &bull; [Running gawk](#Running-gawk) | How to run `gawk` programs; includes command-line syntax.
+| &bull; [One-shot](#One_002dshot) | Running a short throwaway `awk` program.
+| &bull; [Read Terminal](#Read-Terminal) | Using no input files (input from the keyboard instead).
+| &bull; [Long](#Long) | Putting permanent `awk` programs in files.
+| &bull; [Executable Scripts](#Executable-Scripts) | Making self-contained `awk` programs.
+| &bull; [Comments](#Comments) | Adding documentation to `gawk` programs.
+| &bull; [Quoting](#Quoting) | More discussion of shell quoting issues.
+| &bull; [DOS Quoting](#DOS-Quoting) | Quoting in Windows Batch Files.
+| &bull; [Sample Data Files](#Sample-Data-Files) | Sample data files for use in the `awk` programs illustrated in this Web page.
+| &bull; [Very Simple](#Very-Simple) | A very simple example.
+| &bull; [Two Rules](#Two-Rules) | A less simple one-line example using two rules.
+| &bull; [More Complex](#More-Complex) | A more complex example.
+| &bull; [Statements/Lines](#Statements_002fLines) | Subdividing or combining statements into lines.
+| &bull; [Other Features](#Other-Features) | Other Features of `awk`.
+| &bull; [When](#When) | When to use `gawk` and when to use other things.
+| &bull; [Intro Summary](#Intro-Summary) | Summary of the introduction.
+| &bull; [Command Line](#Command-Line) | How to run `awk`.
+| &bull; [Options](#Options) | Command-line options and their meanings.
+| &bull; [Other Arguments](#Other-Arguments) | Input file names and variable assignments.
+| &bull; [Naming Standard Input](#Naming-Standard-Input) | How to specify standard input with other files.
+| &bull; [Environment Variables](#Environment-Variables) | The environment variables `gawk` uses.
+| &bull; [AWKPATH Variable](#AWKPATH-Variable) | Searching directories for `awk` programs.
+| &bull; [AWKLIBPATH Variable](#AWKLIBPATH-Variable) | Searching directories for `awk` shared libraries.
+| &bull; [Other Environment Variables](#Other-Environment-Variables) | The environment variables.
+| &bull; [Exit Status](#Exit-Status) | `gawk`&rsquo;s exit status.
+| &bull; [Include Files](#Include-Files) | Including other files into your program.
+| &bull; [Loading Shared Libraries](#Loading-Shared-Libraries) | Loading shared libraries into your program.
+| &bull; [Obsolete](#Obsolete) | Obsolete Options and/or features.
+| &bull; [Undocumented](#Undocumented) | Undocumented Options and Features.
+| &bull; [Invoking Summary](#Invoking-Summary) | Invocation summary.
+| &bull; [Regexp Usage](#Regexp-Usage) | How to Use Regular Expressions.
+| &bull; [Escape Sequences](#Escape-Sequences) | How to write nonprinting characters.
+| &bull; [Regexp Operators](#Regexp-Operators) | Regular Expression Operators.
+| &bull; [Bracket Expressions](#Bracket-Expressions) | What can go between &lsquo;[...]&rsquo;.
+| &bull; [Leftmost Longest](#Leftmost-Longest) | How much text matches.
+| &bull; [Computed Regexps](#Computed-Regexps) | Using Dynamic Regexps.
+| &bull; [GNU Regexp Operators](#GNU-Regexp-Operators) | Operators specific to GNU software.
+| &bull; [Case-sensitivity](#Case_002dsensitivity) | How to do case-insensitive matching.
+| &bull; [Regexp Summary](#Regexp-Summary) | Regular expressions summary.
+| &bull; [Records](#Records) | Controlling how data is split into records.
+| &bull; [awk split records](#awk-split-records) | How standard `awk` splits records.
+| &bull; [gawk split records](#gawk-split-records) | How `gawk` splits records.
+| &bull; [Fields](#Fields) | An introduction to fields.
+| &bull; [Nonconstant Fields](#Nonconstant-Fields) | Nonconstant Field Numbers.
+| &bull; [Changing Fields](#Changing-Fields) | Changing the Contents of a Field.
+| &bull; [Field Separators](#Field-Separators) | The field separator and how to change it.
+| &bull; [Default Field Splitting](#Default-Field-Splitting) | How fields are normally separated.
+| &bull; [Regexp Field Splitting](#Regexp-Field-Splitting) | Using regexps as the field separator.
+| &bull; [Single Character Fields](#Single-Character-Fields) | Making each character a separate field.
+| &bull; [Command Line Field Separator](#Command-Line-Field-Separator) | Setting `FS` from the command line.
+| &bull; [Full Line Fields](#Full-Line-Fields) | Making the full line be a single field.
+| &bull; [Field Splitting Summary](#Field-Splitting-Summary) | Some final points and a summary table.
+| &bull; [Constant Size](#Constant-Size) | Reading constant width data.
+| &bull; [Fixed width data](#Fixed-width-data) | Processing fixed-width data.
+| &bull; [Skipping intervening](#Skipping-intervening) | Skipping intervening fields.
+| &bull; [Allowing trailing data](#Allowing-trailing-data) | Capturing optional trailing data.
+| &bull; [Fields with fixed data](#Fields-with-fixed-data) | Field values with fixed-width data.
+| &bull; [Splitting By Content](#Splitting-By-Content) | Defining Fields By Content
+| &bull; [Testing field creation](#Testing-field-creation) | Checking how `gawk` is splitting records.
+| &bull; [Multiple Line](#Multiple-Line) | Reading multiline records.
+| &bull; [Getline](#Getline) | Reading files under explicit program control using the `getline` function.
+| &bull; [Plain Getline](#Plain-Getline) | Using `getline` with no arguments.
+| &bull; [Getline/Variable](#Getline_002fVariable) | Using `getline` into a variable.
+| &bull; [Getline/File](#Getline_002fFile) | Using `getline` from a file.
+| &bull; [Getline/Variable/File](#Getline_002fVariable_002fFile) | Using `getline` into a variable from a file.
+| &bull; [Getline/Pipe](#Getline_002fPipe) | Using `getline` from a pipe.
+| &bull; [Getline/Variable/Pipe](#Getline_002fVariable_002fPipe) | Using `getline` into a variable from a pipe.
+| &bull; [Getline/Coprocess](#Getline_002fCoprocess) | Using `getline` from a coprocess.
+| &bull; [Getline/Variable/Coprocess](#Getline_002fVariable_002fCoprocess) | Using `getline` into a variable from a coprocess.
+| &bull; [Getline Notes](#Getline-Notes) | Important things to know about `getline`.
+| &bull; [Getline Summary](#Getline-Summary) | Summary of `getline` Variants.
+| &bull; [Read Timeout](#Read-Timeout) | Reading input with a timeout.
+| &bull; [Retrying Input](#Retrying-Input) | Retrying input after certain errors.
+| &bull; [Command-line directories](#Command_002dline-directories) | What happens if you put a directory on the command line.
+| &bull; [Input Summary](#Input-Summary) | Input summary.
+| &bull; [Input Exercises](#Input-Exercises) | Exercises.
+| &bull; [Print](#Print) | The `print` statement.
+| &bull; [Print Examples](#Print-Examples) | Simple examples of `print` statements.
+| &bull; [Output Separators](#Output-Separators) | The output separators and how to change them.
+| &bull; [OFMT](#OFMT) | Controlling Numeric Output With `print`.
+| &bull; [Printf](#Printf) | The `printf` statement.
+| &bull; [Basic Printf](#Basic-Printf) | Syntax of the `printf` statement.
+| &bull; [Control Letters](#Control-Letters) | Format-control letters.
+| &bull; [Format Modifiers](#Format-Modifiers) | Format-specification modifiers.
+| &bull; [Printf Examples](#Printf-Examples) | Several examples.
+| &bull; [Redirection](#Redirection) | How to redirect output to multiple files and pipes.
+| &bull; [Special FD](#Special-FD) | Special files for I/O.
+| &bull; [Special Files](#Special-Files) | File name interpretation in `gawk`. `gawk` allows access to inherited file descriptors.
+| &bull; [Other Inherited Files](#Other-Inherited-Files) | Accessing other open files with `gawk`.
+| &bull; [Special Network](#Special-Network) | Special files for network communications.
+| &bull; [Special Caveats](#Special-Caveats) | Things to watch out for.
+| &bull; [Close Files And Pipes](#Close-Files-And-Pipes) | Closing Input and Output Files and Pipes.
+| &bull; [Nonfatal](#Nonfatal) | Enabling Nonfatal Output.
+| &bull; [Output Summary](#Output-Summary) | Output summary.
+| &bull; [Output Exercises](#Output-Exercises) | Exercises.
+| &bull; [Values](#Values) | Constants, Variables, and Regular Expressions.
+| &bull; [Constants](#Constants) | String, numeric and regexp constants.
+| &bull; [Scalar Constants](#Scalar-Constants) | Numeric and string constants.
+| &bull; [Nondecimal-numbers](#Nondecimal_002dnumbers) | What are octal and hex numbers.
+| &bull; [Regexp Constants](#Regexp-Constants) | Regular Expression constants.
+| &bull; [Using Constant Regexps](#Using-Constant-Regexps) | When and how to use a regexp constant.
+| &bull; [Standard Regexp Constants](#Standard-Regexp-Constants) | Regexp constants in standard `awk`.
+| &bull; [Strong Regexp Constants](#Strong-Regexp-Constants) | Strongly typed regexp constants.
+| &bull; [Variables](#Variables) | Variables give names to values for later use.
+| &bull; [Using Variables](#Using-Variables) | Using variables in your programs.
+| &bull; [Assignment Options](#Assignment-Options) | Setting variables on the command line and a summary of command-line syntax.  This is an advanced method of input.
+| &bull; [Conversion](#Conversion) | The conversion of strings to numbers and vice versa.
+| &bull; [Strings And Numbers](#Strings-And-Numbers) | How `awk` Converts Between Strings And Numbers.
+| &bull; [Locale influences conversions](#Locale-influences-conversions) | How the locale may affect conversions.
+| &bull; [All Operators](#All-Operators) | `gawk`&rsquo;s operators.
+| &bull; [Arithmetic Ops](#Arithmetic-Ops) | Arithmetic operations (&lsquo;+&rsquo;, &lsquo;-&rsquo;, etc.)
+| &bull; [Concatenation](#Concatenation) | Concatenating strings.
+| &bull; [Assignment Ops](#Assignment-Ops) | Changing the value of a variable or a field.
+| &bull; [Increment Ops](#Increment-Ops) | Incrementing the numeric value of a variable.
+| &bull; [Truth Values and Conditions](#Truth-Values-and-Conditions) | Testing for true and false.
+| &bull; [Truth Values](#Truth-Values) | What is &ldquo;true&rdquo; and what is &ldquo;false&rdquo;.
+| &bull; [Typing and Comparison](#Typing-and-Comparison) | How variables acquire types and how this affects comparison of numbers and strings with &lsquo;<&rsquo;, etc.
+| &bull; [Variable Typing](#Variable-Typing) | String type versus numeric type.
+| &bull; [Comparison Operators](#Comparison-Operators) | The comparison operators.
+| &bull; [POSIX String Comparison](#POSIX-String-Comparison) | String comparison with POSIX rules.
+| &bull; [Boolean Ops](#Boolean-Ops) | Combining comparison expressions using boolean operators &lsquo;||&rsquo; (&ldquo;or&rdquo;), &lsquo;&&&rsquo; (&ldquo;and&rdquo;) and &lsquo;!&rsquo; (&ldquo;not&rdquo;).
+| &bull; [Conditional Exp](#Conditional-Exp) | Conditional expressions select between two subexpressions under control of a third subexpression.
+| &bull; [Function Calls](#Function-Calls) | A function call is an expression.
+| &bull; [Precedence](#Precedence) | How various operators nest.
+| &bull; [Locales](#Locales) | How the locale affects things.
+| &bull; [Expressions Summary](#Expressions-Summary) | Expressions summary.
+| &bull; [Pattern Overview](#Pattern-Overview) | What goes into a pattern.
+| &bull; [Regexp Patterns](#Regexp-Patterns) | Using regexps as patterns.
+| &bull; [Expression Patterns](#Expression-Patterns) | Any expression can be used as a pattern.
+| &bull; [Ranges](#Ranges) | Pairs of patterns specify record ranges.
+| &bull; [BEGIN/END](#BEGIN_002fEND) | Specifying initialization and cleanup rules.
+| &bull; [Using BEGIN/END](#Using-BEGIN_002fEND) | How and why to use BEGIN/END rules.
+| &bull; [I/O And BEGIN/END](#I_002fO-And-BEGIN_002fEND) | I/O issues in BEGIN/END rules.
+| &bull; [BEGINFILE/ENDFILE](#BEGINFILE_002fENDFILE) | Two special patterns for advanced control.
+| &bull; [Empty](#Empty) | The empty pattern, which matches every record.
+| &bull; [Using Shell Variables](#Using-Shell-Variables) | How to use shell variables with `awk`.
+| &bull; [Action Overview](#Action-Overview) | What goes into an action.
+| &bull; [Statements](#Statements) | Describes the various control statements in detail.
+| &bull; [If Statement](#If-Statement) | Conditionally execute some `awk` statements.
+| &bull; [While Statement](#While-Statement) | Loop until some condition is satisfied.
+| &bull; [Do Statement](#Do-Statement) | Do specified action while looping until some condition is satisfied.
+| &bull; [For Statement](#For-Statement) | Another looping statement, that provides initialization and increment clauses.
+| &bull; [Switch Statement](#Switch-Statement) | Switch/case evaluation for conditional execution of statements based on a value.
+| &bull; [Break Statement](#Break-Statement) | Immediately exit the innermost enclosing loop.
+| &bull; [Continue Statement](#Continue-Statement) | Skip to the end of the innermost enclosing loop.
+| &bull; [Next Statement](#Next-Statement) | Stop processing the current input record.
+| &bull; [Nextfile Statement](#Nextfile-Statement) | Stop processing the current file.
+| &bull; [Exit Statement](#Exit-Statement) | Stop execution of `awk`.
+| &bull; [Built-in Variables](#Built_002din-Variables) | Summarizes the predefined variables.
+| &bull; [User-modified](#User_002dmodified) | Built-in variables that you change to control `awk`.
+| &bull; [Auto-set](#Auto_002dset) | Built-in variables where `awk` gives you information.
+| &bull; [ARGC and ARGV](#ARGC-and-ARGV) | Ways to use `ARGC` and `ARGV`.
+| &bull; [Pattern Action Summary](#Pattern-Action-Summary) | Patterns and Actions summary.
+| &bull; [Array Basics](#Array-Basics) | The basics of arrays.
+| &bull; [Array Intro](#Array-Intro) | Introduction to Arrays
+| &bull; [Reference to Elements](#Reference-to-Elements) | How to examine one element of an array.
+| &bull; [Assigning Elements](#Assigning-Elements) | How to change an element of an array.
+| &bull; [Array Example](#Array-Example) | Basic Example of an Array
+| &bull; [Scanning an Array](#Scanning-an-Array) | A variation of the `for` statement. It loops through the indices of an array&rsquo;s existing elements.
+| &bull; [Controlling Scanning](#Controlling-Scanning) | Controlling the order in which arrays are scanned.
+| &bull; [Numeric Array Subscripts](#Numeric-Array-Subscripts) | How to use numbers as subscripts in `awk`.
+| &bull; [Uninitialized Subscripts](#Uninitialized-Subscripts) | Using Uninitialized variables as subscripts.
+| &bull; [Delete](#Delete) | The `delete` statement removes an element from an array.
+| &bull; [Multidimensional](#Multidimensional) | Emulating multidimensional arrays in `awk`.
+| &bull; [Multiscanning](#Multiscanning) | Scanning multidimensional arrays.
+| &bull; [Arrays of Arrays](#Arrays-of-Arrays) | True multidimensional arrays.
+| &bull; [Arrays Summary](#Arrays-Summary) | Summary of arrays.
+| &bull; [Built-in](#Built_002din) | Summarizes the built-in functions.
+| &bull; [Calling Built-in](#Calling-Built_002din) | How to call built-in functions.
+| &bull; [Numeric Functions](#Numeric-Functions) | Functions that work with numbers, including `int()`, `sin()` and `rand()`.
+| &bull; [String Functions](#String-Functions) | Functions for string manipulation, such as `split()`, `match()` and `sprintf()`.
+| &bull; [Gory Details](#Gory-Details) | More than you want to know about &lsquo;\&rsquo; and &lsquo;&&rsquo; with `sub()`, `gsub()`, and `gensub()`.
+| &bull; [I/O Functions](#I_002fO-Functions) | Functions for files and shell commands.
+| &bull; [Time Functions](#Time-Functions) | Functions for dealing with timestamps.
+| &bull; [Bitwise Functions](#Bitwise-Functions) | Functions for bitwise operations.
+| &bull; [Type Functions](#Type-Functions) | Functions for type information.
+| &bull; [I18N Functions](#I18N-Functions) | Functions for string translation.
+| &bull; [User-defined](#User_002ddefined) | Describes User-defined functions in detail.
+| &bull; [Definition Syntax](#Definition-Syntax) | How to write definitions and what they mean.
+| &bull; [Function Example](#Function-Example) | An example function definition and what it does.
+| &bull; [Function Caveats](#Function-Caveats) | Things to watch out for.
+| &bull; [Calling A Function](#Calling-A-Function) | Don&rsquo;t use spaces.
+| &bull; [Variable Scope](#Variable-Scope) | Controlling variable scope.
+| &bull; [Pass By Value/Reference](#Pass-By-Value_002fReference) | Passing parameters.
+| &bull; [Return Statement](#Return-Statement) | Specifying the value a function returns.
+| &bull; [Dynamic Typing](#Dynamic-Typing) | How variable types can change at runtime.
+| &bull; [Indirect Calls](#Indirect-Calls) | Choosing the function to call at runtime.
+| &bull; [Functions Summary](#Functions-Summary) | Summary of functions.
+| &bull; [Library Names](#Library-Names) | How to best name private global variables in library functions.
+| &bull; [General Functions](#General-Functions) | Functions that are of general use.
+| &bull; [Strtonum Function](#Strtonum-Function) | A replacement for the built-in `strtonum()` function.
+| &bull; [Assert Function](#Assert-Function) | A function for assertions in `awk` programs.
+| &bull; [Round Function](#Round-Function) | A function for rounding if `sprintf()` does not do it correctly.
+| &bull; [Cliff Random Function](#Cliff-Random-Function) | The Cliff Random Number Generator.
+| &bull; [Ordinal Functions](#Ordinal-Functions) | Functions for using characters as numbers and vice versa.
+| &bull; [Join Function](#Join-Function) | A function to join an array into a string.
+| &bull; [Getlocaltime Function](#Getlocaltime-Function) | A function to get formatted times.
+| &bull; [Readfile Function](#Readfile-Function) | A function to read an entire file at once.
+| &bull; [Shell Quoting](#Shell-Quoting) | A function to quote strings for the shell.
+| &bull; [Data File Management](#Data-File-Management) | Functions for managing command-line data files.
+| &bull; [Filetrans Function](#Filetrans-Function) | A function for handling data file transitions.
+| &bull; [Rewind Function](#Rewind-Function) | A function for rereading the current file.
+| &bull; [File Checking](#File-Checking) | Checking that data files are readable.
+| &bull; [Empty Files](#Empty-Files) | Checking for zero-length files.
+| &bull; [Ignoring Assigns](#Ignoring-Assigns) | Treating assignments as file names.
+| &bull; [Getopt Function](#Getopt-Function) | A function for processing command-line arguments.
+| &bull; [Passwd Functions](#Passwd-Functions) | Functions for getting user information.
+| &bull; [Group Functions](#Group-Functions) | Functions for getting group information.
+| &bull; [Walking Arrays](#Walking-Arrays) | A function to walk arrays of arrays.
+| &bull; [Library Functions Summary](#Library-Functions-Summary) | Summary of library functions.
+| &bull; [Library Exercises](#Library-Exercises) | Exercises.
+| &bull; [Running Examples](#Running-Examples) | How to run these examples.
+| &bull; [Clones](#Clones) | Clones of common utilities.
+| &bull; [Cut Program](#Cut-Program) | The `cut` utility.
+| &bull; [Egrep Program](#Egrep-Program) | The `egrep` utility.
+| &bull; [Id Program](#Id-Program) | The `id` utility.
+| &bull; [Split Program](#Split-Program) | The `split` utility.
+| &bull; [Tee Program](#Tee-Program) | The `tee` utility.
+| &bull; [Uniq Program](#Uniq-Program) | The `uniq` utility.
+| &bull; [Wc Program](#Wc-Program) | The `wc` utility.
+| &bull; [Miscellaneous Programs](#Miscellaneous-Programs) | Some interesting `awk` programs.
+| &bull; [Dupword Program](#Dupword-Program) | Finding duplicated words in a document.
+| &bull; [Alarm Program](#Alarm-Program) | An alarm clock.
+| &bull; [Translate Program](#Translate-Program) | A program similar to the `tr` utility.
+| &bull; [Labels Program](#Labels-Program) | Printing mailing labels.
+| &bull; [Word Sorting](#Word-Sorting) | A program to produce a word usage count.
+| &bull; [History Sorting](#History-Sorting) | Eliminating duplicate entries from a history file.
+| &bull; [Extract Program](#Extract-Program) | Pulling out programs from Texinfo source files.
+| &bull; [Simple Sed](#Simple-Sed) | A Simple Stream Editor.
+| &bull; [Igawk Program](#Igawk-Program) | A wrapper for `awk` that includes files.
+| &bull; [Anagram Program](#Anagram-Program) | Finding anagrams from a dictionary.
+| &bull; [Signature Program](#Signature-Program) | People do amazing things with too much time on their hands.
+| &bull; [Programs Summary](#Programs-Summary) | Summary of programs.
+| &bull; [Programs Exercises](#Programs-Exercises) | Exercises.
+| &bull; [Nondecimal Data](#Nondecimal-Data) | Allowing nondecimal input data.
+| &bull; [Array Sorting](#Array-Sorting) | Facilities for controlling array traversal and sorting arrays.
+| &bull; [Controlling Array Traversal](#Controlling-Array-Traversal) | How to use PROCINFO["sorted_in"].
+| &bull; [Array Sorting Functions](#Array-Sorting-Functions) | How to use `asort()` and `asorti()`.
+| &bull; [Two-way I/O](#Two_002dway-I_002fO) | Two-way communications with another process.
+| &bull; [TCP/IP Networking](#TCP_002fIP-Networking) | Using `gawk` for network programming.
+| &bull; [Profiling](#Profiling) | Profiling your `awk` programs.
+| &bull; [Advanced Features Summary](#Advanced-Features-Summary) | Summary of advanced features.
+| &bull; [I18N and L10N](#I18N-and-L10N) | Internationalization and Localization.
+| &bull; [Explaining gettext](#Explaining-gettext) | How GNU `gettext` works.
+| &bull; [Programmer i18n](#Programmer-i18n) | Features for the programmer.
+| &bull; [Translator i18n](#Translator-i18n) | Features for the translator.
+| &bull; [String Extraction](#String-Extraction) | Extracting marked strings.
+| &bull; [Printf Ordering](#Printf-Ordering) | Rearranging `printf` arguments.
+| &bull; [I18N Portability](#I18N-Portability) | `awk`-level portability issues.
+| &bull; [I18N Example](#I18N-Example) | A simple i18n example.
+| &bull; [Gawk I18N](#Gawk-I18N) | `gawk` is also internationalized.
+| &bull; [I18N Summary](#I18N-Summary) | Summary of I18N stuff.
+| &bull; [Debugging](#Debugging) | Introduction to `gawk` debugger.
+| &bull; [Debugging Concepts](#Debugging-Concepts) | Debugging in General.
+| &bull; [Debugging Terms](#Debugging-Terms) | Additional Debugging Concepts.
+| &bull; [Awk Debugging](#Awk-Debugging) | Awk Debugging.
+| &bull; [Sample Debugging Session](#Sample-Debugging-Session) | Sample debugging session.
+| &bull; [Debugger Invocation](#Debugger-Invocation) | How to Start the Debugger.
+| &bull; [Finding The Bug](#Finding-The-Bug) | Finding the Bug.
+| &bull; [List of Debugger Commands](#List-of-Debugger-Commands) | Main debugger commands.
+| &bull; [Breakpoint Control](#Breakpoint-Control) | Control of Breakpoints.
+| &bull; [Debugger Execution Control](#Debugger-Execution-Control) | Control of Execution.
+| &bull; [Viewing And Changing Data](#Viewing-And-Changing-Data) | Viewing and Changing Data.
+| &bull; [Execution Stack](#Execution-Stack) | Dealing with the Stack.
+| &bull; [Debugger Info](#Debugger-Info) | Obtaining Information about the Program and the Debugger State.
+| &bull; [Miscellaneous Debugger Commands](#Miscellaneous-Debugger-Commands) | Miscellaneous Commands.
+| &bull; [Readline Support](#Readline-Support) | Readline support.
+| &bull; [Limitations](#Limitations) | Limitations and future plans.
+| &bull; [Debugging Summary](#Debugging-Summary) | Debugging summary.
+| &bull; [Computer Arithmetic](#Computer-Arithmetic) | A quick intro to computer math.
+| &bull; [Math Definitions](#Math-Definitions) | Defining terms used.
+| &bull; [MPFR features](#MPFR-features) | The MPFR features in `gawk`.
+| &bull; [FP Math Caution](#FP-Math-Caution) | Things to know.
+| &bull; [Inexactness of computations](#Inexactness-of-computations) | Floating point math is not exact.
+| &bull; [Inexact representation](#Inexact-representation) | Numbers are not exactly represented.
+| &bull; [Comparing FP Values](#Comparing-FP-Values) | How to compare floating point values.
+| &bull; [Errors accumulate](#Errors-accumulate) | Errors get bigger as they go.
+| &bull; [Getting Accuracy](#Getting-Accuracy) | Getting more accuracy takes some work.
+| &bull; [Try To Round](#Try-To-Round) | Add digits and round.
+| &bull; [Setting precision](#Setting-precision) | How to set the precision.
+| &bull; [Setting the rounding mode](#Setting-the-rounding-mode) | How to set the rounding mode.
+| &bull; [Arbitrary Precision Integers](#Arbitrary-Precision-Integers) | Arbitrary Precision Integer Arithmetic with `gawk`.
+| &bull; [Checking for MPFR](#Checking-for-MPFR) | How to check if MPFR is available.
+| &bull; [POSIX Floating Point Problems](#POSIX-Floating-Point-Problems) | Standards Versus Existing Practice.
+| &bull; [Floating point summary](#Floating-point-summary) | Summary of floating point discussion.
+| &bull; [Extension Intro](#Extension-Intro) | What is an extension.
+| &bull; [Plugin License](#Plugin-License) | A note about licensing.
+| &bull; [Extension Mechanism Outline](#Extension-Mechanism-Outline) | An outline of how it works.
+| &bull; [Extension API Description](#Extension-API-Description) | A full description of the API.
+| &bull; [Extension API Functions Introduction](#Extension-API-Functions-Introduction) | Introduction to the API functions.
+| &bull; [General Data Types](#General-Data-Types) | The data types.
+| &bull; [Memory Allocation Functions](#Memory-Allocation-Functions) | Functions for allocating memory.
+| &bull; [Constructor Functions](#Constructor-Functions) | Functions for creating values.
+| &bull; [Registration Functions](#Registration-Functions) | Functions to register things with `gawk`.
+| &bull; [Extension Functions](#Extension-Functions) | Registering extension functions.
+| &bull; [Exit Callback Functions](#Exit-Callback-Functions) | Registering an exit callback.
+| &bull; [Extension Version String](#Extension-Version-String) | Registering a version string.
+| &bull; [Input Parsers](#Input-Parsers) | Registering an input parser.
+| &bull; [Output Wrappers](#Output-Wrappers) | Registering an output wrapper.
+| &bull; [Two-way processors](#Two_002dway-processors) | Registering a two-way processor.
+| &bull; [Printing Messages](#Printing-Messages) | Functions for printing messages.
+| &bull; [Updating `ERRNO`](#Updating-ERRNO) | Functions for updating `ERRNO`.
+| &bull; [Requesting Values](#Requesting-Values) | How to get a value.
+| &bull; [Accessing Parameters](#Accessing-Parameters) | Functions for accessing parameters.
+| &bull; [Symbol Table Access](#Symbol-Table-Access) | Functions for accessing global variables.
+| &bull; [Symbol table by name](#Symbol-table-by-name) | Accessing variables by name.
+| &bull; [Symbol table by cookie](#Symbol-table-by-cookie) | Accessing variables by &ldquo;cookie&rdquo;.
+| &bull; [Cached values](#Cached-values) | Creating and using cached values.
+| &bull; [Array Manipulation](#Array-Manipulation) | Functions for working with arrays.
+| &bull; [Array Data Types](#Array-Data-Types) | Data types for working with arrays.
+| &bull; [Array Functions](#Array-Functions) | Functions for working with arrays.
+| &bull; [Flattening Arrays](#Flattening-Arrays) | How to flatten arrays.
+| &bull; [Creating Arrays](#Creating-Arrays) | How to create and populate arrays.
+| &bull; [Redirection API](#Redirection-API) | How to access and manipulate redirections.
+| &bull; [Extension API Variables](#Extension-API-Variables) | Variables provided by the API.
+| &bull; [Extension Versioning](#Extension-Versioning) | API Version information.
+| &bull; [Extension GMP/MPFR Versioning](#Extension-GMP_002fMPFR-Versioning) | Version information about GMP and MPFR.
+| &bull; [Extension API Informational Variables](#Extension-API-Informational-Variables) | Variables providing information about `gawk`&rsquo;s invocation.
+| &bull; [Extension API Boilerplate](#Extension-API-Boilerplate) | Boilerplate code for using the API.
+| &bull; [Changes from API V1](#Changes-from-API-V1) | Changes from V1 of the API.
+| &bull; [Finding Extensions](#Finding-Extensions) | How `gawk` finds compiled extensions.
+| &bull; [Extension Example](#Extension-Example) | Example C code for an extension.
+| &bull; [Internal File Description](#Internal-File-Description) | What the new functions will do.
+| &bull; [Internal File Ops](#Internal-File-Ops) | The code for internal file operations.
+| &bull; [Using Internal File Ops](#Using-Internal-File-Ops) | How to use an external extension.
+| &bull; [Extension Samples](#Extension-Samples) | The sample extensions that ship with `gawk`.
+| &bull; [Extension Sample File Functions](#Extension-Sample-File-Functions) | The file functions sample.
+| &bull; [Extension Sample Fnmatch](#Extension-Sample-Fnmatch) | An interface to `fnmatch()`.
+| &bull; [Extension Sample Fork](#Extension-Sample-Fork) | An interface to `fork()` and other process functions.
+| &bull; [Extension Sample Inplace](#Extension-Sample-Inplace) | Enabling in-place file editing.
+| &bull; [Extension Sample Ord](#Extension-Sample-Ord) | Character to value to character conversions.
+| &bull; [Extension Sample Readdir](#Extension-Sample-Readdir) | An interface to `readdir()`.
+| &bull; [Extension Sample Revout](#Extension-Sample-Revout) | Reversing output sample output wrapper.
+| &bull; [Extension Sample Rev2way](#Extension-Sample-Rev2way) | Reversing data sample two-way processor.
+| &bull; [Extension Sample Read write array](#Extension-Sample-Read-write-array) | Serializing an array to a file.
+| &bull; [Extension Sample Readfile](#Extension-Sample-Readfile) | Reading an entire file into a string.
+| &bull; [Extension Sample Time](#Extension-Sample-Time) | An interface to `gettimeofday()` and `sleep()`.
+| &bull; [Extension Sample API Tests](#Extension-Sample-API-Tests) | Tests for the API.
+| &bull; [gawkextlib](#gawkextlib) | The `gawkextlib` project.
+| &bull; [Extension summary](#Extension-summary) | Extension summary.
+| &bull; [Extension Exercises](#Extension-Exercises) | Exercises.
+| &bull; [V7/SVR3.1](#V7_002fSVR3_002e1) | The major changes between V7 and System V Release 3.1.
+| &bull; [SVR4](#SVR4) | Minor changes between System V Releases 3.1 and 4.
+| &bull; [POSIX](#POSIX) | New features from the POSIX standard.
+| &bull; [BTL](#BTL) | New features from Brian Kernighan&rsquo;s version of `awk`.
+| &bull; [POSIX/GNU](#POSIX_002fGNU) | The extensions in `gawk` not in POSIX `awk`.
+| &bull; [Feature History](#Feature-History) | The history of the features in `gawk`.
+| &bull; [Common Extensions](#Common-Extensions) | Common Extensions Summary.
+| &bull; [Ranges and Locales](#Ranges-and-Locales) | How locales used to affect regexp ranges.
+| &bull; [Contributors](#Contributors) | The major contributors to `gawk`.
+| &bull; [History summary](#History-summary) | History summary.
+| &bull; [Gawk Distribution](#Gawk-Distribution) | What is in the `gawk` distribution.
+| &bull; [Getting](#Getting) | How to get the distribution.
+| &bull; [Extracting](#Extracting) | How to extract the distribution.
+| &bull; [Distribution contents](#Distribution-contents) | What is in the distribution.
+| &bull; [Unix Installation](#Unix-Installation) | Installing `gawk` under various versions of Unix.
+| &bull; [Quick Installation](#Quick-Installation) | Compiling `gawk` under Unix.
+| &bull; [Shell Startup Files](#Shell-Startup-Files) | Shell convenience functions.
+| &bull; [Additional Configuration Options](#Additional-Configuration-Options) | Other compile-time options.
+| &bull; [Configuration Philosophy](#Configuration-Philosophy) | How it&rsquo;s all supposed to work.
+| &bull; [Non-Unix Installation](#Non_002dUnix-Installation) | Installation on Other Operating Systems.
+| &bull; [PC Installation](#PC-Installation) | Installing and Compiling `gawk` on Microsoft Windows.
+| &bull; [PC Binary Installation](#PC-Binary-Installation) | Installing a prepared distribution.
+| &bull; [PC Compiling](#PC-Compiling) | Compiling `gawk` for Windows32.
+| &bull; [PC Using](#PC-Using) | Running `gawk` on Windows32.
+| &bull; [Cygwin](#Cygwin) | Building and running `gawk` for Cygwin.
+| &bull; [MSYS](#MSYS) | Using `gawk` In The MSYS Environment.
+| &bull; [VMS Installation](#VMS-Installation) | Installing `gawk` on VMS.
+| &bull; [VMS Compilation](#VMS-Compilation) | How to compile `gawk` under VMS.
+| &bull; [VMS Dynamic Extensions](#VMS-Dynamic-Extensions) | Compiling `gawk` dynamic extensions on VMS.
+| &bull; [VMS Installation Details](#VMS-Installation-Details) | How to install `gawk` under VMS.
+| &bull; [VMS Running](#VMS-Running) | How to run `gawk` under VMS.
+| &bull; [VMS GNV](#VMS-GNV) | The VMS GNV Project.
+| &bull; [VMS Old Gawk](#VMS-Old-Gawk) | An old version comes with some VMS systems.
+| &bull; [Bugs](#Bugs) | Reporting Problems and Bugs.
+| &bull; [Bug address](#Bug-address) | Where to send reports to.
+| &bull; [Usenet](#Usenet) | Where not to send reports to.
+| &bull; [Maintainers](#Maintainers) | Maintainers of non-*nix ports.
+| &bull; [Other Versions](#Other-Versions) | Other freely available `awk` implementations.
+| &bull; [Installation summary](#Installation-summary) | Summary of installation.
+| &bull; [Compatibility Mode](#Compatibility-Mode) | How to disable certain `gawk` extensions.
+| &bull; [Additions](#Additions) | Making Additions To `gawk`.
+| &bull; [Accessing The Source](#Accessing-The-Source) | Accessing the Git repository.
+| &bull; [Adding Code](#Adding-Code) | Adding code to the main body of `gawk`.
+| &bull; [New Ports](#New-Ports) | Porting `gawk` to a new operating system.
+| &bull; [Derived Files](#Derived-Files) | Why derived files are kept in the Git repository.
+| &bull; [Future Extensions](#Future-Extensions) | New features that may be implemented one day.
+| &bull; [Implementation Limitations](#Implementation-Limitations) | Some limitations of the implementation.
+| &bull; [Extension Design](#Extension-Design) | Design notes about the extension API.
+| &bull; [Old Extension Problems](#Old-Extension-Problems) | Problems with the old mechanism.
+| &bull; [Extension New Mechanism Goals](#Extension-New-Mechanism-Goals) | Goals for the new mechanism.
+| &bull; [Extension Other Design Decisions](#Extension-Other-Design-Decisions) | Some other design decisions.
+| &bull; [Extension Future Growth](#Extension-Future-Growth) | Some room for future growth.
+| &bull; [Old Extension Mechanism](#Old-Extension-Mechanism) | Some compatibility for old extensions.
+| &bull; [Notes summary](#Notes-summary) | Summary of implementation notes.
+| &bull; [Basic High Level](#Basic-High-Level) | The high level view.
+| &bull; [Basic Data Typing](#Basic-Data-Typing) | A very quick intro to data types.
 
 ## Short Table of Contents
+<!-- vim-markdown-toc GFM -->
 
-- 
-- [Foreword to the Third Edition](#toc-Foreword-to-the-Third-Edition)
-- [Foreword to the Fourth Edition](#toc-Foreword-to-the-Fourth-Edition)
-- [Preface](#toc-Preface-1)
+    * [Table of Contents](#table-of-contents)
 
-- [Part I:
-The `awk` Language](#toc-Part-I_003a-The-awk-Language)
-- [1 Getting Started with `awk`](#toc-Getting-Started-with-awk)
-- [2 Running `awk` and `gawk`](#toc-Running-awk-and-gawk)
-- [3 Regular Expressions](#toc-Regular-Expressions)
-- [4 Reading Input Files](#toc-Reading-Input-Files)
-- [5 Printing Output](#toc-Printing-Output)
-- [6 Expressions](#toc-Expressions-1)
-- [7 Patterns, Actions, and Variables](#toc-Patterns_002c-Actions_002c-and-Variables)
-- [8 Arrays in `awk`](#toc-Arrays-in-awk)
-- [9 Functions](#toc-Functions-1)
+<!-- vim-markdown-toc -->
 
-- [Part II:
-Problem Solving with `awk`](#toc-Part-II_003a-Problem-Solving-with-awk)
-- [10 A Library of `awk` Functions](#toc-A-Library-of-awk-Functions)
-- [11 Practical `awk` Programs](#toc-Practical-awk-Programs)
+    * [Foreword to the Third Edition](#foreword-to-the-third-edition)
+    * [Foreword to the Fourth Edition](#foreword-to-the-fourth-edition)
+    * [Preface](#preface)
+* [Part I:](#part-i)
+    * [1 Getting Started with `awk`](#1-getting-started-with-awk)
+    * [2 Running `awk` and `gawk`](#2-running-awk-and-gawk)
+    * [3 Regular Expressions](#3-regular-expressions)
+    * [4 Reading Input Files](#4-reading-input-files)
+    * [5 Printing Output](#5-printing-output)
+    * [6 Expressions](#6-expressions)
+    * [7 Patterns, Actions, and Variables](#7-patterns-actions-and-variables)
+    * [8 Arrays in `awk`](#8-arrays-in-awk)
+    * [9 Functions](#9-functions)
 
-- [Part III:
-Moving Beyond Standard `awk` with `gawk`](#toc-Part-III_003a-Moving-Beyond-Standard-awk-with-gawk)
-- [12 Advanced Features of `gawk`](#toc-Advanced-Features-of-gawk)
-- [13 Internationalization with `gawk`](#toc-Internationalization-with-gawk)
-- [14 Debugging `awk` Programs](#toc-Debugging-awk-Programs)
-- [15 Arithmetic and Arbitrary-Precision Arithmetic with `gawk`](#toc-Arithmetic-and-Arbitrary_002dPrecision-Arithmetic-with-gawk)
-- [16 Writing Extensions for `gawk`](#toc-Writing-Extensions-for-gawk)
-
-- [Part IV:
-Appendices](#toc-Part-IV_003a-Appendices)
-- [Appendix A The Evolution of the `awk` Language](#toc-The-Evolution-of-the-awk-Language)
-- [Appendix B Installing `gawk`](#toc-Installing-gawk)
-- [Appendix C Implementation Notes](#toc-Implementation-Notes)
-- [Appendix D Basic Programming Concepts](#toc-Basic-Programming-Concepts)
-- [Glossary](#toc-Glossary-1)
-- [GNU General Public License](#toc-GNU-General-Public-License)
-- [GNU Free Documentation License](#toc-GNU-Free-Documentation-License-1)
-- [Index](#toc-Index-1)
+* [Part II:](#part-ii)
+    * [10 A Library of `awk` Functions](#10-a-library-of-awk-functions)
+    * [11 Practical `awk` Programs](#11-practical-awk-programs)
 
 ## Table of Contents
 
-- 
-- [Foreword to the Third Edition](#Foreword3)
-- [Foreword to the Fourth Edition](#Foreword4)
-- [Preface](#Preface)
-- [History of `awk` and `gawk`](#History)
-- [A Rose by Any Other Name](#Names)
-- [Using This Book](#This-Manual)
-- [Typographical Conventions](#Conventions)
-- [Dark Corners](#Dark-Corners)
-
-- [The GNU Project and This Book](#Manual-History)
-- [How to Contribute](#How-To-Contribute)
-- [Acknowledgments](#Acknowledgments)
-
-- [Part I:
-The `awk` Language](#Part-I_003a-The-awk-Language)
-- [1 Getting Started with `awk`](#Getting-Started)
-- [1.1 How to Run `awk` Programs](#Running-gawk)
-- [1.1.1 One-Shot Throwaway `awk` Programs](#One_002dshot)
-- [1.1.2 Running `awk` Without Input Files](#Read-Terminal)
-- [1.1.3 Running Long Programs](#Long)
-- [1.1.4 Executable `awk` Programs](#Executable-Scripts)
-- [1.1.5 Comments in `awk` Programs](#Comments)
-- [1.1.6 Shell Quoting Issues](#Quoting)
-- [1.1.6.1 Quoting in MS-Windows Batch Files](#DOS-Quoting)
-
-- [1.2 Data files for the Examples](#Sample-Data-Files)
-- [1.3 Some Simple Examples](#Very-Simple)
-- [1.4 An Example with Two Rules](#Two-Rules)
-- [1.5 A More Complex Example](#More-Complex)
-- [1.6 `awk` Statements Versus Lines](#Statements_002fLines)
-- [1.7 Other Features of `awk`](#Other-Features)
-- [1.8 When to Use `awk`](#When)
-- [1.9 Summary](#Intro-Summary)
-
-- [2 Running `awk` and `gawk`](#Invoking-Gawk)
-- [2.1 Invoking `awk`](#Command-Line)
-- [2.2 Command-Line Options](#Options)
-- [2.3 Other Command-Line Arguments](#Other-Arguments)
-- [2.4 Naming Standard Input](#Naming-Standard-Input)
-- [2.5 The Environment Variables `gawk` Uses](#Environment-Variables)
-- [2.5.1 The `AWKPATH` Environment Variable](#AWKPATH-Variable)
-- [2.5.2 The `AWKLIBPATH` Environment Variable](#AWKLIBPATH-Variable)
-- [2.5.3 Other Environment Variables](#Other-Environment-Variables)
-
-- [2.6 `gawk`&rsquo;s Exit Status](#Exit-Status)
-- [2.7 Including Other Files into Your Program](#Include-Files)
-- [2.8 Loading Dynamic Extensions into Your Program](#Loading-Shared-Libraries)
-- [2.9 Obsolete Options and/or Features](#Obsolete)
-- [2.10 Undocumented Options and Features](#Undocumented)
-- [2.11 Summary](#Invoking-Summary)
-
-- [3 Regular Expressions](#Regexp)
-- [3.1 How to Use Regular Expressions](#Regexp-Usage)
-- [3.2 Escape Sequences](#Escape-Sequences)
-- [3.3 Regular Expression Operators](#Regexp-Operators)
-- [3.4 Using Bracket Expressions](#Bracket-Expressions)
-- [3.5 How Much Text Matches?](#Leftmost-Longest)
-- [3.6 Using Dynamic Regexps](#Computed-Regexps)
-- [3.7 `gawk`-Specific Regexp Operators](#GNU-Regexp-Operators)
-- [3.8 Case Sensitivity in Matching](#Case_002dsensitivity)
-- [3.9 Summary](#Regexp-Summary)
-
-- [4 Reading Input Files](#Reading-Files)
-- [4.1 How Input Is Split into Records](#Records)
-- [4.1.1 Record Splitting with Standard `awk`](#awk-split-records)
-- [4.1.2 Record Splitting with `gawk`](#gawk-split-records)
-
-- [4.2 Examining Fields](#Fields)
-- [4.3 Nonconstant Field Numbers](#Nonconstant-Fields)
-- [4.4 Changing the Contents of a Field](#Changing-Fields)
-- [4.5 Specifying How Fields Are Separated](#Field-Separators)
-- [4.5.1 Whitespace Normally Separates Fields](#Default-Field-Splitting)
-- [4.5.2 Using Regular Expressions to Separate Fields](#Regexp-Field-Splitting)
-- [4.5.3 Making Each Character a Separate Field](#Single-Character-Fields)
-- [4.5.4 Setting `FS` from the Command Line](#Command-Line-Field-Separator)
-- [4.5.5 Making the Full Line Be a Single Field](#Full-Line-Fields)
-- [4.5.6 Field-Splitting Summary](#Field-Splitting-Summary)
-
-- [4.6 Reading Fixed-Width Data](#Constant-Size)
-- [4.6.1 Processing Fixed-Width Data](#Fixed-width-data)
-- [4.6.2 Skipping Intervening Fields](#Skipping-intervening)
-- [4.6.3 Capturing Optional Trailing Data](#Allowing-trailing-data)
-- [4.6.4 Field Values With Fixed-Width Data](#Fields-with-fixed-data)
-
-- [4.7 Defining Fields by Content](#Splitting-By-Content)
-- [4.8 Checking How `gawk` Is Splitting Records](#Testing-field-creation)
-- [4.9 Multiple-Line Records](#Multiple-Line)
-- [4.10 Explicit Input with `getline`](#Getline)
-- [4.10.1 Using `getline` with No Arguments](#Plain-Getline)
-- [4.10.2 Using `getline` into a Variable](#Getline_002fVariable)
-- [4.10.3 Using `getline` from a File](#Getline_002fFile)
-- [4.10.4 Using `getline` into a Variable from a File](#Getline_002fVariable_002fFile)
-- [4.10.5 Using `getline` from a Pipe](#Getline_002fPipe)
-- [4.10.6 Using `getline` into a Variable from a Pipe](#Getline_002fVariable_002fPipe)
-- [4.10.7 Using `getline` from a Coprocess](#Getline_002fCoprocess)
-- [4.10.8 Using `getline` into a Variable from a Coprocess](#Getline_002fVariable_002fCoprocess)
-- [4.10.9 Points to Remember About `getline`](#Getline-Notes)
-- [4.10.10 Summary of `getline` Variants](#Getline-Summary)
-
-- [4.11 Reading Input with a Timeout](#Read-Timeout)
-- [4.12 Retrying Reads After Certain Input Errors](#Retrying-Input)
-- [4.13 Directories on the Command Line](#Command_002dline-directories)
-- [4.14 Summary](#Input-Summary)
-- [4.15 Exercises](#Input-Exercises)
-
-- [5 Printing Output](#Printing)
-- [5.1 The `print` Statement](#Print)
-- [5.2 `print` Statement Examples](#Print-Examples)
-- [5.3 Output Separators](#Output-Separators)
-- [5.4 Controlling Numeric Output with `print`](#OFMT)
-- [5.5 Using `printf` Statements for Fancier Printing](#Printf)
-- [5.5.1 Introduction to the `printf` Statement](#Basic-Printf)
-- [5.5.2 Format-Control Letters](#Control-Letters)
-- [5.5.3 Modifiers for `printf` Formats](#Format-Modifiers)
-- [5.5.4 Examples Using `printf`](#Printf-Examples)
-
-- [5.6 Redirecting Output of `print` and `printf`](#Redirection)
-- [5.7 Special Files for Standard Preopened Data Streams](#Special-FD)
-- [5.8 Special File names in `gawk`](#Special-Files)
-- [5.8.1 Accessing Other Open Files with `gawk`](#Other-Inherited-Files)
-- [5.8.2 Special Files for Network Communications](#Special-Network)
-- [5.8.3 Special File name Caveats](#Special-Caveats)
-
-- [5.9 Closing Input and Output Redirections](#Close-Files-And-Pipes)
-- [5.10 Enabling Nonfatal Output](#Nonfatal)
-- [5.11 Summary](#Output-Summary)
-- [5.12 Exercises](#Output-Exercises)
-
-- [6 Expressions](#Expressions)
-- [6.1 Constants, Variables, and Conversions](#Values)
-- [6.1.1 Constant Expressions](#Constants)
-- [6.1.1.1 Numeric and String Constants](#Scalar-Constants)
-- [6.1.1.2 Octal and Hexadecimal Numbers](#Nondecimal_002dnumbers)
-- [6.1.1.3 Regular Expression Constants](#Regexp-Constants)
-
-- [6.1.2 Using Regular Expression Constants](#Using-Constant-Regexps)
-- [6.1.2.1 Standard Regular Expression Constants](#Standard-Regexp-Constants)
-- [6.1.2.2 Strongly Typed Regexp Constants](#Strong-Regexp-Constants)
-
-- [6.1.3 Variables](#Variables)
-- [6.1.3.1 Using Variables in a Program](#Using-Variables)
-- [6.1.3.2 Assigning Variables on the Command Line](#Assignment-Options)
-
-- [6.1.4 Conversion of Strings and Numbers](#Conversion)
-- [6.1.4.1 How `awk` Converts Between Strings and Numbers](#Strings-And-Numbers)
-- [6.1.4.2 Locales Can Influence Conversion](#Locale-influences-conversions)
-
-- [6.2 Operators: Doing Something with Values](#All-Operators)
-- [6.2.1 Arithmetic Operators](#Arithmetic-Ops)
-- [6.2.2 String Concatenation](#Concatenation)
-- [6.2.3 Assignment Expressions](#Assignment-Ops)
-- [6.2.4 Increment and Decrement Operators](#Increment-Ops)
-
-- [6.3 Truth Values and Conditions](#Truth-Values-and-Conditions)
-- [6.3.1 True and False in `awk`](#Truth-Values)
-- [6.3.2 Variable Typing and Comparison Expressions](#Typing-and-Comparison)
-- [6.3.2.1 String Type versus Numeric Type](#Variable-Typing)
-- [6.3.2.2 Comparison Operators](#Comparison-Operators)
-- [6.3.2.3 String Comparison Based on Locale Collating Order](#POSIX-String-Comparison)
-
-- [6.3.3 Boolean Expressions](#Boolean-Ops)
-- [6.3.4 Conditional Expressions](#Conditional-Exp)
-
-- [6.4 Function Calls](#Function-Calls)
-- [6.5 Operator Precedence (How Operators Nest)](#Precedence)
-- [6.6 Where You Are Makes a Difference](#Locales)
-- [6.7 Summary](#Expressions-Summary)
-
-- [7 Patterns, Actions, and Variables](#Patterns-and-Actions)
-- [7.1 Pattern Elements](#Pattern-Overview)
-- [7.1.1 Regular Expressions as Patterns](#Regexp-Patterns)
-- [7.1.2 Expressions as Patterns](#Expression-Patterns)
-- [7.1.3 Specifying Record Ranges with Patterns](#Ranges)
-- [7.1.4 The `BEGIN` and `END` Special Patterns](#BEGIN_002fEND)
-- [7.1.4.1 Startup and Cleanup Actions](#Using-BEGIN_002fEND)
-- [7.1.4.2 Input/Output from `BEGIN` and `END` Rules](#I_002fO-And-BEGIN_002fEND)
-
-- [7.1.5 The `BEGINFILE` and `ENDFILE` Special Patterns](#BEGINFILE_002fENDFILE)
-- [7.1.6 The Empty Pattern](#Empty)
-
-- [7.2 Using Shell Variables in Programs](#Using-Shell-Variables)
-- [7.3 Actions](#Action-Overview)
-- [7.4 Control Statements in Actions](#Statements)
-- [7.4.1 The `if`-`else` Statement](#If-Statement)
-- [7.4.2 The `while` Statement](#While-Statement)
-- [7.4.3 The `do`-`while` Statement](#Do-Statement)
-- [7.4.4 The `for` Statement](#For-Statement)
-- [7.4.5 The `switch` Statement](#Switch-Statement)
-- [7.4.6 The `break` Statement](#Break-Statement)
-- [7.4.7 The `continue` Statement](#Continue-Statement)
-- [7.4.8 The `next` Statement](#Next-Statement)
-- [7.4.9 The `nextfile` Statement](#Nextfile-Statement)
-- [7.4.10 The `exit` Statement](#Exit-Statement)
-
-- [7.5 Predefined Variables](#Built_002din-Variables)
-- [7.5.1 Built-in Variables That Control `awk`](#User_002dmodified)
-- [7.5.2 Built-in Variables That Convey Information](#Auto_002dset)
-- [7.5.3 Using `ARGC` and `ARGV`](#ARGC-and-ARGV)
-
-- [7.6 Summary](#Pattern-Action-Summary)
-
-- [8 Arrays in `awk`](#Arrays)
-- [8.1 The Basics of Arrays](#Array-Basics)
-- [8.1.1 Introduction to Arrays](#Array-Intro)
-- [8.1.2 Referring to an Array Element](#Reference-to-Elements)
-- [8.1.3 Assigning Array Elements](#Assigning-Elements)
-- [8.1.4 Basic Array Example](#Array-Example)
-- [8.1.5 Scanning All Elements of an Array](#Scanning-an-Array)
-- [8.1.6 Using Predefined Array Scanning Orders with `gawk`](#Controlling-Scanning)
-
-- [8.2 Using Numbers to Subscript Arrays](#Numeric-Array-Subscripts)
-- [8.3 Using Uninitialized Variables as Subscripts](#Uninitialized-Subscripts)
-- [8.4 The `delete` Statement](#Delete)
-- [8.5 Multidimensional Arrays](#Multidimensional)
-- [8.5.1 Scanning Multidimensional Arrays](#Multiscanning)
-
-- [8.6 Arrays of Arrays](#Arrays-of-Arrays)
-- [8.7 Summary](#Arrays-Summary)
-
-- [9 Functions](#Functions)
-- [9.1 Built-in Functions](#Built_002din)
-- [9.1.1 Calling Built-in Functions](#Calling-Built_002din)
-- [9.1.2 Numeric Functions](#Numeric-Functions)
-- [9.1.3 String-Manipulation Functions](#String-Functions)
-- [9.1.3.1 More about &lsquo;\&rsquo; and &lsquo;&&rsquo; with `sub()`, `gsub()`, and `gensub()`](#Gory-Details)
-
-- [9.1.4 Input/Output Functions](#I_002fO-Functions)
-- [9.1.5 Time Functions](#Time-Functions)
-- [9.1.6 Bit-Manipulation Functions](#Bitwise-Functions)
-- [9.1.7 Getting Type Information](#Type-Functions)
-- [9.1.8 String-Translation Functions](#I18N-Functions)
-
-- [9.2 User-Defined Functions](#User_002ddefined)
-- [9.2.1 Function Definition Syntax](#Definition-Syntax)
-- [9.2.2 Function Definition Examples](#Function-Example)
-- [9.2.3 Calling User-Defined Functions](#Function-Caveats)
-- [9.2.3.1 Writing a Function Call](#Calling-A-Function)
-- [9.2.3.2 Controlling Variable Scope](#Variable-Scope)
-- [9.2.3.3 Passing Function Arguments by Value Or by Reference](#Pass-By-Value_002fReference)
-
-- [9.2.4 The `return` Statement](#Return-Statement)
-- [9.2.5 Functions and Their Effects on Variable Typing](#Dynamic-Typing)
-
-- [9.3 Indirect Function Calls](#Indirect-Calls)
-- [9.4 Summary](#Functions-Summary)
-
-- [Part II:
-Problem Solving with `awk`](#Part-II_003a-Problem-Solving-with-awk)
-- [10 A Library of `awk` Functions](#Library-Functions)
-- [10.1 Naming Library Function Global Variables](#Library-Names)
-- [10.2 General Programming](#General-Functions)
-- [10.2.1 Converting Strings to Numbers](#Strtonum-Function)
-- [10.2.2 Assertions](#Assert-Function)
-- [10.2.3 Rounding Numbers](#Round-Function)
-- [10.2.4 The Cliff Random Number Generator](#Cliff-Random-Function)
-- [10.2.5 Translating Between Characters and Numbers](#Ordinal-Functions)
-- [10.2.6 Merging an Array into a String](#Join-Function)
-- [10.2.7 Managing the Time of Day](#Getlocaltime-Function)
-- [10.2.8 Reading a Whole File at Once](#Readfile-Function)
-- [10.2.9 Quoting Strings to Pass to the Shell](#Shell-Quoting)
-
-- [10.3 Data file Management](#Data-File-Management)
-- [10.3.1 Noting Data file Boundaries](#Filetrans-Function)
-- [10.3.2 Rereading the Current File](#Rewind-Function)
-- [10.3.3 Checking for Readable Data files](#File-Checking)
-- [10.3.4 Checking for Zero-Length Files](#Empty-Files)
-- [10.3.5 Treating Assignments as File names](#Ignoring-Assigns)
-
-- [10.4 Processing Command-Line Options](#Getopt-Function)
-- [10.5 Reading the User Database](#Passwd-Functions)
-- [10.6 Reading the Group Database](#Group-Functions)
-- [10.7 Traversing Arrays of Arrays](#Walking-Arrays)
-- [10.8 Summary](#Library-Functions-Summary)
-- [10.9 Exercises](#Library-Exercises)
-
-- [11 Practical `awk` Programs](#Sample-Programs)
-- [11.1 Running the Example Programs](#Running-Examples)
-- [11.2 Reinventing Wheels for Fun and Profit](#Clones)
-- [11.2.1 Cutting Out Fields and Columns](#Cut-Program)
-- [11.2.2 Searching for Regular Expressions in Files](#Egrep-Program)
-- [11.2.3 Printing Out User Information](#Id-Program)
-- [11.2.4 Splitting a Large File into Pieces](#Split-Program)
-- [11.2.5 Duplicating Output into Multiple Files](#Tee-Program)
-- [11.2.6 Printing Nonduplicated Lines of Text](#Uniq-Program)
-- [11.2.7 Counting Things](#Wc-Program)
-
-- [11.3 A Grab Bag of `awk` Programs](#Miscellaneous-Programs)
-- [11.3.1 Finding Duplicated Words in a Document](#Dupword-Program)
-- [11.3.2 An Alarm Clock Program](#Alarm-Program)
-- [11.3.3 Transliterating Characters](#Translate-Program)
-- [11.3.4 Printing Mailing Labels](#Labels-Program)
-- [11.3.5 Generating Word-Usage Counts](#Word-Sorting)
-- [11.3.6 Removing Duplicates from Unsorted Text](#History-Sorting)
-- [11.3.7 Extracting Programs from Texinfo Source Files](#Extract-Program)
-- [11.3.8 A Simple Stream Editor](#Simple-Sed)
-- [11.3.9 An Easy Way to Use Library Functions](#Igawk-Program)
-- [11.3.10 Finding Anagrams from a Dictionary](#Anagram-Program)
-- [11.3.11 And Now for Something Completely Different](#Signature-Program)
-
-- [11.4 Summary](#Programs-Summary)
-- [11.5 Exercises](#Programs-Exercises)
-
-- [Part III:
-Moving Beyond Standard `awk` with `gawk`](#Part-III_003a-Moving-Beyond-Standard-awk-with-gawk)
-- [12 Advanced Features of `gawk`](#Advanced-Features)
-- [12.1 Allowing Nondecimal Input Data](#Nondecimal-Data)
-- [12.2 Controlling Array Traversal and Array Sorting](#Array-Sorting)
-- [12.2.1 Controlling Array Traversal](#Controlling-Array-Traversal)
-- [12.2.2 Sorting Array Values and Indices with `gawk`](#Array-Sorting-Functions)
-
-- [12.3 Two-Way Communications with Another Process](#Two_002dway-I_002fO)
-- [12.4 Using `gawk` for Network Programming](#TCP_002fIP-Networking)
-- [12.5 Profiling Your `awk` Programs](#Profiling)
-- [12.6 Summary](#Advanced-Features-Summary)
-
-- [13 Internationalization with `gawk`](#Internationalization)
-- [13.1 Internationalization and Localization](#I18N-and-L10N)
-- [13.2 GNU `gettext`](#Explaining-gettext)
-- [13.3 Internationalizing `awk` Programs](#Programmer-i18n)
-- [13.4 Translating `awk` Programs](#Translator-i18n)
-- [13.4.1 Extracting Marked Strings](#String-Extraction)
-- [13.4.2 Rearranging `printf` Arguments](#Printf-Ordering)
-- [13.4.3 `awk` Portability Issues](#I18N-Portability)
-
-- [13.5 A Simple Internationalization Example](#I18N-Example)
-- [13.6 `gawk` Can Speak Your Language](#Gawk-I18N)
-- [13.7 Summary](#I18N-Summary)
-
-- [14 Debugging `awk` Programs](#Debugger)
-- [14.1 Introduction to the `gawk` Debugger](#Debugging)
-- [14.1.1 Debugging in General](#Debugging-Concepts)
-- [14.1.2 Debugging Concepts](#Debugging-Terms)
-- [14.1.3 `awk` Debugging](#Awk-Debugging)
-
-- [14.2 Sample `gawk` Debugging Session](#Sample-Debugging-Session)
-- [14.2.1 How to Start the Debugger](#Debugger-Invocation)
-- [14.2.2 Finding the Bug](#Finding-The-Bug)
-
-- [14.3 Main Debugger Commands](#List-of-Debugger-Commands)
-- [14.3.1 Control of Breakpoints](#Breakpoint-Control)
-- [14.3.2 Control of Execution](#Debugger-Execution-Control)
-- [14.3.3 Viewing and Changing Data](#Viewing-And-Changing-Data)
-- [14.3.4 Working with the Stack](#Execution-Stack)
-- [14.3.5 Obtaining Information About the Program and the Debugger State](#Debugger-Info)
-- [14.3.6 Miscellaneous Commands](#Miscellaneous-Debugger-Commands)
-
-- [14.4 Readline Support](#Readline-Support)
-- [14.5 Limitations](#Limitations)
-- [14.6 Summary](#Debugging-Summary)
-
-- [15 Arithmetic and Arbitrary-Precision Arithmetic with `gawk`](#Arbitrary-Precision-Arithmetic)
-- [15.1 A General Description of Computer Arithmetic](#Computer-Arithmetic)
-- [15.2 Other Stuff to Know](#Math-Definitions)
-- [15.3 Arbitrary-Precision Arithmetic Features in `gawk`](#MPFR-features)
-- [15.4 Floating-Point Arithmetic: Caveat Emptor!](#FP-Math-Caution)
-- [15.4.1 Floating-Point Arithmetic Is Not Exact](#Inexactness-of-computations)
-- [15.4.1.1 Many Numbers Cannot Be Represented Exactly](#Inexact-representation)
-- [15.4.1.2 Be Careful Comparing Values](#Comparing-FP-Values)
-- [15.4.1.3 Errors Accumulate](#Errors-accumulate)
-
-- [15.4.2 Getting the Accuracy You Need](#Getting-Accuracy)
-- [15.4.3 Try a Few Extra Bits of Precision and Rounding](#Try-To-Round)
-- [15.4.4 Setting the Precision](#Setting-precision)
-- [15.4.5 Setting the Rounding Mode](#Setting-the-rounding-mode)
-
-- [15.5 Arbitrary-Precision Integer Arithmetic with `gawk`](#Arbitrary-Precision-Integers)
-- [15.6 How To Check If MPFR Is Available](#Checking-for-MPFR)
-- [15.7 Standards Versus Existing Practice](#POSIX-Floating-Point-Problems)
-- [15.8 Summary](#Floating-point-summary)
-
-- [16 Writing Extensions for `gawk`](#Dynamic-Extensions)
-- [16.1 Introduction](#Extension-Intro)
-- [16.2 Extension Licensing](#Plugin-License)
-- [16.3 How It Works at a High Level](#Extension-Mechanism-Outline)
-- [16.4 API Description](#Extension-API-Description)
-- [16.4.1 Introduction](#Extension-API-Functions-Introduction)
-- [16.4.2 General-Purpose Data Types](#General-Data-Types)
-- [16.4.3 Memory Allocation Functions and Convenience Macros](#Memory-Allocation-Functions)
-- [16.4.4 Constructor Functions](#Constructor-Functions)
-- [16.4.5 Registration Functions](#Registration-Functions)
-- [16.4.5.1 Registering An Extension Function](#Extension-Functions)
-- [16.4.5.2 Registering An Exit Callback Function](#Exit-Callback-Functions)
-- [16.4.5.3 Registering An Extension Version String](#Extension-Version-String)
-- [16.4.5.4 Customized Input Parsers](#Input-Parsers)
-- [16.4.5.5 Customized Output Wrappers](#Output-Wrappers)
-- [16.4.5.6 Customized Two-way Processors](#Two_002dway-processors)
-
-- [16.4.6 Printing Messages](#Printing-Messages)
-- [16.4.7 Updating `ERRNO`](#Updating-ERRNO)
-- [16.4.8 Requesting Values](#Requesting-Values)
-- [16.4.9 Accessing and Updating Parameters](#Accessing-Parameters)
-- [16.4.10 Symbol Table Access](#Symbol-Table-Access)
-- [16.4.10.1 Variable Access and Update by Name](#Symbol-table-by-name)
-- [16.4.10.2 Variable Access and Update by Cookie](#Symbol-table-by-cookie)
-- [16.4.10.3 Creating and Using Cached Values](#Cached-values)
-
-- [16.4.11 Array Manipulation](#Array-Manipulation)
-- [16.4.11.1 Array Data Types](#Array-Data-Types)
-- [16.4.11.2 Array Functions](#Array-Functions)
-- [16.4.11.3 Working With All The Elements of an Array](#Flattening-Arrays)
-- [16.4.11.4 How To Create and Populate Arrays](#Creating-Arrays)
-
-- [16.4.12 Accessing and Manipulating Redirections](#Redirection-API)
-- [16.4.13 API Variables](#Extension-API-Variables)
-- [16.4.13.1 API Version Constants and Variables](#Extension-Versioning)
-- [16.4.13.2 GMP and MPFR Version Information](#Extension-GMP_002fMPFR-Versioning)
-- [16.4.13.3 Informational Variables](#Extension-API-Informational-Variables)
-
-- [16.4.14 Boilerplate Code](#Extension-API-Boilerplate)
-- [16.4.15 Changes From Version 1 of the API](#Changes-from-API-V1)
-
-- [16.5 How `gawk` Finds Extensions](#Finding-Extensions)
-- [16.6 Example: Some File Functions](#Extension-Example)
-- [16.6.1 Using `chdir()` and `stat()`](#Internal-File-Description)
-- [16.6.2 C Code for `chdir()` and `stat()`](#Internal-File-Ops)
-- [16.6.3 Integrating the Extensions](#Using-Internal-File-Ops)
-
-- [16.7 The Sample Extensions in the `gawk` Distribution](#Extension-Samples)
-- [16.7.1 File-Related Functions](#Extension-Sample-File-Functions)
-- [16.7.2 Interface to `fnmatch()`](#Extension-Sample-Fnmatch)
-- [16.7.3 Interface to `fork()`, `wait()`, and `waitpid()`](#Extension-Sample-Fork)
-- [16.7.4 Enabling In-Place File Editing](#Extension-Sample-Inplace)
-- [16.7.5 Character and Numeric values: `ord()` and `chr()`](#Extension-Sample-Ord)
-- [16.7.6 Reading Directories](#Extension-Sample-Readdir)
-- [16.7.7 Reversing Output](#Extension-Sample-Revout)
-- [16.7.8 Two-Way I/O Example](#Extension-Sample-Rev2way)
-- [16.7.9 Dumping and Restoring an Array](#Extension-Sample-Read-write-array)
-- [16.7.10 Reading an Entire File](#Extension-Sample-Readfile)
-- [16.7.11 Extension Time Functions](#Extension-Sample-Time)
-- [16.7.12 API Tests](#Extension-Sample-API-Tests)
-
-- [16.8 The `gawkextlib` Project](#gawkextlib)
-- [16.9 Summary](#Extension-summary)
-- [16.10 Exercises](#Extension-Exercises)
-
-- [Part IV:
-Appendices](#Part-IV_003a-Appendices)
-- [Appendix A The Evolution of the `awk` Language](#Language-History)
-- [A.1 Major Changes Between V7 and SVR3.1](#V7_002fSVR3_002e1)
-- [A.2 Changes Between SVR3.1 and SVR4](#SVR4)
-- [A.3 Changes Between SVR4 and POSIX `awk`](#POSIX)
-- [A.4 Extensions in Brian Kernighan&rsquo;s `awk`](#BTL)
-- [A.5 Extensions in `gawk` Not in POSIX `awk`](#POSIX_002fGNU)
-- [A.6 History of `gawk` Features](#Feature-History)
-- [A.7 Common Extensions Summary](#Common-Extensions)
-- [A.8 Regexp Ranges and Locales: A Long Sad Story](#Ranges-and-Locales)
-- [A.9 Major Contributors to `gawk`](#Contributors)
-- [A.10 Summary](#History-summary)
-
-- [Appendix B Installing `gawk`](#Installation)
-- [B.1 The `gawk` Distribution](#Gawk-Distribution)
-- [B.1.1 Getting the `gawk` Distribution](#Getting)
-- [B.1.2 Extracting the Distribution](#Extracting)
-- [B.1.3 Contents of the `gawk` Distribution](#Distribution-contents)
-
-- [B.2 Compiling and Installing `gawk` on Unix-Like Systems](#Unix-Installation)
-- [B.2.1 Compiling `gawk` for Unix-Like Systems](#Quick-Installation)
-- [B.2.2 Shell Startup Files](#Shell-Startup-Files)
-- [B.2.3 Additional Configuration Options](#Additional-Configuration-Options)
-- [B.2.4 The Configuration Process](#Configuration-Philosophy)
-
-- [B.3 Installation on Other Operating Systems](#Non_002dUnix-Installation)
-- [B.3.1 Installation on MS-Windows](#PC-Installation)
-- [B.3.1.1 Installing a Prepared Distribution for MS-Windows Systems](#PC-Binary-Installation)
-- [B.3.1.2 Compiling `gawk` for PC Operating Systems](#PC-Compiling)
-- [B.3.1.3 Using `gawk` on PC Operating Systems](#PC-Using)
-- [B.3.1.4 Using `gawk` In The Cygwin Environment](#Cygwin)
-- [B.3.1.5 Using `gawk` In The MSYS Environment](#MSYS)
-
-- [B.3.2 Compiling and Installing `gawk` on Vax/VMS and OpenVMS](#VMS-Installation)
-- [B.3.2.1 Compiling `gawk` on VMS](#VMS-Compilation)
-- [B.3.2.2 Compiling `gawk` Dynamic Extensions on VMS](#VMS-Dynamic-Extensions)
-- [B.3.2.3 Installing `gawk` on VMS](#VMS-Installation-Details)
-- [B.3.2.4 Running `gawk` on VMS](#VMS-Running)
-- [B.3.2.5 The VMS GNV Project](#VMS-GNV)
-- [B.3.2.6 Some VMS Systems Have An Old Version of `gawk`](#VMS-Old-Gawk)
-
-- [B.4 Reporting Problems and Bugs](#Bugs)
-- [B.4.1 Submitting Bug Reports](#Bug-address)
-- [B.4.2 Please Don&rsquo;t Post Bug Reports to USENET](#Usenet)
-- [B.4.3 Reporting Problems with Non-Unix Ports](#Maintainers)
-
-- [B.5 Other Freely Available `awk` Implementations](#Other-Versions)
-- [B.6 Summary](#Installation-summary)
-
-- [Appendix C Implementation Notes](#Notes)
-- [C.1 Downward Compatibility and Debugging](#Compatibility-Mode)
-- [C.2 Making Additions to `gawk`](#Additions)
-- [C.2.1 Accessing The `gawk` Git Repository](#Accessing-The-Source)
-- [C.2.2 Adding New Features](#Adding-Code)
-- [C.2.3 Porting `gawk` to a New Operating System](#New-Ports)
-- [C.2.4 Why Generated Files Are Kept In Git](#Derived-Files)
-
-- [C.3 Probable Future Extensions](#Future-Extensions)
-- [C.4 Some Limitations of the Implementation](#Implementation-Limitations)
-- [C.5 Extension API Design](#Extension-Design)
-- [C.5.1 Problems With The Old Mechanism](#Old-Extension-Problems)
-- [C.5.2 Goals For A New Mechanism](#Extension-New-Mechanism-Goals)
-- [C.5.3 Other Design Decisions](#Extension-Other-Design-Decisions)
-- [C.5.4 Room For Future Growth](#Extension-Future-Growth)
-
-- [C.6 Compatibility For Old Extensions](#Old-Extension-Mechanism)
-- [C.7 Summary](#Notes-summary)
-
-- [Appendix D Basic Programming Concepts](#Basic-Concepts)
-- [D.1 What a Program Does](#Basic-High-Level)
-- [D.2 Data Values in a Computer](#Basic-Data-Typing)
-
-- [Glossary](#Glossary)
-- [GNU General Public License](#Copying)
-- [GNU Free Documentation License](#GNU-Free-Documentation-License)
-- [ADDENDUM: How to use this License for your documents](#ADDENDUM_003a-How-to-use-this-License-for-your-documents)
-
-- [Index](#Index)
+    * [Foreword to the Third Edition](#foreword-to-the-third-edition)
+    * [Foreword to the Fourth Edition](#foreword-to-the-fourth-edition)
+    * [Preface](#preface)
+        * [History of `awk` and `gawk`](#history-of-awk-and-gawk)
+        * [A Rose by Any Other Name](#a-rose-by-any-other-name)
+        * [Using This Book](#using-this-book)
+        * [Typographical Conventions](#typographical-conventions)
+            * [Dark Corners](#dark-corners)
+        * [The GNU Project and This Book](#the-gnu-project-and-this-book)
+        * [How to Contribute](#how-to-contribute)
+        * [Acknowledgments](#acknowledgments)
+* [Part I:](#part-i)
+    * [1 Getting Started with `awk`](#1-getting-started-with-awk)
+        * [1.1 How to Run `awk` Programs](#11-how-to-run-awk-programs)
+            * [1.1.1 One-Shot Throwaway `awk` Programs](#111-one-shot-throwaway-awk-programs)
+            * [1.1.2 Running `awk` Without Input Files](#112-running-awk-without-input-files)
+            * [1.1.3 Running Long Programs](#113-running-long-programs)
+            * [1.1.4 Executable `awk` Programs](#114-executable-awk-programs)
+            * [1.1.5 Comments in `awk` Programs](#115-comments-in-awk-programs)
+            * [1.1.6 Shell Quoting Issues](#116-shell-quoting-issues)
+            * [1.1.6.1 Quoting in MS-Windows Batch Files](#1161-quoting-in-ms-windows-batch-files)
+        * [1.2 Data files for the Examples](#12-data-files-for-the-examples)
+        * [1.3 Some Simple Examples](#13-some-simple-examples)
+        * [1.4 An Example with Two Rules](#14-an-example-with-two-rules)
+        * [1.5 A More Complex Example](#15-a-more-complex-example)
+        * [1.6 `awk` Statements Versus Lines](#16-awk-statements-versus-lines)
+        * [1.7 Other Features of `awk`](#17-other-features-of-awk)
+        * [1.8 When to Use `awk`](#18-when-to-use-awk)
+        * [1.9 Summary](#19-summary)
+    * [2 Running `awk` and `gawk`](#2-running-awk-and-gawk)
+        * [2.1 Invoking `awk`](#21-invoking-awk)
+        * [2.2 Command-Line Options](#22-command-line-options)
+        * [2.3 Other Command-Line Arguments](#23-other-command-line-arguments)
+        * [2.4 Naming Standard Input](#24-naming-standard-input)
+        * [2.5 The Environment Variables `gawk` Uses](#25-the-environment-variables-gawk-uses)
+            * [2.5.1 The `AWKPATH` Environment Variable](#251-the-awkpath-environment-variable)
+            * [2.5.2 The `AWKLIBPATH` Environment Variable](#252-the-awklibpath-environment-variable)
+            * [2.5.3 Other Environment Variables](#253-other-environment-variables)
+        * [2.6 `gawk`&rsquo;s Exit Status](#26-gawkrsquos-exit-status)
+        * [2.7 Including Other Files into Your Program](#27-including-other-files-into-your-program)
+        * [2.8 Loading Dynamic Extensions into Your Program](#28-loading-dynamic-extensions-into-your-program)
+        * [2.9 Obsolete Options and/or Features](#29-obsolete-options-andor-features)
+        * [2.10 Undocumented Options and Features](#210-undocumented-options-and-features)
+        * [2.11 Summary](#211-summary)
+    * [3 Regular Expressions](#3-regular-expressions)
+        * [3.1 How to Use Regular Expressions](#31-how-to-use-regular-expressions)
+        * [3.2 Escape Sequences](#32-escape-sequences)
+        * [3.3 Regular Expression Operators](#33-regular-expression-operators)
+        * [3.4 Using Bracket Expressions](#34-using-bracket-expressions)
+        * [3.5 How Much Text Matches?](#35-how-much-text-matches)
+        * [3.6 Using Dynamic Regexps](#36-using-dynamic-regexps)
+        * [3.7 `gawk`-Specific Regexp Operators](#37-gawk-specific-regexp-operators)
+        * [3.8 Case Sensitivity in Matching](#38-case-sensitivity-in-matching)
+        * [3.9 Summary](#39-summary)
+    * [4 Reading Input Files](#4-reading-input-files)
+        * [4.1 How Input Is Split into Records](#41-how-input-is-split-into-records)
+            * [4.1.1 Record Splitting with Standard `awk`](#411-record-splitting-with-standard-awk)
+            * [4.1.2 Record Splitting with `gawk`](#412-record-splitting-with-gawk)
+        * [4.2 Examining Fields](#42-examining-fields)
+        * [4.3 Nonconstant Field Numbers](#43-nonconstant-field-numbers)
+        * [4.4 Changing the Contents of a Field](#44-changing-the-contents-of-a-field)
+        * [4.5 Specifying How Fields Are Separated](#45-specifying-how-fields-are-separated)
+            * [4.5.1 Whitespace Normally Separates Fields](#451-whitespace-normally-separates-fields)
+            * [4.5.2 Using Regular Expressions to Separate Fields](#452-using-regular-expressions-to-separate-fields)
+            * [4.5.3 Making Each Character a Separate Field](#453-making-each-character-a-separate-field)
+            * [4.5.4 Setting `FS` from the Command Line](#454-setting-fs-from-the-command-line)
+            * [4.5.5 Making the Full Line Be a Single Field](#455-making-the-full-line-be-a-single-field)
+            * [4.5.6 Field-Splitting Summary](#456-field-splitting-summary)
+        * [4.6 Reading Fixed-Width Data](#46-reading-fixed-width-data)
+            * [4.6.1 Processing Fixed-Width Data](#461-processing-fixed-width-data)
+            * [4.6.2 Skipping Intervening Fields](#462-skipping-intervening-fields)
+            * [4.6.3 Capturing Optional Trailing Data](#463-capturing-optional-trailing-data)
+            * [4.6.4 Field Values With Fixed-Width Data](#464-field-values-with-fixed-width-data)
+        * [4.7 Defining Fields by Content](#47-defining-fields-by-content)
+        * [4.8 Checking How `gawk` Is Splitting Records](#48-checking-how-gawk-is-splitting-records)
+        * [4.9 Multiple-Line Records](#49-multiple-line-records)
+        * [4.10 Explicit Input with `getline`](#410-explicit-input-with-getline)
+            * [4.10.1 Using `getline` with No Arguments](#4101-using-getline-with-no-arguments)
+            * [4.10.2 Using `getline` into a Variable](#4102-using-getline-into-a-variable)
+            * [4.10.3 Using `getline` from a File](#4103-using-getline-from-a-file)
+            * [4.10.4 Using `getline` into a Variable from a File](#4104-using-getline-into-a-variable-from-a-file)
+            * [4.10.5 Using `getline` from a Pipe](#4105-using-getline-from-a-pipe)
+            * [4.10.6 Using `getline` into a Variable from a Pipe](#4106-using-getline-into-a-variable-from-a-pipe)
+            * [4.10.7 Using `getline` from a Coprocess](#4107-using-getline-from-a-coprocess)
+            * [4.10.8 Using `getline` into a Variable from a Coprocess](#4108-using-getline-into-a-variable-from-a-coprocess)
+            * [4.10.9 Points to Remember About `getline`](#4109-points-to-remember-about-getline)
+            * [4.10.10 Summary of `getline` Variants](#41010-summary-of-getline-variants)
+        * [4.11 Reading Input with a Timeout](#411-reading-input-with-a-timeout)
+        * [4.12 Retrying Reads After Certain Input Errors](#412-retrying-reads-after-certain-input-errors)
+        * [4.13 Directories on the Command Line](#413-directories-on-the-command-line)
+        * [4.14 Summary](#414-summary)
+        * [4.15 Exercises](#415-exercises)
+    * [5 Printing Output](#5-printing-output)
+        * [5.1 The `print` Statement](#51-the-print-statement)
+        * [5.2 `print` Statement Examples](#52-print-statement-examples)
+        * [5.3 Output Separators](#53-output-separators)
+        * [5.4 Controlling Numeric Output with `print`](#54-controlling-numeric-output-with-print)
+        * [5.5 Using `printf` Statements for Fancier Printing](#55-using-printf-statements-for-fancier-printing)
+            * [5.5.1 Introduction to the `printf` Statement](#551-introduction-to-the-printf-statement)
+            * [5.5.2 Format-Control Letters](#552-format-control-letters)
+            * [5.5.3 Modifiers for `printf` Formats](#553-modifiers-for-printf-formats)
+            * [5.5.4 Examples Using `printf`](#554-examples-using-printf)
+        * [5.6 Redirecting Output of `print` and `printf`](#56-redirecting-output-of-print-and-printf)
+        * [5.7 Special Files for Standard Preopened Data Streams](#57-special-files-for-standard-preopened-data-streams)
+        * [5.8 Special File names in `gawk`](#58-special-file-names-in-gawk)
+            * [5.8.1 Accessing Other Open Files with `gawk`](#581-accessing-other-open-files-with-gawk)
+            * [5.8.2 Special Files for Network Communications](#582-special-files-for-network-communications)
+            * [5.8.3 Special File name Caveats](#583-special-file-name-caveats)
+        * [5.9 Closing Input and Output Redirections](#59-closing-input-and-output-redirections)
+        * [5.10 Enabling Nonfatal Output](#510-enabling-nonfatal-output)
+        * [5.11 Summary](#511-summary)
+        * [5.12 Exercises](#512-exercises)
+    * [6 Expressions](#6-expressions)
+        * [6.1 Constants, Variables, and Conversions](#61-constants-variables-and-conversions)
+            * [6.1.1 Constant Expressions](#611-constant-expressions)
+            * [6.1.1.1 Numeric and String Constants](#6111-numeric-and-string-constants)
+            * [6.1.1.2 Octal and Hexadecimal Numbers](#6112-octal-and-hexadecimal-numbers)
+            * [6.1.1.3 Regular Expression Constants](#6113-regular-expression-constants)
+            * [6.1.2 Using Regular Expression Constants](#612-using-regular-expression-constants)
+            * [6.1.2.1 Standard Regular Expression Constants](#6121-standard-regular-expression-constants)
+            * [6.1.2.2 Strongly Typed Regexp Constants](#6122-strongly-typed-regexp-constants)
+            * [6.1.3 Variables](#613-variables)
+            * [6.1.3.1 Using Variables in a Program](#6131-using-variables-in-a-program)
+            * [6.1.3.2 Assigning Variables on the Command Line](#6132-assigning-variables-on-the-command-line)
+            * [6.1.4 Conversion of Strings and Numbers](#614-conversion-of-strings-and-numbers)
+            * [6.1.4.1 How `awk` Converts Between Strings and Numbers](#6141-how-awk-converts-between-strings-and-numbers)
+            * [6.1.4.2 Locales Can Influence Conversion](#6142-locales-can-influence-conversion)
+        * [6.2 Operators: Doing Something with Values](#62-operators-doing-something-with-values)
+            * [6.2.1 Arithmetic Operators](#621-arithmetic-operators)
+            * [6.2.2 String Concatenation](#622-string-concatenation)
+            * [6.2.3 Assignment Expressions](#623-assignment-expressions)
+            * [6.2.4 Increment and Decrement Operators](#624-increment-and-decrement-operators)
+        * [6.3 Truth Values and Conditions](#63-truth-values-and-conditions)
+            * [6.3.1 True and False in `awk`](#631-true-and-false-in-awk)
+            * [6.3.2 Variable Typing and Comparison Expressions](#632-variable-typing-and-comparison-expressions)
+            * [6.3.2.1 String Type versus Numeric Type](#6321-string-type-versus-numeric-type)
+            * [6.3.2.2 Comparison Operators](#6322-comparison-operators)
+            * [6.3.2.3 String Comparison Based on Locale Collating Order](#6323-string-comparison-based-on-locale-collating-order)
+            * [6.3.3 Boolean Expressions](#633-boolean-expressions)
+            * [6.3.4 Conditional Expressions](#634-conditional-expressions)
+        * [6.4 Function Calls](#64-function-calls)
+        * [6.5 Operator Precedence (How Operators Nest)](#65-operator-precedence-how-operators-nest)
+        * [6.6 Where You Are Makes a Difference](#66-where-you-are-makes-a-difference)
+        * [6.7 Summary](#67-summary)
+    * [7 Patterns, Actions, and Variables](#7-patterns-actions-and-variables)
+        * [7.1 Pattern Elements](#71-pattern-elements)
+            * [7.1.1 Regular Expressions as Patterns](#711-regular-expressions-as-patterns)
+            * [7.1.2 Expressions as Patterns](#712-expressions-as-patterns)
+            * [7.1.3 Specifying Record Ranges with Patterns](#713-specifying-record-ranges-with-patterns)
+            * [7.1.4 The `BEGIN` and `END` Special Patterns](#714-the-begin-and-end-special-patterns)
+            * [7.1.4.1 Startup and Cleanup Actions](#7141-startup-and-cleanup-actions)
+            * [7.1.4.2 Input/Output from `BEGIN` and `END` Rules](#7142-inputoutput-from-begin-and-end-rules)
+            * [7.1.5 The `BEGINFILE` and `ENDFILE` Special Patterns](#715-the-beginfile-and-endfile-special-patterns)
+            * [7.1.6 The Empty Pattern](#716-the-empty-pattern)
+        * [7.2 Using Shell Variables in Programs](#72-using-shell-variables-in-programs)
+        * [7.3 Actions](#73-actions)
+        * [7.4 Control Statements in Actions](#74-control-statements-in-actions)
+            * [7.4.1 The `if`-`else` Statement](#741-the-if-else-statement)
+            * [7.4.2 The `while` Statement](#742-the-while-statement)
+            * [7.4.3 The `do`-`while` Statement](#743-the-do-while-statement)
+            * [7.4.4 The `for` Statement](#744-the-for-statement)
+            * [7.4.5 The `switch` Statement](#745-the-switch-statement)
+            * [7.4.6 The `break` Statement](#746-the-break-statement)
+            * [7.4.7 The `continue` Statement](#747-the-continue-statement)
+            * [7.4.8 The `next` Statement](#748-the-next-statement)
+            * [7.4.9 The `nextfile` Statement](#749-the-nextfile-statement)
+            * [7.4.10 The `exit` Statement](#7410-the-exit-statement)
+        * [7.5 Predefined Variables](#75-predefined-variables)
+            * [7.5.1 Built-in Variables That Control `awk`](#751-built-in-variables-that-control-awk)
+            * [7.5.2 Built-in Variables That Convey Information](#752-built-in-variables-that-convey-information)
+            * [7.5.3 Using `ARGC` and `ARGV`](#753-using-argc-and-argv)
+        * [7.6 Summary](#76-summary)
+    * [8 Arrays in `awk`](#8-arrays-in-awk)
+        * [8.1 The Basics of Arrays](#81-the-basics-of-arrays)
+            * [8.1.1 Introduction to Arrays](#811-introduction-to-arrays)
+            * [8.1.2 Referring to an Array Element](#812-referring-to-an-array-element)
+            * [8.1.3 Assigning Array Elements](#813-assigning-array-elements)
+            * [8.1.4 Basic Array Example](#814-basic-array-example)
+            * [8.1.5 Scanning All Elements of an Array](#815-scanning-all-elements-of-an-array)
+            * [8.1.6 Using Predefined Array Scanning Orders with `gawk`](#816-using-predefined-array-scanning-orders-with-gawk)
+        * [8.2 Using Numbers to Subscript Arrays](#82-using-numbers-to-subscript-arrays)
+        * [8.3 Using Uninitialized Variables as Subscripts](#83-using-uninitialized-variables-as-subscripts)
+        * [8.4 The `delete` Statement](#84-the-delete-statement)
+        * [8.5 Multidimensional Arrays](#85-multidimensional-arrays)
+            * [8.5.1 Scanning Multidimensional Arrays](#851-scanning-multidimensional-arrays)
+        * [8.6 Arrays of Arrays](#86-arrays-of-arrays)
+        * [8.7 Summary](#87-summary)
+    * [9 Functions](#9-functions)
+        * [9.1 Built-in Functions](#91-built-in-functions)
+            * [9.1.1 Calling Built-in Functions](#911-calling-built-in-functions)
+            * [9.1.2 Numeric Functions](#912-numeric-functions)
+            * [9.1.3 String-Manipulation Functions](#913-string-manipulation-functions)
+            * [9.1.3.1 More about &lsquo;\&rsquo; and &lsquo;&&rsquo; with `sub()`, `gsub()`, and `gensub()`](#9131-more-about-lsquorsquo-and-lsquorsquo-with-sub-gsub-and-gensub)
+            * [9.1.4 Input/Output Functions](#914-inputoutput-functions)
+            * [9.1.5 Time Functions](#915-time-functions)
+            * [9.1.6 Bit-Manipulation Functions](#916-bit-manipulation-functions)
+            * [9.1.7 Getting Type Information](#917-getting-type-information)
+            * [9.1.8 String-Translation Functions](#918-string-translation-functions)
+        * [9.2 User-Defined Functions](#92-user-defined-functions)
+            * [9.2.1 Function Definition Syntax](#921-function-definition-syntax)
+            * [9.2.2 Function Definition Examples](#922-function-definition-examples)
+            * [9.2.3 Calling User-Defined Functions](#923-calling-user-defined-functions)
+            * [9.2.3.1 Writing a Function Call](#9231-writing-a-function-call)
+            * [9.2.3.2 Controlling Variable Scope](#9232-controlling-variable-scope)
+            * [9.2.3.3 Passing Function Arguments by Value Or by Reference](#9233-passing-function-arguments-by-value-or-by-reference)
+            * [9.2.4 The `return` Statement](#924-the-return-statement)
+            * [9.2.5 Functions and Their Effects on Variable Typing](#925-functions-and-their-effects-on-variable-typing)
+        * [9.3 Indirect Function Calls](#93-indirect-function-calls)
+        * [9.4 Summary](#94-summary)
+* [Part II:](#part-ii)
+    * [10 A Library of `awk` Functions](#10-a-library-of-awk-functions)
+        * [10.1 Naming Library Function Global Variables](#101-naming-library-function-global-variables)
+        * [10.2 General Programming](#102-general-programming)
+            * [10.2.1 Converting Strings to Numbers](#1021-converting-strings-to-numbers)
+            * [10.2.2 Assertions](#1022-assertions)
+            * [10.2.3 Rounding Numbers](#1023-rounding-numbers)
+            * [10.2.4 The Cliff Random Number Generator](#1024-the-cliff-random-number-generator)
+            * [10.2.5 Translating Between Characters and Numbers](#1025-translating-between-characters-and-numbers)
+            * [10.2.6 Merging an Array into a String](#1026-merging-an-array-into-a-string)
+            * [10.2.7 Managing the Time of Day](#1027-managing-the-time-of-day)
+            * [10.2.8 Reading a Whole File at Once](#1028-reading-a-whole-file-at-once)
+            * [10.2.9 Quoting Strings to Pass to the Shell](#1029-quoting-strings-to-pass-to-the-shell)
+        * [10.3 Data file Management](#103-data-file-management)
+            * [10.3.1 Noting Data file Boundaries](#1031-noting-data-file-boundaries)
+            * [10.3.2 Rereading the Current File](#1032-rereading-the-current-file)
+            * [10.3.3 Checking for Readable Data files](#1033-checking-for-readable-data-files)
+            * [10.3.4 Checking for Zero-Length Files](#1034-checking-for-zero-length-files)
+            * [10.3.5 Treating Assignments as File names](#1035-treating-assignments-as-file-names)
+        * [10.4 Processing Command-Line Options](#104-processing-command-line-options)
+        * [10.5 Reading the User Database](#105-reading-the-user-database)
+        * [10.6 Reading the Group Database](#106-reading-the-group-database)
+        * [10.7 Traversing Arrays of Arrays](#107-traversing-arrays-of-arrays)
+        * [10.8 Summary](#108-summary)
+        * [10.9 Exercises](#109-exercises)
+    * [11 Practical `awk` Programs](#11-practical-awk-programs)
+        * [11.1 Running the Example Programs](#111-running-the-example-programs)
+        * [11.2 Reinventing Wheels for Fun and Profit](#112-reinventing-wheels-for-fun-and-profit)
+            * [11.2.1 Cutting Out Fields and Columns](#1121-cutting-out-fields-and-columns)
+            * [11.2.2 Searching for Regular Expressions in Files](#1122-searching-for-regular-expressions-in-files)
+            * [11.2.3 Printing Out User Information](#1123-printing-out-user-information)
+            * [11.2.4 Splitting a Large File into Pieces](#1124-splitting-a-large-file-into-pieces)
+            * [11.2.5 Duplicating Output into Multiple Files](#1125-duplicating-output-into-multiple-files)
+            * [11.2.6 Printing Nonduplicated Lines of Text](#1126-printing-nonduplicated-lines-of-text)
+            * [11.2.7 Counting Things](#1127-counting-things)
+        * [11.3 A Grab Bag of `awk` Programs](#113-a-grab-bag-of-awk-programs)
+            * [11.3.1 Finding Duplicated Words in a Document](#1131-finding-duplicated-words-in-a-document)
+            * [11.3.2 An Alarm Clock Program](#1132-an-alarm-clock-program)
+            * [11.3.3 Transliterating Characters](#1133-transliterating-characters)
+            * [11.3.4 Printing Mailing Labels](#1134-printing-mailing-labels)
+            * [11.3.5 Generating Word-Usage Counts](#1135-generating-word-usage-counts)
+            * [11.3.6 Removing Duplicates from Unsorted Text](#1136-removing-duplicates-from-unsorted-text)
+            * [11.3.7 Extracting Programs from Texinfo Source Files](#1137-extracting-programs-from-texinfo-source-files)
+            * [11.3.8 A Simple Stream Editor](#1138-a-simple-stream-editor)
+            * [11.3.9 An Easy Way to Use Library Functions](#1139-an-easy-way-to-use-library-functions)
+            * [11.3.10 Finding Anagrams from a Dictionary](#11310-finding-anagrams-from-a-dictionary)
+            * [11.3.11 And Now for Something Completely Different](#11311-and-now-for-something-completely-different)
+        * [11.4 Summary](#114-summary)
+        * [11.5 Exercises](#115-exercises)
 
 ---
 
@@ -21553,9 +21082,3 @@ the use of the external `sort` utility.
 ---
 
 Next: [Internationalization](#Internationalization), Previous: [Sample Programs](#Sample-Programs), Up: [Top](#Top)   [[Contents](#SEC_Contents)][[Index](#Index)]
-
-# Part III:
-Moving Beyond Standard `awk` with `gawk`
-
----
-
