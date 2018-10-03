@@ -53,7 +53,7 @@ A copy of the license is included in the section entitled
 1.  The FSF&rsquo;s Back-Cover Text is: &ldquo;You have the freedom to
 copy and modify this GNU manual.&rdquo;
 
-| []() |
+| toc | description
 | --- | ---
 | &bull; [Foreword3](#Foreword3) | Some nice words about this Web page.
 | &bull; [Foreword4](#Foreword4) | More nice words.
