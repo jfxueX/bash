@@ -489,9 +489,9 @@ copy and modify this GNU manual.&rdquo;
 
 ## Short Table of Contents
 
-*     [Foreword to the Third Edition](#foreword-to-the-third-edition)
-*     [Foreword to the Fourth Edition](#foreword-to-the-fourth-edition)
-*     [Preface](#preface)
+*    <a href="#foreword-to-the-third-edition">Foreword to the Third Edition</a>
+*    <a href="#foreword-to-the-fourth-edition">Foreword to the Fourth Edition</a>
+*    <a href="#preface">Preface</a>
 * [Part I:](#part-i)
     * [1 Getting Started with `awk`](#1-getting-started-with-awk)
     * [2 Running `awk` and `gawk`](#2-running-awk-and-gawk)
@@ -509,9 +509,9 @@ copy and modify this GNU manual.&rdquo;
 
 ## Table of Contents
 
-*     [Foreword to the Third Edition](#foreword-to-the-third-edition)
-*     [Foreword to the Fourth Edition](#foreword-to-the-fourth-edition)
-*     [Preface](#preface)
+*    <a href="#foreword-to-the-third-edition">Foreword to the Third Edition</a>
+*    <a href="#foreword-to-the-fourth-edition">Foreword to the Fourth Edition</a>
+*    <a href="#preface">Preface</a>
      *    [History of `awk` and `gawk`](#history-of-awk-and-gawk)
      *    [A Rose by Any Other Name](#a-rose-by-any-other-name)
      *    [Using This Book](#using-this-book)
@@ -1135,7 +1135,7 @@ should be of interest.
 
 This Web page is split into several parts, as follows:
 
--  Part I describes the `awk` language and the `gawk` program in detail.
+-  **Part I** describes the `awk` language and the `gawk` program in detail.
 It starts with the basics, and continues through all of the features of `awk`.
 It contains the following chapters:
 
@@ -1182,7 +1182,7 @@ describes the built-in functions `awk` and `gawk` provide,
 as well as how to define your own functions.  It also discusses how
 `gawk` lets you call functions indirectly.
 
--  Part II shows how to use `awk` and `gawk` for problem solving.
+-  **Part II** shows how to use `awk` and `gawk` for problem solving.
 There is lots of code here for you to read and learn from.
 This part contains the following chapters:
 
@@ -1195,7 +1195,7 @@ provides many sample `awk` programs.
 Reading these two chapters allows you to see `awk`
 solving real problems.
 
--  Part III focuses on features specific to `gawk`.
+-  **Part III** focuses on features specific to `gawk`.
 It contains the following chapters:
 
     - [Advanced Features](#Advanced-Features),
@@ -1218,7 +1218,7 @@ describes advanced arithmetic facilities.
     - [Dynamic Extensions](#Dynamic-Extensions), describes how to add new variables and
 functions to `gawk` by writing extensions in C or C++.
 
--  Part IV provides the appendices, the Glossary, and two licenses that cover
+-  **Part IV** provides the appendices, the Glossary, and two licenses that cover
 the `gawk` source code and this Web page, respectively.
 It contains the following appendices:
 
