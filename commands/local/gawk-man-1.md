@@ -58,7 +58,7 @@ copy and modify this GNU manual.&rdquo;
 | &bull; [Foreword3](#Foreword3) | Some nice words about this Web page.
 | &bull; [Foreword4](#Foreword4) | More nice words.
 | &bull; [Preface](#Preface) | What this Web page is about; brief history and acknowledgments.
-| &bull; [Getting Started](#Getting-Started) | A basic introduction to using `awk`. How to run an `awk` program. Command-line syntax.
+| &bull; [Getting Started](#10-a-library-of-awk-functions) | A basic introduction to using `awk`. How to run an `awk` program. Command-line syntax.
 | &bull; [Invoking Gawk](#Invoking-Gawk) | How to run `gawk`.
 | &bull; [Regexp](#Regexp) | All about matching things using regular expressions.
 | &bull; [Reading Files](#Reading-Files) | How to read files and manipulate fields.
@@ -67,7 +67,7 @@ copy and modify this GNU manual.&rdquo;
 | &bull; [Patterns and Actions](#Patterns-and-Actions) | Overviews of patterns and actions.
 | &bull; [Arrays](#Arrays) | The description and use of arrays. Also includes array-oriented control statements.
 | &bull; [Functions](#Functions) | Built-in and user-defined functions.
-| &bull; [Library Functions](#Library-Functions) | A Library of `awk` Functions.
+| &bull; [Library Functions]((#10-a-library-of-awk-functions)) | A Library of `awk` Functions.
 | &bull; [Sample Programs](#Sample-Programs) | Many `awk` programs with complete explanations.
 | &bull; [Advanced Features](#Advanced-Features) | Stuff for advanced users, specific to `gawk`.
 | &bull; [Internationalization](#Internationalization) | Getting `gawk` to speak your language.
@@ -298,7 +298,7 @@ copy and modify this GNU manual.&rdquo;
 | &bull; [Passwd Functions](#Passwd-Functions) | Functions for getting user information.
 | &bull; [Group Functions](#Group-Functions) | Functions for getting group information.
 | &bull; [Walking Arrays](#Walking-Arrays) | A function to walk arrays of arrays.
-| &bull; [Library Functions Summary](#Library-Functions-Summary) | Summary of library functions.
+| &bull; [Library Functions Summary]((#10-a-library-of-awk-functions)-Summary) | Summary of library functions.
 | &bull; [Library Exercises](#Library-Exercises) | Exercises.
 | &bull; [Running Examples](#Running-Examples) | How to run these examples.
 | &bull; [Clones](#Clones) | Clones of common utilities.
@@ -905,7 +905,7 @@ your program in AWK or in C/C++.  You can write most of your
 program in AWK and the aspects that require C/C++ capabilities can be written
 in C/C++, and then the pieces glued together when the `gawk` module loads
 the C/C++ module as a dynamic plug-in.
-[Dynamic Extensions](#Dynamic-Extensions),
+[Dynamic Extensions](gawk-man-2.md#16-writing-extensions-for-gawk),
 has all the
 details, and, as expected, many examples to help you learn the ins and outs.
 
@@ -919,7 +919,7 @@ I think you will too.
 
 ---
 
-Next: [Getting Started](#Getting-Started), Previous: [Foreword4](#Foreword4), Up: [Top](#Top)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [Getting Started](#10-a-library-of-awk-functions), Previous: [Foreword4](#Foreword4), Up: [Top](#Top)   [[Contents](#SEC_Contents)][[Index](#Index)]
 
 ## Preface
 
@@ -1128,7 +1128,7 @@ exposed
 to `awk`, there is a lot of information here that even the `awk`
 expert should find useful.  In particular, the description of POSIX
 `awk` and the example programs in
-[Library Functions](#Library-Functions), and
+[Library Functions]((#10-a-library-of-awk-functions)), and
 in
 [Sample Programs](#Sample-Programs),
 should be of interest.
@@ -1139,7 +1139,7 @@ This Web page is split into several parts, as follows:
 It starts with the basics, and continues through all of the features of `awk`.
 It contains the following chapters:
 
-    - [Getting Started](#Getting-Started),
+    - [Getting Started](#10-a-library-of-awk-functions),
 provides the essentials you need to know to begin using `awk`.
 
     - [Invoking Gawk](#Invoking-Gawk),
@@ -1186,7 +1186,7 @@ as well as how to define your own functions.  It also discusses how
 There is lots of code here for you to read and learn from.
 This part contains the following chapters:
 
-    - [Library Functions](#Library-Functions), provides a number of functions meant to
+    - [Library Functions]((#10-a-library-of-awk-functions)), provides a number of functions meant to
 be used from main `awk` programs.
 
     - [Sample Programs](#Sample-Programs),
@@ -1419,7 +1419,7 @@ and I even solicited contributions.  Making things available on the Internet
 helps keep the `gawk` distribution down to manageable size.
 
 The initial collection of material, such as it is, is still available
-at [ftp://ftp.freefriends.org/arnold/Awkstuff](ftp://ftp.freefriends.org/arnold/Awkstuff).
+at <a href="ftp://ftp.freefriends.org/arnold/Awkstuff">ftp://ftp.freefriends.org/arnold/Awkstuff</a>.
 
 In the hopes of doing something more broad, I acquired the
 `awklang.org` domain.  Late in 2017, a volunteer took on the task
@@ -1440,13 +1440,13 @@ Previous: [How To Contribute](#How-To-Contribute), Up: [Preface](#Preface)   [[C
 
 The initial draft of The GAWK Manual had the following acknowledgments:
 
-> Many people need to be thanked for their assistance in producing this
-> manual.  Jay Fenlason contributed many ideas and sample programs.  Richard
-> Mlynarik and Robert Chassell gave helpful comments on drafts of this
-> manual.  The paper A Supplemental Document for AWK by John W.
-> Pierce of the Chemistry Department at UC San Diego, pinpointed several
-> issues relevant both to `awk` implementation and to this manual, that
-> would otherwise have escaped us.
+> <i>Many people need to be thanked for their assistance in producing this</i>
+> <i>manual.  Jay Fenlason contributed many ideas and sample programs.  Richard</i>
+> <i>Mlynarik and Robert Chassell gave helpful comments on drafts of this</i>
+> <i>manual.  The paper A Supplemental Document for AWK by John W.</i>
+> <i>Pierce of the Chemistry Department at UC San Diego, pinpointed several</i>
+> <i>issues relevant both to `awk` implementation and to this manual, that</i>
+> <i>would otherwise have escaped us.</i>
 
 I would like to acknowledge Richard M. Stallman, for his vision of a
 better world and for his courage in founding the FSF and starting the
@@ -1574,19 +1574,15 @@ He has sent my way, as well as for the gifts He has given me with which to
 take advantage of those opportunities.
 
 Arnold Robbins 
-
 Nof Ayalon 
-
 Israel 
-
 February 2015
 
 ---
 
 Next: [Invoking Gawk](#Invoking-Gawk), Previous: [Preface](#Preface), Up: [Top](#Top)   [[Contents](#SEC_Contents)][[Index](#Index)]
 
-# Part I:
-The `awk` Language
+# Part I: The `awk` Language
 
 ---
 
@@ -1621,9 +1617,9 @@ Syntactically, a rule consists of a *pattern* followed by an
 pattern.  Newlines usually separate rules.  Therefore, an `awk`
 program looks like this:
 
-    pattern { action }
-    pattern { action }
-    &hellip;
+<pre<    <i>pattern</i> { action }
+    <i>pattern</i> { action }
+    &hellip;</pre>
     
 | []() | []()
 | - | -
@@ -1639,7 +1635,7 @@ program looks like this:
 
 ---
 
-Next: [Sample Data Files](#Sample-Data-Files), Up: [Getting Started](#Getting-Started)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [Sample Data Files](#Sample-Data-Files), Up: [Getting Started](#10-a-library-of-awk-functions)   [[Contents](#SEC_Contents)][[Index](#Index)]
 
 ### 1.1 How to Run `awk` Programs
 
@@ -1647,13 +1643,13 @@ There are several ways to run an `awk` program.  If the program is
 short, it is easiest to include it in the command that runs `awk`,
 like this:
 
-    awk 'program' input-file1input-file2 &hellip;
+    <pre>awk 'program' input-file1input-file2 &hellip;</pre>
     
 
 When the program is long, it is usually more convenient to put it in a file
 and run it with a command like this:
 
-    awk -f program-fileinput-file1input-file2 &hellip;
+    <pre>awk -f program-fileinput-file1input-file2 &hellip;</pre>
     
 
 This section discusses both mechanisms, along with several
@@ -1678,7 +1674,7 @@ Once you are familiar with `awk`, you will often type in simple
 programs the moment you want to use them.  Then you can write the
 program as the first argument of the `awk` command, like this:
 
-    awk 'program' input-file1input-file2 &hellip;
+    <pre>awk 'program' input-file1input-file2 &hellip;</pre>
     
 
 where program consists of a series of patterns and
@@ -1768,7 +1764,7 @@ Sometimes `awk` programs are very long.  In these cases, it is
 more convenient to put the program into a separate file.  In order to tell
 `awk` to use that file for its program, you type:
 
-    awk -f source-fileinput-file1input-file2 &hellip;
+    <pre>awk -f source-fileinput-file1input-file2 &hellip;</pre>
     
 
 The -f instructs the `awk` utility to get the
@@ -1782,8 +1778,9 @@ could put the program:
 
 into the file advice.  Then this command:
 
+```awk
     awk -f advice
-    
+```    
 
 does the same thing as this one:
 
@@ -2170,7 +2167,7 @@ double-quote don&rsquo;t need duplication.
 
 ---
 
-Next: [Very Simple](#Very-Simple), Previous: [Running gawk](#Running-gawk), Up: [Getting Started](#Getting-Started)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [Very Simple](#Very-Simple), Previous: [Running gawk](#Running-gawk), Up: [Getting Started](#10-a-library-of-awk-functions)   [[Contents](#SEC_Contents)][[Index](#Index)]
 
 ### 1.2 Data files for the Examples
 
@@ -2236,7 +2233,7 @@ in the directory awklib/eg/data.
 
 ---
 
-Next: [Two Rules](#Two-Rules), Previous: [Sample Data Files](#Sample-Data-Files), Up: [Getting Started](#Getting-Started)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [Two Rules](#Two-Rules), Previous: [Sample Data Files](#Sample-Data-Files), Up: [Getting Started](#10-a-library-of-awk-functions)   [[Contents](#SEC_Contents)][[Index](#Index)]
 
 ### 1.3 Some Simple Examples
 
@@ -2388,7 +2385,7 @@ the program would print the odd-numbered lines.
 
 ---
 
-Next: [More Complex](#More-Complex), Previous: [Very Simple](#Very-Simple), Up: [Getting Started](#Getting-Started)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [More Complex](#More-Complex), Previous: [Very Simple](#Very-Simple), Up: [Getting Started](#10-a-library-of-awk-functions)   [[Contents](#SEC_Contents)][[Index](#Index)]
 
 ### 1.4 An Example with Two Rules
 
@@ -2439,7 +2436,7 @@ in mail-list was printed twice, once for each rule.
 
 ---
 
-Next: [Statements/Lines](#Statements_002fLines), Previous: [Two Rules](#Two-Rules), Up: [Getting Started](#Getting-Started)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [Statements/Lines](#Statements_002fLines), Previous: [Two Rules](#Two-Rules), Up: [Getting Started](#10-a-library-of-awk-functions)   [[Contents](#SEC_Contents)][[Index](#Index)]
 
 ### 1.5 A More Complex Example
 
@@ -2503,7 +2500,7 @@ impressive-looking reports.
 
 ---
 
-Next: [Other Features](#Other-Features), Previous: [More Complex](#More-Complex), Up: [Getting Started](#Getting-Started)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [Other Features](#Other-Features), Previous: [More Complex](#More-Complex), Up: [Getting Started](#10-a-library-of-awk-functions)   [[Contents](#SEC_Contents)][[Index](#Index)]
 
 ### 1.6 `awk` Statements Versus Lines
 
@@ -2624,7 +2621,7 @@ could also be written this way:
 
 ---
 
-Next: [When](#When), Previous: [Statements/Lines](#Statements_002fLines), Up: [Getting Started](#Getting-Started)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [When](#When), Previous: [Statements/Lines](#Statements_002fLines), Up: [Getting Started](#10-a-library-of-awk-functions)   [[Contents](#SEC_Contents)][[Index](#Index)]
 
 ### 1.7 Other Features of `awk`
 
@@ -2647,7 +2644,7 @@ systematically in [Built-in Variables](#Built_002din-Variables) and in
 
 ---
 
-Next: [Intro Summary](#Intro-Summary), Previous: [Other Features](#Other-Features), Up: [Getting Started](#Getting-Started)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [Intro Summary](#Intro-Summary), Previous: [Other Features](#Other-Features), Up: [Getting Started](#10-a-library-of-awk-functions)   [[Contents](#SEC_Contents)][[Index](#Index)]
 
 ### 1.8 When to Use `awk`
 
@@ -2684,7 +2681,7 @@ facilities.[10](#FOOT10)
 
 ---
 
-Previous: [When](#When), Up: [Getting Started](#Getting-Started)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Previous: [When](#When), Up: [Getting Started](#10-a-library-of-awk-functions)   [[Contents](#SEC_Contents)][[Index](#Index)]
 
 ### 1.9 Summary
 
@@ -2711,7 +2708,7 @@ a comma, open brace, question mark, colon,
 
 ---
 
-Next: [Regexp](#Regexp), Previous: [Getting Started](#Getting-Started), Up: [Top](#Top)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [Regexp](#Regexp), Previous: [Getting Started](#10-a-library-of-awk-functions), Up: [Top](#Top)   [[Contents](#SEC_Contents)][[Index](#Index)]
 
 ## 2 Running `awk` and `gawk`
 
@@ -3352,7 +3349,7 @@ type the full file name for each file.
 
 By using the -i or -f options, your command-line
 `awk` programs can use facilities in `awk` library files
-(see [Library Functions](#Library-Functions)).
+(see [Library Functions]((#10-a-library-of-awk-functions))).
 Path searching is not done if `gawk` is in compatibility mode.
 This is true for both --traditional and --posix.
 See [Options](#Options).
@@ -10767,7 +10764,7 @@ executed.  Therefore, you have to be careful when writing such rules in
 library files so that the order in which they are executed doesn&rsquo;t matter.
 See [Options](#Options) for more information on
 using library functions.
-See [Library Functions](#Library-Functions),
+See [Library Functions]((#10-a-library-of-awk-functions)),
 for a number of useful library functions.
 
 If an `awk` program has only `BEGIN` rules and no
@@ -13567,7 +13564,7 @@ element is itself a subarray.
 
 ---
 
-Next: [Library Functions](#Library-Functions), Previous: [Arrays](#Arrays), Up: [Top](#Top)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [Library Functions]((#10-a-library-of-awk-functions)), Previous: [Arrays](#Arrays), Up: [Top](#Top)   [[Contents](#SEC_Contents)][[Index](#Index)]
 
 ## 9 Functions
 
@@ -16449,12 +16446,12 @@ comparisons use only lowercase letters.
 &bull; [Passwd Functions](#Passwd-Functions):  Functions for getting user information.
 &bull; [Group Functions](#Group-Functions):  Functions for getting group information.
 &bull; [Walking Arrays](#Walking-Arrays):  A function to walk arrays of arrays.
-&bull; [Library Functions Summary](#Library-Functions-Summary):  Summary of library functions.
+&bull; [Library Functions Summary]((#10-a-library-of-awk-functions)-Summary):  Summary of library functions.
 &bull; [Library Exercises](#Library-Exercises):  Exercises.
 
 ---
 
-Next: [General Functions](#General-Functions), Up: [Library Functions](#Library-Functions)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [General Functions](#General-Functions), Up: [Library Functions]((#10-a-library-of-awk-functions))   [[Contents](#SEC_Contents)][[Index](#Index)]
 
 ### 10.1 Naming Library Function Global Variables
 
@@ -16531,7 +16528,7 @@ way&mdash;we merely recommend that you do so.
 
 ---
 
-Next: [Data File Management](#Data-File-Management), Previous: [Library Names](#Library-Names), Up: [Library Functions](#Library-Functions)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [Data File Management](#Data-File-Management), Previous: [Library Names](#Library-Names), Up: [Library Functions]((#10-a-library-of-awk-functions))   [[Contents](#SEC_Contents)][[Index](#Index)]
 
 ### 10.2 General Programming
 
@@ -17164,7 +17161,7 @@ does it.  `SINGLE` is the one-character string `"'"` and
 
 ---
 
-Next: [Getopt Function](#Getopt-Function), Previous: [General Functions](#General-Functions), Up: [Library Functions](#Library-Functions)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [Getopt Function](#Getopt-Function), Previous: [General Functions](#General-Functions), Up: [Library Functions]((#10-a-library-of-awk-functions))   [[Contents](#SEC_Contents)][[Index](#Index)]
 
 ### 10.3 Data file Management
 
@@ -17492,7 +17489,7 @@ are left alone.
 
 ---
 
-Next: [Passwd Functions](#Passwd-Functions), Previous: [Data File Management](#Data-File-Management), Up: [Library Functions](#Library-Functions)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [Passwd Functions](#Passwd-Functions), Previous: [Data File Management](#Data-File-Management), Up: [Library Functions]((#10-a-library-of-awk-functions))   [[Contents](#SEC_Contents)][[Index](#Index)]
 
 ### 10.4 Processing Command-Line Options
 
@@ -17803,7 +17800,7 @@ use `getopt()` to process their arguments.
 
 ---
 
-Next: [Group Functions](#Group-Functions), Previous: [Getopt Function](#Getopt-Function), Up: [Library Functions](#Library-Functions)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [Group Functions](#Group-Functions), Previous: [Getopt Function](#Getopt-Function), Up: [Library Functions]((#10-a-library-of-awk-functions))   [[Contents](#SEC_Contents)][[Index](#Index)]
 
 ### 10.5 Reading the User Database
 
@@ -18052,7 +18049,7 @@ uses these functions.
 
 ---
 
-Next: [Walking Arrays](#Walking-Arrays), Previous: [Passwd Functions](#Passwd-Functions), Up: [Library Functions](#Library-Functions)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [Walking Arrays](#Walking-Arrays), Previous: [Passwd Functions](#Passwd-Functions), Up: [Library Functions]((#10-a-library-of-awk-functions))   [[Contents](#SEC_Contents)][[Index](#Index)]
 
 ### 10.6 Reading the Group Database
 
@@ -18305,7 +18302,7 @@ uses these functions.
 
 ---
 
-Next: [Library Functions Summary](#Library-Functions-Summary), Previous: [Group Functions](#Group-Functions), Up: [Library Functions](#Library-Functions)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [Library Functions Summary]((#10-a-library-of-awk-functions)-Summary), Previous: [Group Functions](#Group-Functions), Up: [Library Functions]((#10-a-library-of-awk-functions))   [[Contents](#SEC_Contents)][[Index](#Index)]
 
 ### 10.7 Traversing Arrays of Arrays
 
@@ -18417,7 +18414,7 @@ results as does the earlier version of `walk_array()`:
 
 ---
 
-Next: [Library Exercises](#Library-Exercises), Previous: [Walking Arrays](#Walking-Arrays), Up: [Library Functions](#Library-Functions)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [Library Exercises](#Library-Exercises), Previous: [Walking Arrays](#Walking-Arrays), Up: [Library Functions]((#10-a-library-of-awk-functions))   [[Contents](#SEC_Contents)][[Index](#Index)]
 
 ### 10.8 Summary
 
@@ -18453,7 +18450,7 @@ Two functions that traverse an array of arrays to any depth
 
 ---
 
-Previous: [Library Functions Summary](#Library-Functions-Summary), Up: [Library Functions](#Library-Functions)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Previous: [Library Functions Summary]((#10-a-library-of-awk-functions)-Summary), Up: [Library Functions]((#10-a-library-of-awk-functions))   [[Contents](#SEC_Contents)][[Index](#Index)]
 
 ### 10.9 Exercises
 
@@ -18466,11 +18463,11 @@ an intervening value in `ARGV` is a variable assignment.
 
 ---
 
-Next: [Advanced Features](#Advanced-Features), Previous: [Library Functions](#Library-Functions), Up: [Top](#Top)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [Advanced Features](#Advanced-Features), Previous: [Library Functions]((#10-a-library-of-awk-functions)), Up: [Top](#Top)   [[Contents](#SEC_Contents)][[Index](#Index)]
 
 ## 11 Practical `awk` Programs
 
-[Library Functions](#Library-Functions),
+[Library Functions]((#10-a-library-of-awk-functions)),
 presents the idea that reading programs in a language contributes to
 learning that language.  This chapter continues that theme,
 presenting a potpourri of `awk` programs for your reading
@@ -18493,7 +18490,7 @@ problems.  Many of the programs are short, which emphasizes `awk`&rsquo;s
 ability to do a lot in just a few lines of code.
 
 Many of these programs use library functions presented in
-[Library Functions](#Library-Functions).
+[Library Functions]((#10-a-library-of-awk-functions)).
 
 &bull; [Running Examples](#Running-Examples):  How to run these examples.
 &bull; [Clones](#Clones):  Clones of common utilities.
@@ -19107,7 +19104,7 @@ It uses the user database library functions
 (see [Passwd Functions](#Passwd-Functions))
 and the group database library functions
 (see [Group Functions](#Group-Functions))
-from [Library Functions](#Library-Functions).
+from [Library Functions]((#10-a-library-of-awk-functions)).
 
 The program is fairly straightforward.  All the work is done in the
 `BEGIN` rule.  The user and group ID numbers are obtained from
@@ -20435,7 +20432,7 @@ Next: [Simple Sed](#Simple-Sed), Previous: [History Sorting](#History-Sorting), 
 #### 11.3.7 Extracting Programs from Texinfo Source Files
 
 Both this chapter and the previous chapter
-([Library Functions](#Library-Functions))
+([Library Functions]((#10-a-library-of-awk-functions)))
 present a large number of `awk` programs.
 If you want to experiment with these programs, it is tedious to type
 them in by hand.  Here we present a program that can extract parts of a
@@ -21277,7 +21274,7 @@ characters.  The ability to use `split()` with the empty string as
 the separator can considerably simplify such tasks.
 
 -  The examples here demonstrate the usefulness of the library
-functions from [Library Functions](#Library-Functions)
+functions from [Library Functions]((#10-a-library-of-awk-functions))
 for a number of real (if small) programs.
 
 -  Besides reinventing POSIX wheels, other programs solved a selection of
