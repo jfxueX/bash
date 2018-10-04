@@ -2017,14 +2017,14 @@ previously
 in [Read Terminal](#Read-Terminal):
 
 ```awk
-    awk 'BEGIN { print "Don\47t Panic!" }'
+awk 'BEGIN { print "Don\47t Panic!" }'
 ``` 
 
 could instead be written this way:
 
 ```awk
-    $ awk "BEGIN { print \"Don't Panic!\" }"
-    -| Don't Panic!
+$ awk "BEGIN { print \"Don't Panic!\" }"
+-| Don't Panic!
 ```    
 
 Note that the single quote is not special within double quotes.</li>
@@ -2035,25 +2035,25 @@ For example, to specify that the field separator `FS` should
 be set to the null string, use:
 
 ```awk
-    awk -F "" 'program' files # correct
+awk -F "" 'program' files # correct
 ```    
 
 Don&rsquo;t use this:
 
 ```awk
-    awk -F"" 'program' files  # wrong!
+awk -F"" 'program' files  # wrong!
 ```    
 
 In the second case, `awk` attempts to use the text of the program
 as the value of `FS`, and the first file name as the text of the program!
-This results in syntax errors at best, and confusing behavior at worst.</li>
+This results in syntax errors at best, and confusing behavior at worst.</li></ul>
 
 Mixing single and double quotes is difficult.  You have to resort
 to shell quoting tricks, like this:
 
 ```awk
-    $ awk 'BEGIN { print "Here is a single quote <'"'"'>" }'
-    -| Here is a single quote <'>
+$ awk 'BEGIN { print "Here is a single quote <'"'"'>" }'
+-| Here is a single quote <'>
 ```    
     
 
@@ -2063,8 +2063,8 @@ third are single-quoted, and the second is double-quoted.
 This can be &ldquo;simplified&rdquo; to:
 
 ```awk
-    $ awk 'BEGIN { print "Here is a single quote <'\''>" }'
-    -| Here is a single quote <'>
+$ awk 'BEGIN { print "Here is a single quote <'\''>" }'
+-| Here is a single quote <'>
 ```    
 
 Judge for yourself which of these two is the more readable.
@@ -2073,8 +2073,8 @@ Another option is to use double quotes, escaping the embedded, `awk`-level
 double quotes:
 
 ```awk
-    $ awk "BEGIN { print \"Here is a single quote <'>\" }"
-    -| Here is a single quote <'>
+$ awk "BEGIN { print \"Here is a single quote <'>\" }"
+-| Here is a single quote <'>
 ```    
 
 This option is also painful, because double quotes, backslashes, and dollar signs
@@ -2086,10 +2086,10 @@ for the
 single- and double-quote characters, like so:
 
 ```awk
-    $ awk 'BEGIN { print "Here is a single quote <\47>" }'
-    -| Here is a single quote <'>
-    $ awk 'BEGIN { print "Here is a double quote <\42>" }'
-    -| Here is a double quote <">
+$ awk 'BEGIN { print "Here is a single quote <\47>" }'
+-| Here is a single quote <'>
+$ awk 'BEGIN { print "Here is a double quote <\42>" }'
+-| Here is a double quote <">
 ```    
 
 This works nicely, but you should comment clearly what the
@@ -2098,8 +2098,8 @@ escapes mean.
 A fourth option is to use command-line variable assignment, like this:
 
 ```awk
-    $ awk -v sq="'" 'BEGIN { print "Here is a single quote <" sq ">" }'
-    -| Here is a single quote <'>
+$ awk -v sq="'" 'BEGIN { print "Here is a single quote <" sq ">" }'
+-| Here is a single quote <'>
 ```    
 
 (Here, the two string constants and the value of `sq` are concatenated
