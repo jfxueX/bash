@@ -489,9 +489,9 @@ copy and modify this GNU manual.&rdquo;
 
 ## Short Table of Contents
 
-    * [Foreword to the Third Edition](#foreword-to-the-third-edition)
-    * [Foreword to the Fourth Edition](#foreword-to-the-fourth-edition)
-    * [Preface](#preface)
+*     [Foreword to the Third Edition](#foreword-to-the-third-edition)
+*     [Foreword to the Fourth Edition](#foreword-to-the-fourth-edition)
+*     [Preface](#preface)
 * [Part I:](#part-i)
     * [1 Getting Started with `awk`](#1-getting-started-with-awk)
     * [2 Running `awk` and `gawk`](#2-running-awk-and-gawk)
@@ -509,17 +509,17 @@ copy and modify this GNU manual.&rdquo;
 
 ## Table of Contents
 
-    * [Foreword to the Third Edition](#foreword-to-the-third-edition)
-    * [Foreword to the Fourth Edition](#foreword-to-the-fourth-edition)
-    * [Preface](#preface)
-        * [History of `awk` and `gawk`](#history-of-awk-and-gawk)
-        * [A Rose by Any Other Name](#a-rose-by-any-other-name)
-        * [Using This Book](#using-this-book)
-        * [Typographical Conventions](#typographical-conventions)
-            * [Dark Corners](#dark-corners)
-        * [The GNU Project and This Book](#the-gnu-project-and-this-book)
-        * [How to Contribute](#how-to-contribute)
-        * [Acknowledgments](#acknowledgments)
+*     [Foreword to the Third Edition](#foreword-to-the-third-edition)
+*     [Foreword to the Fourth Edition](#foreword-to-the-fourth-edition)
+*     [Preface](#preface)
+     *    [History of `awk` and `gawk`](#history-of-awk-and-gawk)
+     *    [A Rose by Any Other Name](#a-rose-by-any-other-name)
+     *    [Using This Book](#using-this-book)
+     *    [Typographical Conventions](#typographical-conventions)
+         *     [Dark Corners](#dark-corners)
+     *    [The GNU Project and This Book](#the-gnu-project-and-this-book)
+     *    [How to Contribute](#how-to-contribute)
+     *    [Acknowledgments](#acknowledgments)
 * [Part I:](#part-i)
     * [1 Getting Started with `awk`](#1-getting-started-with-awk)
         * [1.1 How to Run `awk` Programs](#11-how-to-run-awk-programs)
@@ -986,6 +986,8 @@ Microsoft Windows
 (all versions),
 and OpenVMS.[3](#FOOT3)
 
+| []() | []()
+| - | -
 | &bull; [History](#History) | The history of `gawk` and `awk`.
 | &bull; [Names](#Names) | What name to use to find `awk`.
 | &bull; [This Manual](#This-Manual) | Using this Web page. Includes sample input files that you can use.
@@ -1137,45 +1139,45 @@ This Web page is split into several parts, as follows:
 It starts with the basics, and continues through all of the features of `awk`.
 It contains the following chapters:
 
-- - [Getting Started](#Getting-Started),
+    - [Getting Started](#Getting-Started),
 provides the essentials you need to know to begin using `awk`.
 
-- - [Invoking Gawk](#Invoking-Gawk),
+    - [Invoking Gawk](#Invoking-Gawk),
 describes how to run `gawk`, the meaning of its
 command-line options, and how it finds `awk`
 program source files.
 
-- - [Regexp](#Regexp),
+    - [Regexp](#Regexp),
 introduces regular expressions in general, and in particular the flavors
 supported by POSIX `awk` and `gawk`.
 
-- - [Reading Files](#Reading-Files),
+    - [Reading Files](#Reading-Files),
 describes how `awk` reads your data.
 It introduces the concepts of records and fields, as well
 as the `getline` command.
 I/O redirection is first described here.
 Network I/O is also briefly introduced here.
 
-- - [Printing](#Printing),
+    - [Printing](#Printing),
 describes how `awk` programs can produce output with
 `print` and `printf`.
 
-- - [Expressions](#Expressions),
+    - [Expressions](#Expressions),
 describes expressions, which are the basic building blocks
 for getting most things done in a program.
 
-- - [Patterns and Actions](#Patterns-and-Actions),
+    - [Patterns and Actions](#Patterns-and-Actions),
 describes how to write patterns for matching records, actions for
 doing something when a record is matched, and the predefined variables
 `awk` and `gawk` use.
 
-- - [Arrays](#Arrays),
+    - [Arrays](#Arrays),
 covers `awk`&rsquo;s one-and-only data structure: the associative array.
 Deleting array elements and whole arrays is described, as well as
 sorting arrays in `gawk`.  The chapter also describes how
 `gawk` provides arrays of arrays.
 
-- - [Functions](#Functions),
+    - [Functions](#Functions),
 describes the built-in functions `awk` and `gawk` provide,
 as well as how to define your own functions.  It also discusses how
 `gawk` lets you call functions indirectly.
@@ -1184,10 +1186,10 @@ as well as how to define your own functions.  It also discusses how
 There is lots of code here for you to read and learn from.
 This part contains the following chapters:
 
-- - [Library Functions](#Library-Functions), provides a number of functions meant to
+    - [Library Functions](#Library-Functions), provides a number of functions meant to
 be used from main `awk` programs.
 
-- - [Sample Programs](#Sample-Programs),
+    - [Sample Programs](#Sample-Programs),
 provides many sample `awk` programs.
 
 Reading these two chapters allows you to see `awk`
@@ -1196,7 +1198,7 @@ solving real problems.
 -  Part III focuses on features specific to `gawk`.
 It contains the following chapters:
 
-- - [Advanced Features](#Advanced-Features),
+    - [Advanced Features](#Advanced-Features),
 describes a number of advanced features.
 Of particular note
 are the abilities to control the order of array traversal,
@@ -1204,28 +1206,28 @@ have two-way communications with another process,
 perform TCP/IP networking, and
 profile your `awk` programs.
 
-- - [Internationalization](#Internationalization),
+    - [Internationalization](#Internationalization),
 describes special features for translating program
 messages into different languages at runtime.
 
-- - [Debugger](#Debugger), describes the `gawk` debugger.
+    - [Debugger](#Debugger), describes the `gawk` debugger.
 
-- - [Arbitrary Precision Arithmetic](#Arbitrary-Precision-Arithmetic),
+    - [Arbitrary Precision Arithmetic](#Arbitrary-Precision-Arithmetic),
 describes advanced arithmetic facilities.
 
-- - [Dynamic Extensions](#Dynamic-Extensions), describes how to add new variables and
+    - [Dynamic Extensions](#Dynamic-Extensions), describes how to add new variables and
 functions to `gawk` by writing extensions in C or C++.
 
 -  Part IV provides the appendices, the Glossary, and two licenses that cover
 the `gawk` source code and this Web page, respectively.
 It contains the following appendices:
 
-- - [Language History](#Language-History),
+    - [Language History](#Language-History),
 describes how the `awk` language has evolved since
 its first release to the present.  It also describes how `gawk`
 has acquired features over time.
 
-- - [Installation](#Installation),
+    - [Installation](#Installation),
 describes how to get `gawk`, how to compile it
 on POSIX-compatible systems,
 and how to compile and use it on different
@@ -1233,20 +1235,18 @@ non-POSIX systems.  It also describes how to report bugs
 in `gawk` and where to get other freely
 available `awk` implementations.
 
-- - [Notes](#Notes),
+    - [Notes](#Notes),
 describes how to disable `gawk`&rsquo;s extensions, as
 well as how to contribute new code to `gawk`,
 and some possible future directions for `gawk` development.
 
-- - [Basic Concepts](#Basic-Concepts),
+    - [Basic Concepts](#Basic-Concepts),
 provides some very cursory background material for those who
-are completely unfamiliar with computer programming.
-
-The [Glossary](#Glossary), defines most, if not all, of the significant terms used
+are completely unfamiliar with computer programming.  The [Glossary](#Glossary), defines most, if not all, of the significant terms used
 throughout the Web page.  If you find terms that you aren&rsquo;t familiar with,
 try looking them up here.
 
-- - [Copying](#Copying), and
+    - [Copying](#Copying), and
 [GNU Free Documentation License](#GNU-Free-Documentation-License),
 present the licenses that cover the `gawk` source code
 and this Web page, respectively.
@@ -1746,6 +1746,7 @@ This next simple `awk` program
 emulates the `cat` utility; it copies whatever you type on the
 keyboard to its standard output (why this works is explained shortly):
 
+```awk
     $ awk '{ print }'Now is the time for all good men
     -| Now is the time for all good men
     to come to the aid of their country.
@@ -1755,6 +1756,7 @@ keyboard to its standard output (why this works is explained shortly):
     What, me worry?
     -| What, me worry?
     Ctrl-d
+```
 
 ---
 
@@ -1774,8 +1776,9 @@ The -f instructs the `awk` utility to get the
 Any file name can be used for source-file.  For example, you
 could put the program:
 
+```awk
     BEGIN { print "Don't Panic!" }
-    
+```    
 
 into the file advice.  Then this command:
 
@@ -1983,25 +1986,24 @@ though that argument has no characters in it. In the rest of this
 Web page, we use the terms *null string* and *empty string*
 interchangeably.  Now, on to the quoting rules:
 
--  Quoted items can be concatenated with nonquoted items as well as with other
+<ul>
+<li>Quoted items can be concatenated with nonquoted items as well as with other
 quoted items.  The shell turns everything into one argument for
-the command.
+the command.</li>
 
--  Preceding any single character with a backslash (&lsquo;\&rsquo;) quotes
+<li>Preceding any single character with a backslash (&lsquo;\&rsquo;) quotes
 that character.  The shell removes the backslash and passes the quoted
-character on to the command.
+character on to the command.</li>
 
-- 
-Single quotes protect everything between the opening and closing quotes.
+<li>Single quotes protect everything between the opening and closing quotes.
 The shell does no interpretation of the quoted text, passing it on verbatim
 to the command.
 It is *impossible* to embed a single quote inside single-quoted text.
 Refer back to
 [Comments](#Comments)
-for an example of what happens if you try.
+for an example of what happens if you try.</li>
 
-- 
-Double quotes protect most things between the opening and closing quotes.
+<li>Double quotes protect most things between the opening and closing quotes.
 The shell does at least variable and command substitution on the quoted text.
 Different shells may do additional kinds of processing on double-quoted text.
 
@@ -2025,9 +2027,9 @@ could instead be written this way:
     -| Don't Panic!
 ```    
 
-Note that the single quote is not special within double quotes.
+Note that the single quote is not special within double quotes.</li>
 
--  Null strings are removed when they occur as part of a non-null
+<li>Null strings are removed when they occur as part of a non-null
 command-line argument, while explicit null objects are kept.
 For example, to specify that the field separator `FS` should
 be set to the null string, use:
@@ -2044,7 +2046,7 @@ Don&rsquo;t use this:
 
 In the second case, `awk` attempts to use the text of the program
 as the value of `FS`, and the first file name as the text of the program!
-This results in syntax errors at best, and confusing behavior at worst.
+This results in syntax errors at best, and confusing behavior at worst.</li>
 
 Mixing single and double quotes is difficult.  You have to resort
 to shell quoting tricks, like this:
@@ -2145,15 +2147,15 @@ escaped in the usual way; indeed they are either duplicated or not,
 depending upon whether there is a subsequent double-quote.  The MS-Windows
 rule for double-quoting a string is the following:
 
-1.  For each double quote in the original string, let N be the number
+ 1. For each double quote in the original string, let N be the number
 of backslash(es) before it, N might be zero. Replace these N
 backslash(es) by *2*N+1* backslash(es)
 
-2.  Let N be the number of backslash(es) tailing the original string,
+ 2. Let N be the number of backslash(es) tailing the original string,
 N might be zero. Replace these N backslash(es) by
 *2*N* backslash(es)
 
-3.  Surround the resulting string by double-quotes.
+ 3. Surround the resulting string by double-quotes.
 
 So to double-quote the one-liner script &lsquo;{ print "\"" $0 "\"" }&rsquo;
 from the previous example you would do it this way:
@@ -2297,16 +2299,17 @@ one way to do things in `awk`.  At some point, you may want
 to look back at these examples and see if
 you can come up with different ways to do the same things shown here:
 
--  Print every line that is longer than 80 characters:
+<ul>
+<li>Print every line that is longer than 80 characters:
 
 ```awk
     awk 'length($0) > 80' data
 ```    
 
 The sole rule has a relational expression as its pattern and has no
-action&mdash;so it uses the default action, printing the record.
+action&mdash;so it uses the default action, printing the record.</li>
 
--  Print the length of the longest input line:
+<li>Print the length of the longest input line:
 
 ```awk
     awk '{ if (length($0) > max) max = length($0) }
@@ -2314,10 +2317,9 @@ action&mdash;so it uses the default action, printing the record.
 ```    
 
 The code associated with `END` executes after all
-input has been read; it&rsquo;s the other side of the coin to `BEGIN`.
+input has been read; it&rsquo;s the other side of the coin to `BEGIN`.</li>
 
-- 
-Print the length of the longest line in data:
+<li>Print the length of the longest line in data:
 
 ```awk
     expand data | awk '{ if (x < length($0)) x = length($0) }
@@ -2327,9 +2329,9 @@ Print the length of the longest line in data:
 This example differs slightly from the previous one:
 the input is processed by the `expand` utility to change TABs
 into spaces, so the widths compared are actually the right-margin columns,
-as opposed to the number of input characters on each line.
+as opposed to the number of input characters on each line.</li>
 
--  Print every line that has at least one field:
+<li>Print every line that has at least one field:
 
 ```awk
     awk 'NF > 0' data
@@ -2337,47 +2339,50 @@ as opposed to the number of input characters on each line.
 
 This is an easy way to delete blank lines from a file (or rather, to
 create a new file similar to the old file but from which the blank lines
-have been removed).
+have been removed).</li>
 
--  Print seven random numbers from 0 to 100, inclusive:
+<li>Print seven random numbers from 0 to 100, inclusive:
 
 ```awk
     awk 'BEGIN { for (i = 1; i <= 7; i++)
                      print int(101 * rand()) }'
-```    
+```
+</li>
 
--  Print the total number of bytes used by files:
+<li>Print the total number of bytes used by files:
 
 ```awk
     ls -l files | awk '{ x += $5 }
                        END { print "total bytes: " x }'
 ```    
+</li>
 
--  Print the total number of kilobytes used by files:
+<li>Print the total number of kilobytes used by files:
 
 ```awk
     ls -l files | awk '{ x += $5 }
        END { print "total K-bytes:", x / 1024 }'
 ```    
-
--  Print a sorted list of the login names of all users:
+</li>
+<li>Print a sorted list of the login names of all users:
 
 ```awk
     awk -F: '{ print $1 }' /etc/passwd | sort
 ```    
-
--  Count the lines in a file:
+</li>
+<li>Count the lines in a file:
 
 ```awk
     awk 'END { print NR }' data
 ```    
-
--  Print the even-numbered lines in the data file:
+</li>
+<li>Print the even-numbered lines in the data file:
 
 ```awk
     awk 'NR % 2 == 0' data
 ```    
-
+</li>
+</ul>
 If you used the expression &lsquo;NR % 2 == 1&rsquo; instead,
 the program would print the odd-numbered lines.
 
@@ -2788,21 +2793,21 @@ The long and short options are
 interchangeable in all contexts.
 The following list describes options mandated by the POSIX standard:
 
-<code>-F <b><i>fs</i></b></code>
-<code>--field-separator <b><i>fs</i></b></code>
+</br><code>-F <b><i>fs</i></b></code></br>
+<code>--field-separator <b><i>fs</i></b></code></br>
 Set the `FS` variable to fs
 (see [Field Separators](#Field-Separators)).
 
-<code>-f <i><b>source-file</b></i></code>
-<code>--file <i><b>source-file</b></i></code>
+<code>-f <i><b>source-file</b></i></code></br>
+<code>--file <i><b>source-file</b></i></code></br>
 Read the `awk` program source from source-file
 instead of in the first nonoption argument.
 This option may be given multiple times; the `awk`
 program consists of the concatenation of the contents of
 each specified source-file.
 
-<code>-v var=<i><b>val</b></i></code>
-<code>--assign var=<i><b>val</b></i></code>
+<code>-v var=<i><b>val</b></i></code></br>
+<code>--assign var=<i><b>val</b></i></code></br>
 Set the variable var to the value val*before*
 execution of the program begins.  Such variable values are available
 inside the `BEGIN` rule
@@ -2840,8 +2845,8 @@ program; see [Getopt Function](#Getopt-Function).
 
 The following list describes `gawk`-specific options:
 
-<code>-b</code>
-<code>--characters-as-bytes</code>
+<code>-b</code></br>
+<code>--characters-as-bytes</code></br>
 Cause `gawk` to treat all input data as single-byte characters.
 In addition, all output written with `print` or `printf`
 is treated as single-byte characters.
@@ -2853,8 +2858,8 @@ can lead to problems or confusion if the input data does not contain valid
 multibyte characters. This option is an easy way to tell `gawk`,
 &ldquo;Hands off my data!&rdquo;
 
-<code>-c</code>
-<code>--traditional</code>
+<code>-c</code></br>
+<code>--traditional</code></br>
 Specify *compatibility mode*, in which the GNU extensions to
 the `awk` language are disabled, so that `gawk` behaves just
 like BWK `awk`.
@@ -4072,7 +4077,7 @@ the very first step in processing regexps.
 Here is a list of metacharacters.  All characters that are not escape
 sequences and that are not listed here stand for themselves:
 
-<code>\</code>
+<code>\\</code>
 This suppresses the special meaning of a character when
 matching.  For example, &lsquo;\$&rsquo;
 matches the character &lsquo;$&rsquo;.
