@@ -26,7 +26,7 @@ ul.no-bullet {list-style: none}
 
 # The GNU Awk User&rsquo;s Guide
 
-Next: [Foreword3](#Foreword3), Up: [(dir)](/manual)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [Foreword3](#foreword-to-the-third-edition), Up: [(dir)](/manual)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 # General Introduction
 
@@ -55,20 +55,20 @@ copy and modify this GNU manual.&rdquo;
 
 | toc | description
 | --- | ---
-| &bull; [Foreword3](#Foreword3) | Some nice words about this Web page.
-| &bull; [Foreword4](#Foreword4) | More nice words.
-| &bull; [Preface](#Preface) | What this Web page is about; brief history and acknowledgments.
+| &bull; [Foreword3](#foreword-to-the-third-edition) | Some nice words about this Web page.
+| &bull; [Foreword4](#foreword-to-the-fourth-edition) | More nice words.
+| &bull; [Preface](#preface) | What this Web page is about; brief history and acknowledgments.
 | &bull; [Getting Started](#10-a-library-of-awk-functions) | A basic introduction to using `awk`. How to run an `awk` program. Command-line syntax.
-| &bull; [Invoking Gawk](#Invoking-Gawk) | How to run `gawk`.
-| &bull; [Regexp](#Regexp) | All about matching things using regular expressions.
-| &bull; [Reading Files](#Reading-Files) | How to read files and manipulate fields.
-| &bull; [Printing](#Printing) | How to print using `awk`. Describes the `print` and `printf` statements. Also describes redirection of output.
-| &bull; [Expressions](#Expressions) | Expressions are the basic building blocks of statements.
-| &bull; [Patterns and Actions](#Patterns-and-Actions) | Overviews of patterns and actions.
-| &bull; [Arrays](#Arrays) | The description and use of arrays. Also includes array-oriented control statements.
-| &bull; [Functions](#Functions) | Built-in and user-defined functions.
+| &bull; [Invoking Gawk](#2-running-awk-and-gawk) | How to run `gawk`.
+| &bull; [Regexp](#3-regular-expressions) | All about matching things using regular expressions.
+| &bull; [Reading Files](#4-reading-input-files) | How to read files and manipulate fields.
+| &bull; [Printing](#5-printing-output) | How to print using `awk`. Describes the `print` and `printf` statements. Also describes redirection of output.
+| &bull; [Expressions](#6-expressions) | Expressions are the basic building blocks of statements.
+| &bull; [Patterns and Actions](#7-patterns-actions-and-variables) | Overviews of patterns and actions.
+| &bull; [Arrays](#8-arrays-in-awk) | The description and use of arrays. Also includes array-oriented control statements.
+| &bull; [Functions](#9-functions) | Built-in and user-defined functions.
 | &bull; [Library Functions]((#10-a-library-of-awk-functions)) | A Library of `awk` Functions.
-| &bull; [Sample Programs](#Sample-Programs) | Many `awk` programs with complete explanations.
+| &bull; [Sample Programs](#11-practical-awk-programs) | Many `awk` programs with complete explanations.
 | &bull; [Advanced Features](#Advanced-Features) | Stuff for advanced users, specific to `gawk`.
 | &bull; [Internationalization](#Internationalization) | Getting `gawk` to speak your language.
 | &bull; [Debugger](#Debugger) | The `gawk` debugger.
@@ -82,247 +82,247 @@ copy and modify this GNU manual.&rdquo;
 | &bull; [Copying](#Copying) | Your right to copy and distribute `gawk`.
 | &bull; [GNU Free Documentation License](#GNU-Free-Documentation-License) | The license for this Web page.
 | &bull; [Index](#Index) | Concept and Variable Index.
-| &bull; [History](#History) | The history of `gawk` and `awk`.
-| &bull; [Names](#Names) | What name to use to find `awk`.
-| &bull; [This Manual](#This-Manual) | Using this Web page. Includes sample input files that you can use.
-| &bull; [Conventions](#Conventions) | Typographical Conventions.
-| &bull; [Manual History](#Manual-History) | Brief history of the GNU project and this Web page.
-| &bull; [How To Contribute](#How-To-Contribute) | Helping to save the world.
-| &bull; [Acknowledgments](#Acknowledgments) | Acknowledgments.
-| &bull; [Running gawk](#Running-gawk) | How to run `gawk` programs; includes command-line syntax.
-| &bull; [One-shot](#One_002dshot) | Running a short throwaway `awk` program.
-| &bull; [Read Terminal](#Read-Terminal) | Using no input files (input from the keyboard instead).
-| &bull; [Long](#Long) | Putting permanent `awk` programs in files.
-| &bull; [Executable Scripts](#Executable-Scripts) | Making self-contained `awk` programs.
-| &bull; [Comments](#Comments) | Adding documentation to `gawk` programs.
-| &bull; [Quoting](#Quoting) | More discussion of shell quoting issues.
-| &bull; [DOS Quoting](#DOS-Quoting) | Quoting in Windows Batch Files.
-| &bull; [Sample Data Files](#Sample-Data-Files) | Sample data files for use in the `awk` programs illustrated in this Web page.
-| &bull; [Very Simple](#Very-Simple) | A very simple example.
-| &bull; [Two Rules](#Two-Rules) | A less simple one-line example using two rules.
-| &bull; [More Complex](#More-Complex) | A more complex example.
-| &bull; [Statements/Lines](#Statements_002fLines) | Subdividing or combining statements into lines.
-| &bull; [Other Features](#Other-Features) | Other Features of `awk`.
-| &bull; [When](#When) | When to use `gawk` and when to use other things.
-| &bull; [Intro Summary](#Intro-Summary) | Summary of the introduction.
-| &bull; [Command Line](#Command-Line) | How to run `awk`.
-| &bull; [Options](#Options) | Command-line options and their meanings.
-| &bull; [Other Arguments](#Other-Arguments) | Input file names and variable assignments.
-| &bull; [Naming Standard Input](#Naming-Standard-Input) | How to specify standard input with other files.
-| &bull; [Environment Variables](#Environment-Variables) | The environment variables `gawk` uses.
-| &bull; [AWKPATH Variable](#AWKPATH-Variable) | Searching directories for `awk` programs.
-| &bull; [AWKLIBPATH Variable](#AWKLIBPATH-Variable) | Searching directories for `awk` shared libraries.
-| &bull; [Other Environment Variables](#Other-Environment-Variables) | The environment variables.
-| &bull; [Exit Status](#Exit-Status) | `gawk`&rsquo;s exit status.
-| &bull; [Include Files](#Include-Files) | Including other files into your program.
-| &bull; [Loading Shared Libraries](#Loading-Shared-Libraries) | Loading shared libraries into your program.
-| &bull; [Obsolete](#Obsolete) | Obsolete Options and/or features.
-| &bull; [Undocumented](#Undocumented) | Undocumented Options and Features.
-| &bull; [Invoking Summary](#Invoking-Summary) | Invocation summary.
-| &bull; [Regexp Usage](#Regexp-Usage) | How to Use Regular Expressions.
-| &bull; [Escape Sequences](#Escape-Sequences) | How to write nonprinting characters.
-| &bull; [Regexp Operators](#Regexp-Operators) | Regular Expression Operators.
-| &bull; [Bracket Expressions](#Bracket-Expressions) | What can go between &lsquo;[...]&rsquo;.
-| &bull; [Leftmost Longest](#Leftmost-Longest) | How much text matches.
-| &bull; [Computed Regexps](#Computed-Regexps) | Using Dynamic Regexps.
-| &bull; [GNU Regexp Operators](#GNU-Regexp-Operators) | Operators specific to GNU software.
-| &bull; [Case-sensitivity](#Case_002dsensitivity) | How to do case-insensitive matching.
-| &bull; [Regexp Summary](#Regexp-Summary) | Regular expressions summary.
-| &bull; [Records](#Records) | Controlling how data is split into records.
-| &bull; [awk split records](#awk-split-records) | How standard `awk` splits records.
-| &bull; [gawk split records](#gawk-split-records) | How `gawk` splits records.
-| &bull; [Fields](#Fields) | An introduction to fields.
-| &bull; [Nonconstant Fields](#Nonconstant-Fields) | Nonconstant Field Numbers.
-| &bull; [Changing Fields](#Changing-Fields) | Changing the Contents of a Field.
-| &bull; [Field Separators](#Field-Separators) | The field separator and how to change it.
-| &bull; [Default Field Splitting](#Default-Field-Splitting) | How fields are normally separated.
-| &bull; [Regexp Field Splitting](#Regexp-Field-Splitting) | Using regexps as the field separator.
-| &bull; [Single Character Fields](#Single-Character-Fields) | Making each character a separate field.
-| &bull; [Command Line Field Separator](#Command-Line-Field-Separator) | Setting `FS` from the command line.
-| &bull; [Full Line Fields](#Full-Line-Fields) | Making the full line be a single field.
-| &bull; [Field Splitting Summary](#Field-Splitting-Summary) | Some final points and a summary table.
-| &bull; [Constant Size](#Constant-Size) | Reading constant width data.
-| &bull; [Fixed width data](#Fixed-width-data) | Processing fixed-width data.
-| &bull; [Skipping intervening](#Skipping-intervening) | Skipping intervening fields.
-| &bull; [Allowing trailing data](#Allowing-trailing-data) | Capturing optional trailing data.
-| &bull; [Fields with fixed data](#Fields-with-fixed-data) | Field values with fixed-width data.
-| &bull; [Splitting By Content](#Splitting-By-Content) | Defining Fields By Content
-| &bull; [Testing field creation](#Testing-field-creation) | Checking how `gawk` is splitting records.
-| &bull; [Multiple Line](#Multiple-Line) | Reading multiline records.
-| &bull; [Getline](#Getline) | Reading files under explicit program control using the `getline` function.
-| &bull; [Plain Getline](#Plain-Getline) | Using `getline` with no arguments.
-| &bull; [Getline/Variable](#Getline_002fVariable) | Using `getline` into a variable.
-| &bull; [Getline/File](#Getline_002fFile) | Using `getline` from a file.
-| &bull; [Getline/Variable/File](#Getline_002fVariable_002fFile) | Using `getline` into a variable from a file.
-| &bull; [Getline/Pipe](#Getline_002fPipe) | Using `getline` from a pipe.
-| &bull; [Getline/Variable/Pipe](#Getline_002fVariable_002fPipe) | Using `getline` into a variable from a pipe.
-| &bull; [Getline/Coprocess](#Getline_002fCoprocess) | Using `getline` from a coprocess.
-| &bull; [Getline/Variable/Coprocess](#Getline_002fVariable_002fCoprocess) | Using `getline` into a variable from a coprocess.
-| &bull; [Getline Notes](#Getline-Notes) | Important things to know about `getline`.
-| &bull; [Getline Summary](#Getline-Summary) | Summary of `getline` Variants.
-| &bull; [Read Timeout](#Read-Timeout) | Reading input with a timeout.
-| &bull; [Retrying Input](#Retrying-Input) | Retrying input after certain errors.
-| &bull; [Command-line directories](#Command_002dline-directories) | What happens if you put a directory on the command line.
-| &bull; [Input Summary](#Input-Summary) | Input summary.
-| &bull; [Input Exercises](#Input-Exercises) | Exercises.
-| &bull; [Print](#Print) | The `print` statement.
-| &bull; [Print Examples](#Print-Examples) | Simple examples of `print` statements.
-| &bull; [Output Separators](#Output-Separators) | The output separators and how to change them.
-| &bull; [OFMT](#OFMT) | Controlling Numeric Output With `print`.
-| &bull; [Printf](#Printf) | The `printf` statement.
-| &bull; [Basic Printf](#Basic-Printf) | Syntax of the `printf` statement.
-| &bull; [Control Letters](#Control-Letters) | Format-control letters.
-| &bull; [Format Modifiers](#Format-Modifiers) | Format-specification modifiers.
-| &bull; [Printf Examples](#Printf-Examples) | Several examples.
-| &bull; [Redirection](#Redirection) | How to redirect output to multiple files and pipes.
-| &bull; [Special FD](#Special-FD) | Special files for I/O.
-| &bull; [Special Files](#Special-Files) | File name interpretation in `gawk`. `gawk` allows access to inherited file descriptors.
-| &bull; [Other Inherited Files](#Other-Inherited-Files) | Accessing other open files with `gawk`.
-| &bull; [Special Network](#Special-Network) | Special files for network communications.
-| &bull; [Special Caveats](#Special-Caveats) | Things to watch out for.
-| &bull; [Close Files And Pipes](#Close-Files-And-Pipes) | Closing Input and Output Files and Pipes.
-| &bull; [Nonfatal](#Nonfatal) | Enabling Nonfatal Output.
-| &bull; [Output Summary](#Output-Summary) | Output summary.
-| &bull; [Output Exercises](#Output-Exercises) | Exercises.
-| &bull; [Values](#Values) | Constants, Variables, and Regular Expressions.
-| &bull; [Constants](#Constants) | String, numeric and regexp constants.
-| &bull; [Scalar Constants](#Scalar-Constants) | Numeric and string constants.
-| &bull; [Nondecimal-numbers](#Nondecimal_002dnumbers) | What are octal and hex numbers.
-| &bull; [Regexp Constants](#Regexp-Constants) | Regular Expression constants.
-| &bull; [Using Constant Regexps](#Using-Constant-Regexps) | When and how to use a regexp constant.
-| &bull; [Standard Regexp Constants](#Standard-Regexp-Constants) | Regexp constants in standard `awk`.
-| &bull; [Strong Regexp Constants](#Strong-Regexp-Constants) | Strongly typed regexp constants.
-| &bull; [Variables](#Variables) | Variables give names to values for later use.
-| &bull; [Using Variables](#Using-Variables) | Using variables in your programs.
-| &bull; [Assignment Options](#Assignment-Options) | Setting variables on the command line and a summary of command-line syntax.  This is an advanced method of input.
-| &bull; [Conversion](#Conversion) | The conversion of strings to numbers and vice versa.
-| &bull; [Strings And Numbers](#Strings-And-Numbers) | How `awk` Converts Between Strings And Numbers.
-| &bull; [Locale influences conversions](#Locale-influences-conversions) | How the locale may affect conversions.
-| &bull; [All Operators](#All-Operators) | `gawk`&rsquo;s operators.
-| &bull; [Arithmetic Ops](#Arithmetic-Ops) | Arithmetic operations (&lsquo;+&rsquo;, &lsquo;-&rsquo;, etc.)
-| &bull; [Concatenation](#Concatenation) | Concatenating strings.
-| &bull; [Assignment Ops](#Assignment-Ops) | Changing the value of a variable or a field.
-| &bull; [Increment Ops](#Increment-Ops) | Incrementing the numeric value of a variable.
-| &bull; [Truth Values and Conditions](#Truth-Values-and-Conditions) | Testing for true and false.
-| &bull; [Truth Values](#Truth-Values) | What is &ldquo;true&rdquo; and what is &ldquo;false&rdquo;.
-| &bull; [Typing and Comparison](#Typing-and-Comparison) | How variables acquire types and how this affects comparison of numbers and strings with &lsquo;<&rsquo;, etc.
-| &bull; [Variable Typing](#Variable-Typing) | String type versus numeric type.
-| &bull; [Comparison Operators](#Comparison-Operators) | The comparison operators.
-| &bull; [POSIX String Comparison](#POSIX-String-Comparison) | String comparison with POSIX rules.
-| &bull; [Boolean Ops](#Boolean-Ops) | Combining comparison expressions using boolean operators &lsquo;||&rsquo; (&ldquo;or&rdquo;), &lsquo;&&&rsquo; (&ldquo;and&rdquo;) and &lsquo;!&rsquo; (&ldquo;not&rdquo;).
-| &bull; [Conditional Exp](#Conditional-Exp) | Conditional expressions select between two subexpressions under control of a third subexpression.
-| &bull; [Function Calls](#Function-Calls) | A function call is an expression.
-| &bull; [Precedence](#Precedence) | How various operators nest.
-| &bull; [Locales](#Locales) | How the locale affects things.
-| &bull; [Expressions Summary](#Expressions-Summary) | Expressions summary.
-| &bull; [Pattern Overview](#Pattern-Overview) | What goes into a pattern.
-| &bull; [Regexp Patterns](#Regexp-Patterns) | Using regexps as patterns.
-| &bull; [Expression Patterns](#Expression-Patterns) | Any expression can be used as a pattern.
-| &bull; [Ranges](#Ranges) | Pairs of patterns specify record ranges.
-| &bull; [BEGIN/END](#BEGIN_002fEND) | Specifying initialization and cleanup rules.
-| &bull; [Using BEGIN/END](#Using-BEGIN_002fEND) | How and why to use BEGIN/END rules.
-| &bull; [I/O And BEGIN/END](#I_002fO-And-BEGIN_002fEND) | I/O issues in BEGIN/END rules.
-| &bull; [BEGINFILE/ENDFILE](#BEGINFILE_002fENDFILE) | Two special patterns for advanced control.
-| &bull; [Empty](#Empty) | The empty pattern, which matches every record.
-| &bull; [Using Shell Variables](#Using-Shell-Variables) | How to use shell variables with `awk`.
-| &bull; [Action Overview](#Action-Overview) | What goes into an action.
-| &bull; [Statements](#Statements) | Describes the various control statements in detail.
-| &bull; [If Statement](#If-Statement) | Conditionally execute some `awk` statements.
-| &bull; [While Statement](#While-Statement) | Loop until some condition is satisfied.
-| &bull; [Do Statement](#Do-Statement) | Do specified action while looping until some condition is satisfied.
-| &bull; [For Statement](#For-Statement) | Another looping statement, that provides initialization and increment clauses.
-| &bull; [Switch Statement](#Switch-Statement) | Switch/case evaluation for conditional execution of statements based on a value.
-| &bull; [Break Statement](#Break-Statement) | Immediately exit the innermost enclosing loop.
-| &bull; [Continue Statement](#Continue-Statement) | Skip to the end of the innermost enclosing loop.
-| &bull; [Next Statement](#Next-Statement) | Stop processing the current input record.
-| &bull; [Nextfile Statement](#Nextfile-Statement) | Stop processing the current file.
-| &bull; [Exit Statement](#Exit-Statement) | Stop execution of `awk`.
-| &bull; [Built-in Variables](#Built_002din-Variables) | Summarizes the predefined variables.
-| &bull; [User-modified](#User_002dmodified) | Built-in variables that you change to control `awk`.
-| &bull; [Auto-set](#Auto_002dset) | Built-in variables where `awk` gives you information.
-| &bull; [ARGC and ARGV](#ARGC-and-ARGV) | Ways to use `ARGC` and `ARGV`.
-| &bull; [Pattern Action Summary](#Pattern-Action-Summary) | Patterns and Actions summary.
-| &bull; [Array Basics](#Array-Basics) | The basics of arrays.
-| &bull; [Array Intro](#Array-Intro) | Introduction to Arrays
-| &bull; [Reference to Elements](#Reference-to-Elements) | How to examine one element of an array.
-| &bull; [Assigning Elements](#Assigning-Elements) | How to change an element of an array.
-| &bull; [Array Example](#Array-Example) | Basic Example of an Array
-| &bull; [Scanning an Array](#Scanning-an-Array) | A variation of the `for` statement. It loops through the indices of an array&rsquo;s existing elements.
-| &bull; [Controlling Scanning](#Controlling-Scanning) | Controlling the order in which arrays are scanned.
-| &bull; [Numeric Array Subscripts](#Numeric-Array-Subscripts) | How to use numbers as subscripts in `awk`.
-| &bull; [Uninitialized Subscripts](#Uninitialized-Subscripts) | Using Uninitialized variables as subscripts.
-| &bull; [Delete](#Delete) | The `delete` statement removes an element from an array.
-| &bull; [Multidimensional](#Multidimensional) | Emulating multidimensional arrays in `awk`.
-| &bull; [Multiscanning](#Multiscanning) | Scanning multidimensional arrays.
-| &bull; [Arrays of Arrays](#Arrays-of-Arrays) | True multidimensional arrays.
-| &bull; [Arrays Summary](#Arrays-Summary) | Summary of arrays.
-| &bull; [Built-in](#Built_002din) | Summarizes the built-in functions.
-| &bull; [Calling Built-in](#Calling-Built_002din) | How to call built-in functions.
-| &bull; [Numeric Functions](#Numeric-Functions) | Functions that work with numbers, including `int()`, `sin()` and `rand()`.
-| &bull; [String Functions](#String-Functions) | Functions for string manipulation, such as `split()`, `match()` and `sprintf()`.
-| &bull; [Gory Details](#Gory-Details) | More than you want to know about &lsquo;\&rsquo; and &lsquo;&&rsquo; with `sub()`, `gsub()`, and `gensub()`.
-| &bull; [I/O Functions](#I_002fO-Functions) | Functions for files and shell commands.
-| &bull; [Time Functions](#Time-Functions) | Functions for dealing with timestamps.
-| &bull; [Bitwise Functions](#Bitwise-Functions) | Functions for bitwise operations.
-| &bull; [Type Functions](#Type-Functions) | Functions for type information.
-| &bull; [I18N Functions](#I18N-Functions) | Functions for string translation.
-| &bull; [User-defined](#User_002ddefined) | Describes User-defined functions in detail.
-| &bull; [Definition Syntax](#Definition-Syntax) | How to write definitions and what they mean.
-| &bull; [Function Example](#Function-Example) | An example function definition and what it does.
-| &bull; [Function Caveats](#Function-Caveats) | Things to watch out for.
-| &bull; [Calling A Function](#Calling-A-Function) | Don&rsquo;t use spaces.
-| &bull; [Variable Scope](#Variable-Scope) | Controlling variable scope.
-| &bull; [Pass By Value/Reference](#Pass-By-Value_002fReference) | Passing parameters.
-| &bull; [Return Statement](#Return-Statement) | Specifying the value a function returns.
-| &bull; [Dynamic Typing](#Dynamic-Typing) | How variable types can change at runtime.
-| &bull; [Indirect Calls](#Indirect-Calls) | Choosing the function to call at runtime.
-| &bull; [Functions Summary](#Functions-Summary) | Summary of functions.
-| &bull; [Library Names](#Library-Names) | How to best name private global variables in library functions.
-| &bull; [General Functions](#General-Functions) | Functions that are of general use.
-| &bull; [Strtonum Function](#Strtonum-Function) | A replacement for the built-in `strtonum()` function.
-| &bull; [Assert Function](#Assert-Function) | A function for assertions in `awk` programs.
-| &bull; [Round Function](#Round-Function) | A function for rounding if `sprintf()` does not do it correctly.
-| &bull; [Cliff Random Function](#Cliff-Random-Function) | The Cliff Random Number Generator.
-| &bull; [Ordinal Functions](#Ordinal-Functions) | Functions for using characters as numbers and vice versa.
-| &bull; [Join Function](#Join-Function) | A function to join an array into a string.
-| &bull; [Getlocaltime Function](#Getlocaltime-Function) | A function to get formatted times.
-| &bull; [Readfile Function](#Readfile-Function) | A function to read an entire file at once.
-| &bull; [Shell Quoting](#Shell-Quoting) | A function to quote strings for the shell.
-| &bull; [Data File Management](#Data-File-Management) | Functions for managing command-line data files.
-| &bull; [Filetrans Function](#Filetrans-Function) | A function for handling data file transitions.
-| &bull; [Rewind Function](#Rewind-Function) | A function for rereading the current file.
-| &bull; [File Checking](#File-Checking) | Checking that data files are readable.
-| &bull; [Empty Files](#Empty-Files) | Checking for zero-length files.
-| &bull; [Ignoring Assigns](#Ignoring-Assigns) | Treating assignments as file names.
-| &bull; [Getopt Function](#Getopt-Function) | A function for processing command-line arguments.
-| &bull; [Passwd Functions](#Passwd-Functions) | Functions for getting user information.
-| &bull; [Group Functions](#Group-Functions) | Functions for getting group information.
-| &bull; [Walking Arrays](#Walking-Arrays) | A function to walk arrays of arrays.
-| &bull; [Library Functions Summary]((#10-a-library-of-awk-functions)-Summary) | Summary of library functions.
-| &bull; [Library Exercises](#Library-Exercises) | Exercises.
-| &bull; [Running Examples](#Running-Examples) | How to run these examples.
-| &bull; [Clones](#Clones) | Clones of common utilities.
-| &bull; [Cut Program](#Cut-Program) | The `cut` utility.
-| &bull; [Egrep Program](#Egrep-Program) | The `egrep` utility.
-| &bull; [Id Program](#Id-Program) | The `id` utility.
-| &bull; [Split Program](#Split-Program) | The `split` utility.
-| &bull; [Tee Program](#Tee-Program) | The `tee` utility.
-| &bull; [Uniq Program](#Uniq-Program) | The `uniq` utility.
-| &bull; [Wc Program](#Wc-Program) | The `wc` utility.
-| &bull; [Miscellaneous Programs](#Miscellaneous-Programs) | Some interesting `awk` programs.
-| &bull; [Dupword Program](#Dupword-Program) | Finding duplicated words in a document.
-| &bull; [Alarm Program](#Alarm-Program) | An alarm clock.
-| &bull; [Translate Program](#Translate-Program) | A program similar to the `tr` utility.
-| &bull; [Labels Program](#Labels-Program) | Printing mailing labels.
-| &bull; [Word Sorting](#Word-Sorting) | A program to produce a word usage count.
-| &bull; [History Sorting](#History-Sorting) | Eliminating duplicate entries from a history file.
-| &bull; [Extract Program](#Extract-Program) | Pulling out programs from Texinfo source files.
-| &bull; [Simple Sed](#Simple-Sed) | A Simple Stream Editor.
-| &bull; [Igawk Program](#Igawk-Program) | A wrapper for `awk` that includes files.
-| &bull; [Anagram Program](#Anagram-Program) | Finding anagrams from a dictionary.
-| &bull; [Signature Program](#Signature-Program) | People do amazing things with too much time on their hands.
-| &bull; [Programs Summary](#Programs-Summary) | Summary of programs.
-| &bull; [Programs Exercises](#Programs-Exercises) | Exercises.
+| &bull; [History](#history-of-awk-and-gawk) | The history of `gawk` and `awk`.
+| &bull; [Names](#a-rose-by-any-other-name) | What name to use to find `awk`.
+| &bull; [This Manual](#using-this-book) | Using this Web page. Includes sample input files that you can use.
+| &bull; [Conventions](#typographical-conventions) | Typographical Conventions.
+| &bull; [Manual History](#the-gnu-project-and-this-book) | Brief history of the GNU project and this Web page.
+| &bull; [How To Contribute](#how-to-contribute) | Helping to save the world.
+| &bull; [Acknowledgments](#acknowledgments) | Acknowledgments.
+| &bull; [Running gawk](#11-how-to-run-awk-programs) | How to run `gawk` programs; includes command-line syntax.
+| &bull; [One-shot](#111-one-shot-throwaway-awk-programs) | Running a short throwaway `awk` program.
+| &bull; [Read Terminal](#112-running-awk-without-input-files) | Using no input files (input from the keyboard instead).
+| &bull; [Long](#113-running-long-programs) | Putting permanent `awk` programs in files.
+| &bull; [Executable Scripts](#114-executable-awk-programs) | Making self-contained `awk` programs.
+| &bull; [Comments](#115-comments-in-awk-programs) | Adding documentation to `gawk` programs.
+| &bull; [Quoting](#116-shell-quoting-issues) | More discussion of shell quoting issues.
+| &bull; [DOS Quoting](#1161-quoting-in-ms-windows-batch-files) | Quoting in Windows Batch Files.
+| &bull; [Sample Data Files](#12-data-files-for-the-examples) | Sample data files for use in the `awk` programs illustrated in this Web page.
+| &bull; [Very Simple](#13-some-simple-examples) | A very simple example.
+| &bull; [Two Rules](#14-an-example-with-two-rules) | A less simple one-line example using two rules.
+| &bull; [More Complex](#15-a-more-complex-example) | A more complex example.
+| &bull; [Statements/Lines](#16-awk-statements-versus-lines) | Subdividing or combining statements into lines.
+| &bull; [Other Features](#17-other-features-of-awk) | Other Features of `awk`.
+| &bull; [When](#18-when-to-use-awk) | When to use `gawk` and when to use other things.
+| &bull; [Intro Summary](#19-summary) | Summary of the introduction.
+| &bull; [Command Line](#21-invoking-awk) | How to run `awk`.
+| &bull; [Options](#22-command-line-options) | Command-line options and their meanings.
+| &bull; [Other Arguments](#23-other-command-line-arguments) | Input file names and variable assignments.
+| &bull; [Naming Standard Input](#24-naming-standard-input) | How to specify standard input with other files.
+| &bull; [Environment Variables](#25-the-environment-variables-gawk-uses) | The environment variables `gawk` uses.
+| &bull; [AWKPATH Variable](#251-the-awkpath-environment-variable) | Searching directories for `awk` programs.
+| &bull; [AWKLIBPATH Variable](#252-the-awklibpath-environment-variable) | Searching directories for `awk` shared libraries.
+| &bull; [Other Environment Variables](#253-other-environment-variables) | The environment variables.
+| &bull; [Exit Status](#26-gawkrsquos-exit-status) | `gawk`&rsquo;s exit status.
+| &bull; [Include Files](#27-including-other-files-into-your-program) | Including other files into your program.
+| &bull; [Loading Shared Libraries](#28-loading-dynamic-extensions-into-your-program) | Loading shared libraries into your program.
+| &bull; [Obsolete](#29-obsolete-options-andor-features) | Obsolete Options and/or features.
+| &bull; [Undocumented](#210-undocumented-options-and-features) | Undocumented Options and Features.
+| &bull; [Invoking Summary](#211-summary) | Invocation summary.
+| &bull; [Regexp Usage](#31-how-to-use-regular-expressions) | How to Use Regular Expressions.
+| &bull; [Escape Sequences](#32-escape-sequences) | How to write nonprinting characters.
+| &bull; [Regexp Operators](#33-regular-expression-operators) | Regular Expression Operators.
+| &bull; [Bracket Expressions](#34-using-bracket-expressions) | What can go between &lsquo;[...]&rsquo;.
+| &bull; [Leftmost Longest](#35-how-much-text-matches) | How much text matches.
+| &bull; [Computed Regexps](#36-using-dynamic-regexps) | Using Dynamic Regexps.
+| &bull; [GNU Regexp Operators](#37-gawk-specific-regexp-operators) | Operators specific to GNU software.
+| &bull; [Case-sensitivity](#38-case-sensitivity-in-matching) | How to do case-insensitive matching.
+| &bull; [Regexp Summary](#39-summary) | Regular expressions summary.
+| &bull; [Records](#41-how-input-is-split-into-records) | Controlling how data is split into records.
+| &bull; [awk split records](#411-record-splitting-with-standard-awk) | How standard `awk` splits records.
+| &bull; [gawk split records](#412-record-splitting-with-gawk) | How `gawk` splits records.
+| &bull; [Fields](#42-examining-fields) | An introduction to fields.
+| &bull; [Nonconstant Fields](#43-nonconstant-field-numbers) | Nonconstant Field Numbers.
+| &bull; [Changing Fields](#44-changing-the-contents-of-a-field) | Changing the Contents of a Field.
+| &bull; [Field Separators](#45-specifying-how-fields-are-separated) | The field separator and how to change it.
+| &bull; [Default Field Splitting](#451-whitespace-normally-separates-fields) | How fields are normally separated.
+| &bull; [Regexp Field Splitting](#452-using-regular-expressions-to-separate-fields) | Using regexps as the field separator.
+| &bull; [Single Character Fields](#453-making-each-character-a-separate-field) | Making each character a separate field.
+| &bull; [Command Line Field Separator](#454-setting-fs-from-the-command-line) | Setting `FS` from the command line.
+| &bull; [Full Line Fields](#455-making-the-full-line-be-a-single-field) | Making the full line be a single field.
+| &bull; [Field Splitting Summary](#456-field-splitting-summary) | Some final points and a summary table.
+| &bull; [Constant Size](#46-reading-fixed-width-data) | Reading constant width data.
+| &bull; [Fixed width data](#461-processing-fixed-width-data) | Processing fixed-width data.
+| &bull; [Skipping intervening](#462-skipping-intervening-fields) | Skipping intervening fields.
+| &bull; [Allowing trailing data](#463-capturing-optional-trailing-data) | Capturing optional trailing data.
+| &bull; [Fields with fixed data](#464-field-values-with-fixed-width-data) | Field values with fixed-width data.
+| &bull; [Splitting By Content](#47-defining-fields-by-content) | Defining Fields By Content
+| &bull; [Testing field creation](#48-checking-how-gawk-is-splitting-records) | Checking how `gawk` is splitting records.
+| &bull; [Multiple Line](#49-multiple-line-records) | Reading multiline records.
+| &bull; [Getline](#410-explicit-input-with-getline) | Reading files under explicit program control using the `getline` function.
+| &bull; [Plain Getline](#4101-using-getline-with-no-arguments) | Using `getline` with no arguments.
+| &bull; [Getline/Variable](#4102-using-getline-into-a-variable) | Using `getline` into a variable.
+| &bull; [Getline/File](#4103-using-getline-from-a-file) | Using `getline` from a file.
+| &bull; [Getline/Variable/File](#4104-using-getline-into-a-variable-from-a-file) | Using `getline` into a variable from a file.
+| &bull; [Getline/Pipe](#4105-using-getline-from-a-pipe) | Using `getline` from a pipe.
+| &bull; [Getline/Variable/Pipe](#4106-using-getline-into-a-variable-from-a-pipe) | Using `getline` into a variable from a pipe.
+| &bull; [Getline/Coprocess](#4107-using-getline-from-a-coprocess) | Using `getline` from a coprocess.
+| &bull; [Getline/Variable/Coprocess](#4108-using-getline-into-a-variable-from-a-coprocess) | Using `getline` into a variable from a coprocess.
+| &bull; [Getline Notes](#4109-points-to-remember-about-getline) | Important things to know about `getline`.
+| &bull; [Getline Summary](#41010-summary-of-getline-variants) | Summary of `getline` Variants.
+| &bull; [Read Timeout](#411-reading-input-with-a-timeout) | Reading input with a timeout.
+| &bull; [Retrying Input](#412-retrying-reads-after-certain-input-errors) | Retrying input after certain errors.
+| &bull; [Command-line directories](#413-directories-on-the-command-line) | What happens if you put a directory on the command line.
+| &bull; [Input Summary](#414-summary) | Input summary.
+| &bull; [Input Exercises](#415-exercises) | Exercises.
+| &bull; [Print](#51-the-print-statement) | The `print` statement.
+| &bull; [Print Examples](#52-print-statement-examples) | Simple examples of `print` statements.
+| &bull; [Output Separators](#53-output-separators) | The output separators and how to change them.
+| &bull; [OFMT](#54-controlling-numeric-output-with-print) | Controlling Numeric Output With `print`.
+| &bull; [Printf](#55-using-printf-statements-for-fancier-printing) | The `printf` statement.
+| &bull; [Basic Printf](#551-introduction-to-the-printf-statement) | Syntax of the `printf` statement.
+| &bull; [Control Letters](#552-format-control-letters) | Format-control letters.
+| &bull; [Format Modifiers](#553-modifiers-for-printf-formats) | Format-specification modifiers.
+| &bull; [Printf Examples](#554-examples-using-printf) | Several examples.
+| &bull; [Redirection](#56-redirecting-output-of-print-and-printf) | How to redirect output to multiple files and pipes.
+| &bull; [Special FD](#57-special-files-for-standard-preopened-data-streams) | Special files for I/O.
+| &bull; [Special Files](#58-special-file-names-in-gawk) | File name interpretation in `gawk`. `gawk` allows access to inherited file descriptors.
+| &bull; [Other Inherited Files](#581-accessing-other-open-files-with-gawk) | Accessing other open files with `gawk`.
+| &bull; [Special Network](#582-special-files-for-network-communications) | Special files for network communications.
+| &bull; [Special Caveats](#583-special-file-name-caveats) | Things to watch out for.
+| &bull; [Close Files And Pipes](#59-closing-input-and-output-redirections) | Closing Input and Output Files and Pipes.
+| &bull; [Nonfatal](#510-enabling-nonfatal-output) | Enabling Nonfatal Output.
+| &bull; [Output Summary](#511-summary) | Output summary.
+| &bull; [Output Exercises](#512-exercises) | Exercises.
+| &bull; [Values](#61-constants-variables-and-conversions) | Constants, Variables, and Regular Expressions.
+| &bull; [Constants](#611-constant-expressions) | String, numeric and regexp constants.
+| &bull; [Scalar Constants](#6111-numeric-and-string-constants) | Numeric and string constants.
+| &bull; [Nondecimal-numbers](#6112-octal-and-hexadecimal-numbers) | What are octal and hex numbers.
+| &bull; [Regexp Constants](#6113-regular-expression-constants) | Regular Expression constants.
+| &bull; [Using Constant Regexps](#612-using-regular-expression-constants) | When and how to use a regexp constant.
+| &bull; [Standard Regexp Constants](#6121-standard-regular-expression-constants) | Regexp constants in standard `awk`.
+| &bull; [Strong Regexp Constants](#6122-strongly-typed-regexp-constants) | Strongly typed regexp constants.
+| &bull; [Variables](#613-variables) | Variables give names to values for later use.
+| &bull; [Using Variables](#6131-using-variables-in-a-program) | Using variables in your programs.
+| &bull; [Assignment Options](#6132-assigning-variables-on-the-command-line) | Setting variables on the command line and a summary of command-line syntax.  This is an advanced method of input.
+| &bull; [Conversion](#614-conversion-of-strings-and-numbers) | The conversion of strings to numbers and vice versa.
+| &bull; [Strings And Numbers](#6141-how-awk-converts-between-strings-and-numbers) | How `awk` Converts Between Strings And Numbers.
+| &bull; [Locale influences conversions](#6142-locales-can-influence-conversion) | How the locale may affect conversions.
+| &bull; [All Operators](#62-operators-doing-something-with-values) | `gawk`&rsquo;s operators.
+| &bull; [Arithmetic Ops](#621-arithmetic-operators) | Arithmetic operations (&lsquo;+&rsquo;, &lsquo;-&rsquo;, etc.)
+| &bull; [Concatenation](#622-string-concatenation) | Concatenating strings.
+| &bull; [Assignment Ops](#623-assignment-expressions) | Changing the value of a variable or a field.
+| &bull; [Increment Ops](#624-increment-and-decrement-operators) | Incrementing the numeric value of a variable.
+| &bull; [Truth Values and Conditions](#63-truth-values-and-conditions) | Testing for true and false.
+| &bull; [Truth Values](#631-true-and-false-in-awk) | What is &ldquo;true&rdquo; and what is &ldquo;false&rdquo;.
+| &bull; [Typing and Comparison](#6322-comparison-operators) | How variables acquire types and how this affects comparison of numbers and strings with &lsquo;<&rsquo;, etc.
+| &bull; [Variable Typing](#6321-string-type-versus-numeric-type) | String type versus numeric type.
+| &bull; [Comparison Operators](#6322-comparison-operators) | The comparison operators.
+| &bull; [POSIX String Comparison](#6323-string-comparison-based-on-locale-collating-order) | String comparison with POSIX rules.
+| &bull; [Boolean Ops](#633-boolean-expressions) | Combining comparison expressions using boolean operators &lsquo;||&rsquo; (&ldquo;or&rdquo;), &lsquo;&&&rsquo; (&ldquo;and&rdquo;) and &lsquo;!&rsquo; (&ldquo;not&rdquo;).
+| &bull; [Conditional Exp](#634-conditional-expressions) | Conditional expressions select between two subexpressions under control of a third subexpression.
+| &bull; [Function Calls](#64-function-calls) | A function call is an expression.
+| &bull; [Precedence](#65-operator-precedence-how-operators-nest) | How various operators nest.
+| &bull; [Locales](#66-where-you-are-makes-a-difference) | How the locale affects things.
+| &bull; [Expressions Summary](#67-summary) | Expressions summary.
+| &bull; [Pattern Overview](#71-pattern-elements) | What goes into a pattern.
+| &bull; [Regexp Patterns](#711-regular-expressions-as-patterns) | Using regexps as patterns.
+| &bull; [Expression Patterns](#712-expressions-as-patterns) | Any expression can be used as a pattern.
+| &bull; [Ranges](#713-specifying-record-ranges-with-patterns) | Pairs of patterns specify record ranges.
+| &bull; [BEGIN/END](#714-the-begin-and-end-special-patterns) | Specifying initialization and cleanup rules.
+| &bull; [Using BEGIN/END](#7141-startup-and-cleanup-actions) | How and why to use BEGIN/END rules.
+| &bull; [I/O And BEGIN/END](#7142-inputoutput-from-begin-and-end-rules) | I/O issues in BEGIN/END rules.
+| &bull; [BEGINFILE/ENDFILE](#715-the-beginfile-and-endfile-special-patterns) | Two special patterns for advanced control.
+| &bull; [Empty](#716-the-empty-pattern) | The empty pattern, which matches every record.
+| &bull; [Using Shell Variables](#72-using-shell-variables-in-programs) | How to use shell variables with `awk`.
+| &bull; [Action Overview](#73-actions) | What goes into an action.
+| &bull; [Statements](#74-control-statements-in-actions) | Describes the various control statements in detail.
+| &bull; [If Statement](#741-the-if-else-statement) | Conditionally execute some `awk` statements.
+| &bull; [While Statement](#742-the-while-statement) | Loop until some condition is satisfied.
+| &bull; [Do Statement](#743-the-do-while-statement) | Do specified action while looping until some condition is satisfied.
+| &bull; [For Statement](#744-the-for-statement) | Another looping statement, that provides initialization and increment clauses.
+| &bull; [Switch Statement](#745-the-switch-statement) | Switch/case evaluation for conditional execution of statements based on a value.
+| &bull; [Break Statement](#746-the-break-statement) | Immediately exit the innermost enclosing loop.
+| &bull; [Continue Statement](#747-the-continue-statement) | Skip to the end of the innermost enclosing loop.
+| &bull; [Next Statement](#748-the-next-statement) | Stop processing the current input record.
+| &bull; [Nextfile Statement](#749-the-nextfile-statement) | Stop processing the current file.
+| &bull; [Exit Statement](#7410-the-exit-statement) | Stop execution of `awk`.
+| &bull; [Built-in Variables](#75-predefined-variables) | Summarizes the predefined variables.
+| &bull; [User-modified](#751-built-in-variables-that-control-awk) | Built-in variables that you change to control `awk`.
+| &bull; [Auto-set](#752-built-in-variables-that-convey-information) | Built-in variables where `awk` gives you information.
+| &bull; [ARGC and ARGV](#753-using-argc-and-argv) | Ways to use `ARGC` and `ARGV`.
+| &bull; [Pattern Action Summary](#76-summary) | Patterns and Actions summary.
+| &bull; [Array Basics](#81-the-basics-of-arrays) | The basics of arrays.
+| &bull; [Array Intro](#811-introduction-to-arrays) | Introduction to Arrays
+| &bull; [Reference to Elements](#812-referring-to-an-array-element) | How to examine one element of an array.
+| &bull; [Assigning Elements](#813-assigning-array-elements) | How to change an element of an array.
+| &bull; [Array Example](#814-basic-array-example) | Basic Example of an Array
+| &bull; [Scanning an Array](#815-scanning-all-elements-of-an-array) | A variation of the `for` statement. It loops through the indices of an array&rsquo;s existing elements.
+| &bull; [Controlling Scanning](#816-using-predefined-array-scanning-orders-with-gawk) | Controlling the order in which arrays are scanned.
+| &bull; [Numeric Array Subscripts](#82-using-numbers-to-subscript-arrays) | How to use numbers as subscripts in `awk`.
+| &bull; [Uninitialized Subscripts](#83-using-uninitialized-variables-as-subscripts) | Using Uninitialized variables as subscripts.
+| &bull; [Delete](#84-the-delete-statement) | The `delete` statement removes an element from an array.
+| &bull; [Multidimensional](#85-multidimensional-arrays) | Emulating multidimensional arrays in `awk`.
+| &bull; [Multiscanning](#851-scanning-multidimensional-arrays) | Scanning multidimensional arrays.
+| &bull; [Arrays of Arrays](#86-arrays-of-arrays) | True multidimensional arrays.
+| &bull; [Arrays Summary](#87-summary) | Summary of arrays.
+| &bull; [Built-in](#91-built-in-functions) | Summarizes the built-in functions.
+| &bull; [Calling Built-in](#911-calling-built-in-functions) | How to call built-in functions.
+| &bull; [Numeric Functions](#912-numeric-functions) | Functions that work with numbers, including `int()`, `sin()` and `rand()`.
+| &bull; [String Functions](#913-string-manipulation-functions) | Functions for string manipulation, such as `split()`, `match()` and `sprintf()`.
+| &bull; [Gory Details](#9131-more-about-lsquorsquo-and-lsquorsquo-with-sub-gsub-and-gensub) | More than you want to know about &lsquo;\&rsquo; and &lsquo;&&rsquo; with `sub()`, `gsub()`, and `gensub()`.
+| &bull; [I/O Functions](#914-inputoutput-functions) | Functions for files and shell commands.
+| &bull; [Time Functions](#915-time-functions) | Functions for dealing with timestamps.
+| &bull; [Bitwise Functions](#916-bit-manipulation-functions) | Functions for bitwise operations.
+| &bull; [Type Functions](#917-getting-type-information) | Functions for type information.
+| &bull; [I18N Functions](#918-string-translation-functions) | Functions for string translation.
+| &bull; [User-defined](#92-user-defined-functions) | Describes User-defined functions in detail.
+| &bull; [Definition Syntax](#921-function-definition-syntax) | How to write definitions and what they mean.
+| &bull; [Function Example](#922-function-definition-examples) | An example function definition and what it does.
+| &bull; [Function Caveats](#923-calling-user-defined-functions) | Things to watch out for.
+| &bull; [Calling A Function](#9231-writing-a-function-call) | Don&rsquo;t use spaces.
+| &bull; [Variable Scope](#9232-controlling-variable-scope) | Controlling variable scope.
+| &bull; [Pass By Value/Reference](#9233-passing-function-arguments-by-value-or-by-reference) | Passing parameters.
+| &bull; [Return Statement](#924-the-return-statement) | Specifying the value a function returns.
+| &bull; [Dynamic Typing](#925-functions-and-their-effects-on-variable-typing) | How variable types can change at runtime.
+| &bull; [Indirect Calls](#93-indirect-function-calls) | Choosing the function to call at runtime.
+| &bull; [Functions Summary](#94-summary) | Summary of functions.
+| &bull; [Library Names](#101-naming-library-function-global-variables) | How to best name private global variables in library functions.
+| &bull; [General Functions](#102-general-programming) | Functions that are of general use.
+| &bull; [Strtonum Function](#1021-converting-strings-to-numbers) | A replacement for the built-in `strtonum()` function.
+| &bull; [Assert Function](#1022-assertions) | A function for assertions in `awk` programs.
+| &bull; [Round Function](#1023-rounding-numbers) | A function for rounding if `sprintf()` does not do it correctly.
+| &bull; [Cliff Random Function](#1024-the-cliff-random-number-generator) | The Cliff Random Number Generator.
+| &bull; [Ordinal Functions](#1025-translating-between-characters-and-numbers) | Functions for using characters as numbers and vice versa.
+| &bull; [Join Function](#1026-merging-an-array-into-a-string) | A function to join an array into a string.
+| &bull; [Getlocaltime Function](#1027-managing-the-time-of-day) | A function to get formatted times.
+| &bull; [Readfile Function](#1028-reading-a-whole-file-at-once) | A function to read an entire file at once.
+| &bull; [Shell Quoting](#1029-quoting-strings-to-pass-to-the-shell) | A function to quote strings for the shell.
+| &bull; [Data File Management](#103-data-file-management) | Functions for managing command-line data files.
+| &bull; [Filetrans Function](#1031-noting-data-file-boundaries) | A function for handling data file transitions.
+| &bull; [Rewind Function](#1032-rereading-the-current-file) | A function for rereading the current file.
+| &bull; [File Checking](#1033-checking-for-readable-data-files) | Checking that data files are readable.
+| &bull; [Empty Files](#1034-checking-for-zero-length-files) | Checking for zero-length files.
+| &bull; [Ignoring Assigns](#1035-treating-assignments-as-file-names) | Treating assignments as file names.
+| &bull; [Getopt Function](#104-processing-command-line-options) | A function for processing command-line arguments.
+| &bull; [Passwd Functions](#105-reading-the-user-database) | Functions for getting user information.
+| &bull; [Group Functions](#106-reading-the-group-database) | Functions for getting group information.
+| &bull; [Walking Arrays](#107-traversing-arrays-of-arrays) | A function to walk arrays of arrays.
+| &bull; [Library Functions Summary](#108-summary) | Summary of library functions.
+| &bull; [Library Exercises](#109-exercises) | Exercises.
+| &bull; [Running Examples](#111-one-shot-throwaway-awk-programs) | How to run these examples.
+| &bull; [Clones](#112-running-awk-without-input-files) | Clones of common utilities.
+| &bull; [Cut Program](#1121-cutting-out-fields-and-columns) | The `cut` utility.
+| &bull; [Egrep Program](#1122-searching-for-regular-expressions-in-files) | The `egrep` utility.
+| &bull; [Id Program](#1123-printing-out-user-information) | The `id` utility.
+| &bull; [Split Program](#1124-splitting-a-large-file-into-pieces) | The `split` utility.
+| &bull; [Tee Program](#1125-duplicating-output-into-multiple-files) | The `tee` utility.
+| &bull; [Uniq Program](#1126-printing-nonduplicated-lines-of-text) | The `uniq` utility.
+| &bull; [Wc Program](#1127-counting-things) | The `wc` utility.
+| &bull; [Miscellaneous Programs](#113-running-long-programs) | Some interesting `awk` programs.
+| &bull; [Dupword Program](#1131-finding-duplicated-words-in-a-document) | Finding duplicated words in a document.
+| &bull; [Alarm Program](#1132-an-alarm-clock-program) | An alarm clock.
+| &bull; [Translate Program](#1133-transliterating-characters) | A program similar to the `tr` utility.
+| &bull; [Labels Program](#1134-printing-mailing-labels) | Printing mailing labels.
+| &bull; [Word Sorting](#1135-generating-word-usage-counts) | A program to produce a word usage count.
+| &bull; [History Sorting](#1136-removing-duplicates-from-unsorted-text) | Eliminating duplicate entries from a history file.
+| &bull; [Extract Program](#1137-extracting-programs-from-texinfo-source-files) | Pulling out programs from Texinfo source files.
+| &bull; [Simple Sed](#1138-a-simple-stream-editor) | A Simple Stream Editor.
+| &bull; [Igawk Program](#1139-an-easy-way-to-use-library-functions) | A wrapper for `awk` that includes files.
+| &bull; [Anagram Program](#11310-finding-anagrams-from-a-dictionary) | Finding anagrams from a dictionary.
+| &bull; [Signature Program](#11311-and-now-for-something-completely-different) | People do amazing things with too much time on their hands.
+| &bull; [Programs Summary](#114-summary) | Summary of programs.
+| &bull; [Programs Exercises](#115-exercises) | Exercises.
 | &bull; [Nondecimal Data](#Nondecimal-Data) | Allowing nondecimal input data.
 | &bull; [Array Sorting](#Array-Sorting) | Facilities for controlling array traversal and sorting arrays.
 | &bull; [Controlling Array Traversal](#Controlling-Array-Traversal) | How to use PROCINFO["sorted_in"].
@@ -770,7 +770,7 @@ copy and modify this GNU manual.&rdquo;
 
 ---
 
-Next: [Foreword4](#Foreword4), Previous: [Top](#Top), Up: [Top](#Top)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [Foreword4](#foreword-to-the-fourth-edition), Previous: [Top](#Top), Up: [Top](#Top)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 ## Foreword to the Third Edition
 
@@ -881,7 +881,7 @@ AWK or want to learn how, then read this book.
 
 ---
 
-Next: [Preface](#Preface), Previous: [Foreword3](#Foreword3), Up: [Top](#Top)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [Preface](#preface), Previous: [Foreword3](#foreword-to-the-third-edition), Up: [Top](#Top)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 ## Foreword to the Fourth Edition
 
@@ -919,7 +919,7 @@ I think you will too.
 
 ---
 
-Next: [Getting Started](#10-a-library-of-awk-functions), Previous: [Foreword4](#Foreword4), Up: [Top](#Top)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [Getting Started](#10-a-library-of-awk-functions), Previous: [Foreword4](#foreword-to-the-fourth-edition), Up: [Top](#Top)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 ## Preface
 
@@ -988,17 +988,17 @@ and OpenVMS.[3](#FOOT3)
 
 | []() | []()
 | - | -
-| &bull; [History](#History) | The history of `gawk` and `awk`.
-| &bull; [Names](#Names) | What name to use to find `awk`.
-| &bull; [This Manual](#This-Manual) | Using this Web page. Includes sample input files that you can use.
-| &bull; [Conventions](#Conventions) | Typographical Conventions.
-| &bull; [Manual History](#Manual-History) | Brief history of the GNU project and this Web page.
-| &bull; [How To Contribute](#How-To-Contribute) | Helping to save the world.
-| &bull; [Acknowledgments](#Acknowledgments) | Acknowledgments.
+| &bull; [History](#history-of-awk-and-gawk) | The history of `gawk` and `awk`.
+| &bull; [Names](#a-rose-by-any-other-name) | What name to use to find `awk`.
+| &bull; [This Manual](#using-this-book) | Using this Web page. Includes sample input files that you can use.
+| &bull; [Conventions](#typographical-conventions) | Typographical Conventions.
+| &bull; [Manual History](#the-gnu-project-and-this-book) | Brief history of the GNU project and this Web page.
+| &bull; [How To Contribute](#how-to-contribute) | Helping to save the world.
+| &bull; [Acknowledgments](#acknowledgments) | Acknowledgments.
 
 ---
 
-Next: [Names](#Names), Up: [Preface](#Preface)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [Names](#a-rose-by-any-other-name), Up: [Preface](#preface)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 ### History of `awk` and `gawk`
 
@@ -1052,7 +1052,7 @@ for a full list of those who have made important contributions to `gawk`.
 
 ---
 
-Next: [This Manual](#This-Manual), Previous: [History](#History), Up: [Preface](#Preface)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [This Manual](#using-this-book), Previous: [History](#history-of-awk-and-gawk), Up: [Preface](#preface)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 ### A Rose by Any Other Name
 
@@ -1083,7 +1083,7 @@ specific to the GNU implementation, we use the term `gawk`.
 
 ---
 
-Next: [Conventions](#Conventions), Previous: [Names](#Names), Up: [Preface](#Preface)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [Conventions](#typographical-conventions), Previous: [Names](#a-rose-by-any-other-name), Up: [Preface](#preface)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 ### Using This Book
 
@@ -1130,7 +1130,7 @@ expert should find useful.  In particular, the description of POSIX
 `awk` and the example programs in
 [Library Functions]((#10-a-library-of-awk-functions)), and
 in
-[Sample Programs](#Sample-Programs),
+[Sample Programs](#11-practical-awk-programs),
 should be of interest.
 
 This Web page is split into several parts, as follows:
@@ -1142,42 +1142,42 @@ It contains the following chapters:
     - [Getting Started](#10-a-library-of-awk-functions),
 provides the essentials you need to know to begin using `awk`.
 
-    - [Invoking Gawk](#Invoking-Gawk),
+    - [Invoking Gawk](#2-running-awk-and-gawk),
 describes how to run `gawk`, the meaning of its
 command-line options, and how it finds `awk`
 program source files.
 
-    - [Regexp](#Regexp),
+    - [Regexp](#3-regular-expressions),
 introduces regular expressions in general, and in particular the flavors
 supported by POSIX `awk` and `gawk`.
 
-    - [Reading Files](#Reading-Files),
+    - [Reading Files](#4-reading-input-files),
 describes how `awk` reads your data.
 It introduces the concepts of records and fields, as well
 as the `getline` command.
 I/O redirection is first described here.
 Network I/O is also briefly introduced here.
 
-    - [Printing](#Printing),
+    - [Printing](#5-printing-output),
 describes how `awk` programs can produce output with
 `print` and `printf`.
 
-    - [Expressions](#Expressions),
+    - [Expressions](#6-expressions),
 describes expressions, which are the basic building blocks
 for getting most things done in a program.
 
-    - [Patterns and Actions](#Patterns-and-Actions),
+    - [Patterns and Actions](#7-patterns-actions-and-variables),
 describes how to write patterns for matching records, actions for
 doing something when a record is matched, and the predefined variables
 `awk` and `gawk` use.
 
-    - [Arrays](#Arrays),
+    - [Arrays](#8-arrays-in-awk),
 covers `awk`&rsquo;s one-and-only data structure: the associative array.
 Deleting array elements and whole arrays is described, as well as
 sorting arrays in `gawk`.  The chapter also describes how
 `gawk` provides arrays of arrays.
 
-    - [Functions](#Functions),
+    - [Functions](#9-functions),
 describes the built-in functions `awk` and `gawk` provide,
 as well as how to define your own functions.  It also discusses how
 `gawk` lets you call functions indirectly.
@@ -1189,7 +1189,7 @@ This part contains the following chapters:
     - [Library Functions]((#10-a-library-of-awk-functions)), provides a number of functions meant to
 be used from main `awk` programs.
 
-    - [Sample Programs](#Sample-Programs),
+    - [Sample Programs](#11-practical-awk-programs),
 provides many sample `awk` programs.
 
 Reading these two chapters allows you to see `awk`
@@ -1253,7 +1253,7 @@ and this Web page, respectively.
 
 ---
 
-Next: [Manual History](#Manual-History), Previous: [This Manual](#This-Manual), Up: [Preface](#Preface)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [Manual History](#the-gnu-project-and-this-book), Previous: [This Manual](#using-this-book), Up: [Preface](#preface)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 ### Typographical Conventions
 
@@ -1329,7 +1329,7 @@ and &ldquo;extensions, common.&rdquo;
 
 ---
 
-Next: [How To Contribute](#How-To-Contribute), Previous: [Conventions](#Conventions), Up: [Preface](#Preface)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [How To Contribute](#how-to-contribute), Previous: [Conventions](#typographical-conventions), Up: [Preface](#preface)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 ### The GNU Project and This Book
 
@@ -1409,7 +1409,7 @@ for information on submitting problem reports electronically.
 
 ---
 
-Next: [Acknowledgments](#Acknowledgments), Previous: [Manual History](#Manual-History), Up: [Preface](#Preface)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [Acknowledgments](#acknowledgments), Previous: [Manual History](#the-gnu-project-and-this-book), Up: [Preface](#preface)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 ### How to Contribute
 
@@ -1434,7 +1434,7 @@ If you have written a `gawk` extension, please see
 
 ---
 
-Previous: [How To Contribute](#How-To-Contribute), Up: [Preface](#Preface)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Previous: [How To Contribute](#how-to-contribute), Up: [Preface](#preface)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 ### Acknowledgments
 
@@ -1580,7 +1580,7 @@ February 2015
 
 ---
 
-Next: [Invoking Gawk](#Invoking-Gawk), Previous: [Preface](#Preface), Up: [Top](#Top)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [Invoking Gawk](#2-running-awk-and-gawk), Previous: [Preface](#preface), Up: [Top](#Top)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 # Part I: The `awk` Language
 
@@ -1608,7 +1608,7 @@ When you run `awk`, you specify an `awk`*program* that
 tells `awk` what to do.  The program consists of a series of
 *rules* (it may also contain *function definitions*,
 an advanced feature that we will ignore for now;
-see [User-defined](#User_002ddefined)).  Each rule specifies one
+see [User-defined](#92-user-defined-functions)).  Each rule specifies one
 pattern to search for and one action to perform
 upon finding the pattern.
 
@@ -1617,25 +1617,25 @@ Syntactically, a rule consists of a *pattern* followed by an
 pattern.  Newlines usually separate rules.  Therefore, an `awk`
 program looks like this:
 
-<pre<    <i>pattern</i> { action }
+<pre>   <i>pattern</i> { action }
     <i>pattern</i> { action }
     &hellip;</pre>
     
 | []() | []()
 | - | -
-| &bull; [Running gawk](#Running-gawk) | How to run `gawk` programs; includes command-line syntax.
-| &bull; [Sample Data Files](#Sample-Data-Files) | Sample data files for use in the `awk` programs illustrated in this Web page.
-| &bull; [Very Simple](#Very-Simple) | A very simple example.
-| &bull; [Two Rules](#Two-Rules) | A less simple one-line example using two rules.
-| &bull; [More Complex](#More-Complex) | A more complex example.
-| &bull; [Statements/Lines](#Statements_002fLines) | Subdividing or combining statements into lines.
-| &bull; [Other Features](#Other-Features) | Other Features of `awk`.
-| &bull; [When](#When) | When to use `gawk` and when to use other things.
-| &bull; [Intro Summary](#Intro-Summary) | Summary of the introduction.
+| &bull; [Running gawk](#11-how-to-run-awk-programs) | How to run `gawk` programs; includes command-line syntax.
+| &bull; [Sample Data Files](#12-data-files-for-the-examples) | Sample data files for use in the `awk` programs illustrated in this Web page.
+| &bull; [Very Simple](#13-some-simple-examples) | A very simple example.
+| &bull; [Two Rules](#14-an-example-with-two-rules) | A less simple one-line example using two rules.
+| &bull; [More Complex](#15-a-more-complex-example) | A more complex example.
+| &bull; [Statements/Lines](#16-awk-statements-versus-lines) | Subdividing or combining statements into lines.
+| &bull; [Other Features](#17-other-features-of-awk) | Other Features of `awk`.
+| &bull; [When](#18-when-to-use-awk) | When to use `gawk` and when to use other things.
+| &bull; [Intro Summary](#19-summary) | Summary of the introduction.
 
 ---
 
-Next: [Sample Data Files](#Sample-Data-Files), Up: [Getting Started](#10-a-library-of-awk-functions)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [Sample Data Files](#12-data-files-for-the-examples), Up: [Getting Started](#10-a-library-of-awk-functions)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 ### 1.1 How to Run `awk` Programs
 
@@ -1643,13 +1643,13 @@ There are several ways to run an `awk` program.  If the program is
 short, it is easiest to include it in the command that runs `awk`,
 like this:
 
-    <pre>awk 'program' input-file1input-file2 &hellip;</pre>
+   <pre>awk 'program' input-file1input-file2 &hellip;</pre>
     
 
 When the program is long, it is usually more convenient to put it in a file
 and run it with a command like this:
 
-    <pre>awk -f program-fileinput-file1input-file2 &hellip;</pre>
+   <pre>awk -f program-fileinput-file1input-file2 &hellip;</pre>
     
 
 This section discusses both mechanisms, along with several
@@ -1657,16 +1657,16 @@ variations of each.
 
 | []() | []()
 | - | -
-| &bull; [One-shot](#One_002dshot) | Running a short throwaway `awk` program.
-| &bull; [Read Terminal](#Read-Terminal) | Using no input files (input from the keyboard instead).
-| &bull; [Long](#Long) | Putting permanent `awk` programs in files.
-| &bull; [Executable Scripts](#Executable-Scripts) | Making self-contained `awk` programs.
-| &bull; [Comments](#Comments) | Adding documentation to `gawk` programs.
-| &bull; [Quoting](#Quoting) | More discussion of shell quoting issues.
+| &bull; [One-shot](#111-one-shot-throwaway-awk-programs) | Running a short throwaway `awk` program.
+| &bull; [Read Terminal](#112-running-awk-without-input-files) | Using no input files (input from the keyboard instead).
+| &bull; [Long](#113-running-long-programs) | Putting permanent `awk` programs in files.
+| &bull; [Executable Scripts](#114-executable-awk-programs) | Making self-contained `awk` programs.
+| &bull; [Comments](#115-comments-in-awk-programs) | Adding documentation to `gawk` programs.
+| &bull; [Quoting](#116-shell-quoting-issues) | More discussion of shell quoting issues.
 
 ---
 
-Next: [Read Terminal](#Read-Terminal), Up: [Running gawk](#Running-gawk)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [Read Terminal](#112-running-awk-without-input-files), Up: [Running gawk](#11-how-to-run-awk-programs)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 #### 1.1.1 One-Shot Throwaway `awk` Programs
 
@@ -1674,7 +1674,7 @@ Once you are familiar with `awk`, you will often type in simple
 programs the moment you want to use them.  Then you can write the
 program as the first argument of the `awk` command, like this:
 
-    <pre>awk 'program' input-file1input-file2 &hellip;</pre>
+   <pre>awk 'program' input-file1input-file2 &hellip;</pre>
     
 
 where program consists of a series of patterns and
@@ -1694,13 +1694,13 @@ file for the `awk` program.  A self-contained shell script is more
 reliable because there are no other files to misplace.
 
 Later in this chapter, in
-[Very Simple](#Very-Simple),
+[Very Simple](#13-some-simple-examples),
 we&rsquo;ll see examples of several short,
 self-contained programs.
 
 ---
 
-Next: [Long](#Long), Previous: [One-shot](#One_002dshot), Up: [Running gawk](#Running-gawk)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [Long](#113-running-long-programs), Previous: [One-shot](#111-one-shot-throwaway-awk-programs), Up: [Running gawk](#11-how-to-run-awk-programs)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 #### 1.1.2 Running `awk` Without Input Files
 
@@ -1756,7 +1756,7 @@ keyboard to its standard output (why this works is explained shortly):
 
 ---
 
-Next: [Executable Scripts](#Executable-Scripts), Previous: [Read Terminal](#Read-Terminal), Up: [Running gawk](#Running-gawk)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [Executable Scripts](#114-executable-awk-programs), Previous: [Read Terminal](#112-running-awk-without-input-files), Up: [Running gawk](#11-how-to-run-awk-programs)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 #### 1.1.3 Running Long Programs
 
@@ -1764,32 +1764,32 @@ Sometimes `awk` programs are very long.  In these cases, it is
 more convenient to put the program into a separate file.  In order to tell
 `awk` to use that file for its program, you type:
 
-    <pre>awk -f source-fileinput-file1input-file2 &hellip;</pre>
+  <pre>awk -f source-fileinput-file1input-file2 &hellip;</pre>
     
 
 The -f instructs the `awk` utility to get the
-`awk` program from the file source-file (see [Options](#Options)).
+`awk` program from the file source-file (see [Options](#22-command-line-options)).
 Any file name can be used for source-file.  For example, you
 could put the program:
 
 ```awk
-    BEGIN { print "Don't Panic!" }
+  BEGIN { print "Don't Panic!" }
 ```    
 
 into the file advice.  Then this command:
 
 ```awk
-    awk -f advice
+  awk -f advice
 ```    
 
 does the same thing as this one:
 
 ```awk
-    awk 'BEGIN { print "Don\47t Panic!" }'
+  awk 'BEGIN { print "Don\47t Panic!" }'
 ```    
 
 This was explained earlier
-(see [Read Terminal](#Read-Terminal)).
+(see [Read Terminal](#112-running-awk-without-input-files)).
 Note that you don&rsquo;t usually need single quotes around the file name that you
 specify with -f, because most file names don&rsquo;t contain any of the shell&rsquo;s
 special characters.  Notice that in advice, the `awk`
@@ -1805,7 +1805,7 @@ affect the execution of the `awk` program but it does make
 
 ---
 
-Next: [Comments](#Comments), Previous: [Long](#Long), Up: [Running gawk](#Running-gawk)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [Comments](#115-comments-in-awk-programs), Previous: [Long](#113-running-long-programs), Up: [Running gawk](#11-how-to-run-awk-programs)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 #### 1.1.4 Executable `awk` Programs
 
@@ -1815,9 +1815,9 @@ this on many systems.[8](#FOOT8)
 For example, you could update the file advice to look like this:
 
 ```awk
-    #! /bin/awk -f
+  #! /bin/awk -f
     
-    BEGIN { print "Don't Panic!" }
+  BEGIN { print "Don't Panic!" }
 ```
     
 
@@ -1869,7 +1869,7 @@ Doing this leads to confusing behavior&mdash;most likely a usage diagnostic
 of some sort from `awk`.
 
 Finally, the value of `ARGV[0]`
-(see [Built-in Variables](#Built_002din-Variables))
+(see [Built-in Variables](#75-predefined-variables))
 varies depending upon your operating system.
 Some systems put &lsquo;awk&rsquo; there, some put the full pathname
 of `awk` (such as /bin/awk), and some put the name
@@ -1879,7 +1879,7 @@ to provide your script name.
 
 ---
 
-Next: [Quoting](#Quoting), Previous: [Executable Scripts](#Executable-Scripts), Up: [Running gawk](#Running-gawk)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [Quoting](#116-shell-quoting-issues), Previous: [Executable Scripts](#114-executable-awk-programs), Up: [Running gawk](#11-how-to-run-awk-programs)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 #### 1.1.5 Comments in `awk` Programs
 
@@ -1907,7 +1907,7 @@ comment is to help you or another person understand the program
 when reading it at a later time.
 
 > CAUTION: As mentioned in
-> [One-shot](#One_002dshot),
+> [One-shot](#111-one-shot-throwaway-awk-programs),
 > you can enclose short to medium-sized programs in single quotes,
 > in order to keep
 > your shell scripts self-contained.  When doing so, *don&rsquo;t* put
@@ -1947,10 +1947,10 @@ when reading it at a later time.
 
 ---
 
-Previous: [Comments](#Comments), Up: [Running gawk](#Running-gawk)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Previous: [Comments](#115-comments-in-awk-programs), Up: [Running gawk](#11-how-to-run-awk-programs)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 #### 1.1.6 Shell Quoting Issues
-&bull; [DOS Quoting](#DOS-Quoting):  Quoting in Windows Batch Files.
+&bull; [DOS Quoting](#1161-quoting-in-ms-windows-batch-files):  Quoting in Windows Batch Files.
 
 For short to medium-length `awk` programs, it is most convenient
 to enter the program on the `awk` command line.
@@ -1958,7 +1958,7 @@ This is best done by enclosing the entire program in single quotes.
 This is true whether you are entering the program interactively at
 the shell prompt, or writing it as part of a larger shell script:
 
-    awk 'program text' input-file1input-file2 &hellip;
+<pre>  awk 'program text' input-file1input-file2 &hellip;</pre>
     
 
 Once you are working with the shell, it is helpful to have a basic
@@ -1997,7 +1997,7 @@ The shell does no interpretation of the quoted text, passing it on verbatim
 to the command.
 It is *impossible* to embed a single quote inside single-quoted text.
 Refer back to
-[Comments](#Comments)
+[Comments](#115-comments-in-awk-programs)
 for an example of what happens if you try.</li>
 
 <li>Double quotes protect most things between the opening and closing quotes.
@@ -2011,7 +2011,7 @@ a backslash within double-quoted text if they are to be passed on literally
 to the program.  (The leading backslash is stripped first.)
 Thus, the example seen
 previously
-in [Read Terminal](#Read-Terminal):
+in [Read Terminal](#112-running-awk-without-input-files):
 
 ```awk
 awk 'BEGIN { print "Don\47t Panic!" }'
@@ -2078,7 +2078,7 @@ This option is also painful, because double quotes, backslashes, and dollar sign
 are very common in more advanced `awk` programs.
 
 A third option is to use the octal escape sequence equivalents
-(see [Escape Sequences](#Escape-Sequences))
+(see [Escape Sequences](#32-escape-sequences))
 for the
 single- and double-quote characters, like so:
 
@@ -2108,7 +2108,7 @@ the shell won&rsquo;t be part of the picture and you can say what you mean.
 
 ---
 
-Up: [Quoting](#Quoting)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Up: [Quoting](#116-shell-quoting-issues)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 #### 1.1.6.1 Quoting in MS-Windows Batch Files
 
@@ -2158,7 +2158,7 @@ So to double-quote the one-liner script &lsquo;{ print "\"" $0 "\"" }&rsquo;
 from the previous example you would do it this way:
 
 ```awk
-    gawk "{ print \"\\\"\" $0 \"\\\"\" }" file
+  gawk "{ print \"\\\"\" $0 \"\\\"\" }" file
 ```
 
 However, the use of &lsquo;\042&rsquo; instead of &lsquo;\\\"&rsquo; is also possible
@@ -2167,7 +2167,7 @@ double-quote don&rsquo;t need duplication.
 
 ---
 
-Next: [Very Simple](#Very-Simple), Previous: [Running gawk](#Running-gawk), Up: [Getting Started](#10-a-library-of-awk-functions)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [Very Simple](#13-some-simple-examples), Previous: [Running gawk](#11-how-to-run-awk-programs), Up: [Getting Started](#10-a-library-of-awk-functions)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 ### 1.2 Data files for the Examples
 
@@ -2233,7 +2233,7 @@ in the directory awklib/eg/data.
 
 ---
 
-Next: [Two Rules](#Two-Rules), Previous: [Sample Data Files](#Sample-Data-Files), Up: [Getting Started](#10-a-library-of-awk-functions)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [Two Rules](#14-an-example-with-two-rules), Previous: [Sample Data Files](#12-data-files-for-the-examples), Up: [Getting Started](#10-a-library-of-awk-functions)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 ### 1.3 Some Simple Examples
 
@@ -2256,7 +2256,7 @@ You will notice that slashes (&lsquo;/&rsquo;) surround the string &lsquo;li&rsq
 in the `awk` program.  The slashes indicate that &lsquo;li&rsquo;
 is the pattern to search for.  This type of pattern is called a
 *regular expression*, which is covered in more detail later
-(see [Regexp](#Regexp)).
+(see [Regexp](#3-regular-expressions)).
 The pattern is allowed to match parts of words.
 There are
 single quotes around the `awk` program so that the shell won&rsquo;t
@@ -2385,7 +2385,7 @@ the program would print the odd-numbered lines.
 
 ---
 
-Next: [More Complex](#More-Complex), Previous: [Very Simple](#Very-Simple), Up: [Getting Started](#10-a-library-of-awk-functions)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [More Complex](#15-a-more-complex-example), Previous: [Very Simple](#13-some-simple-examples), Up: [Getting Started](#10-a-library-of-awk-functions)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 ### 1.4 An Example with Two Rules
 
@@ -2397,8 +2397,8 @@ no actions run.
 
 After processing all the rules that match the line (and perhaps there are none),
 `awk` reads the next line.  (However,
-see [Next Statement](#Next-Statement)
-and also see [Nextfile Statement](#Nextfile-Statement).)
+see [Next Statement](#748-the-next-statement)
+and also see [Nextfile Statement](#749-the-nextfile-statement).)
 This continues until the program reaches the end of the file.
 For example, the following `awk` program contains two rules:
 
@@ -2436,7 +2436,7 @@ in mail-list was printed twice, once for each rule.
 
 ---
 
-Next: [Statements/Lines](#Statements_002fLines), Previous: [Two Rules](#Two-Rules), Up: [Getting Started](#10-a-library-of-awk-functions)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [Statements/Lines](#16-awk-statements-versus-lines), Previous: [Two Rules](#14-an-example-with-two-rules), Up: [Getting Started](#10-a-library-of-awk-functions)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 ### 1.5 A More Complex Example
 
@@ -2492,7 +2492,7 @@ In this example, the value of `sum` is 80600.
 
 These more advanced `awk` techniques are covered in later
 sections
-(see [Action Overview](#Action-Overview)).  Before you can move on to more
+(see [Action Overview](#73-actions)).  Before you can move on to more
 advanced `awk` programming, you have to know how `awk` interprets
 your input and displays your output.  By manipulating fields and using
 `print` statements, you can produce some very useful and
@@ -2500,7 +2500,7 @@ impressive-looking reports.
 
 ---
 
-Next: [Other Features](#Other-Features), Previous: [More Complex](#More-Complex), Up: [Getting Started](#10-a-library-of-awk-functions)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [Other Features](#17-other-features-of-awk), Previous: [More Complex](#15-a-more-complex-example), Up: [Getting Started](#10-a-library-of-awk-functions)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 ### 1.6 `awk` Statements Versus Lines
 
@@ -2621,7 +2621,7 @@ could also be written this way:
 
 ---
 
-Next: [When](#When), Previous: [Statements/Lines](#Statements_002fLines), Up: [Getting Started](#10-a-library-of-awk-functions)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [When](#18-when-to-use-awk), Previous: [Statements/Lines](#16-awk-statements-versus-lines), Up: [Getting Started](#10-a-library-of-awk-functions)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 ### 1.7 Other Features of `awk`
 
@@ -2639,12 +2639,12 @@ and array sorting.
 
 As we develop our presentation of the `awk` language, we will introduce
 most of the variables and many of the functions. They are described
-systematically in [Built-in Variables](#Built_002din-Variables) and in
-[Built-in](#Built_002din).
+systematically in [Built-in Variables](#75-predefined-variables) and in
+[Built-in](#91-built-in-functions).
 
 ---
 
-Next: [Intro Summary](#Intro-Summary), Previous: [Other Features](#Other-Features), Up: [Getting Started](#10-a-library-of-awk-functions)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [Intro Summary](#19-summary), Previous: [Other Features](#17-other-features-of-awk), Up: [Getting Started](#10-a-library-of-awk-functions)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 ### 1.8 When to Use `awk`
 
@@ -2655,7 +2655,7 @@ statements, and other selection criteria, you can produce much more
 complex output.  The `awk` language is very useful for producing
 reports from large amounts of raw data, such as summarizing information
 from the output of other utility programs like `ls`.
-(See [More Complex](#More-Complex).)
+(See [More Complex](#15-a-more-complex-example).)
 
 Programs written with `awk` are usually much smaller than they would
 be in other languages.  This makes `awk` programs easy to compose and
@@ -2681,7 +2681,7 @@ facilities.[10](#FOOT10)
 
 ---
 
-Previous: [When](#When), Up: [Getting Started](#10-a-library-of-awk-functions)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Previous: [When](#18-when-to-use-awk), Up: [Getting Started](#10-a-library-of-awk-functions)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 ### 1.9 Summary
 
@@ -2708,7 +2708,7 @@ a comma, open brace, question mark, colon,
 
 ---
 
-Next: [Regexp](#Regexp), Previous: [Getting Started](#10-a-library-of-awk-functions), Up: [Top](#Top)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [Regexp](#3-regular-expressions), Previous: [Getting Started](#10-a-library-of-awk-functions), Up: [Top](#Top)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 ## 2 Running `awk` and `gawk`
 
@@ -2727,21 +2727,21 @@ things in this chapter that don&rsquo;t interest you right now.
 
 | []() | []()
 | - | -
-| &bull; [Command Line](#Command-Line) | How to run `awk`.
-| &bull; [Options](#Options) | Command-line options and their meanings.
-| &bull; [Other Arguments](#Other-Arguments) | Input file names and variable assignments.
-| &bull; [Naming Standard Input](#Naming-Standard-Input) | How to specify standard input with other files.
-| &bull; [Environment Variables](#Environment-Variables) | The environment variables `gawk` uses.
-| &bull; [Exit Status](#Exit-Status) | `gawk`&rsquo;s exit status.
-| &bull; [Include Files](#Include-Files) | Including other files into your program.
-| &bull; [Loading Shared Libraries](#Loading-Shared-Libraries) | Loading shared libraries into your program.
-| &bull; [Obsolete](#Obsolete) | Obsolete Options and/or features.
-| &bull; [Undocumented](#Undocumented) | Undocumented Options and Features.
-| &bull; [Invoking Summary](#Invoking-Summary) | Invocation summary.
+| &bull; [Command Line](#21-invoking-awk) | How to run `awk`.
+| &bull; [Options](#22-command-line-options) | Command-line options and their meanings.
+| &bull; [Other Arguments](#23-other-command-line-arguments) | Input file names and variable assignments.
+| &bull; [Naming Standard Input](#24-naming-standard-input) | How to specify standard input with other files.
+| &bull; [Environment Variables](#25-the-environment-variables-gawk-uses) | The environment variables `gawk` uses.
+| &bull; [Exit Status](#26-gawkrsquos-exit-status) | `gawk`&rsquo;s exit status.
+| &bull; [Include Files](#27-including-other-files-into-your-program) | Including other files into your program.
+| &bull; [Loading Shared Libraries](#28-loading-dynamic-extensions-into-your-program) | Loading shared libraries into your program.
+| &bull; [Obsolete](#29-obsolete-options-andor-features) | Obsolete Options and/or features.
+| &bull; [Undocumented](#210-undocumented-options-and-features) | Undocumented Options and Features.
+| &bull; [Invoking Summary](#211-summary) | Invocation summary.
 
 ---
 
-Next: [Options](#Options), Up: [Invoking Gawk](#Invoking-Gawk)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [Options](#22-command-line-options), Up: [Invoking Gawk](#2-running-awk-and-gawk)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 ### 2.1 Invoking `awk`
 
@@ -2770,7 +2770,7 @@ warning that the program is empty.
 
 ---
 
-Next: [Other Arguments](#Other-Arguments), Previous: [Command Line](#Command-Line), Up: [Invoking Gawk](#Invoking-Gawk)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [Other Arguments](#23-other-command-line-arguments), Previous: [Command Line](#21-invoking-awk), Up: [Invoking Gawk](#2-running-awk-and-gawk)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 ### 2.2 Command-Line Options
 
@@ -2793,7 +2793,7 @@ The following list describes options mandated by the POSIX standard:
 </br><code>-F <b><i>fs</i></b></code></br>
 <code>--field-separator <b><i>fs</i></b></code></br>
 Set the `FS` variable to fs
-(see [Field Separators](#Field-Separators)).
+(see [Field Separators](#45-specifying-how-fields-are-separated)).
 
 <code>-f <i><b>source-file</b></i></code></br>
 <code>--file <i><b>source-file</b></i></code></br>
@@ -2808,7 +2808,7 @@ each specified source-file.
 Set the variable var to the value val*before*
 execution of the program begins.  Such variable values are available
 inside the `BEGIN` rule
-(see [Other Arguments](#Other-Arguments)).
+(see [Other Arguments](#23-other-command-line-arguments)).
 
 The -v option can only set one variable, but it can be used
 more than once, setting another variable each time, like this:
@@ -2838,7 +2838,7 @@ This is useful if you have file names that start with &lsquo;-&rsquo;,
 or in shell scripts, if you have file names that will be specified
 by the user that could start with &lsquo;-&rsquo;.
 It is also useful for passing options on to the `awk`
-program; see [Getopt Function](#Getopt-Function).
+program; see [Getopt Function](#104-processing-command-line-options).
 
 The following list describes `gawk`-specific options:
 
@@ -2849,7 +2849,7 @@ In addition, all output written with `print` or `printf`
 is treated as single-byte characters.
 
 Normally, `gawk` follows the POSIX standard and attempts to process
-its input data according to the current locale (see [Locales](#Locales)). This can often involve
+its input data according to the current locale (see [Locales](#66-where-you-are-makes-a-difference)). This can often involve
 converting multibyte characters into wide characters (internally), and
 can lead to problems or confusion if the input data does not contain valid
 multibyte characters. This option is an easy way to tell `gawk`,
@@ -2903,7 +2903,7 @@ This option allows you to mix source code in files with source
 code that you enter on the command line.
 This is particularly useful
 when you have library functions that you want to use from your command-line
-programs (see [AWKPATH Variable](#AWKPATH-Variable)).
+programs (see [AWKPATH Variable](#251-the-awkpath-environment-variable)).
 
 Note that `gawk` treats each string as if it ended with
 a newline character (even if it doesn&rsquo;t). This makes building
@@ -2939,7 +2939,7 @@ that pass arguments through the URL; using this option prevents a malicious
 (or other) user from passing in options, assignments, or `awk` source
 code (via -e) to the CGI application.[11](#FOOT11)
 This option should be used
-with &lsquo;#!&rsquo; scripts (see [Executable Scripts](#Executable-Scripts)), like so:
+with &lsquo;#!&rsquo; scripts (see [Executable Scripts](#114-executable-awk-programs)), like so:
 
 ```awk
     #! /usr/local/bin/gawk -E
@@ -3024,7 +3024,7 @@ values in input data
 <code>-N</code>
 <code>--use-lc-numeric</code>
 Force the use of the locale&rsquo;s decimal point character
-when parsing numeric input data (see [Locales](#Locales)).
+when parsing numeric input data (see [Locales](#66-where-you-are-makes-a-difference)).
 
 <code>-o[<i><b>file</b></i>]</code>
 <code>--pretty-print[=<i><b>file</b></i>]</code>
@@ -3078,16 +3078,16 @@ restrictions apply:
 
 - 
 Newlines are not allowed after &lsquo;?&rsquo; or &lsquo;:&rsquo;
-(see [Conditional Exp](#Conditional-Exp)).
+(see [Conditional Exp](#634-conditional-expressions)).
 
 - 
 Specifying &lsquo;-Ft&rsquo; on the command line does not set the value
 of `FS` to be a single TAB character
-(see [Field Separators](#Field-Separators)).
+(see [Field Separators](#45-specifying-how-fields-are-separated)).
 
 - 
 The locale&rsquo;s decimal point character is used for parsing input
-data (see [Locales](#Locales)).
+data (see [Locales](#66-where-you-are-makes-a-difference)).
 
 If you supply both --traditional and --posix on the
 command line, --posix takes precedence. `gawk`
@@ -3096,7 +3096,7 @@ issues a warning if both options are supplied.
 <code>-r</code>
 <code>--re-interval</code>
 Allow interval expressions
-(see [Regexp Operators](#Regexp-Operators))
+(see [Regexp Operators](#33-regular-expression-operators))
 in regexps.
 This is now `gawk`&rsquo;s default behavior.
 Nevertheless, this option remains (both for backward compatibility
@@ -3140,7 +3140,7 @@ In compatibility mode, as a special case, if the value of fs supplied
 to the -F option is &lsquo;t&rsquo;, then `FS` is set to the TAB
 character (`"\t"`).  This is true only for --traditional and not
 for --posix
-(see [Field Separators](#Field-Separators)).
+(see [Field Separators](#45-specifying-how-fields-are-separated)).
 
 The `-f` option may be used more than once on the command line.
 If it is, `awk` reads its program source from all of the named files, as
@@ -3150,7 +3150,7 @@ can be written once and then retrieved from a standard place, instead
 of having to be included in each individual program.
 The -i option is similar in this regard.
 (As mentioned in
-[Definition Syntax](#Definition-Syntax),
+[Definition Syntax](#921-function-definition-syntax),
 function names must be unique.)
 
 With standard `awk`, library functions can still be used, even
@@ -3165,7 +3165,7 @@ Because it is clumsy using the standard `awk` mechanisms to mix
 source file and command-line `awk` programs, `gawk`
 provides the -e option.  This does not require you to
 preempt the standard input for your source code; it allows you to easily
-mix command-line and library source code (see [AWKPATH Variable](#AWKPATH-Variable)).
+mix command-line and library source code (see [AWKPATH Variable](#251-the-awkpath-environment-variable)).
 As with -f, the -e and -i
 options may also be used multiple times on the command line.
 
@@ -3205,7 +3205,7 @@ environments.
 
 ---
 
-Next: [Naming Standard Input](#Naming-Standard-Input), Previous: [Options](#Options), Up: [Invoking Gawk](#Invoking-Gawk)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [Naming Standard Input](#24-naming-standard-input), Previous: [Options](#22-command-line-options), Up: [Invoking Gawk](#2-running-awk-and-gawk)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 ### 2.3 Other Command-Line Arguments
 
@@ -3213,14 +3213,14 @@ Any additional arguments on the command line are normally treated as
 input files to be processed in the order specified.   However, an
 argument that has the form `var=value`, assigns
 the value value to the variable var&mdash;it does not specify a
-file at all.  (See [Assignment Options](#Assignment-Options).) In the following example,
+file at all.  (See [Assignment Options](#6132-assigning-variables-on-the-command-line).) In the following example,
 count=1 is a variable assignment, not a file name:
 
     awk -f program.awk file1 count=1 file2
     
 
 All the command-line arguments are made available to your `awk` program in the
-`ARGV` array (see [Built-in Variables](#Built_002din-Variables)).  Command-line options
+`ARGV` array (see [Built-in Variables](#75-predefined-variables)).  Command-line options
 and the program text (if present) are omitted from `ARGV`.
 All other arguments, including variable assignments, are
 included.   As each element of `ARGV` is processed, `gawk`
@@ -3229,7 +3229,7 @@ current element.
 
 Changing `ARGC` and `ARGV` in your `awk` program lets
 you control how `awk` processes the input files; this is described
-in more detail in [ARGC and ARGV](#ARGC-and-ARGV).
+in more detail in [ARGC and ARGV](#753-using-argc-and-argv).
 
 The distinction between file name arguments and variable-assignment
 arguments is made when `awk` is about to open the next input file.
@@ -3241,11 +3241,11 @@ Therefore, the variables actually receive the given values after all
 previously specified files have been read.  In particular, the values of
 variables assigned in this fashion are *not* available inside a
 `BEGIN` rule
-(see [BEGIN/END](#BEGIN_002fEND)),
+(see [BEGIN/END](#714-the-begin-and-end-special-patterns)),
 because such rules are run before `awk` begins scanning the argument list.
 
 The variable values given on the command line are processed for escape
-sequences (see [Escape Sequences](#Escape-Sequences)).
+sequences (see [Escape Sequences](#32-escape-sequences)).
 (d.c.)
 
 In some very early implementations of `awk`, when a variable assignment
@@ -3275,7 +3275,7 @@ strictly necessary.  It remains for historical compatibility.
 
 ---
 
-Next: [Environment Variables](#Environment-Variables), Previous: [Other Arguments](#Other-Arguments), Up: [Invoking Gawk](#Invoking-Gawk)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [Environment Variables](#25-the-environment-variables-gawk-uses), Previous: [Other Arguments](#23-other-command-line-arguments), Up: [Invoking Gawk](#2-running-awk-and-gawk)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 ### 2.4 Naming Standard Input
 
@@ -3294,7 +3294,7 @@ the output of some_command, and finally it reads
 file2.
 
 You may also use `"-"` to name standard input when reading
-files with `getline` (see [Getline/File](#Getline_002fFile)).
+files with `getline` (see [Getline/File](#4103-using-getline-from-a-file)).
 
 In addition, `gawk` allows you to specify the special
 file name /dev/stdin, both on the command line and
@@ -3307,7 +3307,7 @@ this file name itself.)
 
 ---
 
-Next: [Exit Status](#Exit-Status), Previous: [Naming Standard Input](#Naming-Standard-Input), Up: [Invoking Gawk](#Invoking-Gawk)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [Exit Status](#26-gawkrsquos-exit-status), Previous: [Naming Standard Input](#24-naming-standard-input), Up: [Invoking Gawk](#2-running-awk-and-gawk)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 ### 2.5 The Environment Variables `gawk` Uses
 
@@ -3316,13 +3316,13 @@ behaves.
 
 | []() | []()
 | - | -
-| &bull; [AWKPATH Variable](#AWKPATH-Variable) | Searching directories for `awk` programs.
-| &bull; [AWKLIBPATH Variable](#AWKLIBPATH-Variable) | Searching directories for `awk` shared libraries.
-| &bull; [Other Environment Variables](#Other-Environment-Variables) | The environment variables.
+| &bull; [AWKPATH Variable](#251-the-awkpath-environment-variable) | Searching directories for `awk` programs.
+| &bull; [AWKLIBPATH Variable](#252-the-awklibpath-environment-variable) | Searching directories for `awk` shared libraries.
+| &bull; [Other Environment Variables](#253-other-environment-variables) | The environment variables.
 
 ---
 
-Next: [AWKLIBPATH Variable](#AWKLIBPATH-Variable), Up: [Environment Variables](#Environment-Variables)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [AWKLIBPATH Variable](#252-the-awklibpath-environment-variable), Up: [Environment Variables](#25-the-environment-variables-gawk-uses)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 #### 2.5.1 The `AWKPATH` Environment Variable
 
@@ -3352,7 +3352,7 @@ By using the -i or -f options, your command-line
 (see [Library Functions]((#10-a-library-of-awk-functions))).
 Path searching is not done if `gawk` is in compatibility mode.
 This is true for both --traditional and --posix.
-See [Options](#Options).
+See [Options](#22-command-line-options).
 
 If the source code file is not found after the initial search, the path is searched
 again after adding the suffix &lsquo;.awk&rsquo; to the file name.
@@ -3396,7 +3396,7 @@ found, and `gawk` no longer needs to use `AWKPATH`.
 
 ---
 
-Next: [Other Environment Variables](#Other-Environment-Variables), Previous: [AWKPATH Variable](#AWKPATH-Variable), Up: [Environment Variables](#Environment-Variables)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [Other Environment Variables](#253-other-environment-variables), Previous: [AWKPATH Variable](#251-the-awkpath-environment-variable), Up: [Environment Variables](#25-the-environment-variables-gawk-uses)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 #### 2.5.2 The `AWKLIBPATH` Environment Variable
 
@@ -3407,7 +3407,7 @@ than for source files.  If the extension is not found, the path is
 searched again after adding the appropriate shared library suffix for
 the platform.  For example, on GNU/Linux systems, the suffix &lsquo;.so&rsquo;
 is used.  The search path specified is also used for extensions loaded
-via the `@load` keyword (see [Loading Shared Libraries](#Loading-Shared-Libraries)).
+via the `@load` keyword (see [Loading Shared Libraries](#28-loading-dynamic-extensions-into-your-program)).
 
 If `AWKLIBPATH` does not exist in the environment, or if it has
 an empty value, `gawk` uses a default path; this
@@ -3431,7 +3431,7 @@ extensions have been found, and `gawk` no longer needs to use
 
 ---
 
-Previous: [AWKLIBPATH Variable](#AWKLIBPATH-Variable), Up: [Environment Variables](#Environment-Variables)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Previous: [AWKLIBPATH Variable](#252-the-awklibpath-environment-variable), Up: [Environment Variables](#25-the-environment-variables-gawk-uses)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 #### 2.5.3 Other Environment Variables
 
@@ -3448,19 +3448,19 @@ the value is rounded up to an integral number of seconds.
 `GAWK_READ_TIMEOUT`
 Specifies the time, in milliseconds, for `gawk` to
 wait for input before returning with an error.
-See [Read Timeout](#Read-Timeout).
+See [Read Timeout](#411-reading-input-with-a-timeout).
 
 `GAWK_SOCK_RETRIES`
 Controls the number of times `gawk` attempts to
 retry a two-way TCP/IP (socket) connection before giving up.
 See [TCP/IP Networking](#TCP_002fIP-Networking).
-Note that when nonfatal I/O is enabled (see [Nonfatal](#Nonfatal)),
+Note that when nonfatal I/O is enabled (see [Nonfatal](#510-enabling-nonfatal-output)),
 `gawk` only tries to open a TCP/IP socket once.
 
 `POSIXLY_CORRECT`
 Causes `gawk` to switch to POSIX-compatibility
 mode, disabling all traditional and GNU extensions.
-See [Options](#Options).
+See [Options](#22-command-line-options).
 
 The environment variables in the following list are meant
 for use by the `gawk` developers for testing and tuning.
@@ -3526,12 +3526,12 @@ calls from the GNU C library to help track down possible memory leaks.
 
 ---
 
-Next: [Include Files](#Include-Files), Previous: [Environment Variables](#Environment-Variables), Up: [Invoking Gawk](#Invoking-Gawk)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [Include Files](#27-including-other-files-into-your-program), Previous: [Environment Variables](#25-the-environment-variables-gawk-uses), Up: [Invoking Gawk](#2-running-awk-and-gawk)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 ### 2.6 `gawk`&rsquo;s Exit Status
 
 If the `exit` statement is used with a value
-(see [Exit Statement](#Exit-Statement)), then `gawk` exits with
+(see [Exit Statement](#7410-the-exit-statement)), then `gawk` exits with
 the numeric value given to it.
 
 Otherwise, if there were no problems during execution,
@@ -3547,7 +3547,7 @@ to `EXIT_FAILURE`.
 
 ---
 
-Next: [Loading Shared Libraries](#Loading-Shared-Libraries), Previous: [Exit Status](#Exit-Status), Up: [Invoking Gawk](#Invoking-Gawk)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [Loading Shared Libraries](#28-loading-dynamic-extensions-into-your-program), Previous: [Exit Status](#26-gawkrsquos-exit-status), Up: [Invoking Gawk](#2-running-awk-and-gawk)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 ### 2.7 Including Other Files into Your Program
 
@@ -3635,7 +3635,7 @@ and:
 are both valid. The `AWKPATH` environment variable can be of great
 value when using `@include`. The same rules for the use
 of the `AWKPATH` variable in command-line file searches
-(see [AWKPATH Variable](#AWKPATH-Variable)) apply to
+(see [AWKPATH Variable](#251-the-awkpath-environment-variable)) apply to
 `@include` also.
 
 This is very helpful in constructing `gawk` function libraries.
@@ -3658,12 +3658,12 @@ thus reducing the need for writing complex and tedious command lines.
 In particular, `@include` is very useful for writing CGI scripts
 to be run from web pages.
 
-The rules for finding a source file described in [AWKPATH Variable](#AWKPATH-Variable) also
+The rules for finding a source file described in [AWKPATH Variable](#251-the-awkpath-environment-variable) also
 apply to files loaded with `@include`.
 
 ---
 
-Next: [Obsolete](#Obsolete), Previous: [Include Files](#Include-Files), Up: [Invoking Gawk](#Invoking-Gawk)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [Obsolete](#29-obsolete-options-andor-features), Previous: [Include Files](#27-including-other-files-into-your-program), Up: [Invoking Gawk](#2-running-awk-and-gawk)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 ### 2.8 Loading Dynamic Extensions into Your Program
 
@@ -3704,7 +3704,7 @@ It also describes the `ordchr` extension.
 
 ---
 
-Next: [Undocumented](#Undocumented), Previous: [Loading Shared Libraries](#Loading-Shared-Libraries), Up: [Invoking Gawk](#Invoking-Gawk)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [Undocumented](#210-undocumented-options-and-features), Previous: [Loading Shared Libraries](#28-loading-dynamic-extensions-into-your-program), Up: [Invoking Gawk](#2-running-awk-and-gawk)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 ### 2.9 Obsolete Options and/or Features
 
@@ -3717,11 +3717,11 @@ The process-related special files /dev/pid, /dev/ppid,
 /dev/pgrpid, and /dev/user were deprecated in `gawk`
 3.1, but still worked.  As of version 4.0, they are no longer
 interpreted specially by `gawk`.  (Use `PROCINFO` instead;
-see [Auto-set](#Auto_002dset).)
+see [Auto-set](#752-built-in-variables-that-convey-information).)
 
 ---
 
-Next: [Invoking Summary](#Invoking-Summary), Previous: [Obsolete](#Obsolete), Up: [Invoking Gawk](#Invoking-Gawk)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [Invoking Summary](#211-summary), Previous: [Obsolete](#29-obsolete-options-andor-features), Up: [Invoking Gawk](#2-running-awk-and-gawk)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 ### 2.10 Undocumented Options and Features
 
@@ -3734,7 +3734,7 @@ blank.
 
 ---
 
-Previous: [Undocumented](#Undocumented), Up: [Invoking Gawk](#Invoking-Gawk)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Previous: [Undocumented](#210-undocumented-options-and-features), Up: [Invoking Gawk](#2-running-awk-and-gawk)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 ### 2.11 Summary
 
@@ -3779,7 +3779,7 @@ or C++ using the `@load` statement and/or the -l option.
 
 ---
 
-Next: [Reading Files](#Reading-Files), Previous: [Invoking Gawk](#Invoking-Gawk), Up: [Top](#Top)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [Reading Files](#4-reading-input-files), Previous: [Invoking Gawk](#2-running-awk-and-gawk), Up: [Top](#Top)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 ## 3 Regular Expressions
 
@@ -3802,19 +3802,19 @@ Initially, the examples in this chapter are simple.
 As we explain more about how
 regular expressions work, we present more complicated instances.
 
-&bull; [Regexp Usage](#Regexp-Usage):  How to Use Regular Expressions.
-&bull; [Escape Sequences](#Escape-Sequences):  How to write nonprinting characters.
-&bull; [Regexp Operators](#Regexp-Operators):  Regular Expression Operators.
-&bull; [Bracket Expressions](#Bracket-Expressions):  What can go between &lsquo;[...]&rsquo;.
-&bull; [Leftmost Longest](#Leftmost-Longest):  How much text matches.
-&bull; [Computed Regexps](#Computed-Regexps):  Using Dynamic Regexps.
-&bull; [GNU Regexp Operators](#GNU-Regexp-Operators):  Operators specific to GNU software.
-&bull; [Case-sensitivity](#Case_002dsensitivity):  How to do case-insensitive matching.
-&bull; [Regexp Summary](#Regexp-Summary):  Regular expressions summary.
+&bull; [Regexp Usage](#31-how-to-use-regular-expressions):  How to Use Regular Expressions.
+&bull; [Escape Sequences](#32-escape-sequences):  How to write nonprinting characters.
+&bull; [Regexp Operators](#33-regular-expression-operators):  Regular Expression Operators.
+&bull; [Bracket Expressions](#34-using-bracket-expressions):  What can go between &lsquo;[...]&rsquo;.
+&bull; [Leftmost Longest](#35-how-much-text-matches):  How much text matches.
+&bull; [Computed Regexps](#36-using-dynamic-regexps):  Using Dynamic Regexps.
+&bull; [GNU Regexp Operators](#37-gawk-specific-regexp-operators):  Operators specific to GNU software.
+&bull; [Case-sensitivity](#38-case-sensitivity-in-matching):  How to do case-insensitive matching.
+&bull; [Regexp Summary](#39-summary):  Regular expressions summary.
 
 ---
 
-Next: [Escape Sequences](#Escape-Sequences), Up: [Regexp](#Regexp)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [Escape Sequences](#32-escape-sequences), Up: [Regexp](#3-regular-expressions)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 ### 3.1 How to Use Regular Expressions
 
@@ -3838,7 +3838,7 @@ not be the entire current input record.  The two operators &lsquo;~&rsquo;
 and &lsquo;!~&rsquo; perform regular expression comparisons.  Expressions
 using these operators can be used as patterns, or in `if`,
 `while`, `for`, and `do` statements.
-(See [Statements](#Statements).)
+(See [Statements](#74-control-statements-in-actions).)
 For example, the following is true if the expression exp (taken
 as a string) matches regexp:
 
@@ -3889,7 +3889,7 @@ a *regexp constant*, much like `5.27` is a numeric constant and
 
 ---
 
-Next: [Regexp Operators](#Regexp-Operators), Previous: [Regexp Usage](#Regexp-Usage), Up: [Regexp](#Regexp)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [Regexp Operators](#33-regular-expression-operators), Previous: [Regexp Usage](#31-how-to-use-regular-expressions), Up: [Regexp](#3-regular-expressions)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 ### 3.2 Escape Sequences
 
@@ -3975,7 +3975,7 @@ A literal slash (necessary for regexp constants only).
 This sequence is used when you want to write a regexp
 constant that contains a slash
 (such as `/.*:\/home\/[[:alnum:]]+:.*/`; the &lsquo;[[:alnum:]]&rsquo;
-notation is discussed in [Bracket Expressions](#Bracket-Expressions)).
+notation is discussed in [Bracket Expressions](#34-using-bracket-expressions)).
 Because the regexp is delimited by
 slashes, you need to escape any slash that is part of the pattern,
 in order to tell `awk` to keep processing the rest of the regexp.
@@ -3991,11 +3991,11 @@ in order to tell `awk` to keep processing the rest of the string.
 
 In `gawk`, a number of additional two-character sequences that begin
 with a backslash have special meaning in regexps.
-See [GNU Regexp Operators](#GNU-Regexp-Operators).
+See [GNU Regexp Operators](#37-gawk-specific-regexp-operators).
 
 In a regexp, a backslash before any character that is not in the previous list
 and not listed in
-[GNU Regexp Operators](#GNU-Regexp-Operators)
+[GNU Regexp Operators](#37-gawk-specific-regexp-operators)
 means that the next character should be taken literally, even if it would
 normally be a regexp operator.  For example, `/a\+b/` matches the three
 characters &lsquo;a+b&rsquo;.
@@ -4030,9 +4030,9 @@ for both string constants and regexp constants. This happens very early,
 as soon as `awk` reads your program.
 
 - `gawk` processes both regexp constants and dynamic regexps
-(see [Computed Regexps](#Computed-Regexps)),
+(see [Computed Regexps](#36-using-dynamic-regexps)),
 for the special operators listed in
-[GNU Regexp Operators](#GNU-Regexp-Operators).
+[GNU Regexp Operators](#37-gawk-specific-regexp-operators).
 
 -  A backslash before any other character means to treat that character
 literally.
@@ -4041,7 +4041,7 @@ Escape Sequences for Metacharacters
 
 Suppose you use an octal or hexadecimal
 escape to represent a regexp metacharacter.
-(See [Regexp Operators](#Regexp-Operators).)
+(See [Regexp Operators](#33-regular-expression-operators).)
 Does `awk` treat the character as a literal character or as a regexp
 operator?
 
@@ -4049,14 +4049,14 @@ Historically, such characters were taken literally.
 (d.c.)
 However, the POSIX standard indicates that they should be treated
 as real metacharacters, which is what `gawk` does.
-In compatibility mode (see [Options](#Options)),
+In compatibility mode (see [Options](#22-command-line-options)),
 `gawk` treats the characters represented by octal and hexadecimal
 escape sequences literally when used in regexp constants. Thus,
 `/a\52b/` is equivalent to `/a\*b/`.
 
 ---
 
-Next: [Bracket Expressions](#Bracket-Expressions), Previous: [Escape Sequences](#Escape-Sequences), Up: [Regexp](#Regexp)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [Bracket Expressions](#34-using-bracket-expressions), Previous: [Escape Sequences](#32-escape-sequences), Up: [Regexp](#3-regular-expressions)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 ### 3.3 Regular Expression Operators
 
@@ -4066,7 +4066,7 @@ increase the power and versatility of regular expressions.
 
 The escape sequences described
 earlier
-in [Escape Sequences](#Escape-Sequences)
+in [Escape Sequences](#32-escape-sequences)
 are valid inside a regexp.  They are introduced by a &lsquo;\&rsquo; and
 are recognized and converted into corresponding real characters as
 the very first step in processing regexps.
@@ -4116,7 +4116,7 @@ concatenation, we can make a regular expression such as &lsquo;U.A&rsquo;, which
 matches any three-character sequence that begins with &lsquo;U&rsquo; and ends
 with &lsquo;A&rsquo;.
 
-In strict POSIX mode (see [Options](#Options)),
+In strict POSIX mode (see [Options](#22-command-line-options)),
 &lsquo;.&rsquo; does not match the NUL
 character, which is a character with all bits equal to zero.
 Otherwise, NUL is just another character. Other versions of `awk`
@@ -4129,7 +4129,7 @@ the square brackets.  For example, &lsquo;[MVX]&rsquo; matches any one of
 the characters &lsquo;M&rsquo;, &lsquo;V&rsquo;, or &lsquo;X&rsquo; in a string.  A full
 discussion of what can be inside the square brackets of a bracket expression
 is given in
-[Bracket Expressions](#Bracket-Expressions).
+[Bracket Expressions](#34-using-bracket-expressions).
 
 <code>[^&hellip;]</code>
 This is a *complemented bracket expression*.  The first character after
@@ -4239,12 +4239,12 @@ regexp that precedes them.  For example, `/+/` matches a literal
 plus sign.  However, many other versions of `awk` treat such a
 usage as a syntax error.
 
-If `gawk` is in compatibility mode (see [Options](#Options)), interval
+If `gawk` is in compatibility mode (see [Options](#22-command-line-options)), interval
 expressions are not available in regular expressions.
 
 ---
 
-Next: [Leftmost Longest](#Leftmost-Longest), Previous: [Regexp Operators](#Regexp-Operators), Up: [Regexp](#Regexp)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [Leftmost Longest](#35-how-much-text-matches), Previous: [Regexp Operators](#33-regular-expression-operators), Up: [Regexp](#3-regular-expressions)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 ### 3.4 Using Bracket Expressions
 
@@ -4356,7 +4356,7 @@ taken literally. This is also true of &lsquo;.&rsquo; and &lsquo;*&rsquo;.
 
 ---
 
-Next: [Computed Regexps](#Computed-Regexps), Previous: [Bracket Expressions](#Bracket-Expressions), Up: [Regexp](#Regexp)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [Computed Regexps](#36-using-dynamic-regexps), Previous: [Bracket Expressions](#34-using-bracket-expressions), Up: [Regexp](#3-regular-expressions)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 ### 3.5 How Much Text Matches?
 
@@ -4369,7 +4369,7 @@ Consider the following:
 This example uses the `sub()` function to make a change to the input
 record.  (`sub()` replaces the first instance of any text matched
 by the first argument with the string provided as the second argument;
-see [String Functions](#String-Functions).)  Here, the regexp `/a+/` indicates &ldquo;one
+see [String Functions](#913-string-manipulation-functions).)  Here, the regexp `/a+/` indicates &ldquo;one
 or more &lsquo;a&rsquo; characters,&rdquo; and the replacement text is &lsquo;<A>&rsquo;.
 
 The input contains four &lsquo;a&rsquo; characters.
@@ -4387,12 +4387,12 @@ For simple match/no-match tests, this is not so important. But when doing
 text matching and substitutions with the `match()`, `sub()`, `gsub()`,
 and `gensub()` functions, it is very important.
 Understanding this principle is also important for regexp-based record
-and field splitting (see [Records](#Records),
-and also see [Field Separators](#Field-Separators)).
+and field splitting (see [Records](#41-how-input-is-split-into-records),
+and also see [Field Separators](#45-specifying-how-fields-are-separated)).
 
 ---
 
-Next: [GNU Regexp Operators](#GNU-Regexp-Operators), Previous: [Leftmost Longest](#Leftmost-Longest), Up: [Regexp](#Regexp)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [GNU Regexp Operators](#37-gawk-specific-regexp-operators), Previous: [Leftmost Longest](#35-how-much-text-matches), Up: [Regexp](#3-regular-expressions)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 ### 3.6 Using Dynamic Regexps
 
@@ -4477,7 +4477,7 @@ occur often in practice, but it&rsquo;s worth noting for future reference.
 
 ---
 
-Next: [Case-sensitivity](#Case_002dsensitivity), Previous: [Computed Regexps](#Computed-Regexps), Up: [Regexp](#Regexp)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [Case-sensitivity](#38-case-sensitivity-in-matching), Previous: [Computed Regexps](#36-using-dynamic-regexps), Up: [Regexp](#3-regular-expressions)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 ### 3.7 `gawk`-Specific Regexp Operators
 
@@ -4557,7 +4557,7 @@ method of using &lsquo;\y&rsquo; for the GNU &lsquo;\b&rsquo; appears to be the
 lesser of two evils.
 
 The various command-line options
-(see [Options](#Options))
+(see [Options](#22-command-line-options))
 control how `gawk` interprets characters in regexps:
 
 No options
@@ -4566,7 +4566,7 @@ POSIX regexps and the
 previously described
 GNU regexp operators.
 GNU regexp operators described
-in [Regexp Operators](#Regexp-Operators).
+in [Regexp Operators](#33-regular-expression-operators).
 
 <code>--posix</code>
 Match only POSIX regexps; the GNU operators are not special
@@ -4588,7 +4588,7 @@ Otherwise, interval expressions are available by default.
 
 ---
 
-Next: [Regexp Summary](#Regexp-Summary), Previous: [GNU Regexp Operators](#GNU-Regexp-Operators), Up: [Regexp](#Regexp)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [Regexp Summary](#39-summary), Previous: [GNU Regexp Operators](#37-gawk-specific-regexp-operators), Up: [Regexp](#3-regular-expressions)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 ### 3.8 Case Sensitivity in Matching
 
@@ -4606,7 +4606,7 @@ One way to perform a case-insensitive match at a particular point in the
 program is to convert the data to a single case, using the
 `tolower()` or `toupper()` built-in string functions (which we
 haven&rsquo;t discussed yet;
-see [String Functions](#String-Functions)).
+see [String Functions](#913-string-manipulation-functions)).
 For example:
 
 ```awk
@@ -4617,7 +4617,7 @@ converts the first field to lowercase before matching against it.
 This works in any POSIX-compliant `awk`.
 
 Another method, specific to `gawk`, is to set the variable
-`IGNORECASE` to a nonzero value (see [Built-in Variables](#Built_002din-Variables)).
+`IGNORECASE` to a nonzero value (see [Built-in Variables](#75-predefined-variables)).
 When `IGNORECASE` is not zero, *all* regexp and string
 operations ignore case.
 
@@ -4644,8 +4644,8 @@ thing you can do with `IGNORECASE` only is dynamically turn
 case sensitivity on or off for all the rules at once.
 
 `IGNORECASE` can be set on the command line or in a `BEGIN` rule
-(see [Other Arguments](#Other-Arguments); also
-see [Using BEGIN/END](#Using-BEGIN_002fEND)).
+(see [Other Arguments](#23-other-command-line-arguments); also
+see [Using BEGIN/END](#7141-startup-and-cleanup-actions)).
 Setting `IGNORECASE` from the command line is a way to make
 a program case insensitive without having to edit it.
 
@@ -4660,12 +4660,12 @@ ASCII characters, which also provides a number of characters suitable
 for use with European languages.[18](#FOOT18)
 
 The value of `IGNORECASE` has no effect if `gawk` is in
-compatibility mode (see [Options](#Options)).
+compatibility mode (see [Options](#22-command-line-options)).
 Case is always significant in compatibility mode.
 
 ---
 
-Previous: [Case-sensitivity](#Case_002dsensitivity), Up: [Regexp](#Regexp)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Previous: [Case-sensitivity](#38-case-sensitivity-in-matching), Up: [Regexp](#3-regular-expressions)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 ### 3.9 Summary
 
@@ -4702,7 +4702,7 @@ versions, use `tolower()` or `toupper()`.
 
 ---
 
-Next: [Printing](#Printing), Previous: [Regexp](#Regexp), Up: [Top](#Top)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [Printing](#5-printing-output), Previous: [Regexp](#3-regular-expressions), Up: [Top](#Top)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 ## 4 Reading Input Files
 
@@ -4714,7 +4714,7 @@ command line.  If you specify input files, `awk` reads them
 in order, processing all the data from one before going on to the next.
 The name of the current input file can be found in the predefined variable
 `FILENAME`
-(see [Built-in Variables](#Built_002din-Variables)).
+(see [Built-in Variables](#75-predefined-variables)).
 
 The input is read in units called *records*, and is processed by the
 rules of your program one record at a time.
@@ -4726,29 +4726,29 @@ On rare occasions, you may need to use the `getline` command.
 The  `getline` command is valuable both because it
 can do explicit input from any number of files, and because the files
 used with it do not have to be named on the `awk` command line
-(see [Getline](#Getline)).
+(see [Getline](#410-explicit-input-with-getline)).
 
 | []() | []()
 | - | -
-| &bull; [Records](#Records) | Controlling how data is split into records.
-| &bull; [Fields](#Fields) | An introduction to fields.
-| &bull; [Nonconstant Fields](#Nonconstant-Fields) | Nonconstant Field Numbers.
-| &bull; [Changing Fields](#Changing-Fields) | Changing the Contents of a Field.
-| &bull; [Field Separators](#Field-Separators) | The field separator and how to change it.
-| &bull; [Constant Size](#Constant-Size) | Reading constant width data.
-| &bull; [Splitting By Content](#Splitting-By-Content) | Defining Fields By Content
-| &bull; [Testing field creation](#Testing-field-creation) | Checking how `gawk` is splitting records.
-| &bull; [Multiple Line](#Multiple-Line) | Reading multiline records.
-| &bull; [Getline](#Getline) | Reading files under explicit program control using the `getline` function.
-| &bull; [Read Timeout](#Read-Timeout) | Reading input with a timeout.
-| &bull; [Retrying Input](#Retrying-Input) | Retrying input after certain errors.
-| &bull; [Command-line directories](#Command_002dline-directories) | What happens if you put a directory on the command line.
-| &bull; [Input Summary](#Input-Summary) | Input summary.
-| &bull; [Input Exercises](#Input-Exercises) | Exercises.
+| &bull; [Records](#41-how-input-is-split-into-records) | Controlling how data is split into records.
+| &bull; [Fields](#42-examining-fields) | An introduction to fields.
+| &bull; [Nonconstant Fields](#43-nonconstant-field-numbers) | Nonconstant Field Numbers.
+| &bull; [Changing Fields](#44-changing-the-contents-of-a-field) | Changing the Contents of a Field.
+| &bull; [Field Separators](#45-specifying-how-fields-are-separated) | The field separator and how to change it.
+| &bull; [Constant Size](#46-reading-fixed-width-data) | Reading constant width data.
+| &bull; [Splitting By Content](#47-defining-fields-by-content) | Defining Fields By Content
+| &bull; [Testing field creation](#48-checking-how-gawk-is-splitting-records) | Checking how `gawk` is splitting records.
+| &bull; [Multiple Line](#49-multiple-line-records) | Reading multiline records.
+| &bull; [Getline](#410-explicit-input-with-getline) | Reading files under explicit program control using the `getline` function.
+| &bull; [Read Timeout](#411-reading-input-with-a-timeout) | Reading input with a timeout.
+| &bull; [Retrying Input](#412-retrying-reads-after-certain-input-errors) | Retrying input after certain errors.
+| &bull; [Command-line directories](#413-directories-on-the-command-line) | What happens if you put a directory on the command line.
+| &bull; [Input Summary](#414-summary) | Input summary.
+| &bull; [Input Exercises](#415-exercises) | Exercises.
 
 ---
 
-Next: [Fields](#Fields), Up: [Reading Files](#Reading-Files)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [Fields](#42-examining-fields), Up: [Reading Files](#4-reading-input-files)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 ### 4.1 How Input Is Split into Records
 
@@ -4762,12 +4762,12 @@ never automatically reset to zero.
 
 | []() | []()
 | - | -
-| &bull; [awk split records](#awk-split-records) | How standard `awk` splits records.
-| &bull; [gawk split records](#gawk-split-records) | How `gawk` splits records.
+| &bull; [awk split records](#411-record-splitting-with-standard-awk) | How standard `awk` splits records.
+| &bull; [gawk split records](#412-record-splitting-with-gawk) | How `gawk` splits records.
 
 ---
 
-Next: [gawk split records](#gawk-split-records), Up: [Records](#Records)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [gawk split records](#412-record-splitting-with-gawk), Up: [Records](#41-how-input-is-split-into-records)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 #### 4.1.1 Record Splitting with Standard `awk`
 
@@ -4780,13 +4780,13 @@ simply assign that character to the predefined variable `RS`.
 Like any other variable,
 the value of `RS` can be changed in the `awk` program
 with the assignment operator, &lsquo;=&rsquo;
-(see [Assignment Ops](#Assignment-Ops)).
+(see [Assignment Ops](#623-assignment-expressions)).
 The new record-separator character should be enclosed in quotation marks,
 which indicate a string constant.  Often, the right time to do this is
 at the beginning of execution, before any input is processed,
 so that the very first record is read with the proper separator.
 To do this, use the special `BEGIN` pattern
-(see [BEGIN/END](#BEGIN_002fEND)).
+(see [BEGIN/END](#714-the-begin-and-end-special-patterns)).
 For example:
 
 ```awk
@@ -4849,7 +4849,7 @@ the program on mail-list:
 
 Note that the entry for the name &lsquo;Bill&rsquo; is not split.
 In the original data file
-(see [Sample Data Files](#Sample-Data-Files)),
+(see [Sample Data Files](#12-data-files-for-the-examples)),
 the line looks like this:
 
     Bill         555-1675     bill.drowning@hotmail.com       A
@@ -4864,7 +4864,7 @@ is the original newline in the data file, not the one added by
 
 Another way to change the record separator is on the command line,
 using the variable-assignment feature
-(see [Other Arguments](#Other-Arguments)):
+(see [Other Arguments](#23-other-command-line-arguments)):
 
 ```awk
     awk '{ print $0 }' RS="u" mail-list
@@ -4880,7 +4880,7 @@ are no guarantees. The moral is: Know Your Data.
 
 When using regular characters as the record separator,
 there is one unusual case that occurs when `gawk` is
-being fully POSIX-compliant (see [Options](#Options)).
+being fully POSIX-compliant (see [Options](#22-command-line-options)).
 Then, the following (extreme) pipeline prints a surprising &lsquo;1&rsquo;:
 
 ```awk
@@ -4902,7 +4902,7 @@ The empty string `""` (a string without any characters)
 has a special meaning
 as the value of `RS`. It means that records are separated
 by one or more blank lines and nothing else.
-See [Multiple Line](#Multiple-Line) for more details.
+See [Multiple Line](#49-multiple-line-records) for more details.
 
 If you change the value of `RS` in the middle of an `awk` run,
 the new value is used to delimit subsequent records, but the record
@@ -4915,14 +4915,14 @@ sets the variable `RT` to the text in the input that matched
 
 ---
 
-Previous: [awk split records](#awk-split-records), Up: [Records](#Records)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Previous: [awk split records](#411-record-splitting-with-standard-awk), Up: [Records](#41-how-input-is-split-into-records)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 #### 4.1.2 Record Splitting with `gawk`
 
 When using `gawk`,
 the value of `RS` is not limited to a one-character
 string.  It can be any regular expression
-(see [Regexp](#Regexp)). (c.e.)
+(see [Regexp](#3-regular-expressions)). (c.e.)
 In general, each record
 ends at the next string that matches the regular expression; the next
 record starts at the end of the matching string.  This general rule is
@@ -4959,7 +4959,7 @@ with optional leading and/or trailing whitespace:
 The square brackets delineate the contents of `RT`, letting you
 see the leading and trailing whitespace. The final value of
 `RT` is a newline.
-See [Simple Sed](#Simple-Sed) for a more useful example
+See [Simple Sed](#1138-a-simple-stream-editor) for a more useful example
 of `RS` as a regexp and `RT`.
 
 If you set `RS` to a regular expression that allows optional
@@ -4981,7 +4981,7 @@ no guarantee that this will never happen.
 The use of `RS` as a regular expression and the `RT`
 variable are `gawk` extensions; they are not available in
 compatibility mode
-(see [Options](#Options)).
+(see [Options](#22-command-line-options)).
 In compatibility mode, only the first character of the value of
 `RS` determines the end of the record.
 
@@ -5018,12 +5018,12 @@ character as a record separator. However, this is a special case:
 `mawk` does not allow embedded NUL characters in strings.
 (This may change in a future version of `mawk`.)
 
-See [Readfile Function](#Readfile-Function) for an interesting way to read
+See [Readfile Function](#1028-reading-a-whole-file-at-once) for an interesting way to read
 whole files.  If you are using `gawk`, see [Extension Sample Readfile](#Extension-Sample-Readfile) for another option.
 
 ---
 
-Next: [Nonconstant Fields](#Nonconstant-Fields), Previous: [Records](#Records), Up: [Reading Files](#Reading-Files)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [Nonconstant Fields](#43-nonconstant-field-numbers), Previous: [Records](#41-how-input-is-split-into-records), Up: [Reading Files](#4-reading-input-files)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 ### 4.2 Examining Fields
 
@@ -5096,7 +5096,7 @@ input record:
 
 ---
 
-Next: [Changing Fields](#Changing-Fields), Previous: [Fields](#Fields), Up: [Reading Files](#Reading-Files)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [Changing Fields](#44-changing-the-contents-of-a-field), Previous: [Fields](#42-examining-fields), Up: [Reading Files](#4-reading-input-files)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 ### 4.3 Nonconstant Field Numbers
 
@@ -5131,7 +5131,7 @@ in the field-number expression.  This example, then, prints the
 type of relationship (the fourth field) for every line of the file
 mail-list.  (All of the `awk` operators are listed, in
 order of decreasing precedence, in
-[Precedence](#Precedence).)
+[Precedence](#65-operator-precedence-how-operators-nest).)
 
 If the field number you compute is zero, you get the entire record.
 Thus, &lsquo;$(2-2)&rsquo; has the same value as `$0`.  Negative field
@@ -5141,15 +5141,15 @@ what happens when you reference a negative field number.  `gawk`
 notices this and terminates your program.  Other `awk`
 implementations may behave differently.)
 
-As mentioned in [Fields](#Fields),
+As mentioned in [Fields](#42-examining-fields),
 `awk` stores the current record&rsquo;s number of fields in the built-in
-variable `NF` (also see [Built-in Variables](#Built_002din-Variables)).  Thus, the expression
+variable `NF` (also see [Built-in Variables](#75-predefined-variables)).  Thus, the expression
 `$NF` is not a special feature&mdash;it is the direct consequence of
 evaluating `NF` and using its value as a field number.
 
 ---
 
-Next: [Field Separators](#Field-Separators), Previous: [Nonconstant Fields](#Nonconstant-Fields), Up: [Reading Files](#Reading-Files)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [Field Separators](#45-specifying-how-fields-are-separated), Previous: [Nonconstant Fields](#43-nonconstant-field-numbers), Up: [Reading Files](#4-reading-input-files)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 ### 4.4 Changing the Contents of a Field
 
@@ -5172,7 +5172,7 @@ The program first saves the original value of field three in the variable
 `nboxes`.
 The &lsquo;-&rsquo; sign represents subtraction, so this program reassigns
 field three, `$3`, as the original value of field three minus ten:
-&lsquo;$3 - 10&rsquo;.  (See [Arithmetic Ops](#Arithmetic-Ops).)
+&lsquo;$3 - 10&rsquo;.  (See [Arithmetic Ops](#621-arithmetic-operators).)
 Then it prints the original and new values for field three.
 (Someone in the warehouse made a consistent mistake while inventorying
 the red boxes.)
@@ -5182,7 +5182,7 @@ as a number; the string of characters must be converted to a number
 for the computer to do arithmetic on it.  The number resulting
 from the subtraction is converted back to a string of characters that
 then becomes field three.
-See [Conversion](#Conversion).
+See [Conversion](#614-conversion-of-strings-and-numbers).
 
 When the value of a field is changed (as perceived by `awk`), the
 text of the input record is recalculated to contain the new field where
@@ -5223,12 +5223,12 @@ the appropriate number of field separators between it and the previously
 existing fields.
 
 This recomputation affects and is affected by
-`NF` (the number of fields; see [Fields](#Fields)).
+`NF` (the number of fields; see [Fields](#42-examining-fields)).
 For example, the value of `NF` is set to the number of the highest
 field you create.
 The exact format of `$0` is also affected by a feature that has not been discussed yet:
 the *output field separator*, `OFS`,
-used to separate the fields (see [Output Separators](#Output-Separators)).
+used to separate the fields (see [Output Separators](#53-output-separators)).
 
 Note, however, that merely *referencing* an out-of-range field
 does *not* change the value of either `$0` or `NF`.
@@ -5243,9 +5243,9 @@ example:
 ```    
 
 should print &lsquo;everything is normal&rsquo;, because `NF+1` is certain
-to be out of range.  (See [If Statement](#If-Statement)
+to be out of range.  (See [If Statement](#741-the-if-else-statement)
 for more information about `awk`&rsquo;s `if-else` statements.
-See [Typing and Comparison](#Typing-and-Comparison)
+See [Typing and Comparison](#6322-comparison-operators)
 for more information about the &lsquo;!=&rsquo; operator.)
 
 It is important to note that making an assignment to an existing field
@@ -5308,7 +5308,7 @@ the fields.  Any assignment to `$0` causes the record to be
 reparsed into fields using the *current* value of `FS`.
 This also applies to any built-in function that updates `$0`,
 such as `sub()` and `gsub()`
-(see [String Functions](#String-Functions)).
+(see [String Functions](#913-string-manipulation-functions)).
 
 Understanding `$0`
 
@@ -5328,18 +5328,18 @@ with a statement such as &lsquo;$1 = $1&rsquo;, as described earlier.
 
 ---
 
-Next: [Constant Size](#Constant-Size), Previous: [Changing Fields](#Changing-Fields), Up: [Reading Files](#Reading-Files)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [Constant Size](#46-reading-fixed-width-data), Previous: [Changing Fields](#44-changing-the-contents-of-a-field), Up: [Reading Files](#4-reading-input-files)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 ### 4.5 Specifying How Fields Are Separated
 
 | []() | []()
 | - | -
-| &bull; [Default Field Splitting](#Default-Field-Splitting) | How fields are normally separated.
-| &bull; [Regexp Field Splitting](#Regexp-Field-Splitting) | Using regexps as the field separator.
-| &bull; [Single Character Fields](#Single-Character-Fields) | Making each character a separate field.
-| &bull; [Command Line Field Separator](#Command-Line-Field-Separator) | Setting `FS` from the command line.
-| &bull; [Full Line Fields](#Full-Line-Fields) | Making the full line be a single field.
-| &bull; [Field Splitting Summary](#Field-Splitting-Summary) | Some final points and a summary table.
+| &bull; [Default Field Splitting](#451-whitespace-normally-separates-fields) | How fields are normally separated.
+| &bull; [Regexp Field Splitting](#452-using-regular-expressions-to-separate-fields) | Using regexps as the field separator.
+| &bull; [Single Character Fields](#453-making-each-character-a-separate-field) | Making each character a separate field.
+| &bull; [Command Line Field Separator](#454-setting-fs-from-the-command-line) | Setting `FS` from the command line.
+| &bull; [Full Line Fields](#455-making-the-full-line-be-a-single-field) | Making the full line be a single field.
+| &bull; [Field Splitting Summary](#456-field-splitting-summary) | Some final points and a summary table.
 
 The *field separator*, which is either a single character or a regular
 expression, controls the way `awk` splits an input record into fields.
@@ -5363,12 +5363,12 @@ name `IFS` that is used by the POSIX-compliant shells (such as
 the Unix Bourne shell, `sh`, or Bash).
 
 The value of `FS` can be changed in the `awk` program with the
-assignment operator, &lsquo;=&rsquo; (see [Assignment Ops](#Assignment-Ops)).
+assignment operator, &lsquo;=&rsquo; (see [Assignment Ops](#623-assignment-expressions)).
 Often, the right time to do this is at the beginning of execution
 before any input has been processed, so that the very first record
 is read with the proper separator.  To do this, use the special
 `BEGIN` pattern
-(see [BEGIN/END](#BEGIN_002fEND)).
+(see [BEGIN/END](#714-the-begin-and-end-special-patterns)).
 For example, here we set the value of `FS` to the string
 `","`:
 
@@ -5402,7 +5402,7 @@ can massage it first with a separate `awk` program.)
 
 ---
 
-Next: [Regexp Field Splitting](#Regexp-Field-Splitting), Up: [Field Separators](#Field-Separators)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [Regexp Field Splitting](#452-using-regular-expressions-to-separate-fields), Up: [Field Separators](#45-specifying-how-fields-are-separated)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 #### 4.5.1 Whitespace Normally Separates Fields
 
@@ -5425,7 +5425,7 @@ rules.
 
 ---
 
-Next: [Single Character Fields](#Single-Character-Fields), Previous: [Default Field Splitting](#Default-Field-Splitting), Up: [Field Separators](#Field-Separators)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [Single Character Fields](#453-making-each-character-a-separate-field), Previous: [Default Field Splitting](#451-whitespace-normally-separates-fields), Up: [Field Separators](#45-specifying-how-fields-are-separated)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 #### 4.5.2 Using Regular Expressions to Separate Fields
 
@@ -5447,7 +5447,7 @@ For a less trivial example of a regular expression, try using
 single spaces to separate fields the way single commas are used.
 `FS` can be set to `"[ ]"` (left bracket, space, right
 bracket).  This regular expression matches a single space and nothing else
-(see [Regexp](#Regexp)).
+(see [Regexp](#3-regular-expressions)).
 
 There is an important difference between the two cases of &lsquo;FS = " "&rsquo;
 (a single space) and &lsquo;FS = "[ \t\n]+"&rsquo;
@@ -5517,7 +5517,7 @@ also works this way. For example:
 
 ---
 
-Next: [Command Line Field Separator](#Command-Line-Field-Separator), Previous: [Regexp Field Splitting](#Regexp-Field-Splitting), Up: [Field Separators](#Field-Separators)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [Command Line Field Separator](#454-setting-fs-from-the-command-line), Previous: [Regexp Field Splitting](#452-using-regular-expressions-to-separate-fields), Up: [Field Separators](#45-specifying-how-fields-are-separated)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 #### 4.5.3 Making Each Character a Separate Field
 
@@ -5544,13 +5544,13 @@ In this case, most versions of Unix `awk` simply treat the entire record
 as only having one field.
 (d.c.)
 In compatibility mode
-(see [Options](#Options)),
+(see [Options](#22-command-line-options)),
 if `FS` is the null string, then `gawk` also
 behaves this way.
 
 ---
 
-Next: [Full Line Fields](#Full-Line-Fields), Previous: [Single Character Fields](#Single-Character-Fields), Up: [Field Separators](#Field-Separators)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [Full Line Fields](#455-making-the-full-line-be-a-single-field), Previous: [Single Character Fields](#453-making-each-character-a-separate-field), Up: [Field Separators](#45-specifying-how-fields-are-separated)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 #### 4.5.4 Setting `FS` from the Command Line
 
@@ -5578,11 +5578,11 @@ on the command line, you would have to type:
 
 Because &lsquo;\&rsquo; is used for quoting in the shell, `awk` sees
 &lsquo;-F\\&rsquo;.  Then `awk` processes the &lsquo;\\&rsquo; for escape
-characters (see [Escape Sequences](#Escape-Sequences)), finally yielding
+characters (see [Escape Sequences](#32-escape-sequences)), finally yielding
 a single &lsquo;\&rsquo; to use for the field separator.
 
 As a special case, in compatibility mode
-(see [Options](#Options)),
+(see [Options](#22-command-line-options)),
 if the argument to -F is &lsquo;t&rsquo;, then `FS` is set to
 the TAB character.  If you type &lsquo;-F\t&rsquo; at the
 shell, without any quotes, the &lsquo;\&rsquo; gets deleted, so `awk`
@@ -5643,7 +5643,7 @@ the entries for users whose full name is not indicated:
 
 ---
 
-Next: [Field Splitting Summary](#Field-Splitting-Summary), Previous: [Command Line Field Separator](#Command-Line-Field-Separator), Up: [Field Separators](#Field-Separators)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [Field Splitting Summary](#456-field-splitting-summary), Previous: [Command Line Field Separator](#454-setting-fs-from-the-command-line), Up: [Field Separators](#45-specifying-how-fields-are-separated)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 #### 4.5.5 Making the Full Line Be a Single Field
 
@@ -5694,7 +5694,7 @@ command prints just the first line of /etc/passwd.)
 
 ---
 
-Previous: [Full Line Fields](#Full-Line-Fields), Up: [Field Separators](#Field-Separators)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Previous: [Full Line Fields](#455-making-the-full-line-be-a-single-field), Up: [Field Separators](#45-specifying-how-fields-are-separated)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 #### 4.5.6 Field-Splitting Summary
 
@@ -5732,7 +5732,7 @@ Each individual character in the record becomes a separate field.
 <code>FS</code> and <code>IGNORECASE</code>
 
 The `IGNORECASE` variable
-(see [User-modified](#User_002dmodified))
+(see [User-modified](#751-built-in-variables-that-control-awk))
 affects field splitting *only* when the value of `FS` is a regexp.
 It has no effect when `FS` is a single character, even if
 that character is a letter.  Thus, in the following code:
@@ -5751,7 +5751,7 @@ will take effect.
 
 ---
 
-Next: [Splitting By Content](#Splitting-By-Content), Previous: [Field Separators](#Field-Separators), Up: [Reading Files](#Reading-Files)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [Splitting By Content](#47-defining-fields-by-content), Previous: [Field Separators](#45-specifying-how-fields-are-separated), Up: [Reading Files](#4-reading-input-files)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 ### 4.6 Reading Fixed-Width Data
 
@@ -5765,14 +5765,14 @@ the following subsections.
 
 | []() | []()
 | - | -
-| &bull; [Fixed width data](#Fixed-width-data) | Processing fixed-width data.
-| &bull; [Skipping intervening](#Skipping-intervening) | Skipping intervening fields.
-| &bull; [Allowing trailing data](#Allowing-trailing-data) | Capturing optional trailing data.
-| &bull; [Fields with fixed data](#Fields-with-fixed-data) | Field values with fixed-width data.
+| &bull; [Fixed width data](#461-processing-fixed-width-data) | Processing fixed-width data.
+| &bull; [Skipping intervening](#462-skipping-intervening-fields) | Skipping intervening fields.
+| &bull; [Allowing trailing data](#463-capturing-optional-trailing-data) | Capturing optional trailing data.
+| &bull; [Fields with fixed data](#464-field-values-with-fixed-width-data) | Field values with fixed-width data.
 
 ---
 
-Next: [Skipping intervening](#Skipping-intervening), Up: [Constant Size](#Constant-Size)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [Skipping intervening](#462-skipping-intervening-fields), Up: [Constant Size](#46-reading-fixed-width-data)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 #### 4.6.1 Processing Fixed-Width Data
 
@@ -5785,7 +5785,7 @@ by the use of a variable number of spaces and *empty fields are
 just spaces*.  Clearly, `awk`&rsquo;s normal field splitting based
 on `FS` does not work well in this case.  Although a portable
 `awk` program can use a series of `substr()` calls on
-`$0` (see [String Functions](#String-Functions)), this is awkward and inefficient
+`$0` (see [String Functions](#913-string-manipulation-functions)), this is awkward and inefficient
 for a large number of fields.
 
 The splitting of an input record into fixed-width fields is specified by
@@ -5860,7 +5860,7 @@ a system with card readers is another story!)
 
 ---
 
-Next: [Allowing trailing data](#Allowing-trailing-data), Previous: [Fixed width data](#Fixed-width-data), Up: [Constant Size](#Constant-Size)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [Allowing trailing data](#463-capturing-optional-trailing-data), Previous: [Fixed width data](#461-processing-fixed-width-data), Up: [Constant Size](#46-reading-fixed-width-data)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 #### 4.6.2 Skipping Intervening Fields
 
@@ -5887,7 +5887,7 @@ a change, the program produces the following results:
 
 ---
 
-Next: [Fields with fixed data](#Fields-with-fixed-data), Previous: [Skipping intervening](#Skipping-intervening), Up: [Constant Size](#Constant-Size)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [Fields with fixed data](#464-field-values-with-fixed-width-data), Previous: [Skipping intervening](#462-skipping-intervening-fields), Up: [Constant Size](#46-reading-fixed-width-data)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 #### 4.6.3 Capturing Optional Trailing Data
 
@@ -5914,7 +5914,7 @@ For example:
 
 ---
 
-Previous: [Allowing trailing data](#Allowing-trailing-data), Up: [Constant Size](#Constant-Size)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Previous: [Allowing trailing data](#463-capturing-optional-trailing-data), Up: [Constant Size](#46-reading-fixed-width-data)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 #### 4.6.4 Field Values With Fixed-Width Data
 
@@ -5950,7 +5950,7 @@ four, and `$4` has the value `"ddd"`.
 
 ---
 
-Next: [Testing field creation](#Testing-field-creation), Previous: [Constant Size](#Constant-Size), Up: [Reading Files](#Reading-Files)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [Testing field creation](#48-checking-how-gawk-is-splitting-records), Previous: [Constant Size](#46-reading-fixed-width-data), Up: [Reading Files](#4-reading-input-files)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 ### 4.7 Defining Fields by Content
 
@@ -5984,7 +5984,7 @@ This regular expression describes the contents of each field.
 In the case of CSV data as presented here, each field is either &ldquo;anything that
 is not a comma,&rdquo; or &ldquo;a double quote, anything that is not a double quote, and a
 closing double quote.&rdquo;  If written as a regular expression constant
-(see [Regexp](#Regexp)),
+(see [Regexp](#3-regular-expressions)),
 we would have `/([^,]+)|("[^"]+")/`.
 Writing this as a string requires us to escape the double quotes, leading to:
 
@@ -6033,7 +6033,7 @@ would be to remove the quotes when they occur, with something like this:
     }
 ```    
 
-As with `FS`, the `IGNORECASE` variable (see [User-modified](#User_002dmodified))
+As with `FS`, the `IGNORECASE` variable (see [User-modified](#751-built-in-variables-that-control-awk))
 affects field splitting with `FPAT`.
 
 Assigning a value to `FPAT` overrides field splitting
@@ -6055,11 +6055,11 @@ contain at least one character.  A straightforward modification
 ```    
 
 Finally, the `patsplit()` function makes the same functionality
-available for splitting regular strings (see [String Functions](#String-Functions)).
+available for splitting regular strings (see [String Functions](#913-string-manipulation-functions)).
 
 ---
 
-Next: [Multiple Line](#Multiple-Line), Previous: [Splitting By Content](#Splitting-By-Content), Up: [Reading Files](#Reading-Files)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [Multiple Line](#49-multiple-line-records), Previous: [Splitting By Content](#47-defining-fields-by-content), Up: [Reading Files](#4-reading-input-files)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 ### 4.8 Checking How `gawk` Is Splitting Records
 
@@ -6076,7 +6076,7 @@ You can use &lsquo;FS = FS&rsquo; to do this,
 without having to know the current value of `FS`.
 
 In order to tell which kind of field splitting is in effect,
-use `PROCINFO["FS"]` (see [Auto-set](#Auto_002dset)).
+use `PROCINFO["FS"]` (see [Auto-set](#752-built-in-variables-that-convey-information)).
 The value is `"FS"` if regular field splitting is being used,
 `"FIELDWIDTHS"` if fixed-width field splitting is being used,
 or `"FPAT"` if content-based field splitting is being used:
@@ -6094,12 +6094,12 @@ or `"FPAT"` if content-based field splitting is being used:
 
 This information is useful when writing a function that needs to
 temporarily change `FS` or `FIELDWIDTHS`, read some records,
-and then restore the original settings (see [Passwd Functions](#Passwd-Functions) for an
+and then restore the original settings (see [Passwd Functions](#105-reading-the-user-database) for an
 example of such a function).
 
 ---
 
-Next: [Getline](#Getline), Previous: [Testing field creation](#Testing-field-creation), Up: [Reading Files](#Reading-Files)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [Getline](#410-explicit-input-with-getline), Previous: [Testing field creation](#48-checking-how-gawk-is-splitting-records), Up: [Reading Files](#4-reading-input-files)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 ### 4.9 Multiple-Line Records
 
@@ -6130,7 +6130,7 @@ string `"\n\n+"` to `RS`. This regexp matches the newline
 at the end of the record and one or more blank lines after the record.
 In addition, a regular expression always matches the longest possible
 sequence when there is a choice
-(see [Leftmost Longest](#Leftmost-Longest)).
+(see [Leftmost Longest](#35-how-much-text-matches)).
 So, the next record doesn&rsquo;t start until
 the first nonblank line that follows&mdash;no matter how many blank lines
 appear in a row, they are considered one record separator.
@@ -6157,7 +6157,7 @@ to `" "`).  This feature can be a problem if you really don&rsquo;t
 want the newline character to separate fields, because there is no way to
 prevent it.  However, you can work around this by using the `split()`
 function to break up the record manually
-(see [String Functions](#String-Functions)).
+(see [String Functions](#913-string-manipulation-functions)).
 If you have a single-character field separator, you can work around
 the special feature in a different way, by making `FS` into a
 regexp for that single character.  For example, if the field
@@ -6214,7 +6214,7 @@ Running the program produces the following output:
     &hellip;
 ```    
 
-See [Labels Program](#Labels-Program) for a more realistic program dealing with
+See [Labels Program](#1134-printing-mailing-labels) for a more realistic program dealing with
 address lists.  The following list summarizes how records are split,
 based on the value of
 `RS`:
@@ -6241,14 +6241,14 @@ Leading and trailing matches of regexp delimit empty records.
 (This is a `gawk` extension; it is not specified by the
 POSIX standard.)
 
-If not in compatibility mode (see [Options](#Options)), `gawk` sets
+If not in compatibility mode (see [Options](#22-command-line-options)), `gawk` sets
 `RT` to the input text that matched the value specified by `RS`.
 But if the input file ended without any text that matches `RS`,
 then `gawk` sets `RT` to the null string.
 
 ---
 
-Next: [Read Timeout](#Read-Timeout), Previous: [Multiple Line](#Multiple-Line), Up: [Reading Files](#Reading-Files)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [Read Timeout](#411-reading-input-with-a-timeout), Previous: [Multiple Line](#49-multiple-line-records), Up: [Reading Files](#4-reading-input-files)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 ### 4.10 Explicit Input with `getline`
 
@@ -6278,31 +6278,31 @@ If `ERRNO` indicates that the I/O operation may be
 retried, and `PROCINFO["input", "RETRY"]` is set,
 then `getline` returns -2
 instead of -1, and further calls to `getline`
-may be attempted.  See [Retrying Input](#Retrying-Input) for further information about
+may be attempted.  See [Retrying Input](#412-retrying-reads-after-certain-input-errors) for further information about
 this feature.
 
 In the following examples, command stands for a string value that
 represents a shell command.
 
-> NOTE: When --sandbox is specified (see [Options](#Options)),
+> NOTE: When --sandbox is specified (see [Options](#22-command-line-options)),
 > reading lines from files, pipes, and coprocesses is disabled.
 
 | []() | []()
 | - | -
-| &bull; [Plain Getline](#Plain-Getline) | Using `getline` with no arguments.
-| &bull; [Getline/Variable](#Getline_002fVariable) | Using `getline` into a variable.
-| &bull; [Getline/File](#Getline_002fFile) | Using `getline` from a file.
-| &bull; [Getline/Variable/File](#Getline_002fVariable_002fFile) | Using `getline` into a variable from a file.
-| &bull; [Getline/Pipe](#Getline_002fPipe) | Using `getline` from a pipe.
-| &bull; [Getline/Variable/Pipe](#Getline_002fVariable_002fPipe) | Using `getline` into a variable from a pipe.
-| &bull; [Getline/Coprocess](#Getline_002fCoprocess) | Using `getline` from a coprocess.
-| &bull; [Getline/Variable/Coprocess](#Getline_002fVariable_002fCoprocess) | Using `getline` into a variable from a coprocess.
-| &bull; [Getline Notes](#Getline-Notes) | Important things to know about `getline`.
-| &bull; [Getline Summary](#Getline-Summary) | Summary of `getline` Variants.
+| &bull; [Plain Getline](#4101-using-getline-with-no-arguments) | Using `getline` with no arguments.
+| &bull; [Getline/Variable](#4102-using-getline-into-a-variable) | Using `getline` into a variable.
+| &bull; [Getline/File](#4103-using-getline-from-a-file) | Using `getline` from a file.
+| &bull; [Getline/Variable/File](#4104-using-getline-into-a-variable-from-a-file) | Using `getline` into a variable from a file.
+| &bull; [Getline/Pipe](#4105-using-getline-from-a-pipe) | Using `getline` from a pipe.
+| &bull; [Getline/Variable/Pipe](#4106-using-getline-into-a-variable-from-a-pipe) | Using `getline` into a variable from a pipe.
+| &bull; [Getline/Coprocess](#4107-using-getline-from-a-coprocess) | Using `getline` from a coprocess.
+| &bull; [Getline/Variable/Coprocess](#4108-using-getline-into-a-variable-from-a-coprocess) | Using `getline` into a variable from a coprocess.
+| &bull; [Getline Notes](#4109-points-to-remember-about-getline) | Important things to know about `getline`.
+| &bull; [Getline Summary](#41010-summary-of-getline-variants) | Summary of `getline` Variants.
 
 ---
 
-Next: [Getline/Variable](#Getline_002fVariable), Up: [Getline](#Getline)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [Getline/Variable](#4102-using-getline-into-a-variable), Up: [Getline](#410-explicit-input-with-getline)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 #### 4.10.1 Using `getline` with No Arguments
 
@@ -6348,10 +6348,10 @@ This `awk` program deletes C-style comments (&lsquo;/* &hellip;
 */&rsquo;) from the input.
 It uses a number of features we haven&rsquo;t covered yet, including
 string concatenation
-(see [Concatenation](#Concatenation))
+(see [Concatenation](#622-string-concatenation))
 and the `index()` and `substr()` built-in
 functions
-(see [String Functions](#String-Functions)).
+(see [String Functions](#913-string-manipulation-functions)).
 By replacing the &lsquo;print $0&rsquo; with other
 statements, you could perform more complicated processing on the
 decommented input, such as searching for matches of a regular
@@ -6367,11 +6367,11 @@ This form of the `getline` command sets `NF`,
 > is lost.
 > By contrast, the `next` statement reads a new record
 > but immediately begins processing it normally, starting with the first
-> rule in the program.  See [Next Statement](#Next-Statement).
+> rule in the program.  See [Next Statement](#748-the-next-statement).
 
 ---
 
-Next: [Getline/File](#Getline_002fFile), Previous: [Plain Getline](#Plain-Getline), Up: [Getline](#Getline)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [Getline/File](#4103-using-getline-from-a-file), Previous: [Plain Getline](#4101-using-getline-with-no-arguments), Up: [Getline](#410-explicit-input-with-getline)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 #### 4.10.2 Using `getline` into a Variable
 
@@ -6419,7 +6419,7 @@ the value of `NF` do not change.
 
 ---
 
-Next: [Getline/Variable/File](#Getline_002fVariable_002fFile), Previous: [Getline/Variable](#Getline_002fVariable), Up: [Getline](#Getline)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [Getline/Variable/File](#4104-using-getline-into-a-variable-from-a-file), Previous: [Getline/Variable](#4102-using-getline-into-a-variable), Up: [Getline](#410-explicit-input-with-getline)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 #### 4.10.3 Using `getline` from a File
 
@@ -6451,13 +6451,13 @@ changed, resulting in a new value of `NF`.
 According to POSIX, &lsquo;getline < expression&rsquo; is ambiguous if
 expression contains unparenthesized operators other than
 &lsquo;$&rsquo;; for example, &lsquo;getline < dir "/" file&rsquo; is ambiguous
-because the concatenation operator (not discussed yet; see [Concatenation](#Concatenation))
+because the concatenation operator (not discussed yet; see [Concatenation](#622-string-concatenation))
 is not parenthesized.  You should write it as &lsquo;getline < (dir "/" file)&rsquo; if
 you want your program to be portable to all `awk` implementations.
 
 ---
 
-Next: [Getline/Pipe](#Getline_002fPipe), Previous: [Getline/File](#Getline_002fFile), Up: [Getline](#Getline)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [Getline/Pipe](#4105-using-getline-from-a-pipe), Previous: [Getline/File](#4103-using-getline-from-a-file), Up: [Getline](#410-explicit-input-with-getline)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 #### 4.10.4 Using `getline` into a Variable from a File
 
@@ -6492,18 +6492,18 @@ the `@include` line.
 The `close()` function is called to ensure that if two identical
 `@include` lines appear in the input, the entire specified file is
 included twice.
-See [Close Files And Pipes](#Close-Files-And-Pipes).
+See [Close Files And Pipes](#59-closing-input-and-output-redirections).
 
 One deficiency of this program is that it does not process nested
 `@include` statements
 (i.e., `@include` statements in included files)
 the way a true macro preprocessor would.
-See [Igawk Program](#Igawk-Program) for a program
+See [Igawk Program](#1139-an-easy-way-to-use-library-functions) for a program
 that does handle nested `@include` statements.
 
 ---
 
-Next: [Getline/Variable/Pipe](#Getline_002fVariable_002fPipe), Previous: [Getline/Variable/File](#Getline_002fVariable_002fFile), Up: [Getline](#Getline)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [Getline/Variable/Pipe](#4106-using-getline-into-a-variable-from-a-pipe), Previous: [Getline/Variable/File](#4104-using-getline-into-a-variable-from-a-file), Up: [Getline](#410-explicit-input-with-getline)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 #### 4.10.5 Using `getline` from a Pipe
 
@@ -6536,7 +6536,7 @@ produced by running the rest of the line as a shell command:
 The `close()` function is called to ensure that if two identical
 &lsquo;@execute&rsquo; lines appear in the input, the command is run for
 each one.
-See [Close Files And Pipes](#Close-Files-And-Pipes).
+See [Close Files And Pipes](#59-closing-input-and-output-redirections).
 Given the input:
 
     foo
@@ -6586,7 +6586,7 @@ to be portable to all `awk` implementations.
 
 ---
 
-Next: [Getline/Coprocess](#Getline_002fCoprocess), Previous: [Getline/Pipe](#Getline_002fPipe), Up: [Getline](#Getline)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [Getline/Coprocess](#4107-using-getline-from-a-coprocess), Previous: [Getline/Pipe](#4105-using-getline-from-a-pipe), Up: [Getline](#410-explicit-input-with-getline)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 #### 4.10.6 Using `getline` into a Variable from a Pipe
 
@@ -6610,7 +6610,7 @@ changed and the record is not split into fields. However, `RT` is set.
 
 ---
 
-Next: [Getline/Variable/Coprocess](#Getline_002fVariable_002fCoprocess), Previous: [Getline/Variable/Pipe](#Getline_002fVariable_002fPipe), Up: [Getline](#Getline)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [Getline/Variable/Coprocess](#4108-using-getline-into-a-variable-from-a-coprocess), Previous: [Getline/Variable/Pipe](#4106-using-getline-into-a-variable-from-a-pipe), Up: [Getline](#410-explicit-input-with-getline)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 #### 4.10.7 Using `getline` from a Coprocess
 
@@ -6647,7 +6647,7 @@ where coprocesses are discussed in more detail.
 
 ---
 
-Next: [Getline Notes](#Getline-Notes), Previous: [Getline/Coprocess](#Getline_002fCoprocess), Up: [Getline](#Getline)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [Getline Notes](#4109-points-to-remember-about-getline), Previous: [Getline/Coprocess](#4107-using-getline-from-a-coprocess), Up: [Getline](#410-explicit-input-with-getline)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 #### 4.10.8 Using `getline` into a Variable from a Coprocess
 
@@ -6662,7 +6662,7 @@ However, `RT` is set.
 
 ---
 
-Next: [Getline Summary](#Getline-Summary), Previous: [Getline/Variable/Coprocess](#Getline_002fVariable_002fCoprocess), Up: [Getline](#Getline)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [Getline Summary](#41010-summary-of-getline-variants), Previous: [Getline/Variable/Coprocess](#4108-using-getline-into-a-variable-from-a-coprocess), Up: [Getline](#410-explicit-input-with-getline)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 #### 4.10.9 Points to Remember About `getline`
 
@@ -6688,8 +6688,8 @@ causes `awk` to set the value of `FILENAME`. Normally,
 `FILENAME` does not have a value inside `BEGIN` rules, because you
 have not yet started to process the command-line data files.
 (d.c.)
-(See [BEGIN/END](#BEGIN_002fEND);
-also see [Auto-set](#Auto_002dset).)
+(See [BEGIN/END](#714-the-begin-and-end-special-patterns);
+also see [Auto-set](#752-built-in-variables-that-convey-information).)
 
 -  Using `FILENAME` with `getline`
 (&lsquo;getline < FILENAME&rsquo;)
@@ -6700,7 +6700,7 @@ and `NF` are still updated.  If you&rsquo;re doing this, it&rsquo;s
 probably by accident, and you should reconsider what it is you&rsquo;re
 trying to accomplish.
 
-- [Getline Summary](#Getline-Summary),
+- [Getline Summary](#41010-summary-of-getline-variants),
 presents a table summarizing the
 `getline` variants and which variables they can affect.
 It is worth noting that those variants that do not use redirection
@@ -6731,7 +6731,7 @@ know that there is a string value to be assigned.
 
 ---
 
-Previous: [Getline Notes](#Getline-Notes), Up: [Getline](#Getline)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Previous: [Getline Notes](#4109-points-to-remember-about-getline), Up: [Getline](#410-explicit-input-with-getline)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 #### 4.10.10 Summary of `getline` Variants
 
@@ -6747,7 +6747,7 @@ VariantEffect`awk` / `gawk``getline`Sets `$0`, `NF`, `FNR`, `NR`, and `RT``awk``
 
 ---
 
-Next: [Retrying Input](#Retrying-Input), Previous: [Getline](#Getline), Up: [Reading Files](#Reading-Files)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [Retrying Input](#412-retrying-reads-after-certain-input-errors), Previous: [Getline](#410-explicit-input-with-getline), Up: [Reading Files](#4-reading-input-files)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 ### 4.11 Reading Input with a Timeout
 
@@ -6756,7 +6756,7 @@ This section describes a feature that is specific to `gawk`.
 You may specify a timeout in milliseconds for reading input from the keyboard,
 a pipe, or two-way communication, including TCP/IP sockets. This can be done
 on a per-input, per-command, or per-connection basis, by setting a special
-element in the `PROCINFO` array (see [Auto-set](#Auto_002dset)):
+element in the `PROCINFO` array (see [Auto-set](#752-built-in-variables-that-convey-information)):
 
 ```awk
     PROCINFO["input_name", "READ_TIMEOUT"] = timeout in milliseconds
@@ -6838,7 +6838,7 @@ on a per-command or per-connection basis.
 the attempt to read from the underlying device may
 succeed in a later attempt. This is a limitation, and it also
 means that you cannot use this to multiplex input from
-two or more sources.  See [Retrying Input](#Retrying-Input) for a way to enable 
+two or more sources.  See [Retrying Input](#412-retrying-reads-after-certain-input-errors) for a way to enable 
 later I/O attempts to succeed.
 
 Assigning a timeout value prevents read operations from
@@ -6851,7 +6851,7 @@ indefinitely until some other process opens it for writing.
 
 ---
 
-Next: [Command-line directories](#Command_002dline-directories), Previous: [Read Timeout](#Read-Timeout), Up: [Reading Files](#Reading-Files)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [Command-line directories](#413-directories-on-the-command-line), Previous: [Read Timeout](#411-reading-input-with-a-timeout), Up: [Reading Files](#4-reading-input-files)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 ### 4.12 Retrying Reads After Certain Input Errors
 
@@ -6862,7 +6862,7 @@ default `getline` returns -1, and subsequent attempts to
 read from that file result in an end-of-file indication.  However, you
 may optionally instruct `gawk` to allow I/O to be retried when
 certain errors are encountered by setting a special element in
-the `PROCINFO` array (see [Auto-set](#Auto_002dset)):
+the `PROCINFO` array (see [Auto-set](#752-built-in-variables-that-convey-information)):
 
 ```awk
     PROCINFO["input_name", "RETRY"] = 1
@@ -6882,7 +6882,7 @@ descriptor has been configured to behave in a non-blocking fashion.
 
 ---
 
-Next: [Input Summary](#Input-Summary), Previous: [Retrying Input](#Retrying-Input), Up: [Reading Files](#Reading-Files)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [Input Summary](#414-summary), Previous: [Retrying Input](#412-retrying-reads-after-certain-input-errors), Up: [Reading Files](#4-reading-input-files)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 ### 4.13 Directories on the Command Line
 
@@ -6906,7 +6906,7 @@ as usable data from an `awk` program.
 
 ---
 
-Next: [Input Exercises](#Input-Exercises), Previous: [Command-line directories](#Command_002dline-directories), Up: [Reading Files](#Reading-Files)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [Input Exercises](#415-exercises), Previous: [Command-line directories](#413-directories-on-the-command-line), Up: [Reading Files](#4-reading-input-files)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 ### 4.14 Summary
 
@@ -6954,17 +6954,17 @@ for file.
 
 ---
 
-Previous: [Input Summary](#Input-Summary), Up: [Reading Files](#Reading-Files)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Previous: [Input Summary](#414-summary), Up: [Reading Files](#4-reading-input-files)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 ### 4.15 Exercises
 
-1.  Using the `FIELDWIDTHS` variable (see [Constant Size](#Constant-Size)),
+1.  Using the `FIELDWIDTHS` variable (see [Constant Size](#46-reading-fixed-width-data)),
 write a program to read election data, where each record represents
 one voter&rsquo;s votes.  Come up with a way to define which columns are
 associated with each ballot item, and print the total votes,
 including abstentions, for each item.
 
-2. [Plain Getline](#Plain-Getline), presented a program to remove C-style
+2. [Plain Getline](#4101-using-getline-with-no-arguments), presented a program to remove C-style
 comments (&lsquo;/* &hellip; */&rsquo;) from the input.  That program
 does not work if one comment ends on one line and another one
 starts later on the same line.
@@ -6972,7 +6972,7 @@ That can be fixed by making one simple change. What is it?
 
 ---
 
-Next: [Expressions](#Expressions), Previous: [Reading Files](#Reading-Files), Up: [Top](#Top)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [Expressions](#6-expressions), Previous: [Reading Files](#4-reading-input-files), Up: [Top](#Top)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 ## 5 Printing Output
 
@@ -6984,10 +6984,10 @@ The `print` statement is not limited when
 computing *which* values to print. However, with two exceptions,
 you cannot specify *how* to print them&mdash;how many
 columns, whether to use exponential notation or not, and so on.
-(For the exceptions, see [Output Separators](#Output-Separators) and
-[OFMT](#OFMT).)
+(For the exceptions, see [Output Separators](#53-output-separators) and
+[OFMT](#54-controlling-numeric-output-with-print).)
 For printing with specifications, you need the `printf` statement
-(see [Printf](#Printf)).
+(see [Printf](#55-using-printf-statements-for-fancier-printing)).
 
 Besides basic and formatted printing, this chapter
 also covers I/O redirections to files and pipes, introduces
@@ -6996,22 +6996,22 @@ and discusses the `close()` built-in function.
 
 | []() | []()
 | - | -
-| &bull; [Print](#Print) | The `print` statement.
-| &bull; [Print Examples](#Print-Examples) | Simple examples of `print` statements.
-| &bull; [Output Separators](#Output-Separators) | The output separators and how to change them.
-| &bull; [OFMT](#OFMT) | Controlling Numeric Output With `print`.
-| &bull; [Printf](#Printf) | The `printf` statement.
-| &bull; [Redirection](#Redirection) | How to redirect output to multiple files and pipes.
-| &bull; [Special FD](#Special-FD) | Special files for I/O.
-| &bull; [Special Files](#Special-Files) | File name interpretation in `gawk`.  `gawk` allows access to inherited file descriptors.
-| &bull; [Close Files And Pipes](#Close-Files-And-Pipes) | Closing Input and Output Files and Pipes.
-| &bull; [Nonfatal](#Nonfatal) | Enabling Nonfatal Output.
-| &bull; [Output Summary](#Output-Summary) | Output summary.
-| &bull; [Output Exercises](#Output-Exercises) | Exercises.
+| &bull; [Print](#51-the-print-statement) | The `print` statement.
+| &bull; [Print Examples](#52-print-statement-examples) | Simple examples of `print` statements.
+| &bull; [Output Separators](#53-output-separators) | The output separators and how to change them.
+| &bull; [OFMT](#54-controlling-numeric-output-with-print) | Controlling Numeric Output With `print`.
+| &bull; [Printf](#55-using-printf-statements-for-fancier-printing) | The `printf` statement.
+| &bull; [Redirection](#56-redirecting-output-of-print-and-printf) | How to redirect output to multiple files and pipes.
+| &bull; [Special FD](#57-special-files-for-standard-preopened-data-streams) | Special files for I/O.
+| &bull; [Special Files](#58-special-file-names-in-gawk) | File name interpretation in `gawk`.  `gawk` allows access to inherited file descriptors.
+| &bull; [Close Files And Pipes](#59-closing-input-and-output-redirections) | Closing Input and Output Files and Pipes.
+| &bull; [Nonfatal](#510-enabling-nonfatal-output) | Enabling Nonfatal Output.
+| &bull; [Output Summary](#511-summary) | Output summary.
+| &bull; [Output Exercises](#512-exercises) | Exercises.
 
 ---
 
-Next: [Print Examples](#Print-Examples), Up: [Printing](#Printing)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [Print Examples](#52-print-statement-examples), Up: [Printing](#5-printing-output)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 ### 5.1 The `print` Statement
 
@@ -7027,7 +7027,7 @@ followed by a newline.  The statement looks like this:
 The entire list of items may be optionally enclosed in parentheses.  The
 parentheses are necessary if any of the item expressions uses the &lsquo;>&rsquo;
 relational operator; otherwise it could be confused with an output redirection
-(see [Redirection](#Redirection)).
+(see [Redirection](#56-redirecting-output-of-print-and-printf)).
 
 The items to print can be constant strings or numbers, fields of the
 current record (such as `$1`), variables, or any `awk`
@@ -7048,7 +7048,7 @@ pattern&ndash;action statement, for example.
 
 ---
 
-Next: [Output Separators](#Output-Separators), Previous: [Print](#Print), Up: [Printing](#Printing)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [Output Separators](#53-output-separators), Previous: [Print](#51-the-print-statement), Up: [Printing](#5-printing-output)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 ### 5.2 `print` Statement Examples
 
@@ -7060,7 +7060,7 @@ single `print` statement can make any number of lines this way.
 The following is an example of printing a string that contains embedded
 newlines
 (the &lsquo;\n&rsquo; is an escape sequence, used to represent the newline
-character; see [Escape Sequences](#Escape-Sequences)):
+character; see [Escape Sequences](#32-escape-sequences)):
 
 ```awk
     $ awk 'BEGIN { print "line one\nline two\nline three" }'
@@ -7099,7 +7099,7 @@ To someone unfamiliar with the inventory-shipped file, neither
 example&rsquo;s output makes much sense.  A heading line at the beginning
 would make it clearer.  Let&rsquo;s add some headings to our table of months
 (`$1`) and green crates shipped (`$2`).  We do this using
-a `BEGIN` rule (see [BEGIN/END](#BEGIN_002fEND)) so that the headings are only
+a `BEGIN` rule (see [BEGIN/END](#714-the-begin-and-end-special-patterns)) so that the headings are only
 printed once:
 
 ```awk
@@ -7132,16 +7132,16 @@ Lining up columns this way can get pretty
 complicated when there are many columns to fix.  Counting spaces for two
 or three columns is simple, but any more than this can take up
 a lot of time. This is why the `printf` statement was
-created (see [Printf](#Printf));
+created (see [Printf](#55-using-printf-statements-for-fancier-printing));
 one of its specialties is lining up columns of data.
 
 > NOTE: You can continue either a `print` or
 > `printf` statement simply by putting a newline after any comma
-> (see [Statements/Lines](#Statements_002fLines)).
+> (see [Statements/Lines](#16-awk-statements-versus-lines)).
 
 ---
 
-Next: [OFMT](#OFMT), Previous: [Print Examples](#Print-Examples), Up: [Printing](#Printing)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [OFMT](#54-controlling-numeric-output-with-print), Previous: [Print Examples](#52-print-statement-examples), Up: [Printing](#5-printing-output)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 ### 5.3 Output Separators
 
@@ -7163,11 +7163,11 @@ makes a separate line.
 In order to change how output fields and records are separated, assign
 new values to the variables `OFS` and `ORS`.  The usual
 place to do this is in the `BEGIN` rule
-(see [BEGIN/END](#BEGIN_002fEND)), so
+(see [BEGIN/END](#714-the-begin-and-end-special-patterns)), so
 that it happens before any input is processed.  It can also be done
 with assignments on the command line, before the names of the input
 files, or using the -v command-line option
-(see [Options](#Options)).
+(see [Options](#22-command-line-options)).
 The following example prints the first and second fields of each input
 record, separated by a semicolon, with a blank line added after each
 newline:
@@ -7204,7 +7204,7 @@ runs together on a single line.
 
 ---
 
-Next: [Printf](#Printf), Previous: [Output Separators](#Output-Separators), Up: [Printing](#Printing)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [Printf](#55-using-printf-statements-for-fancier-printing), Previous: [Output Separators](#53-output-separators), Up: [Printing](#5-printing-output)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 ### 5.4 Controlling Numeric Output with `print`
 
@@ -7212,13 +7212,13 @@ When printing numeric values with the `print` statement,
 `awk` internally converts each number to a string of characters
 and prints that string.  `awk` uses the `sprintf()` function
 to do this conversion
-(see [String Functions](#String-Functions)).
+(see [String Functions](#913-string-manipulation-functions)).
 For now, it suffices to say that the `sprintf()`
 function accepts a *format specification* that tells it how to format
 numbers (or strings), and that there are a number of different ways in which
 numbers can be formatted.  The different format specifications are discussed
 more fully in
-[Control Letters](#Control-Letters).
+[Control Letters](#552-format-control-letters).
 
 The predefined variable `OFMT` contains the format specification
 that `print` uses with `sprintf()` when it wants to convert a
@@ -7241,7 +7241,7 @@ if `OFMT` contains anything but a floating-point conversion specification.
 
 ---
 
-Next: [Redirection](#Redirection), Previous: [OFMT](#OFMT), Up: [Printing](#Printing)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [Redirection](#56-redirecting-output-of-print-and-printf), Previous: [OFMT](#54-controlling-numeric-output-with-print), Up: [Printing](#5-printing-output)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 ### 5.5 Using `printf` Statements for Fancier Printing
 
@@ -7255,14 +7255,14 @@ after the decimal point).
 
 | []() | []()
 | - | -
-| &bull; [Basic Printf](#Basic-Printf) | Syntax of the `printf` statement.
-| &bull; [Control Letters](#Control-Letters) | Format-control letters.
-| &bull; [Format Modifiers](#Format-Modifiers) | Format-specification modifiers.
-| &bull; [Printf Examples](#Printf-Examples) | Several examples.
+| &bull; [Basic Printf](#551-introduction-to-the-printf-statement) | Syntax of the `printf` statement.
+| &bull; [Control Letters](#552-format-control-letters) | Format-control letters.
+| &bull; [Format Modifiers](#553-modifiers-for-printf-formats) | Format-specification modifiers.
+| &bull; [Printf Examples](#554-examples-using-printf) | Several examples.
 
 ---
 
-Next: [Control Letters](#Control-Letters), Up: [Printf](#Printf)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [Control Letters](#552-format-control-letters), Up: [Printf](#55-using-printf-statements-for-fancier-printing)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 #### 5.5.1 Introduction to the `printf` Statement
 
@@ -7275,7 +7275,7 @@ A simple `printf` statement looks like this:
 As for `print`, the entire list of arguments may optionally be
 enclosed in parentheses. Here too, the parentheses are necessary if any
 of the item expressions uses the &lsquo;>&rsquo; relational operator; otherwise,
-it can be confused with an output redirection (see [Redirection](#Redirection)).
+it can be confused with an output redirection (see [Redirection](#56-redirecting-output-of-print-and-printf)).
 
 The difference between `printf` and `print` is the format
 argument.  This is an expression whose value is taken as a string; it
@@ -7308,7 +7308,7 @@ the output message.
 
 ---
 
-Next: [Format Modifiers](#Format-Modifiers), Previous: [Basic Printf](#Basic-Printf), Up: [Printf](#Printf)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [Format Modifiers](#553-modifiers-for-printf-formats), Previous: [Basic Printf](#551-introduction-to-the-printf-statement), Up: [Printf](#55-using-printf-statements-for-fancier-printing)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 #### 5.5.2 Format-Control Letters
 
@@ -7395,7 +7395,7 @@ scientific notation, &lsquo;%G&rsquo; uses &lsquo;E&rsquo; instead of &lsquo;e&r
 
 <code>%o</code>
 Print an unsigned octal integer
-(see [Nondecimal-numbers](#Nondecimal_002dnumbers)).
+(see [Nondecimal-numbers](#6112-octal-and-hexadecimal-numbers)).
 
 <code>%s</code>
 Print a string.
@@ -7409,7 +7409,7 @@ are floating point; it is provided primarily for compatibility with C.)
 Print an unsigned hexadecimal integer;
 &lsquo;%X&rsquo; uses the letters &lsquo;A&rsquo; through &lsquo;F&rsquo;
 instead of &lsquo;a&rsquo; through &lsquo;f&rsquo;
-(see [Nondecimal-numbers](#Nondecimal_002dnumbers)).
+(see [Nondecimal-numbers](#6112-octal-and-hexadecimal-numbers)).
 
 <code>%%</code>
 Print a single &lsquo;%&rsquo;.
@@ -7419,14 +7419,14 @@ argument and it ignores any modifiers.
 > NOTE: When using the integer format-control letters for values that are
 > outside the range of the widest C integer type, `gawk` switches to
 > the &lsquo;%g&rsquo; format specifier. If --lint is provided on the
-> command line (see [Options](#Options)), `gawk`
+> command line (see [Options](#22-command-line-options)), `gawk`
 > warns about this.  Other versions of `awk` may print invalid
 > values or do something else entirely.
 > (d.c.)
 
 ---
 
-Next: [Printf Examples](#Printf-Examples), Previous: [Control Letters](#Control-Letters), Up: [Printf](#Printf)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [Printf Examples](#554-examples-using-printf), Previous: [Control Letters](#552-format-control-letters), Up: [Printf](#55-using-printf-statements-for-fancier-printing)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 #### 5.5.3 Modifiers for `printf` Formats
 
@@ -7516,11 +7516,11 @@ For example:
 ```
 
 For more information about locales and internationalization issues,
-see [Locales](#Locales).
+see [Locales](#66-where-you-are-makes-a-difference).
 
 > NOTE: The &lsquo;'&rsquo; flag is a nice feature, but its use complicates things: it
 > becomes difficult to use it in command-line programs.  For information
-> on appropriate quoting tricks, see [Quoting](#Quoting).
+> on appropriate quoting tricks, see [Quoting](#116-shell-quoting-issues).
 
 width
 This is a number specifying the desired minimum width of a field.  Inserting any
@@ -7609,12 +7609,12 @@ C programmers may be used to supplying additional modifiers (&lsquo;h&rsquo;,
 &lsquo;j&rsquo;, &lsquo;l&rsquo;, &lsquo;L&rsquo;, &lsquo;t&rsquo;, and &lsquo;z&rsquo;) in `printf`
 format strings. These are not valid in `awk`.  Most `awk`
 implementations silently ignore them.  If --lint is provided
-on the command line (see [Options](#Options)), `gawk` warns about their
+on the command line (see [Options](#22-command-line-options)), `gawk` warns about their
 use. If --posix is supplied, their use is a fatal error.
 
 ---
 
-Previous: [Format Modifiers](#Format-Modifiers), Up: [Printf](#Printf)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Previous: [Format Modifiers](#553-modifiers-for-printf-formats), Up: [Printf](#55-using-printf-statements-for-fancier-printing)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 #### 5.5.4 Examples Using `printf`
 
@@ -7658,7 +7658,7 @@ after them.
 
 The table could be made to look even nicer by adding headings to the
 tops of the columns.  This is done using a `BEGIN` rule
-(see [BEGIN/END](#BEGIN_002fEND))
+(see [BEGIN/END](#714-the-begin-and-end-special-patterns))
 so that the headers are only printed once, at the beginning of
 the `awk` program:
 
@@ -7694,7 +7694,7 @@ emphasized by storing it in a variable, like this:
 
 ---
 
-Next: [Special FD](#Special-FD), Previous: [Printf](#Printf), Up: [Printing](#Printing)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [Special FD](#57-special-files-for-standard-preopened-data-streams), Previous: [Printf](#55-using-printf-statements-for-fancier-printing), Up: [Printing](#5-printing-output)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 ### 5.6 Redirecting Output of `print` and `printf`
 
@@ -7704,7 +7704,7 @@ output, usually the screen.  Both `print` and `printf` can
 also send their output to other places.
 This is called *redirection*.
 
-> NOTE: When --sandbox is specified (see [Options](#Options)),
+> NOTE: When --sandbox is specified (see [Options](#22-command-line-options)),
 > redirecting output to files, pipes, and coprocesses is disabled.
 
 A redirection appears after the `print` or `printf` statement.
@@ -7720,7 +7720,7 @@ but they work identically for `printf`:
 This redirection prints the items into the output file named
 output-file.  The file name output-file can be any
 expression.  Its value is changed to a string and then used as a
-file name (see [Expressions](#Expressions)).
+file name (see [Expressions](#6-expressions)).
 
 When this type of redirection is used, the output-file is erased
 before the first output is written to it.  Subsequent writes to the same
@@ -7788,7 +7788,7 @@ in an `awk` script run periodically for system maintenance:
 
 The `close()` function is called here because it&rsquo;s a good idea to close
 the pipe as soon as all the intended output has been sent to it.
-See [Close Files And Pipes](#Close-Files-And-Pipes)
+See [Close Files And Pipes](#59-closing-input-and-output-redirections)
 for more information.
 
 This example also illustrates the use of a variable to represent
@@ -7808,7 +7808,7 @@ but is subsidiary to the `awk` program.
 
 This feature is a `gawk` extension, and is not available in
 POSIX `awk`.
-See [Getline/Coprocess](#Getline_002fCoprocess),
+See [Getline/Coprocess](#4107-using-getline-from-a-coprocess),
 for a brief discussion.
 See [Two-way I/O](#Two_002dway-I_002fO),
 for a more complete discussion.
@@ -7838,7 +7838,7 @@ for the same file is definitely poor style, and is confusing to readers
 of your program.)
 
 As mentioned earlier
-(see [Getline Notes](#Getline-Notes)),
+(see [Getline Notes](#4109-points-to-remember-about-getline)),
 many
 Many
 older
@@ -7863,17 +7863,17 @@ all lowercase.  The following program is both simple and efficient:
 
 The `tolower()` function returns its argument string with all
 uppercase characters converted to lowercase
-(see [String Functions](#String-Functions)).
+(see [String Functions](#913-string-manipulation-functions)).
 The program builds up a list of command lines,
 using the `mv` utility to rename the files.
 It then sends the list to the shell for execution.
 
-See [Shell Quoting](#Shell-Quoting) for a function that can help in generating
+See [Shell Quoting](#1029-quoting-strings-to-pass-to-the-shell) for a function that can help in generating
 command lines to be fed to the shell.
 
 ---
 
-Next: [Special Files](#Special-Files), Previous: [Redirection](#Redirection), Up: [Printing](#Printing)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [Special Files](#58-special-file-names-in-gawk), Previous: [Redirection](#56-redirecting-output-of-print-and-printf), Up: [Printing](#5-printing-output)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 ### 5.7 Special Files for Standard Preopened Data Streams
 
@@ -7951,11 +7951,11 @@ to confusing results.
 `gawk` does not treat these file names as special when
 in POSIX-compatibility mode. However, because BWK `awk`
 supports them, `gawk` does support them even when
-invoked with the --traditional option (see [Options](#Options)).
+invoked with the --traditional option (see [Options](#22-command-line-options)).
 
 ---
 
-Next: [Close Files And Pipes](#Close-Files-And-Pipes), Previous: [Special FD](#Special-FD), Up: [Printing](#Printing)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [Close Files And Pipes](#59-closing-input-and-output-redirections), Previous: [Special FD](#57-special-files-for-standard-preopened-data-streams), Up: [Printing](#5-printing-output)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 ### 5.8 Special File names in `gawk`
 
@@ -7966,13 +7966,13 @@ TCP/IP networking.
 
 | []() | []()
 | - | -
-| &bull; [Other Inherited Files](#Other-Inherited-Files) | Accessing other open files with `gawk`.
-| &bull; [Special Network](#Special-Network) | Special files for network communications.
-| &bull; [Special Caveats](#Special-Caveats) | Things to watch out for.
+| &bull; [Other Inherited Files](#581-accessing-other-open-files-with-gawk) | Accessing other open files with `gawk`.
+| &bull; [Special Network](#582-special-files-for-network-communications) | Special files for network communications.
+| &bull; [Special Caveats](#583-special-file-name-caveats) | Things to watch out for.
 
 ---
 
-Next: [Special Network](#Special-Network), Up: [Special Files](#Special-Files)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [Special Network](#582-special-files-for-network-communications), Up: [Special Files](#58-special-file-names-in-gawk)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 #### 5.8.1 Accessing Other Open Files with `gawk`
 
@@ -7996,7 +7996,7 @@ above two, does actually close the given file descriptor.
 
 ---
 
-Next: [Special Caveats](#Special-Caveats), Previous: [Other Inherited Files](#Other-Inherited-Files), Up: [Special Files](#Special-Files)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [Special Caveats](#583-special-file-name-caveats), Previous: [Other Inherited Files](#581-accessing-other-open-files-with-gawk), Up: [Special Files](#58-special-file-names-in-gawk)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 #### 5.8.2 Special Files for Network Communications
 
@@ -8020,7 +8020,7 @@ Full discussion is delayed until
 
 ---
 
-Previous: [Special Network](#Special-Network), Up: [Special Files](#Special-Files)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Previous: [Special Network](#582-special-files-for-network-communications), Up: [Special Files](#58-special-file-names-in-gawk)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 #### 5.8.3 Special File name Caveats
 
@@ -8033,7 +8033,7 @@ files is disabled only in POSIX mode.
 
 -  Recognition of the other special file names is disabled if `gawk` is in
 compatibility mode (either --traditional or --posix;
-see [Options](#Options)).
+see [Options](#22-command-line-options)).
 
 - `gawk`*always*
 interprets these special file names.
@@ -8046,13 +8046,13 @@ Doing so results in unpredictable behavior.
 
 ---
 
-Next: [Nonfatal](#Nonfatal), Previous: [Special Files](#Special-Files), Up: [Printing](#Printing)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [Nonfatal](#510-enabling-nonfatal-output), Previous: [Special Files](#58-special-file-names-in-gawk), Up: [Printing](#5-printing-output)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 ### 5.9 Closing Input and Output Redirections
 
 If the same file name or the same shell command is used with `getline`
 more than once during the execution of an `awk` program
-(see [Getline](#Getline)),
+(see [Getline](#410-explicit-input-with-getline)),
 the file is opened (or the command is executed) the first time only.
 At that time, the first record of input is read from that file or command.
 The next time the same file or command is used with `getline`,
@@ -8233,12 +8233,12 @@ returns zero on success and a nonzero value otherwise.  In general,
 different implementations vary in what they report when closing
 pipes; thus, the return value cannot be used portably.
 (d.c.)
-In POSIX mode (see [Options](#Options)), `gawk` just returns zero
+In POSIX mode (see [Options](#22-command-line-options)), `gawk` just returns zero
 when closing a pipe.
 
 ---
 
-Next: [Output Summary](#Output-Summary), Previous: [Close Files And Pipes](#Close-Files-And-Pipes), Up: [Printing](#Printing)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [Output Summary](#511-summary), Previous: [Close Files And Pipes](#59-closing-input-and-output-redirections), Up: [Printing](#5-printing-output)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 ### 5.10 Enabling Nonfatal Output
 
@@ -8295,7 +8295,7 @@ or `PROCINFO["/dev/stdout", "NONFATAL"]`.  For standard error, use
 
 When attempting to open a TCP/IP socket (see [TCP/IP Networking](#TCP_002fIP-Networking)),
 `gawk` tries multiple times. The `GAWK_SOCK_RETRIES`
-environment variable (see [Other Environment Variables](#Other-Environment-Variables)) allows you to
+environment variable (see [Other Environment Variables](#253-other-environment-variables)) allows you to
 override `gawk`&rsquo;s builtin default number of attempts.  However,
 once nonfatal I/O is enabled for a given socket, `gawk` only
 retries once, relying on `awk`-level code to notice that there
@@ -8303,7 +8303,7 @@ was a problem.
 
 ---
 
-Next: [Output Exercises](#Output-Exercises), Previous: [Nonfatal](#Nonfatal), Up: [Printing](#Printing)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [Output Exercises](#512-exercises), Previous: [Nonfatal](#510-enabling-nonfatal-output), Up: [Printing](#5-printing-output)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 ### 5.11 Summary
 
@@ -8333,7 +8333,7 @@ after every relevant output statement.
 
 ---
 
-Previous: [Output Summary](#Output-Summary), Up: [Printing](#Printing)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Previous: [Output Summary](#511-summary), Up: [Printing](#5-printing-output)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 ### 5.12 Exercises
 
@@ -8345,10 +8345,10 @@ Previous: [Output Summary](#Output-Summary), Up: [Printing](#Printing)   [[Conte
                { print $1, "     ", $2 }' inventory-shipped
 ```    
 
-from [Output Separators](#Output-Separators), by using a new value of `OFS`.
+from [Output Separators](#53-output-separators), by using a new value of `OFS`.
 
 2.  Use the `printf` statement to line up the headings and table data
-for the inventory-shipped example that was covered in [Print](#Print).
+for the inventory-shipped example that was covered in [Print](#51-the-print-statement).
 
 3.  What happens if you forget the double quotes when redirecting
 output, as follows:
@@ -8359,7 +8359,7 @@ output, as follows:
 
 ---
 
-Next: [Patterns and Actions](#Patterns-and-Actions), Previous: [Printing](#Printing), Up: [Top](#Top)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [Patterns and Actions](#7-patterns-actions-and-variables), Previous: [Printing](#5-printing-output), Up: [Top](#Top)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 ## 6 Expressions
 
@@ -8377,17 +8377,17 @@ combinations of these with various operators.
 
 | []() | []()
 | - | -
-| &bull; [Values](#Values) | Constants, Variables, and Regular Expressions.
-| &bull; [All Operators](#All-Operators) | `gawk`&rsquo;s operators.
-| &bull; [Truth Values and Conditions](#Truth-Values-and-Conditions) | Testing for true and false.
-| &bull; [Function Calls](#Function-Calls) | A function call is an expression.
-| &bull; [Precedence](#Precedence) | How various operators nest.
-| &bull; [Locales](#Locales) | How the locale affects things.
-| &bull; [Expressions Summary](#Expressions-Summary) | Expressions summary.
+| &bull; [Values](#61-constants-variables-and-conversions) | Constants, Variables, and Regular Expressions.
+| &bull; [All Operators](#62-operators-doing-something-with-values) | `gawk`&rsquo;s operators.
+| &bull; [Truth Values and Conditions](#63-truth-values-and-conditions) | Testing for true and false.
+| &bull; [Function Calls](#64-function-calls) | A function call is an expression.
+| &bull; [Precedence](#65-operator-precedence-how-operators-nest) | How various operators nest.
+| &bull; [Locales](#66-where-you-are-makes-a-difference) | How the locale affects things.
+| &bull; [Expressions Summary](#67-summary) | Expressions summary.
 
 ---
 
-Next: [All Operators](#All-Operators), Up: [Expressions](#Expressions)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [All Operators](#62-operators-doing-something-with-values), Up: [Expressions](#6-expressions)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 ### 6.1 Constants, Variables, and Conversions
 
@@ -8397,14 +8397,14 @@ that provide the values used in expressions.
 
 | []() | []()
 | - | -
-| &bull; [Constants](#Constants) | String, numeric and regexp constants.
-| &bull; [Using Constant Regexps](#Using-Constant-Regexps) | When and how to use a regexp constant.
-| &bull; [Variables](#Variables) | Variables give names to values for later use.
-| &bull; [Conversion](#Conversion) | The conversion of strings to numbers and vice versa.
+| &bull; [Constants](#611-constant-expressions) | String, numeric and regexp constants.
+| &bull; [Using Constant Regexps](#612-using-regular-expression-constants) | When and how to use a regexp constant.
+| &bull; [Variables](#613-variables) | Variables give names to values for later use.
+| &bull; [Conversion](#614-conversion-of-strings-and-numbers) | The conversion of strings to numbers and vice versa.
 
 ---
 
-Next: [Using Constant Regexps](#Using-Constant-Regexps), Up: [Values](#Values)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [Using Constant Regexps](#612-using-regular-expression-constants), Up: [Values](#61-constants-variables-and-conversions)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 #### 6.1.1 Constant Expressions
 
@@ -8418,13 +8418,13 @@ have different forms, but are internally stored in an identical manner.
 
 | []() | []()
 | - | -
-| &bull; [Scalar Constants](#Scalar-Constants) | Numeric and string constants.
-| &bull; [Nondecimal-numbers](#Nondecimal_002dnumbers) | What are octal and hex numbers.
-| &bull; [Regexp Constants](#Regexp-Constants) | Regular Expression constants.
+| &bull; [Scalar Constants](#6111-numeric-and-string-constants) | Numeric and string constants.
+| &bull; [Nondecimal-numbers](#6112-octal-and-hexadecimal-numbers) | What are octal and hex numbers.
+| &bull; [Regexp Constants](#6113-regular-expression-constants) | Regular Expression constants.
 
 ---
 
-Next: [Nondecimal-numbers](#Nondecimal_002dnumbers), Up: [Constants](#Constants)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [Nondecimal-numbers](#6112-octal-and-hexadecimal-numbers), Up: [Constants](#611-constant-expressions)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 #### 6.1.1.1 Numeric and String Constants
 
@@ -8453,7 +8453,7 @@ implementations may have difficulty with some character codes.
 
 ---
 
-Next: [Regexp Constants](#Regexp-Constants), Previous: [Scalar Constants](#Scalar-Constants), Up: [Constants](#Constants)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [Regexp Constants](#6113-regular-expression-constants), Previous: [Scalar Constants](#6111-numeric-and-string-constants), Up: [Constants](#611-constant-expressions)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 #### 6.1.1.2 Octal and Hexadecimal Numbers
 
@@ -8506,11 +8506,11 @@ command-line option;
 see [Nondecimal Data](#Nondecimal-Data).)
 If you have octal or hexadecimal data,
 you can use the `strtonum()` function
-(see [String Functions](#String-Functions))
+(see [String Functions](#913-string-manipulation-functions))
 to convert the data into a number.
 Most of the time, you will want to use octal or hexadecimal constants
 when working with the built-in bit-manipulation functions;
-see [Bitwise Functions](#Bitwise-Functions)
+see [Bitwise Functions](#916-bit-manipulation-functions)
 for more information.
 
 Unlike in some early C implementations, &lsquo;8&rsquo; and &lsquo;9&rsquo; are not
@@ -8525,7 +8525,7 @@ as decimal 18:
 
 Octal and hexadecimal source code constants are a `gawk` extension.
 If `gawk` is in compatibility mode
-(see [Options](#Options)),
+(see [Options](#22-command-line-options)),
 they are not available.
 
 A Constant&rsquo;s Base Does Not Affect Its Value
@@ -8544,7 +8544,7 @@ numbers to strings:
 
 ---
 
-Previous: [Nondecimal-numbers](#Nondecimal_002dnumbers), Up: [Constants](#Constants)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Previous: [Nondecimal-numbers](#6112-octal-and-hexadecimal-numbers), Up: [Constants](#611-constant-expressions)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 #### 6.1.1.3 Regular Expression Constants
 
@@ -8557,7 +8557,7 @@ but could be more complex expressions).
 
 ---
 
-Next: [Variables](#Variables), Previous: [Constants](#Constants), Up: [Values](#Values)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [Variables](#613-variables), Previous: [Constants](#611-constant-expressions), Up: [Values](#61-constants-variables-and-conversions)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 #### 6.1.2 Using Regular Expression Constants
 
@@ -8569,12 +8569,12 @@ POSIX `awk` and `gawk`, and then goes on to describe
 
 | []() | []()
 | - | -
-| &bull; [Standard Regexp Constants](#Standard-Regexp-Constants)| Regexp constants in standard `awk`.
-| &bull; [Strong Regexp Constants](#Strong-Regexp-Constants)| Strongly typed regexp constants.
+| &bull; [Standard Regexp Constants](#6121-standard-regular-expression-constants)| Regexp constants in standard `awk`.
+| &bull; [Strong Regexp Constants](#6122-strongly-typed-regexp-constants)| Strongly typed regexp constants.
 
 ---
 
-Next: [Strong Regexp Constants](#Strong-Regexp-Constants), Up: [Using Constant Regexps](#Using-Constant-Regexps)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [Strong Regexp Constants](#6122-strongly-typed-regexp-constants), Up: [Using Constant Regexps](#612-using-regular-expression-constants)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 #### 6.1.2.1 Standard Regular Expression Constants
 
@@ -8586,7 +8586,7 @@ When a
 regexp constant appears by itself, it has the same meaning as if it appeared
 in a pattern (i.e., &lsquo;($0 ~ /foo/)&rsquo;).
 (d.c.)
-See [Expression Patterns](#Expression-Patterns).
+See [Expression Patterns](#712-expressions-as-patterns).
 This means that the following two code segments:
 
 ```awk
@@ -8633,14 +8633,14 @@ Constant regular expressions are also used as the first argument for
 the `gensub()`, `sub()`, and `gsub()` functions, as the
 second argument of the `match()` function,
 and as the third argument of the `split()` and `patsplit()` functions
-(see [String Functions](#String-Functions)).
+(see [String Functions](#913-string-manipulation-functions)).
 Modern implementations of `awk`, including `gawk`, allow
 the third argument of `split()` to be a regexp constant, but some
 older implementations do not.
 (d.c.)
 Because some built-in functions accept regexp constants as arguments,
 confusion can arise when attempting to use regexp constants as arguments
-to user-defined functions (see [User-defined](#User_002ddefined)).  For example:
+to user-defined functions (see [User-defined](#92-user-defined-functions)).  For example:
 
 ```awk
     function mysub(pat, repl, str, global)
@@ -8672,7 +8672,7 @@ this way is probably not what was intended.
 
 ---
 
-Previous: [Standard Regexp Constants](#Standard-Regexp-Constants), Up: [Using Constant Regexps](#Using-Constant-Regexps)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Previous: [Standard Regexp Constants](#6121-standard-regular-expression-constants), Up: [Using Constant Regexps](#612-using-regular-expression-constants)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 #### 6.1.2.2 Strongly Typed Regexp Constants
 
@@ -8711,10 +8711,10 @@ regular regexp constant can, because this would make the language even more
 confusing.  Instead, you may use them only in certain contexts:
 
 -  On the righthand side of the &lsquo;~&rsquo; and &lsquo;!~&rsquo; operators: &lsquo;some_var ~ @/foo/&rsquo;
-(see [Regexp Usage](#Regexp-Usage)).
+(see [Regexp Usage](#31-how-to-use-regular-expressions)).
 
 -  In the `case` part of a `switch` statement
-(see [Switch Statement](#Switch-Statement)).
+(see [Switch Statement](#745-the-switch-statement)).
 
 -  As an argument to one of the built-in functions that accept regexp constants:
 `gensub()`,
@@ -8724,10 +8724,10 @@ confusing.  Instead, you may use them only in certain contexts:
 `split()`,
 and
 `sub()`
-(see [String Functions](#String-Functions)).
+(see [String Functions](#913-string-manipulation-functions)).
 
 -  As a parameter in a call to a user-defined function
-(see [User-defined](#User_002ddefined)).
+(see [User-defined](#92-user-defined-functions)).
 
 -  On the righthand side of an assignment to a variable: &lsquo;some_var = @/foo/&rsquo;.
 In this case, the type of `some_var` is regexp. Additionally, `some_var`
@@ -8735,7 +8735,7 @@ can be used with &lsquo;~&rsquo; and &lsquo;!~&rsquo;, passed to one of the buil
 listed above, or passed as a parameter to a user-defined function.
 
 You may use the `typeof()` built-in function
-(see [Type Functions](#Type-Functions))
+(see [Type Functions](#917-getting-type-information))
 to determine if a variable or function parameter is
 a regexp variable.
 
@@ -8743,7 +8743,7 @@ The true power of this feature comes from the ability to create variables that
 have regexp type. Such variables can be passed on to user-defined functions,
 without the confusing aspects of computed regular expressions created from
 strings or string constants. They may also be passed through indirect function
-calls (see [Indirect Calls](#Indirect-Calls))
+calls (see [Indirect Calls](#93-indirect-function-calls))
 and on to the built-in functions that accept regexp constants.
 
 When used in numeric conversions, strongly typed regexp variables convert
@@ -8752,7 +8752,7 @@ value of the original regexp text.
 
 ---
 
-Next: [Conversion](#Conversion), Previous: [Using Constant Regexps](#Using-Constant-Regexps), Up: [Values](#Values)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [Conversion](#614-conversion-of-strings-and-numbers), Previous: [Using Constant Regexps](#612-using-regular-expression-constants), Up: [Values](#61-constants-variables-and-conversions)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 #### 6.1.3 Variables
 
@@ -8763,12 +8763,12 @@ on the `awk` command line.
 
 | []() | []()
 | - | -
-| &bull; [Using Variables](#Using-Variables) | Using variables in your programs.
-| &bull; [Assignment Options](#Assignment-Options) | Setting variables on the command line and a summary of command-line syntax. This is an advanced method of input.
+| &bull; [Using Variables](#6131-using-variables-in-a-program) | Using variables in your programs.
+| &bull; [Assignment Options](#6132-assigning-variables-on-the-command-line) | Setting variables on the command line and a summary of command-line syntax. This is an advanced method of input.
 
 ---
 
-Next: [Assignment Options](#Assignment-Options), Up: [Variables](#Variables)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [Assignment Options](#6132-assigning-variables-on-the-command-line), Up: [Variables](#613-variables)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 #### 6.1.3.1 Using Variables in a Program
 
@@ -8786,15 +8786,15 @@ A variable name is a valid expression by itself; it represents the
 variable&rsquo;s current value.  Variables are given new values with
 *assignment operators*, *increment operators*, and
 *decrement operators*
-(see [Assignment Ops](#Assignment-Ops)).
+(see [Assignment Ops](#623-assignment-expressions)).
 In addition, the `sub()` and `gsub()` functions can
 change a variable&rsquo;s value, and the `match()`, `split()`,
 and `patsplit()` functions can change the contents of their
-array parameters (see [String Functions](#String-Functions)).
+array parameters (see [String Functions](#913-string-manipulation-functions)).
 
 A few variables have special built-in meanings, such as `FS` (the
 field separator) and `NF` (the number of fields in the current input
-record).  See [Built-in Variables](#Built_002din-Variables) for a list of the predefined variables.
+record).  See [Built-in Variables](#75-predefined-variables) for a list of the predefined variables.
 These predefined variables can be used and assigned just like all other
 variables, but their values are also used or changed automatically by
 `awk`.  All predefined variables&rsquo; names are entirely uppercase.
@@ -8808,13 +8808,13 @@ which is what you would do in C and in most other traditional languages.
 
 ---
 
-Previous: [Using Variables](#Using-Variables), Up: [Variables](#Variables)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Previous: [Using Variables](#6131-using-variables-in-a-program), Up: [Variables](#613-variables)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 #### 6.1.3.2 Assigning Variables on the Command Line
 
 Any `awk` variable can be set by including a *variable assignment*
 among the arguments on the command line when `awk` is invoked
-(see [Other Arguments](#Other-Arguments)).
+(see [Other Arguments](#23-other-command-line-arguments)).
 Such an assignment has the following form:
 
 ```awk
@@ -8831,7 +8831,7 @@ as in the following:
 the variable is set at the very beginning, even before the
 `BEGIN` rules execute.  The -v option and its assignment
 must precede all the file name arguments, as well as the program text.
-(See [Options](#Options) for more information about
+(See [Options](#22-command-line-options) for more information about
 the -v option.)
 Otherwise, the variable assignment is performed at a time determined by
 its position among the input file arguments&mdash;after the processing of the
@@ -8860,15 +8860,15 @@ second field is printed in lines from mail-list:
 
 Command-line arguments are made available for explicit examination by
 the `awk` program in the `ARGV` array
-(see [ARGC and ARGV](#ARGC-and-ARGV)).
+(see [ARGC and ARGV](#753-using-argc-and-argv)).
 `awk` processes the values of command-line assignments for escape
 sequences
-(see [Escape Sequences](#Escape-Sequences)).
+(see [Escape Sequences](#32-escape-sequences)).
 (d.c.)
 
 ---
 
-Previous: [Variables](#Variables), Up: [Values](#Values)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Previous: [Variables](#613-variables), Up: [Values](#61-constants-variables-and-conversions)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 #### 6.1.4 Conversion of Strings and Numbers
 
@@ -8878,12 +8878,12 @@ this section discusses this important facet of `awk`.
 
 | []() | []()
 | - | -
-| &bull; [Strings And Numbers](#Strings-And-Numbers) | How `awk` Converts Between Strings And Numbers.
-| &bull; [Locale influences conversions](#Locale-influences-conversions) | How the locale may affect conversions.
+| &bull; [Strings And Numbers](#6141-how-awk-converts-between-strings-and-numbers) | How `awk` Converts Between Strings And Numbers.
+| &bull; [Locale influences conversions](#6142-locales-can-influence-conversion) | How the locale may affect conversions.
 
 ---
 
-Next: [Locale influences conversions](#Locale-influences-conversions), Up: [Conversion](#Conversion)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [Locale influences conversions](#6142-locales-can-influence-conversion), Up: [Conversion](#614-conversion-of-strings-and-numbers)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 #### 6.1.4.1 How `awk` Converts Between Strings and Numbers
 
@@ -8914,11 +8914,11 @@ has a numeric value of 25.
 Strings that can&rsquo;t be interpreted as valid numbers convert to zero.
 
 The exact manner in which numbers are converted into strings is controlled
-by the `awk` predefined variable `CONVFMT` (see [Built-in Variables](#Built_002din-Variables)).
+by the `awk` predefined variable `CONVFMT` (see [Built-in Variables](#75-predefined-variables)).
 Numbers are converted using the `sprintf()` function
 with `CONVFMT` as the format
 specifier
-(see [String Functions](#String-Functions)).
+(see [String Functions](#913-string-manipulation-functions)).
 
 `CONVFMT`&rsquo;s default value is `"%.6g"`, which creates a value with
 at most six significant digits.  For some applications, you might want to
@@ -8954,11 +8954,11 @@ specifies the output format to use when printing numbers with `print`.
 conversion from the semantics of printing.  Both `CONVFMT` and
 `OFMT` have the same default value: `"%.6g"`.  In the vast majority
 of cases, old `awk` programs do not change their behavior.
-See [Print](#Print) for more information on the `print` statement.
+See [Print](#51-the-print-statement) for more information on the `print` statement.
 
 ---
 
-Previous: [Strings And Numbers](#Strings-And-Numbers), Up: [Conversion](#Conversion)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Previous: [Strings And Numbers](#6141-how-awk-converts-between-strings-and-numbers), Up: [Conversion](#614-conversion-of-strings-and-numbers)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 #### 6.1.4.2 Locales Can Influence Conversion
 
@@ -8975,7 +8975,7 @@ the thousands separator, if they have one.
 
 The POSIX standard says that `awk` always uses the period as the decimal
 point when reading the `awk` program source code, and for
-command-line variable assignments (see [Other Arguments](#Other-Arguments)).  However,
+command-line variable assignments (see [Other Arguments](#23-other-command-line-arguments)).  However,
 when interpreting input data, for `print` and `printf` output,
 and for number-to-string conversion, the local decimal point character
 is used.  (d.c.) In all cases, numbers in source code and
@@ -9004,7 +9004,7 @@ of the standard.  However, many users in non-English locales complained
 about this behavior, because their data used a period as the decimal
 point, so the default behavior was restored to use a period as the
 decimal point character.  You can use the --use-lc-numeric
-option (see [Options](#Options)) to force `gawk` to use the locale&rsquo;s
+option (see [Options](#22-command-line-options)) to force `gawk` to use the locale&rsquo;s
 decimal point character.  (`gawk` also uses the locale&rsquo;s decimal
 point character when in POSIX mode, either via --posix or the
 `POSIXLY_CORRECT` environment variable, as shown previously.)
@@ -9024,7 +9024,7 @@ are presented in [POSIX Floating Point Problems](#POSIX-Floating-Point-Problems)
 
 ---
 
-Next: [Truth Values and Conditions](#Truth-Values-and-Conditions), Previous: [Values](#Values), Up: [Expressions](#Expressions)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [Truth Values and Conditions](#63-truth-values-and-conditions), Previous: [Values](#61-constants-variables-and-conversions), Up: [Expressions](#6-expressions)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 ### 6.2 Operators: Doing Something with Values
 
@@ -9033,14 +9033,14 @@ of the values provided by constants and variables.
 
 | []() | []()
 | - | -
-| &bull; [Arithmetic Ops](#Arithmetic-Ops) | Arithmetic operations (&lsquo;+&rsquo;, &lsquo;-&rsquo;, etc.)
-| &bull; [Concatenation](#Concatenation) | Concatenating strings.
-| &bull; [Assignment Ops](#Assignment-Ops) | Changing the value of a variable or a field.
-| &bull; [Increment Ops](#Increment-Ops) | Incrementing the numeric value of a variable.
+| &bull; [Arithmetic Ops](#621-arithmetic-operators) | Arithmetic operations (&lsquo;+&rsquo;, &lsquo;-&rsquo;, etc.)
+| &bull; [Concatenation](#622-string-concatenation) | Concatenating strings.
+| &bull; [Assignment Ops](#623-assignment-expressions) | Changing the value of a variable or a field.
+| &bull; [Increment Ops](#624-increment-and-decrement-operators) | Incrementing the numeric value of a variable.
 
 ---
 
-Next: [Concatenation](#Concatenation), Up: [All Operators](#All-Operators)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [Concatenation](#622-string-concatenation), Up: [All Operators](#62-operators-doing-something-with-values)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 #### 6.2.1 Arithmetic Operators
 
@@ -9133,7 +9133,7 @@ may be machine-dependent.
 
 ---
 
-Next: [Assignment Ops](#Assignment-Ops), Previous: [Arithmetic Ops](#Arithmetic-Ops), Up: [All Operators](#All-Operators)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [Assignment Ops](#623-assignment-expressions), Previous: [Arithmetic Ops](#621-arithmetic-operators), Up: [All Operators](#62-operators-doing-something-with-values)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 #### 6.2.2 String Concatenation
 
@@ -9235,7 +9235,7 @@ you&rsquo;re never quite sure what you&rsquo;ll get.
 
 ---
 
-Next: [Increment Ops](#Increment-Ops), Previous: [Concatenation](#Concatenation), Up: [All Operators](#All-Operators)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [Increment Ops](#624-increment-and-decrement-operators), Previous: [Concatenation](#622-string-concatenation), Up: [All Operators](#62-operators-doing-something-with-values)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 #### 6.2.3 Assignment Expressions
 
@@ -9272,9 +9272,9 @@ makes itself felt through the alteration of the variable.  We call this
 a *side effect*.
 
 The lefthand operand of an assignment need not be a variable
-(see [Variables](#Variables)); it can also be a field
-(see [Changing Fields](#Changing-Fields)) or
-an array element (see [Arrays](#Arrays)).
+(see [Variables](#613-variables)); it can also be a field
+(see [Changing Fields](#44-changing-the-contents-of-a-field)) or
+an array element (see [Arrays](#8-arrays-in-awk)).
 These are all called *lvalues*,
 which means they can appear on the lefthand side of an assignment operator.
 The righthand operand may be any expression; it produces the new value
@@ -9371,9 +9371,9 @@ righthand expression.  For example:
 The indices of `bar` are practically guaranteed to be different, because
 `rand()` returns different values each time it is called.
 (Arrays and the `rand()` function haven&rsquo;t been covered yet.
-See [Arrays](#Arrays),
+See [Arrays](#8-arrays-in-awk),
 and
-see [Numeric Functions](#Numeric-Functions)
+see [Numeric Functions](#912-numeric-functions)
 for more information.)
 This example illustrates an important fact about assignment
 operators: the lefthand expression is only evaluated *once*.
@@ -9428,7 +9428,7 @@ and `mawk` also do not.
 
 ---
 
-Previous: [Assignment Ops](#Assignment-Ops), Up: [All Operators](#All-Operators)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Previous: [Assignment Ops](#623-assignment-expressions), Up: [All Operators](#62-operators-doing-something-with-values)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 #### 6.2.4 Increment and Decrement Operators
 
@@ -9523,7 +9523,7 @@ You should avoid such things in your own programs.
 
 ---
 
-Next: [Function Calls](#Function-Calls), Previous: [All Operators](#All-Operators), Up: [Expressions](#Expressions)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [Function Calls](#64-function-calls), Previous: [All Operators](#62-operators-doing-something-with-values), Up: [Expressions](#6-expressions)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 ### 6.3 Truth Values and Conditions
 
@@ -9534,14 +9534,14 @@ and how values are compared.
 
 | []() | []()
 | - | -
-| &bull; [Truth Values](#Truth-Values) | What is &ldquo;true&rdquo; and what is &ldquo;false&rdquo;.
-| &bull; [Typing and Comparison](#Typing-and-Comparison) | How variables acquire types and how this affects comparison of numbers and strings with &lsquo;<&rsquo;, etc.
-| &bull; [Boolean Ops](#Boolean-Ops) | Combining comparison expressions using boolean operators &lsquo;||&rsquo; (&ldquo;or&rdquo;), &lsquo;&&&rsquo; (&ldquo;and&rdquo;) and &lsquo;!&rsquo; (&ldquo;not&rdquo;).
-| &bull; [Conditional Exp](#Conditional-Exp) | Conditional expressions select between two subexpressions under control of a third subexpression.
+| &bull; [Truth Values](#631-true-and-false-in-awk) | What is &ldquo;true&rdquo; and what is &ldquo;false&rdquo;.
+| &bull; [Typing and Comparison](#6322-comparison-operators) | How variables acquire types and how this affects comparison of numbers and strings with &lsquo;<&rsquo;, etc.
+| &bull; [Boolean Ops](#633-boolean-expressions) | Combining comparison expressions using boolean operators &lsquo;||&rsquo; (&ldquo;or&rdquo;), &lsquo;&&&rsquo; (&ldquo;and&rdquo;) and &lsquo;!&rsquo; (&ldquo;not&rdquo;).
+| &bull; [Conditional Exp](#634-conditional-expressions) | Conditional expressions select between two subexpressions under control of a third subexpression.
 
 ---
 
-Next: [Typing and Comparison](#Typing-and-Comparison), Up: [Truth Values and Conditions](#Truth-Values-and-Conditions)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [Typing and Comparison](#6322-comparison-operators), Up: [Truth Values and Conditions](#63-truth-values-and-conditions)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 #### 6.3.1 True and False in `awk`
 
@@ -9573,7 +9573,7 @@ the string constant `"0"` is actually true, because it is non-null.
 
 ---
 
-Next: [Boolean Ops](#Boolean-Ops), Previous: [Truth Values](#Truth-Values), Up: [Truth Values and Conditions](#Truth-Values-and-Conditions)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [Boolean Ops](#633-boolean-expressions), Previous: [Truth Values](#631-true-and-false-in-awk), Up: [Truth Values and Conditions](#63-truth-values-and-conditions)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 #### 6.3.2 Variable Typing and Comparison Expressions
 
@@ -9589,13 +9589,13 @@ compares variables.
 
 | []() | []()
 | - | -
-| &bull; [Variable Typing](#Variable-Typing) | String type versus numeric type.
-| &bull; [Comparison Operators](#Comparison-Operators) | The comparison operators.
-| &bull; [POSIX String Comparison](#POSIX-String-Comparison) | String comparison with POSIX rules.
+| &bull; [Variable Typing](#6321-string-type-versus-numeric-type) | String type versus numeric type.
+| &bull; [Comparison Operators](#6322-comparison-operators) | The comparison operators.
+| &bull; [POSIX String Comparison](#6323-string-comparison-based-on-locale-collating-order) | String comparison with POSIX rules.
 
 ---
 
-Next: [Comparison Operators](#Comparison-Operators), Up: [Typing and Comparison](#Typing-and-Comparison)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [Comparison Operators](#6322-comparison-operators), Up: [Typing and Comparison](#6322-comparison-operators)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 #### 6.3.2.1 String Type versus Numeric Type
 
@@ -9604,13 +9604,13 @@ are *dynamically* typed.  This means their type can change as the
 program runs, from *untyped* before any use,[33](#FOOT33) to string
 or number, and then from string to number or number to string, as the
 program progresses.  (`gawk` also provides regexp-typed scalars,
-but let&rsquo;s ignore that for now; see [Strong Regexp Constants](#Strong-Regexp-Constants).)
+but let&rsquo;s ignore that for now; see [Strong Regexp Constants](#6122-strongly-typed-regexp-constants).)
 
 You can&rsquo;t do much with untyped variables, other than tell that they
 are untyped. The following program tests `a` against `""`
 and `0`; the test succeeds when `a` has never been assigned
 a value.  It also uses the built-in `typeof()` function
-(not presented yet; see [Type Functions](#Type-Functions)) to show `a`&rsquo;s type:
+(not presented yet; see [Type Functions](#917-getting-type-information)) to show `a`&rsquo;s type:
 
 ```awk
     $ gawk 'BEGIN { print (a == "" && a == 0 ?
@@ -9783,7 +9783,7 @@ using `typeof()`:
 
 ---
 
-Next: [POSIX String Comparison](#POSIX-String-Comparison), Previous: [Variable Typing](#Variable-Typing), Up: [Typing and Comparison](#Typing-and-Comparison)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [POSIX String Comparison](#6323-string-comparison-based-on-locale-collating-order), Previous: [Variable Typing](#6321-string-type-versus-numeric-type), Up: [Typing and Comparison](#6322-comparison-operators)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 #### 6.3.2.2 Comparison Operators
 
@@ -9799,7 +9799,7 @@ ExpressionResultx`<`yTrue if x is less than yx`<=`yTrue if x is less than or equ
 Comparison expressions have the value one if true and zero if false.
 When comparing operands of mixed types, numeric operands are converted
 to strings using the value of `CONVFMT`
-(see [Conversion](#Conversion)).
+(see [Conversion](#614-conversion-of-strings-and-numbers)).
 
 Strings are compared
 by comparing the first character of each, then the second character of each,
@@ -9878,8 +9878,8 @@ has the value one if `x` contains &lsquo;foo&rsquo;, such as
 The righthand operand of the &lsquo;~&rsquo; and &lsquo;!~&rsquo; operators may be
 either a regexp constant (`/`&hellip;`/`) or an ordinary
 expression. In the latter case, the value of the expression as a string is used as a
-dynamic regexp (see [Regexp Usage](#Regexp-Usage); also
-see [Computed Regexps](#Computed-Regexps)).
+dynamic regexp (see [Regexp Usage](#31-how-to-use-regular-expressions); also
+see [Computed Regexps](#36-using-dynamic-regexps)).
 
 A constant regular
 expression in slashes by itself is also an expression.
@@ -9892,24 +9892,24 @@ expression in slashes by itself is also an expression.
 One special place where `/foo/` is *not* an abbreviation for
 &lsquo;$0 ~ /foo/&rsquo; is when it is the righthand operand of &lsquo;~&rsquo; or
 &lsquo;!~&rsquo;.
-See [Using Constant Regexps](#Using-Constant-Regexps),
+See [Using Constant Regexps](#612-using-regular-expression-constants),
 where this is discussed in more detail.
 
 ---
 
-Previous: [Comparison Operators](#Comparison-Operators), Up: [Typing and Comparison](#Typing-and-Comparison)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Previous: [Comparison Operators](#6322-comparison-operators), Up: [Typing and Comparison](#6322-comparison-operators)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 #### 6.3.2.3 String Comparison Based on Locale Collating Order
 
 The POSIX standard used to say that all string comparisons are
 performed based on the locale&rsquo;s *collating order*. This
 is the order in which characters sort, as defined by the locale
-(for more discussion, see [Locales](#Locales)).  This order is usually very
+(for more discussion, see [Locales](#66-where-you-are-makes-a-difference)).  This order is usually very
 different from the results obtained when doing straight byte-by-byte
 comparison.[35](#FOOT35)
 
 Because this behavior differs considerably from existing practice,
-`gawk` only implemented it when in POSIX mode (see [Options](#Options)).
+`gawk` only implemented it when in POSIX mode (see [Options](#22-command-line-options)).
 Here is an example to illustrate the difference, in an `en_US.UTF-8`
 locale:
 
@@ -9943,7 +9943,7 @@ in POSIX mode.
 
 ---
 
-Next: [Conditional Exp](#Conditional-Exp), Previous: [Typing and Comparison](#Typing-and-Comparison), Up: [Truth Values and Conditions](#Truth-Values-and-Conditions)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [Conditional Exp](#634-conditional-expressions), Previous: [Typing and Comparison](#6322-comparison-operators), Up: [Truth Values and Conditions](#63-truth-values-and-conditions)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 #### 6.3.3 Boolean Expressions
 
@@ -9958,7 +9958,7 @@ The terms are equivalent.
 Boolean expressions can be used wherever comparison and matching
 expressions can be used.  They can be used in `if`, `while`,
 `do`, and `for` statements
-(see [Statements](#Statements)).
+(see [Statements](#74-control-statements-in-actions)).
 They have numeric values (one if true, zero if false) that come into play
 if the result of the Boolean expression is stored in a variable or
 used in arithmetic.
@@ -10011,7 +10011,7 @@ variable is not defined:
 ```    
 
 (The `in` operator is described in
-[Reference to Elements](#Reference-to-Elements).)
+[Reference to Elements](#812-referring-to-an-array-element).)
 
 The &lsquo;&&&rsquo; and &lsquo;||&rsquo; operators are called *short-circuit*
 operators because of the way they work.  Evaluation of the full expression
@@ -10021,7 +10021,7 @@ its evaluation.
 Statements that end with &lsquo;&&&rsquo; or &lsquo;||&rsquo; can be continued simply
 by putting a newline after them.  But you cannot put a newline in front
 of either of these operators without using backslash continuation
-(see [Statements/Lines](#Statements_002fLines)).
+(see [Statements/Lines](#16-awk-statements-versus-lines)).
 
 The actual value of an expression using the &lsquo;!&rsquo; operator is
 either one or zero, depending upon the truth value of the expression it
@@ -10054,7 +10054,7 @@ sense to phrase the logic in the negative:
 ```    
 
 > NOTE: The `next` statement is discussed in
-> [Next Statement](#Next-Statement).
+> [Next Statement](#748-the-next-statement).
 > `next` tells `awk` to skip the rest of the rules, get the
 > next record, and start processing the rules over again at the top.
 > The reason it&rsquo;s there is to avoid printing the bracketing
@@ -10062,7 +10062,7 @@ sense to phrase the logic in the negative:
 
 ---
 
-Previous: [Boolean Ops](#Boolean-Ops), Up: [Truth Values and Conditions](#Truth-Values-and-Conditions)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Previous: [Boolean Ops](#633-boolean-expressions), Up: [Truth Values and Conditions](#63-truth-values-and-conditions)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 #### 6.3.4 Conditional Expressions
 
@@ -10100,7 +10100,7 @@ this conditional expression examines element `i` of either array
 This is guaranteed to increment `i` exactly once, because each time
 only one of the two increment expressions is executed
 and the other is not.
-See [Arrays](#Arrays),
+See [Arrays](#8-arrays-in-awk),
 for more information about arrays.
 
 As a minor `gawk` extension,
@@ -10108,13 +10108,13 @@ a statement that uses &lsquo;?:&rsquo; can be continued simply
 by putting a newline after either character.
 However, putting a newline in front
 of either character does not work without using backslash continuation
-(see [Statements/Lines](#Statements_002fLines)).
+(see [Statements/Lines](#16-awk-statements-versus-lines)).
 If --posix is specified
-(see [Options](#Options)), this extension is disabled.
+(see [Options](#22-command-line-options)), this extension is disabled.
 
 ---
 
-Next: [Precedence](#Precedence), Previous: [Truth Values and Conditions](#Truth-Values-and-Conditions), Up: [Expressions](#Expressions)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [Precedence](#65-operator-precedence-how-operators-nest), Previous: [Truth Values and Conditions](#63-truth-values-and-conditions), Up: [Expressions](#6-expressions)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 ### 6.4 Function Calls
 
@@ -10125,10 +10125,10 @@ example, the function `sqrt()` computes the square root of a number.
 
 A fixed set of functions are *built in*, which means they are
 available in every `awk` program.  The `sqrt()` function is one
-of these.  See [Built-in](#Built_002din) for a list of built-in
+of these.  See [Built-in](#91-built-in-functions) for a list of built-in
 functions and their descriptions.  In addition, you can define
 functions for use in your program.
-See [User-defined](#User_002ddefined)
+See [User-defined](#92-user-defined-functions)
 for instructions on how to do this.
 Finally, `gawk` lets you write functions in C or C++
 that may be called from your program (see [Dynamic Extensions](#Dynamic-Extensions)).
@@ -10164,17 +10164,17 @@ Some of the built-in functions have one or
 more optional arguments.
 If those arguments are not supplied, the functions
 use a reasonable default value.
-See [Built-in](#Built_002din) for full details.  If arguments
+See [Built-in](#91-built-in-functions) for full details.  If arguments
 are omitted in calls to user-defined functions, then those arguments are
 treated as local variables. Such local variables act like the
 empty string if referenced where a string value is required,
 and like zero if referenced where a numeric value is required
-(see [User-defined](#User_002ddefined)).
+(see [User-defined](#92-user-defined-functions)).
 
 As an advanced feature, `gawk` provides indirect function calls,
 which is a way to choose the function to call at runtime, instead of
 when you write the source code to your program. We defer discussion of
-this feature until later; see [Indirect Calls](#Indirect-Calls).
+this feature until later; see [Indirect Calls](#93-indirect-function-calls).
 
 Like every other expression, the function call has a value, often
 called the *return value*, which is computed by the function
@@ -10196,7 +10196,7 @@ the square root of each one:
 A function can also have side effects, such as assigning
 values to certain variables or doing I/O.
 This program shows how the `match()` function
-(see [String Functions](#String-Functions))
+(see [String Functions](#913-string-manipulation-functions))
 changes the variables `RSTART` and `RLENGTH`:
 
 ```awk
@@ -10221,7 +10221,7 @@ Here is a sample run:
 
 ---
 
-Next: [Locales](#Locales), Previous: [Function Calls](#Function-Calls), Up: [Expressions](#Expressions)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [Locales](#66-where-you-are-makes-a-difference), Previous: [Function Calls](#64-function-calls), Up: [Expressions](#6-expressions)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 ### 6.5 Operator Precedence (How Operators Nest)
 
@@ -10289,7 +10289,7 @@ Addition, subtraction.
 String concatenation
 There is no special symbol for concatenation.
 The operands are simply written side by side
-(see [Concatenation](#Concatenation)).
+(see [Concatenation](#622-string-concatenation)).
 
 <code>< <= == != > >= >> | |&</code>
 Relational and redirection.
@@ -10329,7 +10329,7 @@ Assignment.  These operators group right to left.
 
 ---
 
-Next: [Expressions Summary](#Expressions-Summary), Previous: [Precedence](#Precedence), Up: [Expressions](#Expressions)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [Expressions Summary](#67-summary), Previous: [Precedence](#65-operator-precedence-how-operators-nest), Up: [Expressions](#6-expressions)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 ### 6.6 Where You Are Makes a Difference
 
@@ -10348,22 +10348,22 @@ give you much better performance when reading records.  Otherwise,
 `gawk` has to make several function calls, *per input
 character*, to find the record terminator.
 
-Locales can affect how dates and times are formatted (see [Time Functions](#Time-Functions)).  For example, a common way to abbreviate the date September
+Locales can affect how dates and times are formatted (see [Time Functions](#915-time-functions)).  For example, a common way to abbreviate the date September
 4, 2015, in the United States is &ldquo;9/4/15.&rdquo;  In many countries in
 Europe, however, it is abbreviated &ldquo;4.9.15.&rdquo;  Thus, the &lsquo;%x&rsquo;
 specification in a `"US"` locale might produce &lsquo;9/4/15&rsquo;,
 while in a `"EUROPE"` locale, it might produce &lsquo;4.9.15&rsquo;.
 
 According to POSIX, string comparison is also affected by locales (similar
-to regular expressions).  The details are presented in [POSIX String Comparison](#POSIX-String-Comparison).
+to regular expressions).  The details are presented in [POSIX String Comparison](#6323-string-comparison-based-on-locale-collating-order).
 
 Finally, the locale affects the value of the decimal point character
 used when `gawk` parses input data.  This is discussed in detail
-in [Conversion](#Conversion).
+in [Conversion](#614-conversion-of-strings-and-numbers).
 
 ---
 
-Previous: [Locales](#Locales), Up: [Expressions](#Expressions)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Previous: [Locales](#66-where-you-are-makes-a-difference), Up: [Expressions](#6-expressions)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 ### 6.7 Summary
 
@@ -10409,7 +10409,7 @@ or numeric).
 expression.  Expressions used to pass parameter values are fully
 evaluated before the function is called.  `awk` provides
 built-in and user-defined functions; this is described in
-[Functions](#Functions).
+[Functions](#9-functions).
 
 -  Operator precedence specifies the order in which operations are performed,
 unless explicitly overridden by parentheses.  `awk`&rsquo;s operator
@@ -10420,7 +10420,7 @@ program, and occasionally the format for data read as input.
 
 ---
 
-Next: [Arrays](#Arrays), Previous: [Expressions](#Expressions), Up: [Top](#Top)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [Arrays](#8-arrays-in-awk), Previous: [Expressions](#6-expressions), Up: [Top](#Top)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 ## 7 Patterns, Actions, and Variables
 
@@ -10438,27 +10438,27 @@ building something useful.
 
 | []() | []()
 | - | -
-| &bull; [Pattern Overview](#Pattern-Overview) | What goes into a pattern.
-| &bull; [Using Shell Variables](#Using-Shell-Variables) | How to use shell variables with `awk`.
-| &bull; [Action Overview](#Action-Overview) | What goes into an action.
-| &bull; [Statements](#Statements) | Describes the various control statements in detail.
-| &bull; [Built-in Variables](#Built_002din-Variables) | Summarizes the predefined variables.
-| &bull; [Pattern Action Summary](#Pattern-Action-Summary) | Patterns and Actions summary.
+| &bull; [Pattern Overview](#71-pattern-elements) | What goes into a pattern.
+| &bull; [Using Shell Variables](#72-using-shell-variables-in-programs) | How to use shell variables with `awk`.
+| &bull; [Action Overview](#73-actions) | What goes into an action.
+| &bull; [Statements](#74-control-statements-in-actions) | Describes the various control statements in detail.
+| &bull; [Built-in Variables](#75-predefined-variables) | Summarizes the predefined variables.
+| &bull; [Pattern Action Summary](#76-summary) | Patterns and Actions summary.
 
 ---
 
-Next: [Using Shell Variables](#Using-Shell-Variables), Up: [Patterns and Actions](#Patterns-and-Actions)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [Using Shell Variables](#72-using-shell-variables-in-programs), Up: [Patterns and Actions](#7-patterns-actions-and-variables)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 ### 7.1 Pattern Elements
 
 | []() | []()
 | - | -
-| &bull; [Regexp Patterns](#Regexp-Patterns) | Using regexps as patterns.
-| &bull; [Expression Patterns](#Expression-Patterns) | Any expression can be used as a pattern.
-| &bull; [Ranges](#Ranges) | Pairs of patterns specify record ranges.
-| &bull; [BEGIN/END](#BEGIN_002fEND) | Specifying initialization and cleanup rules.
-| &bull; [BEGINFILE/ENDFILE](#BEGINFILE_002fENDFILE) | Two special patterns for advanced control.
-| &bull; [Empty](#Empty) | The empty pattern, which matches every record.
+| &bull; [Regexp Patterns](#711-regular-expressions-as-patterns) | Using regexps as patterns.
+| &bull; [Expression Patterns](#712-expressions-as-patterns) | Any expression can be used as a pattern.
+| &bull; [Ranges](#713-specifying-record-ranges-with-patterns) | Pairs of patterns specify record ranges.
+| &bull; [BEGIN/END](#714-the-begin-and-end-special-patterns) | Specifying initialization and cleanup rules.
+| &bull; [BEGINFILE/ENDFILE](#715-the-beginfile-and-endfile-special-patterns) | Two special patterns for advanced control.
+| &bull; [Empty](#716-the-empty-pattern) | The empty pattern, which matches every record.
 
 Patterns in `awk` control the execution of rules&mdash;a rule is
 executed when its pattern matches the current input record.
@@ -10467,36 +10467,36 @@ The following is a summary of the types of `awk` patterns:
 <code>/regular expression/</code>
 A regular expression. It matches when the text of the
 input record fits the regular expression.
-(See [Regexp](#Regexp).)
+(See [Regexp](#3-regular-expressions).)
 
 <code>expression</code>
 A single expression.  It matches when its value
 is nonzero (if a number) or non-null (if a string).
-(See [Expression Patterns](#Expression-Patterns).)
+(See [Expression Patterns](#712-expressions-as-patterns).)
 
 <code>begpat, endpat</code>
 A pair of patterns separated by a comma, specifying a *range* of records.
 The range includes both the initial record that matches begpat and
 the final record that matches endpat.
-(See [Ranges](#Ranges).)
+(See [Ranges](#713-specifying-record-ranges-with-patterns).)
 
 <code>BEGIN</code><code>END</code>
 Special patterns for you to supply startup or cleanup actions for your
 `awk` program.
-(See [BEGIN/END](#BEGIN_002fEND).)
+(See [BEGIN/END](#714-the-begin-and-end-special-patterns).)
 
 <code>BEGINFILE</code><code>ENDFILE</code>
 Special patterns for you to supply startup or cleanup actions to be
 done on a per-file basis.
-(See [BEGINFILE/ENDFILE](#BEGINFILE_002fENDFILE).)
+(See [BEGINFILE/ENDFILE](#715-the-beginfile-and-endfile-special-patterns).)
 
 <code>empty</code>
 The empty pattern matches every input record.
-(See [Empty](#Empty).)
+(See [Empty](#716-the-empty-pattern).)
 
 ---
 
-Next: [Expression Patterns](#Expression-Patterns), Up: [Pattern Overview](#Pattern-Overview)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [Expression Patterns](#712-expressions-as-patterns), Up: [Pattern Overview](#71-pattern-elements)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 #### 7.1.1 Regular Expressions as Patterns
 
@@ -10514,7 +10514,7 @@ For example:
 
 ---
 
-Next: [Ranges](#Ranges), Previous: [Regexp Patterns](#Regexp-Patterns), Up: [Pattern Overview](#Pattern-Overview)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [Ranges](#713-specifying-record-ranges-with-patterns), Previous: [Regexp Patterns](#711-regular-expressions-as-patterns), Up: [Pattern Overview](#71-pattern-elements)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 #### 7.1.2 Expressions as Patterns
 
@@ -10528,14 +10528,14 @@ depends on only what has happened so far in the execution of the
 `awk` program.
 
 Comparison expressions, using the comparison operators described in
-[Typing and Comparison](#Typing-and-Comparison),
+[Typing and Comparison](#6322-comparison-operators),
 are a very common kind of pattern.
 Regexp matching and nonmatching are also very common expressions.
 The left operand of the &lsquo;~&rsquo; and &lsquo;!~&rsquo; operators is a string.
 The right operand is either a constant regular expression enclosed in
 slashes (`/regexp/`), or any expression whose string value
 is used as a dynamic regular expression
-(see [Computed Regexps](#Computed-Regexps)).
+(see [Computed Regexps](#36-using-dynamic-regexps)).
 The following example prints the second field of each input record
 whose first field is precisely &lsquo;li&rsquo;:
 
@@ -10608,11 +10608,11 @@ which never match any input record, are not expressions and cannot
 appear inside Boolean patterns.
 
 The precedence of the different operators that can appear in
-patterns is described in [Precedence](#Precedence).
+patterns is described in [Precedence](#65-operator-precedence-how-operators-nest).
 
 ---
 
-Next: [BEGIN/END](#BEGIN_002fEND), Previous: [Expression Patterns](#Expression-Patterns), Up: [Pattern Overview](#Pattern-Overview)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [BEGIN/END](#714-the-begin-and-end-special-patterns), Previous: [Expression Patterns](#712-expressions-as-patterns), Up: [Pattern Overview](#71-pattern-elements)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 #### 7.1.3 Specifying Record Ranges with Patterns
 
@@ -10650,7 +10650,7 @@ the &lsquo;%&rsquo; symbol), each on its own line, that should be ignored.
 A first attempt would be to
 combine a range pattern that describes the delimited text with the
 `next` statement
-(not discussed yet, see [Next Statement](#Next-Statement)).
+(not discussed yet, see [Next Statement](#748-the-next-statement)).
 This causes `awk` to skip any further processing of the current
 record and start over again with the next input record. Such a program
 looks like this:
@@ -10694,7 +10694,7 @@ a range pattern.  (d.c.)
 
 ---
 
-Next: [BEGINFILE/ENDFILE](#BEGINFILE_002fENDFILE), Previous: [Ranges](#Ranges), Up: [Pattern Overview](#Pattern-Overview)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [BEGINFILE/ENDFILE](#715-the-beginfile-and-endfile-special-patterns), Previous: [Ranges](#713-specifying-record-ranges-with-patterns), Up: [Pattern Overview](#71-pattern-elements)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 #### 7.1.4 The `BEGIN` and `END` Special Patterns
 
@@ -10709,12 +10709,12 @@ programmers.
 
 | []() | []()
 | - | -
-| &bull; [Using BEGIN/END](#Using-BEGIN_002fEND) | How and why to use BEGIN/END rules.
-| &bull; [I/O And BEGIN/END](#I_002fO-And-BEGIN_002fEND) | I/O issues in BEGIN/END rules.
+| &bull; [Using BEGIN/END](#7141-startup-and-cleanup-actions) | How and why to use BEGIN/END rules.
+| &bull; [I/O And BEGIN/END](#7142-inputoutput-from-begin-and-end-rules) | I/O issues in BEGIN/END rules.
 
 ---
 
-Next: [I/O And BEGIN/END](#I_002fO-And-BEGIN_002fEND), Up: [BEGIN/END](#BEGIN_002fEND)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [I/O And BEGIN/END](#7142-inputoutput-from-begin-and-end-rules), Up: [BEGIN/END](#714-the-begin-and-end-special-patterns)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 #### 7.1.4.1 Startup and Cleanup Actions
 
@@ -10735,7 +10735,7 @@ This program finds the number of records in the input file mail-list
 that contain the string &lsquo;li&rsquo;.  The `BEGIN` rule prints a title
 for the report.  There is no need to use the `BEGIN` rule to
 initialize the counter `n` to zero, as `awk` does this
-automatically (see [Variables](#Variables)).
+automatically (see [Variables](#613-variables)).
 The second rule increments the variable `n` every time a
 record containing the pattern &lsquo;li&rsquo; is read.  The `END` rule
 prints the value of `n` at the end of the run.
@@ -10762,7 +10762,7 @@ The order in which library functions are named on the command line
 controls the order in which their `BEGIN` and `END` rules are
 executed.  Therefore, you have to be careful when writing such rules in
 library files so that the order in which they are executed doesn&rsquo;t matter.
-See [Options](#Options) for more information on
+See [Options](#22-command-line-options) for more information on
 using library functions.
 See [Library Functions]((#10-a-library-of-awk-functions)),
 for a number of useful library functions.
@@ -10776,7 +10776,7 @@ rule checks the `FNR` and `NR` variables.
 
 ---
 
-Previous: [Using BEGIN/END](#Using-BEGIN_002fEND), Up: [BEGIN/END](#BEGIN_002fEND)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Previous: [Using BEGIN/END](#7141-startup-and-cleanup-actions), Up: [BEGIN/END](#714-the-begin-and-end-special-patterns)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 #### 7.1.4.2 Input/Output from `BEGIN` and `END` Rules
 
@@ -10788,7 +10788,7 @@ there simply is no input record, and therefore no fields, when
 executing `BEGIN` rules.  References to `$0` and the fields
 yield a null string or zero, depending upon the context.  One way
 to give `$0` a real value is to execute a `getline` command
-without a variable (see [Getline](#Getline)).
+without a variable (see [Getline](#410-explicit-input-with-getline)).
 Another way is simply to assign a value to `$0`.
 
 The second point is similar to the first, but from the other direction.
@@ -10817,12 +10817,12 @@ Finally, the `next` and `nextfile` statements are not allowed
 in a `BEGIN` rule, because the implicit
 read-a-record-and-match-against-the-rules loop has not started yet.  Similarly, those statements
 are not valid in an `END` rule, because all the input has been read.
-(See [Next Statement](#Next-Statement) and
-see [Nextfile Statement](#Nextfile-Statement).)
+(See [Next Statement](#748-the-next-statement) and
+see [Nextfile Statement](#749-the-nextfile-statement).)
 
 ---
 
-Next: [Empty](#Empty), Previous: [BEGIN/END](#BEGIN_002fEND), Up: [Pattern Overview](#Pattern-Overview)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [Empty](#716-the-empty-pattern), Previous: [BEGIN/END](#714-the-begin-and-end-special-patterns), Up: [Pattern Overview](#71-pattern-elements)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 #### 7.1.5 The `BEGINFILE` and `ENDFILE` Special Patterns
 
@@ -10831,7 +10831,7 @@ This section describes a `gawk`-specific feature.
 Two special kinds of rule, `BEGINFILE` and `ENDFILE`, give
 you &ldquo;hooks&rdquo; into `gawk`&rsquo;s command-line file processing loop.
 As with the `BEGIN` and `END` rules
-(see [BEGIN/END](#BEGIN_002fEND)),
+(see [BEGIN/END](#714-the-begin-and-end-special-patterns)),
 all `BEGINFILE` rules in a program are merged, in the order they are
 read by `gawk`, and all `ENDFILE` rules are merged as well.
 
@@ -10850,7 +10850,7 @@ command line.
 You do this by checking if the `ERRNO` variable is not the empty
 string; if so, then `gawk` was not able to open the file. In
 this case, your program can execute the `nextfile` statement
-(see [Nextfile Statement](#Nextfile-Statement)).  This causes `gawk` to skip
+(see [Nextfile Statement](#749-the-nextfile-statement)).  This causes `gawk` to skip
 the file entirely.  Otherwise, `gawk` exits with the usual
 fatal error.
 
@@ -10871,22 +10871,22 @@ rule is present, the error becomes non-fatal, and instead `ERRNO`
 is set.  This makes it possible to catch and process I/O errors at the
 level of the `awk` program.
 
-The `next` statement (see [Next Statement](#Next-Statement)) is not allowed inside
+The `next` statement (see [Next Statement](#748-the-next-statement)) is not allowed inside
 either a `BEGINFILE` or an `ENDFILE` rule.  The `nextfile`
 statement is allowed only inside a
 `BEGINFILE` rule, not inside an `ENDFILE` rule.
 
-The `getline` statement (see [Getline](#Getline)) is restricted inside
+The `getline` statement (see [Getline](#410-explicit-input-with-getline)) is restricted inside
 both `BEGINFILE` and `ENDFILE`: only redirected
 forms of `getline` are allowed.
 
 `BEGINFILE` and `ENDFILE` are `gawk` extensions.
 In most other `awk` implementations, or if `gawk` is in
-compatibility mode (see [Options](#Options)), they are not special.
+compatibility mode (see [Options](#22-command-line-options)), they are not special.
 
 ---
 
-Previous: [BEGINFILE/ENDFILE](#BEGINFILE_002fENDFILE), Up: [Pattern Overview](#Pattern-Overview)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Previous: [BEGINFILE/ENDFILE](#715-the-beginfile-and-endfile-special-patterns), Up: [Pattern Overview](#71-pattern-elements)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 #### 7.1.6 The Empty Pattern
 
@@ -10901,7 +10901,7 @@ prints the first field of every record.
 
 ---
 
-Next: [Action Overview](#Action-Overview), Previous: [Pattern Overview](#Pattern-Overview), Up: [Patterns and Actions](#Patterns-and-Actions)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [Action Overview](#73-actions), Previous: [Pattern Overview](#71-pattern-elements), Up: [Patterns and Actions](#7-patterns-actions-and-variables)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 ### 7.2 Using Shell Variables in Programs
 
@@ -10931,15 +10931,15 @@ The second part is single-quoted.
 
 Variable substitution via quoting works, but can potentially be
 messy.  It requires a good understanding of the shell&rsquo;s quoting rules
-(see [Quoting](#Quoting)),
+(see [Quoting](#116-shell-quoting-issues)),
 and it&rsquo;s often difficult to correctly
 match up the quotes when reading the program.
 
 A better method is to use `awk`&rsquo;s variable assignment feature
-(see [Assignment Options](#Assignment-Options))
+(see [Assignment Options](#6132-assigning-variables-on-the-command-line))
 to assign the shell variable&rsquo;s value to an `awk` variable.
 Then use dynamic regexps to match the pattern
-(see [Computed Regexps](#Computed-Regexps)).
+(see [Computed Regexps](#36-using-dynamic-regexps)).
 The following shows how to redo the
 previous example using this technique:
 
@@ -10961,13 +10961,13 @@ use&mdash;without requiring the quoting tricks at every point in the program.
 
 ---
 
-Next: [Statements](#Statements), Previous: [Using Shell Variables](#Using-Shell-Variables), Up: [Patterns and Actions](#Patterns-and-Actions)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [Statements](#74-control-statements-in-actions), Previous: [Using Shell Variables](#72-using-shell-variables-in-programs), Up: [Patterns and Actions](#7-patterns-actions-and-variables)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 ### 7.3 Actions
 
 An `awk` program or script consists of a series of
 rules and function definitions interspersed.  (Functions are
-described later.  See [User-defined](#User_002ddefined).)
+described later.  See [User-defined](#92-user-defined-functions).)
 A rule contains a pattern and an action, either of which (but not
 both) may be omitted.  The purpose of the *action* is to tell
 `awk` what to do once a match for the pattern is found.  Thus,
@@ -10997,16 +10997,16 @@ The following types of statements are supported in `awk`:
 
 <code>Expressions</code>
 Call functions or assign values to variables
-(see [Expressions](#Expressions)).  Executing
+(see [Expressions](#6-expressions)).  Executing
 this kind of statement simply computes the value of the expression.
 This is useful when the expression has side effects
-(see [Assignment Ops](#Assignment-Ops)).
+(see [Assignment Ops](#623-assignment-expressions)).
 
 <code>Control statements</code>
 Specify the control flow of `awk`
 programs.  The `awk` language gives you C-like constructs
 (`if`, `for`, `while`, and `do`) as well as a few
-special ones (see [Statements](#Statements)).
+special ones (see [Statements](#74-control-statements-in-actions)).
 
 <code>Compound statements</code>
 Enclose one or more statements in braces.  A compound statement
@@ -11015,23 +11015,23 @@ is used in order to put several statements together in the body of an
 
 <code>Input statements</code>
 Use the `getline` command
-(see [Getline](#Getline)).
+(see [Getline](#410-explicit-input-with-getline)).
 Also supplied in `awk` are the `next`
-statement (see [Next Statement](#Next-Statement))
+statement (see [Next Statement](#748-the-next-statement))
 and the `nextfile` statement
-(see [Nextfile Statement](#Nextfile-Statement)).
+(see [Nextfile Statement](#749-the-nextfile-statement)).
 
 <code>Output statements</code>
 Such as `print` and `printf`.
-See [Printing](#Printing).
+See [Printing](#5-printing-output).
 
 <code>Deletion statements</code>
 For deleting array elements.
-See [Delete](#Delete).
+See [Delete](#84-the-delete-statement).
 
 ---
 
-Next: [Built-in Variables](#Built_002din-Variables), Previous: [Action Overview](#Action-Overview), Up: [Patterns and Actions](#Patterns-and-Actions)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [Built-in Variables](#75-predefined-variables), Previous: [Action Overview](#73-actions), Up: [Patterns and Actions](#7-patterns-actions-and-variables)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 ### 7.4 Control Statements in Actions
 
@@ -11050,20 +11050,20 @@ newlines or semicolons.
 
 | []() | []()
 | - | -
-| &bull; [If Statement](#If-Statement) | Conditionally execute some `awk` statements.
-| &bull; [While Statement](#While-Statement) | Loop until some condition is satisfied.
-| &bull; [Do Statement](#Do-Statement) | Do specified action while looping until some condition is satisfied.
-| &bull; [For Statement](#For-Statement) | Another looping statement, that provides initialization and increment clauses.
-| &bull; [Switch Statement](#Switch-Statement) | Switch/case evaluation for conditional execution of statements based on a value.
-| &bull; [Break Statement](#Break-Statement) | Immediately exit the innermost enclosing loop.
-| &bull; [Continue Statement](#Continue-Statement) | Skip to the end of the innermost enclosing loop.
-| &bull; [Next Statement](#Next-Statement) | Stop processing the current input record.
-| &bull; [Nextfile Statement](#Nextfile-Statement) | Stop processing the current file.
-| &bull; [Exit Statement](#Exit-Statement) | Stop execution of `awk`.
+| &bull; [If Statement](#741-the-if-else-statement) | Conditionally execute some `awk` statements.
+| &bull; [While Statement](#742-the-while-statement) | Loop until some condition is satisfied.
+| &bull; [Do Statement](#743-the-do-while-statement) | Do specified action while looping until some condition is satisfied.
+| &bull; [For Statement](#744-the-for-statement) | Another looping statement, that provides initialization and increment clauses.
+| &bull; [Switch Statement](#745-the-switch-statement) | Switch/case evaluation for conditional execution of statements based on a value.
+| &bull; [Break Statement](#746-the-break-statement) | Immediately exit the innermost enclosing loop.
+| &bull; [Continue Statement](#747-the-continue-statement) | Skip to the end of the innermost enclosing loop.
+| &bull; [Next Statement](#748-the-next-statement) | Stop processing the current input record.
+| &bull; [Nextfile Statement](#749-the-nextfile-statement) | Stop processing the current file.
+| &bull; [Exit Statement](#7410-the-exit-statement) | Stop execution of `awk`.
 
 ---
 
-Next: [While Statement](#While-Statement), Up: [Statements](#Statements)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [While Statement](#742-the-while-statement), Up: [Statements](#74-control-statements-in-actions)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 #### 7.4.1 The `if`-`else` Statement
 
@@ -11111,7 +11111,7 @@ the first thing on its line.
 
 ---
 
-Next: [Do Statement](#Do-Statement), Previous: [If Statement](#If-Statement), Up: [Statements](#Statements)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [Do Statement](#743-the-do-while-statement), Previous: [If Statement](#741-the-if-else-statement), Up: [Statements](#74-control-statements-in-actions)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 #### 7.4.2 The `while` Statement
 
@@ -11166,7 +11166,7 @@ program is harder to read without it.
 
 ---
 
-Next: [For Statement](#For-Statement), Previous: [While Statement](#While-Statement), Up: [Statements](#Statements)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [For Statement](#744-the-for-statement), Previous: [While Statement](#742-the-while-statement), Up: [Statements](#74-control-statements-in-actions)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 #### 7.4.3 The `do`-`while` Statement
 
@@ -11211,7 +11211,7 @@ occasionally is there a real use for a `do` statement.
 
 ---
 
-Next: [Switch Statement](#Switch-Statement), Previous: [Do Statement](#Do-Statement), Up: [Statements](#Statements)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [Switch Statement](#745-the-switch-statement), Previous: [Do Statement](#743-the-do-while-statement), Up: [Statements](#74-control-statements-in-actions)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 #### 7.4.4 The `for` Statement
 
@@ -11280,7 +11280,7 @@ loop, as shown here:
     
 
 The only exception is when the `continue` statement
-(see [Continue Statement](#Continue-Statement)) is used
+(see [Continue Statement](#747-the-continue-statement)) is used
 inside the loop. Changing a `for` statement to a `while`
 statement in this way can change the effect of the `continue`
 statement inside the loop.
@@ -11298,17 +11298,17 @@ all the indices of an array:
         do something with array[i]
     
 
-See [Scanning an Array](#Scanning-an-Array)
+See [Scanning an Array](#815-scanning-all-elements-of-an-array)
 for more information on this version of the `for` loop.
 
 ---
 
-Next: [Break Statement](#Break-Statement), Previous: [For Statement](#For-Statement), Up: [Statements](#Statements)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [Break Statement](#746-the-break-statement), Previous: [For Statement](#744-the-for-statement), Up: [Statements](#74-control-statements-in-actions)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 #### 7.4.5 The `switch` Statement
 
 This section describes a `gawk`-specific feature.
-If `gawk` is in compatibility mode (see [Options](#Options)),
+If `gawk` is in compatibility mode (see [Options](#22-command-line-options)),
 it is not available.
 
 The `switch` statement allows the evaluation of an expression and
@@ -11369,11 +11369,11 @@ next `case` until execution halts. In this example, the
 `case` for `"?"` falls through to the `default`
 case, which is to call a function named `usage()`.
 (The `getopt()` function being called here is
-described in [Getopt Function](#Getopt-Function).)
+described in [Getopt Function](#104-processing-command-line-options).)
 
 ---
 
-Next: [Continue Statement](#Continue-Statement), Previous: [Switch Statement](#Switch-Statement), Up: [Statements](#Statements)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [Continue Statement](#747-the-continue-statement), Previous: [Switch Statement](#745-the-switch-statement), Up: [Statements](#74-control-statements-in-actions)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 #### 7.4.6 The `break` Statement
 
@@ -11403,7 +11403,7 @@ immediately *breaks out* of the containing `for` loop.  This means
 that `awk` proceeds immediately to the statement following the loop
 and continues processing.  (This is very different from the `exit`
 statement, which stops the entire `awk` program.
-See [Exit Statement](#Exit-Statement).)
+See [Exit Statement](#7410-the-exit-statement).)
 
 The following program illustrates how the condition of a `for`
 or `while` statement could be replaced with a `break` inside
@@ -11427,21 +11427,21 @@ an `if`:
 
 The `break` statement is also used to break out of the
 `switch` statement.
-This is discussed in [Switch Statement](#Switch-Statement).
+This is discussed in [Switch Statement](#745-the-switch-statement).
 
 The `break` statement has no meaning when
 used outside the body of a loop or `switch`.
 However, although it was never documented,
 historical implementations of `awk` treated the `break`
 statement outside of a loop as if it were a `next` statement
-(see [Next Statement](#Next-Statement)).
+(see [Next Statement](#748-the-next-statement)).
 (d.c.)
 Recent versions of BWK `awk` no longer allow this usage,
 nor does `gawk`.
 
 ---
 
-Next: [Next Statement](#Next-Statement), Previous: [Break Statement](#Break-Statement), Up: [Statements](#Statements)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [Next Statement](#748-the-next-statement), Previous: [Break Statement](#746-the-break-statement), Up: [Statements](#74-control-statements-in-actions)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 #### 7.4.7 The `continue` Statement
 
@@ -11492,14 +11492,14 @@ body of a loop.  Historical versions of `awk` treated a `continue`
 statement outside a loop the same way they treated a `break`
 statement outside a loop: as if it were a `next`
 statement
-(see [Next Statement](#Next-Statement)).
+(see [Next Statement](#748-the-next-statement)).
 (d.c.)
 Recent versions of BWK `awk` no longer work this way, nor
 does `gawk`.
 
 ---
 
-Next: [Nextfile Statement](#Nextfile-Statement), Previous: [Continue Statement](#Continue-Statement), Up: [Statements](#Statements)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [Nextfile Statement](#749-the-nextfile-statement), Previous: [Continue Statement](#747-the-continue-statement), Up: [Statements](#74-control-statements-in-actions)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 #### 7.4.8 The `next` Statement
 
@@ -11509,7 +11509,7 @@ further rules are executed for the current record, and the rest of the
 current rule&rsquo;s action isn&rsquo;t executed.
 
 Contrast this with the effect of the `getline` function
-(see [Getline](#Getline)).  That also causes
+(see [Getline](#410-explicit-input-with-getline)).  That also causes
 `awk` to read the next record immediately, but it does not alter the
 flow of control in any way (i.e., the rest of the current action executes
 with a new input record).
@@ -11537,27 +11537,27 @@ the program&rsquo;s subsequent rules won&rsquo;t see the bad record.  The error
 message is redirected to the standard error output stream, as error
 messages should be.
 For more detail, see
-[Special Files](#Special-Files).
+[Special Files](#58-special-file-names-in-gawk).
 
 If the `next` statement causes the end of the input to be reached,
 then the code in any `END` rules is executed.
-See [BEGIN/END](#BEGIN_002fEND).
+See [BEGIN/END](#714-the-begin-and-end-special-patterns).
 
 The `next` statement is not allowed inside `BEGINFILE` and
-`ENDFILE` rules. See [BEGINFILE/ENDFILE](#BEGINFILE_002fENDFILE).
+`ENDFILE` rules. See [BEGINFILE/ENDFILE](#715-the-beginfile-and-endfile-special-patterns).
 
 According to the POSIX standard, the behavior is undefined if the
 `next` statement is used in a `BEGIN` or `END` rule.
 `gawk` treats it as a syntax error.  Although POSIX does not disallow it,
 most other `awk` implementations don&rsquo;t allow the `next`
-statement inside function bodies (see [User-defined](#User_002ddefined)).  Just as with any
+statement inside function bodies (see [User-defined](#92-user-defined-functions)).  Just as with any
 other `next` statement, a `next` statement inside a function
 body reads the next record and starts processing it with the first rule
 in the program.
 
 ---
 
-Next: [Exit Statement](#Exit-Statement), Previous: [Next Statement](#Next-Statement), Up: [Statements](#Statements)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [Exit Statement](#7410-the-exit-statement), Previous: [Next Statement](#748-the-next-statement), Up: [Statements](#74-control-statements-in-actions)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 #### 7.4.9 The `nextfile` Statement
 
@@ -11577,7 +11577,7 @@ If the `nextfile` statement causes the end of the input to be reached,
 then the code in any `END` rules is executed. An exception to this is
 when `nextfile` is invoked during execution of any statement in an
 `END` rule; in this case, it causes the program to stop immediately.
-See [BEGIN/END](#BEGIN_002fEND).
+See [BEGIN/END](#714-the-begin-and-end-special-patterns).
 
 The `nextfile` statement is useful when there are many data files
 to process but it isn&rsquo;t necessary to process every record in every file.
@@ -11590,12 +11590,12 @@ In `gawk`, execution of `nextfile` causes additional things
 to happen: any `ENDFILE` rules are executed if `gawk` is
 not currently in an `END` or `BEGINFILE` rule, `ARGIND` is
 incremented, and any `BEGINFILE` rules are executed.  (`ARGIND`
-hasn&rsquo;t been introduced yet. See [Built-in Variables](#Built_002din-Variables).)
+hasn&rsquo;t been introduced yet. See [Built-in Variables](#75-predefined-variables).)
 
 With `gawk`, `nextfile` is useful inside a `BEGINFILE`
 rule to skip over a file that would otherwise cause `gawk`
 to exit with a fatal error. In this case, `ENDFILE` rules are not
-executed. See [BEGINFILE/ENDFILE](#BEGINFILE_002fENDFILE).
+executed. See [BEGINFILE/ENDFILE](#715-the-beginfile-and-endfile-special-patterns).
 
 Although it might seem that &lsquo;close(FILENAME)&rsquo; would accomplish
 the same as `nextfile`, this isn&rsquo;t true.  `close()` is
@@ -11610,14 +11610,14 @@ opened with redirections.  It is not related to the main processing that
 
 The current version of BWK `awk` and `mawk`
 also support `nextfile`.  However, they don&rsquo;t allow the
-`nextfile` statement inside function bodies (see [User-defined](#User_002ddefined)).
+`nextfile` statement inside function bodies (see [User-defined](#92-user-defined-functions)).
 `gawk` does; a `nextfile` inside a function body reads the
 first record from the next file and starts processing it with the first
 rule in the program, just as any other `nextfile` statement.
 
 ---
 
-Previous: [Nextfile Statement](#Nextfile-Statement), Up: [Statements](#Statements)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Previous: [Nextfile Statement](#749-the-nextfile-statement), Up: [Statements](#74-control-statements-in-actions)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 #### 7.4.10 The `exit` Statement
 
@@ -11633,7 +11633,7 @@ program stops processing everything immediately.  No input records are
 read.  However, if an `END` rule is present,
 as part of executing the `exit` statement,
 the `END` rule is executed
-(see [BEGIN/END](#BEGIN_002fEND)).
+(see [BEGIN/END](#714-the-begin-and-end-special-patterns)).
 If `exit` is used in the body of an `END` rule, it causes
 the program to stop immediately.
 
@@ -11647,7 +11647,7 @@ In such a case,
 if you don&rsquo;t want the `END` rule to do its job, set a variable
 to a nonzero value before the `exit` statement and check that variable in
 the `END` rule.
-See [Assert Function](#Assert-Function)
+See [Assert Function](#1022-assertions)
 for an example that does this.
 
 If an argument is supplied to `exit`, its value is used as the exit
@@ -11657,7 +11657,7 @@ In the case where an argument
 is supplied to a first `exit` statement, and then `exit` is
 called a second time from an `END` rule with no argument,
 `awk` uses the previously supplied exit value.  (d.c.)
-See [Exit Status](#Exit-Status) for more information.
+See [Exit Status](#26-gawkrsquos-exit-status) for more information.
 
 For example, suppose an error condition occurs that is difficult or
 impossible to handle.  Conventionally, programs report this by
@@ -11683,7 +11683,7 @@ in the following example:
 
 ---
 
-Next: [Pattern Action Summary](#Pattern-Action-Summary), Previous: [Statements](#Statements), Up: [Patterns and Actions](#Patterns-and-Actions)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [Pattern Action Summary](#76-summary), Previous: [Statements](#74-control-statements-in-actions), Up: [Patterns and Actions](#7-patterns-actions-and-variables)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 ### 7.5 Predefined Variables
 
@@ -11700,15 +11700,15 @@ This section documents all of `gawk`&rsquo;s predefined variables,
 most of which are also documented in the chapters describing
 their areas of activity.
 
-&bull; [User-modified](#User_002dmodified):  Built-in variables that you change to control
+&bull; [User-modified](#751-built-in-variables-that-control-awk):  Built-in variables that you change to control
                                 `awk`.
-&bull; [Auto-set](#Auto_002dset):  Built-in variables where `awk` gives
+&bull; [Auto-set](#752-built-in-variables-that-convey-information):  Built-in variables where `awk` gives
                                 you information.
-&bull; [ARGC and ARGV](#ARGC-and-ARGV):  Ways to use `ARGC` and `ARGV`.
+&bull; [ARGC and ARGV](#753-using-argc-and-argv):  Ways to use `ARGC` and `ARGV`.
 
 ---
 
-Next: [Auto-set](#Auto_002dset), Up: [Built-in Variables](#Built_002din-Variables)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [Auto-set](#752-built-in-variables-that-convey-information), Up: [Built-in Variables](#75-predefined-variables)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 #### 7.5.1 Built-in Variables That Control `awk`
 
@@ -11718,7 +11718,7 @@ control how `awk` does certain things.
 The variables that are specific to `gawk` are marked with a pound
 sign (&lsquo;#&rsquo;).  These variables are `gawk` extensions.  In other
 `awk` implementations or if `gawk` is in compatibility
-mode (see [Options](#Options)), they are not special.  (Any exceptions are noted
+mode (see [Options](#22-command-line-options)), they are not special.  (Any exceptions are noted
 in the description of each variable.)
 
 `BINMODE #`
@@ -11737,10 +11737,10 @@ also supports this variable, but only using numeric values.
 
 ``CONVFMT``
 A string that controls the conversion of numbers to
-strings (see [Conversion](#Conversion)).
+strings (see [Conversion](#614-conversion-of-strings-and-numbers)).
 It works by being passed, in effect, as the first argument to the
 `sprintf()` function
-(see [String Functions](#String-Functions)).
+(see [String Functions](#913-string-manipulation-functions)).
 Its default value is `"%.6g"`.
 `CONVFMT` was introduced by the POSIX standard.
 
@@ -11752,17 +11752,17 @@ preceded by a colon-separated value specifying the number of characters to skip
 before the field starts.
 Assigning a value to `FIELDWIDTHS`
 overrides the use of `FS` and `FPAT` for field splitting.
-See [Constant Size](#Constant-Size) for more information.
+See [Constant Size](#46-reading-fixed-width-data) for more information.
 
 `FPAT #`
 A regular expression (as a string) that tells `gawk`
 to create the fields based on text that matches the regular expression.
 Assigning a value to `FPAT`
 overrides the use of `FS` and `FIELDWIDTHS` for field splitting.
-See [Splitting By Content](#Splitting-By-Content) for more information.
+See [Splitting By Content](#47-defining-fields-by-content) for more information.
 
 `FS`
-The input field separator (see [Field Separators](#Field-Separators)).
+The input field separator (see [Field Separators](#45-specifying-how-fields-are-separated)).
 The value is a single-character string or a multicharacter regular
 expression that matches the separations between fields in an input
 record.  If the value is the null string (`""`), then each
@@ -11801,12 +11801,12 @@ record termination with `RS`, and field splitting with
 However, the value of `IGNORECASE` does *not* affect array subscripting
 and it does not affect field splitting when using a single-character
 field separator.
-See [Case-sensitivity](#Case_002dsensitivity).
+See [Case-sensitivity](#38-case-sensitivity-in-matching).
 
 `LINT #`
 When this variable is true (nonzero or non-null), `gawk`
 behaves as if the --lint command-line option is in effect
-(see [Options](#Options)).
+(see [Options](#22-command-line-options)).
 With a value of `"fatal"`, lint warnings become fatal errors.
 With a value of `"invalid"`, only warnings about things that are
 actually invalid are issued. (This is not fully implemented yet.)
@@ -11824,23 +11824,23 @@ of `awk` being executed.
 
 `OFMT`
 A string that controls conversion of numbers to
-strings (see [Conversion](#Conversion)) for
+strings (see [Conversion](#614-conversion-of-strings-and-numbers)) for
 printing with the `print` statement.  It works by being passed
 as the first argument to the `sprintf()` function
-(see [String Functions](#String-Functions)).
+(see [String Functions](#913-string-manipulation-functions)).
 Its default value is `"%.6g"`.  Earlier versions of `awk`
 used `OFMT` to specify the format for converting numbers to
 strings in general expressions; this is now done by `CONVFMT`.
 
 `OFS`
-The output field separator (see [Output Separators](#Output-Separators)).  It is
+The output field separator (see [Output Separators](#53-output-separators)).  It is
 output between the fields printed by a `print` statement.  Its
 default value is `" "`, a string consisting of a single space.
 
 `ORS`
 The output record separator.  It is output at the end of every
 `print` statement.  Its default value is `"\n"`, the newline
-character.  (See [Output Separators](#Output-Separators).)
+character.  (See [Output Separators](#53-output-separators).)
 
 `PREC #`
 The working precision of arbitrary-precision floating-point numbers,
@@ -11859,13 +11859,13 @@ It can also be the null string, in which case records are separated by
 runs of blank lines.
 If it is a regexp, records are separated by
 matches of the regexp in the input text.
-(See [Records](#Records).)
+(See [Records](#41-how-input-is-split-into-records).)
 
 The ability for `RS` to be a regular expression
 is a `gawk` extension.
 In most other `awk` implementations,
 or if `gawk` is in compatibility mode
-(see [Options](#Options)),
+(see [Options](#22-command-line-options)),
 just the first character of `RS`&rsquo;s value is used.
 
 ``SUBSEP``
@@ -11873,7 +11873,7 @@ The subscript separator.  It has the default value of
 `"\034"` and is used to separate the parts of the indices of a
 multidimensional array.  Thus, the expression &lsquo;foo["A", "B"]&rsquo;
 really accesses `foo["A\034B"]`
-(see [Multidimensional](#Multidimensional)).
+(see [Multidimensional](#85-multidimensional-arrays)).
 
 `TEXTDOMAIN #`
 Used for internationalization of programs at the
@@ -11885,7 +11885,7 @@ The default value of `TEXTDOMAIN` is `"messages"`.
 
 ---
 
-Next: [ARGC and ARGV](#ARGC-and-ARGV), Previous: [User-modified](#User_002dmodified), Up: [Built-in Variables](#Built_002din-Variables)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [ARGC and ARGV](#753-using-argc-and-argv), Previous: [User-modified](#751-built-in-variables-that-control-awk), Up: [Built-in Variables](#75-predefined-variables)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 #### 7.5.2 Built-in Variables That Convey Information
 
@@ -11896,12 +11896,12 @@ information to your program.
 The variables that are specific to `gawk` are marked with a pound
 sign (&lsquo;#&rsquo;).  These variables are `gawk` extensions.  In other
 `awk` implementations or if `gawk` is in compatibility
-mode (see [Options](#Options)), they are not special:
+mode (see [Options](#22-command-line-options)), they are not special:
 
 `ARGC`, `ARGV`
 The command-line arguments available to `awk` programs are stored in
 an array called `ARGV`.  `ARGC` is the number of command-line
-arguments present.  See [Other Arguments](#Other-Arguments).
+arguments present.  See [Other Arguments](#23-other-command-line-arguments).
 Unlike most `awk` arrays,
 `ARGV` is indexed from 0 to `ARGC` - 1.
 In the following example:
@@ -11928,7 +11928,7 @@ method of accessing command-line arguments.
 The value of `ARGV[0]` can vary from system to system.
 Also, you should note that the program text is *not* included in
 `ARGV`, nor are any of `awk`&rsquo;s command-line options.
-See [ARGC and ARGV](#ARGC-and-ARGV) for information
+See [ARGC and ARGV](#753-using-argc-and-argv) for information
 about how `awk` uses these variables.
 (d.c.)
 
@@ -11966,15 +11966,15 @@ executable programs.
 
 This can also affect the running `gawk` program, since some of the
 built-in functions may pay attention to certain environment variables.
-The most notable instance of this is `mktime()` (see [Time Functions](#Time-Functions)), which pays attention the value of the `TZ` environment
+The most notable instance of this is `mktime()` (see [Time Functions](#915-time-functions)), which pays attention the value of the `TZ` environment
 variable on many systems.
 
 Some operating systems may not have environment variables.
 On such systems, the `ENVIRON` array is empty (except for
 `ENVIRON["AWKPATH"]` and
 `ENVIRON["AWKLIBPATH"]`;
-see [AWKPATH Variable](#AWKPATH-Variable) and
-see [AWKLIBPATH Variable](#AWKLIBPATH-Variable)).
+see [AWKPATH Variable](#251-the-awkpath-environment-variable) and
+see [AWKLIBPATH Variable](#252-the-awklibpath-environment-variable)).
 
 `ERRNO #`
 If a system error occurs during a redirection for `getline`, during
@@ -11983,7 +11983,7 @@ a read for `getline`, or during a `close()` operation, then
 
 In addition, `gawk` clears `ERRNO` before opening each
 command-line input file. This enables checking if the file is readable
-inside a `BEGINFILE` pattern (see [BEGINFILE/ENDFILE](#BEGINFILE_002fENDFILE)).
+inside a `BEGINFILE` pattern (see [BEGINFILE/ENDFILE](#715-the-beginfile-and-endfile-special-patterns)).
 
 Otherwise, `ERRNO` works similarly to the C variable `errno`.
 Except for the case just mentioned, `gawk`*never* clears
@@ -12001,28 +12001,28 @@ be zero.
 The name of the current input file.  When no data files are listed
 on the command line, `awk` reads from the standard input and
 `FILENAME` is set to `"-"`.  `FILENAME` changes each
-time a new file is read (see [Reading Files](#Reading-Files)).  Inside a `BEGIN`
+time a new file is read (see [Reading Files](#4-reading-input-files)).  Inside a `BEGIN`
 rule, the value of `FILENAME` is `""`, because there are no input
 files being processed yet.[39](#FOOT39) (d.c.) Note, though,
-that using `getline` (see [Getline](#Getline)) inside a `BEGIN` rule
+that using `getline` (see [Getline](#410-explicit-input-with-getline)) inside a `BEGIN` rule
 can give `FILENAME` a value.
 
 `FNR`
 The current record number in the current file.  `awk` increments
-`FNR` each time it reads a new record (see [Records](#Records)).
+`FNR` each time it reads a new record (see [Records](#41-how-input-is-split-into-records)).
 `awk` resets `FNR` to zero each time it starts a new
 input file.
 
 `NF`
 The number of fields in the current input record.
 `NF` is set each time a new record is read, when a new field is
-created, or when `$0` changes (see [Fields](#Fields)).
+created, or when `$0` changes (see [Fields](#42-examining-fields)).
 
 Unlike most of the variables described in this subsection,
 assigning a value to `NF` has the potential to affect
 `awk`&rsquo;s internal workings.  In particular, assignments
 to `NF` can be used to create fields in or remove fields from the
-current record. See [Changing Fields](#Changing-Fields).
+current record. See [Changing Fields](#44-changing-the-contents-of-a-field).
 
 `FUNCTAB #`
 An array whose indices and corresponding values are the names of all
@@ -12035,7 +12035,7 @@ the built-in, user-defined, and extension functions in the program.
 `NR`
 The number of input records `awk` has processed since
 the beginning of the program&rsquo;s execution
-(see [Records](#Records)).
+(see [Records](#41-how-input-is-split-into-records)).
 `awk` increments `NR` each time it reads a new record.
 
 `PROCINFO #`
@@ -12061,7 +12061,7 @@ feature may be used:
 
 Please note that this differs from the standard `ARGV` array which does
 not include command-line arguments that have already been processed by
-`gawk` (see [ARGC and ARGV](#ARGC-and-ARGV)).
+`gawk` (see [ARGC and ARGV](#753-using-argc-and-argv)).
 
 `PROCINFO["egid"]`
 The value of the `getegid()` system call.
@@ -12126,7 +12126,7 @@ The parent process ID of the current process.
 `PROCINFO["strftime"]`
 The default time format string for `strftime()`.
 Assigning a new value to this element changes the default.
-See [Time Functions](#Time-Functions).
+See [Time Functions](#915-time-functions).
 
 `PROCINFO["uid"]`
 The value of the `getuid()` system call.
@@ -12166,17 +12166,17 @@ On some systems, there may be elements in the array, `&ququot;group1"`
 through `"groupN"` for some N. N is the number of
 supplementary groups that the process has.  Use the `in` operator
 to test for these elements
-(see [Reference to Elements](#Reference-to-Elements)).
+(see [Reference to Elements](#812-referring-to-an-array-element)).
 
 The following elements allow you to change `gawk`&rsquo;s behavior:
 
 `PROCINFO["NONFATAL"]`
 If this element exists, then I/O errors for all redirections become nonfatal.
-See [Nonfatal](#Nonfatal).
+See [Nonfatal](#510-enabling-nonfatal-output).
 
 `PROCINFO["name", "NONFATAL"]`
 Make I/O errors for name be nonfatal.
-See [Nonfatal](#Nonfatal).
+See [Nonfatal](#510-enabling-nonfatal-output).
 
 `PROCINFO["command", "pty"]`
 For two-way communication to command, use a pseudo-tty instead
@@ -12185,7 +12185,7 @@ See [Two-way I/O](#Two_002dway-I_002fO) for more information.
 
 `PROCINFO["input_name", "READ_TIMEOUT"]`
 Set a timeout for reading from input redirection input_name.
-See [Read Timeout](#Read-Timeout) for more information.
+See [Read Timeout](#411-reading-input-with-a-timeout) for more information.
 
 `PROCINFO["input_name", "RETRY"]`
 If an I/O error that may be retried occurs when reading data from
@@ -12197,7 +12197,7 @@ that may be retried is one where `errno` has the value `EAGAIN`,
 in conjunction with `PROCINFO["input_name", "READ_TIMEOUT"]`
 or situations where a file descriptor has been configured to behave in
 a non-blocking fashion.
-See [Retrying Input](#Retrying-Input) for more information.
+See [Retrying Input](#412-retrying-reads-after-certain-input-errors) for more information.
 
 `PROCINFO["sorted_in"]`
 If this element exists in `PROCINFO`, its value controls the
@@ -12205,19 +12205,19 @@ order in which array indices will be processed by
 &lsquo;for (indx in array)&rsquo; loops.
 This is an advanced feature, so we defer the
 full description until later; see
-[Scanning an Array](#Scanning-an-Array).
+[Scanning an Array](#815-scanning-all-elements-of-an-array).
 
 `RLENGTH`
 The length of the substring matched by the
 `match()` function
-(see [String Functions](#String-Functions)).
+(see [String Functions](#913-string-manipulation-functions)).
 `RLENGTH` is set by invoking the `match()` function.  Its value
 is the length of the matched string, or -1 if no match is found.
 
 `RSTART`
 The start index in characters of the substring that is matched by the
 `match()` function
-(see [String Functions](#String-Functions)).
+(see [String Functions](#913-string-manipulation-functions)).
 `RSTART` is set by invoking the `match()` function.  Its value
 is the position of the string where the matched substring starts, or zero
 if no match was found.
@@ -12240,7 +12240,7 @@ a variable:
     print foo    # prints 4
     
 
-The `isarray()` function (see [Type Functions](#Type-Functions)) may be used to test
+The `isarray()` function (see [Type Functions](#917-getting-type-information)) may be used to test
 if an element in `SYMTAB` is an array.
 Also, you may not use the `delete` statement with the
 `SYMTAB` array.
@@ -12314,11 +12314,11 @@ changed.
 
 ---
 
-Previous: [Auto-set](#Auto_002dset), Up: [Built-in Variables](#Built_002din-Variables)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Previous: [Auto-set](#752-built-in-variables-that-convey-information), Up: [Built-in Variables](#75-predefined-variables)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 #### 7.5.3 Using `ARGC` and `ARGV`
 
-[Auto-set](#Auto_002dset)
+[Auto-set](#752-built-in-variables-that-convey-information)
 presented the following program describing the information contained in `ARGC`
 and `ARGV`:
 
@@ -12337,7 +12337,7 @@ contains &lsquo;inventory-shipped&rsquo;, and `ARGV[2]` contains
 Notice that the `awk` program is not entered in `ARGV`.  The
 other command-line options, with their arguments, are also not
 entered.  This includes variable assignments done with the -v
-option (see [Options](#Options)).
+option (see [Options](#22-command-line-options)).
 Normal variable assignments on the command line *are*
 treated as arguments and do show up in the `ARGV` array.
 Given the following program in a file named showargs.awk:
@@ -12379,12 +12379,12 @@ special feature, `awk` ignores file names that have been
 replaced with the null string.
 Another option is to
 use the `delete` statement to remove elements from
-`ARGV` (see [Delete](#Delete)).
+`ARGV` (see [Delete](#84-the-delete-statement)).
 
 All of these actions are typically done in the `BEGIN` rule,
 before actual processing of the input begins.
-See [Split Program](#Split-Program) and
-see [Tee Program](#Tee-Program)
+See [Split Program](#1124-splitting-a-large-file-into-pieces) and
+see [Tee Program](#1125-duplicating-output-into-multiple-files)
 for examples
 of each way of removing elements from `ARGV`.
 
@@ -12428,20 +12428,20 @@ options that it might otherwise recognize.  The previous command line with
 
 Because -q is not a valid `gawk` option, it and the
 following -v are passed on to the `awk` program.
-(See [Getopt Function](#Getopt-Function) for an `awk` library function that
+(See [Getopt Function](#104-processing-command-line-options) for an `awk` library function that
 parses command-line options.)
 
 When designing your program, you should choose options that don&rsquo;t
 conflict with `gawk`&rsquo;s, because it will process any options
 that it accepts before passing the rest of the command line on to
 your program.  Using &lsquo;#!&rsquo; with the -E option may help
-(see [Executable Scripts](#Executable-Scripts)
+(see [Executable Scripts](#114-executable-awk-programs)
 and
-see [Options](#Options)).
+see [Options](#22-command-line-options)).
 
 ---
 
-Previous: [Built-in Variables](#Built_002din-Variables), Up: [Patterns and Actions](#Patterns-and-Actions)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Previous: [Built-in Variables](#75-predefined-variables), Up: [Patterns and Actions](#7-patterns-actions-and-variables)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 ### 7.6 Summary
 
@@ -12495,7 +12495,7 @@ control how `awk` will process the provided data files.
 
 ---
 
-Next: [Functions](#Functions), Previous: [Patterns and Actions](#Patterns-and-Actions), Up: [Top](#Top)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [Functions](#9-functions), Previous: [Patterns and Actions](#7-patterns-actions-and-variables), Up: [Top](#Top)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 ## 8 Arrays in `awk`
 
@@ -12512,20 +12512,20 @@ The chapter moves on to discuss `gawk`&rsquo;s facility
 for sorting arrays, and ends with a brief description of `gawk`&rsquo;s
 ability to support true arrays of arrays.
 
-&bull; [Array Basics](#Array-Basics):  The basics of arrays.
-&bull; [Numeric Array Subscripts](#Numeric-Array-Subscripts):  How to use numbers as subscripts in
+&bull; [Array Basics](#81-the-basics-of-arrays):  The basics of arrays.
+&bull; [Numeric Array Subscripts](#82-using-numbers-to-subscript-arrays):  How to use numbers as subscripts in
                                 `awk`.
-&bull; [Uninitialized Subscripts](#Uninitialized-Subscripts):  Using Uninitialized variables as subscripts.
-&bull; [Delete](#Delete):  The `delete` statement removes an element
+&bull; [Uninitialized Subscripts](#83-using-uninitialized-variables-as-subscripts):  Using Uninitialized variables as subscripts.
+&bull; [Delete](#84-the-delete-statement):  The `delete` statement removes an element
                                 from an array.
-&bull; [Multidimensional](#Multidimensional):  Emulating multidimensional arrays in
+&bull; [Multidimensional](#85-multidimensional-arrays):  Emulating multidimensional arrays in
                                 `awk`.
-&bull; [Arrays of Arrays](#Arrays-of-Arrays):  True multidimensional arrays.
-&bull; [Arrays Summary](#Arrays-Summary):  Summary of arrays.
+&bull; [Arrays of Arrays](#86-arrays-of-arrays):  True multidimensional arrays.
+&bull; [Arrays Summary](#87-summary):  Summary of arrays.
 
 ---
 
-Next: [Numeric Array Subscripts](#Numeric-Array-Subscripts), Up: [Arrays](#Arrays)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [Numeric Array Subscripts](#82-using-numbers-to-subscript-arrays), Up: [Arrays](#8-arrays-in-awk)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 ### 8.1 The Basics of Arrays
 
@@ -12533,19 +12533,19 @@ This section presents the basics: working with elements
 in arrays one at a time, and traversing all of the elements in
 an array.
 
-&bull; [Array Intro](#Array-Intro):  Introduction to Arrays
-&bull; [Reference to Elements](#Reference-to-Elements):  How to examine one element of an array.
-&bull; [Assigning Elements](#Assigning-Elements):  How to change an element of an array.
-&bull; [Array Example](#Array-Example):  Basic Example of an Array
-&bull; [Scanning an Array](#Scanning-an-Array):  A variation of the `for` statement. It
+&bull; [Array Intro](#811-introduction-to-arrays):  Introduction to Arrays
+&bull; [Reference to Elements](#812-referring-to-an-array-element):  How to examine one element of an array.
+&bull; [Assigning Elements](#813-assigning-array-elements):  How to change an element of an array.
+&bull; [Array Example](#814-basic-array-example):  Basic Example of an Array
+&bull; [Scanning an Array](#815-scanning-all-elements-of-an-array):  A variation of the `for` statement. It
                                 loops through the indices of an array&rsquo;s
                                 existing elements.
-&bull; [Controlling Scanning](#Controlling-Scanning):  Controlling the order in which arrays are
+&bull; [Controlling Scanning](#816-using-predefined-array-scanning-orders-with-gawk):  Controlling the order in which arrays are
                                 scanned.
 
 ---
 
-Next: [Reference to Elements](#Reference-to-Elements), Up: [Array Basics](#Array-Basics)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [Reference to Elements](#812-referring-to-an-array-element), Up: [Array Basics](#81-the-basics-of-arrays)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 #### 8.1.1 Introduction to Arrays
 
@@ -12624,7 +12624,7 @@ numbers and strings as indices.
 (In fact, array subscripts are always strings.
 There are some subtleties to how numbers work when used as
 array subscripts; this is discussed in more detail in
-[Numeric Array Subscripts](#Numeric-Array-Subscripts).)
+[Numeric Array Subscripts](#82-using-numbers-to-subscript-arrays).)
 Here, the number `1` isn&rsquo;t double-quoted, because `awk`
 automatically converts it to a string.
 
@@ -12634,14 +12634,14 @@ to retrieve it.
 When `awk` creates an array (e.g., with the `split()`
 built-in function),
 that array&rsquo;s indices are consecutive integers starting at one.
-(See [String Functions](#String-Functions).)
+(See [String Functions](#913-string-manipulation-functions).)
 
 `awk`&rsquo;s arrays are efficient&mdash;the time to access an element
 is independent of the number of elements in the array.
 
 ---
 
-Next: [Assigning Elements](#Assigning-Elements), Previous: [Array Intro](#Array-Intro), Up: [Array Basics](#Array-Basics)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [Assigning Elements](#813-assigning-array-elements), Previous: [Array Intro](#811-introduction-to-arrays), Up: [Array Basics](#81-the-basics-of-arrays)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 #### 8.1.2 Referring to an Array Element
 
@@ -12661,7 +12661,7 @@ of array `foo` at index &lsquo;4.3&rsquo;.
 A reference to an array element that has no recorded value yields a value of
 `""`, the null string.  This includes elements
 that have not been assigned any value as well as elements that have been
-deleted (see [Delete](#Delete)).
+deleted (see [Delete](#84-the-delete-statement)).
 
 > NOTE: A reference to an element that does not exist *automatically* creates
 > that array element, with the null string as its value.  (In some cases,
@@ -12713,7 +12713,7 @@ There is no way to do that except to scan all the elements.  Also, this
 
 ---
 
-Next: [Array Example](#Array-Example), Previous: [Reference to Elements](#Reference-to-Elements), Up: [Array Basics](#Array-Basics)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [Array Example](#814-basic-array-example), Previous: [Reference to Elements](#812-referring-to-an-array-element), Up: [Array Basics](#81-the-basics-of-arrays)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 #### 8.1.3 Assigning Array Elements
 
@@ -12729,7 +12729,7 @@ assign to that element of the array.
 
 ---
 
-Next: [Scanning an Array](#Scanning-an-Array), Previous: [Assigning Elements](#Assigning-Elements), Up: [Array Basics](#Array-Basics)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [Scanning an Array](#815-scanning-all-elements-of-an-array), Previous: [Assigning Elements](#813-assigning-array-elements), Up: [Array Basics](#81-the-basics-of-arrays)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 #### 8.1.4 Basic Array Example
 
@@ -12791,7 +12791,7 @@ program&rsquo;s `END` rule, as follows:
 
 ---
 
-Next: [Controlling Scanning](#Controlling-Scanning), Previous: [Array Example](#Array-Example), Up: [Array Basics](#Array-Basics)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [Controlling Scanning](#816-using-predefined-array-scanning-orders-with-gawk), Previous: [Array Example](#814-basic-array-example), Up: [Array Basics](#81-the-basics-of-arrays)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 #### 8.1.5 Scanning All Elements of an Array
 
@@ -12817,7 +12817,7 @@ the word as the index.  The second rule scans the elements of `used` to
 find all the distinct words that appear in the input.  It prints each
 word that is more than 10 characters long and also prints the number of
 such words.
-See [String Functions](#String-Functions)
+See [String Functions](#913-string-manipulation-functions)
 for more information on the built-in function `length()`.
 
     # Record a 1 for each word that is used at least once
@@ -12839,7 +12839,7 @@ for more information on the built-in function `length()`.
     }
     
 
-See [Word Sorting](#Word-Sorting)
+See [Word Sorting](#1135-generating-word-usage-counts)
 for a more detailed example of this type.
 
 The order in which elements of the array are accessed by this statement
@@ -12889,7 +12889,7 @@ Contrast this to BWK `awk`:
 
 ---
 
-Previous: [Scanning an Array](#Scanning-an-Array), Up: [Array Basics](#Array-Basics)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Previous: [Scanning an Array](#815-scanning-all-elements-of-an-array), Up: [Array Basics](#81-the-basics-of-arrays)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 #### 8.1.6 Using Predefined Array Scanning Orders with `gawk`
 
@@ -12931,11 +12931,11 @@ Any index with a non-numeric value will end up positioned as if it were zero.
 `"@val_type_asc"`
 Order by element values in ascending order (rather than by indices).
 Ordering is by the type assigned to the element
-(see [Typing and Comparison](#Typing-and-Comparison)).
+(see [Typing and Comparison](#6322-comparison-operators)).
 All numeric values come before all string values,
 which in turn come before all subarrays.
 (Subarrays have not been described yet;
-see [Arrays of Arrays](#Arrays-of-Arrays).)
+see [Arrays of Arrays](#86-arrays-of-arrays).)
 
 `"@val_str_asc"`
 Order by element values in ascending order (rather than by indices).  Scalar values are
@@ -13026,21 +13026,21 @@ own code, you should see if it&rsquo;s defined and save and restore the value:
 the null string to `PROCINFO["sorted_in"]` or by just deleting the
 `"sorted_in"` element from the `PROCINFO` array with
 the `delete` statement.
-(The `delete` statement hasn&rsquo;t been described yet; see [Delete](#Delete).)
+(The `delete` statement hasn&rsquo;t been described yet; see [Delete](#84-the-delete-statement).)
 
 In addition, `gawk` provides built-in functions for
 sorting arrays; see [Array Sorting Functions](#Array-Sorting-Functions).
 
 ---
 
-Next: [Uninitialized Subscripts](#Uninitialized-Subscripts), Previous: [Array Basics](#Array-Basics), Up: [Arrays](#Arrays)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [Uninitialized Subscripts](#83-using-uninitialized-variables-as-subscripts), Previous: [Array Basics](#81-the-basics-of-arrays), Up: [Arrays](#8-arrays-in-awk)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 ### 8.2 Using Numbers to Subscript Arrays
 
 An important aspect to remember about arrays is that *array subscripts
 are always strings*.  When a numeric value is used as a subscript,
 it is converted to a string value before being used for subscripting
-(see [Conversion](#Conversion)).
+(see [Conversion](#614-conversion-of-strings-and-numbers)).
 This means that the value of the predefined variable `CONVFMT` can
 affect how your program accesses elements of an array.  For example:
 
@@ -13065,7 +13065,7 @@ string value from `xyz`&mdash;this time `"12.15"`&mdash;because the value of
 because `"12.15"` is different from `"12.153"`.
 
 According to the rules for conversions
-(see [Conversion](#Conversion)), integer
+(see [Conversion](#614-conversion-of-strings-and-numbers)), integer
 values always convert to strings as integers, no matter what the
 value of `CONVFMT` may happen to be.  So the usual case of
 the following works:
@@ -13077,7 +13077,7 @@ the following works:
 The &ldquo;integer values always convert to strings as integers&rdquo; rule
 has an additional consequence for array indexing.
 Octal and hexadecimal constants
-(see [Nondecimal-numbers](#Nondecimal_002dnumbers))
+(see [Nondecimal-numbers](#6112-octal-and-hexadecimal-numbers))
 are converted internally into numbers, and their original form
 is forgotten.  This means, for example, that `array[17]`,
 `array[021]`, and `array[0x11]` all refer to the same element!
@@ -13089,7 +13089,7 @@ effect on your programs.
 
 ---
 
-Next: [Delete](#Delete), Previous: [Numeric Array Subscripts](#Numeric-Array-Subscripts), Up: [Arrays](#Arrays)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [Delete](#84-the-delete-statement), Previous: [Numeric Array Subscripts](#82-using-numbers-to-subscript-arrays), Up: [Arrays](#8-arrays-in-awk)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 ### 8.3 Using Uninitialized Variables as Subscripts
 
@@ -13139,11 +13139,11 @@ Even though it is somewhat unusual, the null string
 (d.c.)
 `gawk` warns about the use of the null string as a subscript
 if --lint is provided
-on the command line (see [Options](#Options)).
+on the command line (see [Options](#22-command-line-options)).
 
 ---
 
-Next: [Multidimensional](#Multidimensional), Previous: [Uninitialized Subscripts](#Uninitialized-Subscripts), Up: [Arrays](#Arrays)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [Multidimensional](#85-multidimensional-arrays), Previous: [Uninitialized Subscripts](#83-using-uninitialized-variables-as-subscripts), Up: [Arrays](#8-arrays-in-awk)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 ### 8.4 The `delete` Statement
 
@@ -13183,7 +13183,7 @@ For example:
 
 It is not an error to delete an element that does not exist.
 However, if --lint is provided on the command line
-(see [Options](#Options)),
+(see [Options](#22-command-line-options)),
 `gawk` issues a warning message when an element that
 is not in the array is deleted.
 
@@ -13212,7 +13212,7 @@ out an array:[43](#FOOT43)
     
 
 The `split()` function
-(see [String Functions](#String-Functions))
+(see [String Functions](#913-string-manipulation-functions))
 clears out the target array first. This call asks it to split
 apart the null string. Because there is no data to split out, the
 function simply clears the array and then returns.
@@ -13230,10 +13230,10 @@ function simply clears the array and then returns.
 
 ---
 
-Next: [Arrays of Arrays](#Arrays-of-Arrays), Previous: [Delete](#Delete), Up: [Arrays](#Arrays)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [Arrays of Arrays](#86-arrays-of-arrays), Previous: [Delete](#84-the-delete-statement), Up: [Arrays](#8-arrays-in-awk)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 ### 8.5 Multidimensional Arrays
-&bull; [Multiscanning](#Multiscanning):  Scanning multidimensional arrays.
+&bull; [Multiscanning](#851-scanning-multidimensional-arrays):  Scanning multidimensional arrays.
 
 A *multidimensional array* is an array in which an element is identified
 by a sequence of indices instead of a single index.  For example, a
@@ -13245,7 +13245,7 @@ two-dimensional array named `grid` is with
 Multidimensional arrays are supported in `awk` through
 concatenation of indices into one string.
 `awk` converts the indices into strings
-(see [Conversion](#Conversion)) and
+(see [Conversion](#614-conversion-of-strings-and-numbers)) and
 concatenates them together, with a separator between them.  This creates
 a single string that describes the values of the separate indices.  The
 combined string is used as a single index into an ordinary,
@@ -13323,7 +13323,7 @@ the program produces the following output:
 
 ---
 
-Up: [Multidimensional](#Multidimensional)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Up: [Multidimensional](#85-multidimensional-arrays)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 #### 8.5.1 Scanning Multidimensional Arrays
 
@@ -13336,9 +13336,9 @@ multidimensional *way of accessing* an array.
 However, if your program has an array that is always accessed as
 multidimensional, you can get the effect of scanning it by combining
 the scanning `for` statement
-(see [Scanning an Array](#Scanning-an-Array)) with the
+(see [Scanning an Array](#815-scanning-all-elements-of-an-array)) with the
 built-in `split()` function
-(see [String Functions](#String-Functions)).
+(see [String Functions](#913-string-manipulation-functions)).
 It works in the following manner:
 
     for (combined in array) {
@@ -13369,7 +13369,7 @@ separate indices is recovered.
 
 ---
 
-Next: [Arrays Summary](#Arrays-Summary), Previous: [Multidimensional](#Multidimensional), Up: [Arrays](#Arrays)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [Arrays Summary](#87-summary), Previous: [Multidimensional](#85-multidimensional-arrays), Up: [Arrays](#8-arrays-in-awk)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 ### 8.6 Arrays of Arrays
 
@@ -13432,7 +13432,7 @@ as a scalar.
 
 The built-in functions that take array arguments can also be used
 with subarrays. For example, the following code fragment uses `length()`
-(see [String Functions](#String-Functions))
+(see [String Functions](#913-string-manipulation-functions))
 to determine the number of elements in the main array `a` and
 its subarrays:
 
@@ -13445,13 +13445,13 @@ This results in the following output for our main array `a`:
     
 
 The &lsquo;subscript in array&rsquo; expression
-(see [Reference to Elements](#Reference-to-Elements)) works similarly for both
+(see [Reference to Elements](#812-referring-to-an-array-element)) works similarly for both
 regular `awk`-style
 arrays and arrays of arrays. For example, the tests &lsquo;1 in a&rsquo;,
 &lsquo;3 in a[1]&rsquo;, and &lsquo;(1, "name") in a[1][3]&rsquo; all evaluate to
 one (true) for our array `a`.
 
-The &lsquo;for (item in array)&rsquo; statement (see [Scanning an Array](#Scanning-an-Array))
+The &lsquo;for (item in array)&rsquo; statement (see [Scanning an Array](#815-scanning-all-elements-of-an-array))
 can be nested to scan all the
 elements of an array of arrays if it is rectangular in structure. In order
 to print the contents (scalar values) of a two-dimensional array of arrays
@@ -13464,7 +13464,7 @@ you could use the following code:
             print array[i][j]
     
 
-The `isarray()` function (see [Type Functions](#Type-Functions))
+The `isarray()` function (see [Type Functions](#917-getting-type-information))
 lets you test if an array element is itself an array:
 
     for (i in array) {
@@ -13495,7 +13495,7 @@ the following code prints the elements of our main array `a`:
     }
     
 
-See [Walking Arrays](#Walking-Arrays) for a user-defined function that &ldquo;walks&rdquo; an
+See [Walking Arrays](#107-traversing-arrays-of-arrays) for a user-defined function that &ldquo;walks&rdquo; an
 arbitrarily dimensioned array of arrays.
 
 Recall that a reference to an uninitialized array element yields a value
@@ -13516,7 +13516,7 @@ creating an arbitrary index:
 
 ---
 
-Previous: [Arrays of Arrays](#Arrays-of-Arrays), Up: [Arrays](#Arrays)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Previous: [Arrays of Arrays](#86-arrays-of-arrays), Up: [Arrays](#8-arrays-in-awk)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 ### 8.7 Summary
 
@@ -13564,7 +13564,7 @@ element is itself a subarray.
 
 ---
 
-Next: [Library Functions]((#10-a-library-of-awk-functions)), Previous: [Arrays](#Arrays), Up: [Top](#Top)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [Library Functions]((#10-a-library-of-awk-functions)), Previous: [Arrays](#8-arrays-in-awk), Up: [Top](#Top)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 ## 9 Functions
 
@@ -13583,14 +13583,14 @@ Finally, we explore indirect function calls, a `gawk`-specific
 extension that lets you determine at runtime what function is to
 be called.
 
-&bull; [Built-in](#Built_002din):  Summarizes the built-in functions.
-&bull; [User-defined](#User_002ddefined):  Describes User-defined functions in detail.
-&bull; [Indirect Calls](#Indirect-Calls):  Choosing the function to call at runtime.
-&bull; [Functions Summary](#Functions-Summary):  Summary of functions.
+&bull; [Built-in](#91-built-in-functions):  Summarizes the built-in functions.
+&bull; [User-defined](#92-user-defined-functions):  Describes User-defined functions in detail.
+&bull; [Indirect Calls](#93-indirect-function-calls):  Choosing the function to call at runtime.
+&bull; [Functions Summary](#94-summary):  Summary of functions.
 
 ---
 
-Next: [User-defined](#User_002ddefined), Up: [Functions](#Functions)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [User-defined](#92-user-defined-functions), Up: [Functions](#9-functions)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 ### 9.1 Built-in Functions
 
@@ -13599,21 +13599,21 @@ program to call.  This section defines all the built-in functions
 in `awk`; some of these are mentioned in other sections
 but are summarized here for your convenience.
 
-&bull; [Calling Built-in](#Calling-Built_002din):  How to call built-in functions.
-&bull; [Numeric Functions](#Numeric-Functions):  Functions that work with numbers, including
+&bull; [Calling Built-in](#911-calling-built-in-functions):  How to call built-in functions.
+&bull; [Numeric Functions](#912-numeric-functions):  Functions that work with numbers, including
                                 `int()`, `sin()` and `rand()`.
-&bull; [String Functions](#String-Functions):  Functions for string manipulation, such as
+&bull; [String Functions](#913-string-manipulation-functions):  Functions for string manipulation, such as
                                 `split()`, `match()` and
                                 `sprintf()`.
-&bull; [I/O Functions](#I_002fO-Functions):  Functions for files and shell commands.
-&bull; [Time Functions](#Time-Functions):  Functions for dealing with timestamps.
-&bull; [Bitwise Functions](#Bitwise-Functions):  Functions for bitwise operations.
-&bull; [Type Functions](#Type-Functions):  Functions for type information.
-&bull; [I18N Functions](#I18N-Functions):  Functions for string translation.
+&bull; [I/O Functions](#914-inputoutput-functions):  Functions for files and shell commands.
+&bull; [Time Functions](#915-time-functions):  Functions for dealing with timestamps.
+&bull; [Bitwise Functions](#916-bit-manipulation-functions):  Functions for bitwise operations.
+&bull; [Type Functions](#917-getting-type-information):  Functions for type information.
+&bull; [I18N Functions](#918-string-translation-functions):  Functions for string translation.
 
 ---
 
-Next: [Numeric Functions](#Numeric-Functions), Up: [Built-in](#Built_002din)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [Numeric Functions](#912-numeric-functions), Up: [Built-in](#91-built-in-functions)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 #### 9.1.1 Calling Built-in Functions
 
@@ -13662,7 +13662,7 @@ two arguments 11 and 10.
 
 ---
 
-Next: [String Functions](#String-Functions), Previous: [Calling Built-in](#Calling-Built_002din), Up: [Built-in](#Built_002din)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [String Functions](#913-string-manipulation-functions), Previous: [Calling Built-in](#911-calling-built-in-functions), Up: [Built-in](#91-built-in-functions)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 #### 9.1.2 Numeric Functions
 
@@ -13771,14 +13771,14 @@ implementations.
 
 ---
 
-Next: [I/O Functions](#I_002fO-Functions), Previous: [Numeric Functions](#Numeric-Functions), Up: [Built-in](#Built_002din)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [I/O Functions](#914-inputoutput-functions), Previous: [Numeric Functions](#912-numeric-functions), Up: [Built-in](#91-built-in-functions)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 #### 9.1.3 String-Manipulation Functions
 
 The functions in this section look at or change the text of one
 or more strings.
 
-`gawk` understands locales (see [Locales](#Locales)) and does all
+`gawk` understands locales (see [Locales](#66-where-you-are-makes-a-difference)) and does all
 string processing in terms of *characters*, not *bytes*.
 This distinction is particularly important to understand for locales
 where one character may be represented by multiple bytes.  Thus, for
@@ -13799,9 +13799,9 @@ toward the end, because the list is presented alphabetically.
 
 Those functions that are specific to `gawk` are marked with a
 pound sign (&lsquo;#&rsquo;).  They are not available in compatibility mode
-(see [Options](#Options)):
+(see [Options](#22-command-line-options)):
 
-&bull; [Gory Details](#Gory-Details):  More than you want to know about &lsquo;\&rsquo; and
+&bull; [Gory Details](#9131-more-about-lsquorsquo-and-lsquorsquo-with-sub-gsub-and-gensub):  More than you want to know about &lsquo;\&rsquo; and
                                 &lsquo;&&rsquo; with `sub()`, `gsub()`, and
                                 `gensub()`.
 `asort(`source [`,`dest [`,`how ] ]`) #``asorti(`source [`,`dest [`,`how ] ]`) #`
@@ -13822,7 +13822,7 @@ is then sorted, leaving the indices of source unchanged.
 
 When comparing strings, `IGNORECASE` affects the sorting
 (see [Array Sorting Functions](#Array-Sorting-Functions)).  If the
-source array contains subarrays as values (see [Arrays of Arrays](#Arrays-of-Arrays)), they will come last, after all scalar values.
+source array contains subarrays as values (see [Arrays of Arrays](#86-arrays-of-arrays)), they will come last, after all scalar values.
 Subarrays are *not* recursively sorted.
 
 For example, if the contents of `a` are as follows:
@@ -13986,10 +13986,10 @@ This is less useful than it might seem at first, as the
 array is not guaranteed to be indexed from one to the number of elements
 in it.
 If --lint is provided on the command line
-(see [Options](#Options)),
+(see [Options](#22-command-line-options)),
 `gawk` warns that passing an array argument is not portable.
 If --posix is supplied, using an array argument is a fatal error
-(see [Arrays](#Arrays)).
+(see [Arrays](#8-arrays-in-awk)).
 
 `match(string, regexp` [`, array`]`)`
 Search string for the
@@ -14001,7 +14001,7 @@ string).  If no match is found, return zero.
 The regexp argument may be either a regexp constant
 (`/`&hellip;`/`) or a string constant (`"`&hellip;`"`).
 In the latter case, the string is treated as a regexp to be matched.
-See [Computed Regexps](#Computed-Regexps) for a
+See [Computed Regexps](#36-using-dynamic-regexps) for a
 discussion of the difference between the two forms, and the
 implications for writing your program correctly.
 
@@ -14081,11 +14081,11 @@ the start index and length of each matched subexpression:
 There may not be subscripts for the start and index for every parenthesized
 subexpression, because they may not all have matched text; thus, they
 should be tested for with the `in` operator
-(see [Reference to Elements](#Reference-to-Elements)).
+(see [Reference to Elements](#812-referring-to-an-array-element)).
 
 The array argument to `match()` is a
 `gawk` extension.  In compatibility mode
-(see [Options](#Options)),
+(see [Options](#22-command-line-options)),
 using a third argument is a fatal error.
 
 `patsplit(string, array` [`, fieldpat` [`, seps` ] ]`) #`
@@ -14109,7 +14109,7 @@ A null string will not have neither fields nor separators.
 
 The `patsplit()` function splits strings into pieces in a
 manner similar to the way input lines are split into fields using `FPAT`
-(see [Splitting By Content](#Splitting-By-Content)).
+(see [Splitting By Content](#47-defining-fields-by-content)).
 
 Before splitting the string, `patsplit()` deletes any previously existing
 elements in the arrays array and seps.
@@ -14173,7 +14173,7 @@ Modern implementations of `awk`, including `gawk`, allow
 the third argument to be a regexp constant (`/`&hellip;`/`)
 as well as a string.  (d.c.)
 The POSIX standard allows this as well.
-See [Computed Regexps](#Computed-Regexps) for a
+See [Computed Regexps](#36-using-dynamic-regexps) for a
 discussion of the difference between using a string constant or a regexp constant,
 and the implications for writing your program correctly.
 
@@ -14182,18 +14182,18 @@ elements in the arrays array and seps.
 
 If string is null, the array has no elements. (So this is a portable
 way to delete an entire array with one statement.
-See [Delete](#Delete).)
+See [Delete](#84-the-delete-statement).)
 
 If string does not match fieldsep at all (but is not null),
 array has one element only. The value of that element is the original
 string.
 
-In POSIX mode (see [Options](#Options)), the fourth argument is not allowed.
+In POSIX mode (see [Options](#22-command-line-options)), the fourth argument is not allowed.
 
 `sprintf(format, expression1, &hellip;)`
 Return (without printing) the string that `printf` would
 have printed out with the same arguments
-(see [Printf](#Printf)).
+(see [Printf](#55-using-printf-statements-for-fancier-printing)).
 For example:
 
     pival = sprintf("pi = %.2f (approx.)", 22/7)
@@ -14218,7 +14218,7 @@ to a string value; the automatic coercion of strings to numbers
 works only for decimal data, not for octal or hexadecimal.[47](#FOOT47)
 
 Note also that `strtonum()` uses the current locale&rsquo;s decimal point
-for recognizing numbers (see [Locales](#Locales)).
+for recognizing numbers (see [Locales](#66-where-you-are-makes-a-difference)).
 
 `sub(regexp, replacement` [`, target`]`)`
 Search target, which is treated as a string, for the
@@ -14231,7 +14231,7 @@ Return the number of substitutions made (zero or one).
 The regexp argument may be either a regexp constant
 (`/`&hellip;`/`) or a string constant (`"`&hellip;`"`).
 In the latter case, the string is treated as a regexp to be matched.
-See [Computed Regexps](#Computed-Regexps) for a
+See [Computed Regexps](#36-using-dynamic-regexps) for a
 discussion of the difference between the two forms, and the
 implications for writing your program correctly.
 
@@ -14271,7 +14271,7 @@ Here is another example:
 
 This shows how &lsquo;&&rsquo; can represent a nonconstant string and also
 illustrates the &ldquo;leftmost, longest&rdquo; rule in regexp matching
-(see [Leftmost Longest](#Leftmost-Longest)).
+(see [Leftmost Longest](#35-how-much-text-matches)).
 
 The effect of this special character (&lsquo;&&rsquo;) can be turned off by putting a
 backslash before it in the string.  As usual, to insert one backslash in
@@ -14377,7 +14377,7 @@ Although this makes a certain amount of sense, it can be surprising.
 
 ---
 
-Up: [String Functions](#String-Functions)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Up: [String Functions](#913-string-manipulation-functions)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 #### 9.1.3.1 More about &lsquo;\&rsquo; and &lsquo;&&rsquo; with `sub()`, `gsub()`, and `gensub()`
 
@@ -14396,7 +14396,7 @@ replacement string to determine what to generate.
 
 At both levels, `awk` looks for a defined set of characters that
 can come after a backslash.  At the lexical level, it looks for the
-escape sequences listed in [Escape Sequences](#Escape-Sequences).
+escape sequences listed in [Escape Sequences](#32-escape-sequences).
 Thus, for every &lsquo;\&rsquo; that `awk` processes at the runtime
 level, you must type two backslashes at the lexical level.
 When a character that is not valid for an escape sequence follows the
@@ -14486,7 +14486,7 @@ The only case where the difference is noticeable is the last one: &lsquo;\\\\&rs
 is seen as &lsquo;\\&rsquo; and produces &lsquo;\&rsquo; instead of &lsquo;\\&rsquo;.
 
 Starting with version 3.1.4, `gawk` followed the POSIX rules
-when --posix was specified (see [Options](#Options)). Otherwise,
+when --posix was specified (see [Options](#22-command-line-options)). Otherwise,
 it continued to follow the proposed rules, as
 that had been its behavior for many years.
 
@@ -14523,7 +14523,7 @@ to do substitutions.
 
 ---
 
-Next: [Time Functions](#Time-Functions), Previous: [String Functions](#String-Functions), Up: [Built-in](#Built_002din)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [Time Functions](#915-time-functions), Previous: [String Functions](#913-string-manipulation-functions), Up: [Built-in](#91-built-in-functions)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 #### 9.1.4 Input/Output Functions
 
@@ -14534,7 +14534,7 @@ Optional parameters are enclosed in square brackets ([ ]):
 Close the file filename for input or output. Alternatively, the
 argument may be a shell command that was used for creating a coprocess, or
 for redirecting to or from a pipe; then the coprocess or pipe is closed.
-See [Close Files And Pipes](#Close-Files-And-Pipes)
+See [Close Files And Pipes](#59-closing-input-and-output-redirections)
 for more information.
 
 When closing a coprocess, it is occasionally useful to first close
@@ -14548,7 +14548,7 @@ See [Two-way I/O](#Two_002dway-I_002fO),
 which discusses this feature in more detail and gives an example.
 
 Note that the second argument to `close()` is a `gawk`
-extension; it is not available in compatibility mode (see [Options](#Options)).
+extension; it is not available in compatibility mode (see [Options](#22-command-line-options)).
 
 `fflush(`[filename]`)`
 Flush any buffered output associated with filename, which is either a
@@ -14659,7 +14659,7 @@ Some operating systems cannot implement the `system()` function.
 `system()` causes a fatal error if it is not supported.
 
 > NOTE: When --sandbox is specified, the `system()` function is disabled
-> (see [Options](#Options)).
+> (see [Options](#22-command-line-options)).
 
 On POSIX systems, a command&rsquo;s exit status is a 16-bit number. The exit
 value passed to the C `exit()` function is held in the high-order
@@ -14727,7 +14727,7 @@ you would see the latter (undesirable) output.
 
 ---
 
-Next: [Bitwise Functions](#Bitwise-Functions), Previous: [I/O Functions](#I_002fO-Functions), Up: [Built-in](#Built_002din)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [Bitwise Functions](#916-bit-manipulation-functions), Previous: [I/O Functions](#914-inputoutput-functions), Up: [Built-in](#91-built-in-functions)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 #### 9.1.5 Time Functions
 
@@ -14792,7 +14792,7 @@ The timestamp is in the same format as the value returned by the
 `gawk` uses the current time of day as the timestamp.
 Without a format argument, `strftime()` uses
 the value of `PROCINFO["strftime"]` as the format string
-(see [Built-in Variables](#Built_002din-Variables)).
+(see [Built-in Variables](#75-predefined-variables)).
 The default string value is
 `"%a %b %e %H:%M:%S %Z %Y"`.  This format string produces
 output that is equivalent to that of the `date` utility.
@@ -14818,7 +14818,7 @@ time data coming from an external source, such as a log file.
 The `strftime()` function allows you to easily turn a timestamp
 into human-readable information.  It is similar in nature to the `sprintf()`
 function
-(see [String Functions](#String-Functions)),
+(see [String Functions](#913-string-manipulation-functions)),
 in that it copies nonformat specification characters verbatim to the
 returned string, while substituting date and time values for format
 specifications in the format string.
@@ -15035,7 +15035,7 @@ is set to UTC:
 
 ---
 
-Next: [Type Functions](#Type-Functions), Previous: [Time Functions](#Time-Functions), Up: [Built-in](#Built_002din)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [Type Functions](#917-getting-type-information), Previous: [Time Functions](#915-time-functions), Up: [Built-in](#91-built-in-functions)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 #### 9.1.6 Bit-Manipulation Functions
 
@@ -15100,7 +15100,7 @@ Return the bitwise XOR of the arguments. There must be at least two.
 > operand produces a fatal error.  See the sidebar
 > &ldquo;Beware The Smoke and Mirrors!&rdquo; for more information as to why.
 
-Here is a user-defined function (see [User-defined](#User_002ddefined))
+Here is a user-defined function (see [User-defined](#92-user-defined-functions))
 that illustrates the use of these functions:
 
     # bits2str --- turn an integer into readable ones and zeros
@@ -15166,7 +15166,7 @@ of 8-bit quantities. This is typical in modern computers.
 
 The main code in the `BEGIN` rule shows the difference between the
 decimal and octal values for the same numbers
-(see [Nondecimal-numbers](#Nondecimal_002dnumbers)),
+(see [Nondecimal-numbers](#6112-octal-and-hexadecimal-numbers)),
 and then demonstrates the
 results of the `compl()`, `lshift()`, and `rshift()` functions.
 
@@ -15219,7 +15219,7 @@ operations is probably a bad idea; caveat emptor!
 
 ---
 
-Next: [I18N Functions](#I18N-Functions), Previous: [Bitwise Functions](#Bitwise-Functions), Up: [Built-in](#Built_002din)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [I18N Functions](#918-string-translation-functions), Previous: [Bitwise Functions](#916-bit-manipulation-functions), Up: [Built-in](#91-built-in-functions)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 #### 9.1.7 Getting Type Information
 
@@ -15227,7 +15227,7 @@ Next: [I18N Functions](#I18N-Functions), Previous: [Bitwise Functions](#Bitwise-
 the type of a variable.
 This is necessary for writing code
 that traverses every element of an array of arrays
-(see [Arrays of Arrays](#Arrays-of-Arrays)), and in other contexts.
+(see [Arrays of Arrays](#86-arrays-of-arrays)), and in other contexts.
 
 `isarray(x)`
 Return a true value if x is an array. Otherwise, return false.
@@ -15239,7 +15239,7 @@ Return one of the following strings, depending upon the type of x:
 x is an array.
 
 `"regexp"`
-x is a strongly typed regexp (see [Strong Regexp Constants](#Strong-Regexp-Constants)).
+x is a strongly typed regexp (see [Strong Regexp Constants](#6122-strongly-typed-regexp-constants)).
 
 `"number"`
 x is a number.
@@ -15250,7 +15250,7 @@ x is a string.
 `"strnum"`
 x is a number that started life as user input, such as a field or
 the result of calling `split()`. (I.e., x has the strnum
-attribute; see [Variable Typing](#Variable-Typing).)
+attribute; see [Variable Typing](#6321-string-type-versus-numeric-type).)
 
 `"unassigned"`
 x is a scalar variable that has not been assigned a value yet.
@@ -15287,7 +15287,7 @@ the same program! For example:
 `isarray()` is meant for use in two circumstances. The first is when
 traversing a multidimensional array: you can test if an element is itself
 an array or not.  The second is inside the body of a user-defined function
-(not discussed yet; see [User-defined](#User_002ddefined)), to test if a parameter is an
+(not discussed yet; see [User-defined](#92-user-defined-functions)), to test if a parameter is an
 array or not.
 
 > NOTE: Using `isarray()` at the global level to test
@@ -15303,7 +15303,7 @@ typed regexp.
 
 ---
 
-Previous: [Type Functions](#Type-Functions), Up: [Built-in](#Built_002din)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Previous: [Type Functions](#917-getting-type-information), Up: [Built-in](#91-built-in-functions)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 #### 9.1.8 String-Translation Functions
 
@@ -15343,25 +15343,25 @@ The default value for category is `"LC_MESSAGES"`.
 
 ---
 
-Next: [Indirect Calls](#Indirect-Calls), Previous: [Built-in](#Built_002din), Up: [Functions](#Functions)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [Indirect Calls](#93-indirect-function-calls), Previous: [Built-in](#91-built-in-functions), Up: [Functions](#9-functions)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 ### 9.2 User-Defined Functions
 
 Complicated `awk` programs can often be simplified by defining
 your own functions.  User-defined functions can be called just like
-built-in ones (see [Function Calls](#Function-Calls)), but it is up to you to define
+built-in ones (see [Function Calls](#64-function-calls)), but it is up to you to define
 them (i.e., to tell `awk` what they should do).
 
-&bull; [Definition Syntax](#Definition-Syntax):  How to write definitions and what they mean.
-&bull; [Function Example](#Function-Example):  An example function definition and what it
+&bull; [Definition Syntax](#921-function-definition-syntax):  How to write definitions and what they mean.
+&bull; [Function Example](#922-function-definition-examples):  An example function definition and what it
                                 does.
-&bull; [Function Caveats](#Function-Caveats):  Things to watch out for.
-&bull; [Return Statement](#Return-Statement):  Specifying the value a function returns.
-&bull; [Dynamic Typing](#Dynamic-Typing):  How variable types can change at runtime.
+&bull; [Function Caveats](#923-calling-user-defined-functions):  Things to watch out for.
+&bull; [Return Statement](#924-the-return-statement):  Specifying the value a function returns.
+&bull; [Dynamic Typing](#925-functions-and-their-effects-on-variable-typing):  How variable types can change at runtime.
 
 ---
 
-Next: [Function Example](#Function-Example), Up: [User-defined](#User_002ddefined)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [Function Example](#922-function-definition-examples), Up: [User-defined](#92-user-defined-functions)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 #### 9.2.1 Function Definition Syntax
 
@@ -15400,21 +15400,21 @@ have a parameter with the same name as the function itself.
 
 > CAUTION: According to the POSIX standard, function parameters
 > cannot have the same name as one of the special predefined variables
-> (see [Built-in Variables](#Built_002din-Variables)), nor may a function parameter have the
+> (see [Built-in Variables](#75-predefined-variables)), nor may a function parameter have the
 > same name as another function.
 > 
 > 
 > Not all versions of `awk` enforce
 > these restrictions.
 > `gawk` always enforces the first restriction.
-> With --posix (see [Options](#Options)),
+> With --posix (see [Options](#22-command-line-options)),
 > it also enforces the second restriction.
 
 Local variables act like the empty string if referenced where a string
 value is required, and like zero if referenced where a numeric value
 is required. This is the same as the behavior of regular variables that have never been
 assigned a value.  (There is more to understand about local variables;
-see [Dynamic Typing](#Dynamic-Typing).)
+see [Dynamic Typing](#925-functions-and-their-effects-on-variable-typing).)
 
 The body-of-function consists of `awk` statements.  It is the
 most important part of the definition, because it says what the function
@@ -15458,7 +15458,7 @@ The act of a function calling itself is called *recursion*.
 
 All the built-in functions return a value to their caller.
 User-defined functions can do so also, using the `return` statement,
-which is described in detail in [Return Statement](#Return-Statement).
+which is described in detail in [Return Statement](#924-the-return-statement).
 Many of the subsequent examples in this section use
 the `return` statement.
 
@@ -15468,7 +15468,7 @@ abbreviated `func`. (c.e.)
 However, POSIX only specifies the use of
 the keyword `function`.  This actually has some practical implications.
 If `gawk` is in POSIX-compatibility mode
-(see [Options](#Options)), then the following
+(see [Options](#22-command-line-options)), then the following
 statement does *not* define a function:
 
     func foo() { a = sqrt($1) ; print a }
@@ -15486,7 +15486,7 @@ keyword `function` when defining a function.
 
 ---
 
-Next: [Function Caveats](#Function-Caveats), Previous: [Definition Syntax](#Definition-Syntax), Up: [User-defined](#User_002ddefined)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [Function Caveats](#923-calling-user-defined-functions), Previous: [Definition Syntax](#921-function-definition-syntax), Up: [User-defined](#92-user-defined-functions)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 #### 9.2.2 Function Definition Examples
 
@@ -15531,7 +15531,7 @@ extra whitespace signifies the start of the local variable list):
 
 When working with arrays, it is often necessary to delete all the elements
 in an array and start over with a new list of elements
-(see [Delete](#Delete)).
+(see [Delete](#84-the-delete-statement)).
 Instead of having
 to repeat this loop everywhere that you need to clear out
 an array, your program can just call `delarray()`.
@@ -15565,7 +15565,7 @@ this way:
 The C `ctime()` function takes a timestamp and returns it as a string,
 formatted in a well-known fashion.
 The following example uses the built-in `strftime()` function
-(see [Time Functions](#Time-Functions))
+(see [Time Functions](#915-time-functions))
 to create an `awk` version of `ctime()`:
 
     # ctime.awk
@@ -15589,7 +15589,7 @@ code could have changed `PROCINFO["strftime"]`.
 
 ---
 
-Next: [Return Statement](#Return-Statement), Previous: [Function Example](#Function-Example), Up: [User-defined](#User_002ddefined)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [Return Statement](#924-the-return-statement), Previous: [Function Example](#922-function-definition-examples), Up: [User-defined](#92-user-defined-functions)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 #### 9.2.3 Calling User-Defined Functions
 
@@ -15597,13 +15597,13 @@ Next: [Return Statement](#Return-Statement), Previous: [Function Example](#Funct
 A function call is an expression and its value is the value returned by
 the function.
 
-&bull; [Calling A Function](#Calling-A-Function):  Don&rsquo;t use spaces.
-&bull; [Variable Scope](#Variable-Scope):  Controlling variable scope.
-&bull; [Pass By Value/Reference](#Pass-By-Value_002fReference):  Passing parameters.
+&bull; [Calling A Function](#9231-writing-a-function-call):  Don&rsquo;t use spaces.
+&bull; [Variable Scope](#9232-controlling-variable-scope):  Controlling variable scope.
+&bull; [Pass By Value/Reference](#9233-passing-function-arguments-by-value-or-by-reference):  Passing parameters.
 
 ---
 
-Next: [Variable Scope](#Variable-Scope), Up: [Function Caveats](#Function-Caveats)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [Variable Scope](#9232-controlling-variable-scope), Up: [Function Caveats](#923-calling-user-defined-functions)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 #### 9.2.3.1 Writing a Function Call
 
@@ -15626,7 +15626,7 @@ being a string concatenation):
 
 ---
 
-Next: [Pass By Value/Reference](#Pass-By-Value_002fReference), Previous: [Calling A Function](#Calling-A-Function), Up: [Function Caveats](#Function-Caveats)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [Pass By Value/Reference](#9233-passing-function-arguments-by-value-or-by-reference), Previous: [Calling A Function](#9231-writing-a-function-call), Up: [Function Caveats](#923-calling-user-defined-functions)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 #### 9.2.3.2 Controlling Variable Scope
 
@@ -15638,7 +15638,7 @@ function.
 
 To make a variable local to a function, simply declare the variable as
 an argument after the actual function arguments
-(see [Definition Syntax](#Definition-Syntax)).
+(see [Definition Syntax](#921-function-definition-syntax)).
 Look at the following example, where variable
 `i` is a global variable used by both functions `foo()` and
 `bar()`:
@@ -15759,7 +15759,7 @@ When run, this program produces the following output:
 
 ---
 
-Previous: [Variable Scope](#Variable-Scope), Up: [Function Caveats](#Function-Caveats)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Previous: [Variable Scope](#9232-controlling-variable-scope), Up: [Function Caveats](#923-calling-user-defined-functions)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 #### 9.2.3.3 Passing Function Arguments by Value Or by Reference
 
@@ -15853,20 +15853,20 @@ problem that `foo()` has not been defined.  Usually, though, it is a
 problem if a program calls an undefined function.
 
 If --lint is specified
-(see [Options](#Options)),
+(see [Options](#22-command-line-options)),
 `gawk` reports calls to undefined functions.
 
 Some `awk` implementations generate a runtime
 error if you use either the `next` statement
 or the `nextfile` statement
-(see [Next Statement](#Next-Statement), and
-see [Nextfile Statement](#Nextfile-Statement))
+(see [Next Statement](#748-the-next-statement), and
+see [Nextfile Statement](#749-the-nextfile-statement))
 inside a user-defined function.
 `gawk` does not have this limitation.
 
 ---
 
-Next: [Dynamic Typing](#Dynamic-Typing), Previous: [Function Caveats](#Function-Caveats), Up: [User-defined](#User_002ddefined)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [Dynamic Typing](#925-functions-and-their-effects-on-variable-typing), Previous: [Function Caveats](#923-calling-user-defined-functions), Up: [User-defined](#92-user-defined-functions)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 #### 9.2.4 The `return` Statement
 
@@ -15962,7 +15962,7 @@ in the array.
 
 ---
 
-Previous: [Return Statement](#Return-Statement), Up: [User-defined](#User_002ddefined)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Previous: [Return Statement](#924-the-return-statement), Up: [User-defined](#92-user-defined-functions)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 #### 9.2.5 Functions and Their Effects on Variable Typing
 
@@ -15995,7 +15995,7 @@ being aware of them.
 
 ---
 
-Next: [Functions Summary](#Functions-Summary), Previous: [User-defined](#User_002ddefined), Up: [Functions](#Functions)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [Functions Summary](#94-summary), Previous: [User-defined](#92-user-defined-functions), Up: [Functions](#9-functions)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 ### 9.3 Indirect Function Calls
 
@@ -16281,7 +16281,7 @@ Finally, here are the results when the enhanced program is run:
     
 
 Another example where indirect functions calls are useful can be found in
-processing arrays. This is described in [Walking Arrays](#Walking-Arrays).
+processing arrays. This is described in [Walking Arrays](#107-traversing-arrays-of-arrays).
 
 Remember that you must supply a leading &lsquo;@&rsquo; in front of an indirect function call.
 
@@ -16310,7 +16310,7 @@ For example, in the following case:
 
 ---
 
-Previous: [Indirect Calls](#Indirect-Calls), Up: [Functions](#Functions)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Previous: [Indirect Calls](#93-indirect-function-calls), Up: [Functions](#9-functions)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 ### 9.4 Summary
 
@@ -16365,7 +16365,7 @@ program. This is equivalent to function pointers in C and C++.
 
 ---
 
-Next: [Sample Programs](#Sample-Programs), Previous: [Functions](#Functions), Up: [Top](#Top)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [Sample Programs](#11-practical-awk-programs), Previous: [Functions](#9-functions), Up: [Top](#Top)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 # Part II:
 Problem Solving with `awk`
@@ -16374,7 +16374,7 @@ Problem Solving with `awk`
 
 ## 10 A Library of `awk` Functions
 
-[User-defined](#User_002ddefined) describes how to write
+[User-defined](#92-user-defined-functions) describes how to write
 your own `awk` functions.  Writing functions is important, because
 it allows you to encapsulate algorithms and program tasks in a single
 place.  It simplifies programming, making program development more
@@ -16391,7 +16391,7 @@ and P.J. Plauger wrote:
 
 In fact, they felt this idea was so important that they placed this
 statement on the cover of their book.  Because we believe strongly
-that their statement is correct, this chapter and [Sample Programs](#Sample-Programs), provide a good-sized body of code for you to read and, we hope,
+that their statement is correct, this chapter and [Sample Programs](#11-practical-awk-programs), provide a good-sized body of code for you to read and, we hope,
 to learn from.
 
 This chapter presents a library of useful `awk` functions.
@@ -16399,7 +16399,7 @@ Many of the sample programs presented later in this Web page
 use these functions.
 The functions are presented here in a progression from simple to complex.
 
-[Extract Program](#Extract-Program)
+[Extract Program](#1137-extracting-programs-from-texinfo-source-files)
 presents a program that you can use to extract the source code for
 these example library functions and programs from the Texinfo source
 for this Web page.
@@ -16407,10 +16407,10 @@ for this Web page.
 
 If you have written one or more useful, general-purpose `awk` functions
 and would like to contribute them to the `awk` user community, see
-[How To Contribute](#How-To-Contribute), for more information.
+[How To Contribute](#how-to-contribute), for more information.
 
 The programs in this chapter and in
-[Sample Programs](#Sample-Programs),
+[Sample Programs](#11-practical-awk-programs),
 freely use `gawk`-specific features.
 Rewriting these programs for different implementations of `awk`
 is pretty straightforward:
@@ -16420,7 +16420,7 @@ Use &lsquo;| "cat 1>&2"&rsquo; instead of &lsquo;> "/dev/stderr"&rsquo; if your 
 does not have a /dev/stderr, or if you cannot use `gawk`.
 
 -  A number of programs use `nextfile`
-(see [Nextfile Statement](#Nextfile-Statement))
+(see [Nextfile Statement](#749-the-nextfile-statement))
 to skip any remaining input in the input file.
 
 - 
@@ -16436,22 +16436,22 @@ beginning of the program:
 Also, verify that all regexp and string constants used in
 comparisons use only lowercase letters.
 
-&bull; [Library Names](#Library-Names):  How to best name private global variables in
+&bull; [Library Names](#101-naming-library-function-global-variables):  How to best name private global variables in
                                 library functions.
-&bull; [General Functions](#General-Functions):  Functions that are of general use.
-&bull; [Data File Management](#Data-File-Management):  Functions for managing command-line data
+&bull; [General Functions](#102-general-programming):  Functions that are of general use.
+&bull; [Data File Management](#103-data-file-management):  Functions for managing command-line data
                                 files.
-&bull; [Getopt Function](#Getopt-Function):  A function for processing command-line
+&bull; [Getopt Function](#104-processing-command-line-options):  A function for processing command-line
                                 arguments.
-&bull; [Passwd Functions](#Passwd-Functions):  Functions for getting user information.
-&bull; [Group Functions](#Group-Functions):  Functions for getting group information.
-&bull; [Walking Arrays](#Walking-Arrays):  A function to walk arrays of arrays.
+&bull; [Passwd Functions](#105-reading-the-user-database):  Functions for getting user information.
+&bull; [Group Functions](#106-reading-the-group-database):  Functions for getting group information.
+&bull; [Walking Arrays](#107-traversing-arrays-of-arrays):  A function to walk arrays of arrays.
 &bull; [Library Functions Summary]((#10-a-library-of-awk-functions)-Summary):  Summary of library functions.
-&bull; [Library Exercises](#Library-Exercises):  Exercises.
+&bull; [Library Exercises](#109-exercises):  Exercises.
 
 ---
 
-Next: [General Functions](#General-Functions), Up: [Library Functions]((#10-a-library-of-awk-functions))   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [General Functions](#102-general-programming), Up: [Library Functions]((#10-a-library-of-awk-functions))   [[Contents](#table-of-contents)][[Index](#Index)]
 
 ### 10.1 Naming Library Function Global Variables
 
@@ -16463,7 +16463,7 @@ a specific function).  There is no intermediate state analogous to
 Library functions often need to have global variables that they can use to
 preserve state information between calls to the function&mdash;for example,
 `getopt()`&rsquo;s variable `_opti`
-(see [Getopt Function](#Getopt-Function)).
+(see [Getopt Function](#104-processing-command-line-options)).
 Such variables are called *private*, as the only functions that need to
 use them are the ones in the library.
 
@@ -16482,7 +16482,7 @@ with the user&rsquo;s program.
 In addition, several of the library functions use a prefix that helps
 indicate what function or set of functions use the variables&mdash;for example,
 `_pw_byname()` in the user database routines
-(see [Passwd Functions](#Passwd-Functions)).
+(see [Passwd Functions](#105-reading-the-user-database)).
 This convention is recommended, as it even further decreases the
 chance of inadvertent conflict among variable names.  Note that this
 convention is used equally well for variable names and for private
@@ -16492,7 +16492,7 @@ As a final note on variable naming, if a function makes global variables
 available for use by a main program, it is a good convention to start those
 variables&rsquo; names with a capital letter&mdash;for
 example, `getopt()`&rsquo;s `Opterr` and `Optind` variables
-(see [Getopt Function](#Getopt-Function)).
+(see [Getopt Function](#104-processing-command-line-options)).
 The leading capital letter indicates that it is global, while the fact that
 the variable name is not all capital letters indicates that the variable is
 not one of `awk`&rsquo;s predefined variables, such as `FS`.
@@ -16516,7 +16516,7 @@ A different convention, common in the Tcl community, is to use a single
 associative array to hold the values needed by the library function(s), or
 &ldquo;package.&rdquo;  This significantly decreases the number of actual global names
 in use.  For example, the functions described in
-[Passwd Functions](#Passwd-Functions)
+[Passwd Functions](#105-reading-the-user-database)
 might have used array elements `PW_data["inited"]`, `PW_data["total"]`,
 `PW_data["count"]`, and `PW_data["awklib"]`, instead of
 `_pw_inited`, `_pw_awklib`, `_pw_total`,
@@ -16528,34 +16528,34 @@ way&mdash;we merely recommend that you do so.
 
 ---
 
-Next: [Data File Management](#Data-File-Management), Previous: [Library Names](#Library-Names), Up: [Library Functions]((#10-a-library-of-awk-functions))   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [Data File Management](#103-data-file-management), Previous: [Library Names](#101-naming-library-function-global-variables), Up: [Library Functions]((#10-a-library-of-awk-functions))   [[Contents](#table-of-contents)][[Index](#Index)]
 
 ### 10.2 General Programming
 
 This section presents a number of functions that are of general
 programming use.
 
-&bull; [Strtonum Function](#Strtonum-Function):  A replacement for the built-in
+&bull; [Strtonum Function](#1021-converting-strings-to-numbers):  A replacement for the built-in
                                 `strtonum()` function.
-&bull; [Assert Function](#Assert-Function):  A function for assertions in `awk`
+&bull; [Assert Function](#1022-assertions):  A function for assertions in `awk`
                                 programs.
-&bull; [Round Function](#Round-Function):  A function for rounding if `sprintf()`
+&bull; [Round Function](#1023-rounding-numbers):  A function for rounding if `sprintf()`
                                 does not do it correctly.
-&bull; [Cliff Random Function](#Cliff-Random-Function):  The Cliff Random Number Generator.
-&bull; [Ordinal Functions](#Ordinal-Functions):  Functions for using characters as numbers and
+&bull; [Cliff Random Function](#1024-the-cliff-random-number-generator):  The Cliff Random Number Generator.
+&bull; [Ordinal Functions](#1025-translating-between-characters-and-numbers):  Functions for using characters as numbers and
                                 vice versa.
-&bull; [Join Function](#Join-Function):  A function to join an array into a string.
-&bull; [Getlocaltime Function](#Getlocaltime-Function):  A function to get formatted times.
-&bull; [Readfile Function](#Readfile-Function):  A function to read an entire file at once.
-&bull; [Shell Quoting](#Shell-Quoting):  A function to quote strings for the shell.
+&bull; [Join Function](#1026-merging-an-array-into-a-string):  A function to join an array into a string.
+&bull; [Getlocaltime Function](#1027-managing-the-time-of-day):  A function to get formatted times.
+&bull; [Readfile Function](#1028-reading-a-whole-file-at-once):  A function to read an entire file at once.
+&bull; [Shell Quoting](#1029-quoting-strings-to-pass-to-the-shell):  A function to quote strings for the shell.
 
 ---
 
-Next: [Assert Function](#Assert-Function), Up: [General Functions](#General-Functions)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [Assert Function](#1022-assertions), Up: [General Functions](#102-general-programming)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 #### 10.2.1 Converting Strings to Numbers
 
-The `strtonum()` function (see [String Functions](#String-Functions))
+The `strtonum()` function (see [String Functions](#913-string-manipulation-functions))
 is a `gawk` extension.  The following function
 provides an implementation for other versions of `awk`:
 
@@ -16640,7 +16640,7 @@ be tested with `gawk` and the results compared to the built-in
 
 ---
 
-Next: [Round Function](#Round-Function), Previous: [Strtonum Function](#Strtonum-Function), Up: [General Functions](#General-Functions)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [Round Function](#1023-rounding-numbers), Previous: [Strtonum Function](#1021-converting-strings-to-numbers), Up: [General Functions](#102-general-programming)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 #### 10.2.2 Assertions
 
@@ -16730,7 +16730,7 @@ to the program calling `assert()`.  Normally, if a program consists
 of just a `BEGIN` rule, the input files and/or standard input are
 not read. However, now that the program has an `END` rule, `awk`
 attempts to read the input data files or standard input
-(see [Using BEGIN/END](#Using-BEGIN_002fEND)),
+(see [Using BEGIN/END](#7141-startup-and-cleanup-actions)),
 most likely causing the program to hang as it waits for input.
 
 There is a simple workaround to this:
@@ -16739,12 +16739,12 @@ with an `exit` statement.
 
 ---
 
-Next: [Cliff Random Function](#Cliff-Random-Function), Previous: [Assert Function](#Assert-Function), Up: [General Functions](#General-Functions)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [Cliff Random Function](#1024-the-cliff-random-number-generator), Previous: [Assert Function](#1022-assertions), Up: [General Functions](#102-general-programming)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 #### 10.2.3 Rounding Numbers
 
 The way `printf` and `sprintf()`
-(see [Printf](#Printf))
+(see [Printf](#55-using-printf-statements-for-fancier-printing))
 perform rounding often depends upon the system&rsquo;s C `sprintf()`
 subroutine.  On many machines, `sprintf()` rounding is *unbiased*,
 which means it doesn&rsquo;t always round a trailing .5 up, contrary
@@ -16789,7 +16789,7 @@ does unbiased rounding:
 
 ---
 
-Next: [Ordinal Functions](#Ordinal-Functions), Previous: [Round Function](#Round-Function), Up: [General Functions](#General-Functions)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [Ordinal Functions](#1025-translating-between-characters-and-numbers), Previous: [Round Function](#1023-rounding-numbers), Up: [General Functions](#102-general-programming)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 #### 10.2.4 The Cliff Random Number Generator
 
@@ -16815,12 +16815,12 @@ It is easily programmed, in less than 10 lines of `awk` code:
 This algorithm requires an initial &ldquo;seed&rdquo; of 0.1.  Each new value
 uses the current seed as input for the calculation.
 If the built-in `rand()` function
-(see [Numeric Functions](#Numeric-Functions))
+(see [Numeric Functions](#912-numeric-functions))
 isn&rsquo;t random enough, you might try using this function instead.
 
 ---
 
-Next: [Join Function](#Join-Function), Previous: [Cliff Random Function](#Cliff-Random-Function), Up: [General Functions](#General-Functions)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [Join Function](#1026-merging-an-array-into-a-string), Previous: [Cliff Random Function](#1024-the-cliff-random-number-generator), Up: [General Functions](#102-general-programming)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 #### 10.2.5 Translating Between Characters and Numbers
 
@@ -16911,7 +16911,7 @@ function.  It is commented out for production use.
 
 ---
 
-Next: [Getlocaltime Function](#Getlocaltime-Function), Previous: [Ordinal Functions](#Ordinal-Functions), Up: [General Functions](#General-Functions)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [Getlocaltime Function](#1027-managing-the-time-of-day), Previous: [Ordinal Functions](#1025-translating-between-characters-and-numbers), Up: [General Functions](#102-general-programming)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 #### 10.2.6 Merging an Array into a String
 
@@ -16919,14 +16919,14 @@ When doing string processing, it is often useful to be able to join
 all the strings in an array into one long string.  The following function,
 `join()`, accomplishes this task.  It is used later in several of
 the application programs
-(see [Sample Programs](#Sample-Programs)).
+(see [Sample Programs](#11-practical-awk-programs)).
 
 Good function design is important; this function needs to be general, but it
 should also have a reasonable default behavior.  It is called with an array
 as well as the beginning and ending indices of the elements in the array to be
 merged.  This assumes that the array indices are numeric&mdash;a reasonable
 assumption, as the array was likely created with `split()`
-(see [String Functions](#String-Functions)):
+(see [String Functions](#913-string-manipulation-functions)):
 
     # join.awk --- join an array into a string
     
@@ -16954,12 +16954,12 @@ be no separation between the component strings.[70](#FOOT70)
 
 ---
 
-Next: [Readfile Function](#Readfile-Function), Previous: [Join Function](#Join-Function), Up: [General Functions](#General-Functions)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [Readfile Function](#1028-reading-a-whole-file-at-once), Previous: [Join Function](#1026-merging-an-array-into-a-string), Up: [General Functions](#102-general-programming)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 #### 10.2.7 Managing the Time of Day
 
 The `systime()` and `strftime()` functions described in
-[Time Functions](#Time-Functions)
+[Time Functions](#915-time-functions)
 provide the minimum functionality necessary for dealing with the time of day
 in human-readable form.  Although `strftime()` is extensive, the control
 formats are not necessarily easy to remember or intuitively obvious when
@@ -17032,7 +17032,7 @@ time formatted in the same way as the `date` utility:
 
 The string indices are easier to use and read than the various formats
 required by `strftime()`.  The `alarm` program presented in
-[Alarm Program](#Alarm-Program)
+[Alarm Program](#1132-an-alarm-clock-program)
 uses this function.
 A more general design for the `getlocaltime()` function would have
 allowed the user to supply an optional timestamp value to use instead
@@ -17040,7 +17040,7 @@ of the current time.
 
 ---
 
-Next: [Shell Quoting](#Shell-Quoting), Previous: [Getlocaltime Function](#Getlocaltime-Function), Up: [General Functions](#General-Functions)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [Shell Quoting](#1029-quoting-strings-to-pass-to-the-shell), Previous: [Getlocaltime Function](#1027-managing-the-time-of-day), Up: [General Functions](#102-general-programming)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 #### 10.2.8 Reading a Whole File at Once
 
@@ -17088,7 +17088,7 @@ will never match if the file has contents.  `gawk` reads data from
 the file into `tmp`, attempting to match `RS`.  The match fails
 after each read, but fails quickly, such that `gawk` fills
 `tmp` with the entire contents of the file.
-(See [Records](#Records) for information on `RT` and `RS`.)
+(See [Records](#41-how-input-is-split-into-records) for information on `RT` and `RS`.)
 
 In the case that `file` is empty, the return value is the null
 string.  Thus, calling code may use something like:
@@ -17106,7 +17106,7 @@ also reads an entire file into memory.
 
 ---
 
-Previous: [Readfile Function](#Readfile-Function), Up: [General Functions](#General-Functions)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Previous: [Readfile Function](#1028-reading-a-whole-file-at-once), Up: [General Functions](#102-general-programming)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 #### 10.2.9 Quoting Strings to Pass to the Shell
 
@@ -17161,28 +17161,28 @@ does it.  `SINGLE` is the one-character string `"'"` and
 
 ---
 
-Next: [Getopt Function](#Getopt-Function), Previous: [General Functions](#General-Functions), Up: [Library Functions]((#10-a-library-of-awk-functions))   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [Getopt Function](#104-processing-command-line-options), Previous: [General Functions](#102-general-programming), Up: [Library Functions]((#10-a-library-of-awk-functions))   [[Contents](#table-of-contents)][[Index](#Index)]
 
 ### 10.3 Data file Management
 
 This section presents functions that are useful for managing
 command-line data files.
 
-&bull; [Filetrans Function](#Filetrans-Function):  A function for handling data file transitions.
-&bull; [Rewind Function](#Rewind-Function):  A function for rereading the current file.
-&bull; [File Checking](#File-Checking):  Checking that data files are readable.
-&bull; [Empty Files](#Empty-Files):  Checking for zero-length files.
-&bull; [Ignoring Assigns](#Ignoring-Assigns):  Treating assignments as file names.
+&bull; [Filetrans Function](#1031-noting-data-file-boundaries):  A function for handling data file transitions.
+&bull; [Rewind Function](#1032-rereading-the-current-file):  A function for rereading the current file.
+&bull; [File Checking](#1033-checking-for-readable-data-files):  Checking that data files are readable.
+&bull; [Empty Files](#1034-checking-for-zero-length-files):  Checking for zero-length files.
+&bull; [Ignoring Assigns](#1035-treating-assignments-as-file-names):  Treating assignments as file names.
 
 ---
 
-Next: [Rewind Function](#Rewind-Function), Up: [Data File Management](#Data-File-Management)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [Rewind Function](#1032-rereading-the-current-file), Up: [Data File Management](#103-data-file-management)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 #### 10.3.1 Noting Data file Boundaries
 
 The `BEGIN` and `END` rules are each executed exactly once, at
 the beginning and end of your `awk` program, respectively
-(see [BEGIN/END](#BEGIN_002fEND)).
+(see [BEGIN/END](#714-the-begin-and-end-special-patterns)).
 We (the `gawk` authors) once had a user who mistakenly thought that the
 `BEGIN` rules were executed at the beginning of each data file and the
 `END` rules were executed at the end of each data file.
@@ -17258,7 +17258,7 @@ The following version solves the problem:
     END { endfile(_filename_) }
     
 
-[Wc Program](#Wc-Program)
+[Wc Program](#1127-counting-things)
 shows how this library function can be used and
 how it simplifies writing the main program.
 
@@ -17275,18 +17275,18 @@ calling it relies on the file being open and at the first record.  Thus,
 the main reason for `BEGINFILE` is to give you a &ldquo;hook&rdquo; to catch
 files that cannot be processed.  `ENDFILE` exists for symmetry,
 and because it provides an easy way to do per-file cleanup processing.
-For more information, refer to [BEGINFILE/ENDFILE](#BEGINFILE_002fENDFILE).
+For more information, refer to [BEGINFILE/ENDFILE](#715-the-beginfile-and-endfile-special-patterns).
 
 ---
 
-Next: [File Checking](#File-Checking), Previous: [Filetrans Function](#Filetrans-Function), Up: [Data File Management](#Data-File-Management)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [File Checking](#1033-checking-for-readable-data-files), Previous: [Filetrans Function](#1031-noting-data-file-boundaries), Up: [Data File Management](#103-data-file-management)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 #### 10.3.2 Rereading the Current File
 
 Another request for a new built-in function was for a
 function that would make it possible to reread the current file.
 The requesting user didn&rsquo;t want to have to use `getline`
-(see [Getline](#Getline))
+(see [Getline](#410-explicit-input-with-getline))
 inside a loop.
 
 However, as long as you are not in the `END` rule, it is
@@ -17314,8 +17314,8 @@ For lack of a better name, we&rsquo;ll call the function `rewind()`:
     
 
 The `rewind()` function relies on the `ARGIND` variable
-(see [Auto-set](#Auto_002dset)), which is specific to `gawk`.  It also
-relies on the `nextfile` keyword (see [Nextfile Statement](#Nextfile-Statement)).
+(see [Auto-set](#752-built-in-variables-that-convey-information)), which is specific to `gawk`.  It also
+relies on the `nextfile` keyword (see [Nextfile Statement](#749-the-nextfile-statement)).
 Because of this, you should not call it from an `ENDFILE` rule.
 (This isn&rsquo;t necessary anyway, because `gawk` goes to the next
 file as soon as an `ENDFILE` rule finishes!)
@@ -17353,7 +17353,7 @@ example use:
 
 ---
 
-Next: [Empty Files](#Empty-Files), Previous: [Rewind Function](#Rewind-Function), Up: [Data File Management](#Data-File-Management)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [Empty Files](#1034-checking-for-zero-length-files), Previous: [Rewind Function](#1032-rereading-the-current-file), Up: [Data File Management](#103-data-file-management)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 #### 10.3.3 Checking for Readable Data files
 
@@ -17380,16 +17380,16 @@ the following program to your `awk` program:
 This works, because the `getline` won&rsquo;t be fatal.
 Removing the element from `ARGV` with `delete`
 skips the file (because it&rsquo;s no longer in the list).
-See also [ARGC and ARGV](#ARGC-and-ARGV).
+See also [ARGC and ARGV](#753-using-argc-and-argv).
 
 Because `awk` variable names only allow the English letters,
 the regular expression check purposely does not use character classes
 such as &lsquo;[:alpha:]&rsquo; and &lsquo;[:alnum:]&rsquo;
-(see [Bracket Expressions](#Bracket-Expressions)).
+(see [Bracket Expressions](#34-using-bracket-expressions)).
 
 ---
 
-Next: [Ignoring Assigns](#Ignoring-Assigns), Previous: [File Checking](#File-Checking), Up: [Data File Management](#Data-File-Management)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [Ignoring Assigns](#1035-treating-assignments-as-file-names), Previous: [File Checking](#1033-checking-for-readable-data-files), Up: [Data File Management](#103-data-file-management)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 #### 10.3.4 Checking for Zero-Length Files
 
@@ -17402,9 +17402,9 @@ command-line data file, *without* executing any user-level
 `awk` program code.
 
 Using `gawk`&rsquo;s `ARGIND` variable
-(see [Built-in Variables](#Built_002din-Variables)), it is possible to detect when an empty
+(see [Built-in Variables](#75-predefined-variables)), it is possible to detect when an empty
 data file has been skipped.  Similar to the library file presented
-in [Filetrans Function](#Filetrans-Function), the following library file calls a function named
+in [Filetrans Function](#1031-noting-data-file-boundaries), the following library file calls a function named
 `zerofile()` that the user must provide.  The arguments passed are
 the file name and the position in `ARGV` where it was found:
 
@@ -17442,13 +17442,13 @@ not &lsquo;<&rsquo;.
 
 ---
 
-Previous: [Empty Files](#Empty-Files), Up: [Data File Management](#Data-File-Management)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Previous: [Empty Files](#1034-checking-for-zero-length-files), Up: [Data File Management](#103-data-file-management)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 #### 10.3.5 Treating Assignments as File names
 
 Occasionally, you might not want `awk` to process command-line
 variable assignments
-(see [Assignment Options](#Assignment-Options)).
+(see [Assignment Options](#6132-assigning-variables-on-the-command-line)).
 In particular, if you have a file name that contains an &lsquo;=&rsquo; character,
 `awk` treats the file name as an assignment and does not process it.
 
@@ -17489,14 +17489,14 @@ are left alone.
 
 ---
 
-Next: [Passwd Functions](#Passwd-Functions), Previous: [Data File Management](#Data-File-Management), Up: [Library Functions]((#10-a-library-of-awk-functions))   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [Passwd Functions](#105-reading-the-user-database), Previous: [Data File Management](#103-data-file-management), Up: [Library Functions]((#10-a-library-of-awk-functions))   [[Contents](#table-of-contents)][[Index](#Index)]
 
 ### 10.4 Processing Command-Line Options
 
 Most utilities on POSIX-compatible systems take options on
 the command line that can be used to change the way a program behaves.
 `awk` is an example of such a program
-(see [Options](#Options)).
+(see [Options](#22-command-line-options)).
 Often, options take *arguments* (i.e., data that the program needs to
 correctly obey the command-line option).  For example, `awk`&rsquo;s
 -F option requires a string to use as the field separator.
@@ -17586,7 +17586,7 @@ arguments for `awk`:
 
 As a side point, `gawk` actually uses the GNU `getopt_long()`
 function to process both normal and GNU-style long options
-(see [Options](#Options)).
+(see [Options](#22-command-line-options)).
 
 The abstraction provided by `getopt()` is very useful and is quite
 handy in `awk` programs as well.  Following is an `awk`
@@ -17594,7 +17594,7 @@ version of `getopt()`.  This function highlights one of the
 greatest weaknesses in `awk`, which is that it is very poor at
 manipulating single characters.  Repeated calls to `substr()` are
 necessary for accessing individual characters
-(see [String Functions](#String-Functions)).[72](#FOOT72)
+(see [String Functions](#913-string-manipulation-functions)).[72](#FOOT72)
 
 The discussion that follows walks through the code a bit at a time:
 
@@ -17791,28 +17791,28 @@ Using &lsquo;#!&rsquo; with the -E option may help avoid
 conflicts between your program&rsquo;s options and `gawk`&rsquo;s options,
 as -E causes `gawk` to abandon processing of
 further options
-(see [Executable Scripts](#Executable-Scripts) and
-see [Options](#Options)).
+(see [Executable Scripts](#114-executable-awk-programs) and
+see [Options](#22-command-line-options)).
 
 Several of the sample programs presented in
-[Sample Programs](#Sample-Programs),
+[Sample Programs](#11-practical-awk-programs),
 use `getopt()` to process their arguments.
 
 ---
 
-Next: [Group Functions](#Group-Functions), Previous: [Getopt Function](#Getopt-Function), Up: [Library Functions]((#10-a-library-of-awk-functions))   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [Group Functions](#106-reading-the-group-database), Previous: [Getopt Function](#104-processing-command-line-options), Up: [Library Functions]((#10-a-library-of-awk-functions))   [[Contents](#table-of-contents)][[Index](#Index)]
 
 ### 10.5 Reading the User Database
 
 The `PROCINFO` array
-(see [Built-in Variables](#Built_002din-Variables))
+(see [Built-in Variables](#75-predefined-variables))
 provides access to the current user&rsquo;s real and effective user and group ID
 numbers, and, if available, the user&rsquo;s supplementary group set.
 However, because these are numbers, they do not provide very useful
 information to the average user.  There needs to be some way to find the
 user information associated with the user and group ID numbers.  This
 section presents a suite of functions for retrieving information from the
-user database.  See [Group Functions](#Group-Functions)
+user database.  See [Group Functions](#106-reading-the-group-database)
 for a similar suite that retrieves information from the group database.
 
 The POSIX standard does not define the file where user information is
@@ -18044,17 +18044,17 @@ once.  If you are worried about squeezing every last cycle out of your
 this is not necessary, as most `awk` programs are I/O-bound,
 and such a change would clutter up the code.
 
-The `id` program in [Id Program](#Id-Program)
+The `id` program in [Id Program](#1123-printing-out-user-information)
 uses these functions.
 
 ---
 
-Next: [Walking Arrays](#Walking-Arrays), Previous: [Passwd Functions](#Passwd-Functions), Up: [Library Functions]((#10-a-library-of-awk-functions))   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [Walking Arrays](#107-traversing-arrays-of-arrays), Previous: [Passwd Functions](#105-reading-the-user-database), Up: [Library Functions]((#10-a-library-of-awk-functions))   [[Contents](#table-of-contents)][[Index](#Index)]
 
 ### 10.6 Reading the Group Database
 
 Much of the discussion presented in
-[Passwd Functions](#Passwd-Functions)
+[Passwd Functions](#105-reading-the-user-database)
 applies to the group database as well.  Although there has traditionally
 been a well-known file (/etc/group) in a well-known format, the POSIX
 standard only provides a set of C library routines
@@ -18122,7 +18122,7 @@ simultaneously.  If your system does, then there are elements
 `"group1"` through `"groupN"` in `PROCINFO`
 for those group ID numbers.
 (Note that `PROCINFO` is a `gawk` extension;
-see [Built-in Variables](#Built_002din-Variables).)
+see [Built-in Variables](#75-predefined-variables).)
 
 Here is what running `grcat` might produce:
 
@@ -18199,7 +18199,7 @@ routine, we have chosen to put it in /usr/local/libexec/awk.  You might
 want it to be in a different directory on your system.
 
 These routines follow the same general outline as the user database routines
-(see [Passwd Functions](#Passwd-Functions)).
+(see [Passwd Functions](#105-reading-the-user-database)).
 The `_gr_inited` variable is used to
 ensure that the database is scanned no more than once.
 The `_gr_init()` function first saves `FS`,
@@ -18297,19 +18297,19 @@ Most of the work is in scanning the database and building the various
 associative arrays.  The functions that the user calls are themselves very
 simple, relying on `awk`&rsquo;s associative arrays to do work.
 
-The `id` program in [Id Program](#Id-Program)
+The `id` program in [Id Program](#1123-printing-out-user-information)
 uses these functions.
 
 ---
 
-Next: [Library Functions Summary]((#10-a-library-of-awk-functions)-Summary), Previous: [Group Functions](#Group-Functions), Up: [Library Functions]((#10-a-library-of-awk-functions))   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [Library Functions Summary]((#10-a-library-of-awk-functions)-Summary), Previous: [Group Functions](#106-reading-the-group-database), Up: [Library Functions]((#10-a-library-of-awk-functions))   [[Contents](#table-of-contents)][[Index](#Index)]
 
 ### 10.7 Traversing Arrays of Arrays
 
-[Arrays of Arrays](#Arrays-of-Arrays) described how `gawk`
+[Arrays of Arrays](#86-arrays-of-arrays) described how `gawk`
 provides arrays of arrays.  In particular, any element of
 an array may be either a scalar or another array. The
-`isarray()` function (see [Type Functions](#Type-Functions))
+`isarray()` function (see [Type Functions](#917-getting-type-information))
 lets you distinguish an array
 from a scalar.
 The following function, `walk_array()`, recursively traverses
@@ -18414,7 +18414,7 @@ results as does the earlier version of `walk_array()`:
 
 ---
 
-Next: [Library Exercises](#Library-Exercises), Previous: [Walking Arrays](#Walking-Arrays), Up: [Library Functions]((#10-a-library-of-awk-functions))   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [Library Exercises](#109-exercises), Previous: [Walking Arrays](#107-traversing-arrays-of-arrays), Up: [Library Functions]((#10-a-library-of-awk-functions))   [[Contents](#table-of-contents)][[Index](#Index)]
 
 ### 10.8 Summary
 
@@ -18450,11 +18450,11 @@ Two functions that traverse an array of arrays to any depth
 
 ---
 
-Previous: [Library Functions Summary]((#10-a-library-of-awk-functions)-Summary), Up: [Library Functions]((#10-a-library-of-awk-functions))   [[Contents](#SEC_Contents)][[Index](#Index)]
+Previous: [Library Functions Summary]((#10-a-library-of-awk-functions)-Summary), Up: [Library Functions]((#10-a-library-of-awk-functions))   [[Contents](#table-of-contents)][[Index](#Index)]
 
 ### 10.9 Exercises
 
-1.  In [Empty Files](#Empty-Files), we presented the zerofile.awk program,
+1.  In [Empty Files](#1034-checking-for-zero-length-files), we presented the zerofile.awk program,
 which made use of `gawk`&rsquo;s `ARGIND` variable.  Can this
 problem be solved without relying on `ARGIND`?  If so, how?
 
@@ -18463,7 +18463,7 @@ an intervening value in `ARGV` is a variable assignment.
 
 ---
 
-Next: [Advanced Features](#Advanced-Features), Previous: [Library Functions]((#10-a-library-of-awk-functions)), Up: [Top](#Top)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [Advanced Features](#Advanced-Features), Previous: [Library Functions]((#10-a-library-of-awk-functions)), Up: [Top](#Top)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 ## 11 Practical `awk` Programs
 
@@ -18492,15 +18492,15 @@ ability to do a lot in just a few lines of code.
 Many of these programs use library functions presented in
 [Library Functions]((#10-a-library-of-awk-functions)).
 
-&bull; [Running Examples](#Running-Examples):  How to run these examples.
-&bull; [Clones](#Clones):  Clones of common utilities.
-&bull; [Miscellaneous Programs](#Miscellaneous-Programs):  Some interesting `awk` programs.
-&bull; [Programs Summary](#Programs-Summary):  Summary of programs.
-&bull; [Programs Exercises](#Programs-Exercises):  Exercises.
+&bull; [Running Examples](#111-one-shot-throwaway-awk-programs):  How to run these examples.
+&bull; [Clones](#112-running-awk-without-input-files):  Clones of common utilities.
+&bull; [Miscellaneous Programs](#113-running-long-programs):  Some interesting `awk` programs.
+&bull; [Programs Summary](#114-summary):  Summary of programs.
+&bull; [Programs Exercises](#115-exercises):  Exercises.
 
 ---
 
-Next: [Clones](#Clones), Up: [Sample Programs](#Sample-Programs)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [Clones](#112-running-awk-without-input-files), Up: [Sample Programs](#11-practical-awk-programs)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 ### 11.1 Running the Example Programs
 
@@ -18513,7 +18513,7 @@ cut.awk), options are any command-line options for the
 program that start with a &lsquo;-&rsquo;, and files are the actual data files.
 
 If your system supports the &lsquo;#!&rsquo; executable interpreter mechanism
-(see [Executable Scripts](#Executable-Scripts)),
+(see [Executable Scripts](#114-executable-awk-programs)),
 you can instead run your program directly:
 
     cut.awk -c1-8 myfiles > results
@@ -18526,7 +18526,7 @@ If your `awk` is not `gawk`, you may instead need to use this:
 
 ---
 
-Next: [Miscellaneous Programs](#Miscellaneous-Programs), Previous: [Running Examples](#Running-Examples), Up: [Sample Programs](#Sample-Programs)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [Miscellaneous Programs](#113-running-long-programs), Previous: [Running Examples](#111-one-shot-throwaway-awk-programs), Up: [Sample Programs](#11-practical-awk-programs)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 ### 11.2 Reinventing Wheels for Fun and Profit
 
@@ -18544,17 +18544,17 @@ tasks.
 
 The programs are presented in alphabetical order.
 
-&bull; [Cut Program](#Cut-Program):  The `cut` utility.
-&bull; [Egrep Program](#Egrep-Program):  The `egrep` utility.
-&bull; [Id Program](#Id-Program):  The `id` utility.
-&bull; [Split Program](#Split-Program):  The `split` utility.
-&bull; [Tee Program](#Tee-Program):  The `tee` utility.
-&bull; [Uniq Program](#Uniq-Program):  The `uniq` utility.
-&bull; [Wc Program](#Wc-Program):  The `wc` utility.
+&bull; [Cut Program](#1121-cutting-out-fields-and-columns):  The `cut` utility.
+&bull; [Egrep Program](#1122-searching-for-regular-expressions-in-files):  The `egrep` utility.
+&bull; [Id Program](#1123-printing-out-user-information):  The `id` utility.
+&bull; [Split Program](#1124-splitting-a-large-file-into-pieces):  The `split` utility.
+&bull; [Tee Program](#1125-duplicating-output-into-multiple-files):  The `tee` utility.
+&bull; [Uniq Program](#1126-printing-nonduplicated-lines-of-text):  The `uniq` utility.
+&bull; [Wc Program](#1127-counting-things):  The `wc` utility.
 
 ---
 
-Next: [Egrep Program](#Egrep-Program), Up: [Clones](#Clones)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [Egrep Program](#1122-searching-for-regular-expressions-in-files), Up: [Clones](#112-running-awk-without-input-files)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 #### 11.2.1 Cutting Out Fields and Columns
 
@@ -18591,9 +18591,9 @@ character.
 Suppress printing of lines that do not contain the field delimiter.
 
 The `awk` implementation of `cut` uses the `getopt()` library
-function (see [Getopt Function](#Getopt-Function))
+function (see [Getopt Function](#104-processing-command-line-options))
 and the `join()` library function
-(see [Join Function](#Join-Function)).
+(see [Join Function](#1026-merging-an-array-into-a-string)).
 
 The program begins with a comment describing the options, the library
 functions needed, and a `usage()` function that prints out a usage
@@ -18674,7 +18674,7 @@ To this end, we save the original space character in the variable
 use it directly to see if the field delimiter character is in the string.
 
 Also remember that after `getopt()` is through
-(as described in [Getopt Function](#Getopt-Function)),
+(as described in [Getopt Function](#104-processing-command-line-options)),
 we have to
 clear out all the elements of `ARGV` from 1 to `Optind`,
 so that `awk` does not try to process the command-line options
@@ -18747,7 +18747,7 @@ field splitting:
 The `set_charlist()` function is more complicated than
 `set_fieldlist()`.
 The idea here is to use `gawk`&rsquo;s `FIELDWIDTHS` variable
-(see [Constant Size](#Constant-Size)),
+(see [Constant Size](#46-reading-fixed-width-data)),
 which describes constant-width input.  When using a character list, that is
 exactly what we have.
 
@@ -18840,20 +18840,20 @@ written out between the fields:
 This version of `cut` relies on `gawk`&rsquo;s `FIELDWIDTHS`
 variable to do the character-based cutting.  It is possible in
 other `awk` implementations to use `substr()`
-(see [String Functions](#String-Functions)), but
+(see [String Functions](#913-string-manipulation-functions)), but
 it is also extremely painful.
 The `FIELDWIDTHS` variable supplies an elegant solution to the problem
 of picking the input line apart by characters.
 
 ---
 
-Next: [Id Program](#Id-Program), Previous: [Cut Program](#Cut-Program), Up: [Clones](#Clones)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [Id Program](#1123-printing-out-user-information), Previous: [Cut Program](#1121-cutting-out-fields-and-columns), Up: [Clones](#112-running-awk-without-input-files)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 #### 11.2.2 Searching for Regular Expressions in Files
 
 The `egrep` utility searches files for patterns.  It uses regular
 expressions that are almost identical to those available in `awk`
-(see [Regexp](#Regexp)).
+(see [Regexp](#3-regular-expressions)).
 You invoke it as follows:
 
     egrep [options] 'pattern'files &hellip;
@@ -18892,15 +18892,15 @@ Use pattern as the regexp to match.  The purpose of the -e
 option is to allow patterns that start with a &lsquo;-&rsquo;.
 
 This version uses the `getopt()` library function
-(see [Getopt Function](#Getopt-Function))
+(see [Getopt Function](#104-processing-command-line-options))
 and the file transition library program
-(see [Filetrans Function](#Filetrans-Function)).
+(see [Filetrans Function](#1031-noting-data-file-boundaries)).
 
 The program begins with a descriptive comment and then a `BEGIN` rule
 that processes the command-line arguments with `getopt()`.  The -i
 (ignore case) option is particularly easy with `gawk`; we just use the
 `IGNORECASE` predefined variable
-(see [Built-in Variables](#Built_002din-Variables)):
+(see [Built-in Variables](#75-predefined-variables)):
 
     # egrep.awk --- simulate egrep in awk
     #
@@ -19011,7 +19011,7 @@ know the total number of lines that matched the pattern:
     
 
 The `BEGINFILE` and `ENDFILE` special patterns
-(see [BEGINFILE/ENDFILE](#BEGINFILE_002fENDFILE)) could be used, but then the program would be
+(see [BEGINFILE/ENDFILE](#715-the-beginfile-and-endfile-special-patterns)) could be used, but then the program would be
 `gawk`-specific. Additionally, this example was written before
 `gawk` acquired `BEGINFILE` and `ENDFILE`.
 
@@ -19080,7 +19080,7 @@ and then exits:
 
 ---
 
-Next: [Split Program](#Split-Program), Previous: [Egrep Program](#Egrep-Program), Up: [Clones](#Clones)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [Split Program](#1124-splitting-a-large-file-into-pieces), Previous: [Egrep Program](#1122-searching-for-regular-expressions-in-files), Up: [Clones](#112-running-awk-without-input-files)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 #### 11.2.3 Printing Out User Information
 
@@ -19095,15 +19095,15 @@ corresponding user and group names.  The output might look like this:
     
 
 This information is part of what is provided by `gawk`&rsquo;s
-`PROCINFO` array (see [Built-in Variables](#Built_002din-Variables)).
+`PROCINFO` array (see [Built-in Variables](#75-predefined-variables)).
 However, the `id` utility provides a more palatable output than just
 individual numbers.
 
 Here is a simple version of `id` written in `awk`.
 It uses the user database library functions
-(see [Passwd Functions](#Passwd-Functions))
+(see [Passwd Functions](#105-reading-the-user-database))
 and the group database library functions
-(see [Group Functions](#Group-Functions))
+(see [Group Functions](#106-reading-the-group-database))
 from [Library Functions]((#10-a-library-of-awk-functions)).
 
 The program is fairly straightforward.  All the work is done in the
@@ -19191,7 +19191,7 @@ there are.
 
 This loop works by starting at one, concatenating the value with
 `"group"`, and then using `in` to see if that value is
-in the array (see [Reference to Elements](#Reference-to-Elements)).  Eventually, `i` is incremented past
+in the array (see [Reference to Elements](#812-referring-to-an-array-element)).  Eventually, `i` is incremented past
 the last group in the array and the loop exits.
 
 The loop is also correct if there are *no* supplementary
@@ -19205,7 +19205,7 @@ the empty string into this function saves several lines of code.
 
 ---
 
-Next: [Tee Program](#Tee-Program), Previous: [Id Program](#Id-Program), Up: [Clones](#Clones)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [Tee Program](#1125-duplicating-output-into-multiple-files), Previous: [Id Program](#1123-printing-out-user-information), Up: [Clones](#112-running-awk-without-input-files)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 #### 11.2.4 Splitting a Large File into Pieces
 
@@ -19226,7 +19226,7 @@ argument that specifies the file name prefix.
 
 Here is a version of `split` in `awk`. It uses the
 `ord()` and `chr()` functions presented in
-[Ordinal Functions](#Ordinal-Functions).
+[Ordinal Functions](#1025-translating-between-characters-and-numbers).
 
 The program first sets its defaults, and then tests to make sure there are
 not too many arguments.  It then looks at each argument in turn.  The
@@ -19317,7 +19317,7 @@ which isn&rsquo;t true for EBCDIC systems.
 
 ---
 
-Next: [Uniq Program](#Uniq-Program), Previous: [Split Program](#Split-Program), Up: [Clones](#Clones)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [Uniq Program](#1126-printing-nonduplicated-lines-of-text), Previous: [Split Program](#1124-splitting-a-large-file-into-pieces), Up: [Clones](#112-running-awk-without-input-files)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 #### 11.2.5 Duplicating Output into Multiple Files
 
@@ -19412,7 +19412,7 @@ Finally, the `END` rule cleans up by closing all the output files:
 
 ---
 
-Next: [Wc Program](#Wc-Program), Previous: [Tee Program](#Tee-Program), Up: [Clones](#Clones)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [Wc Program](#1127-counting-things), Previous: [Tee Program](#1125-duplicating-output-into-multiple-files), Up: [Clones](#112-running-awk-without-input-files)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 #### 11.2.6 Printing Nonduplicated Lines of Text
 
@@ -19458,9 +19458,9 @@ Normally `uniq` behaves as if both the -d and
 
 `uniq` uses the
 `getopt()` library function
-(see [Getopt Function](#Getopt-Function))
+(see [Getopt Function](#104-processing-command-line-options))
 and the `join()` library function
-(see [Join Function](#Join-Function)).
+(see [Join Function](#1026-merging-an-array-into-a-string)).
 
 The program begins with a `usage()` function and then a brief outline of
 the options and their meanings in comments.
@@ -19553,7 +19553,7 @@ and characters.  If no field count and no character count are specified,
 simple string comparison of `last` and `$0`.
 
 Otherwise, things get more complicated.  If fields have to be skipped,
-each line is broken into an array using `split()` (see [String Functions](#String-Functions)); the desired fields are then joined back into a line
+each line is broken into an array using `split()` (see [String Functions](#913-string-manipulation-functions)); the desired fields are then joined back into a line
 using `join()`.  The joined lines are stored in `clast` and
 `cline`.  If no fields are skipped, `clast` and `cline`
 are set to `last` and `$0`, respectively.  Finally, if
@@ -19654,7 +19654,7 @@ line of input data:
 
 ---
 
-Previous: [Uniq Program](#Uniq-Program), Up: [Clones](#Clones)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Previous: [Uniq Program](#1126-printing-nonduplicated-lines-of-text), Up: [Clones](#112-running-awk-without-input-files)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 #### 11.2.7 Counting Things
 
@@ -19686,9 +19686,9 @@ words (i.e., fields) and counts them, it counts lines (i.e., records),
 and it can easily tell us how long a line is.
 
 This program uses the `getopt()` library function
-(see [Getopt Function](#Getopt-Function))
+(see [Getopt Function](#104-processing-command-line-options))
 and the file-transition functions
-(see [Filetrans Function](#Filetrans-Function)).
+(see [Filetrans Function](#1031-noting-data-file-boundaries)).
 
 This version has one notable difference from traditional versions of
 `wc`: it always prints the counts in the order lines, words,
@@ -19802,32 +19802,32 @@ Finally, the `END` rule simply prints the totals for all the files:
 
 ---
 
-Next: [Programs Summary](#Programs-Summary), Previous: [Clones](#Clones), Up: [Sample Programs](#Sample-Programs)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [Programs Summary](#114-summary), Previous: [Clones](#112-running-awk-without-input-files), Up: [Sample Programs](#11-practical-awk-programs)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 ### 11.3 A Grab Bag of `awk` Programs
 
 This section is a large &ldquo;grab bag&rdquo; of miscellaneous programs.
 We hope you find them both interesting and enjoyable.
 
-&bull; [Dupword Program](#Dupword-Program):  Finding duplicated words in a document.
-&bull; [Alarm Program](#Alarm-Program):  An alarm clock.
-&bull; [Translate Program](#Translate-Program):  A program similar to the `tr` utility.
-&bull; [Labels Program](#Labels-Program):  Printing mailing labels.
-&bull; [Word Sorting](#Word-Sorting):  A program to produce a word usage count.
-&bull; [History Sorting](#History-Sorting):  Eliminating duplicate entries from a history
+&bull; [Dupword Program](#1131-finding-duplicated-words-in-a-document):  Finding duplicated words in a document.
+&bull; [Alarm Program](#1132-an-alarm-clock-program):  An alarm clock.
+&bull; [Translate Program](#1133-transliterating-characters):  A program similar to the `tr` utility.
+&bull; [Labels Program](#1134-printing-mailing-labels):  Printing mailing labels.
+&bull; [Word Sorting](#1135-generating-word-usage-counts):  A program to produce a word usage count.
+&bull; [History Sorting](#1136-removing-duplicates-from-unsorted-text):  Eliminating duplicate entries from a history
                                 file.
-&bull; [Extract Program](#Extract-Program):  Pulling out programs from Texinfo source
+&bull; [Extract Program](#1137-extracting-programs-from-texinfo-source-files):  Pulling out programs from Texinfo source
                                 files.
-&bull; [Simple Sed](#Simple-Sed):  A Simple Stream Editor.
-&bull; [Igawk Program](#Igawk-Program):  A wrapper for `awk` that includes
+&bull; [Simple Sed](#1138-a-simple-stream-editor):  A Simple Stream Editor.
+&bull; [Igawk Program](#1139-an-easy-way-to-use-library-functions):  A wrapper for `awk` that includes
                                 files.
-&bull; [Anagram Program](#Anagram-Program):  Finding anagrams from a dictionary.
-&bull; [Signature Program](#Signature-Program):  People do amazing things with too much time on
+&bull; [Anagram Program](#11310-finding-anagrams-from-a-dictionary):  Finding anagrams from a dictionary.
+&bull; [Signature Program](#11311-and-now-for-something-completely-different):  People do amazing things with too much time on
                                 their hands.
 
 ---
 
-Next: [Alarm Program](#Alarm-Program), Up: [Miscellaneous Programs](#Miscellaneous-Programs)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [Alarm Program](#1132-an-alarm-clock-program), Up: [Miscellaneous Programs](#113-running-long-programs)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 #### 11.3.1 Finding Duplicated Words in a Document
 
@@ -19877,7 +19877,7 @@ word, comparing it to the previous one:
 
 ---
 
-Next: [Translate Program](#Translate-Program), Previous: [Dupword Program](#Dupword-Program), Up: [Miscellaneous Programs](#Miscellaneous-Programs)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [Translate Program](#1133-transliterating-characters), Previous: [Dupword Program](#1131-finding-duplicated-words-in-a-document), Up: [Miscellaneous Programs](#113-running-long-programs)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 #### 11.3.2 An Alarm Clock Program
 
@@ -19896,7 +19896,7 @@ the number of times to repeat the message as well as a delay between
 repetitions.
 
 This program uses the `getlocaltime()` function from
-[Getlocaltime Function](#Getlocaltime-Function).
+[Getlocaltime Function](#1027-managing-the-time-of-day).
 
 All the work is done in the `BEGIN` rule.  The first part is argument
 checking and setting of defaults: the delay, the count, and the message to
@@ -19906,7 +19906,7 @@ the message.  (On many systems, printing the ASCII BEL generates an
 audible alert. Thus, when the alarm goes off, the system calls attention
 to itself in case the user is not looking at the computer.)
 Just for a change, this program uses a `switch` statement
-(see [Switch Statement](#Switch-Statement)), but the processing could be done with a series of
+(see [Switch Statement](#745-the-switch-statement)), but the processing could be done with a series of
 `if`-`else` statements instead.
 Here is the program:
 
@@ -19995,7 +19995,7 @@ is how long to wait before setting off the alarm:
     
 
 Finally, the program uses the `system()` function
-(see [I/O Functions](#I_002fO-Functions))
+(see [I/O Functions](#914-inputoutput-functions))
 to call the `sleep` utility.  The `sleep` utility simply pauses
 for the given number of seconds.  If the exit status is not zero,
 the program assumes that `sleep` was interrupted and exits. If
@@ -20022,7 +20022,7 @@ seconds are necessary:
 
 ---
 
-Next: [Labels Program](#Labels-Program), Previous: [Alarm Program](#Alarm-Program), Up: [Miscellaneous Programs](#Miscellaneous-Programs)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [Labels Program](#1134-printing-mailing-labels), Previous: [Alarm Program](#1132-an-alarm-clock-program), Up: [Miscellaneous Programs](#113-running-long-programs)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 #### 11.3.3 Transliterating Characters
 
@@ -20051,7 +20051,7 @@ but it does most of the job.
 The `translate` program was written long before `gawk`
 acquired the ability to split each character in a string into separate
 array elements.  Thus, it makes repeated use of the `substr()`,
-`index()`, and `gsub()` built-in functions (see [String Functions](#String-Functions)).  There are two functions.  The first, `stranslate()`,
+`index()`, and `gsub()` built-in functions (see [String Functions](#913-string-manipulation-functions)).  There are two functions.  The first, `stranslate()`,
 takes three arguments:
 
 `from`
@@ -20133,7 +20133,7 @@ function, but it is not necessarily efficient, and we (the `gawk`
 developers) started to consider adding a built-in function.  However,
 shortly after writing this program, we learned that Brian Kernighan
 had added the `toupper()` and `tolower()` functions to his
-`awk` (see [String Functions](#String-Functions)).  These functions handle the
+`awk` (see [String Functions](#913-string-manipulation-functions)).  These functions handle the
 vast majority of the cases where character transliteration is necessary,
 and so we chose to simply add those functions to `gawk` as well
 and then leave well enough alone.
@@ -20145,12 +20145,12 @@ will never change throughout the lifetime of the program.
 
 Another obvious improvement is to enable the use of ranges,
 such as &lsquo;a-z&rsquo;, as allowed by the `tr` utility.
-Look at the code for cut.awk (see [Cut Program](#Cut-Program))
+Look at the code for cut.awk (see [Cut Program](#1121-cutting-out-fields-and-columns))
 for inspiration.
 
 ---
 
-Next: [Word Sorting](#Word-Sorting), Previous: [Translate Program](#Translate-Program), Up: [Miscellaneous Programs](#Miscellaneous-Programs)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [Word Sorting](#1135-generating-word-usage-counts), Previous: [Translate Program](#1133-transliterating-characters), Up: [Miscellaneous Programs](#113-running-long-programs)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 #### 11.3.4 Printing Mailing Labels
 
@@ -20168,7 +20168,7 @@ the `line` array and printing the page when 20 labels have been read.
 
 The `BEGIN` rule simply sets `RS` to the empty string, so that
 `awk` splits records at blank lines
-(see [Records](#Records)).
+(see [Records](#41-how-input-is-split-into-records)).
 It sets `MAXLINES` to 100, because 100 is the maximum number
 of lines on the page
 (20 * 5 = 100).
@@ -20256,7 +20256,7 @@ not have been an even multiple of 20 labels in the data:
 
 ---
 
-Next: [History Sorting](#History-Sorting), Previous: [Labels Program](#Labels-Program), Up: [Miscellaneous Programs](#Miscellaneous-Programs)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [History Sorting](#1136-removing-duplicates-from-unsorted-text), Previous: [Labels Program](#1134-printing-mailing-labels), Up: [Miscellaneous Programs](#113-running-long-programs)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 #### 11.3.5 Generating Word-Usage Counts
 
@@ -20372,12 +20372,12 @@ to use the `sort` program.
 
 ---
 
-Next: [Extract Program](#Extract-Program), Previous: [Word Sorting](#Word-Sorting), Up: [Miscellaneous Programs](#Miscellaneous-Programs)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [Extract Program](#1137-extracting-programs-from-texinfo-source-files), Previous: [Word Sorting](#1135-generating-word-usage-counts), Up: [Miscellaneous Programs](#113-running-long-programs)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 #### 11.3.6 Removing Duplicates from Unsorted Text
 
 The `uniq` program
-(see [Uniq Program](#Uniq-Program))
+(see [Uniq Program](#1126-printing-nonduplicated-lines-of-text))
 removes duplicate lines from *sorted* data.
 
 Suppose, however, you need to remove duplicate lines from a data file but
@@ -20427,7 +20427,7 @@ seen.
 
 ---
 
-Next: [Simple Sed](#Simple-Sed), Previous: [History Sorting](#History-Sorting), Up: [Miscellaneous Programs](#Miscellaneous-Programs)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [Simple Sed](#1138-a-simple-stream-editor), Previous: [History Sorting](#1136-removing-duplicates-from-unsorted-text), Up: [Miscellaneous Programs](#113-running-long-programs)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 #### 11.3.7 Extracting Programs from Texinfo Source Files
 
@@ -20469,14 +20469,14 @@ file and does two things, based on the special comments.
 Upon seeing &lsquo;@c system &hellip;&rsquo;,
 it runs a command, by extracting the command text from the
 control line and passing it on to the `system()` function
-(see [I/O Functions](#I_002fO-Functions)).
+(see [I/O Functions](#914-inputoutput-functions)).
 Upon seeing &lsquo;@c file filename&rsquo;, each subsequent line is sent to
 the file filename, until &lsquo;@c endfile&rsquo; is encountered.
 The rules in extract.awk match either &lsquo;@c&rsquo; or
 &lsquo;@comment&rsquo; by letting the &lsquo;omment&rsquo; part be optional.
 Lines containing &lsquo;@group&rsquo; and &lsquo;@end group&rsquo; are simply removed.
 extract.awk uses the `join()` library function
-(see [Join Function](#Join-Function)).
+(see [Join Function](#1026-merging-an-array-into-a-string)).
 
 The example programs in the online Texinfo source for GAWK: Effective AWK Programming
 (gawktexi.in) have all been bracketed inside &lsquo;file&rsquo; and
@@ -20545,7 +20545,7 @@ redirection for printing the contents, keeping open-file management
 simple.
 
 The `for` loop does the work.  It reads lines using `getline`
-(see [Getline](#Getline)).
+(see [Getline](#410-explicit-input-with-getline)).
 For an unexpected end-of-file, it calls the `unexpected_eof()`
 function.  If the line is an &ldquo;endfile&rdquo; line, then it breaks out of
 the loop.
@@ -20558,14 +20558,14 @@ symbols, the program can print it directly.
 Otherwise, each leading &lsquo;@&rsquo; must be stripped off.
 To remove the &lsquo;@&rsquo; symbols, the line is split into separate elements of
 the array `a`, using the `split()` function
-(see [String Functions](#String-Functions)).
+(see [String Functions](#913-string-manipulation-functions)).
 The &lsquo;@&rsquo; symbol is used as the separator character.
 Each element of `a` that is empty indicates two successive &lsquo;@&rsquo;
 symbols in the original line.  For each two empty elements (&lsquo;@@&rsquo; in
 the original file), we have to add a single &lsquo;@&rsquo; symbol back in.
 
 When the processing of the array is finished, `join()` is called with the
-value of `SUBSEP` (see [Multidimensional](#Multidimensional)),
+value of `SUBSEP` (see [Multidimensional](#85-multidimensional-arrays)),
 to rejoin the pieces back into a single
 line.  That line is then printed to the output file:
 
@@ -20614,7 +20614,7 @@ line.  That line is then printed to the output file:
 An important thing to note is the use of the &lsquo;>&rsquo; redirection.
 Output done with &lsquo;>&rsquo; only opens the file once; it stays open and
 subsequent output is appended to the file
-(see [Redirection](#Redirection)).
+(see [Redirection](#56-redirecting-output-of-print-and-printf)).
 This makes it easy to mix program text and explanatory prose for the same
 sample source file (as has been done here!) without any hassle.  The file is
 only closed when a new data file name is encountered or at the end of the
@@ -20642,7 +20642,7 @@ The `END` rule handles the final cleanup, closing the open file:
 
 ---
 
-Next: [Igawk Program](#Igawk-Program), Previous: [Extract Program](#Extract-Program), Up: [Miscellaneous Programs](#Miscellaneous-Programs)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [Igawk Program](#1139-an-easy-way-to-use-library-functions), Previous: [Extract Program](#1137-extracting-programs-from-texinfo-source-files), Up: [Miscellaneous Programs](#113-running-long-programs)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 #### 11.3.8 A Simple Stream Editor
 
@@ -20660,7 +20660,7 @@ Here, &lsquo;s/old/new/g&rsquo; tells `sed` to look for the regexp
 &lsquo;old&rsquo; on each input line and globally replace it with the text
 &lsquo;new&rsquo; (i.e., all the occurrences on a line).  This is similar to
 `awk`&rsquo;s `gsub()` function
-(see [String Functions](#String-Functions)).
+(see [String Functions](#913-string-manipulation-functions)).
 
 The following program, awksed.awk, accepts at least two command-line
 arguments: the pattern to look for and the text to replace it with. Any
@@ -20706,7 +20706,7 @@ are provided, the standard input is used:
 
 The program relies on `gawk`&rsquo;s ability to have `RS` be a regexp,
 as well as on the setting of `RT` to the actual text that terminates the
-record (see [Records](#Records)).
+record (see [Records](#41-how-input-is-split-into-records)).
 
 The idea is to have `RS` be the pattern to look for. `gawk`
 automatically sets `$0` to the text between matches of the pattern.
@@ -20720,14 +20720,14 @@ statement unconditionally prints the replacement text, which is not correct.
 However, if the file did not end in text that matches `RS`, `RT`
 is set to the null string.  In this case, we can print `$0` using
 `printf`
-(see [Printf](#Printf)).
+(see [Printf](#55-using-printf-statements-for-fancier-printing)).
 
 The `BEGIN` rule handles the setup, checking for the right number
 of arguments and calling `usage()` if there is a problem. Then it sets
 `RS` and `ORS` from the command-line arguments and sets
 `ARGV[1]` and `ARGV[2]` to the null string, so that they are
 not treated as file names
-(see [ARGC and ARGV](#ARGC-and-ARGV)).
+(see [ARGC and ARGV](#753-using-argc-and-argv)).
 
 The `usage()` function prints an error message and exits.
 Finally, the single rule handles the printing scheme outlined earlier,
@@ -20736,11 +20736,11 @@ value of `RT`.
 
 ---
 
-Next: [Anagram Program](#Anagram-Program), Previous: [Simple Sed](#Simple-Sed), Up: [Miscellaneous Programs](#Miscellaneous-Programs)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [Anagram Program](#11310-finding-anagrams-from-a-dictionary), Previous: [Simple Sed](#1138-a-simple-stream-editor), Up: [Miscellaneous Programs](#113-running-long-programs)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 #### 11.3.9 An Easy Way to Use Library Functions
 
-In [Include Files](#Include-Files), we saw how `gawk` provides a built-in
+In [Include Files](#27-including-other-files-into-your-program), we saw how `gawk` provides a built-in
 file-inclusion capability.  However, this is a `gawk` extension.
 This section provides the motivation for making file inclusion
 available for standard `awk`, and shows how to do it using a
@@ -20753,7 +20753,7 @@ However, using library functions is only easy when writing `awk`
 programs; it is painful when running them, requiring multiple -f
 options.  If `gawk` is unavailable, then so too is the `AWKPATH`
 environment variable and the ability to put `awk` functions into a
-library directory (see [Options](#Options)).
+library directory (see [Options](#22-command-line-options)).
 It would be nice to be able to write programs in the following manner:
 
     # library functions
@@ -20941,7 +20941,7 @@ The `awk` program to process `@include` directives
 is stored in the shell variable `expand_prog`.  Doing this keeps
 the shell script readable.  The `awk` program
 reads through the user&rsquo;s program, one line at a time, using `getline`
-(see [Getline](#Getline)).  The input
+(see [Getline](#410-explicit-input-with-getline)).  The input
 file names and `@include` statements are managed using a stack.
 As each `@include` is encountered, the current file name is
 &ldquo;pushed&rdquo; onto the stack and the file named in the `@include`
@@ -20953,7 +20953,7 @@ the first one on the stack.
 The `pathto()` function does the work of finding the full path to
 a file.  It simulates `gawk`&rsquo;s behavior when searching the
 `AWKPATH` environment variable
-(see [AWKPATH Variable](#AWKPATH-Variable)).
+(see [AWKPATH Variable](#251-the-awkpath-environment-variable)).
 If a file name has a &lsquo;/&rsquo; in it, no path search is done.
 Similarly, if the file name is `"-"`, then that string is
 used as-is.  Otherwise,
@@ -21123,7 +21123,7 @@ features to a program; they can often be layered on top.[82](#FOOT82)
 
 ---
 
-Next: [Signature Program](#Signature-Program), Previous: [Igawk Program](#Igawk-Program), Up: [Miscellaneous Programs](#Miscellaneous-Programs)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [Signature Program](#11311-and-now-for-something-completely-different), Previous: [Igawk Program](#1139-an-easy-way-to-use-library-functions), Up: [Miscellaneous Programs](#113-running-long-programs)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 #### 11.3.10 Finding Anagrams from a Dictionary
 
@@ -21222,7 +21222,7 @@ Here is some partial output when the program is run:
 
 ---
 
-Previous: [Anagram Program](#Anagram-Program), Up: [Miscellaneous Programs](#Miscellaneous-Programs)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Previous: [Anagram Program](#11310-finding-anagrams-from-a-dictionary), Up: [Miscellaneous Programs](#113-running-long-programs)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 #### 11.3.11 And Now for Something Completely Different
 
@@ -21252,7 +21252,7 @@ which is embedded in the Texinfo source file for this Web page.)
 
 ---
 
-Next: [Programs Exercises](#Programs-Exercises), Previous: [Miscellaneous Programs](#Miscellaneous-Programs), Up: [Sample Programs](#Sample-Programs)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [Programs Exercises](#115-exercises), Previous: [Miscellaneous Programs](#113-running-long-programs), Up: [Sample Programs](#11-practical-awk-programs)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 ### 11.4 Summary
 
@@ -21283,14 +21283,14 @@ mailing labels, and finding anagrams.
 
 ---
 
-Previous: [Programs Summary](#Programs-Summary), Up: [Sample Programs](#Sample-Programs)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Previous: [Programs Summary](#114-summary), Up: [Sample Programs](#11-practical-awk-programs)   [[Contents](#table-of-contents)][[Index](#Index)]
 
 ### 11.5 Exercises
 
-1.  Rewrite cut.awk (see [Cut Program](#Cut-Program))
+1.  Rewrite cut.awk (see [Cut Program](#1121-cutting-out-fields-and-columns))
 using `split()` with `""` as the separator.
 
-2.  In [Egrep Program](#Egrep-Program), we mentioned that &lsquo;egrep -i&rsquo; could be
+2.  In [Egrep Program](#1122-searching-for-regular-expressions-in-files), we mentioned that &lsquo;egrep -i&rsquo; could be
 simulated in versions of `awk` without `IGNORECASE` by
 using `tolower()` on the line and the pattern. In a footnote there,
 we also mentioned that this solution has a bug: the translated line is
@@ -21298,17 +21298,17 @@ output, and not the original one.  Fix this problem.
 
 3.  The POSIX version of `id` takes options that control which
 information is printed.  Modify the `awk` version
-(see [Id Program](#Id-Program)) to accept the same arguments and perform in the
+(see [Id Program](#1123-printing-out-user-information)) to accept the same arguments and perform in the
 same way.
 
-4.  The `split.awk` program (see [Split Program](#Split-Program)) assumes
+4.  The `split.awk` program (see [Split Program](#1124-splitting-a-large-file-into-pieces)) assumes
 that letters are contiguous in the character set,
 which isn&rsquo;t true for EBCDIC systems.
 Fix this problem.
 (Hint: Consider a different way to work through the alphabet,
 without relying on `ord()` and `chr()`.)
 
-5.  In uniq.awk (see [Uniq Program](#Uniq-Program), the
+5.  In uniq.awk (see [Uniq Program](#1126-printing-nonduplicated-lines-of-text), the
 logic for choosing which lines to print represents a *state
 machine*, which is &ldquo;a device that can be in one of a set number of stable
 conditions depending on its previous condition and on the present values
@@ -21320,22 +21320,22 @@ easier code, and for most inputs where you would use this, just
 as fast.&rdquo;  Rewrite the logic to follow this
 suggestion.
 
-6.  Why can&rsquo;t the wc.awk program (see [Wc Program](#Wc-Program)) just
+6.  Why can&rsquo;t the wc.awk program (see [Wc Program](#1127-counting-things)) just
 use the value of `FNR` in `endfile()`?
-Hint: Examine the code in [Filetrans Function](#Filetrans-Function).
+Hint: Examine the code in [Filetrans Function](#1031-noting-data-file-boundaries).
 
 7.  Manipulation of individual characters in the `translate` program
-(see [Translate Program](#Translate-Program)) is painful using standard `awk`
+(see [Translate Program](#1133-transliterating-characters)) is painful using standard `awk`
 functions.  Given that `gawk` can split strings into individual
 characters using `""` as the separator, how might you use this
 feature to simplify the program?
 
-8.  The extract.awk program (see [Extract Program](#Extract-Program)) was written
+8.  The extract.awk program (see [Extract Program](#1137-extracting-programs-from-texinfo-source-files)) was written
 before `gawk` had the `gensub()` function.  Use it
 to simplify the code.
 
 9.  Compare the performance of the awksed.awk program
-(see [Simple Sed](#Simple-Sed)) with the more straightforward:
+(see [Simple Sed](#1138-a-simple-stream-editor)) with the more straightforward:
 
     BEGIN {
         pat = ARGV[1]
@@ -21349,7 +21349,7 @@ to simplify the code.
 10.  What are the advantages and disadvantages of awksed.awk versus
 the real `sed` utility?
 
-11.  In [Igawk Program](#Igawk-Program), we mentioned that not trying to save the line
+11.  In [Igawk Program](#1139-an-easy-way-to-use-library-functions), we mentioned that not trying to save the line
 read with `getline` in the `pathto()` function when testing
 for the file&rsquo;s accessibility for use with the main program simplifies
 things considerably.  What problem does this engender though?
@@ -21378,9 +21378,9 @@ directives, default.awk could simply contain `@include`
 statements for the desired library functions.
 Make this change.
 
-13.  Modify anagram.awk (see [Anagram Program](#Anagram-Program)), to avoid
+13.  Modify anagram.awk (see [Anagram Program](#11310-finding-anagrams-from-a-dictionary)), to avoid
 the use of the external `sort` utility.
 
 ---
 
-Next: [Internationalization](#Internationalization), Previous: [Sample Programs](#Sample-Programs), Up: [Top](#Top)   [[Contents](#SEC_Contents)][[Index](#Index)]
+Next: [Internationalization](#Internationalization), Previous: [Sample Programs](#11-practical-awk-programs), Up: [Top](#Top)   [[Contents](#table-of-contents)][[Index](#Index)]
