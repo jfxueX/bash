@@ -1644,13 +1644,13 @@ There are several ways to run an `awk` program.  If the program is
 short, it is easiest to include it in the command that runs `awk`,
 like this:
 
-   <pre>awk 'program' input-file1input-file2 &hellip;</pre>
+   <pre>awk <i>'program' input-file1input-file2</i> &hellip;</pre>
     
 
 When the program is long, it is usually more convenient to put it in a file
 and run it with a command like this:
 
-   <pre>awk -f program-fileinput-file1input-file2 &hellip;</pre>
+   <pre>awk -f <i>program-fileinput-file1input-file2</i> &hellip;</pre>
     
 
 This section discusses both mechanisms, along with several
@@ -1675,7 +1675,7 @@ Once you are familiar with `awk`, you will often type in simple
 programs the moment you want to use them.  Then you can write the
 program as the first argument of the `awk` command, like this:
 
-   <pre>awk 'program' input-file1input-file2 &hellip;</pre>
+   <pre>awk <i>'program' input-file1input-file2</i> &hellip;</pre>
     
 
 where program consists of a series of patterns and
@@ -1708,7 +1708,7 @@ Next: [Long](#113-running-long-programs), Previous: [One-shot](#111-one-shot-thr
 You can also run `awk` without any input files.  If you type the
 following command line:
 
-    awk 'program'
+<pre>   awk <i>'program'</i></pre>
     
 
 `awk` applies the program to the *standard input*,
@@ -1721,10 +1721,10 @@ As an example, the following program prints a friendly piece of advice
 to keep you from worrying about the complexities of computer
 programming:
 
-```awk
-    $ awk 'BEGIN { print "Don\47t Panic!" }'
+<pre>
+    $ <i>awk 'BEGIN { print "Don\47t Panic!" }'</i>
     -| Don't Panic!
-```
+</pre>
 
 `awk` executes statements associated with `BEGIN` before
 reading any input.  If there are no other statements in your program,
@@ -1743,17 +1743,18 @@ This next simple `awk` program
 emulates the `cat` utility; it copies whatever you type on the
 keyboard to its standard output (why this works is explained shortly):
 
-```awk
-    $ awk '{ print }'Now is the time for all good men
-    -| Now is the time for all good men
-    to come to the aid of their country.
-    -| to come to the aid of their country.
-    Four score and seven years ago, ...
-    -| Four score and seven years ago, ...
-    What, me worry?
-    -| What, me worry?
-    Ctrl-d
-```
+<pre>
+  $ <i>awk '{ print }'
+  Now is the time for all good men</i>
+  -| Now is the time for all good men
+  <i>to come to the aid of their country.</i>
+  -| to come to the aid of their country.
+  <i>Four score and seven years ago, ...</i>
+  -| Four score and seven years ago, ...
+  <i>What, me worry?</i>
+  -| What, me worry?
+  <i>Ctrl-d</i>
+</pre>
 
 ---
 
@@ -1765,7 +1766,7 @@ Sometimes `awk` programs are very long.  In these cases, it is
 more convenient to put the program into a separate file.  In order to tell
 `awk` to use that file for its program, you type:
 
-  <pre>awk -f source-fileinput-file1input-file2 &hellip;</pre>
+  <pre>awk -f <i>source-fileinput-file1input-file2</i> &hellip;</pre>
     
 
 The -f instructs the `awk` utility to get the
@@ -1827,10 +1828,11 @@ simply type &lsquo;advice&rsquo;
 at the shell and the system arranges to run `awk` as if you had
 typed &lsquo;awk -f advice&rsquo;:
 
-    $ chmod +x advice
-    $ advice
-    -| Don't Panic!
-    
+<pre>
+  $ <i>chmod +x advice</i>
+  $ <i>advice</i>
+  -| Don't Panic!
+</pre>    
 
 (We assume you have the current directory in your shell&rsquo;s search
 path variable [typically `$PATH`].  If not, you may need
@@ -1897,9 +1899,9 @@ The &lsquo;#&rsquo; does not have to be the first character on the line. The
 For example, we could have put the following into advice:
 
 ```awk
-    # This program prints a nice, friendly message.  It helps
-    # keep novice users from being afraid of the computer.
-    BEGIN    { print "Don't Panic!" }
+  # This program prints a nice, friendly message.  It helps
+  # keep novice users from being afraid of the computer.
+  BEGIN    { print "Don't Panic!" }
 ```
 
 You can put comment lines into keyboard-composed throwaway `awk`
@@ -1907,7 +1909,7 @@ programs, but this usually isn&rsquo;t very useful; the purpose of a
 comment is to help you or another person understand the program
 when reading it at a later time.
 
-> CAUTION: As mentioned in
+> <b>CAUTION:</b> As mentioned in
 > [One-shot](#111-one-shot-throwaway-awk-programs),
 > you can enclose short to medium-sized programs in single quotes,
 > in order to keep
@@ -1921,8 +1923,8 @@ when reading it at a later time.
 > 
 > 
 > 
->     $ awk 'BEGIN { print "hello" } # let's be cute'
->     >
+>     <pre>$ <i>awk 'BEGIN { print "hello" } # let's be cute'</i>
+>     ></pre>
 >     
 > 
 > 
@@ -1934,10 +1936,10 @@ when reading it at a later time.
 > 
 > 
 > 
->     $ awk '{ print "hello" } # let's be cute'
+>     <pre>$ <i>awk '{ print "hello" } # let's be cute'</i>
 >     > '
 >     error&rarr; awk: can't open file be
->     error&rarr;  source line number 1
+>     error&rarr;  source line number 1</pre>
 >     
 > 
 > 
@@ -1959,7 +1961,7 @@ This is best done by enclosing the entire program in single quotes.
 This is true whether you are entering the program interactively at
 the shell prompt, or writing it as part of a larger shell script:
 
-<pre>  awk 'program text' input-file1input-file2 &hellip;</pre>
+<pre>  awk <i>'program text' input-file1input-file2</i> &hellip;</pre>
     
 
 Once you are working with the shell, it is helpful to have a basic
