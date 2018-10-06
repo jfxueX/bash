@@ -1979,7 +1979,7 @@ like this: `""`. In the shell, it can be written using single
 or double quotes: `""` or `''`. Although the null string has
 no characters in it, it does exist. For example, consider this command:
 
-    $ echo ""
+<pre>  $ echo ""</pre>
 
 Here, the `echo` utility receives a single argument, even
 though that argument has no characters in it. In the rest of this
@@ -2127,14 +2127,14 @@ from this one liner script that prints all lines in a file surrounded by
 double quotes:
 
 ```awk
-    { print "\"" $0 "\"" }
+  { print "\"" $0 "\"" }
 ```    
 
 In an MS-Windows command-line the one-liner script above may be passed as
 follows:
 
 ```awk
-    gawk "{ print \"\042\" $0 \"\042\" }" file
+  gawk "{ print \"\042\" $0 \"\042\" }" file
 ```
 
 In this example the &lsquo;\042&rsquo; is the octal code for a double-quote;
@@ -2247,7 +2247,7 @@ the term *string* is based on similar usage in English, such
 as &ldquo;a string of pearls&rdquo; or &ldquo;a string of cars in a train&rdquo;):
 
 ```awk
-    awk '/li/ { print $0 }' mail-list
+  awk '/li/ { print $0 }' mail-list
 ```    
 
 When lines containing &lsquo;li&rsquo; are found, they are printed because
@@ -2268,11 +2268,11 @@ interpret any of it as special shell characters.
 Here is what this program prints:
 
 ```awk
-    $ awk '/li/ { print $0 }' mail-list
-    -| Amelia       555-5553     amelia.zodiacusque@gmail.com    F
-    -| Broderick    555-0542     broderick.aliquotiens@yahoo.com R
-    -| Julie        555-6699     julie.perscrutabor@skeeve.com   F
-    -| Samuel       555-3430     samuel.lanceolis@shu.edu        A
+  $ awk '/li/ { print $0 }' mail-list
+  -| Amelia       555-5553     amelia.zodiacusque@gmail.com    F
+  -| Broderick    555-0542     broderick.aliquotiens@yahoo.com R
+  -| Julie        555-6699     julie.perscrutabor@skeeve.com   F
+  -| Samuel       555-3430     samuel.lanceolis@shu.edu        A
 ```    
 
 In an `awk` rule, either the pattern or the action can be omitted,
@@ -2303,7 +2303,7 @@ you can come up with different ways to do the same things shown here:
 <li>Print every line that is longer than 80 characters:
 
 ```awk
-    awk 'length($0) > 80' data
+  awk 'length($0) > 80' data
 ```    
 
 The sole rule has a relational expression as its pattern and has no
@@ -2312,8 +2312,8 @@ action&mdash;so it uses the default action, printing the record.</li>
 <li>Print the length of the longest input line:
 
 ```awk
-    awk '{ if (length($0) > max) max = length($0) }
-         END { print max }' data
+  awk '{ if (length($0) > max) max = length($0) }
+       END { print max }' data
 ```    
 
 The code associated with `END` executes after all
@@ -2322,8 +2322,8 @@ input has been read; it&rsquo;s the other side of the coin to `BEGIN`.</li>
 <li>Print the length of the longest line in data:
 
 ```awk
-    expand data | awk '{ if (x < length($0)) x = length($0) }
-                       END { print "maximum line length is " x }'
+  expand data | awk '{ if (x < length($0)) x = length($0) }
+                    END { print "maximum line length is " x }'
 ```    
 
 This example differs slightly from the previous one:
@@ -2334,7 +2334,7 @@ as opposed to the number of input characters on each line.</li>
 <li>Print every line that has at least one field:
 
 ```awk
-    awk 'NF > 0' data
+  awk 'NF > 0' data
 ```   
 
 This is an easy way to delete blank lines from a file (or rather, to
@@ -2344,42 +2344,42 @@ have been removed).</li>
 <li>Print seven random numbers from 0 to 100, inclusive:
 
 ```awk
-    awk 'BEGIN { for (i = 1; i <= 7; i++)
-                     print int(101 * rand()) }'
+  awk 'BEGIN { for (i = 1; i <= 7; i++)
+                   print int(101 * rand()) }'
 ```
 </li>
 
 <li>Print the total number of bytes used by files:
 
 ```awk
-    ls -l files | awk '{ x += $5 }
-                       END { print "total bytes: " x }'
+  ls -l files | awk '{ x += $5 }
+                     END { print "total bytes: " x }'
 ```    
 </li>
 
 <li>Print the total number of kilobytes used by files:
 
 ```awk
-    ls -l files | awk '{ x += $5 }
-       END { print "total K-bytes:", x / 1024 }'
+  ls -l files | awk '{ x += $5 }
+     END { print "total K-bytes:", x / 1024 }'
 ```    
 </li>
 <li>Print a sorted list of the login names of all users:
 
 ```awk
-    awk -F: '{ print $1 }' /etc/passwd | sort
+  awk -F: '{ print $1 }' /etc/passwd | sort
 ```    
 </li>
 <li>Count the lines in a file:
 
 ```awk
-    awk 'END { print NR }' data
+  awk 'END { print NR }' data
 ```    
 </li>
 <li>Print the even-numbered lines in the data file:
 
 ```awk
-    awk 'NR % 2 == 0' data
+  awk 'NR % 2 == 0' data
 ```    
 </li>
 </ul>
@@ -2406,8 +2406,8 @@ This continues until the program reaches the end of the file.
 For example, the following `awk` program contains two rules:
 
 ```awk
-    /12/  { print $0 }
-    /21/  { print $0 }
+  /12/  { print $0 }
+  /21/  { print $0 }
 ```   
 
 The first rule has the string &lsquo;12&rsquo; as the
@@ -2423,15 +2423,15 @@ This is what happens if we run this program on our two sample data files,
 mail-list and inventory-shipped:
 
 ```awk
-    $ awk '/12/ { print $0 }
-    >      /21/ { print $0 }' mail-list inventory-shipped
-    -| Anthony      555-3412     anthony.asserturo@hotmail.com   A
-    -| Camilla      555-2912     camilla.infusarum@skynet.be     R
-    -| Fabius       555-1234     fabius.undevicesimus@ucb.edu    F
-    -| Jean-Paul    555-2127     jeanpaul.campanorum@nyu.edu     R
-    -| Jean-Paul    555-2127     jeanpaul.campanorum@nyu.edu     R
-    -| Jan  21  36  64 620
-    -| Apr  21  70  74 514
+  $ awk '/12/ { print $0 }
+  >      /21/ { print $0 }' mail-list inventory-shipped
+  -| Anthony      555-3412     anthony.asserturo@hotmail.com   A
+  -| Camilla      555-2912     camilla.infusarum@skynet.be     R
+  -| Fabius       555-1234     fabius.undevicesimus@ucb.edu    F
+  -| Jean-Paul    555-2127     jeanpaul.campanorum@nyu.edu     R
+  -| Jean-Paul    555-2127     jeanpaul.campanorum@nyu.edu     R
+  -| Jan  21  36  64 620
+  -| Apr  21  70  74 514
 ```    
 
 Note how the line beginning with &lsquo;Jean-Paul&rsquo;
@@ -2451,8 +2451,8 @@ features that haven&rsquo;t been covered yet, so don&rsquo;t worry if you don&rs
 understand all the details:
 
 ```awk
-    ls -l | awk '$6 == "Nov" { sum += $5 }
-                 END { print sum }'
+  ls -l | awk '$6 == "Nov" { sum += $5 }
+               END { print sum }'
 ```    
 
 This command prints the total number of bytes in all the files in the
@@ -2511,8 +2511,8 @@ Most often, each line in an `awk` program is a separate statement or
 separate rule, like this:
 
 ```awk
-    awk '/12/  { print $0 }
-         /21/  { print $0 }' mail-list inventory-shipped
+  awk '/12/  { print $0 }
+       /21/  { print $0 }' mail-list inventory-shipped
 ```    
 
 However, `gawk` ignores newlines after any of the following
@@ -2532,8 +2532,8 @@ character.  A backslash is allowed anywhere in the statement, even
 in the middle of a string or regular expression.  For example:
 
 ```awk
-    awk '/This regular expression is too long, so continue it\
-     on the next line/ { print $1 }'
+  awk '/This regular expression is too long, so continue it\
+   on the next line/ { print $1 }'
 ```    
 
 We have generally not used backslash continuation in our sample programs.
@@ -2793,10 +2793,10 @@ The long and short options are
 interchangeable in all contexts.
 The following list describes options mandated by the POSIX standard:
 
-</br><code>-F <b><i>fs</i></b></code></br>
+<code>-F <b><i>fs</i></b></code></br>
 <code>--field-separator <b><i>fs</i></b></code></br>
 Set the `FS` variable to fs
-(see [Field Separators](#45-specifying-how-fields-are-separated)).
+(see[Field Separators](#45-specifying-how-fields-are-separated)).
 
 <code>-f <i><b>source-file</b></i></code></br>
 <code>--file <i><b>source-file</b></i></code></br>
@@ -2822,7 +2822,7 @@ more than once, setting another variable each time, like this:
 > values of those variables as it needs to, possibly ignoring any
 > initial value you may have given.
 
-`-W gawk-opt`
+<code>-W gawk-opt</code></br>
 Provide an implementation-specific option.
 This is the POSIX convention for providing implementation-specific options.
 These options
@@ -2831,7 +2831,7 @@ Note that the long options may be abbreviated, as long as
 the abbreviations remain unique.
 The full list of `gawk`-specific options is provided next.
 
-`--`
+<code>--</code></br>
 Signal the end of the command-line options.  The following arguments
 are not treated as options even if they begin with &lsquo;-&rsquo;.  This
 interpretation of -- follows the POSIX argument parsing
@@ -2950,21 +2950,21 @@ with &lsquo;#!&rsquo; scripts (see [Executable Scripts](#114-executable-awk-prog
     awk program here &hellip;
 ```
 
-<code>-g</code>
-<code>--gen-pot</code>
+<code>-g</code></br>
+<code>--gen-pot</code></br>
 Analyze the source program and
 generate a GNU `gettext` portable object template file on standard
 output for all string constants that have been marked for translation.
 See [Internationalization](#Internationalization),
 for information about this option.
 
-<code>-h</code>
-<code>--help</code>
+<code>-h</code></br>
+<code>--help</code></br>
 Print a &ldquo;usage&rdquo; message summarizing the short- and long-style options
 that `gawk` accepts and then exit.
 
-<code>-i <i><b>source-file</b></i></code>
-<code>--include <i><b>source-file</b></i></code>
+<code>-i <i><b>source-file</b></i></code></br>
+<code>--include <i><b>source-file</b></i></code></br>
 Read an `awk` source library from source-file.  This option
 is completely equivalent to using the `@include` directive inside
 your program.  It is very similar to the -f option,
@@ -2977,8 +2977,8 @@ input.  Thus, after processing an -i argument, `gawk`
 still expects to find the main source code via the -f option
 or on the command line.
 
-<code>-l <i><b>ext</b></i></code>
-<code>--load <i><b>ext</b></i></code>
+<code>-l <i><b>ext</b></i></code></br>
+<code>--load <i><b>ext</b></i></code></br>
 Load a dynamic extension named ext. Extensions
 are stored as system shared libraries.
 This option searches for the library using the `AWKLIBPATH`
@@ -2988,8 +2988,8 @@ The extension initialization routine should be named `dl_load()`.
 An alternative is to use the `@load` keyword inside the program to load
 a shared library.  This advanced feature is described in detail in [Dynamic Extensions](#Dynamic-Extensions).
 
-<code>-L[<i><b>value</b></i>]</code>
-<code>--lint[=<i><b>value</b></i>]</code>
+<code>-L[<i><b>value</b></i>]</code></br>
+<code>--lint[=<i><b>value</b></i>]</code></br>
 Warn about constructs that are dubious or nonportable to
 other `awk` implementations.
 No space is allowed between the -L and value, if
@@ -3009,14 +3009,14 @@ when eliminating problems pointed out by --lint, you should take
 care to search for all occurrences of each inappropriate construct. As
 `awk` programs are usually short, doing so is not burdensome.
 
-<code>-M</code>
-<code>--bignum</code>
+<code>-M</code></br>
+<code>--bignum</code></br>
 Select arbitrary-precision arithmetic on numbers. This option has no effect
 if `gawk` is not compiled to use the GNU MPFR and MP libraries
 (see [Arbitrary Precision Arithmetic](#Arbitrary-Precision-Arithmetic)).
 
-<code>-n</code>
-<code>--non-decimal-data</code>
+<code>-n</code></br>
+<code>--non-decimal-data</code></br>
 Enable automatic interpretation of octal and hexadecimal
 values in input data
 (see [Nondecimal Data](#Nondecimal-Data)).
@@ -3024,13 +3024,13 @@ values in input data
 > CAUTION: This option can severely break old programs.  Use with care.  Also note
 > that this option may disappear in a future version of `gawk`.
 
-<code>-N</code>
-<code>--use-lc-numeric</code>
+<code>-N</code></br>
+<code>--use-lc-numeric</code></br>
 Force the use of the locale&rsquo;s decimal point character
 when parsing numeric input data (see [Locales](#66-where-you-are-makes-a-difference)).
 
-<code>-o[<i><b>file</b></i>]</code>
-<code>--pretty-print[=<i><b>file</b></i>]</code>
+<code>-o[<i><b>file</b></i>]</code></br>
+<code>--pretty-print[=<i><b>file</b></i>]</code></br>
 Enable pretty-printing of `awk` programs.
 Implies --no-optimize.
 By default, the output program is created in a file named awkprof.out
@@ -3043,8 +3043,8 @@ file is supplied.
 > NOTE: In the past, this option would also execute your program.
 > This is no longer the case.
 
-<code>-O</code>
-<code>--optimize</code>
+<code>-O</code></br>
+<code>--optimize</code></br>
 Enable `gawk`&rsquo;s default optimizations on the internal
 representation of the program.  At the moment, this includes simple
 constant folding and tail recursion elimination in function calls.
@@ -3054,8 +3054,8 @@ This option remains primarily for backwards compatibility. However, it may
 be used to cancel the effect of an earlier -s option
 (see later in this list).
 
-<code>-p[<b><i>file</i></b>]</code>
-<code>--profile[=<b><i>file</i></b>]</code>
+<code>-p[<b><i>file</i></b>]</code></br>
+<code>--profile[=<b><i>file</i></b>]</code></br>
 Enable profiling of `awk` programs
 (see [Profiling](#Profiling)).
 Implies --no-optimize.
@@ -3068,8 +3068,8 @@ file is supplied.
 The profile contains execution counts for each statement in the program
 in the left margin, and function call counts for each function.
 
-<code>-P</code>
-<code>--posix</code>
+<code>-P</code></br>
+<code>--posix</code></br>
 Operate in strict POSIX mode.  This disables all `gawk`
 extensions (just like --traditional) and
 disables all extensions not allowed by POSIX.
@@ -3079,25 +3079,22 @@ Also,
 the following additional
 restrictions apply:
 
-- 
-Newlines are not allowed after &lsquo;?&rsquo; or &lsquo;:&rsquo;
+- Newlines are not allowed after &lsquo;?&rsquo; or &lsquo;:&rsquo;
 (see [Conditional Exp](#634-conditional-expressions)).
 
-- 
-Specifying &lsquo;-Ft&rsquo; on the command line does not set the value
+- Specifying &lsquo;-Ft&rsquo; on the command line does not set the value
 of `FS` to be a single TAB character
 (see [Field Separators](#45-specifying-how-fields-are-separated)).
 
-- 
-The locale&rsquo;s decimal point character is used for parsing input
+- The locale&rsquo;s decimal point character is used for parsing input
 data (see [Locales](#66-where-you-are-makes-a-difference)).
 
 If you supply both --traditional and --posix on the
 command line, --posix takes precedence. `gawk`
 issues a warning if both options are supplied.
 
-<code>-r</code>
-<code>--re-interval</code>
+<code>-r</code></br>
+<code>--re-interval</code></br>
 Allow interval expressions
 (see [Regexp Operators](#33-regular-expression-operators))
 in regexps.
@@ -3105,13 +3102,13 @@ This is now `gawk`&rsquo;s default behavior.
 Nevertheless, this option remains (both for backward compatibility
 and for use in combination with --traditional).
 
-<code>-s</code>
-<code>--no-optimize</code>
+<code>-s</code></br>
+<code>--no-optimize</code></br>
 Disable `gawk`&rsquo;s default optimizations on the internal
 representation of the program.
 
-<code>-S</code>
-<code>--sandbox</code>
+<code>-S</code></br>
+<code>--sandbox</code></br>
 Disable the `system()` function,
 input redirections with `getline`,
 output redirections with `print` and `printf`,
@@ -3120,14 +3117,14 @@ This is particularly useful when you want to run `awk` scripts
 from questionable sources and need to make sure the scripts
 can&rsquo;t access your system (other than the specified input data file).
 
-<code>-t</code>
-<code>--lint-old</code>
+<code>-t</code></br>
+<code>--lint-old</code></br>
 Warn about constructs that are not available in the original version of
 `awk` from Version 7 Unix
 (see [V7/SVR3.1](#V7_002fSVR3_002e1)).
 
-<code>-V</code>
-<code>--version</code>
+<code>-V</code></br>
+<code>--version</code></br>
 Print version information for this particular copy of `gawk`.
 This allows you to determine if your copy of `gawk` is up to date
 with respect to whatever the Free Software Foundation is currently
@@ -3219,7 +3216,7 @@ the value value to the variable var&mdash;it does not specify a
 file at all.  (See [Assignment Options](#6132-assigning-variables-on-the-command-line).) In the following example,
 count=1 is a variable assignment, not a file name:
 
-    awk -f program.awk file1 count=1 file2
+<pre>  awk -f <i>program.awk file1 count=1 file2</i></pre>
     
 
 All the command-line arguments are made available to your `awk` program in the
@@ -3268,8 +3265,8 @@ controlling state if multiple passes are needed over a data file.  For
 example:
 
 ```awk
-    awk 'pass == 1  { pass 1 stuff }
-         pass == 2  { pass 2 stuff }' pass=1 mydata pass=2 mydata
+  awk 'pass == 1  { pass 1 stuff }
+       pass == 2  { pass 2 stuff }' pass=1 mydata pass=2 mydata
 ```    
 
 Given the variable assignment feature, the -F option for setting
