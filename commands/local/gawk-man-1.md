@@ -1923,8 +1923,8 @@ when reading it at a later time.
 > 
 > 
 > 
->     <pre>$ <i>awk 'BEGIN { print "hello" } # let's be cute'</i>
->     ></pre>
+>   <pre>$ <i>awk 'BEGIN { print "hello" } # let's be cute'</i>
+>   ></pre>
 >     
 > 
 > 
@@ -1936,10 +1936,10 @@ when reading it at a later time.
 > 
 > 
 > 
->     <pre>$ <i>awk '{ print "hello" } # let's be cute'</i>
->     > '
->     error&rarr; awk: can't open file be
->     error&rarr;  source line number 1</pre>
+>   <pre>$ <i>awk '{ print "hello" } # let's be cute'</i>
+>   > '
+>   error&rarr; awk: can't open file be
+>   error&rarr;  source line number 1</pre>
 >     
 > 
 > 
