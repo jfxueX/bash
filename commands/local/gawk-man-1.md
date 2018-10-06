@@ -2868,12 +2868,12 @@ which summarizes the extensions.
 Also see
 [Compatibility Mode](#Compatibility-Mode).
 
-<code>-CA</code>
-<code>--copyright</code>
+<code>-CA</code></br>
+<code>--copyright</code></br>
 Print the short version of the General Public License and then exit.
 
-<code>-d[<i><b>file</b></i>]</code>
-<code>--dump-variables[=<i><b>file</b></i>]</code>
+<code>-d[<i><b>file</b></i>]</code></br>
+<code>--dump-variables[=<i><b>file</b></i>]</code></br>
 Print a sorted list of global variables, their types, and final values
 to file.  If no file is provided, print this
 list to a file named awkvars.out in the current directory.
@@ -2888,8 +2888,8 @@ inadvertently use global variables that you meant to be local.
 (This is a particularly easy mistake to make with simple variable
 names like `i`, `j`, etc.)
 
-<code>-D[<i><b>file</b></i>]</code>
-<code>--debug[=<i><b>file</b></i>]</code>
+<code>-D[<i><b>file</b></i>]</code></br>
+<code>--debug[=<i><b>file</b></i>]</code></br>
 Enable debugging of `awk` programs
 (see [Debugging](#Debugging)).
 By default, the debugger reads commands interactively from the keyboard
@@ -2899,8 +2899,8 @@ of commands for the debugger to execute noninteractively.
 No space is allowed between the -D and file, if
 file is supplied.
 
-<code>-e <i><b>program-text</b></i></code>
-<code>--source <i><b>program-text</b></i></code>
+<code>-e <i><b>program-text</b></i></code></br>
+<code>--source <i><b>program-text</b></i></code></br>
 Provide program source code in the program-text.
 This option allows you to mix source code in files with source
 code that you enter on the command line.
@@ -2926,8 +2926,8 @@ the total program easier.
 > However, this could change in the future, so it&rsquo;s not a
 > good idea to rely upon this feature.
 
-<code>-E <i><b>file</b></i></code>
-<code>--exec <i><b>file</b></i></code>
+<code>-E <i><b>file</b></i></code></br>
+<code>--exec <i><b>file</b></i></code></br>
 Similar to -f, read `awk` program text from file.
 There are two differences from -f:
 
@@ -3568,27 +3568,27 @@ We&rsquo;ll start with two (trivial) `awk` scripts, namely
 test1 and test2. Here is the test1 script:
 
 ```awk
-    BEGIN {
-        print "This is script test1."
-    }
+  BEGIN {
+      print "This is script test1."
+  }
 ```    
 
 and here is test2:
 
 ```awk
-    @include "test1"
-    BEGIN {
-        print "This is script test2."
-    }
+  @include "test1"
+  BEGIN {
+      print "This is script test2."
+  }
 ```    
 
 Running `gawk` with test2
 produces the following result:
 
 ```awk
-    $ gawk -f test2
-    -| This is script test1.
-    -| This is script test2.
+  $ gawk -f test2
+  -| This is script test1.
+  -| This is script test2.
 ```    
 
 `gawk` runs the test2 script, which includes test1
@@ -3604,32 +3604,32 @@ The files to be included may be nested; e.g., given a third
 script, namely test3:
 
 ```awk
-    @include "test2"
-    BEGIN {
-        print "This is script test3."
-    }
+  @include "test2"
+  BEGIN {
+      print "This is script test3."
+  }
 ```    
 
 Running `gawk` with the test3 script produces the
 following results:
 
 ```awk
-    $ gawk -f test3
-    -| This is script test1.
-    -| This is script test2.
-    -| This is script test3.
+  $ gawk -f test3
+  -| This is script test1.
+  -| This is script test2.
+  -| This is script test3.
 ```    
 
 The file name can, of course, be a pathname. For example:
 
 ```awk
-    @include "../io_funcs"
+  @include "../io_funcs"
 ```    
 
 and:
 
 ```awk
-    @include "/usr/awklib/network"
+  @include "/usr/awklib/network"
 ```    
 
 are both valid. The `AWKPATH` environment variable can be of great
@@ -3683,15 +3683,15 @@ suffix to the file name.  For example, on GNU/Linux systems, the suffix
 &lsquo;.so&rsquo; is used:
 
 ```awk
-    $ gawk '@load "ordchr"; BEGIN {print chr(65)}'
-    -| A
+  $ gawk '@load "ordchr"; BEGIN {print chr(65)}'
+  -| A
 ```    
 
 This is equivalent to the following example:
 
 ```awk
-    $ gawk -lordchr 'BEGIN {print chr(65)}'
-    -| A
+  $ gawk -lordchr 'BEGIN {print chr(65)}'
+  -| A
 ```    
 
 For command-line usage, the -l option is more convenient,
@@ -3802,15 +3802,17 @@ Initially, the examples in this chapter are simple.
 As we explain more about how
 regular expressions work, we present more complicated instances.
 
-&bull; [Regexp Usage](#31-how-to-use-regular-expressions):  How to Use Regular Expressions.
-&bull; [Escape Sequences](#32-escape-sequences):  How to write nonprinting characters.
-&bull; [Regexp Operators](#33-regular-expression-operators):  Regular Expression Operators.
-&bull; [Bracket Expressions](#34-using-bracket-expressions):  What can go between &lsquo;[...]&rsquo;.
-&bull; [Leftmost Longest](#35-how-much-text-matches):  How much text matches.
-&bull; [Computed Regexps](#36-using-dynamic-regexps):  Using Dynamic Regexps.
-&bull; [GNU Regexp Operators](#37-gawk-specific-regexp-operators):  Operators specific to GNU software.
-&bull; [Case-sensitivity](#38-case-sensitivity-in-matching):  How to do case-insensitive matching.
-&bull; [Regexp Summary](#39-summary):  Regular expressions summary.
+| []() | []()
+| - | -
+| &bull; [Regexp Usage](#31-how-to-use-regular-expressions) | How to Use Regular Expressions.
+| &bull; [Escape Sequences](#32-escape-sequences) | How to write nonprinting characters.
+| &bull; [Regexp Operators](#33-regular-expression-operators) | Regular Expression Operators.
+| &bull; [Bracket Expressions](#34-using-bracket-expressions) | What can go between &lsquo;[...]&rsquo;.
+| &bull; [Leftmost Longest](#35-how-much-text-matches) | How much text matches.
+| &bull; [Computed Regexps](#36-using-dynamic-regexps) | Using Dynamic Regexps.
+| &bull; [GNU Regexp Operators](#37-gawk-specific-regexp-operators) | Operators specific to GNU software.
+| &bull; [Case-sensitivity](#38-case-sensitivity-in-matching) | How to do case-insensitive matching.
+| &bull; [Regexp Summary](#39-summary) | Regular expressions summary.
 
 ---
 
@@ -3825,12 +3827,13 @@ to match some part of the text in order to succeed.)  For example, the
 following prints the second field of each record where the string
 &lsquo;li&rsquo; appears anywhere in the record:
 
-    $ awk '/li/ { print $2 }' mail-list
-    -| 555-5553
-    -| 555-0542
-    -| 555-6699
-    -| 555-3430
-    
+```awk
+  $ awk '/li/ { print $2 }' mail-list
+  -| 555-5553
+  -| 555-0542
+  -| 555-6699
+  -| 555-3430
+``` 
 
 Regular expressions can also be used in matching expressions.  These
 expressions allow you to specify the string to match against; it need
@@ -3849,17 +3852,17 @@ This example matches, or selects, all input records with the uppercase
 letter &lsquo;J&rsquo; somewhere in the first field:
 
 ```awk
-    $ awk '$1 ~ /J/' inventory-shipped
-    -| Jan  13  25  15 115
-    -| Jun  31  42  75 492
-    -| Jul  24  34  67 436
-    -| Jan  21  36  64 620
+  $ awk '$1 ~ /J/' inventory-shipped
+  -| Jan  13  25  15 115
+  -| Jun  31  42  75 492
+  -| Jul  24  34  67 436
+  -| Jan  21  36  64 620
 ```    
 
 So does this:
 
 ```awk
-    awk '{ if ($1 ~ /J/) print }' inventory-shipped
+  awk '{ if ($1 ~ /J/) print }' inventory-shipped
 ```    
 
 This next example is true if the expression exp
@@ -3867,7 +3870,7 @@ This next example is true if the expression exp
 does *not* match regexp:
 
 ```awk
-    exp !~ /regexp/
+  exp !~ /regexp/
 ```    
 
 The following example matches,
@@ -3875,12 +3878,12 @@ or selects, all input records whose first field *does not* contain
 the uppercase letter &lsquo;J&rsquo;:
 
 ```awk
-    $ awk '$1 !~ /J/' inventory-shipped
-    -| Feb  15  32  24 226
-    -| Mar  15  24  34 228
-    -| Apr  31  52  63 420
-    -| May  16  34  29 208
-    &hellip;
+  $ awk '$1 !~ /J/' inventory-shipped
+  -| Feb  15  32  24 226
+  -| Mar  15  24  34 228
+  -| Apr  31  52  63 420
+  -| May  16  34  29 208
+  &hellip;
 ```    
 
 When a regexp is enclosed in slashes, such as `/foo/`, we call it
@@ -3903,8 +3906,8 @@ must use &lsquo;\"&rsquo; to represent an actual double-quote character as a
 part of the string.  For example:
 
 ```awk
-    $ awk 'BEGIN { print "He said \"hi!\" to her." }'
-    -| He said "hi!" to her.
+  $ awk 'BEGIN { print "He said \"hi!\" to her." }'
+  -| He said "hi!" to her.
 ```    
 
 The  backslash character itself is another character that cannot be
@@ -3922,37 +3925,37 @@ all the escape sequences used in `awk` and
 what they represent. Unless noted otherwise, all these escape
 sequences apply to both string constants and regexp constants:
 
-<code>\\</code>
+<code>\\</code></br>
 A literal backslash, &lsquo;\&rsquo;.
 
-<code>\a</code>
+<code>\a</code></br>
 The &ldquo;alert&rdquo; character, Ctrl-g, ASCII code 7 (BEL).
 (This often makes some sort of audible noise.)
 
-<code>\b</code>
+<code>\b</code></br>
 Backspace, Ctrl-h, ASCII code 8 (BS).
 
-<code>\f</code>
+<code>\f</code></br>
 Formfeed, Ctrl-l, ASCII code 12 (FF).
 
-<code>\n</code>
+<code>\n</code></br>
 Newline, Ctrl-j, ASCII code 10 (LF).
 
-<code>\r</code>
+<code>\r</code></br>
 Carriage return, Ctrl-m, ASCII code 13 (CR).
 
-<code>\t</code>
+<code>\t</code></br>
 Horizontal TAB, Ctrl-i, ASCII code 9 (HT).
 
-<code>\v</code>
+<code>\v</code></br>
 Vertical TAB, Ctrl-k, ASCII code 11 (VT).
 
-<code>\nnn</code>
+<code>\nnn</code></br>
 The octal value nnn, where nnn stands for 1 to 3 digits
 between &lsquo;0&rsquo; and &lsquo;7&rsquo;.  For example, the code for the ASCII ESC
 (escape) character is &lsquo;\033&rsquo;.
 
-<code>\xhh&hellip;</code>
+<code>\xhh&hellip;</code></br>
 The hexadecimal value hh, where hh stands for a sequence
 of hexadecimal digits (&lsquo;0&rsquo;&ndash;&lsquo;9&rsquo;, and either &lsquo;A&rsquo;&ndash;&lsquo;F&rsquo;
 or &lsquo;a&rsquo;&ndash;&lsquo;f&rsquo;).  A maximum of two digts are allowed after
@@ -3970,7 +3973,7 @@ letters or numbers.  (c.e.)
 > As of version 4.2, only two digits
 > are processed.
 
-<code>\/</code>
+<code>\/</code></br>
 A literal slash (necessary for regexp constants only).
 This sequence is used when you want to write a regexp
 constant that contains a slash
@@ -3980,7 +3983,7 @@ Because the regexp is delimited by
 slashes, you need to escape any slash that is part of the pattern,
 in order to tell `awk` to keep processing the rest of the regexp.
 
-<code>\"</code>
+<code>\"</code></br>
 A literal double quote (necessary for string constants only).
 This sequence is used when you want to write a string
 constant that contains a double quote
@@ -4074,12 +4077,12 @@ the very first step in processing regexps.
 Here is a list of metacharacters.  All characters that are not escape
 sequences and that are not listed here stand for themselves:
 
-<code>\\</code>
+<code>\\</code></br>
 This suppresses the special meaning of a character when
 matching.  For example, &lsquo;\$&rsquo;
 matches the character &lsquo;$&rsquo;.
 
-<code>^</code>
+<code>^</code></br>
 This matches the beginning of a string.  &lsquo;^@chapter&rsquo;
 matches &lsquo;@chapter&rsquo; at the beginning of a string,
 for example, and can be used
@@ -4095,7 +4098,7 @@ The condition is not true in the following example:
     if ("line1\nLINE 2" ~ /^L/) &hellip;
 ```    
 
-<code>$</code>
+<code>$</code></br>
 This is similar to &lsquo;^&rsquo;, but it matches only at the end of a string.
 For example, &lsquo;p$&rsquo;
 matches a record that ends with a &lsquo;p&rsquo;.  The &lsquo;$&rsquo; is an anchor
@@ -4108,7 +4111,7 @@ The condition in the following example is not true:
     if ("line1\nLINE 2" ~ /1$/) &hellip;
 ```    
 
-<code>.(period)</code>
+<code>.(period)</code></br>
 This matches any single character,
 *including* the newline character.  For example, &lsquo;.P&rsquo;
 matches any single character followed by a &lsquo;P&rsquo; in a string.  Using
@@ -4122,7 +4125,7 @@ character, which is a character with all bits equal to zero.
 Otherwise, NUL is just another character. Other versions of `awk`
 may not be able to match the NUL character.
 
-<code>[&hellip;]</code>
+<code>[&hellip;]</code></br>
 This is called a *bracket expression*.[15](#FOOT15)
 It matches any *one* of the characters that are enclosed in
 the square brackets.  For example, &lsquo;[MVX]&rsquo; matches any one of
@@ -4131,14 +4134,14 @@ discussion of what can be inside the square brackets of a bracket expression
 is given in
 [Bracket Expressions](#34-using-bracket-expressions).
 
-<code>[^&hellip;]</code>
+<code>[^&hellip;]</code></br>
 This is a *complemented bracket expression*.  The first character after
 the &lsquo;[&rsquo; *must* be a &lsquo;^&rsquo;.  It matches any characters
 *except* those in the square brackets.  For example, &lsquo;[^awk]&rsquo;
 matches any character that is not an &lsquo;a&rsquo;, &lsquo;w&rsquo;,
 or &lsquo;k&rsquo;.
 
-<code>|</code>
+<code>|</code></br>
 This is the *alternation operator* and it is used to specify
 alternatives.  The &lsquo;|&rsquo; has the lowest precedence of all the regular
 expression operators.  For example, &lsquo;^P|[aeiouy]&rsquo; matches any string
@@ -4148,7 +4151,7 @@ a lowercase English vowel.
 
 The alternation applies to the largest possible regexps on either side.
 
-<code>(&hellip;)</code>
+<code>(&hellip;)</code></br>
 Parentheses are used for grouping in regular expressions, as in
 arithmetic.  They can be used to concatenate regular expressions
 containing the alternation operator, &lsquo;|&rsquo;.  For example,
@@ -4157,7 +4160,7 @@ containing the alternation operator, &lsquo;|&rsquo;.  For example,
 (These are Texinfo formatting control sequences. The &lsquo;+&rsquo; is
 explained further on in this list.)
 
-<code>*</code>
+<code>*</code></br>
 This symbol means that the preceding regular expression should be
 repeated as many times as necessary to find a match.  For example, &lsquo;ph*&rsquo;
 applies the &lsquo;*&rsquo; symbol to the preceding &lsquo;h&rsquo; and looks for matches
@@ -4174,18 +4177,18 @@ Second, &lsquo;*&rsquo; finds as many repetitions as possible. If the text
 to be matched is &lsquo;phhhhhhhhhhhhhhooey&rsquo;, &lsquo;ph*&rsquo; matches all of
 the &lsquo;h&rsquo;s.
 
-<code>+</code>
+<code>+</code></br>
 This symbol is similar to &lsquo;*&rsquo;, except that the preceding expression must be
 matched at least once.  This means that &lsquo;wh+y&rsquo;
 would match &lsquo;why&rsquo; and &lsquo;whhy&rsquo;, but not &lsquo;wy&rsquo;, whereas
 &lsquo;wh*y&rsquo; would match all three.
 
-<code>?</code>
+<code>?</code></br>
 This symbol is similar to &lsquo;*&rsquo;, except that the preceding expression can be
 matched either once or not at all.  For example, &lsquo;fe?d&rsquo;
 matches &lsquo;fed&rsquo; and &lsquo;fd&rsquo;, but nothing else.
 
-<code>{n}{n,}{n,m}</code>
+<code>{n}{n,}{n,m}</code></br>
 One or two numbers inside braces denote an *interval expression*.
 If there is one number in the braces, the preceding regexp is repeated
 n times.
@@ -4194,13 +4197,13 @@ repeated n to m times.
 If there is one number followed by a comma, then the preceding regexp
 is repeated at least n times:
 
-<code>wh{3}y</code>
+<code>wh{3}y</code></br>
 Matches &lsquo;whhhy&rsquo;, but not &lsquo;why&rsquo; or &lsquo;whhhhy&rsquo;.
 
-<code>wh{3,5}y</code>
+<code>wh{3,5}y</code></br>
 Matches &lsquo;whhhy&rsquo;, &lsquo;whhhhy&rsquo;, or &lsquo;whhhhhy&rsquo; only.
 
-<code>wh{2,}y</code>
+<code>wh{2,}y</code></br>
 Matches &lsquo;whhy&rsquo;, &lsquo;whhhy&rsquo;, and so on.
 
 Interval expressions were not traditionally available in `awk`.
@@ -4363,7 +4366,7 @@ Next: [Computed Regexps](#36-using-dynamic-regexps), Previous: [Bracket Expressi
 Consider the following:
 
 ```awk
-    echo aaaabcd | awk '{ sub(/a+/, "<A>"); print }'
+  echo aaaabcd | awk '{ sub(/a+/, "<A>"); print }'
 ```    
 
 This example uses the `sub()` function to make a change to the input
@@ -4379,8 +4382,8 @@ match.  Thus, all four &lsquo;a&rsquo; characters are
 replaced with &lsquo;<A>&rsquo; in this example:
 
 ```awk
-    $ echo aaaabcd | awk '{ sub(/a+/, "<A>"); print }'
-    -| <A>bcd
+  $ echo aaaabcd | awk '{ sub(/a+/, "<A>"); print }'
+  -| <A>bcd
 ```    
 
 For simple match/no-match tests, this is not so important. But when doing
@@ -4404,8 +4407,8 @@ regexp.  A regexp computed in this way is called a *dynamic
 regexp* or a *computed regexp*:
 
 ```awk
-    BEGIN { digits_regexp = "[[:digit:]]+" }
-    $0 ~ digits_regexp    { print }
+  BEGIN { digits_regexp = "[[:digit:]]+" }
+  $0 ~ digits_regexp    { print }
 ```    
 
 This sets `digits_regexp` to a regexp that describes one or more digits,
@@ -4456,20 +4459,20 @@ Some older versions of `awk` do not allow the newline
 character to be used inside a bracket expression for a dynamic regexp:
 
 ```awk
-    $ awk '$0 ~ "[ \t\n]"'
-    error&rarr; awk: newline in character class [
-    error&rarr; ]...
-    error&rarr;  source line number 1
-    error&rarr;  context is
-    error&rarr;        $0 ~ "[ >>>  \t\n]" <<<
-```    
+  $ awk '$0 ~ "[ \t\n]"'
+```
+<pre>  error&rarr; awk: newline in character class [
+  error&rarr; ]...
+  error&rarr;  source line number 1
+  error&rarr;  context is
+  error&rarr;        $0 ~ "[ >>>  \t\n]" <<< </pre
 
 But a newline in a regexp constant works with no problem:
 
 ```awk
-    $ awk '$0 ~ /[ \t\n]/'here is a sample line
-    -| here is a sample line
-    Ctrl-d
+  $ awk '$0 ~ /[ \t\n]/'here is a sample line
+  -| here is a sample line
+  Ctrl-d
 ```
 
 `gawk` does not have this problem, and it isn&rsquo;t likely to
@@ -4489,41 +4492,41 @@ Most of the additional operators deal with word matching.
 For our purposes, a *word* is a sequence of one or more letters, digits,
 or underscores (&lsquo;_&rsquo;):
 
-<code>\s</code>
+<code>\s</code></br>
 Matches any whitespace character.
 Think of it as shorthand for
 &lsquo;[[:space:]]&rsquo;.
 
-<code>\S</code>
+<code>\S</code></br>
 Matches any character that is not whitespace.
 Think of it as shorthand for
 &lsquo;[^[:space:]]&rsquo;.
 
-<code>\w</code>
+<code>\w</code></br>
 Matches any word-constituent character&mdash;that is, it matches any
 letter, digit, or underscore. Think of it as shorthand for
 &lsquo;[[:alnum:]_]&rsquo;.
 
-<code>\W</code>
+<code>\W</code></br>
 Matches any character that is not word-constituent.
 Think of it as shorthand for
 &lsquo;[^[:alnum:]_]&rsquo;.
 
-<code>\<</code>
+<code>\<</code></br>
 Matches the empty string at the beginning of a word.
 For example, `/\<away/` matches &lsquo;away&rsquo; but not
 &lsquo;stowaway&rsquo;.
 
-<code>\></code>
+<code>\></code></br>
 Matches the empty string at the end of a word.
 For example, `/stow\>/` matches &lsquo;stow&rsquo; but not &lsquo;stowaway&rsquo;.
 
-<code>\y</code>
+<code>\y</code></br>
 Matches the empty string at either the beginning or the
 end of a word (i.e., the word boundar**y**).  For example, &lsquo;\yballs?\y&rsquo;
 matches either &lsquo;ball&rsquo; or &lsquo;balls&rsquo;, as a separate word.
 
-<code>\B</code>
+<code>\B</code></br>
 Matches the empty string that occurs between two
 word-constituent characters. For example,
 `/\Brat\B/` matches &lsquo;crate&rsquo;, but it does not match &lsquo;dirty rat&rsquo;.
@@ -4535,11 +4538,11 @@ Other GNU programs, including `gawk`,
 consider the entire string to match as the buffer.
 The operators are:
 
-<code>\`</code>
+<code>\`</code></br>
 Matches the empty string at the
 beginning of a buffer (string)
 
-<code>\'</code>
+<code>\'</code></br>
 Matches the empty string at the
 end of a buffer (string)
 
@@ -4568,12 +4571,12 @@ GNU regexp operators.
 GNU regexp operators described
 in [Regexp Operators](#33-regular-expression-operators).
 
-<code>--posix</code>
+<code>--posix</code></br>
 Match only POSIX regexps; the GNU operators are not special
 (e.g., &lsquo;\w&rsquo; matches a literal &lsquo;w&rsquo;).  Interval expressions
 are allowed.
 
-<code>--traditional</code>
+<code>--traditional</code></br>
 Match traditional Unix `awk` regexps. The GNU operators
 are not special, and interval expressions are not available.
 Because BWK `awk` supports them,
@@ -4581,7 +4584,7 @@ the POSIX character classes (&lsquo;[[:alnum:]]&rsquo;, etc.) are available.
 Characters described by octal and hexadecimal escape sequences are
 treated literally, even if they represent regexp metacharacters.
 
-<code>--re-interval</code>
+<code>--re-interval</code></br>
 Allow interval expressions in regexps, if --traditional
 has been provided.
 Otherwise, interval expressions are available by default.
@@ -4790,8 +4793,8 @@ To do this, use the special `BEGIN` pattern
 For example:
 
 ```awk
-    awk 'BEGIN { RS = "u" }
-         { print $0 }' mail-list
+  awk 'BEGIN { RS = "u" }
+       { print $0 }' mail-list
 ```    
 
 changes the value of `RS` to &lsquo;u&rsquo;, before reading any input.
@@ -4804,47 +4807,47 @@ with each &lsquo;u&rsquo; changed to a newline.  Here are the results of running
 the program on mail-list:
 
 ```awk
-    $ awk 'BEGIN { RS = "u" }
-    >      { print $0 }' mail-list
+  $ awk 'BEGIN { RS = "u" }
+  >      { print $0 }' mail-list
 
-    -| Amelia       555-5553     amelia.zodiac
-    -| sq
-    -| e@gmail.com    F
-    -| Anthony      555-3412     anthony.assert
-    -| ro@hotmail.com   A
-    -| Becky        555-7685     becky.algebrar
-    -| m@gmail.com      A
-    -| Bill         555-1675     bill.drowning@hotmail.com       A
-    -| Broderick    555-0542     broderick.aliq
-    -| otiens@yahoo.com R
-    -| Camilla      555-2912     camilla.inf
-    -| sar
-    -| m@skynet.be     R
-    -| Fabi
-    -| s       555-1234     fabi
-    -| s.
-    -| ndevicesim
-    -| s@
-    -| cb.ed
-    -|     F
-    -| J
-    -| lie        555-6699     j
-    -| lie.perscr
-    -| tabor@skeeve.com   F
-    -| Martin       555-6480     martin.codicib
-    -| s@hotmail.com    A
-    -| Sam
-    -| el       555-3430     sam
-    -| el.lanceolis@sh
-    -| .ed
-    -|         A
-    -| Jean-Pa
-    -| l    555-2127     jeanpa
-    -| l.campanor
-    -| m@ny
-    -| .ed
-    -|      R
-    -|
+  -| Amelia       555-5553     amelia.zodiac
+  -| sq
+  -| e@gmail.com    F
+  -| Anthony      555-3412     anthony.assert
+  -| ro@hotmail.com   A
+  -| Becky        555-7685     becky.algebrar
+  -| m@gmail.com      A
+  -| Bill         555-1675     bill.drowning@hotmail.com       A
+  -| Broderick    555-0542     broderick.aliq
+  -| otiens@yahoo.com R
+  -| Camilla      555-2912     camilla.inf
+  -| sar
+  -| m@skynet.be     R
+  -| Fabi
+  -| s       555-1234     fabi
+  -| s.
+  -| ndevicesim
+  -| s@
+  -| cb.ed
+  -|     F
+  -| J
+  -| lie        555-6699     j
+  -| lie.perscr
+  -| tabor@skeeve.com   F
+  -| Martin       555-6480     martin.codicib
+  -| s@hotmail.com    A
+  -| Sam
+  -| el       555-3430     sam
+  -| el.lanceolis@sh
+  -| .ed
+  -|         A
+  -| Jean-Pa
+  -| l    555-2127     jeanpa
+  -| l.campanor
+  -| m@ny
+  -| .ed
+  -|      R
+  -|
 ```    
 
 Note that the entry for the name &lsquo;Bill&rsquo; is not split.
@@ -4867,7 +4870,7 @@ using the variable-assignment feature
 (see [Other Arguments](#23-other-command-line-arguments)):
 
 ```awk
-    awk '{ print $0 }' RS="u" mail-list
+  awk '{ print $0 }' RS="u" mail-list
 ```    
 
 This sets `RS` to &lsquo;u&rsquo; before processing mail-list.
@@ -4884,8 +4887,8 @@ being fully POSIX-compliant (see [Options](#22-command-line-options)).
 Then, the following (extreme) pipeline prints a surprising &lsquo;1&rsquo;:
 
 ```awk
-    $ echo | gawk --posix 'BEGIN { RS = "a" } ; { print NF }'
-    -| 1
+  $ echo | gawk --posix 'BEGIN { RS = "a" } ; { print NF }'
+  -| 1
 ```    
 
 There is one field, consisting of a newline.  The value of the built-in
@@ -4946,14 +4949,14 @@ matches either a newline or a series of one or more uppercase letters
 with optional leading and/or trailing whitespace:
 
 ```awk
-    $ echo record 1 AAAA record 2 BBBB record 3 |
-    > gawk 'BEGIN { RS = "\n|( *[[:upper:]]+ *)" }
-    >             { print "Record =", $0,"and RT = [" RT "]" }'
+  $ echo record 1 AAAA record 2 BBBB record 3 |
+  > gawk 'BEGIN { RS = "\n|( *[[:upper:]]+ *)" }
+  >             { print "Record =", $0,"and RT = [" RT "]" }'
 
-    -| Record = record 1 and RT = [ AAAA ]
-    -| Record = record 2 and RT = [ BBBB ]
-    -| Record = record 3 and RT = [
-    -| ]
+  -| Record = record 1 and RT = [ AAAA ]
+  -| Record = record 2 and RT = [ BBBB ]
+  -| Record = record 3 and RT = [
+  -| ]
 ```    
 
 The square brackets delineate the contents of `RT`, letting you
@@ -4998,7 +5001,7 @@ consists of a character with all bits equal to zero, is a good
 value to use for `RS` in this case:
 
 ```awk
-    BEGIN { RS = "\0" }  # whole file becomes one record?
+  BEGIN { RS = "\0" }  # whole file becomes one record?
 ```    
 
 `gawk` in fact accepts this, and uses the NUL
