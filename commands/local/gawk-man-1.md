@@ -701,7 +701,7 @@ copy and modify this GNU manual.&rdquo;
             * [9.1.1 Calling Built-in Functions](#911-calling-built-in-functions)
             * [9.1.2 Numeric Functions](#912-numeric-functions)
             * [9.1.3 String-Manipulation Functions](#913-string-manipulation-functions)
-            * [9.1.3.1 More about &lsquo;\&rsquo; and &lsquo;&&rsquo; with `sub()`, `gsub()`, and `gensub()`](#9131-more-about-lsquorsquo-and-lsquorsquo-with-sub-gsub-and-gensub)
+            * [9.1.3.1 More about `\` and `&` with `sub()`, `gsub()`, and `gensub()`](#9131-more-about-lsquorsquo-and-lsquorsquo-with-sub-gsub-and-gensub)
             * [9.1.4 Input/Output Functions](#914-inputoutput-functions)
             * [9.1.5 Time Functions](#915-time-functions)
             * [9.1.6 Bit-Manipulation Functions](#916-bit-manipulation-functions)
@@ -1272,21 +1272,21 @@ This typically represents the command&rsquo;s standard output.
 Error messages and other output on the command&rsquo;s standard error are preceded
 by the glyph &ldquo;error&rarr;&rdquo;.  For example:
 
-<pre>    $ echo hi on stdout
-    -| hi on stdout
-    $ echo hello on stderr 1>&2
-    error&rarr; hello on stderr</pre>
+<pre>  $ <i>echo hi on stdout</i>
+  -| hi on stdout
+  $ <i>echo hello on stderr 1>&2</i>
+  error&rarr; hello on stderr</pre>
     
 
 In the text, almost anything related to programming, such as
 command names,
 variable and function names, and string, numeric and regexp constants
 appear in `this font`. Code fragments
-appear in the same font and quoted, &lsquo;like this&rsquo;.
+appear in the same font and quoted, &lsquo;`like this`&rsquo;.
 Things that are replaced by the user or programmer
-appear in this font.
-Options look like this: -f.
-File names are indicated like this: /path/to/ourfile.
+appear in *this font*.
+Options look like this: `-f`.
+File names are indicated like this: `/path/to/ourfile`.
 Some things are
 emphasized *like this*, and if a point needs to be made
 strongly, it is done **like this**.
@@ -1294,12 +1294,12 @@ The first occurrence of
 a new term is usually its *definition* and appears in the same
 font as the previous occurrence of &ldquo;definition&rdquo; in this sentence.
 
-Characters that you type at the keyboard look like this.  In particular,
+Characters that you type at the keyboard look <code><i>like this</i></code>.  In particular,
 there are special characters called &ldquo;control characters.&rdquo;  These are
-characters that you type by holding down both the CONTROL key and
-another key, at the same time.  For example, a Ctrl-d is typed
-by first pressing and holding the CONTROL key, next
-pressing the d key, and finally releasing both keys.
+characters that you type by holding down both the <code><i>CONTROL</i></code> key and
+another key, at the same time.  For example, a <code><i>Ctrl-d</i></code> is typed
+by first pressing and holding the <code><i>CONTROL</i></code> key, next
+pressing the <code><i>d</i></code> key, and finally releasing both keys.
 
 For the sake of brevity, throughout this Web page, we refer to
 Brian Kernighan&rsquo;s version of `awk` as &ldquo;BWK `awk`.&rdquo;
@@ -1307,8 +1307,8 @@ Brian Kernighan&rsquo;s version of `awk` as &ldquo;BWK `awk`.&rdquo;
 
 #### Dark Corners
 
-> Dark corners are basically fractal&mdash;no matter how much
-> you illuminate, there&rsquo;s always a smaller but darker one.
+> <i>Dark corners are basically fractal&mdash;no matter how much
+> you illuminate, there&rsquo;s always a smaller but darker one.</i>
 
 &mdash; *Brian Kernighan*
 
