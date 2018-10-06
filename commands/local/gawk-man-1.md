@@ -1582,7 +1582,8 @@ February 2015
 
 Next: [Invoking Gawk](#2-running-awk-and-gawk), Previous: [Preface](#preface), Up: [Top](#Top)   [[Contents](#table-of-contents)][[Index](#Index)]
 
-# Part I: The `awk` Language
+<h1>Part I:</br>
+The <code>awk</code> Language</h1>
 
 ---
 
@@ -1617,9 +1618,9 @@ Syntactically, a rule consists of a *pattern* followed by an
 pattern.  Newlines usually separate rules.  Therefore, an `awk`
 program looks like this:
 
-<pre>   <i>pattern</i> { action }
-    <i>pattern</i> { action }
-    &hellip;</pre>
+<pre>  <i>pattern</i> { action }
+  <i>pattern</i> { action }
+   &hellip;</pre>
     
 | []() | []()
 | - | -
