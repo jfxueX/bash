@@ -6753,15 +6753,15 @@ Note: for each variant, `gawk` sets the `RT` predefined variable.
 | Variant | Effect | `awk` / `gawk`
 | - | - | -
 | `getline` | Sets `$0`, `NF`, `FNR`, `NR`, and `RT` | `awk`
-| `getline`var | Sets var, `FNR`, `NR`, and `RT` | `awk`
+| `getline` var | Sets var, `FNR`, `NR`, and `RT` | `awk`
 | `getline <`file | Sets `$0`, `NF`, and `RT` | `awk`
 | `getline var < file` | Sets var and `RT` | `awk`
-| command`| getline` | Sets `$0`, `NF`, and `RT` | `awk`
-| command`| getline` var | Sets var and `RT` | `awk`
-| command`|& getline` | Sets `$0`, `NF`, and `RT` | `gawk`
-| command`|& getline` var | Sets var and `RT` | `gawk`
+| command`\| getline` | Sets `$0`, `NF`, and `RT` | `awk`
+| command`\| getline` var | Sets var and `RT` | `awk`
+| command`\|& getline` | Sets `$0`, `NF`, and `RT` | `gawk`
+| command`\|& getline` var | Sets var and `RT` | `gawk`
 
-**Table 4.1: **`getline` variants and what they set
+**Table 4.1:** `getline` variants and what they set
 
 ---
 
@@ -6822,7 +6822,7 @@ like so:
 In this case, failure to respond within five seconds results in the following
 error message:
 
-    error&rarr; gawk: cmd. line:2: (FILENAME=- FNR=1) fatal: error reading input file `-': Connection timed out
+<pre>  error&rarr; gawk: cmd. line:2: (FILENAME=- FNR=1) fatal: error reading input file \`-': Connection timed out</pre>
     
 
 The timeout can be set or changed at any time, and will take effect on the
@@ -6931,9 +6931,8 @@ Next: [Input Exercises](#415-exercises), Previous: [Command-line directories](#4
 <ul><li>Input is split into records based on the value of `RS`.
 The possibilities are as follows:
 
-| []() | []() | []()
-| - | - | -
 | Value of `RS` | Records are split on ... | `awk` / `gawk`
+| - | - | -
 | Any single character | That character | `awk`
 | The empty string (`""`) | Runs of two or more newlines | `awk`
 | A regexp | Text that matches the regexp | `gawk`
@@ -7353,7 +7352,7 @@ of value to print.  The rest of the format specifier is made up of
 optional *modifiers* that control *how* to print the value, such as
 the field width.  Here is a list of the format-control letters:
 
-<code>%c</code>
+<code><b>%c</b></code></br>
 Print a number as a character; thus, &lsquo;printf "%c",
 65&rsquo; outputs the letter &lsquo;A&rsquo;. The output for a string value is
 the first character of the string.
@@ -7374,12 +7373,12 @@ the first character of the string.
 > a single byte (0&ndash;255).
 > (d.c.)
 
-<code>%d</code>, <code>%i</code>
+<code><b>%d</b></code>, <code>%i</code></br>
 Print a decimal integer.
 The two control letters are equivalent.
 (The &lsquo;%i&rsquo; specification is for compatibility with ISO C.)
 
-<code>%e</code>, <code>%E</code>
+<code><b>%e</b></code>, <code>%E</code></br>
 Print a number in scientific (exponential) notation.
 For example:
 
@@ -7393,7 +7392,7 @@ which follow the decimal point.
 discussed in the next subsection.)
 &lsquo;%E&rsquo; uses &lsquo;E&rsquo; instead of &lsquo;e&rsquo; in the output.
 
-<code>%f</code>
+<code><b>%f</b></code></br>
 Print a number in floating-point notation.
 For example:
 
@@ -7415,37 +7414,37 @@ and positive infinity as
 The special &ldquo;not a number&rdquo; value formats as &lsquo;-nan&rsquo; or &lsquo;nan&rsquo;
 (see [Math Definitions](#Math-Definitions)).
 
-<code>%F</code></br>
+<code><b>%F</b></code></br></br>
 Like &lsquo;%f&rsquo;, but the infinity and &ldquo;not a number&rdquo; values are spelled
 using uppercase letters.
 
 The &lsquo;%F&rsquo; format is a POSIX extension to ISO C; not all systems
 support it.  On those that don&rsquo;t, `gawk` uses &lsquo;%f&rsquo; instead.
 
-<code>%g</code>, <code>%G</code></br>
+<code><b>%g</b></code>, <code>%G</code></br>
 Print a number in either scientific notation or in floating-point
 notation, whichever uses fewer characters; if the result is printed in
 scientific notation, &lsquo;%G&rsquo; uses &lsquo;E&rsquo; instead of &lsquo;e&rsquo;.
 
-<code>%o</code></br>
+<code><b>%o</b></code></br>
 Print an unsigned octal integer
 (see [Nondecimal-numbers](#6112-octal-and-hexadecimal-numbers)).
 
-<code>%s</code></br>
+<code><b>%s</b></code></br>
 Print a string.
 
-<code>%u</code></br>
+<code><b>%u</b></code></br>
 Print an unsigned decimal integer.
 (This format is of marginal use, because all numbers in `awk`
 are floating point; it is provided primarily for compatibility with C.)
 
-<code>%x</code>, <code>%X</code></br>
+<code><b>%x</b></code>, <code><b>%X</b></code></br>
 Print an unsigned hexadecimal integer;
 &lsquo;%X&rsquo; uses the letters &lsquo;A&rsquo; through &lsquo;F&rsquo;
 instead of &lsquo;a&rsquo; through &lsquo;f&rsquo;
 (see [Nondecimal-numbers](#6112-octal-and-hexadecimal-numbers)).
 
-<code>%%</code></br>
+<code><b>%%</b></code></br>
 Print a single &lsquo;%&rsquo;.
 This does not consume an
 argument and it ignores any modifiers.
@@ -7472,7 +7471,7 @@ represent
 spaces in the output. Here are the possible modifiers, in the order in
 which they may appear:
 
-<code>N$</code></br>
+<code><b>N$</b></code></br>
 An integer constant followed by a &lsquo;$&rsquo; is a *positional specifier*.
 Normally, format specifications are applied to arguments in the order
 given in the format string.  With a positional specifier, the format
@@ -7494,7 +7493,7 @@ See [Printf Ordering](#Printf-Ordering),
 which describes how and why to use positional specifiers.
 For now, we ignore them.
 
-<code>-</code> (Minus)</br>
+<code><b>-</b></code> (Minus)</br>
 The minus sign, used before the width modifier (see later on in
 this list),
 says to left-justify
@@ -7511,13 +7510,13 @@ space
 For numeric conversions, prefix positive values with a space and
 negative values with a minus sign.
 
-<code>+</code></br>
+<code><b>+</b></code></br>
 The plus sign, used before the width modifier (see later on in
 this list),
 says to always supply a sign for numeric conversions, even if the data
 to format is positive. The &lsquo;+&rsquo; overrides the space modifier.
 
-<code>#</code></br>
+<code><b>#</b></code></br>
 Use an &ldquo;alternative form&rdquo; for certain control letters.
 For &lsquo;%o&rsquo;, supply a leading zero.
 For &lsquo;%x&rsquo; and &lsquo;%X&rsquo;, supply a leading &lsquo;0x&rsquo; or &lsquo;0X&rsquo; for
@@ -7533,7 +7532,7 @@ This applies only to the numeric output formats.
 This flag only has an effect when the field width is wider than the
 value to print.
 
-<code>'</code></br>
+<code><b>'</b></code></br>
 A single quote or apostrophe character is a POSIX extension to ISO C.
 It indicates that the integer part of a floating-point value, or the
 entire part of an integer decimal value, should have a thousands-separator
@@ -7581,21 +7580,21 @@ prints &lsquo;foobar&rsquo;.
 Preceding the width with a minus sign causes the output to be
 padded with spaces on the right, instead of on the left.
 
-<code>.prec</code></br>
+<code><b>.prec</b></code></br>
 A period followed by an integer constant
 specifies the precision to use when printing.
 The meaning of the precision varies by control letter:
 
-<code>%d</code>, <code>%i</code>, <code>%o</code>, <code>%u</code>, <code>%x</code>, <code>%X</code></br>
+<code><b>%d</b></code>, <code><b>%i</b></code>, <code><b>%o</b></code>, <code><b>%u</b></code>, <code><b>%x</b></code>, <code><b>%X</b></code></br>
 Minimum number of digits to print.
 
-<code>%e</code>, <code>%E</code>, <code>%f</code>, <code>%F</code></br>
+<code><b>%e</b></code>, <code><b>%E</b></code>, <code><b>%f</b></code>, <code><b>%F</b></code></br>
 Number of digits to the right of the decimal point.
 
-<code>%g</code>, <code>%G</code></br>
+<code><b>%g</b></code>, <code><b>%G</b></code></br>
 Maximum number of significant digits.
 
-<code>%s</code></br>
+<code><b>%s</b></code></br>
 Maximum number of characters from the string that should print.
 
 Thus, the following:
@@ -7750,7 +7749,7 @@ appended to a file, output through a pipe to another command, and output
 to a coprocess.  We show them all for the `print` statement,
 but they work identically for `printf`:
 
-`print items > output-file`
+<code><b><i>print items > output-file</i></b></code>
 This redirection prints the items into the output file named
 output-file.  The file name output-file can be any
 expression.  Its value is changed to a string and then used as a
@@ -7780,7 +7779,7 @@ named phone-list:
 
 Each output file contains one name or number per line.
 
-`print items >> output-file`
+<code><b><i>print items >> output-file</i></b></code>
 This redirection prints the items into the preexisting output file
 named output-file.  The difference between this and the
 single-&lsquo;>&rsquo; redirection is that the old contents (if any) of
@@ -7788,7 +7787,7 @@ output-file are not erased.  Instead, the `awk` output is
 appended to the file.
 If output-file does not exist, then it is created.
 
-`print items | command`
+<code><b><i>print items | command</i></b></code>
 It is possible to send output to another program through a pipe
 instead of into a file.   This redirection opens a pipe to
 command, and writes the values of items through this pipe
@@ -7832,7 +7831,7 @@ because (if you mean to refer to that same file or command)
 `awk` requires that the string value be written identically
 every time.
 
-`print items |& command`
+<code><b><i>print items |& command</i></b></code>
 This redirection prints the items to the input of command.
 The difference between this and the
 single-&lsquo;|&rsquo; redirection is that the output from command
@@ -8061,8 +8060,7 @@ Previous: [Special Network](#582-special-files-for-network-communications), Up: 
 Here are some things to bear in mind when using the
 special file names that `gawk` provides:
 
-- 
-Recognition of the file names for the three standard preopened
+- Recognition of the file names for the three standard preopened
 files is disabled only in POSIX mode.
 
 -  Recognition of the other special file names is disabled if `gawk` is in
@@ -8265,7 +8263,7 @@ if it fails.
 | Death by signal of command with core dump | 512 + number of murderous signal
 | Some kind of error | -1
 
-**Table 5.1: **Return values from `close()` of a pipe
+**Table 5.1:** Return values from `close()` of a pipe
 
 The POSIX standard is very vague; it says that `close()`
 returns zero on success and a nonzero value otherwise.  In general,
@@ -9059,7 +9057,7 @@ features have not been described yet.
 | Input | Use period | Use locale
 | `strtonum()` | Use period | Use locale
 
-**Table 6.1: **Locale decimal point versus a period
+**Table 6.1:** Locale decimal point versus a period
 
 Finally, modern-day formal standards and the IEEE standard floating-point
 representation can have an unusual but important effect on the way
@@ -9447,7 +9445,7 @@ to a number.
 | lvalue `^=` power | Raise lvalue to the power power.
 | lvalue `**=` power | Raise lvalue to the power power. (c.e.)
 
-**Table 6.2: **Arithmetic assignment operators
+**Table 6.2:** Arithmetic assignment operators
 
 > NOTE: Only the &lsquo;^=&rsquo; operator is specified by POSIX.
 > For maximum portability, do not use the `**=` operator.
@@ -9855,7 +9853,7 @@ operators*, which are a superset of those in C.
 | x`!~`y    | True if the string *x* does not match the regexp denoted by *y*
 | subscript `in` array | True if the array *array* has an element with the subscript *subscript*
 
-**Table 6.3: **Relational operators
+**Table 6.3:** Relational operators
 
 Comparison expressions have the value one if true and zero if false.
 When comparing operands of mixed types, numeric operands are converted
@@ -14475,16 +14473,16 @@ through unchanged.  This is illustrated in [Table 9.1](#table_002dsub_002descape
 
 |     You type |        sub() sees |         sub() generates
 | - | - | -
-|         `\&`  `&`       |    The matched text
-|        `\\&`  `\&`      |     A literal &lsquo;&&rsquo;
-|       `\\\&`  `\&`      |     A literal &lsquo;&&rsquo;
-|      `\\\\&`  `\\&`     |      A literal &lsquo;\&&rsquo;
-|     `\\\\\&`  `\\&`     |      A literal &lsquo;\&&rsquo;
-|    `\\\\\\&`  `\\\&`    |       A literal &lsquo;\\&&rsquo;
-|        `\\q`  `\q`      |     A literal &lsquo;\q&rsquo;
+|         `\&` |  `&`     |  The matched text
+|        `\\&` |  `\&`    |  A literal &lsquo;&&rsquo;
+|       `\\\&` |  `\&`    |  A literal &lsquo;&&rsquo;
+|      `\\\\&` |  `\\&`   |  A literal &lsquo;\&&rsquo;
+|     `\\\\\&` |  `\\&`   |  A literal &lsquo;\&&rsquo;
+|    `\\\\\\&` |  `\\\&`  |  A literal &lsquo;\\&&rsquo;
+|        `\\q` |  `\q`    |  A literal &lsquo;\q&rsquo;
     
 
-**Table 9.1: **Historical escape sequence processing for `sub()` and `gsub()`
+**Table 9.1:** Historical escape sequence processing for `sub()` and `gsub()`
 
 This table shows the lexical-level processing, where
 an odd number of backslashes becomes an even number at the runtime level,
@@ -14514,7 +14512,7 @@ This is shown in
 |      `\\q` | `\q`     |       A literal &lsquo;\q&rsquo;
 |   `\\\\`   | `\\`     |       `\\`
 
-**Table 9.2: **`gawk` rules for `sub()` and backslash
+**Table 9.2:** `gawk` rules for `sub()` and backslash
 
 In a nutshell, at the runtime level, there are now three special sequences
 of characters (&lsquo;\\\&&rsquo;, &lsquo;\\&&rsquo;, and &lsquo;\&&rsquo;) whereas historically
@@ -14541,7 +14539,7 @@ These rules are presented in [Table 9.3](#table_002dposix_002dsub).
 |        `\\q` | `\q`        |    A literal &lsquo;\q&rsquo;
 |       `\\\\` | `\\`        |    \\
 
-**Table 9.3: **POSIX rules for `sub()` and `gsub()`
+**Table 9.3:** POSIX rules for `sub()` and `gsub()`
 
 The only case where the difference is noticeable is the last one: &lsquo;\\\\&rsquo;
 is seen as &lsquo;\\&rsquo; and produces &lsquo;\&rsquo; instead of &lsquo;\\&rsquo;.
@@ -14575,7 +14573,7 @@ as shown in [Table 9.4](#table_002dgensub_002descapes).
 |        `\\q` |  `\q`      |      A literal &lsquo;q&rsquo;
     
 
-**Table 9.4: **Escape sequence processing for `gensub()`
+**Table 9.4:** Escape sequence processing for `gensub()`
 
 Because of the complexity of the lexical- and runtime-level processing
 and the special cases for `sub()` and `gsub()`,
@@ -14745,7 +14743,7 @@ The return values are summarized in [Table 9.5](#table_002dsystem_002dreturn_002
 | Death by signal of command with core dump | 512 + number of murderous signal
 | Some kind of | error-1
 
-**Table 9.5: **Return values from `system()`
+**Table 9.5:** Return values from `system()`
 
 Controlling Output Buffering with `system()`
 
@@ -15126,7 +15124,7 @@ The operations are described in [Table 9.6](#table_002dbitwise_002dops).
         1     | 0   1 | 1   1 | 1   0
     
 
-**Table 9.6: **Bitwise operations
+**Table 9.6:** Bitwise operations
 
 As you can see, the result of an AND operation is 1 only when *both*
 bits are 1.
