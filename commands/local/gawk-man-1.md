@@ -1620,7 +1620,7 @@ program looks like this:
 
 <pre>  <i>pattern</i> { action }
   <i>pattern</i> { action }
-   &hellip;</pre>
+   ...</pre>
     
 | []() | []()
 | - | -
@@ -1644,13 +1644,13 @@ There are several ways to run an `awk` program.  If the program is
 short, it is easiest to include it in the command that runs `awk`,
 like this:
 
-   <pre>awk <i>'program' input-file1input-file2</i> &hellip;</pre>
+   <pre>awk <i>'program' input-file1input-file2</i> ...</pre>
     
 
 When the program is long, it is usually more convenient to put it in a file
 and run it with a command like this:
 
-   <pre>awk -f <i>program-fileinput-file1input-file2</i> &hellip;</pre>
+   <pre>awk -f <i>program-fileinput-file1input-file2</i> ...</pre>
     
 
 This section discusses both mechanisms, along with several
@@ -1675,7 +1675,7 @@ Once you are familiar with `awk`, you will often type in simple
 programs the moment you want to use them.  Then you can write the
 program as the first argument of the `awk` command, like this:
 
-   <pre>awk <i>'program' input-file1input-file2</i> &hellip;</pre>
+   <pre>awk <i>'program' input-file1input-file2</i> ...</pre>
     
 
 where program consists of a series of patterns and
@@ -1766,7 +1766,7 @@ Sometimes `awk` programs are very long.  In these cases, it is
 more convenient to put the program into a separate file.  In order to tell
 `awk` to use that file for its program, you type:
 
-  <pre>awk -f <i>source-fileinput-file1input-file2</i> &hellip;</pre>
+  <pre>awk -f <i>source-fileinput-file1input-file2</i> ...</pre>
     
 
 The -f instructs the `awk` utility to get the
@@ -1961,7 +1961,7 @@ This is best done by enclosing the entire program in single quotes.
 This is true whether you are entering the program interactively at
 the shell prompt, or writing it as part of a larger shell script:
 
-<pre>  awk <i>'program text' input-file1input-file2</i> &hellip;</pre>
+<pre>  awk <i>'program text' input-file1input-file2</i> ...</pre>
     
 
 Once you are working with the shell, it is helpful to have a basic
@@ -2750,10 +2750,10 @@ Next: [Options](#22-command-line-options), Up: [Invoking Gawk](#2-running-awk-an
 
 There are two ways to run `awk`&mdash;with an explicit program or with
 one or more program files.  Here are templates for both of them; items
-enclosed in [&hellip;] in these templates are optional:
+enclosed in [...] in these templates are optional:
 
-<pre>    awk [<i>options</i>] -f <i>progfile</i>[--] <i>file</i> &hellip;
-    awk [<i>options</i>] [--] '<i>program</i>'file &hellip;</pre>
+<pre>    awk [<i>options</i>] -f <i>progfile</i>[--] <i>file</i> ...
+    awk [<i>options</i>] [--] '<i>program</i>'file ...</pre>
     
 
 In addition to traditional one-letter POSIX-style options, `gawk` also
@@ -2815,7 +2815,7 @@ inside the `BEGIN` rule
 
 The -v option can only set one variable, but it can be used
 more than once, setting another variable each time, like this:
-&lsquo;awk -v foo=1-v bar=2 &hellip;&rsquo;.
+&lsquo;awk -v foo=1-v bar=2 ...&rsquo;.
 
 > CAUTION: Using -v to set the values of the built-in
 > variables may lead to surprising results.  `awk` will reset the
@@ -2947,7 +2947,7 @@ with &lsquo;#!&rsquo; scripts (see [Executable Scripts](#114-executable-awk-prog
 ```awk
     #! /usr/local/bin/gawk -E
     
-    awk program here &hellip;
+    awk program here ...
 ```
 
 <code>-g</code></br>
@@ -3883,7 +3883,7 @@ the uppercase letter &lsquo;J&rsquo;:
   -| Mar  15  24  34 228
   -| Apr  31  52  63 420
   -| May  16  34  29 208
-  &hellip;
+  ...
 ```    
 
 When a regexp is enclosed in slashes, such as `/foo/`, we call it
@@ -3955,7 +3955,7 @@ The octal value nnn, where nnn stands for 1 to 3 digits
 between &lsquo;0&rsquo; and &lsquo;7&rsquo;.  For example, the code for the ASCII ESC
 (escape) character is &lsquo;\033&rsquo;.
 
-<code>\xhh&hellip;</code></br>
+<code>\xhh...</code></br>
 The hexadecimal value hh, where hh stands for a sequence
 of hexadecimal digits (&lsquo;0&rsquo;&ndash;&lsquo;9&rsquo;, and either &lsquo;A&rsquo;&ndash;&lsquo;F&rsquo;
 or &lsquo;a&rsquo;&ndash;&lsquo;f&rsquo;).  A maximum of two digts are allowed after
@@ -4095,7 +4095,7 @@ a line (the point right after a &lsquo;\n&rsquo; newline character) embedded in 
 The condition is not true in the following example:
 
 ```awk
-    if ("line1\nLINE 2" ~ /^L/) &hellip;
+    if ("line1\nLINE 2" ~ /^L/) ...
 ```    
 
 <code>$</code></br>
@@ -4108,7 +4108,7 @@ embedded in a string.
 The condition in the following example is not true:
 
 ```awk
-    if ("line1\nLINE 2" ~ /1$/) &hellip;
+    if ("line1\nLINE 2" ~ /1$/) ...
 ```    
 
 <code>.(period)</code></br>
@@ -4125,7 +4125,7 @@ character, which is a character with all bits equal to zero.
 Otherwise, NUL is just another character. Other versions of `awk`
 may not be able to match the NUL character.
 
-<code>[&hellip;]</code></br>
+<code>[...]</code></br>
 This is called a *bracket expression*.[15](#FOOT15)
 It matches any *one* of the characters that are enclosed in
 the square brackets.  For example, &lsquo;[MVX]&rsquo; matches any one of
@@ -4134,7 +4134,7 @@ discussion of what can be inside the square brackets of a bracket expression
 is given in
 [Bracket Expressions](#34-using-bracket-expressions).
 
-<code>[^&hellip;]</code></br>
+<code>[^...]</code></br>
 This is a *complemented bracket expression*.  The first character after
 the &lsquo;[&rsquo; *must* be a &lsquo;^&rsquo;.  It matches any characters
 *except* those in the square brackets.  For example, &lsquo;[^awk]&rsquo;
@@ -4151,7 +4151,7 @@ a lowercase English vowel.
 
 The alternation applies to the largest possible regexps on either side.
 
-<code>(&hellip;)</code></br>
+<code>(...)</code></br>
 Parentheses are used for grouping in regular expressions, as in
 arithmetic.  They can be used to concatenate regular expressions
 containing the alternation operator, &lsquo;|&rsquo;.  For example,
@@ -4680,7 +4680,7 @@ Previous: [Case-sensitivity](#38-case-sensitivity-in-matching), Up: [Regexp](#3-
 
 -  Regular expressions describe sets of strings to be matched.
 In `awk`, regular expression constants are written enclosed
-between slashes: `/`&hellip;`/`.
+between slashes: `/`...`/`.
 
 -  Regexp constants may be used standalone in patterns and
 in conditional expressions, or as part of matching expressions
@@ -5174,7 +5174,7 @@ Consider the following example and its output:
   -| 25 15
   -| 32 22
   -| 24 14
-  &hellip;
+  ...
 ```    
 
 The program first saves the original value of field three in the variable
@@ -5205,7 +5205,7 @@ field of each line:
   -| Jan 3 25 15 115
   -| Feb 5 32 24 226
   -| Mar 5 24 34 228
-  &hellip;
+  ...
 ```    
 
 It is also possible to assign contents to fields that are out
@@ -5217,7 +5217,7 @@ of range.  For example:
   -| 168
   -| 297
   -| 301
-  &hellip;
+  ...
 ```    
 
 We&rsquo;ve just created `$6`, whose value is the sum of fields
@@ -5582,7 +5582,7 @@ on the command line, you would have to type:
 
 ```awk
   # same as FS = "\\"
-  awk -F\\\\ '&hellip;' files &hellip;
+  awk -F\\\\ '...' files ...
 ```    
 
 Because &lsquo;\&rsquo; is used for quoting in the shell, `awk` sees
@@ -5661,7 +5661,7 @@ single field.  This can be done easily and portably simply by
 setting `FS` to `"\n"` (a newline):[21](#FOOT21)
 
 ```awk
-  awk -F'\n' 'program' files &hellip;
+  awk -F'\n' 'program' files ...
 ```
 
 When you do this, `$1` is the same as `$0`.
@@ -6092,13 +6092,13 @@ or `"FPAT"` if content-based field splitting is being used:
 
 ```awk
   if (PROCINFO["FS"] == "FS")
-      regular field splitting &hellip;
+      regular field splitting ...
   else if (PROCINFO["FS"] == "FIELDWIDTHS")
-      fixed-width field splitting &hellip;
+      fixed-width field splitting ...
   else if (PROCINFO["FS"] == "FPAT")
-      content-based field splitting &hellip;
+      content-based field splitting ...
   else
-      API input parser field splitting &hellip; (advanced feature)
+      API input parser field splitting ... (advanced feature)
 ```
 
 This information is useful when writing a function that needs to
@@ -6188,7 +6188,7 @@ list in a file named addresses, which looks like this:
     John Smith
     456 Tree-lined Avenue
     Smallville, MW 98765-4321
-    &hellip;
+    ...
     
 
 A simple program to process this file is as follows:
@@ -6220,7 +6220,7 @@ Running the program produces the following output:
   -| Address is: 456 Tree-lined Avenue
   -| City and State are: Smallville, MW 98765-4321
   -|
-  &hellip;
+  ...
 ```    
 
 See [Labels Program](#1134-printing-mailing-labels) for a more realistic program dealing with
@@ -6353,7 +6353,7 @@ processing on the next record *right now*.  For example:
   }
 ``` 
 
-This `awk` program deletes C-style comments (&lsquo;/* &hellip;
+This `awk` program deletes C-style comments (&lsquo;/* ...
 */&rsquo;) from the input.
 It uses a number of features we haven&rsquo;t covered yet, including
 string concatenation
@@ -6750,7 +6750,16 @@ listing which predefined variables are set by each one,
 and whether the variant is standard or a `gawk` extension.
 Note: for each variant, `gawk` sets the `RT` predefined variable.
 
-VariantEffect`awk` / `gawk``getline`Sets `$0`, `NF`, `FNR`, `NR`, and `RT``awk``getline`varSets var, `FNR`, `NR`, and `RT``awk``getline <`fileSets `$0`, `NF`, and `RT``awk``getline var < file`Sets var and `RT``awk`command`| getline`Sets `$0`, `NF`, and `RT``awk`command`| getline`varSets var and `RT``awk`command`|& getline`Sets `$0`, `NF`, and `RT``gawk`command`|& getline`varSets var and `RT``gawk`
+| Variant | Effect | `awk` / `gawk`
+| - | - | -
+| `getline` | Sets `$0`, `NF`, `FNR`, `NR`, and `RT` | `awk`
+| `getline`var | Sets var, `FNR`, `NR`, and `RT` | `awk`
+| `getline <`file | Sets `$0`, `NF`, and `RT` | `awk`
+| `getline var < file` | Sets var and `RT` | `awk`
+| command`| getline` | Sets `$0`, `NF`, and `RT` | `awk`
+| command`| getline` var | Sets var and `RT` | `awk`
+| command`|& getline` | Sets `$0`, `NF`, and `RT` | `gawk`
+| command`|& getline` var | Sets var and `RT` | `gawk`
 
 **Table 4.1: **`getline` variants and what they set
 
@@ -6924,7 +6933,7 @@ The possibilities are as follows:
 
 | []() | []() | []()
 | - | - | -
-| Value of `RS` | Records are split on &hellip; | `awk` / `gawk`
+| Value of `RS` | Records are split on ... | `awk` / `gawk`
 | Any single character | That character | `awk`
 | The empty string (`""`) | Runs of two or more newlines | `awk`
 | A regexp | Text that matches the regexp | `gawk`
@@ -6950,7 +6959,7 @@ thing. Decrementing `NF` throws away fields and rebuilds the record.
 
 <ul><li>Field splitting is more complicated than record splitting:
 
-| Field separator value | Fields are split &hellip; | `awk` / `gawk`
+| Field separator value | Fields are split ... | `awk` / `gawk`
 | - | - | -
 | `FS == " "` | On runs of whitespace | `awk`
 | `FS == any single character` | On that character | `awk`
@@ -6990,7 +6999,7 @@ associated with each ballot item, and print the total votes,
 including abstentions, for each item.
 
 2. [Plain Getline](#4101-using-getline-with-no-arguments), presented a program to remove C-style
-comments (&lsquo;/* &hellip; */&rsquo;) from the input.  That program
+comments (&lsquo;/* ... */&rsquo;) from the input.  That program
 does not work if one comment ends on one line and another one
 starts later on the same line.
 That can be fixed by making one simple change. What is it?
@@ -7046,7 +7055,7 @@ list separated by commas.  They are output, separated by single spaces,
 followed by a newline.  The statement looks like this:
 
 ```awk
-  print item1, item2, &hellip;
+  print item1, item2, ...
 ```    
 
 The entire list of items may be optionally enclosed in parentheses.  The
@@ -7103,7 +7112,7 @@ them:
   -| Jan 13
   -| Feb 15
   -| Mar 15
-  &hellip;
+  ...
 ```    
 
 A common mistake in using the `print` statement is to omit the comma
@@ -7117,7 +7126,7 @@ them.  Here is the same program, without the comma:
   -| Jan13
   -| Feb15
   -| Mar15
-  &hellip;
+  ...
 ```    
 
 To someone unfamiliar with the inventory-shipped file, neither
@@ -7140,7 +7149,7 @@ When run, the program prints the following:
     Jan 13
     Feb 15
     Mar 15
-    &hellip;
+    ...
     
 
 The only problem, however, is that the headings and the table data
@@ -7294,7 +7303,7 @@ Next: [Control Letters](#552-format-control-letters), Up: [Printf](#55-using-pri
 A simple `printf` statement looks like this:
 
 ```awk
-  printf format, item1, item2, &hellip;
+  printf format, item1, item2, ...
 ```    
 
 As for `print`, the entire list of arguments may optionally be
@@ -7762,11 +7771,11 @@ named phone-list:
   $ cat phone-list
   -| 555-5553
   -| 555-3412
-  &hellip;
+  ...
   $ cat name-list
   -| Amelia
   -| Anthony
-  &hellip;
+  ...
 ```    
 
 Each output file contains one name or number per line.
@@ -7849,7 +7858,7 @@ to a file, and then to use &lsquo;>>&rsquo; for subsequent output:
 ```awk
   # clear the file
   print "Don't panic" > "guide.txt"
-  &hellip;
+  ...
   # append
   print "Avoid improbability generators" >> "guide.txt"
 ```    
@@ -8131,7 +8140,7 @@ The previous example becomes the following:
   sortcom | getline foo
   
 
-  &hellip;
+  ...
   close(sortcom)
 ```    
 
@@ -8174,7 +8183,7 @@ you close commands when done. For example, consider something like this:
 
 ```awk
   {
-      &hellip;
+      ...
       command = ("grep " $1 " /some/file | my_prog -q " $3)
       while ((command | getline) > 0) {
           process output of command
@@ -8230,7 +8239,7 @@ It is a syntax error to try and use the return
 value from `close()`:
 
 ```awk
-  command = "&hellip;"
+  command = "..."
   command | getline info
   retval = close(command)  # syntax error in many Unix awks
 ```    
@@ -8684,10 +8693,10 @@ to user-defined functions (see [User-defined](#92-user-defined-functions)).  For
   
 
   {
-      &hellip;
+      ...
       text = "hi! hi yourself!"
       mysub(/hi/, "howdy", text, 1)
-      &hellip;
+      ...
   }
 ```    
 
@@ -8709,9 +8718,9 @@ Previous: [Standard Regexp Constants](#6121-standard-regular-expression-constant
 This section describes a `gawk`-specific feature.
 
 As we saw in the previous section,
-regexp constants (`/&hellip;/`) hold a strange position in the
+regexp constants (`/.../`) hold a strange position in the
 `awk` language. In most contexts, they act like an expression:
-&lsquo;$0 ~ /&hellip;/&rsquo;. In other contexts, they denote only a regexp to
+&lsquo;$0 ~ /.../&rsquo;. In other contexts, they denote only a regexp to
 be matched. In no case are they really a &ldquo;first class citizen&rdquo; of the
 language. That is, you cannot define a scalar variable whose type is
 &ldquo;regexp&rdquo; in the same sense that you can define a variable to be a
@@ -8882,10 +8891,10 @@ second field is printed in lines from mail-list:
   $ awk '{ print $n }' n=4 inventory-shipped n=2 mail-list
   -| 15
   -| 24
-  &hellip;
+  ...
   -| 555-5553
   -| 555-3412
-  &hellip;
+  ...
 ```    
 
 Command-line arguments are made available for explicit examination by
@@ -9184,7 +9193,7 @@ writing expressions next to one another, with no operator.  For example:
     $ awk '{ print "Field number one: " $1 }' mail-list
     -| Field number one: Amelia
     -| Field number one: Anthony
-    &hellip;
+    ...
 ```    
 
 Without the space in the string constant after the &lsquo;:&rsquo;, the line
@@ -9194,7 +9203,7 @@ runs together.  For example:
     $ awk '{ print "Field number one:" $1 }' mail-list
     -| Field number one:Amelia
     -| Field number one:Anthony
-    &hellip;
+    ...
 ```    
 
 Because string concatenation does not have an explicit operator, it is
@@ -9865,9 +9874,9 @@ leave off one of the &lsquo;=&rsquo; characters.  The result is still valid
 
 ```awk
     if (a = b)   # oops! should be a == b
-       &hellip;
+       ...
     else
-       &hellip;
+       ...
 ```    
 
 Unless `b` happens to be zero or the null string, the `if`
@@ -9928,7 +9937,7 @@ has the value one if `x` contains &lsquo;foo&rsquo;, such as
 `"Oh, what a fool am I!"`.
 
 The righthand operand of the &lsquo;~&rsquo; and &lsquo;!~&rsquo; operators may be
-either a regexp constant (`/`&hellip;`/`) or an ordinary
+either a regexp constant (`/`...`/`) or an ordinary
 expression. In the latter case, the value of the expression as a string is used as a
 dynamic regexp (see [Regexp Usage](#31-how-to-use-regular-expressions); also
 see [Computed Regexps](#36-using-dynamic-regexps)).
@@ -10101,7 +10110,7 @@ sense to phrase the logic in the negative:
 
 ```awk
     if (! some condition || some other condition) {
-        &hellip; do whatever processing &hellip;
+        ... do whatever processing ...
     }
 ```    
 
@@ -10317,7 +10326,7 @@ expression because the first &lsquo;$&rsquo; has higher precedence than the
 This list presents `awk`&rsquo;s operators, in order of highest
 to lowest precedence:
 
-<code>(&hellip;)</code></br>
+<code>(...)</code></br>
 Grouping.
 
 <code>$</code></br>
@@ -11027,13 +11036,13 @@ in outline, an `awk` program generally looks like this:
 
 ```awk
     [pattern]  { action }pattern  [{ action }]
-    &hellip;
-    function name(args) { &hellip; }
-    &hellip;
+    ...
+    function name(args) { ... }
+    ...
 ```    
 
 An action consists of one or more `awk`*statements*, enclosed
-in braces (&lsquo;{&hellip;}&rsquo;).  Each statement specifies one
+in braces (&lsquo;{...}&rsquo;).  Each statement specifies one
 thing to do.  The statements are separated by newlines or semicolons.
 The braces around an action must be used even if the action
 contains only one statement, or if it contains no statements at
@@ -12444,7 +12453,7 @@ To actually get options into an `awk` program,
 end the `awk` options with -- and then supply
 the `awk` program&rsquo;s options, in the following manner:
 
-    awk -f myprog.awk -- -v -q file1 file2 &hellip;
+    awk -f myprog.awk -- -v -q file1 file2 ...
     
 
 The following fragment processes `ARGV` in order to examine, and
@@ -12475,7 +12484,7 @@ as it sees an unknown option, `gawk` stops looking for other
 options that it might otherwise recognize.  The previous command line with
 `gawk` would be:
 
-    gawk -f myprog.awk -q -v file1 file2 &hellip;
+    gawk -f myprog.awk -q -v file1 file2 ...
     
 
 Because -q is not a valid `gawk` option, it and the
@@ -12726,7 +12735,7 @@ deleted (see [Delete](#84-the-delete-statement)).
 > 
 > 
 >     # Check if "foo" exists in a:         Incorrect!
->     if (a["foo"] != "") &hellip;
+>     if (a["foo"] != "") ...
 >     
 > 
 > 
@@ -13063,12 +13072,12 @@ array traversal:
 all array traversal `for` loops.  If you need to change it within your
 own code, you should see if it&rsquo;s defined and save and restore the value:
 
-    &hellip;
+    ...
     if ("sorted_in" in PROCINFO) {
         save_sorted = PROCINFO["sorted_in"]
         PROCINFO["sorted_in"] = "@val_str_desc" # or whatever
     }
-    &hellip;
+    ...
     if (save_sorted)
         PROCINFO["sorted_in"] = save_sorted
     
@@ -13329,8 +13338,8 @@ multidimensional array, use the same operator (`in`) that is
 used for single-dimensional arrays.  Write the whole sequence of indices
 in parentheses, separated by commas, as the left operand:
 
-    if ((subscript1, subscript2, &hellip;) in array)
-        &hellip;
+    if ((subscript1, subscript2, ...) in array)
+        ...
     
 
 Here is an example that treats its input as a two-dimensional array of
@@ -13395,7 +13404,7 @@ It works in the following manner:
 
     for (combined in array) {
         split(combined, separate, SUBSEP)
-        &hellip;
+        ...
     }
     
 
@@ -13582,7 +13591,7 @@ Referencing an element creates it if it did not exist previously.
 -  The proper way to see if an array has an element with a given index
 is to use the `in` operator: &lsquo;indx in array&rsquo;.
 
--  Use &lsquo;for (indx in array) &hellip;&rsquo; to scan through all the
+-  Use &lsquo;for (indx in array) ...&rsquo; to scan through all the
 individual elements of an array. In the body of the loop, indx takes
 on the value of each element&rsquo;s index in turn.
 
@@ -13603,7 +13612,7 @@ subscript values with commas.  The values are concatenated into a
 single string, separated by the value of `SUBSEP`.  The fact
 that such a subscript was created in this way is not retained; thus,
 changing `SUBSEP` may have unexpected consequences.  You can use
-&lsquo;(sub1, sub2, &hellip;) in array&rsquo; to see if such
+&lsquo;(sub1, sub2, ...) in array&rsquo; to see if such
 a multidimensional subscript exists in array.
 
 - `gawk` provides true arrays of arrays. You use a separate
@@ -14051,7 +14060,7 @@ at which that substring begins (one, if it starts at the beginning of
 string).  If no match is found, return zero.
 
 The regexp argument may be either a regexp constant
-(`/`&hellip;`/`) or a string constant (`"`&hellip;`"`).
+(`/`...`/`) or a string constant (`"`...`"`).
 In the latter case, the string is treated as a regexp to be matched.
 See [Computed Regexps](#36-using-dynamic-regexps) for a
 discussion of the difference between the two forms, and the
@@ -14222,7 +14231,7 @@ works. Even though &lsquo;RS = ""&rsquo; causes the newline character to also be
 field separator, this does not affect how `split()` splits strings.
 
 Modern implementations of `awk`, including `gawk`, allow
-the third argument to be a regexp constant (`/`&hellip;`/`)
+the third argument to be a regexp constant (`/`...`/`)
 as well as a string.  (d.c.)
 The POSIX standard allows this as well.
 See [Computed Regexps](#36-using-dynamic-regexps) for a
@@ -14242,7 +14251,7 @@ string.
 
 In POSIX mode (see [Options](#22-command-line-options)), the fourth argument is not allowed.
 
-`sprintf(format, expression1, &hellip;)`
+`sprintf(format, expression1, ...)`
 Return (without printing) the string that `printf` would
 have printed out with the same arguments
 (see [Printf](#55-using-printf-statements-for-fancier-printing)).
@@ -14281,7 +14290,7 @@ The modified string becomes the new value of target.
 Return the number of substitutions made (zero or one).
 
 The regexp argument may be either a regexp constant
-(`/`&hellip;`/`) or a string constant (`"`&hellip;`"`).
+(`/`...`/`) or a string constant (`"`...`"`).
 In the latter case, the string is treated as a regexp to be matched.
 See [Computed Regexps](#36-using-dynamic-regexps) for a
 discussion of the difference between the two forms, and the
@@ -14399,7 +14408,7 @@ If you need to replace bits and pieces of a string, combine `substr()`
 with string concatenation, in the following manner:
 
     string = "abcdef"
-    &hellip;
+    ...
     string = substr(string, 1, 2) "CDE" substr(string, 6)
     
 
@@ -14464,15 +14473,15 @@ the generated text with a single &lsquo;&&rsquo;.  Any other &lsquo;\&rsquo; wit
 the replacement string that did not precede an &lsquo;&&rsquo; was passed
 through unchanged.  This is illustrated in [Table 9.1](#table_002dsub_002descapes).
 
-     You type         sub() sees          sub() generates
-     &mdash;&mdash;&ndash;         &mdash;&mdash;&mdash;-          &mdash;&mdash;&mdash;&mdash;&mdash;
-         \&&            The matched text
-        \\&\&            A literal &lsquo;&&rsquo;
-       \\\&\&            A literal &lsquo;&&rsquo;
-      \\\\&\\&            A literal &lsquo;\&&rsquo;
-     \\\\\&\\&            A literal &lsquo;\&&rsquo;
-    \\\\\\&\\\&            A literal &lsquo;\\&&rsquo;
-        \\q\q            A literal &lsquo;\q&rsquo;
+|     You type |        sub() sees |         sub() generates
+| - | - | -
+|         `\&`  `&`       |    The matched text
+|        `\\&`  `\&`      |     A literal &lsquo;&&rsquo;
+|       `\\\&`  `\&`      |     A literal &lsquo;&&rsquo;
+|      `\\\\&`  `\\&`     |      A literal &lsquo;\&&rsquo;
+|     `\\\\\&`  `\\&`     |      A literal &lsquo;\&&rsquo;
+|    `\\\\\\&`  `\\\&`    |       A literal &lsquo;\\&&rsquo;
+|        `\\q`  `\q`      |     A literal &lsquo;\q&rsquo;
     
 
 **Table 9.1: **Historical escape sequence processing for `sub()` and `gsub()`
@@ -14497,13 +14506,13 @@ to produce a &lsquo;\&rsquo; preceding the matched text.
 This is shown in
 [Table 9.2](#table_002dsub_002dproposed).
 
-     You type         sub() sees         sub() generates
-     &mdash;&mdash;&ndash;         &mdash;&mdash;&mdash;-         &mdash;&mdash;&mdash;&mdash;&mdash;
-    \\\\\\&\\\&            A literal &lsquo;\&&rsquo;
-      \\\\&\\&            A literal &lsquo;\&rsquo;rsquo;, followed by the matched text
-        \\&\&            A literal &lsquo;&&rsquo;
-        \\q\q            A literal &lsquo;\q&rsquo;
-       \\\\\\\\
+|     You type   |      sub() sees  |       sub() generates
+| - | - | -
+|  `\\\\\\&` | `\\\&`   |       A literal &lsquo;\&&rsquo;
+|    `\\\\&` | `\\&`    |       A literal &lsquo;\&rsquo;rsquo;, followed by the matched text
+|      `\\&` | `\&`     |       A literal &lsquo;&&rsquo;
+|      `\\q` | `\q`     |       A literal &lsquo;\q&rsquo;
+|   `\\\\`   | `\\`     |       `\\`
 
 **Table 9.2: **`gawk` rules for `sub()` and backslash
 
@@ -14524,13 +14533,13 @@ a literal &lsquo;&&rsquo;, &lsquo;\\&rsquo; produces a literal &lsquo;\&rsquo;, 
 by anything else is not special; the &lsquo;\&rsquo; is placed straight into the output.
 These rules are presented in [Table 9.3](#table_002dposix_002dsub).
 
-     You type         sub() sees         sub() generates
-     &mdash;&mdash;&ndash;         &mdash;&mdash;&mdash;-         &mdash;&mdash;&mdash;&mdash;&mdash;
-    \\\\\\&\\\&            A literal &lsquo;\&&rsquo;
-      \\\\&\\&            A literal &lsquo;\&rsquo;, followed by the matched text
-        \\&\&            A literal &lsquo;&&rsquo;
-        \\q\q            A literal &lsquo;\q&rsquo;
-       \\\\\\\
+|     You type |     sub() sees  |       sub() generates
+| - | - | -
+|    `\\\\\\&` | `\\\&`      |      A literal &lsquo;\&&rsquo;
+|      `\\\\&` | `\\&`       |     A literal &lsquo;\&rsquo;, followed by the matched text
+|        `\\&` | `\&`        |    A literal &lsquo;&&rsquo;
+|        `\\q` | `\q`        |    A literal &lsquo;\q&rsquo;
+|       `\\\\` | `\\`        |    \\
 
 **Table 9.3: **POSIX rules for `sub()` and `gsub()`
 
@@ -14556,14 +14565,14 @@ no matter what character follows the &lsquo;\&rsquo;, it
 appears in the generated text and the &lsquo;\&rsquo; does not,
 as shown in [Table 9.4](#table_002dgensub_002descapes).
 
-      You type          gensub() sees         gensub() generates
-      &mdash;&mdash;&ndash;          &mdash;&mdash;&mdash;&mdash;-         &mdash;&mdash;&mdash;&mdash;&mdash;&mdash;
-          &&            The matched text
-        \\&\&            A literal &lsquo;&&rsquo;
-       \\\\\\            A literal &lsquo;\&rsquo;
-      \\\\&\\&            A literal &lsquo;\&rsquo;, then the matched text
-    \\\\\\&\\\&            A literal &lsquo;\&&rsquo;
-        \\q\q            A literal &lsquo;q&rsquo;
+|      You type |          gensub() sees  |       gensub() generates
+| - | - | -
+|          `&` |  `&`       |     The matched text
+|        `\\&` |  `\&`      |      A literal &lsquo;&&rsquo;
+|       `\\\\` |  `\\`      |      A literal &lsquo;\&rsquo;
+|      `\\\\&` |  `\\&`     |       A literal &lsquo;\&rsquo;, then the matched text
+|    `\\\\\\&` |  `\\\&`    |        A literal &lsquo;\&&rsquo;
+|        `\\q` |  `\q`      |      A literal &lsquo;q&rsquo;
     
 
 **Table 9.4: **Escape sequence processing for `gensub()`
@@ -14727,7 +14736,14 @@ a fractional floating-point value.[52](#FOOT52) POSIX states that `awk`&rsquo;s
 `gawk` steers a middle ground.
 The return values are summarized in [Table 9.5](#table_002dsystem_002dreturn_002dvalues).
 
-SituationReturn value from `system()`--traditionalC `system()`&rsquo;s value divided by 256--posixC `system()`&rsquo;s valueNormal exit of commandCommand&rsquo;s exit statusDeath by signal of command256 + number of murderous signalDeath by signal of command with core dump512 + number of murderous signalSome kind of error-1
+| Situation | Return value from `system()`
+| - | -
+| --traditional | C `system()`&rsquo;s value divided by 256
+| --posix | C `system()`&rsquo;s value
+| Normal exit of command | Command&rsquo;s exit status
+| Death by signal of command | 256 + number of murderous signal
+| Death by signal of command with core dump | 512 + number of murderous signal
+| Some kind of | error-1
 
 **Table 9.5: **Return values from `system()`
 
@@ -15129,7 +15145,7 @@ bits, you end up with &lsquo;11001000&rsquo;.  The following list describes
 `gawk`&rsquo;s built-in functions that implement the bitwise operations.
 Optional parameters are enclosed in square brackets ([ ]):
 
-``and(`v1`,`v2 [`,` &hellip;]`)``
+``and(`v1`,`v2 [`,` ...]`)``
 Return the bitwise AND of the arguments. There must be at least two.
 
 ``compl(val)``
@@ -15138,13 +15154,13 @@ Return the bitwise complement of val.
 ``lshift(val, count)``
 Return the value of val, shifted left by count bits.
 
-``or(`v1`,`v2 [`,` &hellip;]`)``
+``or(`v1`,`v2 [`,` ...]`)``
 Return the bitwise OR of the arguments. There must be at least two.
 
 ``rshift(val, count)``
 Return the value of val, shifted right by count bits.
 
-``xor(`v1`,`v2 [`,` &hellip;]`)``
+``xor(`v1`,`v2 [`,` ...]`)``
 Return the bitwise XOR of the arguments. There must be at least two.
 
 > CAUTION: Beginning with `gawk` version 4.2, negative
@@ -15683,7 +15699,7 @@ Next: [Pass By Value/Reference](#9233-passing-function-arguments-by-value-or-by-
 #### 9.2.3.2 Controlling Variable Scope
 
 Unlike in many languages,
-there is no way to make a variable local to a `{` &hellip; `}` block in
+there is no way to make a variable local to a `{` ... `}` block in
 `awk`, but you can make a variable local to a function. It is
 good practice to do so whenever a variable is needed only in that
 function.
@@ -15896,7 +15912,7 @@ program actually tries to call the function. For example:
         else
             bar()
     }
-    function bar() { &hellip; }
+    function bar() { ... }
     # note that `foo' is not defined
     
 
@@ -16087,7 +16103,7 @@ To process the data, you might write initially:
                 sum()   # processes the whole record
             else if ($i == "average")
                 average()
-            &hellip;           # and so on
+            ...           # and so on
         }
     }
     
@@ -16557,10 +16573,10 @@ are very difficult to track down:
 
     function lib_func(x, y,    l1, l2)
     {
-        &hellip;
+        ...
         # some_var should be local but by oversight is not
         use variable some_var
-        &hellip;
+        ...
     }
     
 
@@ -16712,7 +16728,7 @@ been true but was not, and then it kills the program.  In C, using
     int myfunc(int a, double b)
     {
          assert(a <= 5 && b >= 17.1);
-         &hellip;
+         ...
     }
     
 
@@ -16767,7 +16783,7 @@ The function can be used in a program in the following way:
     function myfunc(a, b)
     {
          assert(a <= 5 && b >= 17.1, "a <= 5 && b >= 17.1")
-         &hellip;
+         ...
     }
     
 
@@ -17147,7 +17163,7 @@ string.  Thus, calling code may use something like:
 
     contents = readfile("/some/path")
     if (length(contents) == 0)
-        # file was empty &hellip;
+        # file was empty ...
     
 
 This tests the result to see if it is empty or not. An equivalent
@@ -17168,7 +17184,7 @@ which he uses frequently:
     #! /bin/sh
     
     awkp='
-       &hellip;
+       ...
        '
     
     input_program | awk "$awkp" | /bin/sh
@@ -17609,22 +17625,22 @@ arguments for `awk`:
     int
     main(int argc, char *argv[])
     {
-        &hellip;
+        ...
         /* print our own message */
         opterr = 0;
         while ((c = getopt(argc, argv, "v:f:F:W:")) != -1) {
             switch (c) {
             case 'f':    /* file */
-                &hellip;
+                ...
                 break;
             case 'F':    /* field separator */
-                &hellip;
+                ...
                 break;
             case 'v':    /* variable assignment */
-                &hellip;
+                ...
                 break;
             case 'W':    /* extension */
-                &hellip;
+                ...
                 break;
             case '?':
             default:
@@ -17632,7 +17648,7 @@ arguments for `awk`:
                 break;
             }
         }
-        &hellip;
+        ...
     }
     
 
@@ -17951,7 +17967,7 @@ A few lines representative of `pwcat`&rsquo;s output are as follows:
     -| arnold:xyzzy:2076:10:Arnold Robbins:/home/arnold:/bin/sh
     -| miriam:yxaay:112:10:Miriam Robbins:/home/miriam:/bin/sh
     -| andy:abcca2:113:10:Andy Jacobs:/home/andy:/bin/sh
-    &hellip;
+    ...
     
 
 With that introduction, following is a group of functions for getting user
@@ -18185,7 +18201,7 @@ Here is what running `grcat` might produce:
     -| kmem:*:2:
     -| staff:*:10:arnold,miriam,andy
     -| other:*:20:
-    &hellip;
+    ...
     
 
 Here are the functions for obtaining information from the group database.
@@ -18908,7 +18924,7 @@ expressions that are almost identical to those available in `awk`
 (see [Regexp](#3-regular-expressions)).
 You invoke it as follows:
 
-    egrep [options] 'pattern'files &hellip;
+    egrep [options] 'pattern'files ...
     
 
 The pattern is a regular expression.  In typical usage, the regular
@@ -19377,7 +19393,7 @@ The `tee` program is known as a &ldquo;pipe fitting.&rdquo;  `tee` copies
 its standard input to its standard output and also duplicates it to the
 files named on the command line.  Its usage is as follows:
 
-    tee [-a] file &hellip;
+    tee [-a] file ...
     
 
 The -a option tells `tee` to append to the named files, instead of
@@ -19713,7 +19729,7 @@ Previous: [Uniq Program](#1126-printing-nonduplicated-lines-of-text), Up: [Clone
 The `wc` (word count) utility counts lines, words, and characters in
 one or more input files. Its usage is as follows:
 
-    wc [-lwc] [files &hellip;]
+    wc [-lwc] [files ...]
     
 
 If no files are specified on the command line, `wc` reads its standard
@@ -19885,7 +19901,7 @@ Next: [Alarm Program](#1132-an-alarm-clock-program), Up: [Miscellaneous Programs
 
 A common error when writing large amounts of prose is to accidentally
 duplicate words.  Typically you will see this in text as something like &ldquo;the
-the program does the following&hellip;&rdquo;  When the text is online, often
+the program does the following...&rdquo;  When the text is online, often
 the duplicated words occur at the end of one line and the
 beginning of
 another, making them very difficult to spot.
@@ -20081,7 +20097,7 @@ Next: [Labels Program](#1134-printing-mailing-labels), Previous: [Alarm Program]
 The system `tr` utility transliterates characters.  For example, it is
 often used to map uppercase letters into lowercase for further processing:
 
-    generate data | tr 'A-Z' 'a-z' | process data &hellip;
+    generate data | tr 'A-Z' 'a-z' | process data ...
     
 
 `tr` requires two lists of characters.[78](#FOOT78)  When processing the input, the
@@ -20241,7 +20257,7 @@ looking something like this:
     line 3          line 8
     line 4          line 9
     line 5          line 10
-    &hellip;
+    ...
     
 
 The `printf` format string &lsquo;%-41s&rsquo; left-aligns
@@ -20518,7 +20534,7 @@ so we have to give it some help.)
 
 The following program, extract.awk, reads through a Texinfo source
 file and does two things, based on the special comments.
-Upon seeing &lsquo;@c system &hellip;&rsquo;,
+Upon seeing &lsquo;@c system ...&rsquo;,
 it runs a command, by extracting the command text from the
 control line and passing it on to the `system()` function
 (see [I/O Functions](#914-inputoutput-functions)).
@@ -20537,7 +20553,7 @@ extract.awk to extract the sample programs and install many
 of them in a standard directory where `gawk` can find them.
 The Texinfo file looks something like this:
 
-    &hellip;
+    ...
     This program has a @code{BEGIN} rule
     that prints a nice message:
     
@@ -20554,7 +20570,7 @@ The Texinfo file looks something like this:
     END @{ print "Always avoid bored archaeologists!" @}
     @c endfile
     @end example
-    &hellip;
+    ...
     
 
 extract.awk begins by setting `IGNORECASE` to one, so that
@@ -20811,13 +20827,13 @@ It would be nice to be able to write programs in the following manner:
     # library functions
     @include getopt.awk
     @include join.awk
-    &hellip;
+    ...
     
     # main program
     BEGIN {
         while ((c = getopt(ARGC, ARGV, "a:b:cde")) != -1)
-            &hellip;
-        &hellip;
+            ...
+        ...
     }
     
 
@@ -21113,7 +21129,7 @@ marker is fed to command as input.  The shell processes
 the contents of the here document for variable and command substitution
 (and possibly other things as well, depending upon the shell).
 
-The shell construct &lsquo;$(&hellip;)&rsquo; is called *command substitution*.
+The shell construct &lsquo;$(...)&rsquo; is called *command substitution*.
 The output of the command inside the parentheses is substituted
 into the command line.
 Because the result is used in a variable assignment,
@@ -21260,7 +21276,7 @@ the anagrams would appear in arbitrary order:
 Here is some partial output when the program is run:
 
     $ gawk -f anagram.awk /usr/share/dict/words | grep '^b'
-    &hellip;
+    ...
     babbled blabbed
     babbler blabber brabble
     babblers blabbers brabbles
@@ -21269,7 +21285,7 @@ Here is some partial output when the program is run:
     babel bable
     babels beslab
     babery yabber
-    &hellip;
+    ...
     
 
 ---
@@ -21314,7 +21330,7 @@ Good Programming.
 
 -  Using &lsquo;#!&rsquo; to make `awk` programs directly runnable makes
 them easier to use.  Otherwise, invoke the program using &lsquo;awk
--f &hellip;&rsquo;.
+-f ...&rsquo;.
 
 -  Reimplementing standard POSIX programs in `awk` is a pleasant
 exercise; `awk`&rsquo;s expressive power lets you write such programs
@@ -21389,14 +21405,15 @@ to simplify the code.
 9.  Compare the performance of the awksed.awk program
 (see [Simple Sed](#1138-a-simple-stream-editor)) with the more straightforward:
 
-    BEGIN {
-        pat = ARGV[1]
-        repl = ARGV[2]
-        ARGV[1] = ARGV[2] = ""
-    }
-    
-    { gsub(pat, repl); print }
-    
+```awk
+  BEGIN {
+      pat = ARGV[1]
+      repl = ARGV[2]
+      ARGV[1] = ARGV[2] = ""
+  }
+  
+  { gsub(pat, repl); print }
+```    
 
 10.  What are the advantages and disadvantages of awksed.awk versus
 the real `sed` utility?
@@ -21406,8 +21423,7 @@ read with `getline` in the `pathto()` function when testing
 for the file&rsquo;s accessibility for use with the main program simplifies
 things considerably.  What problem does this engender though?
 
-12. 
-As an additional example of the idea that it is not always necessary to
+12.  As an additional example of the idea that it is not always necessary to
 add new features to a program, consider the idea of having two files in
 a directory in the search path:
 
