@@ -4160,7 +4160,7 @@ containing the alternation operator, &lsquo;|&rsquo;.  For example,
 (These are Texinfo formatting control sequences. The &lsquo;+&rsquo; is
 explained further on in this list.)
 
-<code>*</code></br>
+<code>\*</code></br>
 This symbol means that the preceding regular expression should be
 repeated as many times as necessary to find a match.  For example, &lsquo;ph*&rsquo;
 applies the &lsquo;*&rsquo; symbol to the preceding &lsquo;h&rsquo; and looks for matches
@@ -4303,11 +4303,19 @@ a keyword denoting the class, and &lsquo;:]&rsquo;.
 [Table 3.1](#table_002dchar_002dclasses) lists the character classes defined by the
 POSIX standard.
 
-ClassMeaning`[:alnum:]`Alphanumeric characters`[:alpha:]`Alphabetic characters`[:blank:]`Space and TAB characters`[:cntrl:]`Control characters`[:digit:]`Numeric characters`[:graph:]`Characters that are both printable and visible
+| **Class** | **Meaning**
+| - | -
+| `[:alnum:]` | Alphanumeric characters
+| `[:alpha:]` | Alphabetic characters
+| `[:blank:]` | Space and TAB characters
+| `[:cntrl:]` | Control characters
+| `[:digit:]` | Numeric characters
+| `[:graph:]` | Characters that are both printable and visible
+
 (a space is printable but not visible, whereas an &lsquo;a&rsquo; is both)`[:lower:]`Lowercase alphabetic characters`[:print:]`Printable characters (characters that are not control characters)`[:punct:]`Punctuation characters (characters that are not letters, digits,
 control characters, or space characters)`[:space:]`Space characters (such as space, TAB, and formfeed, to name a few)`[:upper:]`Uppercase alphabetic characters`[:xdigit:]`Characters that are hexadecimal digits
 
-**Table 3.1: **POSIX character classes
+**Table 3.1:** POSIX character classes
 
 For example, before the POSIX standard, you had to write `/[A-Za-z0-9]/`
 to match alphanumeric characters.  If your
@@ -4318,34 +4326,34 @@ With the POSIX character classes, you can write
 and numeric characters in your character set.
 
 Some utilities that match regular expressions provide a nonstandard
-&lsquo;[:ascii:]&rsquo; character class; `awk` does not. However, you
-can simulate such a construct using &lsquo;[\x00-\x7F]&rsquo;.  This matches
+`[:ascii:]` character class; `awk` does not. However, you
+can simulate such a construct using `[\x00-\x7F]`.  This matches
 all values numerically between zero and 127, which is the defined
 range of the ASCII character set.  Use a complemented character list
-(&lsquo;[^\x00-\x7F]&rsquo;) to match any single-byte characters that are not
+(`[^\x00-\x7F]`) to match any single-byte characters that are not
 in the ASCII range.
 
 Two additional special sequences can appear in bracket expressions.
 These apply to non-ASCII character sets, which can have single symbols
 (called *collating elements*) that are represented with more than one
 character. They can also have several characters that are equivalent for
-*collating*, or sorting, purposes.  (For example, in French, a plain &ldquo;e&rdquo;
-and a grave-accented &ldquo;&egrave;&rdquo; are equivalent.)
+*collating*, or sorting, purposes.  (For example, in French, a plain `e`
+and a grave-accented <code>&egrave;</code> are equivalent.)
 These sequences are:
 
 Collating symbols
 Multicharacter collating elements enclosed between
-&lsquo;[.&rsquo; and &lsquo;.]&rsquo;.  For example, if &lsquo;ch&rsquo; is a collating element,
-then &lsquo;[[.ch.]]&rsquo; is a regexp that matches this collating element, whereas
-&lsquo;[ch]&rsquo; is a regexp that matches either &lsquo;c&rsquo; or &lsquo;h&rsquo;.
+`[.` and `.]`.  For example, if `ch` is a collating element,
+then `[[.ch.]]` is a regexp that matches this collating element, whereas
+`[ch]` is a regexp that matches either `c` or `h`.
 
 Equivalence classes
 Locale-specific names for a list of
 characters that are equal. The name is enclosed between
-&lsquo;[=&rsquo; and &lsquo;=]&rsquo;.
-For example, the name &lsquo;e&rsquo; might be used to represent all of
-&ldquo;e,&rdquo; &ldquo;&ecirc;,&rdquo; &ldquo;&egrave;,&rdquo; and &ldquo;&eacute;.&rdquo; In this case, &lsquo;[[=e=]]&rsquo; is a regexp
-that matches any of &lsquo;e&rsquo;, &lsquo;&ecirc;&rsquo;, &lsquo;&eacute;&rsquo;, or &lsquo;&egrave;&rsquo;.
+`[=` and `=]`.
+For example, the name `e` might be used to represent all of
+`e,` <code>&ecirc;</code>, <code>&egrave;</code>, and <code>&eacute;</code>. In this case, `[[=e=]]` is a regexp
+that matches any of `e`, <code>&ecirc;</code>, <code>&eacute;</code>, or <code>&egrave;</code>.
 
 These features are very valuable in non-English-speaking locales.
 
@@ -4612,9 +4620,7 @@ haven&rsquo;t discussed yet;
 see [String Functions](#913-string-manipulation-functions)).
 For example:
 
-```awk
-    tolower($1) ~ /foo/  { &hellip; }
-```    
+<pre>  tolower($1) ~ /foo/  { ... }</pre>
 
 converts the first field to lowercase before matching against it.
 This works in any POSIX-compliant `awk`.
@@ -4631,10 +4637,10 @@ to zero:
 
 ```awk
     x = "aB"
-    if (x ~ /ab/) &hellip;   # this test will fail
+    if (x ~ /ab/) ...   # this test will fail
     
     IGNORECASE = 1
-    if (x ~ /ab/) &hellip;   # now it will succeed
+    if (x ~ /ab/) ...   # now it will succeed
 ```    
 
 In general, you cannot use `IGNORECASE` to make certain rules
@@ -5077,9 +5083,9 @@ when you are not interested in specific fields.
 Here are some more examples:
 
 ```awk
-    $ awk '$1 ~ /li/ { print $0 }' mail-list
-    -| Amelia       555-5553     amelia.zodiacusque@gmail.com    F
-    -| Julie        555-6699     julie.perscrutabor@skeeve.com   F
+  $ awk '$1 ~ /li/ { print $0 }' mail-list
+  -| Amelia       555-5553     amelia.zodiacusque@gmail.com    F
+  -| Julie        555-6699     julie.perscrutabor@skeeve.com   F
 ```    
 
 This example prints each record in the file mail-list whose first
@@ -5090,11 +5096,11 @@ entire record* and prints the first and last fields for each matching
 input record:
 
 ```awk
-    $ awk '/li/ { print $1, $NF }' mail-list
-    -| Amelia F
-    -| Broderick R
-    -| Julie F
-    -| Samuel A
+  $ awk '/li/ { print $1, $NF }' mail-list
+  -| Amelia F
+  -| Broderick R
+  -| Julie F
+  -| Samuel A
 ```    
 
 ---
@@ -5110,7 +5116,7 @@ value is a string, rather than a number, it is converted to a number.
 Consider this example:
 
 ```awk
-    awk '{ print $NR }'
+  awk '{ print $NR }'
 ```    
 
 Recall that `NR` is the number of records read so far: one in the
@@ -5121,7 +5127,7 @@ the record has fewer than 20 fields, so this prints a blank line.
 Here is another example of using expressions as field numbers:
 
 ```awk
-    awk '{ print $(2*2) }' mail-list
+  awk '{ print $(2*2) }' mail-list
 ```    
 
 `awk` evaluates the expression &lsquo;(2*2)&rsquo; and uses
@@ -5163,12 +5169,12 @@ modifies the input file.)
 Consider the following example and its output:
 
 ```awk
-    $ awk '{ nboxes = $3 ; $3 = $3 - 10
-    >        print nboxes, $3 }' inventory-shipped
-    -| 25 15
-    -| 32 22
-    -| 24 14
-    &hellip;
+  $ awk '{ nboxes = $3 ; $3 = $3 - 10
+  >        print nboxes, $3 }' inventory-shipped
+  -| 25 15
+  -| 32 22
+  -| 24 14
+  &hellip;
 ```    
 
 The program first saves the original value of field three in the variable
@@ -5195,23 +5201,23 @@ prints a copy of the input file, with 10 subtracted from the second
 field of each line:
 
 ```awk
-    $ awk '{ $2 = $2 - 10; print $0 }' inventory-shipped
-    -| Jan 3 25 15 115
-    -| Feb 5 32 24 226
-    -| Mar 5 24 34 228
-    &hellip;
+  $ awk '{ $2 = $2 - 10; print $0 }' inventory-shipped
+  -| Jan 3 25 15 115
+  -| Feb 5 32 24 226
+  -| Mar 5 24 34 228
+  &hellip;
 ```    
 
 It is also possible to assign contents to fields that are out
 of range.  For example:
 
 ```awk
-    $ awk '{ $6 = ($5 + $4 + $3 + $2)
-    >        print $6 }' inventory-shipped
-    -| 168
-    -| 297
-    -| 301
-    &hellip;
+  $ awk '{ $6 = ($5 + $4 + $3 + $2)
+  >        print $6 }' inventory-shipped
+  -| 168
+  -| 297
+  -| 301
+  &hellip;
 ```    
 
 We&rsquo;ve just created `$6`, whose value is the sum of fields
@@ -5239,10 +5245,10 @@ Referencing an out-of-range field only produces an empty string.  For
 example:
 
 ```awk
-    if ($(NF+1) != "")
-        print "can't happen"
-    else
-        print "everything is normal"
+  if ($(NF+1) != "")
+      print "can't happen"
+  else
+      print "everything is normal"
 ```    
 
 should print &lsquo;everything is normal&rsquo;, because `NF+1` is certain
@@ -5257,10 +5263,10 @@ value of `$0` but does not change the value of `NF`,
 even when you assign the empty string to a field.  For example:
 
 ```awk
-    $ echo a b c d | awk '{ OFS = ":"; $2 = ""
-    >                       print $0; print NF }'
-    -| a::c:d
-    -| 4
+  $ echo a b c d | awk '{ OFS = ":"; $2 = ""
+  >                       print $0; print NF }'
+  -| a::c:d
+  -| 4
 ```    
 
 The field is still there; it just has an empty value, delimited by
@@ -5268,10 +5274,10 @@ the two colons between &lsquo;a&rsquo; and &lsquo;c&rsquo;.
 This example shows what happens if you create a new field:
 
 ```awk
-    $ echo a b c d | awk '{ OFS = ":"; $2 = ""; $6 = "new"
-    >                       print $0; print NF }'
-    -| a::c:d::new
-    -| 6
+  $ echo a b c d | awk '{ OFS = ":"; $2 = ""; $6 = "new"
+  >                       print $0; print NF }'
+  -| a::c:d::new
+  -| 6
 ```    
 
 The intervening field, `$5`, is created with an empty value
@@ -5284,10 +5290,10 @@ after the new value of `NF` and recomputes `$0`.
 Here is an example:
 
 ```awk
-    $ echo a b c d e f | awk '{ print "NF =", NF;
-    >                           NF = 3; print $0 }'
-    -| NF = 6
-    -| a b c
+  $ echo a b c d e f | awk '{ print "NF =", NF;
+  >                           NF = 3; print $0 }'
+  -| NF = 6
+  -| a b c
 ```    
 
 > CAUTION: Some versions of `awk` don&rsquo;t
@@ -5299,8 +5305,8 @@ values of the fields and `OFS`.  To do this, use the
 seemingly innocuous assignment:
 
 ```awk
-    $1 = $1   # force record to be reconstituted
-    print $0  # or whatever else with $0
+  $1 = $1   # force record to be reconstituted
+  print $0  # or whatever else with $0
 ```    
 
 This forces `awk` to rebuild the record.  It does help
@@ -5376,7 +5382,7 @@ For example, here we set the value of `FS` to the string
 `","`:
 
 ```awk
-    awk 'BEGIN { FS = "," } ; { print $2 }'
+  awk 'BEGIN { FS = "," } ; { print $2 }'
 ```    
 
 Given the input line:
@@ -5440,7 +5446,7 @@ regular expression.  In this case, each match in the record for the regular
 expression separates fields.  For example, the assignment:
 
 ```awk
-    FS = ", \t"
+  FS = ", \t"
 ```    
 
 makes every area of an input line that consists of a comma followed by a
@@ -5463,17 +5469,17 @@ the record and then decides where the fields are.
 For example, the following pipeline prints &lsquo;b&rsquo;:
 
 ```awk
-    $ echo ' a b c d ' | awk '{ print $2 }'
-    -| b
+  $ echo ' a b c d ' | awk '{ print $2 }'
+  -| b
 ```    
 
 However, this pipeline prints &lsquo;a&rsquo; (note the extra spaces around
 each letter):
 
 ```awk
-    $ echo ' a  b  c  d ' | awk 'BEGIN { FS = "[ \t\n]+" }
-    >                                  { print $2 }'
-    -| a
+  $ echo ' a  b  c  d ' | awk 'BEGIN { FS = "[ \t\n]+" }
+  >                                  { print $2 }'
+  -| a
 ```    
 
 In this case, the first field is null, or empty.
@@ -5482,9 +5488,9 @@ The stripping of leading and trailing whitespace also comes into
 play whenever `$0` is recomputed.  For instance, study this pipeline:
 
 ```awk
-    $ echo '   a b c d' | awk '{ print; $2 = $2; print }'
-    -|    a b c d
-    -| a b c d
+  $ echo '   a b c d' | awk '{ print; $2 = $2; print }'
+  -|    a b c d
+  -| a b c d
 ```    
 
 The first `print` statement prints the record as it was read,
@@ -5509,13 +5515,13 @@ to match only at the beginning of the record. `gawk`
 also works this way. For example:
 
 ```awk
-    $ echo 'xxAA  xxBxx  C' |
-    > gawk -F '(^x+)|( +)' '{ for (i = 1; i <= NF; i++)
-    >                             printf "-->%s<--\n", $i }'
-    -| --><--
-    -| -->AA<--
-    -| -->xxBxx<--
-    -| -->C<--
+  $ echo 'xxAA  xxBxx  C' |
+  > gawk -F '(^x+)|( +)' '{ for (i = 1; i <= NF; i++)
+  >                             printf "-->%s<--\n", $i }'
+  -| --><--
+  -| -->AA<--
+  -| -->xxBxx<--
+  -| -->C<--
 ```    
 
 ---
@@ -5532,14 +5538,14 @@ each individual character in the record becomes a separate field.
 For example:
 
 ```awk
-    $ echo a b | gawk 'BEGIN { FS = "" }
-    >                  {
-    >                      for (i = 1; i <= NF; i = i + 1)
-    >                          print "Field", i, "is", $i
-    >                  }'
-    -| Field 1 is a
-    -| Field 2 is
-    -| Field 3 is b
+  $ echo a b | gawk 'BEGIN { FS = "" }
+  >                  {
+  >                      for (i = 1; i <= NF; i = i + 1)
+  >                          print "Field", i, "is", $i
+  >                  }'
+  -| Field 1 is a
+  -| Field 2 is
+  -| Field 3 is b
 ```    
 
 Traditionally, the behavior of `FS` equal to `""` was not defined.
@@ -5561,7 +5567,7 @@ Next: [Full Line Fields](#455-making-the-full-line-be-a-single-field), Previous:
 do so.  For example:
 
 ```awk
-    awk -F, 'program' input-files
+  awk -F, 'program' input-files
 ```
 
 sets `FS` to the &lsquo;,&rsquo; character.  Notice that the option uses
@@ -5575,8 +5581,8 @@ appropriately.  For example, to use a &lsquo;\&rsquo; as the field separator
 on the command line, you would have to type:
 
 ```awk
-    # same as FS = "\\"
-    awk -F\\\\ '&hellip;' files &hellip;
+  # same as FS = "\\"
+  awk -F\\\\ '&hellip;' files &hellip;
 ```    
 
 Because &lsquo;\&rsquo; is used for quoting in the shell, `awk` sees
@@ -5599,7 +5605,7 @@ As an example, let&rsquo;s use an `awk` program file called edu.awk
 that contains the pattern `/edu/` and the action &lsquo;print $1&rsquo;:
 
 ```awk
-    /edu/   { print $1 }
+  /edu/   { print $1 }
 ```    
 
 Let&rsquo;s also set `FS` to be the &lsquo;-&rsquo; character and run the
@@ -5608,10 +5614,10 @@ list of the names of the people that work at or attend a university, and
 the first three digits of their phone numbers:
 
 ```awk
-    $ awk -F- -f edu.awk mail-list
-    -| Fabius       555
-    -| Samuel       555
-    -| Jean
+  $ awk -F- -f edu.awk mail-list
+  -| Fabius       555
+  -| Samuel       555
+  -| Jean
 ```    
 
 Note the third line of output.  The third line
@@ -5641,7 +5647,7 @@ The following program searches the system password file and prints
 the entries for users whose full name is not indicated:
 
 ```awk
-    awk -F: '$5 == ""' /etc/passwd
+  awk -F: '$5 == ""' /etc/passwd
 ```    
 
 ---
@@ -5655,7 +5661,7 @@ single field.  This can be done easily and portably simply by
 setting `FS` to `"\n"` (a newline):[21](#FOOT21)
 
 ```awk
-    awk -F'\n' 'program' files &hellip;
+  awk -F'\n' 'program' files &hellip;
 ```
 
 When you do this, `$1` is the same as `$0`.
@@ -5678,7 +5684,7 @@ to diagnose. The following example illustrates the difference
 between the two methods:
 
 ```awk
-    sed 1q /etc/passwd | awk '{ FS = ":" ; print $1 }'
+  sed 1q /etc/passwd | awk '{ FS = ":" ; print $1 }'
 ```    
 
 which usually prints:
@@ -5713,26 +5719,26 @@ by any single character, use &lsquo;FS = "quot;\\.."&rsquo;.
 The following list summarizes how fields are split, based on the value
 of `FS` (&lsquo;==&rsquo; means &ldquo;is equal to&rdquo;):
 
-<code>FS == " "</code>
+<code>FS == " "</code></br>
 Fields are separated by runs of whitespace.  Leading and trailing
 whitespace are ignored.  This is the default.
 
-<code>FS == any other single character</code>
+<code>FS == any other single character</code></br>
 Fields are separated by each occurrence of the character.  Multiple
 successive occurrences delimit empty fields, as do leading and
 trailing occurrences.
 The character can even be a regexp metacharacter; it does not need
 to be escaped.
 
-<code>FS == regexp</code>
+<code>FS == regexp</code></br>
 Fields are separated by occurrences of characters that match regexp.
 Leading and trailing matches of regexp delimit empty fields.
 
-<code>FS == ""</code>
+<code>FS == ""</code></br>
 Each individual character in the record becomes a separate field.
 (This is a common extension; it is not specified by the POSIX standard.)
 
-<code>FS</code> and <code>IGNORECASE</code>
+<code>FS</code> and <code>IGNORECASE</code></br>
 
 The `IGNORECASE` variable
 (see [User-modified](#751-built-in-variables-that-control-awk))
@@ -5741,10 +5747,10 @@ It has no effect when `FS` is a single character, even if
 that character is a letter.  Thus, in the following code:
 
 ```awk
-    FS = "c"
-    IGNORECASE = 1
-    $0 = "aCa"
-    print $1
+  FS = "c"
+  IGNORECASE = 1
+  $0 = "aCa"
+  print $1
 ``` 
 
 The output is &lsquo;aCa&rsquo;.  If you really want to split fields on an
@@ -5819,21 +5825,21 @@ number of seconds, and prints out the first two fields and the calculated
 idle time:
 
 ```awk
-    BEGIN  { FIELDWIDTHS = "9 6 10 6 7 7 35" }
-    NR > 2 {
-        idle = $4
-        sub(/^ +/, "", idle)   # strip leading spaces
-        if (idle == "")
-            idle = 0
-        if (idle ~ /:/) {      # hh:mm
-            split(idle, t, ":")
-            idle = t[1] * 60 + t[2]
-        }
-        if (idle ~ /days/)
-            idle *= 24 * 60 * 60
-    
-        print $1, $2, idle
-    }
+  BEGIN  { FIELDWIDTHS = "9 6 10 6 7 7 35" }
+  NR > 2 {
+      idle = $4
+      sub(/^ +/, "", idle)   # strip leading spaces
+      if (idle == "")
+          idle = 0
+      if (idle ~ /:/) {      # hh:mm
+          split(idle, t, ":")
+          idle = t[1] * 60 + t[2]
+      }
+      if (idle ~ /days/)
+          idle *= 24 * 60 * 60
+  
+      print $1, $2, idle
+  }
 ```    
 
 > NOTE: The preceding program uses a number of `awk` features that
@@ -5906,13 +5912,13 @@ be the final non-whitespace character in `FIELDWIDTHS`.
 For example:
 
 ```awk
-    $ cat fw.awkShow the program
-    -| BEGIN { FIELDWIDTHS = "2 2 *" }
-    -| { print NF, $1, $2, $3 }
-    $ cat fw.inShow sample input
-    -| 1234abcdefghi
-    $ gawk -f fw.awk fw.inRun the program
-    -| 3 12 34 abcdefghi
+  $ cat fw.awkShow the program
+  -| BEGIN { FIELDWIDTHS = "2 2 *" }
+  -| { print NF, $1, $2, $3 }
+  $ cat fw.inShow sample input
+  -| 1234abcdefghi
+  $ gawk -f fw.awk fw.inRun the program
+  -| 3 12 34 abcdefghi
 ```    
 
 ---
@@ -5998,17 +6004,17 @@ Writing this as a string requires us to escape the double quotes, leading to:
 Putting this to use, here is a simple program to parse the data:
 
 ```awk
-    BEGIN {
-        FPAT = "([^,]+)|(\"[^\"]+\")"
-    }
-    
+  BEGIN {
+      FPAT = "([^,]+)|(\"[^\"]+\")"
+  }
+  
 
-    {
-        print "NF = ", NF
-        for (i = 1; i <= NF; i++) {
-            printf("$%d = <%s>\n", i, $i)
-        }
-    }
+  {
+      print "NF = ", NF
+      for (i = 1; i <= NF; i++) {
+          printf("$%d = <%s>\n", i, $i)
+      }
+  }
 ```    
 
 When run, we get the following:
@@ -6030,10 +6036,10 @@ A straightforward improvement when processing CSV data of this sort
 would be to remove the quotes when they occur, with something like this:
 
 ```awk
-    if (substr($i, 1, 1) == "\"") {
-        len = length($i)
-        $i = substr($i, 2, len - 2)    # Get text within the two quotes
-    }
+  if (substr($i, 1, 1) == "\"") {
+      len = length($i)
+      $i = substr($i, 2, len - 2)    # Get text within the two quotes
+  }
 ```    
 
 As with `FS`, the `IGNORECASE` variable (see [User-modified](#751-built-in-variables-that-control-awk))
@@ -6054,7 +6060,7 @@ contain at least one character.  A straightforward modification
 (changing the first &lsquo;+&rsquo; to &lsquo;*&rsquo;) allows fields to be empty:
 
 ```awk
-    FPAT = "([^,]*)|(\"[^\"]+\")"
+  FPAT = "([^,]*)|(\"[^\"]+\")"
 ```    
 
 Finally, the `patsplit()` function makes the same functionality
@@ -6085,14 +6091,14 @@ The value is `"FS"` if regular field splitting is being used,
 or `"FPAT"` if content-based field splitting is being used:
 
 ```awk
-    if (PROCINFO["FS"] == "FS")
-        regular field splitting &hellip;
-    else if (PROCINFO["FS"] == "FIELDWIDTHS")
-        fixed-width field splitting &hellip;
-    else if (PROCINFO["FS"] == "FPAT")
-        content-based field splitting &hellip;
-    else
-        API input parser field splitting &hellip; (advanced feature)
+  if (PROCINFO["FS"] == "FS")
+      regular field splitting &hellip;
+  else if (PROCINFO["FS"] == "FIELDWIDTHS")
+      fixed-width field splitting &hellip;
+  else if (PROCINFO["FS"] == "FPAT")
+      content-based field splitting &hellip;
+  else
+      API input parser field splitting &hellip; (advanced feature)
 ```
 
 This information is useful when writing a function that needs to
@@ -6188,33 +6194,33 @@ list in a file named addresses, which looks like this:
 A simple program to process this file is as follows:
 
 ```awk
-    # addrs.awk --- simple mailing list program
-    
-    # Records are separated by blank lines.
-    # Each line is one field.
-    BEGIN { RS = "" ; FS = "\n" }
-    
-    {
-          print "Name is:", $1
-          print "Address is:", $2
-          print "City and State are:", $3
-          print ""
-    }
+  # addrs.awk --- simple mailing list program
+  
+  # Records are separated by blank lines.
+  # Each line is one field.
+  BEGIN { RS = "" ; FS = "\n" }
+  
+  {
+        print "Name is:", $1
+        print "Address is:", $2
+        print "City and State are:", $3
+        print ""
+  }
 ```    
 
 Running the program produces the following output:
 
 ```awk
-    $ awk -f addrs.awk addresses
-    -| Name is: Jane Doe
-    -| Address is: 123 Main Street
-    -| City and State are: Anywhere, SE 12345-6789
-    -|
-    -| Name is: John Smith
-    -| Address is: 456 Tree-lined Avenue
-    -| City and State are: Smallville, MW 98765-4321
-    -|
-    &hellip;
+  $ awk -f addrs.awk addresses
+  -| Name is: Jane Doe
+  -| Address is: 123 Main Street
+  -| City and State are: Anywhere, SE 12345-6789
+  -|
+  -| Name is: John Smith
+  -| Address is: 456 Tree-lined Avenue
+  -| City and State are: Smallville, MW 98765-4321
+  -|
+  &hellip;
 ```    
 
 See [Labels Program](#1134-printing-mailing-labels) for a more realistic program dealing with
@@ -6222,23 +6228,23 @@ address lists.  The following list summarizes how records are split,
 based on the value of
 `RS`:
 
-<code>RS == "\n"</code>
+<code>RS == "\n"</code></br>
 Records are separated by the newline character (&lsquo;\n&rsquo;).  In effect,
 every line in the data file is a separate record, including blank lines.
 This is the default.
 
-<code>RS == any single character</code>
+<code>RS == any single character</code></br>
 Records are separated by each occurrence of the character.  Multiple
 successive occurrences delimit empty records.
 
-<code>RS == ""</code>
+<code>RS == ""</code></br>
 Records are separated by runs of blank lines.
 When `FS` is a single character, then
 the newline character
 always serves as a field separator, in addition to whatever value
 `FS` may have. Leading and trailing newlines in a file are ignored.
 
-<code>RS == regexp</code>
+<code>RS == regexp</code></br>
 Records are separated by occurrences of characters that match regexp.
 Leading and trailing matches of regexp delimit empty records.
 (This is a `gawk` extension; it is not specified by the
@@ -6316,35 +6322,35 @@ finished processing the current record, but want to do some special
 processing on the next record *right now*.  For example:
 
 ```awk
-    # Remove text between /* and */, inclusive
-    {
-        if ((i = index($0, "/*")) != 0) {
-            out = substr($0, 1, i - 1)  # leading part of the string
-            rest = substr($0, i + 2)    # ... */ ...
-            j = index(rest, "*/")       # is */ in trailing part?
-            if (j > 0) {
-                rest = substr(rest, j + 2)  # remove comment
-            } else {
-                while (j == 0) {
-                    # get more text
-                    if (getline <= 0) {
-                        print("unexpected EOF or error:", ERRNO) > "/dev/stderr"
-                        exit
-                    }
-                    # build up the line using string concatenation
-                    rest = rest $0
-                    j = index(rest, "*/")   # is */ in trailing part?
-                    if (j != 0) {
-                        rest = substr(rest, j + 2)
-                        break
-                    }
-                }
-            }
-            # build up the output line using string concatenation
-            $0 = out rest
-        }
-        print $0
-    }
+  # Remove text between /* and */, inclusive
+  {
+      if ((i = index($0, "/*")) != 0) {
+          out = substr($0, 1, i - 1)  # leading part of the string
+          rest = substr($0, i + 2)    # ... */ ...
+          j = index(rest, "*/")       # is */ in trailing part?
+          if (j > 0) {
+              rest = substr(rest, j + 2)  # remove comment
+          } else {
+              while (j == 0) {
+                  # get more text
+                  if (getline <= 0) {
+                      print("unexpected EOF or error:", ERRNO) > "/dev/stderr"
+                      exit
+                  }
+                  # build up the line using string concatenation
+                  rest = rest $0
+                  j = index(rest, "*/")   # is */ in trailing part?
+                  if (j != 0) {
+                      rest = substr(rest, j + 2)
+                      break
+                  }
+              }
+          }
+          # build up the output line using string concatenation
+          $0 = out rest
+      }
+      print $0
+  }
 ``` 
 
 This `awk` program deletes C-style comments (&lsquo;/* &hellip;
@@ -6389,13 +6395,13 @@ read-a-line-and-check-each-rule loop of `awk` never sees it.
 The following example swaps every two lines of input:
 
 ```awk
-    {
-         if ((getline tmp) > 0) {
-              print tmp
-              print $0
-         } else
-              print $0
-    }
+  {
+       if ((getline tmp) > 0) {
+            print tmp
+            print $0
+       } else
+            print $0
+  }
 ```    
 
 It takes the following list:
@@ -6436,13 +6442,13 @@ encounters a first field with a value equal to 10 in the current input
 file:
 
 ```awk
-    {
-        if ($1 == 10) {
-             getline < "secondary.input"
-             print
-        } else
-             print
-    }
+  {
+      if ($1 == 10) {
+           getline < "secondary.input"
+           print
+      } else
+           print
+  }
 ```    
 
 Because the main input stream is not used, the values of `NR` and
@@ -6478,14 +6484,14 @@ Such a record is replaced by the contents of the file
 filename:
 
 ```awk
-    {
-         if (NF == 2 && $1 == "@include") {
-              while ((getline line < $2) > 0)
-                   print line
-              close($2)
-         } else
-              print
-    }
+  {
+       if (NF == 2 && $1 == "@include") {
+            while ((getline line < $2) > 0)
+                 print line
+            close($2)
+       } else
+            print
+  }
 ```    
 
 Note here how the name of the extra input file is not built into
@@ -6525,15 +6531,15 @@ lines that begin with &lsquo;@execute&rsquo;, which are replaced by the output
 produced by running the rest of the line as a shell command:
 
 ```awk
-    {
-         if ($1 == "@execute") {
-              tmp = substr($0, 10)        # Remove "@execute"
-              while ((tmp | getline) > 0)
-                   print
-              close(tmp)
-         } else
-              print
-    }
+  {
+       if ($1 == "@execute") {
+            tmp = substr($0, 10)        # Remove "@execute"
+            while ((tmp | getline) > 0)
+                 print
+            close(tmp)
+       } else
+            print
+  }
 ```    
 
 The `close()` function is called to ensure that if two identical
@@ -6601,11 +6607,11 @@ following program reads the current date and time into the variable
 prints it:
 
 ```awk
-    BEGIN {
-         "date" | getline current_time
-         close("date")
-         print "Report printed on " current_time
-    }
+  BEGIN {
+       "date" | getline current_time
+       close("date")
+       print "Report printed on " current_time
+  }
 ```    
 
 In this version of `getline`, none of the predefined variables are
@@ -6630,8 +6636,8 @@ Typically, you write data to the coprocess first and then
 read the results back, as shown in the following:
 
 ```awk
-    print "some query" |& "db_server"
-    "db_server" |& getline
+  print "some query" |& "db_server"
+  "db_server" |& getline
 ```    
 
 which sends a query to `db_server` and then reads the results.
@@ -6717,11 +6723,11 @@ end-of-file.  Some versions don&rsquo;t evaluate the expression; many versions
 (including `gawk`) do.  Here is an example, courtesy of Duncan Moore:
 
 ```awk
-    BEGIN {
-        system("echo 1 > f")
-        while ((getline a[++c] < "f") > 0) { }
-        print c
-    }
+  BEGIN {
+      system("echo 1 > f")
+      while ((getline a[++c] < "f") > 0) { }
+      print c
+  }
 ```    
 
 Here, the side effect is the &lsquo;++c&rsquo;.  Is `c` incremented if
@@ -6762,7 +6768,7 @@ on a per-input, per-command, or per-connection basis, by setting a special
 element in the `PROCINFO` array (see [Auto-set](#752-built-in-variables-that-convey-information)):
 
 ```awk
-    PROCINFO["input_name", "READ_TIMEOUT"] = timeout in milliseconds
+  PROCINFO["input_name", "READ_TIMEOUT"] = timeout in milliseconds
 ```
 
 When set, this causes `gawk` to time out and return failure
@@ -6771,21 +6777,21 @@ For example, a TCP client can decide to give up on receiving
 any response from the server after a certain amount of time:
 
 ```awk
-    Service = "/inet/tcp/0/localhost/daytime"
-    PROCINFO[Service, "READ_TIMEOUT"] = 100
-    if ((Service |& getline) > 0)
-        print $0
-    else if (ERRNO != "")
-        print ERRNO
+  Service = "/inet/tcp/0/localhost/daytime"
+  PROCINFO[Service, "READ_TIMEOUT"] = 100
+  if ((Service |& getline) > 0)
+      print $0
+  else if (ERRNO != "")
+      print ERRNO
 ```    
 
 Here is how to read interactively from the user[26](#FOOT26) without waiting
 for more than five seconds:
 
 ```awk
-    PROCINFO["/dev/stdin", "READ_TIMEOUT"] = 5000
-    while ((getline < "/dev/stdin") > 0)
-        print $0
+  PROCINFO["/dev/stdin", "READ_TIMEOUT"] = 5000
+  while ((getline < "/dev/stdin") > 0)
+      print $0
 ```    
 
 `gawk` terminates the read operation if input does not
@@ -6799,9 +6805,9 @@ loop that reads input records and matches them against patterns,
 like so:
 
 ```awk
-    $ gawk 'BEGIN { PROCINFO["-", "READ_TIMEOUT"] = 5000 }
-    > { print "You entered: " $0 }'gawk
-    -| You entered: gawk
+  $ gawk 'BEGIN { PROCINFO["-", "READ_TIMEOUT"] = 5000 }
+  > { print "You entered: " $0 }'gawk
+  -| You entered: gawk
 ```    
 
 In this case, failure to respond within five seconds results in the following
@@ -6817,11 +6823,11 @@ reduce it by one-tenth of a second until we wait indefinitely
 for the input to arrive:
 
 ```awk
-    PROCINFO[Service, "READ_TIMEOUT"] = 1000
-    while ((Service |& getline) > 0) {
-        print $0
-        PROCINFO[Service, "READ_TIMEOUT"] -= 100
-    }
+  PROCINFO[Service, "READ_TIMEOUT"] = 1000
+  while ((Service |& getline) > 0) {
+      print $0
+      PROCINFO[Service, "READ_TIMEOUT"] -= 100
+  }
 ```    
 
 > NOTE: You should not assume that the read operation will block
@@ -6868,7 +6874,7 @@ certain errors are encountered by setting a special element in
 the `PROCINFO` array (see [Auto-set](#752-built-in-variables-that-convey-information)):
 
 ```awk
-    PROCINFO["input_name", "RETRY"] = 1
+  PROCINFO["input_name", "RETRY"] = 1
 ```    
 
 When this element exists, `gawk` checks the value of the system
@@ -6913,10 +6919,17 @@ Next: [Input Exercises](#415-exercises), Previous: [Command-line directories](#4
 
 ### 4.14 Summary
 
--  Input is split into records based on the value of `RS`.
+<ul><li>Input is split into records based on the value of `RS`.
 The possibilities are as follows:
 
-Value of `RS`Records are split on &hellip;`awk` / `gawk`Any single characterThat character`awk`The empty string (`""`)Runs of two or more newlines`awk`A regexpText that matches the regexp`gawk`
+| []() | []() | []()
+| - | - | -
+| Value of `RS` | Records are split on &hellip; | `awk` / `gawk`
+| Any single character | That character | `awk`
+| The empty string (`""`) | Runs of two or more newlines | `awk`
+| A regexp | Text that matches the regexp | `gawk`
+</li></ul>
+
 - `FNR` indicates how many records have been read from the current input file;
 `NR` indicates how many records have been read in total.
 
@@ -6935,9 +6948,18 @@ greater than `NF` creates the field and rebuilds the record, using
 `OFS` to separate the fields.  Incrementing `NF` does the same
 thing. Decrementing `NF` throws away fields and rebuilds the record.
 
--  Field splitting is more complicated than record splitting:
+<ul><li>Field splitting is more complicated than record splitting:
 
-Field separator valueFields are split &hellip;`awk` / `gawk``FS == " "`On runs of whitespace`awk``FS == any single character`On that character`awk``FS == regexp`On text matching the regexp`awk``FS == ""`Such that each individual character is a separate field`gawk``FIELDWIDTHS == list of columns`Based on character position`gawk``FPAT == regexp`On the text surrounding text matching the regexp`gawk`
+| Field separator value | Fields are split &hellip; | `awk` / `gawk`
+| - | - | -
+| `FS == " "` | On runs of whitespace | `awk`
+| `FS == any single character` | On that character | `awk`
+| `FS == regexp` | On text matching the regexp | `awk`
+| `FS == "" ` | Such that each individual character is a separate field | `gawk`
+| `FIELDWIDTHS == list of columns` | Based on character position | `gawk`
+| `FPAT == regexp` | On the text surrounding text matching the regexp | `gawk`
+</li></ul>
+
 -  Using &lsquo;FS = "\n"&rsquo; causes the entire record to be a single field
 (assuming that newlines separate records).
 
@@ -7024,7 +7046,7 @@ list separated by commas.  They are output, separated by single spaces,
 followed by a newline.  The statement looks like this:
 
 ```awk
-    print item1, item2, &hellip;
+  print item1, item2, &hellip;
 ```    
 
 The entire list of items may be optionally enclosed in parentheses.  The
@@ -7066,10 +7088,10 @@ newlines
 character; see [Escape Sequences](#32-escape-sequences)):
 
 ```awk
-    $ awk 'BEGIN { print "line one\nline two\nline three" }'
-    -| line one
-    -| line two
-    -| line three
+  $ awk 'BEGIN { print "line one\nline two\nline three" }'
+  -| line one
+  -| line two
+  -| line three
 ```    
 
 The next example, which is run on the inventory-shipped file,
@@ -7077,11 +7099,11 @@ prints the first two fields of each input record, with a space between
 them:
 
 ```awk
-    $ awk '{ print $1, $2 }' inventory-shipped
-    -| Jan 13
-    -| Feb 15
-    -| Mar 15
-    &hellip;
+  $ awk '{ print $1, $2 }' inventory-shipped
+  -| Jan 13
+  -| Feb 15
+  -| Mar 15
+  &hellip;
 ```    
 
 A common mistake in using the `print` statement is to omit the comma
@@ -7091,11 +7113,11 @@ juxtaposing two string expressions in `awk` means to concatenate
 them.  Here is the same program, without the comma:
 
 ```awk
-    $ awk '{ print $1 $2 }' inventory-shipped
-    -| Jan13
-    -| Feb15
-    -| Mar15
-    &hellip;
+  $ awk '{ print $1 $2 }' inventory-shipped
+  -| Jan13
+  -| Feb15
+  -| Mar15
+  &hellip;
 ```    
 
 To someone unfamiliar with the inventory-shipped file, neither
@@ -7106,9 +7128,9 @@ a `BEGIN` rule (see [BEGIN/END](#714-the-begin-and-end-special-patterns)) so tha
 printed once:
 
 ```awk
-    awk 'BEGIN {  print "Month Crates"
-                  print "----- ------" }
-               {  print $1, $2 }' inventory-shipped
+  awk 'BEGIN {  print "Month Crates"
+                print "----- ------" }
+             {  print $1, $2 }' inventory-shipped
 ```    
 
 When run, the program prints the following:
@@ -7126,9 +7148,9 @@ don&rsquo;t line up!  We can fix this by printing some spaces between the
 two fields:
 
 ```awk
-    awk 'BEGIN { print "Month Crates"
-                 print "----- ------" }
-               { print $1, "     ", $2 }' inventory-shipped
+  awk 'BEGIN { print "Month Crates"
+               print "----- ------" }
+             { print $1, "     ", $2 }' inventory-shipped
 ```    
 
 Lining up columns this way can get pretty
@@ -7176,30 +7198,30 @@ record, separated by a semicolon, with a blank line added after each
 newline:
 
 ```awk
-    $ awk 'BEGIN { OFS = ";"; ORS = "\n\n" }
-    >            { print $1, $2 }' mail-list
-    -| Amelia;555-5553
-    -|
-    -| Anthony;555-3412
-    -|
-    -| Becky;555-7685
-    -|
-    -| Bill;555-1675
-    -|
-    -| Broderick;555-0542
-    -|
-    -| Camilla;555-2912
-    -|
-    -| Fabius;555-1234
-    -|
-    -| Julie;555-6699
-    -|
-    -| Martin;555-6480
-    -|
-    -| Samuel;555-3430
-    -|
-    -| Jean-Paul;555-2127
-    -|
+  $ awk 'BEGIN { OFS = ";"; ORS = "\n\n" }
+  >            { print $1, $2 }' mail-list
+  -| Amelia;555-5553
+  -|
+  -| Anthony;555-3412
+  -|
+  -| Becky;555-7685
+  -|
+  -| Bill;555-1675
+  -|
+  -| Broderick;555-0542
+  -|
+  -| Camilla;555-2912
+  -|
+  -| Fabius;555-1234
+  -|
+  -| Julie;555-6699
+  -|
+  -| Martin;555-6480
+  -|
+  -| Samuel;555-3430
+  -|
+  -| Jean-Paul;555-2127
+  -|
 ```    
 
 If the value of `ORS` does not contain a newline, the program&rsquo;s output
@@ -7232,10 +7254,10 @@ by supplying a different format specification
 for the value of `OFMT`, as shown in the following example:
 
 ```awk
-    $ awk 'BEGIN {
-    >   OFMT = "%.0f"  # print numbers as integers (rounds)
-    >   print 17.23, 17.54 }'
-    -| 17 18
+  $ awk 'BEGIN {
+  >   OFMT = "%.0f"  # print numbers as integers (rounds)
+  >   print 17.23, 17.54 }'
+  -| 17 18
 ```    
 
 According to the POSIX standard, `awk`&rsquo;s behavior is undefined
@@ -7272,7 +7294,7 @@ Next: [Control Letters](#552-format-control-letters), Up: [Printf](#55-using-pri
 A simple `printf` statement looks like this:
 
 ```awk
-    printf format, item1, item2, &hellip;
+  printf format, item1, item2, &hellip;
 ```    
 
 As for `print`, the entire list of arguments may optionally be
@@ -7298,12 +7320,12 @@ The output separator variables `OFS` and `ORS` have no effect
 on `printf` statements. For example:
 
 ```awk
-    $ awk 'BEGIN {
-    >    ORS = "\nOUCH!\n"; OFS = "+"
-    >    msg = "Don\47t Panic!"
-    >    printf "%s\n", msg
-    > }'
-    -| Don't Panic!
+  $ awk 'BEGIN {
+  >    ORS = "\nOUCH!\n"; OFS = "+"
+  >    msg = "Don\47t Panic!"
+  >    printf "%s\n", msg
+  > }'
+  -| Don't Panic!
 ```    
 
 Here, neither the &lsquo;+&rsquo; nor the &lsquo;OUCH!&rsquo; appears in
@@ -7353,7 +7375,7 @@ Print a number in scientific (exponential) notation.
 For example:
 
 ```awk
-    printf "%4.3e\n", 1950
+  printf "%4.3e\n", 1950
 ```  
 
 prints &lsquo;1.950e+03&rsquo;, with a total of four significant figures, three of
@@ -7367,7 +7389,7 @@ Print a number in floating-point notation.
 For example:
 
 ```awk
-    printf "%4.3f", 1950
+  printf "%4.3f", 1950
 ```    
 
 prints &lsquo;1950.000&rsquo;, with a total of four significant figures, three of
@@ -7384,37 +7406,37 @@ and positive infinity as
 The special &ldquo;not a number&rdquo; value formats as &lsquo;-nan&rsquo; or &lsquo;nan&rsquo;
 (see [Math Definitions](#Math-Definitions)).
 
-<code>%F</code>
+<code>%F</code></br>
 Like &lsquo;%f&rsquo;, but the infinity and &ldquo;not a number&rdquo; values are spelled
 using uppercase letters.
 
 The &lsquo;%F&rsquo; format is a POSIX extension to ISO C; not all systems
 support it.  On those that don&rsquo;t, `gawk` uses &lsquo;%f&rsquo; instead.
 
-<code>%g</code>, <code>%G</code>
+<code>%g</code>, <code>%G</code></br>
 Print a number in either scientific notation or in floating-point
 notation, whichever uses fewer characters; if the result is printed in
 scientific notation, &lsquo;%G&rsquo; uses &lsquo;E&rsquo; instead of &lsquo;e&rsquo;.
 
-<code>%o</code>
+<code>%o</code></br>
 Print an unsigned octal integer
 (see [Nondecimal-numbers](#6112-octal-and-hexadecimal-numbers)).
 
-<code>%s</code>
+<code>%s</code></br>
 Print a string.
 
-<code>%u</code>
+<code>%u</code></br>
 Print an unsigned decimal integer.
 (This format is of marginal use, because all numbers in `awk`
 are floating point; it is provided primarily for compatibility with C.)
 
-<code>%x</code>, <code>%X</code>
+<code>%x</code>, <code>%X</code></br>
 Print an unsigned hexadecimal integer;
 &lsquo;%X&rsquo; uses the letters &lsquo;A&rsquo; through &lsquo;F&rsquo;
 instead of &lsquo;a&rsquo; through &lsquo;f&rsquo;
 (see [Nondecimal-numbers](#6112-octal-and-hexadecimal-numbers)).
 
-<code>%%</code>
+<code>%%</code></br>
 Print a single &lsquo;%&rsquo;.
 This does not consume an
 argument and it ignores any modifiers.
@@ -7441,7 +7463,7 @@ represent
 spaces in the output. Here are the possible modifiers, in the order in
 which they may appear:
 
-<code>N$</code>
+<code>N$</code></br>
 An integer constant followed by a &lsquo;$&rsquo; is a *positional specifier*.
 Normally, format specifications are applied to arguments in the order
 given in the format string.  With a positional specifier, the format
@@ -7450,8 +7472,8 @@ would be the next argument in the list.  Positional specifiers begin
 counting with one. Thus:
 
 ```awk
-    printf "%s %s\n", "don't", "panic"
-    printf "%2$s %1$s\n", "panic", "don't"
+  printf "%s %s\n", "don't", "panic"
+  printf "%2$s %1$s\n", "panic", "don't"
 ```    
 
 prints the famous friendly message twice.
@@ -7463,7 +7485,7 @@ See [Printf Ordering](#Printf-Ordering),
 which describes how and why to use positional specifiers.
 For now, we ignore them.
 
-<code>-</code> (Minus)
+<code>-</code> (Minus)</br>
 The minus sign, used before the width modifier (see later on in
 this list),
 says to left-justify
@@ -7471,7 +7493,7 @@ the argument within its specified width.  Normally, the argument
 is printed right-justified in the specified width.  Thus:
 
 ```awk
-    printf "%-4s", "foo"
+  printf "%-4s", "foo"
 ```    
 
 prints &lsquo;foo&bull;&rsquo;.
@@ -7480,13 +7502,13 @@ space
 For numeric conversions, prefix positive values with a space and
 negative values with a minus sign.
 
-<code>+</code>
+<code>+</code></br>
 The plus sign, used before the width modifier (see later on in
 this list),
 says to always supply a sign for numeric conversions, even if the data
 to format is positive. The &lsquo;+&rsquo; overrides the space modifier.
 
-<code>#</code>
+<code>#</code></br>
 Use an &ldquo;alternative form&rdquo; for certain control letters.
 For &lsquo;%o&rsquo;, supply a leading zero.
 For &lsquo;%x&rsquo; and &lsquo;%X&rsquo;, supply a leading &lsquo;0x&rsquo; or &lsquo;0X&rsquo; for
@@ -7495,14 +7517,14 @@ For &lsquo;%e&rsquo;, &lsquo;%E&rsquo;, &lsquo;%f&rsquo;, and &lsquo;%F&rsquo;, 
 contains a decimal point.
 For &lsquo;%g&rsquo; and &lsquo;%G&rsquo;, trailing zeros are not removed from the result.
 
-<code>0</code>
+<code>0</code></br>
 A leading &lsquo;0&rsquo; (zero) acts as a flag indicating that output should be
 padded with zeros instead of spaces.
 This applies only to the numeric output formats.
 This flag only has an effect when the field width is wider than the
 value to print.
 
-<code>'</code>
+<code>'</code></br>
 A single quote or apostrophe character is a POSIX extension to ISO C.
 It indicates that the integer part of a floating-point value, or the
 entire part of an integer decimal value, should have a thousands-separator
@@ -7510,12 +7532,12 @@ character in it.  This only works in locales that support such characters.
 For example:
 
 ```awk
-    $ cat thousands.awkShow source program
-    -| BEGIN { printf "%'d\n", 1234567 }
-    $ LC_ALL=C gawk -f thousands.awk
-    -| 1234567                   Results in "C" locale
-    $ LC_ALL=en_US.UTF-8 gawk -f thousands.awk
-    -| 1,234,567                 Results in US English UTF locale
+  $ cat thousands.awkShow source program
+  -| BEGIN { printf "%'d\n", 1234567 }
+  $ LC_ALL=C gawk -f thousands.awk
+  -| 1234567                   Results in "C" locale
+  $ LC_ALL=en_US.UTF-8 gawk -f thousands.awk
+  -| 1,234,567                 Results in US English UTF locale
 ```
 
 For more information about locales and internationalization issues,
@@ -7532,7 +7554,7 @@ field to expand to this width.  The default way to do this is to
 pad with spaces on the left.  For example:
 
 ```awk
-    printf "%4s", "foo"
+  printf "%4s", "foo"
 ```    
 
 prints &lsquo;&bull;foo&rsquo;.
@@ -7542,7 +7564,7 @@ value requires more than width characters, it can be as wide as
 necessary.  Thus, the following:
 
 ```awk
-    printf "%4s", "foobar"
+  printf "%4s", "foobar"
 ```    
 
 prints &lsquo;foobar&rsquo;.
@@ -7550,27 +7572,27 @@ prints &lsquo;foobar&rsquo;.
 Preceding the width with a minus sign causes the output to be
 padded with spaces on the right, instead of on the left.
 
-<code>.prec</code>
+<code>.prec</code></br>
 A period followed by an integer constant
 specifies the precision to use when printing.
 The meaning of the precision varies by control letter:
 
-<code>%d</code>, <code>%i</code>, <code>%o</code>, <code>%u</code>, <code>%x</code>, <code>%X</code>
+<code>%d</code>, <code>%i</code>, <code>%o</code>, <code>%u</code>, <code>%x</code>, <code>%X</code></br>
 Minimum number of digits to print.
 
-<code>%e</code>, <code>%E</code>, <code>%f</code>, <code>%F</code>
+<code>%e</code>, <code>%E</code>, <code>%f</code>, <code>%F</code></br>
 Number of digits to the right of the decimal point.
 
-<code>%g</code>, <code>%G</code>
+<code>%g</code>, <code>%G</code></br>
 Maximum number of significant digits.
 
-<code>%s</code>
+<code>%s</code></br>
 Maximum number of characters from the string that should print.
 
 Thus, the following:
 
 ```awk
-    printf "%.4s", "foobar"
+  printf "%.4s", "foobar"
 ```    
 
 prints &lsquo;foob&rsquo;.
@@ -7581,17 +7603,17 @@ supplying explicit width and/or prec values in the format
 string, they are passed in the argument list.  For example:
 
 ```awk
-    w = 5
-    p = 3
-    s = "abcdefg"
-    printf "%*.*s\n", w, p, s
+  w = 5
+  p = 3
+  s = "abcdefg"
+  printf "%*.*s\n", w, p, s
 ```    
 
 is exactly equivalent to:
 
 ```awk
-    s = "abcdefg"
-    printf "%5.3s\n", s
+  s = "abcdefg"
+  printf "%5.3s\n", s
 ```    
 
 Both programs output &lsquo;&bull;&bull;abc&rsquo;.
@@ -7600,10 +7622,10 @@ If you must use such a version, you may simulate this feature by using
 concatenation to build up the format string, like so:
 
 ```awk
-    w = 5
-    p = 3
-    s = "abcdefg"
-    printf "%" w "." p "s\n", s
+  w = 5
+  p = 3
+  s = "abcdefg"
+  printf "%" w "." p "s\n", s
 ```    
 
 This is not particularly easy to read, but it does work.
@@ -7625,7 +7647,7 @@ The following simple example shows
 how to use `printf` to make an aligned table:
 
 ```awk
-    awk '{ printf "%-10s %s\n", $1, $2 }' mail-list
+  awk '{ printf "%-10s %s\n", $1, $2 }' mail-list
 ```    
 
 This command
@@ -7636,18 +7658,18 @@ produces an aligned two-column table of names and phone numbers,
 as shown here:
 
 ```awk
-    $ awk '{ printf "%-10s %s\n", $1, $2 }' mail-list
-    -| Amelia     555-5553
-    -| Anthony    555-3412
-    -| Becky      555-7685
-    -| Bill       555-1675
-    -| Broderick  555-0542
-    -| Camilla    555-2912
-    -| Fabius     555-1234
-    -| Julie      555-6699
-    -| Martin     555-6480
-    -| Samuel     555-3430
-    -| Jean-Paul  555-2127
+  $ awk '{ printf "%-10s %s\n", $1, $2 }' mail-list
+  -| Amelia     555-5553
+  -| Anthony    555-3412
+  -| Becky      555-7685
+  -| Bill       555-1675
+  -| Broderick  555-0542
+  -| Camilla    555-2912
+  -| Fabius     555-1234
+  -| Julie      555-6699
+  -| Martin     555-6480
+  -| Samuel     555-3430
+  -| Jean-Paul  555-2127
 ```    
 
 In this case, the phone numbers had to be printed as strings because
@@ -7666,9 +7688,9 @@ so that the headers are only printed once, at the beginning of
 the `awk` program:
 
 ```awk
-    awk 'BEGIN { print "Name      Number"
-                 print "----      ------" }
-               { printf "%-10s %s\n", $1, $2 }' mail-list
+  awk 'BEGIN { print "Name      Number"
+               print "----      ------" }
+             { printf "%-10s %s\n", $1, $2 }' mail-list
 ```    
 
 The preceding example mixes `print` and `printf` statements in
@@ -7676,9 +7698,9 @@ the same program.  Using just `printf` statements can produce the
 same results:
 
 ```awk
-    awk 'BEGIN { printf "%-10s %s\n", "Name", "Number"
-                 printf "%-10s %s\n", "----", "------" }
-               { printf "%-10s %s\n", $1, $2 }' mail-list
+  awk 'BEGIN { printf "%-10s %s\n", "Name", "Number"
+               printf "%-10s %s\n", "----", "------" }
+             { printf "%-10s %s\n", $1, $2 }' mail-list
 ```    
 
 Printing each column heading with the same format specification
@@ -7689,10 +7711,10 @@ The fact that the same format specification is used three times can be
 emphasized by storing it in a variable, like this:
 
 ```awk
-    awk 'BEGIN { format = "%-10s %s\n"
-                 printf format, "Name", "Number"
-                 printf format, "----", "------" }
-               { printf format, $1, $2 }' mail-list
+  awk 'BEGIN { format = "%-10s %s\n"
+               printf format, "Name", "Number"
+               printf format, "----", "------" }
+             { printf format, $1, $2 }' mail-list
 ```    
 
 ---
@@ -7735,16 +7757,16 @@ file named name-list, and a list of phone numbers to another file
 named phone-list:
 
 ```awk
-    $ awk '{ print $2 > "phone-list"
-    >        print $1 > "name-list" }' mail-list
-    $ cat phone-list
-    -| 555-5553
-    -| 555-3412
-    &hellip;
-    $ cat name-list
-    -| Amelia
-    -| Anthony
-    &hellip;
+  $ awk '{ print $2 > "phone-list"
+  >        print $1 > "name-list" }' mail-list
+  $ cat phone-list
+  -| 555-5553
+  -| 555-3412
+  &hellip;
+  $ cat name-list
+  -| Amelia
+  -| Anthony
+  &hellip;
 ```    
 
 Each output file contains one name or number per line.
@@ -7770,9 +7792,9 @@ files, one unsorted list of peoples&rsquo; names, and one list sorted in reverse
 alphabetical order:
 
 ```awk
-    awk '{ print $1 > "names.unsorted"
-           command = "sort -r > names.sorted"
-           print $1 | command }' mail-list
+  awk '{ print $1 > "names.unsorted"
+         command = "sort -r > names.sorted"
+         print $1 | command }' mail-list
 ```    
 
 The unsorted list is written with an ordinary redirection, while
@@ -7783,10 +7805,10 @@ list `bug-system`.  This might be useful when trouble is encountered
 in an `awk` script run periodically for system maintenance:
 
 ```awk
-    report = "mail bug-system"
-    print("Awk script failed:", $0) | report
-    print("at record number", FNR, "of", FILENAME) | report
-    close(report)
+  report = "mail bug-system"
+  print("Awk script failed:", $0) | report
+  print("at record number", FNR, "of", FILENAME) | report
+  close(report)
 ```    
 
 The `close()` function is called here because it&rsquo;s a good idea to close
@@ -7825,11 +7847,11 @@ It is a common error to use &lsquo;>&rsquo; redirection for the first `print`
 to a file, and then to use &lsquo;>>&rsquo; for subsequent output:
 
 ```awk
-    # clear the file
-    print "Don't panic" > "guide.txt"
-    &hellip;
-    # append
-    print "Avoid improbability generators" >> "guide.txt"
+  # clear the file
+  print "Don't panic" > "guide.txt"
+  &hellip;
+  # append
+  print "Avoid improbability generators" >> "guide.txt"
 ```    
 
 This is indeed how redirections must be used from the shell.  But in
@@ -7859,9 +7881,9 @@ are stored in uppercase, and you wish to rename them to have names in
 all lowercase.  The following program is both simple and efficient:
 
 ```awk
-    { printf("mv %s %s\n", $0, tolower($0)) | "sh" }
-    
-    END { close("sh") }
+  { printf("mv %s %s\n", $0, tolower($0)) | "sh" }
+  
+  END { close("sh") }
 ```    
 
 The `tolower()` function returns its argument string with all
@@ -7897,7 +7919,7 @@ In traditional implementations of `awk`, the only way to write an error
 message to standard error in an `awk` program is as follows:
 
 ```awk
-    print "Serious error detected!" | "cat 1>&2"
+  print "Serious error detected!" | "cat 1>&2"
 ```    
 
 This works by opening a pipeline to a shell command that can access the
@@ -7908,7 +7930,7 @@ don&rsquo;t do this.  Instead, they send the error messages to the
 screen, like this:
 
 ```awk
-    print "Serious error detected!" > "/dev/tty"
+  print "Serious error detected!" > "/dev/tty"
 ```    
 
 (/dev/tty is a special file supplied by the operating system
@@ -7930,13 +7952,13 @@ the descriptor that the file name stands for.  These special
 file names work for all operating systems that `gawk`
 has been ported to, not just those that are POSIX-compliant:
 
-<code>/dev/stdin</code>
+<code>/dev/stdin</code></br>
 The standard input (file descriptor 0).
 
-<code>/dev/stdout</code>
+<code>/dev/stdout</code></br>
 The standard output (file descriptor 1).
 
-<code>/dev/stderr</code>
+<code>/dev/stderr</code></br>
 The standard error output (file descriptor 2).
 
 With these facilities,
@@ -7983,7 +8005,7 @@ Besides the `/dev/stdin`, `/dev/stdout`, and `/dev/stderr`
 special file names mentioned earlier, `gawk` provides syntax
 for accessing any other inherited open file:
 
-<code>/dev/fd/N</code>
+<code>/dev/fd/N</code></br>
 The file associated with file descriptor N.  Such a file must
 be opened by the program initiating the `awk` execution (typically
 the shell).  Unless special pains are taken in the shell from which
@@ -8072,13 +8094,13 @@ reading more output from the same command).  The `close()` function
 makes these things possible:
 
 ```awk
-    close(filename)
+  close(filename)
 ```    
 
 or:
 
 ```awk
-    close(command)
+  close(command)
 ```    
 
 The argument filename or command can be any expression.  Its
@@ -8087,13 +8109,13 @@ start the command (spaces and other &ldquo;irrelevant&rdquo; characters
 included). For example, if you open a pipe with this:
 
 ```awk
-    "sort -r names" | getline foo
+  "sort -r names" | getline foo
 ```    
 
 then you must close it with this:
 
 ```awk
-    close("sort -r names")
+  close("sort -r names")
 ```    
 
 Once this function call is executed, the next `getline` from that
@@ -8105,12 +8127,12 @@ it is good practice to use a variable to store the file name or command.
 The previous example becomes the following:
 
 ```awk
-    sortcom = "sort -r names"
-    sortcom | getline foo
-    
+  sortcom = "sort -r names"
+  sortcom | getline foo
+  
 
-    &hellip;
-    close(sortcom)
+  &hellip;
+  close(sortcom)
 ```    
 
 This helps avoid hard-to-find typographical errors in your `awk`
@@ -8151,14 +8173,14 @@ In fact, if you are using a lot of pipes, it is essential that
 you close commands when done. For example, consider something like this:
 
 ```awk
-    {
-        &hellip;
-        command = ("grep " $1 " /some/file | my_prog -q " $3)
-        while ((command | getline) > 0) {
-            process output of command
-        }
-        # need close(command) here
-    }
+  {
+      &hellip;
+      command = ("grep " $1 " /some/file | my_prog -q " $3)
+      while ((command | getline) > 0) {
+          process output of command
+      }
+      # need close(command) here
+  }
 ```    
 
 This example creates a new pipeline based on data in *each* record.
@@ -8208,9 +8230,9 @@ It is a syntax error to try and use the return
 value from `close()`:
 
 ```awk
-    command = "&hellip;"
-    command | getline info
-    retval = close(command)  # syntax error in many Unix awks
+  command = "&hellip;"
+  command | getline info
+  retval = close(command)  # syntax error in many Unix awks
 ```    
 
 `gawk` treats `close()` as a function.
@@ -8227,7 +8249,12 @@ or `fclose()` C functions when closing input or output files,
 respectively.  This value is zero if the close succeeds, or -1
 if it fails.
 
-SituationReturn value from `close()`Normal exit of commandCommand&rsquo;s exit statusDeath by signal of command256 + number of murderous signalDeath by signal of command with core dump512 + number of murderous signalSome kind of error-1
+| Situation | Return value from `close()`
+|  - | -
+| Normal exit of command | Command&rsquo;s exit status
+| Death by signal of command | 256 + number of murderous signal
+| Death by signal of command with core dump | 512 + number of murderous signal
+| Some kind of error | -1
 
 **Table 5.1: **Return values from `close()` of a pipe
 
@@ -8252,9 +8279,9 @@ to a nonexistent file, or some other I/O error (such as filling up the
 disk) is a fatal error.
 
 ```awk
-    $ gawk 'BEGIN { print "hi" > "/no/such/file" }'
-    error&rarr; gawk: cmd. line:1: fatal: can't redirect to `/no/such/file' (No
-    error&rarr; such file or directory)
+  $ gawk 'BEGIN { print "hi" > "/no/such/file" }'
+  error&rarr; gawk: cmd. line:1: fatal: can't redirect to `/no/such/file' (No
+  error&rarr; such file or directory)
 ```    
 
 `gawk` makes it possible to detect that an error has
@@ -8275,17 +8302,17 @@ see if something went wrong.  It is also a good idea to initialize
 `ERRNO` to zero before attempting the output. For example:
 
 ```awk
-    $ gawk '
-    > BEGIN {
-    >     PROCINFO["NONFATAL"] = 1
-    >     ERRNO = 0
-    >     print "hi" > "/no/such/file"
-    >     if (ERRNO) {
-    >         print("Output failed:", ERRNO) > "/dev/stderr"
-    >         exit 1
-    >     }
-    > }'
-    error&rarr; Output failed: No such file or directory
+  $ gawk '
+  > BEGIN {
+  >     PROCINFO["NONFATAL"] = 1
+  >     ERRNO = 0
+  >     print "hi" > "/no/such/file"
+  >     if (ERRNO) {
+  >         print("Output failed:", ERRNO) > "/dev/stderr"
+  >         exit 1
+  >     }
+  > }'
+  error&rarr; Output failed: No such file or directory
 ```    
 
 Here, `gawk` did not produce a fatal error; instead
@@ -8343,9 +8370,9 @@ Previous: [Output Summary](#511-summary), Up: [Printing](#5-printing-output)   [
 1.  Rewrite the program:
 
 ```awk
-    awk 'BEGIN { print "Month Crates"
-                 print "----- ------" }
-               { print $1, "     ", $2 }' inventory-shipped
+  awk 'BEGIN { print "Month Crates"
+               print "----- ------" }
+             { print $1, "     ", $2 }' inventory-shipped
 ```    
 
 from [Output Separators](#53-output-separators), by using a new value of `OFS`.
@@ -8357,7 +8384,7 @@ for the inventory-shipped example that was covered in [Print](#51-the-print-stat
 output, as follows:
 
 ```awk
-    BEGIN { print "Serious error detected!" > /dev/stderr }
+  BEGIN { print "Serious error detected!" > /dev/stderr }
 ```    
 
 ---
@@ -8480,20 +8507,20 @@ there is a special notation to signify the base.
 Octal numbers start with a leading &lsquo;0&rsquo;,
 and hexadecimal numbers start with a leading &lsquo;0x&rsquo; or &lsquo;0X&rsquo;:
 
-<code>11</code>
+<code>11</code></br>
 Decimal value 11
 
-<code>011</code>
+<code>011</code></br>
 Octal 11, decimal value 9
 
-<code>0x11</code>
+<code>0x11</code></br>
 Hexadecimal 11, decimal value 17
 
 This example shows the difference:
 
 ```awk
-    $ gawk 'BEGIN { printf "%d, %d, %d\n", 011, 11, 0x11 }'
-    -| 9, 11, 17
+  $ gawk 'BEGIN { printf "%d, %d, %d\n", 011, 11, 0x11 }'
+  -| 9, 11, 17
 ```    
 
 Being able to use octal and hexadecimal constants in your programs is most
@@ -8521,9 +8548,9 @@ valid in octal constants.  For example, `gawk` treats &lsquo;018&rsquo;
 as decimal 18:
 
 ```awk
-    $ gawk 'BEGIN { print "021 is", 021 ; print 018 }'
-    -| 021 is 17
-    -| 18
+  $ gawk 'BEGIN { print "021 is", 021 ; print 018 }'
+  -| 021 is 17
+  -| 18
 ```    
 
 Octal and hexadecimal source code constants are a `gawk` extension.
@@ -8541,8 +8568,8 @@ always used.  This has particular consequences for conversion of
 numbers to strings:
 
 ```awk
-    $ gawk 'BEGIN { printf "0x11 is <%s>\n", 0x11 }'
-    -| 0x11 is <17>
+  $ gawk 'BEGIN { printf "0x11 is <%s>\n", 0x11 }'
+  -| 0x11 is <17>
 ```    
 
 ---
@@ -8593,15 +8620,15 @@ See [Expression Patterns](#712-expressions-as-patterns).
 This means that the following two code segments:
 
 ```awk
-    if ($0 ~ /barfly/ || $0 ~ /camelot/)
-        print "found"
+  if ($0 ~ /barfly/ || $0 ~ /camelot/)
+      print "found"
 ```    
 
 and:
 
 ```awk
-    if (/barfly/ || /camelot/)
-        print "found"
+  if (/barfly/ || /camelot/)
+      print "found"
 ```    
 
 are exactly equivalent.
@@ -8610,8 +8637,8 @@ Boolean expression is valid, but does not do what its author probably
 intended:
 
 ```awk
-    # Note that /foo/ is on the left of the ~
-    if (/foo/ ~ $1) print "found foo"
+  # Note that /foo/ is on the left of the ~
+  if (/foo/ ~ $1) print "found foo"
 ```    
 
 This code is &ldquo;obviously&rdquo; testing `$1` for a match against the regexp
@@ -8626,7 +8653,7 @@ a program.
 Another consequence of this rule is that the assignment statement:
 
 ```awk
-    matches = /foo/
+  matches = /foo/
 ```    
 
 assigns either zero or one to the variable `matches`, depending
@@ -8646,22 +8673,22 @@ confusion can arise when attempting to use regexp constants as arguments
 to user-defined functions (see [User-defined](#92-user-defined-functions)).  For example:
 
 ```awk
-    function mysub(pat, repl, str, global)
-    {
-        if (global)
-            gsub(pat, repl, str)
-        else
-            sub(pat, repl, str)
-        return str
-    }
-    
+  function mysub(pat, repl, str, global)
+  {
+      if (global)
+          gsub(pat, repl, str)
+      else
+          sub(pat, repl, str)
+      return str
+  }
+  
 
-    {
-        &hellip;
-        text = "hi! hi yourself!"
-        mysub(/hi/, "howdy", text, 1)
-        &hellip;
-    }
+  {
+      &hellip;
+      text = "hi! hi yourself!"
+      mysub(/hi/, "howdy", text, 1)
+      &hellip;
+  }
 ```    
 
 In this example, the programmer wants to pass a regexp constant to the
@@ -8691,9 +8718,9 @@ language. That is, you cannot define a scalar variable whose type is
 number or a string:
 
 ```awk
-    num = 42        Numeric variable
-    str = "hi"      String variable
-    re = /foo/      Wrong! re is the result of $0 ~ /foo/
+  num = 42        Numeric variable
+  str = "hi"      String variable
+  re = /foo/      Wrong! re is the result of $0 ~ /foo/
 ```    
 
 For a number of more advanced use cases,
@@ -8706,7 +8733,7 @@ looks almost like a regular regexp constant, except that it is preceded
 by an &lsquo;@&rsquo; sign:
 
 ```awk
-    re = @/foo/     Regexp variable
+  re = @/foo/     Regexp variable
 ```
 
 Strongly typed regexp constants *cannot* be used everywhere that a
@@ -8821,7 +8848,7 @@ among the arguments on the command line when `awk` is invoked
 Such an assignment has the following form:
 
 ```awk
-    variable=text
+  variable=text
 ```
 
 With it, a variable is set either at the beginning of the
@@ -8841,7 +8868,7 @@ its position among the input file arguments&mdash;after the processing of the
 preceding input file argument.  For example:
 
 ```awk
-    awk '{ print $n }' n=4 inventory-shipped n=2 mail-list
+  awk '{ print $n }' n=4 inventory-shipped n=2 mail-list
 ```    
 
 prints the value of field number `n` for all input records.  Before
@@ -8852,13 +8879,13 @@ but before the second file is started, `n` is set to two, so that the
 second field is printed in lines from mail-list:
 
 ```awk
-    $ awk '{ print $n }' n=4 inventory-shipped n=2 mail-list
-    -| 15
-    -| 24
-    &hellip;
-    -| 555-5553
-    -| 555-3412
-    &hellip;
+  $ awk '{ print $n }' n=4 inventory-shipped n=2 mail-list
+  -| 15
+  -| 24
+  &hellip;
+  -| 555-5553
+  -| 555-3412
+  &hellip;
 ```    
 
 Command-line arguments are made available for explicit examination by
@@ -8898,8 +8925,8 @@ is performed.  If numeric values appear in string concatenation, they
 are converted to strings.  Consider the following:
 
 ```awk
-    two = 2; three = 3
-    print (two three) + 4
+  two = 2; three = 3
+  print (two three) + 4
 ```    
 
 This prints the (numeric) value 27.  The numeric values of
@@ -8940,9 +8967,9 @@ it to a string is *always* an integer, no matter what the value of
 `CONVFMT` may be.  Given the following code fragment:
 
 ```awk
-    CONVFMT = "%2.2f"
-    a = 12
-    b = a ""
+  CONVFMT = "%2.2f"
+  a = 12
+  b = a ""
 ```
 
 `b` has the value `"12"`, not `"12.00"`.
@@ -8986,15 +9013,15 @@ in input data cannot have a thousands separator.  Here are some examples
 indicating the difference in behavior, on a GNU/Linux system:
 
 ```awk
-    $ export POSIXLY_CORRECT=1Force POSIX behavior
-    $ gawk 'BEGIN { printf "%g\n", 3.1415927 }'
-    -| 3.14159
-    $ LC_ALL=en_DK.utf-8 gawk 'BEGIN { printf "%g\n", 3.1415927 }'
-    -| 3,14159
-    $ echo 4,321 | gawk '{ print $1 + 1 }'
-    -| 5
-    $ echo 4,321 | LC_ALL=en_DK.utf-8 gawk '{ print $1 + 1 }'
-    -| 5,321
+  $ export POSIXLY_CORRECT=1Force POSIX behavior
+  $ gawk 'BEGIN { printf "%g\n", 3.1415927 }'
+  -| 3.14159
+  $ LC_ALL=en_DK.utf-8 gawk 'BEGIN { printf "%g\n", 3.1415927 }'
+  -| 3,14159
+  $ echo 4,321 | gawk '{ print $1 + 1 }'
+  -| 5
+  $ echo 4,321 | LC_ALL=en_DK.utf-8 gawk '{ print $1 + 1 }'
+  -| 5,321
 ```    
 
 The `en_DK.utf-8` locale is for English in Denmark, where the comma acts as
@@ -9016,7 +9043,12 @@ point character when in POSIX mode, either via --posix or the
 point character is used and when a period is used. Some of these
 features have not been described yet.
 
-FeatureDefault--posix or --use-lc-numeric`%'g`Use localeUse locale`%g`Use periodUse localeInputUse periodUse locale`strtonum()`Use periodUse locale
+| Feature | Default | --posix or --use-lc-numeric
+| - | - | -
+| `%'g` | Use locale | Use locale
+| `%g` | Use period | Use locale
+| Input | Use period | Use locale
+| `strtonum()` | Use period | Use locale
 
 **Table 6.1: **Locale decimal point versus a period
 
@@ -9064,31 +9096,31 @@ This program takes the file grades and prints the average
 of the scores:
 
 ```awk
-    $ awk '{ sum = $2 + $3 + $4 ; avg = sum / 3
-    >        print $1, avg }' grades
-    -| Pat 85
-    -| Sandy 83
-    -| Chris 84.3333
+  $ awk '{ sum = $2 + $3 + $4 ; avg = sum / 3
+  >        print $1, avg }' grades
+  -| Pat 85
+  -| Sandy 83
+  -| Chris 84.3333
 ```    
 
 The following list provides the arithmetic operators in `awk`,
 in order from the highest precedence to the lowest:
 
-<code>x ^ y</code><code>x ** y</code>
+<code>x ^ y</code><code>x ** y</code></br>
 Exponentiation; x raised to the y power.  &lsquo;2 ^ 3&rsquo; has
 the value eight; the character sequence &lsquo;**&rsquo; is equivalent to
 &lsquo;^&rsquo;. (c.e.)
 
-<code>- x</code>
+<code>- x</code></br>
 Negation.
 
-<code>+ x</code>
+<code>+ x</code></br>
 Unary plus; the expression is converted to a number.
 
-<code>x * y</code>
+<code>x * y</code></br>
 Multiplication.
 
-<code>x / y</code>
+<code>x / y</code></br>
 Division;  because all numbers in `awk` are floating-point
 numbers, the result is *not* rounded to an integer&mdash;&lsquo;3 / 4&rsquo; has
 the value 0.75.  (It is a common mistake, especially for C programmers,
@@ -9096,14 +9128,14 @@ to forget that *all* numbers in `awk` are floating point,
 and that division of integer-looking constants produces a real number,
 not an integer.)
 
-<code>x % y</code>
+<code>x % y</code></br>
 Remainder; further discussion is provided in the text, just
 after this list.
 
-<code>x + y</code>
+<code>x + y</code></br>
 Addition.
 
-<code>x - y</code>
+<code>x - y</code></br>
 Subtraction.
 
 Unary plus and minus have the same precedence,
@@ -9396,13 +9428,20 @@ The value of `a[3]` could be either two or four.
 case, the righthand operand is an expression whose value is converted
 to a number.
 
-OperatorEffectlvalue`+=`incrementAdd increment to the value of lvalue.lvalue`-=`decrementSubtract decrement from the value of lvalue.lvalue`*=`coefficientMultiply the value of lvalue by coefficient.lvalue`/=`divisorDivide the value of lvalue by divisor.lvalue`%=`modulusSet lvalue to its remainder by modulus.
-lvalue`^=`powerRaise lvalue to the power power.lvalue`**=`powerRaise lvalue to the power power. (c.e.)
+| Operator | Effect
+| - | -
+| lvalue `+=` increment | Add increment to the value of 
+| lvalue.lvalue `-=` decrement | Subtract decrement from the value of 
+| lvalue.lvalue `*=` coefficient | Multiply the value of lvalue by coefficient.
+| lvalue `/=` divisor | Divide the value of lvalue by divisor.
+| lvalue `%=` modulus | Set lvalue to its remainder by modulus.
+| lvalue `^=` power | Raise lvalue to the power power.
+| lvalue `**=` power | Raise lvalue to the power power. (c.e.)
 
 **Table 6.2: **Arithmetic assignment operators
 
 > NOTE: Only the &lsquo;^=&rsquo; operator is specified by POSIX.
-> For maximum portability, do not use the &lsquo;**=&rsquo; operator.
+> For maximum portability, do not use the `**=` operator.
 
 Syntactic Ambiguities Between &lsquo;/=&rsquo; and Regular Expressions
 
@@ -9413,17 +9452,17 @@ This is most notable in some commercial `awk` versions.
 For example:
 
 ```awk
-    $ awk /==/ /dev/null
-    error&rarr; awk: syntax error at source line 1
-    error&rarr;  context is
-    error&rarr;         >>> /= <<<
-    error&rarr; awk: bailing out at source line 1
+  $ awk /==/ /dev/null
+  error&rarr; awk: syntax error at source line 1
+  error&rarr;  context is
+  error&rarr;         >>> /= <<<
+  error&rarr; awk: bailing out at source line 1
 ```    
 
 A workaround is:
 
 ```awk
-    awk '/[=]=/' /dev/null
+  awk '/[=]=/' /dev/null
 ```    
 
 `gawk` does not have this problem; BWK `awk`
@@ -9470,21 +9509,21 @@ it subtracts one instead of adding it.  As with &lsquo;++&rsquo;, it can be used
 the lvalue to pre-decrement or after it to post-decrement.
 Following is a summary of increment and decrement expressions:
 
-<code>++lvalue</code>
+<code>++lvalue</code></br>
 Increment lvalue, returning the new value as the
 value of the expression.
 
-<code>lvalue++</code>
+<code>lvalue++</code></br>
 Increment lvalue, returning the *old* value of lvalue
 as the value of the expression.
 
-<code>--lvalue</code>
+<code>--lvalue</code></br>
 Decrement lvalue, returning the new value as the
 value of the expression.
 (This expression is
 like &lsquo;++lvalue&rsquo;, but instead of adding, it subtracts.)
 
-<code>lvalue--</code>
+<code>lvalue--</code></br>
 Decrement lvalue, returning the *old* value of lvalue
 as the value of the expression.
 (This expression is
@@ -9501,16 +9540,16 @@ Operator Evaluation Order
 What happens for something like the following?
 
 ```awk
-    b = 6
-    print b += b++
+  b = 6
+  print b += b++
 ``` 
 
 Or something even stranger?
 
 ```awk
-    b = 6
-    b += ++b + b++
-    print b
+  b = 6
+  b += ++b + b++
+  print b
 ```    
 
 In other words, when do the various side effects prescribed by the
@@ -9560,14 +9599,14 @@ string, `""`) is false.  The following program prints &lsquo;A strange
 truth value&rsquo; three times:
 
 ```awk
-    BEGIN {
-       if (3.1415927)
-           print "A strange truth value"
-       if ("Four Score And Seven Years Ago")
-           print "A strange truth value"
-       if (j = 57)
-           print "A strange truth value"
-    }
+  BEGIN {
+     if (3.1415927)
+         print "A strange truth value"
+     if ("Four Score And Seven Years Ago")
+         print "A strange truth value"
+     if (j = 57)
+         print "A strange truth value"
+  }
 ``` 
 
 There is a surprising consequence of the &ldquo;nonzero or non-null&rdquo; rule:
@@ -9616,10 +9655,10 @@ a value.  It also uses the built-in `typeof()` function
 (not presented yet; see [Type Functions](#917-getting-type-information)) to show `a`&rsquo;s type:
 
 ```awk
-    $ gawk 'BEGIN { print (a == "" && a == 0 ?
-    > "a is untyped" : "a has a type!") ; print typeof(a) }'
-    -| a is untyped
-    -| unassigned
+  $ gawk 'BEGIN { print (a == "" && a == 0 ?
+  > "a is untyped" : "a has a type!") ; print typeof(a) }'
+  -| a is untyped
+  -| unassigned
 ``` 
 
 A scalar has numeric type when assigned a numeric value,
@@ -9627,10 +9666,10 @@ such as from a numeric constant, or from another scalar
 with numeric type:
 
 ```awk
-    $ gawk 'BEGIN { a = 42 ; print typeof(a)
-    > b = a ; print typeof(b) }'
-    number
-    number
+  $ gawk 'BEGIN { a = 42 ; print typeof(a)
+  > b = a ; print typeof(b) }'
+  number
+  number
 ```    
 
 Similarly, a scalar has string type when assigned a string
@@ -9638,10 +9677,10 @@ value, such as from a string constant, or from another scalar
 with string type:
 
 ```awk
-    $ gawk 'BEGIN { a = "forty two" ; print typeof(a)
-    > b = a ; print typeof(b) }'
-    string
-    string
+  $ gawk 'BEGIN { a = "forty two" ; print typeof(a)
+  > b = a ; print typeof(b) }'
+  string
+  string
 ```    
 
 So far, this is all simple and straightforward.  What happens, though,
@@ -9649,8 +9688,8 @@ when `awk` has to process data from a user?  Let&rsquo;s start with
 field data.  What should the following command produce as output?
 
 ```awk
-    echo hello | awk '{ printf("%s %s < 42\n", $1,
-                               ($1 < 42 ? "is" : "is not")) }'
+  echo hello | awk '{ printf("%s %s < 42\n", $1,
+                             ($1 < 42 ? "is" : "is not")) }'
 ```    
 
 Since &lsquo;hello&rsquo; is alphabetic data, `awk` can only do a string
@@ -9658,9 +9697,9 @@ comparison.  Internally, it converts `42` into `"42"` and compares
 the two string values `"hello"` and `"42"`. Here&rsquo;s the result:
 
 ```awk
-    $ echo hello | awk '{ printf("%s %s < 42\n", $1,
-    >                            ($1 < 42 ? "is" : "is not")) }'
-    -| hello is not < 42
+  $ echo hello | awk '{ printf("%s %s < 42\n", $1,
+  >                            ($1 < 42 ? "is" : "is not")) }'
+  -| hello is not < 42
 ```    
 
 However, what happens when data from a user *looks like* a number?
@@ -9670,9 +9709,9 @@ values.  But, on the other hand, the data looks numeric, and `awk`
 really ought to treat it as such. And indeed, it does:
 
 ```awk
-    $ echo 37 | awk '{ printf("%s %s < 42\n", $1,
-    >                         ($1 < 42 ? "is" : "is not")) }'
-    -| 37 is < 42
+  $ echo 37 | awk '{ printf("%s %s < 42\n", $1,
+  >                         ($1 < 42 ? "is" : "is not")) }'
+  -| 37 is < 42
 ```    
 
 Here are the rules for when `awk`
@@ -9708,11 +9747,11 @@ The last rule is particularly important. In the following program,
 operation:
 
 ```awk
-    BEGIN {
-         a = 12.345
-         b = a " is a cute number"
-         print b
-    }
+  BEGIN {
+       a = 12.345
+       b = a " is a cute number"
+       print b
+  }
 ```    
 
 When two operands are compared, either string comparison or numeric comparison
@@ -9758,30 +9797,30 @@ The following examples print &lsquo;1&rsquo; when the comparison between
 the two different constants is true, and &lsquo;0&rsquo; otherwise:
 
 ```awk
-    $ echo ' +3.14' | awk '{ print($0 == " +3.14") }'True
-    -| 1
-    $ echo ' +3.14' | awk '{ print($0 == "+3.14") }'False
-    -| 0
-    $ echo ' +3.14' | awk '{ print($0 == "3.14") }'False
-    -| 0
-    $ echo ' +3.14' | awk '{ print($0 == 3.14) }'True
-    -| 1
-    $ echo ' +3.14' | awk '{ print($1 == " +3.14") }'False
-    -| 0
-    $ echo ' +3.14' | awk '{ print($1 == "+3.14") }'True
-    -| 1
-    $ echo ' +3.14' | awk '{ print($1 == "3.14") }'False
-    -| 0
-    $ echo ' +3.14' | awk '{ print($1 == 3.14) }'True
-    -| 1
+  $ echo ' +3.14' | awk '{ print($0 == " +3.14") }'True
+  -| 1
+  $ echo ' +3.14' | awk '{ print($0 == "+3.14") }'False
+  -| 0
+  $ echo ' +3.14' | awk '{ print($0 == "3.14") }'False
+  -| 0
+  $ echo ' +3.14' | awk '{ print($0 == 3.14) }'True
+  -| 1
+  $ echo ' +3.14' | awk '{ print($1 == " +3.14") }'False
+  -| 0
+  $ echo ' +3.14' | awk '{ print($1 == "+3.14") }'True
+  -| 1
+  $ echo ' +3.14' | awk '{ print($1 == "3.14") }'False
+  -| 0
+  $ echo ' +3.14' | awk '{ print($1 == 3.14) }'True
+  -| 1
 ```    
 
 You can see the type of an input field (or other user input)
 using `typeof()`:
 
 ```awk
-    $ echo hello 37 | gawk '{ print typeof($1), typeof($2) }'
-    -| string strnum
+  $ echo hello 37 | gawk '{ print typeof($1), typeof($2) }'
+  -| string strnum
 ```    
 
 ---
@@ -9795,7 +9834,17 @@ relationships such as equality.  They are written using *relational
 operators*, which are a superset of those in C.
 [Table 6.3](#table_002drelational_002dops) describes them.
 
-ExpressionResultx`<`yTrue if x is less than yx`<=`yTrue if x is less than or equal to yx`>`yTrue if x is greater than yx`>=`yTrue if x is greater than or equal to yx`==`yTrue if x is equal to yx`!=`yTrue if x is not equal to yx`~`yTrue if the string x matches the regexp denoted by yx`!~`yTrue if the string x does not match the regexp denoted by ysubscript`in`arrayTrue if the array array has an element with the subscript subscript
+| Expression | Result
+| - | -
+| x`<`y     | True if *x* is less than *y*
+| x`<=`y    | True if *x* is less than or equal to *y*
+| x`>`y     | True if *x* is greater than *y*
+| x`>=`y    | True if *x* is greater than or equal to *y*
+| x`==`y    | True if *x* is equal to *y*
+| x`!=`y    | True if *x* is not equal to *y*
+| x`~`y     | True if the string *x* matches the regexp denoted by *y*
+| x`!~`y    | True if the string *x* does not match the regexp denoted by *y*
+| subscript `in` array | True if the array *array* has an element with the subscript *subscript*
 
 **Table 6.3: **Relational operators
 
@@ -9829,22 +9878,22 @@ scanning the source code.
 The following list of expressions illustrates the kinds of comparisons
 `awk` performs, as well as what the result of each comparison is:
 
-<code>1.5 <= 2.0</code>
+<code>1.5 <= 2.0</code></br>
 Numeric comparison (true)
 
-<code>"abc" >= "xyz"</code>
+<code>"abc" >= "xyz"</code></br>
 String comparison (false)
 
-<code>1.5 != " +2"</code>
+<code>1.5 != " +2"</code></br>
 String comparison (true)
 
-<code>"1e2" < "3"</code>
+<code>"1e2" < "3"</code></br>
 String comparison (true)
 
-<code>a = 2; b = "2"</code><code>a == b</code>
+<code>a = 2; b = "2"</code><code>a == b</code></br>
 String comparison (true)
 
-<code>a = 2; b = " +2"</code><code>a == b</code>
+<code>a = 2; b = " +2"</code><code>a == b</code></br>
 String comparison (false)
 
 In this example:
@@ -9970,7 +10019,7 @@ In addition, every Boolean expression is also a valid pattern, so
 you can use one as a pattern to control the execution of rules.
 The Boolean operators are:
 
-<code>boolean1 && boolean2</code>
+<code>boolean1 && boolean2</code></br>
 True if both boolean1 and boolean2 are true.  For example,
 the following statement prints the current input record if it contains
 both &lsquo;edu&rsquo; and &lsquo;li&rsquo;:
@@ -9985,7 +10034,7 @@ expressions that have side effects. In the case of &lsquo;$0 ~ /foo/ &&
 ($2 == bar++)&rsquo;, the variable `bar` is not incremented if there is
 no substring &lsquo;foo&rsquo; in the record.
 
-<code>boolean1 || boolean2</code>
+<code>boolean1 || boolean2</code></br>
 True if at least one of boolean1 or boolean2 is true.
 For example, the following statement prints all records in the input
 that contain *either* &lsquo;edu&rsquo; or
@@ -10002,7 +10051,7 @@ expressions that have side effects.
 &lsquo;edu&rsquo; and &lsquo;li&rsquo;&mdash;as soon as &lsquo;edu&rsquo; is matched,
 the full test succeeds.)
 
-<code>! boolean</code>
+<code>! boolean</code></br>
 True if boolean is false.  For example,
 the following program prints &lsquo;no home!&rsquo; in
 the unusual event that the `HOME` environment
@@ -10268,25 +10317,25 @@ expression because the first &lsquo;$&rsquo; has higher precedence than the
 This list presents `awk`&rsquo;s operators, in order of highest
 to lowest precedence:
 
-<code>(&hellip;)</code>
+<code>(&hellip;)</code></br>
 Grouping.
 
-<code>$</code>
+<code>$</code></br>
 Field reference.
 
-<code>++ --</code>
+<code>++ --</code></br>
 Increment, decrement.
 
-<code>^ **</code>
+<code>^ **</code></br>
 Exponentiation.  These operators group right to left.
 
-<code>+ - !</code>
+<code>+ - !</code></br>
 Unary plus, minus, logical &ldquo;not.&rdquo;
 
-<code>* / %</code>
+<code>* / %</code></br>
 Multiplication, division, remainder.
 
-<code>+ -</code>
+<code>+ -</code></br>
 Addition, subtraction.
 
 String concatenation
@@ -10294,7 +10343,7 @@ There is no special symbol for concatenation.
 The operands are simply written side by side
 (see [Concatenation](#622-string-concatenation)).
 
-<code>< <= == != > >= >> | |&</code>
+<code>< <= == != > >= >> | |&</code></br>
 Relational and redirection.
 The relational operators and the redirections have the same precedence
 level.  Characters such as &lsquo;>&rsquo; serve both as relationals and as
@@ -10309,22 +10358,22 @@ parentheses.  Such combinations (e.g., &lsquo;print foo > a ? b : c&rsquo;)
 result in syntax errors.
 The correct way to write this statement is &lsquo;print foo > (a ? b : c)&rsquo;.
 
-<code>~ !~</code>
+<code>~ !~</code></br>
 Matching, nonmatching.
 
-<code>in</code>
+<code>in</code></br>
 Array membership.
 
-<code>&&</code>
+<code>&&</code></br>
 Logical &ldquo;and.&rdquo;
 
-<code>||</code>
+<code>||</code></br>
 Logical &ldquo;or.&rdquo;
 
-<code>?:</code>
+<code>?:</code></br>
 Conditional.  This operator groups right to left.
 
-<code>= += -= *= /= %= ^= **=</code>
+<code>= += -= *= /= %= ^= **=</code></br>
 Assignment.  These operators group right to left.
 
 > NOTE: The &lsquo;|&&rsquo;, &lsquo;**&rsquo;, and &lsquo;**=&rsquo; operators are not specified by POSIX.
@@ -10467,33 +10516,33 @@ Patterns in `awk` control the execution of rules&mdash;a rule is
 executed when its pattern matches the current input record.
 The following is a summary of the types of `awk` patterns:
 
-<code>/regular expression/</code>
+<code>/regular expression/</code></br>
 A regular expression. It matches when the text of the
 input record fits the regular expression.
 (See [Regexp](#3-regular-expressions).)
 
-<code>expression</code>
+<code>expression</code></br>
 A single expression.  It matches when its value
 is nonzero (if a number) or non-null (if a string).
 (See [Expression Patterns](#712-expressions-as-patterns).)
 
-<code>begpat, endpat</code>
+<code>begpat, endpat</code></br>
 A pair of patterns separated by a comma, specifying a *range* of records.
 The range includes both the initial record that matches begpat and
 the final record that matches endpat.
 (See [Ranges](#713-specifying-record-ranges-with-patterns).)
 
-<code>BEGIN</code><code>END</code>
+<code>BEGIN</code><code>END</code></br>
 Special patterns for you to supply startup or cleanup actions for your
 `awk` program.
 (See [BEGIN/END](#714-the-begin-and-end-special-patterns).)
 
-<code>BEGINFILE</code><code>ENDFILE</code>
+<code>BEGINFILE</code><code>ENDFILE</code></br>
 Special patterns for you to supply startup or cleanup actions to be
 done on a per-file basis.
 (See [BEGINFILE/ENDFILE](#715-the-beginfile-and-endfile-special-patterns).)
 
-<code>empty</code>
+<code>empty</code></br>
 The empty pattern matches every input record.
 (See [Empty](#716-the-empty-pattern).)
 
@@ -10998,25 +11047,25 @@ well.  An omitted action is equivalent to &lsquo;{ print $0 }&rsquo;:
 
 The following types of statements are supported in `awk`:
 
-<code>Expressions</code>
+<code>Expressions</code></br>
 Call functions or assign values to variables
 (see [Expressions](#6-expressions)).  Executing
 this kind of statement simply computes the value of the expression.
 This is useful when the expression has side effects
 (see [Assignment Ops](#623-assignment-expressions)).
 
-<code>Control statements</code>
+<code>Control statements</code></br>
 Specify the control flow of `awk`
 programs.  The `awk` language gives you C-like constructs
 (`if`, `for`, `while`, and `do`) as well as a few
 special ones (see [Statements](#74-control-statements-in-actions)).
 
-<code>Compound statements</code>
+<code>Compound statements</code></br>
 Enclose one or more statements in braces.  A compound statement
 is used in order to put several statements together in the body of an
 `if`, `while`, `do`, or `for` statement.
 
-<code>Input statements</code>
+<code>Input statements</code></br>
 Use the `getline` command
 (see [Getline](#410-explicit-input-with-getline)).
 Also supplied in `awk` are the `next`
@@ -11024,11 +11073,11 @@ statement (see [Next Statement](#748-the-next-statement))
 and the `nextfile` statement
 (see [Nextfile Statement](#749-the-nextfile-statement)).
 
-<code>Output statements</code>
+<code>Output statements</code></br>
 Such as `print` and `printf`.
 See [Printing](#5-printing-output).
 
-<code>Deletion statements</code>
+<code>Deletion statements</code></br>
 For deleting array elements.
 See [Delete](#84-the-delete-statement).
 
