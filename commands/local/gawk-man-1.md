@@ -4473,7 +4473,7 @@ character to be used inside a bracket expression for a dynamic regexp:
   error&rarr; ]...
   error&rarr;  source line number 1
   error&rarr;  context is
-  error&rarr;        $0 ~ "[ >>>  \t\n]" <<< </pre
+  error&rarr;        $0 ~ "[ >>>  \t\n]" <<< </pre>
 
 But a newline in a regexp constant works with no problem:
 
